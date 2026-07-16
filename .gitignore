@@ -31,6 +31,7 @@ build
 # Install dirs
 install
 /install-*
+/dist-*
 
 # Ctags File
 tags

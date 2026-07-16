@@ -17,7 +17,7 @@ PollyMC-Continued lets you play Minecraft **without needing a Microsoft account*
 
 ## Download
 
-Grab the latest release from the [Releases](https://github.com/SharathGames1/PollyMC/releases) page.
+Grab the latest release from the [Releases](https://github.com/corecommit/PollyMC-Continued/releases) page.
 
 ## Building
 
@@ -47,6 +47,36 @@ cmake --install . --prefix C:/pollymc_build
 
 # Create setup installer
 "/c/Program Files (x86)/NSIS/makensis.exe" pollymc_installer.nsi
+```
+
+### macOS
+
+Install the dependencies:
+
+```bash
+brew install cmake ninja qt extra-cmake-modules cmark qrencode libarchive tomlplusplus
+brew install --cask temurin@17
+```
+
+Build:
+
+```bash
+export JAVA_HOME="$(/usr/libexec/java_home -v 17)"
+export CMAKE_PREFIX_PATH="$(brew --prefix qt);$(brew --prefix libarchive);$(brew --prefix tomlplusplus);$(brew --prefix cmark);$(brew --prefix qrencode);$(brew --prefix extra-cmake-modules)"
+
+cmake -S . -B build-macos -G Ninja \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_PREFIX_PATH="$CMAKE_PREFIX_PATH" \
+  -DLauncher_BUILD_RELEASE=ON \
+  -DLauncher_BUILD_PLATFORM=macOS-native
+cmake --build build-macos --parallel
+```
+
+Package the app:
+
+```bash
+VERSION=$(cmake -N -LA build-macos | sed -n 's/^Launcher_VERSION:STRING=//p')
+packaging/macos/package.sh build-macos install-macos dist-macos "$VERSION"
 ```
 
 ## Credits

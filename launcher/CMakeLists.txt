@@ -1374,6 +1374,7 @@ target_link_libraries(Launcher_logic
     Qt${QT_VERSION_MAJOR}::Widgets
     Qt${QT_VERSION_MAJOR}::NetworkAuth
     Qt${QT_VERSION_MAJOR}::OpenGL
+    Qt${QT_VERSION_MAJOR}::Svg
     Qt${QT_VERSION_MAJOR}::WebSockets
     ${Launcher_QT_DBUS}
     ${Launcher_QT_LIBS}
@@ -1418,7 +1419,10 @@ endif()
 
 target_link_libraries(${Launcher_Name} Launcher_logic)
 
-if(DEFINED Launcher_APP_BINARY_NAME)
+if(APPLE)
+    # Match the app bundle name.
+    set_target_properties(${Launcher_Name} PROPERTIES OUTPUT_NAME "${Launcher_Name}")
+elseif(DEFINED Launcher_APP_BINARY_NAME)
     set_target_properties(${Launcher_Name} PROPERTIES OUTPUT_NAME "${Launcher_APP_BINARY_NAME}")
 endif()
 if(DEFINED Launcher_BINARY_RPATH)
@@ -1583,6 +1587,24 @@ endif()
 if(WIN32 OR (UNIX AND APPLE))
     if(WIN32)
         set(QT_DEPLOY_TOOL_OPTIONS "--no-opengl-sw --no-quick-import --no-system-d3d-compiler --no-system-dxc-compiler --skip-plugin-types generic,networkinformation")
+    elseif(APPLE)
+        # Homebrew may install optional Qt modules in separate prefixes.
+        set(QT_DEPLOY_TOOL_OPTIONS "-no-codesign")
+        set(_qt_optional_components Svg Pdf Qml Quick VirtualKeyboard)
+        set(_qt_deploy_lib_dirs)
+        foreach(_qt_component IN LISTS _qt_optional_components)
+            find_package(Qt6 QUIET COMPONENTS ${_qt_component})
+            set(_qt_component_dir_var "Qt6${_qt_component}_DIR")
+            if(DEFINED ${_qt_component_dir_var})
+                get_filename_component(_qt_component_prefix "${${_qt_component_dir_var}}/../../.." ABSOLUTE)
+                set(_qt_component_lib_dir "${_qt_component_prefix}/lib")
+                list(APPEND _qt_deploy_lib_dirs "${_qt_component_lib_dir}")
+            endif()
+        endforeach()
+        list(REMOVE_DUPLICATES _qt_deploy_lib_dirs)
+        foreach(_qt_deploy_lib_dir IN LISTS _qt_deploy_lib_dirs)
+            string(APPEND QT_DEPLOY_TOOL_OPTIONS " -libpath=${_qt_deploy_lib_dir}")
+        endforeach()
     endif()
 
     qt_generate_deploy_script(
@@ -1597,29 +1619,32 @@ if(WIN32 OR (UNIX AND APPLE))
             PLUGINS_DIR ${PLUGIN_DEST_DIR}
             NO_OVERWRITE
             NO_TRANSLATIONS
+            NO_COMPILER_RUNTIME
             DEPLOY_TOOL_OPTIONS ${QT_DEPLOY_TOOL_OPTIONS}
         )"
     )
 
-    # Bundle our linked dependencies
-    install(
-        RUNTIME_DEPENDENCY_SET LAUNCHER_DEPENDENCY_SET
-        COMPONENT bundle
-        DIRECTORIES
-            ${CMAKE_SYSTEM_LIBRARY_PATH}
-            ${QT_LIBS_DIR}
-            ${QT_LIBEXECS_DIR}
-        PRE_EXCLUDE_REGEXES
-            "^(api-ms-win|ext-ms)-.*\\.dll$"
-            # FIXME: Why aren't these caught by the below regex???
-            "^azure.*\\.dll$"
-            "^vcruntime.*\\.dll$"
-        POST_EXCLUDE_REGEXES
-            "system32"
-        LIBRARY DESTINATION ${LIBRARY_DEST_DIR}
-        RUNTIME DESTINATION ${BINARY_DEST_DIR}
-        FRAMEWORK DESTINATION ${FRAMEWORK_DEST_DIR}
-    )
+    if(WIN32)
+        # macdeployqt handles runtime dependencies on macOS.
+        install(
+            RUNTIME_DEPENDENCY_SET LAUNCHER_DEPENDENCY_SET
+            COMPONENT bundle
+            DIRECTORIES
+                ${CMAKE_SYSTEM_LIBRARY_PATH}
+                ${QT_LIBS_DIR}
+                ${QT_LIBEXECS_DIR}
+            PRE_EXCLUDE_REGEXES
+                "^(api-ms-win|ext-ms)-.*\\.dll$"
+                # FIXME: Why aren't these caught by the below regex???
+                "^azure.*\\.dll$"
+                "^vcruntime.*\\.dll$"
+            POST_EXCLUDE_REGEXES
+                "system32"
+            LIBRARY DESTINATION ${LIBRARY_DEST_DIR}
+            RUNTIME DESTINATION ${BINARY_DEST_DIR}
+            FRAMEWORK DESTINATION ${FRAMEWORK_DEST_DIR}
+        )
+    endif()
     # Deploy Qt plugins
     install(
         SCRIPT ${QT_DEPLOY_SCRIPT}
@@ -1694,7 +1719,7 @@ if(WIN32 OR (UNIX AND APPLE))
     # Add qtlogging.ini as a config file
     install(
         FILES "qtlogging.ini"
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/${RESOURCES_DEST_DIR}
+        DESTINATION ${RESOURCES_DEST_DIR}
         COMPONENT bundle
     )
 endif()
