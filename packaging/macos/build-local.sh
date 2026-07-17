@@ -11,6 +11,7 @@ fail() {
     exit 1
 }
 
+command -v git >/dev/null 2>&1 || fail "Git is required"
 command -v brew >/dev/null 2>&1 || fail "Homebrew is required"
 command -v cmake >/dev/null 2>&1 || fail "CMake is required (brew install cmake)"
 command -v ninja >/dev/null 2>&1 || fail "Ninja is required (brew install ninja)"
@@ -25,7 +26,9 @@ for formula in "${formulae[@]}"; do
     prefix=$(brew --prefix "$formula" 2>/dev/null) || fail "Missing Homebrew dependency: $formula"
     prefixes+=("$prefix")
 done
-
+if [[ -n ${CMAKE_PREFIX_PATH:-} ]]; then
+    prefixes+=("$CMAKE_PREFIX_PATH")
+fi
 export CMAKE_PREFIX_PATH=$(IFS=';'; echo "${prefixes[*]}")
 
 deployment_target=${MACOSX_DEPLOYMENT_TARGET:-$(sw_vers -productVersion | awk -F. '{print $1 ".0"}')}
@@ -36,10 +39,11 @@ output_dir=${OUTPUT_DIR:-dist-macos}
 
 for directory in "$build_dir" "$install_dir" "$output_dir"; do
     case "$directory" in
-        ''|/|.|..) fail "Unsafe working directory: $directory" ;;
+        ''|/|.|..|/*|../*|*/../*|*/..) fail "Working directories must be relative paths inside the repository: $directory" ;;
     esac
 done
 
+git submodule update --init --recursive
 cmake -E rm -rf "$build_dir" "$install_dir" "$output_dir"
 
 cmake -S . -B "$build_dir" -G Ninja \
@@ -64,11 +68,12 @@ standalone_app="$output_dir/PollyMC.app"
 cmake -E rm -rf "$standalone_app"
 ditto --rsrc --extattr --noqtn --noacl "$install_dir/PollyMC.app" "$standalone_app"
 
+source_branch=$(git symbolic-ref --short -q HEAD 2>/dev/null || true)
 EXPECTED_VERSION=$version \
 EXPECTED_ARCHS=$architecture \
 EXPECTED_MIN_MACOS=$deployment_target \
 SOURCE_ROOT=$source_root \
-SOURCE_BRANCH=$(git symbolic-ref --short -q HEAD 2>/dev/null || true) \
+SOURCE_BRANCH=$source_branch \
     "$script_dir/verify_bundle.sh" "$standalone_app"
 
 dmg_path="$output_dir/PollyMC-Continued-${version}-macOS-${architecture}.dmg"
