@@ -58,26 +58,21 @@ brew install cmake ninja qt extra-cmake-modules cmark qrencode libarchive tomlpl
 brew install --cask temurin@17
 ```
 
-Build:
+Build, test and package the native version for the current Mac:
 
 ```bash
-export JAVA_HOME="$(/usr/libexec/java_home -v 17)"
-export CMAKE_PREFIX_PATH="$(brew --prefix qt);$(brew --prefix libarchive);$(brew --prefix tomlplusplus);$(brew --prefix cmark);$(brew --prefix qrencode);$(brew --prefix extra-cmake-modules)"
-
-cmake -S . -B build-macos -G Ninja \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_PREFIX_PATH="$CMAKE_PREFIX_PATH" \
-  -DLauncher_BUILD_RELEASE=ON \
-  -DLauncher_BUILD_PLATFORM=macOS-native
-cmake --build build-macos --parallel
+bash packaging/macos/build-local.sh
 ```
 
-Package the app:
+The script uses the current macOS major version as the default deployment target, avoiding invalid or incompatible local bundles built against Homebrew libraries. Override it when needed:
 
 ```bash
-VERSION=$(cmake -N -LA build-macos | sed -n 's/^Launcher_VERSION:STRING=//p')
-packaging/macos/package.sh build-macos install-macos dist-macos "$VERSION"
+MACOSX_DEPLOYMENT_TARGET=15.0 bash packaging/macos/build-local.sh
 ```
+
+The resulting `dist-macos` directory contains a ready-to-run `PollyMC.app`, ZIP, DMG and SHA-256 checksums. The locally generated DMG file receives the same Finder icon as the application. The DMG also contains `PollyMC.app` and an `Applications` shortcut for normal drag-and-drop installation.
+
+The custom icon attached to the local DMG file is stored in a macOS resource fork. Release hosting services may discard that metadata, while the icon of the mounted DMG volume remains embedded in the disk image.
 
 ## Credits
 
