@@ -17,7 +17,7 @@ PollyMC-Continued lets you play Minecraft **without needing a Microsoft account*
 
 ## Download
 
-Grab the latest release from the [Releases](https://github.com/SharathGames1/PollyMC/releases) page.
+Grab the latest release from the [Releases](https://github.com/corecommit/PollyMC-Continued/releases) page.
 
 ## Building
 
@@ -48,6 +48,31 @@ cmake --install . --prefix C:/pollymc_build
 # Create setup installer
 "/c/Program Files (x86)/NSIS/makensis.exe" pollymc_installer.nsi
 ```
+
+### macOS
+
+Install the dependencies:
+
+```bash
+brew install cmake ninja qt extra-cmake-modules cmark qrencode libarchive tomlplusplus
+brew install --cask temurin@17
+```
+
+Build, test and package the native version for the current Mac:
+
+```bash
+bash packaging/macos/build-local.sh
+```
+
+The script uses the current macOS major version as the default deployment target, avoiding invalid or incompatible local bundles built against Homebrew libraries. Override it when needed:
+
+```bash
+MACOSX_DEPLOYMENT_TARGET=15.0 bash packaging/macos/build-local.sh
+```
+
+The resulting `dist-macos` directory contains a ready-to-run `PollyMC.app`, ZIP, DMG and SHA-256 checksums. The locally generated DMG file receives the same Finder icon as the application. The DMG also contains `PollyMC.app` and an `Applications` shortcut for normal drag-and-drop installation.
+
+The custom icon attached to the local DMG file is stored in a macOS resource fork. Release hosting services may discard that metadata, while the icon of the mounted DMG volume remains embedded in the disk image.
 
 ## Credits
 

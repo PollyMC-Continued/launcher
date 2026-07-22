@@ -371,9 +371,124 @@ jobs:
           name: PollyMC-Continued-Linux-AppImage
           path: PollyMC-Continued-Linux-x86_64.AppImage
 
+  build-macos:
+    name: macOS (Universal)
+    runs-on: macos-26
+    permissions:
+      contents: read
+    env:
+      ARTIFACT_NAME: macOS-universal
+      ARTIFACT_ARCH: universal
+      BUILD_PLATFORM: macOS-universal
+      BUILD_TYPE: Release
+      EXPECTED_ARCHS: arm64 x86_64
+      EXPECTED_MIN_MACOS: "12.0"
+      MACOSX_DEPLOYMENT_TARGET: "12.0"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Install build tools
+        run: |
+          brew update
+          brew install ninja extra-cmake-modules temurin@17 mono
+          echo "JAVA_HOME=$(/usr/libexec/java_home -v 17)" >> "$GITHUB_ENV"
+          echo "VCPKG_ROOT=$VCPKG_INSTALLATION_ROOT" >> "$GITHUB_ENV"
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+          aqtversion: "==3.1.*"
+          version: 6.9.3
+          modules: qtimageformats qtnetworkauth
+          cache: true
+
+      - name: Configure
+        run: |
+          cmake --preset macos_universal \
+            -DCMAKE_OSX_DEPLOYMENT_TARGET="$MACOSX_DEPLOYMENT_TARGET" \
+            -DLauncher_BUILD_RELEASE=ON
+
+      - name: Read and validate version
+        id: version
+        run: |
+          VERSION=$(cmake -N -LA build | sed -n 's/^Launcher_VERSION:STRING=//p')
+          if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Invalid Launcher_VERSION: $VERSION" >&2
+            exit 1
+          fi
+          if [[ "$GITHUB_REF" == refs/tags/v* && "v$VERSION" != "$GITHUB_REF_NAME" ]]; then
+            echo "Tag $GITHUB_REF_NAME does not match launcher version $VERSION" >&2
+            exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Build
+        run: cmake --build --preset macos_universal --config "$BUILD_TYPE"
+
+      - name: Test
+        run: ctest --test-dir build --build-config "$BUILD_TYPE" --output-on-failure
+
+      - name: Import signing certificate
+        env:
+          APPLE_CODESIGN_CERT: ${{ secrets.APPLE_CODESIGN_CERT }}
+          APPLE_CODESIGN_ID: ${{ secrets.APPLE_CODESIGN_ID }}
+          APPLE_CODESIGN_PASSWORD: ${{ secrets.APPLE_CODESIGN_PASSWORD }}
+        run: |
+          if [[ -z "$APPLE_CODESIGN_CERT" && -z "$APPLE_CODESIGN_ID" ]]; then
+            echo "No Apple signing certificate configured; the artifact will be ad-hoc signed."
+            exit 0
+          fi
+          if [[ -z "$APPLE_CODESIGN_CERT" || -z "$APPLE_CODESIGN_ID" || -z "$APPLE_CODESIGN_PASSWORD" ]]; then
+            echo "Apple signing secrets are only partially configured." >&2
+            exit 1
+          fi
+          KEYCHAIN_PATH="$RUNNER_TEMP/pollymc-build.keychain-db"
+          CERTIFICATE_PATH="$RUNNER_TEMP/pollymc-codesign.p12"
+          printf '%s' "$APPLE_CODESIGN_CERT" | base64 --decode > "$CERTIFICATE_PATH"
+          security create-keychain -p "$APPLE_CODESIGN_PASSWORD" "$KEYCHAIN_PATH"
+          security default-keychain -s "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$APPLE_CODESIGN_PASSWORD" "$KEYCHAIN_PATH"
+          security import "$CERTIFICATE_PATH" -k "$KEYCHAIN_PATH" -P "$APPLE_CODESIGN_PASSWORD" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$APPLE_CODESIGN_PASSWORD" "$KEYCHAIN_PATH"
+          echo "KEYCHAIN_PATH=$KEYCHAIN_PATH" >> "$GITHUB_ENV"
+
+      - name: Package app, ZIP, and DMG
+        env:
+          APPLE_CODESIGN_ID: ${{ secrets.APPLE_CODESIGN_ID }}
+          APPLE_NOTARIZE_APPLE_ID: ${{ secrets.APPLE_NOTARIZE_APPLE_ID }}
+          APPLE_NOTARIZE_TEAM_ID: ${{ secrets.APPLE_NOTARIZE_TEAM_ID }}
+          APPLE_NOTARIZE_PASSWORD: ${{ secrets.APPLE_NOTARIZE_PASSWORD }}
+        run: |
+          packaging/macos/package.sh \
+            build \
+            install-macos \
+            dist-macos \
+            "${{ steps.version.outputs.version }}" \
+            "$BUILD_TYPE"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: PollyMC-Continued-macOS-${{ steps.version.outputs.version }}
+          path: |
+            dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-universal.zip
+            dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-universal.dmg
+            dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-universal.sha256
+          if-no-files-found: error
+
+      - name: Remove temporary signing keychain
+        if: ${{ always() }}
+        run: |
+          if [[ -n "${KEYCHAIN_PATH:-}" && -f "$KEYCHAIN_PATH" ]]; then
+            security delete-keychain "$KEYCHAIN_PATH"
+          fi
+
   release:
     name: Publish Release
-    needs: [build-windows, build-linux]
+    needs: [build-windows, build-linux, build-macos]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
     permissions:
@@ -425,3 +540,6 @@ jobs:
             PollyMC-Continued-*-Setup.exe
             PollyMC-Continued-*-Windows-portable.zip
             PollyMC-Continued-Linux-x86_64.AppImage
+            PollyMC-Continued-*-macOS-universal.zip
+            PollyMC-Continued-*-macOS-universal.dmg
+            PollyMC-Continued-*-macOS-universal.sha256

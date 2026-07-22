@@ -1,6 +1,14 @@
 cmake_minimum_required(VERSION 3.25) # Required for features like `CMAKE_MSVC_DEBUG_INFORMATION_FORMAT`
 
-project(Launcher LANGUAGES C CXX)
+set(Launcher_VERSION "9.0.8" CACHE STRING "Launcher version in MAJOR.MINOR.PATCH format")
+if(Launcher_VERSION STREQUAL "")
+    set(Launcher_VERSION "9.0.8" CACHE STRING "Launcher version in MAJOR.MINOR.PATCH format" FORCE)
+endif()
+if(NOT Launcher_VERSION MATCHES "^([0-9]+)\\.([0-9]+)\\.([0-9]+)$")
+    message(FATAL_ERROR "Launcher_VERSION must use MAJOR.MINOR.PATCH format (got '${Launcher_VERSION}')")
+endif()
+
+project(Launcher VERSION "${Launcher_VERSION}" LANGUAGES C CXX)
 if(APPLE)
     enable_language(OBJC OBJCXX)
 endif()
@@ -157,6 +165,7 @@ if(ENABLE_LTO)
 endif()
 
 option(BUILD_TESTING "Build the testing tree." ON)
+option(Launcher_BUILD_RELEASE "Hide Git branch metadata from public release artifacts." OFF)
 
 find_package(ECM NO_MODULE REQUIRED)
 set(CMAKE_MODULE_PATH "${ECM_MODULE_PATH};${CMAKE_MODULE_PATH}")
@@ -178,10 +187,6 @@ set(Launcher_LOGIN_CALLBACK_URL "https://login.live.com/oauth20_desktop.srf" CAC
 set(Launcher_LEGACY_FMLLIBS_BASE_URL "https://files.prismlauncher.org/fmllibs/" CACHE STRING "URL for legacy (<=1.5.2) FML Libraries.")
 
 ######## Set version numbers ########
-set(Launcher_VERSION_MAJOR 9)
-set(Launcher_VERSION_MINOR 0)
-set(Launcher_VERSION_PATCH 0)
-
 set(Launcher_VERSION_NAME "${Launcher_VERSION_MAJOR}.${Launcher_VERSION_MINOR}.${Launcher_VERSION_PATCH}")
 set(Launcher_VERSION_NAME4 "${Launcher_VERSION_MAJOR}.${Launcher_VERSION_MINOR}.${Launcher_VERSION_PATCH}.0")
 set(Launcher_VERSION_NAME4_COMMA "${Launcher_VERSION_MAJOR},${Launcher_VERSION_MINOR},${Launcher_VERSION_PATCH},0")
@@ -275,6 +280,12 @@ include(GetGitRevisionDescription)
 git_get_exact_tag(Launcher_GIT_TAG)
 get_git_head_revision(Launcher_GIT_REFSPEC Launcher_GIT_COMMIT)
 
+if(Launcher_BUILD_RELEASE)
+    # Use stable metadata in packaged builds.
+    set(Launcher_GIT_REFSPEC "refs/heads/stable")
+    set(Launcher_GIT_TAG "${Launcher_VERSION_NAME}")
+endif()
+
 message(STATUS "Git commit: ${Launcher_GIT_COMMIT}")
 message(STATUS "Git tag: ${Launcher_GIT_TAG}")
 message(STATUS "Git refspec: ${Launcher_GIT_REFSPEC}")
@@ -287,7 +298,7 @@ set(Launcher_BUILD_TIMESTAMP "${TODAY}")
 # Find the required Qt parts
 if(Launcher_QT_VERSION_MAJOR EQUAL 6)
     set(QT_VERSION_MAJOR 6)
-    find_package(Qt6 6.4 REQUIRED COMPONENTS Core CoreTools Widgets Concurrent Network Test Xml NetworkAuth OpenGL WebSockets)
+    find_package(Qt6 6.4 REQUIRED COMPONENTS Core CoreTools Widgets Concurrent Network Test Xml NetworkAuth OpenGL Svg WebSockets)
     find_package(Qt6 COMPONENTS DBus)
     list(APPEND Launcher_QT_DBUS Qt6::DBus)
 else()
@@ -360,11 +371,11 @@ endif()
 
 if(UNIX AND APPLE)
     set(BINARY_DEST_DIR "${Launcher_Name}.app/Contents/MacOS")
-    set(LIBRARY_DEST_DIR "${Launcher_Name}.app/Contents/MacOS")
-    set(PLUGIN_DEST_DIR "${Launcher_Name}.app/Contents/MacOS")
+    set(LIBRARY_DEST_DIR "${Launcher_Name}.app/Contents/Frameworks")
+    set(PLUGIN_DEST_DIR "${Launcher_Name}.app/Contents/PlugIns")
     set(FRAMEWORK_DEST_DIR "${Launcher_Name}.app/Contents/Frameworks")
     set(RESOURCES_DEST_DIR "${Launcher_Name}.app/Contents/Resources")
-    set(JARS_DEST_DIR "${Launcher_Name}.app/Contents/MacOS/jars")
+    set(JARS_DEST_DIR "${Launcher_Name}.app/Contents/Resources/jars")
 
     # Mac bundle settings
     set(MACOSX_BUNDLE_BUNDLE_NAME "${Launcher_DisplayName}")
@@ -390,7 +401,8 @@ if(UNIX AND APPLE)
     install(FILES ${Launcher_Branding_ICNS} DESTINATION ${RESOURCES_DEST_DIR} RENAME ${Launcher_Name}.icns)
 
     find_program(ACTOOL_EXE actool DOC "Path to the apple asset catalog compiler")
-    if(ACTOOL_EXE)
+    set(ICON_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/${Launcher_Branding_MAC_ICON}")
+    if(ACTOOL_EXE AND EXISTS "${ICON_SOURCE}")
         execute_process(
             COMMAND xcodebuild -version
             OUTPUT_VARIABLE XCODE_VERSION_OUTPUT
@@ -407,7 +419,6 @@ if(UNIX AND APPLE)
         if(XCODE_VERSION VERSION_GREATER_EQUAL 26.0)
             set(ASSETS_OUT_DIR "${CMAKE_BINARY_DIR}/program_info")
             set(GENERATED_ASSETS_CAR "${ASSETS_OUT_DIR}/Assets.car")
-            set(ICON_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/${Launcher_Branding_MAC_ICON}")
 
             add_custom_command(
                 OUTPUT "${GENERATED_ASSETS_CAR}"
@@ -428,7 +439,8 @@ if(UNIX AND APPLE)
         else()
             message(WARNING "Xcode ${XCODE_VERSION} is too old. Minimum required version is 26.0. Not compiling liquid glass icons.")
         endif()
-
+    elseif(NOT EXISTS "${ICON_SOURCE}")
+        message(STATUS "Modern macOS icon source '${ICON_SOURCE}' is not present; using the bundled ICNS icon")
     else()
         message(WARNING "actool not found. Cannot compile macOS app icons.\n"
                 "Install Xcode command line tools: 'xcode-select --install'")
