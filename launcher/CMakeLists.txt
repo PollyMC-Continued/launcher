@@ -1589,7 +1589,12 @@ if(WIN32 OR (UNIX AND APPLE))
         set(QT_DEPLOY_TOOL_OPTIONS "--no-opengl-sw --no-quick-import --no-system-d3d-compiler --no-system-dxc-compiler --skip-plugin-types generic,networkinformation")
     elseif(APPLE)
         # Homebrew may install optional Qt modules in separate prefixes.
-        set(QT_DEPLOY_TOOL_OPTIONS "-no-codesign")
+        # Qt 6.9+ replaced -no-codesign with --codesigning=off
+        if(Qt6Core_VERSION VERSION_GREATER_EQUAL "6.9.0")
+            set(QT_DEPLOY_TOOL_OPTIONS "--codesigning=off")
+        else()
+            set(QT_DEPLOY_TOOL_OPTIONS "-no-codesign")
+        endif()
         set(_qt_optional_components Svg Pdf Qml Quick VirtualKeyboard)
         set(_qt_deploy_lib_dirs)
         foreach(_qt_component IN LISTS _qt_optional_components)
