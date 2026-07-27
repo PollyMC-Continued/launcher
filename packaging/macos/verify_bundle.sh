@@ -193,9 +193,14 @@ for private_path in "${SOURCE_ROOT:-}" "${HOME:-}"; do
 	fi
 done
 
-if [[ -n ${SOURCE_BRANCH:-} ]] && LC_ALL=C grep -R --binary-files=without-match -F -q -- "$SOURCE_BRANCH" "$app"; then
-	fail "bundle contains the local source branch name"
-fi
+case ${SOURCE_BRANCH:-} in
+'' | main | master | develop) ;;
+*)
+	if LC_ALL=C grep -R -q -F -- "$SOURCE_BRANCH" "$app"; then
+		fail "bundle contains the local source branch name"
+	fi
+	;;
+esac
 
 if find "$app" \( -name '.DS_Store' -o -name '._*' \) -print -quit | grep -q .; then
 	fail "bundle contains Finder or AppleDouble metadata"
