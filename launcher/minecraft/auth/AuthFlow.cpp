@@ -5,6 +5,7 @@
 #include "minecraft/auth/AccountData.h"
 #include "minecraft/auth/steps/EntitlementsStep.h"
 #include "minecraft/auth/steps/GetSkinStep.h"
+#include "minecraft/auth/steps/AuthlibInjectorStep.h"
 #include "minecraft/auth/steps/LauncherLoginStep.h"
 #include "minecraft/auth/steps/MSADeviceCodeStep.h"
 #include "minecraft/auth/steps/MSAStep.h"
@@ -37,6 +38,8 @@ AuthFlow::AuthFlow(AccountData* data, Action action) : Task(), m_data(data)
         m_steps.append(makeShared<EntitlementsStep>(m_data));
         m_steps.append(makeShared<MinecraftProfileStep>(m_data));
         m_steps.append(makeShared<GetSkinStep>(m_data));
+    } else if (data->type == AccountType::AuthlibInjector) {
+        m_steps.append(makeShared<AuthlibInjectorStep>(m_data));
     }
     changeState(AccountTaskState::STATE_CREATED);
 }

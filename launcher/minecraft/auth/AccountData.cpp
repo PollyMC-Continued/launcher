@@ -291,9 +291,17 @@ bool AccountData::resumeStateFromV3(QJsonObject data)
         type = AccountType::MSA;
     } else if (typeS == "Offline") {
         type = AccountType::Offline;
+    } else if (typeS == "AuthlibInjector") {
+        type = AccountType::AuthlibInjector;
     } else {
         qWarning() << "Failed to parse account data: type is not recognized.";
         return false;
+    }
+
+    if (type == AccountType::AuthlibInjector) {
+        auto urlV = data.value("auth-server-url");
+        if (urlV.isString())
+            authServerUrl = urlV.toString();
     }
 
     if (type == AccountType::MSA) {
@@ -335,6 +343,9 @@ QJsonObject AccountData::saveState() const
         tokenToJSONV3(output, mojangservicesToken, "xrp-mc");
     } else if (type == AccountType::Offline) {
         output["type"] = "Offline";
+    } else if (type == AccountType::AuthlibInjector) {
+        output["type"] = "AuthlibInjector";
+        output["auth-server-url"] = authServerUrl;
     }
 
     tokenToJSONV3(output, yggdrasilToken, "ygg");

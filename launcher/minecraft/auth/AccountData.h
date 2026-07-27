@@ -87,7 +87,7 @@ struct MinecraftProfile {
     Validity validity = Validity::None;
 };
 
-enum class AccountType { MSA, Offline };
+enum class AccountType { MSA, Offline, AuthlibInjector };
 
 enum class AccountState { Unchecked, Offline, Working, Online, Disabled, Errored, Expired, Gone };
 
@@ -110,6 +110,7 @@ struct AccountData {
     Token userToken;
     Token mojangservicesToken;
 
+    QString authServerUrl;
     Token yggdrasilToken;
     MinecraftProfile minecraftProfile;
     MinecraftEntitlement minecraftEntitlement;

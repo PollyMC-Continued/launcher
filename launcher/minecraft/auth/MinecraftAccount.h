@@ -86,6 +86,7 @@ class MinecraftAccount : public QObject, public Usable {
     static MinecraftAccountPtr createBlankMSA();
 
     static MinecraftAccountPtr createOffline(const QString& username);
+    static MinecraftAccountPtr createAuthlibInjector(const QString& username, const QString& authServerUrl);
 
     static MinecraftAccountPtr loadFromJsonV3(const QJsonObject& json);
 
@@ -128,6 +129,9 @@ class MinecraftAccount : public QObject, public Usable {
             } break;
             case AccountType::Offline: {
                 return "offline";
+            } break;
+            case AccountType::AuthlibInjector: {
+                return "authlib-injector";
             } break;
             default: {
                 return "unknown";

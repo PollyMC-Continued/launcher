@@ -346,6 +346,9 @@ QVariant AccountList::data(const QModelIndex& index, int role) const
                         case AccountType::Offline: {
                             return tr("Offline", "Account type");
                         }
+                        case AccountType::AuthlibInjector: {
+                            return tr("Authlib-Injector", "Account type");
+                        }
                     }
                     return tr("Unknown", "Account type");
                 }
@@ -388,7 +391,7 @@ QVariant AccountList::headerData(int section, [[maybe_unused]] Qt::Orientation o
                 case ProfileNameColumn:
                     return tr("Minecraft username associated with the account.");
                 case TypeColumn:
-                    return tr("Type of the account (MSA or Offline)");
+                    return tr("Type of the account (MSA, Offline, or Authlib-Injector)");
                 case StatusColumn:
                     return tr("Current status of the account.");
                 default:

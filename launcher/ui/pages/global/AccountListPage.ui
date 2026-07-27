@@ -54,6 +54,7 @@
    </attribute>
    <addaction name="actionAddMicrosoft"/>
    <addaction name="actionAddOffline"/>
+   <addaction name="actionAddAuthlibInjector"/>
    <addaction name="actionRefresh"/>
    <addaction name="actionRemove"/>
    <addaction name="actionSetDefault"/>
@@ -92,6 +93,11 @@
   <action name="actionAddOffline">
    <property name="text">
     <string>Add &amp;Offline</string>
+   </property>
+  </action>
+  <action name="actionAddAuthlibInjector">
+   <property name="text">
+    <string>Add &amp;Yggdrasil</string>
    </property>
   </action>
   <action name="actionRefresh">

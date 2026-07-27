@@ -92,6 +92,16 @@ MinecraftAccountPtr MinecraftAccount::createOffline(const QString& username)
     return account;
 }
 
+MinecraftAccountPtr MinecraftAccount::createAuthlibInjector(const QString& username, const QString& authServerUrl)
+{
+    auto account = makeShared<MinecraftAccount>();
+    account->data.type = AccountType::AuthlibInjector;
+    account->data.authServerUrl = authServerUrl;
+    account->data.yggdrasilToken.extra["userName"] = username;
+    account->data.yggdrasilToken.extra["clientToken"] = QUuid::createUuid().toString(QUuid::Id128);
+    return account;
+}
+
 QJsonObject MinecraftAccount::saveToJson() const
 {
     return data.saveState();
@@ -254,6 +264,9 @@ void MinecraftAccount::fillSession(AuthSessionPtr session)
         session->uuid = uuidFromUsername(session->player_name).toString(QUuid::Id128);
     // 'legacy' or 'mojang', depending on account type
     session->user_type = typeString();
+    if (data.type == AccountType::AuthlibInjector) {
+        session->authServerUrl = data.authServerUrl;
+    }
     if (!session->access_token.isEmpty()) {
         session->session = "token:" + data.accessToken() + ":" + data.profileId();
     } else {

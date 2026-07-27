@@ -129,6 +129,17 @@ void LauncherPartLaunch::executeTask()
         }
     }
 
+    // Inject authlib-injector for Yggdrasil accounts
+    if (m_session && m_session->user_type == "authlib-injector") {
+        QString agentPath = APPLICATION->getJarPath("authlib-injector.jar");
+        if (!agentPath.isEmpty()) {
+            args << ("-javaagent:" + agentPath + "=" + m_session->authServerUrl);
+            emit logLine("authlib-injector agent injected.\n", MessageLevel::Launcher);
+        } else {
+            emit logLine("authlib-injector.jar not found. Download it from https://github.com/yushijinhun/authlib-injector/releases\n", MessageLevel::Warning);
+        }
+    }
+
     args << "-cp";
 #ifdef Q_OS_WIN
     QStringList processed;

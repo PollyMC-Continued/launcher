@@ -21,8 +21,10 @@ struct AuthSession {
     QString player_name;
     // profile ID
     QString uuid;
-    // 'msa' or 'offline', depending on account type
+    // 'msa' or 'offline' or 'authlib-injector', depending on account type
     QString user_type;
+    // auth server URL for authlib-injector accounts
+    QString authServerUrl;
     // the actual launch mode for this session
     LaunchMode launchMode;
 };
