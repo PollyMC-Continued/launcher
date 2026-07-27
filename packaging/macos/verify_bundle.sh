@@ -193,7 +193,7 @@ for private_path in "${SOURCE_ROOT:-}" "${HOME:-}"; do
 	fi
 done
 
-if [[ -n ${SOURCE_BRANCH:-} ]] && LC_ALL=C grep -R -a -F -q -- "$SOURCE_BRANCH" "$app"; then
+if [[ -n ${SOURCE_BRANCH:-} ]] && LC_ALL=C grep -R --binary-files=without-match -F -q -- "$SOURCE_BRANCH" "$app"; then
 	fail "bundle contains the local source branch name"
 fi
 
