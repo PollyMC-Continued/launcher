@@ -402,7 +402,7 @@ jobs:
         with:
           aqtversion: "==3.1.*"
           version: 6.9.3
-          modules: qtimageformats qtnetworkauth
+          modules: qtimageformats qtnetworkauth qtwebsockets
           cache: true
 
       - name: Configure
