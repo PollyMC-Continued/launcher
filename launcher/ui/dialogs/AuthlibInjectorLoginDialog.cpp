@@ -24,7 +24,7 @@ AuthlibInjectorLoginDialog::AuthlibInjectorLoginDialog(QWidget* parent)
         }
 
         m_account = MinecraftAccount::createAuthlibInjector(username, serverUrl);
-        m_account->data.yggdrasilToken.extra["password"] = password;
+        m_account->accountData()->yggdrasilToken.extra["password"] = password;
 
         m_authflow_task = m_account->login();
         connect(m_authflow_task.get(), &Task::succeeded, this, &AuthlibInjectorLoginDialog::accept);
