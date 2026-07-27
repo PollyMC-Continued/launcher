@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.25) # Required for features like `CMAKE_MSVC_DEBUG_INFORMATION_FORMAT`
 
-set(Launcher_VERSION "9.0.9" CACHE STRING "Launcher version in MAJOR.MINOR.PATCH format")
+set(Launcher_VERSION "9.0.10" CACHE STRING "Launcher version in MAJOR.MINOR.PATCH format")
 if(Launcher_VERSION STREQUAL "")
-    set(Launcher_VERSION "9.0.9" CACHE STRING "Launcher version in MAJOR.MINOR.PATCH format" FORCE)
+    set(Launcher_VERSION "9.0.10" CACHE STRING "Launcher version in MAJOR.MINOR.PATCH format" FORCE)
 endif()
 if(NOT Launcher_VERSION MATCHES "^([0-9]+)\\.([0-9]+)\\.([0-9]+)$")
     message(FATAL_ERROR "Launcher_VERSION must use MAJOR.MINOR.PATCH format (got '${Launcher_VERSION}')")
