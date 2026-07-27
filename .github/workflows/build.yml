@@ -405,11 +405,33 @@ jobs:
           modules: qtimageformats qtnetworkauth qtwebsockets
           cache: true
 
+      - name: Get version
+        id: getversion
+        shell: bash
+        run: |
+          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
+            VERSION="${{ github.ref }}"
+            VERSION="${VERSION#refs/tags/v}"
+            echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          else
+            git fetch --tags --force
+            LATEST_TAG=$(git tag --list "v*" | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1)
+            if [ -z "$LATEST_TAG" ]; then
+              LATEST_TAG="v9.0.7"
+            fi
+            VERSION=${LATEST_TAG#v}
+            IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
+            PATCH=$((PATCH + 1))
+            NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+            echo "version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Configure
         run: |
           cmake --preset macos_universal \
             -DCMAKE_OSX_DEPLOYMENT_TARGET="$MACOSX_DEPLOYMENT_TARGET" \
-            -DLauncher_BUILD_RELEASE=ON
+            -DLauncher_BUILD_RELEASE=ON \
+            -DLauncher_VERSION="${{ steps.getversion.outputs.version }}"
 
       - name: Read and validate version
         id: version
