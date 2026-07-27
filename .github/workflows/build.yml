@@ -400,8 +400,8 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          aqtversion: "==3.1.*"
-          version: 6.9.3
+          aqtsource: git+https://github.com/miurahr/aqtinstall.git
+          version: 6.11.*
           modules: qtimageformats qtnetworkauth qtwebsockets
           cache: true
 
