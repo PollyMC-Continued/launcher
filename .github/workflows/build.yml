@@ -518,7 +518,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Fetch all history and tags for version calculation
+          fetch-depth: 0
+
+      - name: Check for skip-release marker
+        id: skipcheck
+        run: |
+          LATEST_TAG=$(git describe --tags --match "v*" --abbrev=0 2>/dev/null || echo "HEAD")
+          COMMITS=$(git log "$LATEST_TAG..HEAD" --format="%s %b" 2>/dev/null)
+          if echo "$COMMITS" | grep -q "\[skip release\]"; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Skipping release: [skip release] found in commit messages."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Download all artifacts
         uses: actions/download-artifact@v4
@@ -529,29 +541,36 @@ jobs:
         run: ls -la PollyMC-Continued-*
 
       - name: Prepare release metadata
+        if: steps.skipcheck.outputs.skip != 'true'
         id: prep
         run: |
-          # Find the latest tag that starts with 'v' (e.g., v9.0.7)
           LATEST_TAG=$(git describe --tags --match "v*" --abbrev=0 2>/dev/null || echo "v0.0.0")
           echo "Latest tag found: $LATEST_TAG"
-          
-          # Strip the 'v' prefix (9.0.7)
+
           VERSION=${LATEST_TAG#v}
-          
-          # Split into major, minor, patch
           IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
-          
-          # Increment the patch version by 1 (9.0.8)
-          PATCH=$((PATCH + 1))
-          
-          # Combine into the new tag name (e.g., v9.0.8)
+
+          COMMITS=$(git log "$LATEST_TAG..HEAD" --format="%s %b" 2>/dev/null)
+
+          if echo "$COMMITS" | grep -q "BREAKING CHANGE"; then
+            MAJOR=$((MAJOR + 1))
+            MINOR=0
+            PATCH=0
+          elif echo "$COMMITS" | grep -q -E "^(feat|feature|Add |Build |Enhance)(\(|:| )" ; then
+            MINOR=$((MINOR + 1))
+            PATCH=0
+          else
+            PATCH=$((PATCH + 1))
+          fi
+
           NEW_TAG="v${MAJOR}.${MINOR}.${PATCH}"
-          
+
           echo "New tag will be: $NEW_TAG"
           echo "tag_name=${NEW_TAG}" >> $GITHUB_OUTPUT
           echo "release_name=PollyMC Continued ${NEW_TAG}" >> $GITHUB_OUTPUT
 
       - name: Publish release
+        if: steps.skipcheck.outputs.skip != 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.prep.outputs.tag_name }}

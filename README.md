@@ -42,6 +42,18 @@ bash packaging/macos/build-local.sh
 ```
 Output in `dist-macos/` — ready-to-run `.app`, ZIP, DMG.
 
+## Commit conventions
+
+The CI auto-creates a release on every push to `main`. Which part of the version bumps depends on commit messages since the last tag:
+
+| Commit starts with | Bump | Example |
+|---|---|---|
+| `BREAKING CHANGE` (in body) | Major (`10.0.0`) | A breaking API change |
+| `feat:` / `Add ` / `Build ` / `Enhance ` | Minor (`9.1.0`) | A new feature |
+| anything else | Patch (`9.0.1`) | A bug fix or refactor |
+
+Put `[skip release]` anywhere in a commit message to skip the release entirely (builds still run, no tag created).
+
 ## Contributors
 - [equs](https://github.com/corecommit) — maintainer
 - [Kiwi Araga](https://github.com/kiwiaraga2000) — contributor
