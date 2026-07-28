@@ -9,8 +9,27 @@ on:
   workflow_dispatch:
 
 jobs:
+  skip-check:
+    runs-on: ubuntu-latest
+    outputs:
+      skip: ${{ steps.check.outputs.skip }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: check
+        run: |
+          COMMITS=$(git log --format="%s %b" "${{ github.event.before }}".."${{ github.event.after }}" 2>/dev/null || git log --format="%s %b" -1)
+          if echo "$COMMITS" | grep -q "\[skip-all\]"; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
   build-windows:
     name: Windows (MinGW)
+    needs: [skip-check]
+    if: needs.skip-check.outputs.skip != 'true'
     runs-on: windows-latest
     permissions:
       contents: read
@@ -249,6 +268,8 @@ jobs:
 
   build-linux:
     name: Linux
+    needs: [skip-check]
+    if: needs.skip-check.outputs.skip != 'true'
     runs-on: ubuntu-24.04
     permissions:
       contents: read
@@ -373,6 +394,8 @@ jobs:
 
   build-macos:
     name: macOS (Universal)
+    needs: [skip-check]
+    if: needs.skip-check.outputs.skip != 'true'
     runs-on: macos-26
     permissions:
       contents: read
@@ -510,7 +533,8 @@ jobs:
 
   release:
     name: Publish Release
-    needs: [build-windows, build-linux, build-macos]
+    needs: [skip-check, build-windows, build-linux, build-macos]
+    if: needs.skip-check.outputs.skip != 'true'
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
     permissions:

@@ -52,7 +52,8 @@ The CI auto-creates a release on every push to `main`. Which part of the version
 | `feat:` / `Add ` / `Build ` / `Enhance ` | Minor (`9.1.0`) | A new feature |
 | anything else | Patch (`9.0.1`) | A bug fix or refactor |
 
-Put `[skip release]` anywhere in a commit message to skip the release entirely (builds still run, no tag created).
+Put `[skip-all]` anywhere in a commit message to skip all builds and release entirely.  
+Put `[skip release]` to skip only the release (builds still run, no tag created).
 
 ## Contributors
 - [equs](https://github.com/corecommit) — maintainer
