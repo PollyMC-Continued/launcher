@@ -246,7 +246,7 @@ QStringList HardwareInfo::gpuInfo()
     }
 
     std::array<char, 512> buffer;
-    FILE* lspci = popen("lspci -k", "r");
+    FILE* lspci = popen("/usr/bin/lspci -k", "r");
 
     if (!lspci) {
         return { "Could not detect GPUs: lspci is not present" };
@@ -299,7 +299,7 @@ QString HardwareInfo::cpuInfo()
 uint64_t HardwareInfo::totalRamMiB()
 {
     char buff[512];
-    FILE* fp = popen("sysctl hw.physmem", "r");
+    FILE* fp = popen("/usr/sbin/sysctl hw.physmem", "r");
     if (fp != nullptr) {
         if (fgets(buff, 512, fp) != nullptr) {
             std::string str(buff);
