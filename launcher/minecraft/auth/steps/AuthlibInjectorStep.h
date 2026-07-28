@@ -16,12 +16,16 @@ class AuthlibInjectorStep : public AuthStep {
     QString describe() override;
 
    private slots:
-    void onRequestDone(QByteArray* response);
+    void onAuthDone(QByteArray* response);
+    void onProfileDone(QByteArray* response);
 
    private:
     void authenticate();
     void refresh();
+    void fetchProfile();
 
-    Net::Upload::Ptr m_request;
+    Net::Upload::Ptr m_upload;
+    Net::Download::Ptr m_download;
     NetJob::Ptr m_task;
+    NetJob::Ptr m_skinTask;
 };

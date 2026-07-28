@@ -1,5 +1,16 @@
 # Changelog
 
+## v9.0.11
+
+**Added:**
+- Skin fetching for Yggdrasil accounts via sessionserver profile endpoint
+- Multi-profile picker when server returns multiple availableProfiles
+
+**Fixed:**
+- Cancel button not working in Yggdrasil login dialog
+- Yggdrasil accounts not fetching player skins
+- Old PollyMC accounts with missing auth server URL now show clear error
+
 ## v9.0.10
 
 **Added:**

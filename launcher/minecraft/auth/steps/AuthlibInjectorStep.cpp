@@ -1,5 +1,7 @@
 #include "AuthlibInjectorStep.h"
 
+#include <QInputDialog>
+#include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QNetworkRequest>
@@ -7,6 +9,7 @@
 
 #include "Application.h"
 #include "Logging.h"
+#include "net/Download.h"
 #include "net/NetUtils.h"
 #include "net/RawHeaderProxy.h"
 #include "net/Upload.h"
@@ -20,6 +23,12 @@ QString AuthlibInjectorStep::describe()
 
 void AuthlibInjectorStep::perform()
 {
+    if (m_data->authServerUrl.isEmpty()) {
+        emit finished(AccountTaskState::STATE_FAILED_SOFT,
+                      tr("No auth server URL set. Remove this account and re-add it with the correct URL."));
+        return;
+    }
+
     QString password = m_data->yggdrasilToken.extra.value("password").toString();
     if (password.isEmpty()) {
         refresh();
@@ -30,16 +39,7 @@ void AuthlibInjectorStep::perform()
 
 void AuthlibInjectorStep::authenticate()
 {
-    auto baseUrl = m_data->authServerUrl;
-    if (baseUrl.isEmpty()) {
-        emit finished(AccountTaskState::STATE_FAILED_SOFT, tr("No auth server URL set."));
-        return;
-    }
-    QUrl url(baseUrl + "/authserver/authenticate");
-    if (!url.isValid()) {
-        emit finished(AccountTaskState::STATE_FAILED_SOFT, tr("Invalid auth server URL."));
-        return;
-    }
+    QUrl url(m_data->authServerUrl + "/authserver/authenticate");
 
     QString username = m_data->yggdrasilToken.extra.value("userName").toString();
     QString password = m_data->yggdrasilToken.extra.value("password").toString();
@@ -64,32 +64,22 @@ void AuthlibInjectorStep::authenticate()
     };
 
     auto [request, response] = Net::Upload::makeByteArray(url, requestBody);
-    m_request = request;
-    m_request->addHeaderProxy(std::make_unique<Net::RawHeaderProxy>(headers));
-    m_request->enableAutoRetry(true);
+    m_upload = request;
+    m_upload->addHeaderProxy(std::make_unique<Net::RawHeaderProxy>(headers));
+    m_upload->enableAutoRetry(true);
 
     m_task.reset(new NetJob("AuthlibInjectorStep", APPLICATION->network()));
     m_task->setAskRetry(false);
-    m_task->addNetAction(m_request);
+    m_task->addNetAction(m_upload);
 
-    connect(m_task.get(), &Task::finished, this, [this, response] { onRequestDone(response); });
+    connect(m_task.get(), &Task::finished, this, [this, response] { onAuthDone(response); });
 
     m_task->start();
-    qDebug() << "AuthlibInjectorStep: authenticating with" << url.toString();
 }
 
 void AuthlibInjectorStep::refresh()
 {
-    auto baseUrl = m_data->authServerUrl;
-    if (baseUrl.isEmpty()) {
-        emit finished(AccountTaskState::STATE_FAILED_SOFT, tr("No auth server URL set."));
-        return;
-    }
-    QUrl url(baseUrl + "/authserver/refresh");
-    if (!url.isValid()) {
-        emit finished(AccountTaskState::STATE_FAILED_SOFT, tr("Invalid auth server URL."));
-        return;
-    }
+    QUrl url(m_data->authServerUrl + "/authserver/refresh");
 
     QJsonObject req;
     req["accessToken"] = m_data->yggdrasilToken.token;
@@ -105,31 +95,29 @@ void AuthlibInjectorStep::refresh()
     };
 
     auto [request, response] = Net::Upload::makeByteArray(url, requestBody);
-    m_request = request;
-    m_request->addHeaderProxy(std::make_unique<Net::RawHeaderProxy>(headers));
-    m_request->enableAutoRetry(true);
+    m_upload = request;
+    m_upload->addHeaderProxy(std::make_unique<Net::RawHeaderProxy>(headers));
+    m_upload->enableAutoRetry(true);
 
     m_task.reset(new NetJob("AuthlibInjectorStep", APPLICATION->network()));
     m_task->setAskRetry(false);
-    m_task->addNetAction(m_request);
+    m_task->addNetAction(m_upload);
 
-    connect(m_task.get(), &Task::finished, this, [this, response] { onRequestDone(response); });
+    connect(m_task.get(), &Task::finished, this, [this, response] { onAuthDone(response); });
 
     m_task->start();
-    qDebug() << "AuthlibInjectorStep: refreshing with" << url.toString();
 }
 
-void AuthlibInjectorStep::onRequestDone(QByteArray* response)
+void AuthlibInjectorStep::onAuthDone(QByteArray* response)
 {
-    qCDebug(authCredentials()) << *response;
-    if (m_request->error() != QNetworkReply::NoError) {
-        qWarning() << "Reply error:" << m_request->error();
-        if (Net::isApplicationError(m_request->error())) {
+    if (m_upload->error() != QNetworkReply::NoError) {
+        qWarning() << "Reply error:" << m_upload->error();
+        if (Net::isApplicationError(m_upload->error())) {
             emit finished(AccountTaskState::STATE_FAILED_SOFT,
-                          tr("Auth request failed: %1").arg(m_request->errorString()));
+                          tr("Auth request failed: %1").arg(m_upload->errorString()));
         } else {
             emit finished(AccountTaskState::STATE_OFFLINE,
-                          tr("Could not reach auth server: %1").arg(m_request->errorString()));
+                          tr("Could not reach auth server: %1").arg(m_upload->errorString()));
         }
         return;
     }
@@ -171,6 +159,29 @@ void AuthlibInjectorStep::onRequestDone(QByteArray* response)
         return;
     }
 
+    auto availableProfiles = obj.value("availableProfiles").toArray();
+    if (availableProfiles.size() > 1) {
+        QStringList items;
+        int defaultIdx = 0;
+        for (int i = 0; i < availableProfiles.size(); i++) {
+            auto p = availableProfiles[i].toObject();
+            items << p["name"].toString();
+            if (p["id"].toString() == uuid)
+                defaultIdx = i;
+        }
+        bool ok;
+        QString chosen = QInputDialog::getItem(nullptr, tr("Choose Profile"),
+            tr("Multiple profiles found. Select one:"), items, defaultIdx, false, &ok);
+        if (ok) {
+            int idx = items.indexOf(chosen);
+            if (idx >= 0) {
+                auto p = availableProfiles[idx].toObject();
+                uuid = p["id"].toString();
+                name = p["name"].toString();
+            }
+        }
+    }
+
     m_data->yggdrasilToken.token = accessToken;
     m_data->yggdrasilToken.validity = Validity::Certain;
     m_data->yggdrasilToken.issueInstant = QDateTime::currentDateTimeUtc();
@@ -183,6 +194,83 @@ void AuthlibInjectorStep::onRequestDone(QByteArray* response)
     m_data->minecraftEntitlement.canPlayMinecraft = true;
     m_data->minecraftEntitlement.ownsMinecraft = true;
     m_data->minecraftEntitlement.validity = Validity::Certain;
+
+    fetchProfile();
+}
+
+void AuthlibInjectorStep::fetchProfile()
+{
+    QUrl url(m_data->authServerUrl + "/sessionserver/session/minecraft/profile/" + m_data->minecraftProfile.id);
+
+    auto [request, response] = Net::Download::makeByteArray(url);
+    m_download = request;
+    m_download->enableAutoRetry(true);
+
+    auto headers = QList<Net::HeaderPair>{
+        { "Accept", "application/json" },
+    };
+    m_download->addHeaderProxy(std::make_unique<Net::RawHeaderProxy>(headers));
+
+    m_task.reset(new NetJob("AuthlibInjectorProfileStep", APPLICATION->network()));
+    m_task->setAskRetry(false);
+    m_task->addNetAction(m_download);
+
+    connect(m_task.get(), &Task::finished, this, [this, response] { onProfileDone(response); });
+
+    m_task->start();
+}
+
+void AuthlibInjectorStep::onProfileDone(QByteArray* response)
+{
+    if (m_download->error() != QNetworkReply::NoError) {
+        qWarning() << "Profile request error:" << m_download->error();
+        emit finished(AccountTaskState::STATE_WORKING, tr("Authentication successful (no skin data)"));
+        return;
+    }
+
+    QJsonParseError jsonError;
+    QJsonDocument doc = QJsonDocument::fromJson(*response, &jsonError);
+    if (jsonError.error != QJsonParseError::NoError) {
+        emit finished(AccountTaskState::STATE_WORKING, tr("Authentication successful (no skin data)"));
+        return;
+    }
+
+    auto obj = doc.object();
+    auto properties = obj.value("properties").toArray();
+
+    for (const auto& prop : properties) {
+        auto propObj = prop.toObject();
+        if (propObj.value("name").toString() == "textures") {
+            QByteArray decoded = QByteArray::fromBase64(propObj.value("value").toString().toUtf8());
+            QJsonDocument textureDoc = QJsonDocument::fromJson(decoded);
+            if (textureDoc.isObject()) {
+                auto textures = textureDoc.object().value("textures").toObject();
+                auto skin = textures.value("SKIN").toObject();
+                QString skinUrl = skin.value("url").toString();
+                if (!skinUrl.isEmpty()) {
+                    m_data->minecraftProfile.skin.url = skinUrl;
+                    m_data->minecraftProfile.skin.id = m_data->minecraftProfile.id;
+                    m_data->minecraftProfile.skin.variant = "slim";
+
+                    auto [skinRequest, skinResponse] = Net::Download::makeByteArray(QUrl(skinUrl));
+                    auto skinDownload = skinRequest;
+                    skinDownload->enableAutoRetry(true);
+
+                    m_skinTask.reset(new NetJob("AuthlibInjectorSkinStep", APPLICATION->network()));
+                    m_skinTask->setAskRetry(false);
+                    m_skinTask->addNetAction(skinDownload);
+                    connect(m_skinTask.get(), &Task::finished, this,
+                            [this, skinResponse]() {
+                                if (skinResponse)
+                                    m_data->minecraftProfile.skin.data = *skinResponse;
+                                emit finished(AccountTaskState::STATE_WORKING, tr("Authentication successful"));
+                            });
+                    m_skinTask->start();
+                    return;
+                }
+            }
+        }
+    }
 
     emit finished(AccountTaskState::STATE_WORKING, tr("Authentication successful"));
 }

@@ -2,12 +2,15 @@
 #include "ui_AuthlibInjectorLoginDialog.h"
 
 #include <QDebug>
+#include <QDialogButtonBox>
 #include <QPushButton>
 
 AuthlibInjectorLoginDialog::AuthlibInjectorLoginDialog(QWidget* parent)
     : QDialog(parent), ui(new Ui::AuthlibInjectorLoginDialog)
 {
     ui->setupUi(this);
+
+    connect(ui->buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 
     connect(ui->loginButton, &QPushButton::clicked, this, [this] {
         ui->loginButton->setEnabled(false);
