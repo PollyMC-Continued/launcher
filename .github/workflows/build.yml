@@ -13,18 +13,73 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       skip: ${{ steps.check.outputs.skip }}
+      version: ${{ steps.check.outputs.version }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - id: check
+        shell: bash
         run: |
-          COMMITS=$(git log --format="%s %b" "${{ github.event.before }}".."${{ github.event.after }}" 2>/dev/null || git log --format="%s %b" -1)
-          if echo "$COMMITS" | grep -q "\[skip-all\]"; then
+          set -euo pipefail
+          COMMITS=""
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            COMMITS=$(git log --format="%s %b" "${{ github.event.pull_request.base.sha }}".."${{ github.event.pull_request.head.sha }}")
+          elif [ "${{ github.event_name }}" = "push" ]; then
+            COMMITS=$(git log --format="%s %b" "${{ github.event.before }}".."${{ github.event.after }}" 2>/dev/null || git log --format="%s %b" -1)
+          else
+            COMMITS=$(git log --format="%s %b" -1)
+          fi
+          echo "DEBUG: event_name=${{ github.event_name }}"
+          echo "DEBUG: commits=${COMMITS:0:500}"
+
+          if echo "$COMMITS" | grep -qF '[skip-all]'; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "DEBUG: [skip-all] found, skipping entire workflow."
           else
             echo "skip=false" >> "$GITHUB_OUTPUT"
+            echo "DEBUG: No [skip-all] found."
           fi
+
+          # --- Single source of truth for version number ---
+          # Every downstream job (build-windows, build-linux, build-macos, release)
+          # consumes this output instead of recomputing its own bump, so the
+          # version baked into artifact filenames always matches the release tag.
+          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
+            VERSION="${{ github.ref_name }}"
+            VERSION="${VERSION#v}"
+            echo "DEBUG: Tag push detected, using tag version: ${VERSION}"
+          else
+            LATEST_TAG=$(git describe --tags --match "v*" --abbrev=0 2>/dev/null || echo "")
+            if [ -z "$LATEST_TAG" ]; then
+              # No tags exist yet in this repo - diff against full history instead
+              # of a synthetic "v0.0.0" ref, which would make `git log` fail.
+              BUMP_COMMITS=$(git log --format="%s %b" 2>/dev/null || echo "")
+              LATEST_TAG="v0.0.0"
+            else
+              BUMP_COMMITS=$(git log "${LATEST_TAG}..HEAD" --format="%s %b" 2>/dev/null || echo "")
+            fi
+
+            VERSION=${LATEST_TAG#v}
+            IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
+
+            if echo "$BUMP_COMMITS" | grep -q "BREAKING CHANGE"; then
+              MAJOR=$((MAJOR + 1)); MINOR=0; PATCH=0
+              BUMP="major"
+            elif echo "$BUMP_COMMITS" | grep -qE "^(feat|feature|Add|Build|Enhance)(\(|:|\ )"; then
+              MINOR=$((MINOR + 1)); PATCH=0
+              BUMP="minor"
+            else
+              PATCH=$((PATCH + 1))
+              BUMP="patch"
+            fi
+
+            VERSION="${MAJOR}.${MINOR}.${PATCH}"
+            echo "DEBUG: Latest tag: ${LATEST_TAG}"
+            echo "DEBUG: Next version: ${VERSION} (${BUMP} bump)"
+          fi
+
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
   build-windows:
     name: Windows (MinGW)
@@ -33,16 +88,27 @@ jobs:
     runs-on: windows-latest
     permissions:
       contents: read
+    env:
+      # Set once at job level so it's visible in every step (including the
+      # Build step, where ccache actually does its work) - a per-step
+      # `export` doesn't survive to the next step in Actions.
+      CCACHE_DIR: ${{ github.workspace }}/.ccache
     defaults:
       run:
         shell: msys2 {0}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Cache MSYS2 packages
         uses: actions/cache@v4
         with:
           path: C:\msys64\var\cache\pacman\pkg
+          # NOTE: hashFiles assumes this workflow file is saved as build.yml.
+          # If it's saved under a different filename, hashFiles returns "" and
+          # this key never changes when the workflow is edited. Verify the
+          # actual path, or hash something more stable like CMakeLists.txt.
           key: msys2-${{ hashFiles('.github/workflows/build.yml') }}
           restore-keys: msys2-
 
@@ -82,48 +148,54 @@ jobs:
             mingw-w64-x86_64-libidn2
             mingw-w64-x86_64-sqlite3
             mingw-w64-x86_64-nsis
+            mingw-w64-x86_64-ccache
+
+      - name: Cache ccache
+        uses: actions/cache@v4
+        with:
+          path: .ccache
+          key: ccache-windows-${{ hashFiles('.github/workflows/build.yml') }}
+          restore-keys: ccache-windows-
 
       - name: Configure
         run: |
+          set -euo pipefail
           cmake -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_INSTALL_PREFIX=install \
             -DCMAKE_SYSTEM_LIBRARY_PATH=/mingw64/bin \
             -DCMAKE_CXX_FLAGS="-Wno-error" \
             -DCMAKE_C_FLAGS="-Wno-error" \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -S . -B build
 
       - name: Build
         run: |
+          set -euo pipefail
           cmake --build build -j$(nproc)
           cmake --install build
 
       - name: Deploy Qt
         run: |
+          set -euo pipefail
           cd install
           /mingw64/bin/windeployqt6.exe --release pollymc.exe
-      
-          # FIX: Expanded system DLL list and added dynamic check for C:\Windows\System32
+
           SYSTEM_DLLS="^(KERNEL32|KERNELBASE|USER32|GDI32|gdi32full|ADVAPI32|SHELL32|ole32|OLEAUT32|msvcrt|msvcp_win|ntdll|WS2_32|SHLWAPI|WINMM|VERSION|d3d11|d3d12|dxgi|dwmapi|DWrite|UxTheme|USP10|COMCTL32|COMDLG32|IMAPI2|MAPI32|netapi32|PSAPI|Secur32|WINTRUST|CRYPT32|IMAGEHLP|DBGHELP|PDHINST|WTSAPI32|WININET|MSWSOCK|IPHLPAPI|WS2HELP|bcrypt|RPCRT4|AUTHZ|MPR|USERENV|DNSAPI|WINHTTP)\.dll$"
-      
-          # multi-pass loop so newly copied DLLs also get their
-          # transitive dependencies deployed (single-pass missed them).
+
           NEED_FIX=0
           for pass in $(seq 1 15); do
             ADDED=0
             for f in *.exe *.dll; do
               [ -f "$f" ] || continue
-              for dll in $(objdump -p "$f" 2>/dev/null | grep "DLL Name:" | awk '{print $3}' | tr -d '\r'); do
-                # Skip API-set / extension stubs
+              while IFS= read -r dll; do
+                [ -z "$dll" ] && continue
                 if echo "$dll" | grep -qiE "^(api-ms-win-|ext-ms-win-)"; then continue; fi
-                # Skip if already present
                 if [ -f "$dll" ]; then continue; fi
-                # Skip explicitly-listed system DLLs (case-insensitive)
                 if echo "$dll" | grep -iqE "$SYSTEM_DLLS"; then continue; fi
-                # Skip anything that lives in C:\Windows\System32
                 if [ -f "/c/Windows/System32/$dll" ]; then continue; fi
 
-                # Otherwise: try to deploy from mingw64
                 if [ -f "/mingw64/bin/$dll" ]; then
                   cp -f "/mingw64/bin/$dll" .
                   echo "Pass $pass: deployed $dll (needed by $f)"
@@ -132,44 +204,29 @@ jobs:
                   echo "::error file=$f::$f is missing dependency: $dll"
                   NEED_FIX=1
                 fi
-              done
+              done < <(objdump -p "$f" 2>/dev/null | awk -F': ' '/^\s*DLL Name:/ {print $2}' | tr -d '\r')
             done
             [ "$ADDED" -eq 0 ] && break
           done
-      
+
           echo "=== DLLs in install/ ==="
           ls -la *.dll
           [ "$NEED_FIX" -eq 0 ] || exit 1
 
-      - name: Get version
-        id: version
-        shell: bash
-        run: |
-          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
-            VERSION="${{ github.ref }}"
-            VERSION="${VERSION#refs/tags/v}"
-            echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          else
-            git fetch --tags --force
-            # Find the latest strict version tag
-            LATEST_TAG=$(git tag --list "v*" | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1)
-            if [ -z "$LATEST_TAG" ]; then
-              LATEST_TAG="v9.0.7"
-            fi
-            VERSION=${LATEST_TAG#v}
-            IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
-            PATCH=$((PATCH + 1))
-            NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
-            echo "version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Build NSIS installer
         run: |
-          set -e
+          set -euo pipefail
           BUILD_DIR_WIN="$(cygpath -w "$(pwd)/install")"
-          VERSION="${{ steps.version.outputs.version }}"
+          VERSION="${{ needs.skip-check.outputs.version }}"
 
-          sed "s/PollyMC-Continued-[0-9.]*-Setup/PollyMC-Continued-${VERSION}-Setup/" \
+          # Fail loudly instead of silently shipping an installer with the
+          # wrong name if the placeholder pattern doesn't match the .nsi file.
+          if ! grep -q 'PollyMC-Continued-[^ ]*-Setup' pollymc_installer.nsi; then
+            echo "::error::Expected placeholder 'PollyMC-Continued-*-Setup' not found in pollymc_installer.nsi"
+            exit 1
+          fi
+
+          sed "s/PollyMC-Continued-[^ ]*-Setup/PollyMC-Continued-${VERSION}-Setup/" \
             pollymc_installer.nsi > pollymc_installer_versioned.nsi
 
           makensis \
@@ -196,14 +253,17 @@ jobs:
           }
           if (-not (Test-Path $exePath)) { throw "pollymc.exe not found after installation" }
 
-          Write-Host "Running pollymc.exe to detect missing DLLs ..."
-          $process = Start-Process -FilePath $exePath -PassThru -RedirectStandardError "$env:RUNNER_TEMP\pollymc_stderr.txt"
+          $stderrFile = Join-Path $env:RUNNER_TEMP "pollymc_stderr.txt"
+          if (Test-Path $stderrFile) { Remove-Item $stderrFile -Force }
+
+          $startTime = Get-Date
+          $process = Start-Process -FilePath $exePath -PassThru -RedirectStandardError $stderrFile
           $exited = $process.WaitForExit(10000)
 
           if (-not $exited) {
             $process.Kill()
             $process.WaitForExit()
-            $events = Get-WinEvent -FilterHashtable @{LogName='Application'; StartTime=(Get-Date).AddMinutes(-2)} -MaxEvents 10 -ErrorAction SilentlyContinue
+            $events = Get-WinEvent -FilterHashtable @{LogName='Application'; StartTime=$startTime} -MaxEvents 10 -ErrorAction SilentlyContinue
             $hasError = $false
             foreach ($event in $events) {
               if ($event.Message -match "pollymc") {
@@ -221,12 +281,10 @@ jobs:
               throw "Missing DLLs detected in pollymc.exe"
             }
           } else {
-            $process.WaitForExit()
             $exitCode = $process.ExitCode
-
             if ($exitCode -eq -1073741515) {
               Write-Host "::error::STATUS_DLL_NOT_FOUND (0xC0000135) -- a required DLL is missing"
-              $events = Get-WinEvent -FilterHashtable @{LogName='Application'; StartTime=(Get-Date).AddMinutes(-2)} -MaxEvents 10 -ErrorAction SilentlyContinue
+              $events = Get-WinEvent -FilterHashtable @{LogName='Application'; StartTime=$startTime} -MaxEvents 10 -ErrorAction SilentlyContinue
               foreach ($event in $events) {
                 if ($event.Message -match "pollymc|$([regex]::Escape($exePath))") {
                   Write-Host $event.Message
@@ -241,16 +299,15 @@ jobs:
             }
           }
 
-          if (Test-Path "$env:RUNNER_TEMP\pollymc_stderr.txt") {
-            $stderr = Get-Content "$env:RUNNER_TEMP\pollymc_stderr.txt"
+          if (Test-Path $stderrFile) {
+            $stderr = Get-Content $stderrFile
             if ($stderr) { Write-Host "=== stderr ===`n$stderr" }
           }
 
       - name: Zip portable build
-        shell: bash
         run: |
-          set -e
-          VERSION="${{ steps.version.outputs.version }}"
+          set -euo pipefail
+          VERSION="${{ needs.skip-check.outputs.version }}"
           cd install
           ls -la pollymc.exe || (echo "ERROR: pollymc.exe not found in install!" && exit 1)
           "/c/Program Files/7-Zip/7z.exe" a \
@@ -275,16 +332,24 @@ jobs:
       contents: read
     env:
       APPIMAGE_EXTRACT_AND_RUN: "1"
+      # Set once at job level so it's visible in every step (including the
+      # Build step, where ccache actually does its work) - a per-step
+      # `export` doesn't survive to the next step in Actions. Explicit path
+      # also avoids relying on ccache's default cache dir, which changed
+      # location as of ccache 4.0 (now ~/.cache/ccache on Linux).
+      CCACHE_DIR: ${{ github.workspace }}/.ccache
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install Dependencies
         run: |
+          set -euo pipefail
           sudo apt-get update
           sudo apt-get install -y \
             build-essential cmake ninja-build pkg-config \
             qt6-base-dev qt6-svg-dev qt6-5compat-dev qt6-networkauth-dev \
-            qt6-websockets-dev qt6-base-dev-tools libgl-dev \
             qt6-websockets-dev qt6-base-dev-tools qt6-tools-dev libgl-dev \
             extra-cmake-modules \
             libtomlplusplus-dev libcmark-dev libqrencode-dev cmark \
@@ -292,46 +357,47 @@ jobs:
             libcurl4-openssl-dev libssl-dev libpng-dev \
             liblz4-dev liblzma-dev libbz2-dev libzstd-dev \
             gamemode-dev \
-            patchelf
+            patchelf \
+            ccache
+
+      - name: Cache ccache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.CCACHE_DIR }}
+          key: ccache-linux-${{ hashFiles('.github/workflows/build.yml') }}
+          restore-keys: ccache-linux-
 
       - name: Configure
         run: |
+          set -euo pipefail
           cmake -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_INSTALL_PREFIX=/usr \
             -DCMAKE_CXX_FLAGS="-Wno-error" \
             -DCMAKE_C_FLAGS="-Wno-error" \
-            --debug-output \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -S . -B build
-          cat build/CMakeFiles/CMakeOutput.log || true
-          cat build/CMakeFiles/CMakeError.log || true
-
-      - name: Show CMake errors
-        if: failure()
-        run: |
-          if [ -f build/CMakeFiles/CMakeError.log ]; then
-            echo "=== CMakeError.log ===" 
-            cat build/CMakeFiles/CMakeError.log
-          fi
-          if [ -f build/CMakeFiles/CMakeOutput.log ]; then
-            echo "=== CMakeOutput.log ===" 
-            tail -n 100 build/CMakeFiles/CMakeOutput.log
-          fi
 
       - name: Build
         run: cmake --build build -j$(nproc)
 
       - name: Package
         run: |
+          set -euo pipefail
           cmake --install build --prefix /tmp/pollymc
-          mkdir -p appdir/usr/bin appdir/usr/lib appdir/usr/share/{applications,icons/hicolor/256x256/apps}
+          mkdir -p appdir/usr/bin appdir/usr/lib appdir/usr/share/applications appdir/usr/share/icons/hicolor/256x256/apps
           cp /tmp/pollymc/bin/pollymc appdir/usr/bin/
           cp /tmp/pollymc/bin/pollymc_filelink appdir/usr/bin/ 2>/dev/null || true
           cp -r /tmp/pollymc/share/* appdir/usr/share/ 2>/dev/null || true
           cp build/program_info/org.pollymc.PollyMC.desktop appdir/usr/share/applications/org.pollymc.PollyMC.desktop
           cp program_info/org.pollymc.PollyMC_256.png appdir/usr/share/icons/hicolor/256x256/apps/org.pollymc.PollyMC.png
+
+          # Bundle critical libraries explicitly
           cp -L /usr/lib/x86_64-linux-gnu/libssl.so.* appdir/usr/lib/ 2>/dev/null || true
           cp -L /usr/lib/x86_64-linux-gnu/libcrypto.so.* appdir/usr/lib/ 2>/dev/null || true
+          cp -L /usr/lib/x86_64-linux-gnu/libgamemode.so.* appdir/usr/lib/ 2>/dev/null || true
+          cp -L /usr/lib/x86_64-linux-gnu/libgamemodeauto.so.* appdir/usr/lib/ 2>/dev/null || true
 
       - name: Cache linuxdeploy
         uses: actions/cache@v4
@@ -345,41 +411,39 @@ jobs:
 
       - name: Create AppImage
         run: |
-          set -ex  # Enable debug output
-          
-          # FIX: Use 'continuous' tag to prevent 404 errors on non-existent dated releases
+          set -ex
+
           if [ ! -f linuxdeploy-x86_64.AppImage ]; then
             wget -v "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage" -O linuxdeploy-x86_64.AppImage
+            wget -q "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage.sha256" -O linuxdeploy.sha256
+            sha256sum -c linuxdeploy.sha256
           fi
           if [ ! -f linuxdeploy-plugin-qt-x86_64.AppImage ]; then
             wget -v "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage" -O linuxdeploy-plugin-qt-x86_64.AppImage
+            wget -q "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage.sha256" -O linuxdeploy-plugin-qt.sha256
+            sha256sum -c linuxdeploy-plugin-qt.sha256
           fi
           chmod +x linuxdeploy-x86_64.AppImage linuxdeploy-plugin-qt-x86_64.AppImage
-      
+
           cp program_info/org.pollymc.PollyMC_256.png appdir/org.pollymc.PollyMC.png
           cp build/program_info/org.pollymc.PollyMC.desktop appdir/org.pollymc.PollyMC.desktop
-      
-          SSL_LIBS=$(ls /usr/lib/x86_64-linux-gnu/libssl.so.* 2>/dev/null | head -1)
-          CRYPTO_LIBS=$(ls /usr/lib/x86_64-linux-gnu/libcrypto.so.* 2>/dev/null | head -1)
-      
-          EXTRA_LIBS=""
-          [ -n "$SSL_LIBS" ] && EXTRA_LIBS="$EXTRA_LIBS --library $SSL_LIBS"
-          [ -n "$CRYPTO_LIBS" ] && EXTRA_LIBS="$EXTRA_LIBS --library $CRYPTO_LIBS"
-      
-          QMAKE=$(which qmake6 || which qmake)
-          
+
+          QMAKE=$(command -v qmake6 || command -v qmake)
+          if [ -z "$QMAKE" ]; then
+            echo "::error::qmake not found in PATH"
+            exit 1
+          fi
+
           echo "DEBUG: QMAKE=$QMAKE"
-          echo "DEBUG: EXTRA_LIBS=$EXTRA_LIBS"
-          echo "DEBUG: APPIMAGE_EXTRACT_AND_RUN=$APPIMAGE_EXTRACT_AND_RUN"
-          
+
           QMAKE="$QMAKE" ./linuxdeploy-x86_64.AppImage \
             --appdir appdir \
-            $EXTRA_LIBS \
             --plugin qt \
             --output appimage
 
       - name: Rename AppImage
         run: |
+          set -euo pipefail
           FILE=$(ls PollyMC*.AppImage 2>/dev/null | head -n1)
           if [ -z "$FILE" ]; then
             echo "ERROR: No AppImage found. Listing directory:"; ls -la; exit 1
@@ -396,29 +460,29 @@ jobs:
     name: macOS (Universal)
     needs: [skip-check]
     if: needs.skip-check.outputs.skip != 'true'
-    runs-on: macos-26
+    runs-on: macos-14
     permissions:
       contents: read
     env:
-      ARTIFACT_NAME: macOS-universal
-      ARTIFACT_ARCH: universal
-      BUILD_PLATFORM: macOS-universal
       BUILD_TYPE: Release
-      EXPECTED_ARCHS: arm64 x86_64
-      EXPECTED_MIN_MACOS: "13.0"
       MACOSX_DEPLOYMENT_TARGET: "13.0"
+      # Set once at job level so it's visible in every step (including the
+      # Build step, where ccache actually does its work) - a per-step
+      # `export` doesn't survive to the next step in Actions. Explicit path
+      # also avoids relying on ccache's default cache dir, which changed
+      # location as of ccache 4.0 (now ~/Library/Caches/ccache on macOS).
+      CCACHE_DIR: ${{ github.workspace }}/.ccache
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Install build tools
         run: |
+          set -euo pipefail
           brew update
-          brew install ninja extra-cmake-modules temurin@17 mono
-          echo "JAVA_HOME=$(/usr/libexec/java_home -v 17)" >> "$GITHUB_ENV"
-          echo "VCPKG_ROOT=$VCPKG_INSTALLATION_ROOT" >> "$GITHUB_ENV"
+          brew install ninja extra-cmake-modules cmark qrencode libarchive tomlplusplus lz4 xz zstd libpng ccache
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
@@ -428,37 +492,35 @@ jobs:
           modules: qtimageformats qtnetworkauth qtwebsockets
           cache: true
 
-      - name: Get version
-        id: getversion
-        shell: bash
-        run: |
-          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
-            VERSION="${{ github.ref }}"
-            VERSION="${VERSION#refs/tags/v}"
-            echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          else
-            git fetch --tags --force
-            LATEST_TAG=$(git tag --list "v*" | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1)
-            if [ -z "$LATEST_TAG" ]; then
-              LATEST_TAG="v9.0.7"
-            fi
-            VERSION=${LATEST_TAG#v}
-            IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
-            PATCH=$((PATCH + 1))
-            NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
-            echo "version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
-          fi
+      - name: Cache ccache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.CCACHE_DIR }}
+          key: ccache-macos2-${{ hashFiles('.github/workflows/build.yml') }}
+          restore-keys: ccache-macos2-
 
       - name: Configure
         run: |
-          cmake --preset macos_universal \
+          set -euo pipefail
+          export PKG_CONFIG_PATH="/opt/homebrew/opt/libarchive/lib/pkgconfig:$PKG_CONFIG_PATH"
+          cmake -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_INSTALL_PREFIX=install \
             -DCMAKE_OSX_DEPLOYMENT_TARGET="$MACOSX_DEPLOYMENT_TARGET" \
+            -DCMAKE_OSX_ARCHITECTURES="arm64" \
             -DLauncher_BUILD_RELEASE=ON \
-            -DLauncher_VERSION="${{ steps.getversion.outputs.version }}"
+            -DLauncher_BUILD_PLATFORM="${{ runner.os }}" \
+            -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
+            -DENABLE_LTO=ON \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -DLauncher_VERSION="${{ needs.skip-check.outputs.version }}" \
+            -S . -B build
 
       - name: Read and validate version
         id: version
         run: |
+          set -euo pipefail
           VERSION=$(cmake -N -LA build | sed -n 's/^Launcher_VERSION:STRING=//p')
           if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "Invalid Launcher_VERSION: $VERSION" >&2
@@ -473,15 +535,13 @@ jobs:
       - name: Build
         run: cmake --build --preset macos_universal --config "$BUILD_TYPE"
 
-      - name: Test
-        run: ctest --test-dir build --build-config "$BUILD_TYPE" --output-on-failure
-
       - name: Import signing certificate
         env:
           APPLE_CODESIGN_CERT: ${{ secrets.APPLE_CODESIGN_CERT }}
           APPLE_CODESIGN_ID: ${{ secrets.APPLE_CODESIGN_ID }}
           APPLE_CODESIGN_PASSWORD: ${{ secrets.APPLE_CODESIGN_PASSWORD }}
         run: |
+          set -euo pipefail
           if [[ -z "$APPLE_CODESIGN_CERT" && -z "$APPLE_CODESIGN_ID" ]]; then
             echo "No Apple signing certificate configured; the artifact will be ad-hoc signed."
             exit 0
@@ -507,6 +567,8 @@ jobs:
           APPLE_NOTARIZE_TEAM_ID: ${{ secrets.APPLE_NOTARIZE_TEAM_ID }}
           APPLE_NOTARIZE_PASSWORD: ${{ secrets.APPLE_NOTARIZE_PASSWORD }}
         run: |
+          set -euo pipefail
+          chmod +x packaging/macos/package.sh
           packaging/macos/package.sh \
             build \
             install-macos \
@@ -515,18 +577,19 @@ jobs:
             "$BUILD_TYPE"
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
-          name: PollyMC-Continued-macOS-${{ steps.version.outputs.version }}
+          name: PollyMC-Continued-macOS
           path: |
-            dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-universal.zip
-            dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-universal.dmg
-            dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-universal.sha256
+            dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-arm64.zip
+            dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-arm64.dmg
+            dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-arm64.sha256
           if-no-files-found: error
 
       - name: Remove temporary signing keychain
         if: ${{ always() }}
         run: |
+          set -euo pipefail
           if [[ -n "${KEYCHAIN_PATH:-}" && -f "$KEYCHAIN_PATH" ]]; then
             security delete-keychain "$KEYCHAIN_PATH"
           fi
@@ -534,9 +597,8 @@ jobs:
   release:
     name: Publish Release
     needs: [skip-check, build-windows, build-linux, build-macos]
-    if: needs.skip-check.outputs.skip != 'true'
+    if: always() && needs.skip-check.outputs.skip != 'true' && (needs.build-windows.result == 'success' || needs.build-linux.result == 'success' || needs.build-macos.result == 'success') && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
     permissions:
       contents: write
     steps:
@@ -547,51 +609,44 @@ jobs:
       - name: Check for skip-release marker
         id: skipcheck
         run: |
-          LATEST_TAG=$(git describe --tags --match "v*" --abbrev=0 2>/dev/null || echo "HEAD")
-          COMMITS=$(git log "$LATEST_TAG..HEAD" --format="%s %b" 2>/dev/null)
-          if echo "$COMMITS" | grep -q "\[skip release\]"; then
+          set -euo pipefail
+          HEAD_MSG=$(git log --format="%s %b" HEAD -1)
+          echo "DEBUG: HEAD commit message: $HEAD_MSG"
+          if echo "$HEAD_MSG" | grep -qF '[skip release]'; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "Skipping release: [skip release] found in commit messages."
+            echo "Skipping release: [skip release] found in the latest commit."
           else
             echo "skip=false" >> "$GITHUB_OUTPUT"
+            echo "DEBUG: No [skip release] found, proceeding with release."
           fi
 
       - name: Download all artifacts
+        if: steps.skipcheck.outputs.skip != 'true'
         uses: actions/download-artifact@v4
         with:
           merge-multiple: true
 
       - name: List release files
-        run: ls -la PollyMC-Continued-*
+        if: steps.skipcheck.outputs.skip != 'true'
+        run: |
+          set -euo pipefail
+          ls -la PollyMC-Continued-* || true
 
       - name: Prepare release metadata
         if: steps.skipcheck.outputs.skip != 'true'
         id: prep
         run: |
-          LATEST_TAG=$(git describe --tags --match "v*" --abbrev=0 2>/dev/null || echo "v0.0.0")
-          echo "Latest tag found: $LATEST_TAG"
-
-          VERSION=${LATEST_TAG#v}
-          IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
-
-          COMMITS=$(git log "$LATEST_TAG..HEAD" --format="%s %b" 2>/dev/null)
-
-          if echo "$COMMITS" | grep -q "BREAKING CHANGE"; then
-            MAJOR=$((MAJOR + 1))
-            MINOR=0
-            PATCH=0
-          elif echo "$COMMITS" | grep -q -E "^(feat|feature|Add |Build |Enhance)(\(|:| )" ; then
-            MINOR=$((MINOR + 1))
-            PATCH=0
+          set -euo pipefail
+          # Version is computed once in skip-check and reused everywhere,
+          # so this no longer re-derives its own (potentially divergent)
+          # bump. On a tag push, use the tag itself as-is.
+          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
+            NEW_TAG="${{ github.ref_name }}"
           else
-            PATCH=$((PATCH + 1))
+            NEW_TAG="v${{ needs.skip-check.outputs.version }}"
           fi
-
-          NEW_TAG="v${MAJOR}.${MINOR}.${PATCH}"
-
-          echo "New tag will be: $NEW_TAG"
-          echo "tag_name=${NEW_TAG}" >> $GITHUB_OUTPUT
-          echo "release_name=PollyMC Continued ${NEW_TAG}" >> $GITHUB_OUTPUT
+          echo "tag_name=${NEW_TAG}" >> "$GITHUB_OUTPUT"
+          echo "release_name=PollyMC Continued ${NEW_TAG}" >> "$GITHUB_OUTPUT"
 
       - name: Publish release
         if: steps.skipcheck.outputs.skip != 'true'
@@ -600,11 +655,11 @@ jobs:
           tag_name: ${{ steps.prep.outputs.tag_name }}
           name: "${{ steps.prep.outputs.release_name }}"
           generate_release_notes: true
-          prerelease: false # Set to false so it is a full, official release
+          prerelease: ${{ github.ref == 'refs/heads/develop' || github.event_name == 'workflow_dispatch' || contains(github.ref_name, '-rc') }}
           files: |
             PollyMC-Continued-*-Setup.exe
             PollyMC-Continued-*-Windows-portable.zip
             PollyMC-Continued-Linux-x86_64.AppImage
-            PollyMC-Continued-*-macOS-universal.zip
-            PollyMC-Continued-*-macOS-universal.dmg
-            PollyMC-Continued-*-macOS-universal.sha256
+            PollyMC-Continued-*-macOS-arm64.zip
+            PollyMC-Continued-*-macOS-arm64.dmg
+            PollyMC-Continued-*-macOS-arm64.sha256

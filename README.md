@@ -1,5 +1,7 @@
 # PollyMC-Continued
 
+> **Heads up:** This is a revival of PollyMC — forked from [Prism Launcher](https://github.com/PrismLauncher/PrismLauncher), not from fn2006's original repo. I had to change and tweak everything from scratch.
+
 Lets you play Minecraft **without a Microsoft account** — add offline accounts and launch the full game with no restrictions.
 
 ## Features

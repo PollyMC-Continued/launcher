@@ -300,6 +300,8 @@ bool AccountData::resumeStateFromV3(QJsonObject data)
 
     if (type == AccountType::AuthlibInjector) {
         auto urlV = data.value("auth-server-url");
+        if (!urlV.isString())
+            urlV = data.value("authlibInjectorUrl");
         if (urlV.isString())
             authServerUrl = urlV.toString();
     }
@@ -345,7 +347,7 @@ QJsonObject AccountData::saveState() const
         output["type"] = "Offline";
     } else if (type == AccountType::AuthlibInjector) {
         output["type"] = "AuthlibInjector";
-        output["auth-server-url"] = authServerUrl;
+        output["authlibInjectorUrl"] = authServerUrl;
     }
 
     tokenToJSONV3(output, yggdrasilToken, "ygg");

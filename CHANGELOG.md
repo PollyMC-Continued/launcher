@@ -1,17 +1,6 @@
 # Changelog
 
-## v9.0.11
-
-**Added:**
-- Skin fetching for Yggdrasil accounts via sessionserver profile endpoint
-- Multi-profile picker when server returns multiple availableProfiles
-
-**Fixed:**
-- Cancel button not working in Yggdrasil login dialog
-- Yggdrasil accounts not fetching player skins
-- Old PollyMC accounts with missing auth server URL now show clear error
-
-## v9.0.10
+## v9.1.0
 
 **Added:**
 - Yggdrasil (authlib-injector) account support
@@ -20,10 +9,20 @@
   - Login dialog with server URL, username, password
   - JVM agent injection for authlib-injector at launch
   - "Add Yggdrasil" toolbar button
+  - Skin fetching via sessionserver profile endpoint
+  - Multi-profile picker when server returns multiple availableProfiles
 - macOS derives version from git tag (like Windows/Linux)
 
 **Fixed:**
+- Cancel button not working in Yggdrasil login dialog
+- Yggdrasil accounts not fetching player skins
+- Old PollyMC accounts with missing auth server URL now show clear error
+- PollyMC ↔ PollyMC-Continued account compatibility (reads both `authlibInjectorUrl` and `auth-server-url`, writes `authlibInjectorUrl`)
 - Use accountData() accessor instead of protected data member
+- authlib-injector.jar not found on AppImage (`applicationDirPath()` resolves to temp mount; added `dataRoot()/libraries/` as persistent fallback)
+
+**Changed:**
+- Add ccache to CI builds (Windows, Linux, macOS) for faster rebuilds
 
 **Removed:**
 - Unused accountIsOnline variable

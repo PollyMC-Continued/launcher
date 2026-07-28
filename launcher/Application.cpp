@@ -1895,7 +1895,8 @@ QString Application::getJarPath(QString jarFile)
         FS::PathCombine(applicationDirPath(), "..", "Resources", "jars"),
 #endif
         FS::PathCombine(m_rootPath, "jars"), FS::PathCombine(applicationDirPath(), "jars"),
-        FS::PathCombine(applicationDirPath(), "..", "jars")  // from inside build dir, for debuging
+        FS::PathCombine(applicationDirPath(), "..", "jars"),  // from inside build dir, for debuging
+        FS::PathCombine(m_dataPath, "libraries")  // persistent static path for AppImage compat
     };
     for (QString p : potentialPaths) {
         QString jarPath = FS::PathCombine(p, jarFile);
