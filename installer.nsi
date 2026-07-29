@@ -60,7 +60,7 @@ Section "Install"
     ; Add/Remove Programs
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\PollyMC-Continued" "DisplayName" "PollyMC-Continued"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\PollyMC-Continued" "UninstallString" "$\"$INSTDIR\uninstall.exe$\""
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\PollyMC-Continued" "DisplayVersion" "1.0.0"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\PollyMC-Continued" "DisplayVersion" "${VERSION}"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\PollyMC-Continued" "Publisher" "PollyMC-Continued Contributors"
     WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\PollyMC-Continued" "NoModify" 1
     WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\PollyMC-Continued" "NoRepair" 1

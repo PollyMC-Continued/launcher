@@ -12,9 +12,6 @@ Lets you play Minecraft **without a Microsoft account** — add offline accounts
 - Setup wizard — offers offline account on first launch
 - NSIS installer with upgrade support
 
-## Download
-[Latest release](https://github.com/corecommit/PollyMC-Continued/releases)
-
 ## Build
 
 ### Windows
@@ -58,9 +55,10 @@ Put `[skip-all]` anywhere in a commit message to skip all builds and release ent
 Put `[skip release]` to skip only the release (builds still run, no tag created).
 
 ## Contributors
-- [equs](https://github.com/corecommit) — maintainer
-- [Kiwi Araga](https://github.com/kiwiaraga2000) — contributor
-- [gib-b](https://github.com/gib-b) — contributor
+
+<a href="https://github.com/corecommit"><img src="https://avatars.githubusercontent.com/corecommit?s=80" width="40" height="40" alt="corecommit"/></a>
+<a href="https://github.com/kiwiaraga2000"><img src="https://avatars.githubusercontent.com/kiwiaraga2000?s=80" width="40" height="40" alt="kiwiaraga2000"/></a>
+<a href="https://github.com/gib-b"><img src="https://avatars.githubusercontent.com/gib-b?s=80" width="40" height="40" alt="gib-b"/></a>
 
 ## Credits
 [Prism Launcher](https://github.com/PrismLauncher/PrismLauncher) · [PolyMC](https://github.com/PolyMC/PolyMC) · [MultiMC](https://multimc.org)
