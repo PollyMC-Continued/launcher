@@ -1,5 +1,22 @@
 # Changelog
 
+## v9.1.1
+
+**Added:**
+- Detect auth server downtime and launch offline with clearer dialog ("Auth servers offline" vs "No internet connection")
+- Retain network error info across auth steps for better offline fallback messaging
+- Skip pointless retries on HTTP 404 responses in NetJob
+
+**Fixed:**
+- Memory leak and potential crash in data packs modal dialog (non-modal with WA_DeleteOnClose)
+- Infinite update check loop when timer fires during an ongoing check (re-entrancy guard)
+- Updater now builds and runs on all platforms (removed `NOT APPLE` guard); macOS falls back to PrismExternalUpdater when Sparkle feed URL is empty
+
+**Changed:**
+- Update README: remove downloads section, add contributor avatars
+- Installer now uses CI version instead of hardcoded "1.0.0" for registry DisplayVersion
+- Enable auto-updater (Windows/Linux via GitHub releases, macOS via Sparkle)
+
 ## v9.1.0
 
 **Added:**

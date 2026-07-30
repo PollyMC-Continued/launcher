@@ -259,9 +259,11 @@ void WorldListPage::on_actionData_Packs_triggered()
 
     dialog->setLayout(layout);
 
-    dialog->exec();
+    dialog->setAttribute(Qt::WA_DeleteOnClose);
+    connect(dialog, &QDialog::finished,
+            [dialog]() { APPLICATION->settings()->set("DataPackDownloadGeometry", dialog->saveGeometry().toBase64()); });
 
-    APPLICATION->settings()->set("DataPackDownloadGeometry", dialog->saveGeometry().toBase64());
+    dialog->open();
 }
 
 void WorldListPage::on_actionReset_Icon_triggered()

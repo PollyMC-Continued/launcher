@@ -51,6 +51,8 @@ class PrismExternalUpdater::Private {
     std::unique_ptr<QSettings> settings;
 
     QWidget* parent{};
+
+    bool checkingUpdates{};
 };
 
 PrismExternalUpdater::PrismExternalUpdater(QWidget* parent, const QString& appDir, const QString& dataDir)
@@ -97,6 +99,14 @@ void PrismExternalUpdater::checkForUpdates()
 
 void PrismExternalUpdater::checkForUpdates(bool triggeredByUser)
 {
+    if (priv->checkingUpdates) {
+        if (priv->updateTimer.isActive()) {
+            priv->updateTimer.stop();
+        }
+        return;
+    }
+    priv->checkingUpdates = true;
+
     QProgressDialog progress(tr("Checking for updates..."), "", 0, 0, priv->parent);
     progress.setCancelButton(nullptr);
     progress.adjustSize();
@@ -138,6 +148,7 @@ void PrismExternalUpdater::checkForUpdates(bool triggeredByUser)
         priv->settings->setValue("last_check", priv->lastCheck.toString(Qt::ISODate));
         priv->settings->sync();
         resetAutoCheckTimer();
+        priv->checkingUpdates = false;
         return;
     }
     QCoreApplication::processEvents();
@@ -160,6 +171,7 @@ void PrismExternalUpdater::checkForUpdates(bool triggeredByUser)
         priv->settings->setValue("last_check", priv->lastCheck.toString(Qt::ISODate));
         priv->settings->sync();
         resetAutoCheckTimer();
+        priv->checkingUpdates = false;
         return;
     }
 
@@ -229,6 +241,7 @@ void PrismExternalUpdater::checkForUpdates(bool triggeredByUser)
     priv->settings->setValue("last_check", priv->lastCheck.toString(Qt::ISODate));
     priv->settings->sync();
     resetAutoCheckTimer();
+    priv->checkingUpdates = false;
 }
 
 bool PrismExternalUpdater::getAutomaticallyChecksForUpdates()

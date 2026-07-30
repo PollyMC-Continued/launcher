@@ -144,12 +144,12 @@
 #include <sys/types.h>
 #endif
 
+#include "updater/PrismExternalUpdater.h"
+
 #if defined(Q_OS_MAC)
 #if defined(SPARKLE_ENABLED)
 #include "updater/MacSparkleUpdater.h"
 #endif
-#else
-#include "updater/PrismExternalUpdater.h"
 #endif
 
 #if defined Q_OS_WIN32
@@ -1387,8 +1387,11 @@ void Application::performMainStartupAction()
         qDebug() << "Initializing updater";
 #ifdef Q_OS_MAC
 #if defined(SPARKLE_ENABLED)
-        m_updater.reset(new MacSparkleUpdater());
+        if (!BuildConfig.MAC_SPARKLE_APPCAST_URL.isEmpty())
+            m_updater.reset(new MacSparkleUpdater());
+        else
 #endif
+            m_updater.reset(new PrismExternalUpdater(m_mainWindow, m_rootPath, m_dataPath));
 #else
         m_updater.reset(new PrismExternalUpdater(m_mainWindow, m_rootPath, m_dataPath));
 #endif

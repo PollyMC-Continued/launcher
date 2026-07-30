@@ -40,4 +40,16 @@ inline bool isApplicationError(QNetworkReply::NetworkError x)
                                                         QNetworkReply::UnknownContentError };
     return errors.contains(x);
 }
+
+// 500 class errors, see https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/500
+// microsoft may send these error codes when services (auth) are down.
+// We treat this as a reason to launch in offline mode.
+inline bool isServerError(QNetworkReply::NetworkError x)
+{
+    static QSet<QNetworkReply::NetworkError> errors = { QNetworkReply::InternalServerError,
+                                                        QNetworkReply::OperationNotImplementedError,
+                                                        QNetworkReply::ServiceUnavailableError,
+                                                        QNetworkReply::UnknownServerError };
+    return errors.contains(x);
+}
 }  // namespace Net

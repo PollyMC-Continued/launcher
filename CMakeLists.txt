@@ -195,10 +195,16 @@ set(Launcher_VERSION_NAME4_COMMA "${Launcher_VERSION_MAJOR},${Launcher_VERSION_M
 set(Launcher_BUILD_PLATFORM "unknown" CACHE STRING "A short string identifying the platform that this build was built for. Only used to display in the about dialog.")
 
 # Github repo URL with releases for updater
-set(Launcher_UPDATER_GITHUB_REPO "" CACHE STRING "Base github URL for the updater.")
+set(Launcher_UPDATER_GITHUB_REPO "corecommit/PollyMC-Continued" CACHE STRING "Base github URL for the updater.")
 
 # Name to help updater identify valid artifacts
-set(Launcher_BUILD_ARTIFACT "" CACHE STRING "Artifact name to help the updater identify valid artifacts.")
+if(WIN32)
+    set(Launcher_BUILD_ARTIFACT "Windows" CACHE STRING "Artifact name to help the updater identify valid artifacts.")
+elseif(APPLE)
+    set(Launcher_BUILD_ARTIFACT "macOS-arm64" CACHE STRING "Artifact name to help the updater identify valid artifacts.")
+else()
+    set(Launcher_BUILD_ARTIFACT "Linux" CACHE STRING "Artifact name to help the updater identify valid artifacts.")
+endif()
 
 # The metadata server
 set(Launcher_META_URL "https://meta.prismlauncher.org/v1/" CACHE STRING "URL to fetch Launcher's meta files from.")
@@ -217,7 +223,7 @@ set(Launcher_TRANSLATION_FILES_URL "" CACHE STRING "URL for the translations fil
 set(Launcher_MATRIX_URL "" CACHE STRING "URL to the Matrix Space")
 
 # Discord URL
-set(Launcher_DISCORD_URL "" CACHE STRING "URL for the Discord guild.")
+set(Launcher_DISCORD_URL "https://discord.gg/FsM3JNTN9z" CACHE STRING "URL for the Discord guild.")
 
 # Subreddit URL
 set(Launcher_SUBREDDIT_URL "" CACHE STRING "URL for the subreddit.")
@@ -360,8 +366,11 @@ add_subdirectory(program_info)
 set(Launcher_ENABLE_UPDATER NO)
 set(Launcher_BUILD_UPDATER NO)
 
-if (NOT APPLE AND (NOT Launcher_UPDATER_GITHUB_REPO STREQUAL "" AND NOT Launcher_BUILD_ARTIFACT STREQUAL ""))
-    set(Launcher_BUILD_UPDATER YES)
+if (NOT Launcher_UPDATER_GITHUB_REPO STREQUAL "" AND NOT Launcher_BUILD_ARTIFACT STREQUAL "")
+    if (NOT APPLE)
+        set(Launcher_BUILD_UPDATER YES)
+        set(Launcher_ENABLE_UPDATER YES)
+    endif()
 endif()
 
 if(NOT (UNIX AND APPLE))

@@ -1,6 +1,8 @@
 # PollyMC-Continued
 
 > **Heads up:** This is a revival of PollyMC — forked from [Prism Launcher](https://github.com/PrismLauncher/PrismLauncher), not from fn2006's original repo. I had to change and tweak everything from scratch.
+>
+> [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FsM3JNTN9z)
 
 Lets you play Minecraft **without a Microsoft account** — add offline accounts and launch the full game with no restrictions.
 
@@ -45,11 +47,24 @@ Output in `dist-macos/` — ready-to-run `.app`, ZIP, DMG.
 
 The CI auto-creates a release on every push to `main`. Which part of the version bumps depends on commit messages since the last tag:
 
-| Commit starts with | Bump | Example |
+| Commit contains | Bump | Example |
 |---|---|---|
-| `BREAKING CHANGE` (in body) | Major (`10.0.0`) | A breaking API change |
-| `feat:` / `Add ` / `Build ` / `Enhance ` | Minor (`9.1.0`) | A new feature |
-| anything else | Patch (`9.0.1`) | A bug fix or refactor |
+| `BREAKING CHANGE` anywhere in the message | `9.0.0` → `10.0.0` | `feat: new API`<br>`BREAKING CHANGE: removes old config format` |
+| Subject starts with `feat`, `feature`, `Add`, `Build`, or `Enhance` (followed by `:`, `(`, or a space) | `9.0.0` → `9.1.0` | `feat: add drag-and-drop modpack import` |
+| Anything else — e.g. `Fix:`, `Docs:`, `Chore:`, or no prefix at all | `9.0.0` → `9.0.1` | `Fix: crash when loading offline skins` |
+
+**Notes:**
+- Only the *highest* applicable bump is used — a `BREAKING CHANGE` always wins over a `feat:`, even in the same push.
+- Matching is case-sensitive: `feat:` / `feature:` must be lowercase, while `Add:` / `Build:` / `Enhance:` must be capitalized as shown.
+- The check looks at every commit since the last tag, not just the most recent one — so one `feat:` commit buried in a batch of `Fix:` commits still triggers a minor bump.
+
+**Example:** if the last release was `9.0.0` and your push includes:
+```
+Fix: correct offline skin cache path
+feat: add custom skin import from URL
+Docs: update build instructions
+```
+The `feat:` commit triggers a **minor** bump → next release is `9.1.0`.
 
 Put `[skip-all]` anywhere in a commit message to skip all builds and release entirely.  
 Put `[skip release]` to skip only the release (builds still run, no tag created).

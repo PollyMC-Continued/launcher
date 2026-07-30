@@ -62,7 +62,7 @@ void XboxAuthorizationStep::onRequestDone(QByteArray* response)
     qCDebug(authCredentials()) << *response;
     if (m_request->error() != QNetworkReply::NoError) {
         qWarning() << "Reply error:" << m_request->error();
-        if (Net::isApplicationError(m_request->error())) {
+        if (Net::isApplicationError(m_request->error()) && !Net::isServerError(m_request->error())) {
             if (!processSTSError(*response)) {
                 emit finished(AccountTaskState::STATE_FAILED_SOFT,
                               tr("Failed to get authorization for %1 services. Error %2.").arg(m_authorizationKind, m_request->error()));
@@ -71,6 +71,7 @@ void XboxAuthorizationStep::onRequestDone(QByteArray* response)
                               tr("Unknown STS error for %1 services: %2").arg(m_authorizationKind, m_request->errorString()));
             }
         } else {
+            m_data->networkError = m_request->error();
             emit finished(AccountTaskState::STATE_OFFLINE,
                           tr("Failed to get authorization for %1 services: %2").arg(m_authorizationKind, m_request->errorString()));
         }

@@ -40,6 +40,8 @@
 #include "minecraft/auth/AccountData.h"
 #include "minecraft/auth/AccountList.h"
 
+#include "net/NetUtils.h"
+
 #include "ui/InstanceWindow.h"
 #include "ui/dialogs/CustomMessageBox.h"
 #include "ui/dialogs/MSALoginDialog.h"
@@ -225,17 +227,25 @@ QString LaunchController::askOfflineName(QString playerName, bool* ok)
         *ok = false;
     }
 
-    QString message;
+    QString title, message;
     switch (m_actualLaunchMode) {
         case LaunchMode::Normal:
             Q_ASSERT(false);
             return "";
         case LaunchMode::Demo:
+            title = tr("Player name");
             message = tr("Choose your demo mode player name");
             break;
         case LaunchMode::Offline:
             if (m_wantedLaunchMode == LaunchMode::Normal) {
-                message = tr("You are not connected to the Internet, launching in offline mode\n\n");
+                auto netErr = m_accountToUse->accountData()->networkError;
+                if (Net::isServerError(netErr)) {
+                    title = tr("Auth servers offline");
+                    message = tr("The Minecraft authentication servers are currently unavailable, launching in offline mode.\n\n");
+                } else {
+                    title = tr("No internet connection");
+                    message = tr("You are not connected to the Internet, launching in offline mode.\n\n");
+                }
             }
             message += tr("Choose your offline mode player name");
             break;
@@ -245,7 +255,7 @@ QString LaunchController::askOfflineName(QString playerName, bool* ok)
     QString usedname = lastOfflinePlayerName.isEmpty() ? playerName : lastOfflinePlayerName;
 
     ChooseOfflineNameDialog dialog(message, m_parentWidget);
-    dialog.setWindowTitle(tr("Player name"));
+    dialog.setWindowTitle(title);
     dialog.setUsername(usedname);
     if (dialog.exec() != QDialog::Accepted) {
         return {};
