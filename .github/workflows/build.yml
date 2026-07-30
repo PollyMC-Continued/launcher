@@ -415,13 +415,9 @@ jobs:
 
           if [ ! -f linuxdeploy-x86_64.AppImage ]; then
             wget -v "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage" -O linuxdeploy-x86_64.AppImage
-            wget -q "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage.sha256" -O linuxdeploy.sha256
-            sha256sum -c linuxdeploy.sha256 || echo "Warning: SHA256 mismatch (continuous release), proceeding anyway"
           fi
           if [ ! -f linuxdeploy-plugin-qt-x86_64.AppImage ]; then
             wget -v "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage" -O linuxdeploy-plugin-qt-x86_64.AppImage
-            wget -q "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage.sha256" -O linuxdeploy-plugin-qt.sha256
-            sha256sum -c linuxdeploy-plugin-qt.sha256 || echo "Warning: SHA256 mismatch (continuous release), proceeding anyway"
           fi
           chmod +x linuxdeploy-x86_64.AppImage linuxdeploy-plugin-qt-x86_64.AppImage
 
