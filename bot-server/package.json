@@ -1,0 +1,8 @@
+{
+  "name": "pollymc-bot-server",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "mineflayer": "^4.20.0"
+  }
+}
