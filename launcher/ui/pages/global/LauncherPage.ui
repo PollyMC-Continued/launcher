@@ -170,85 +170,94 @@
          <property name="title">
           <string>Updater</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="1" column="0">
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QLabel" name="updateIntervalLabel">
-              <property name="text">
-               <string>How Often?</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QSpinBox" name="updateIntervalSpinBox">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="toolTip">
-               <string>Set to 0 to only check on launch</string>
-              </property>
-              <property name="specialValueText">
-               <string>On Launch</string>
-              </property>
-              <property name="suffix">
-               <string> hours</string>
-              </property>
-              <property name="prefix">
-               <string>Every </string>
-              </property>
-              <property name="minimum">
-               <number>0</number>
-              </property>
-              <property name="maximum">
-               <number>168</number>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer">
-              <property name="orientation">
-               <enum>Qt::Orientation::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>0</width>
-                <height>0</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
-           <item row="0" column="0" colspan="2">
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="0" column="0">
             <widget class="QCheckBox" name="autoUpdateCheckBox">
              <property name="text">
               <string>Check for updates automatically</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="0" colspan="2">
+           <item row="0" column="1">
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QLabel" name="updateIntervalLabel">
+               <property name="text">
+                <string>How Often?</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="updateIntervalSpinBox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="toolTip">
+                <string>Set to 0 to only check on launch</string>
+               </property>
+               <property name="specialValueText">
+                <string>On Launch</string>
+               </property>
+               <property name="suffix">
+                <string> hours</string>
+               </property>
+               <property name="prefix">
+                <string>Every </string>
+               </property>
+               <property name="minimum">
+                <number>0</number>
+               </property>
+               <property name="maximum">
+                <number>168</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+          </layout>
+        </widget>
+       </item>
+       <item>
+         <widget class="QGroupBox" name="generalBox">
+          <property name="title">
+           <string>General</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
             <widget class="QCheckBox" name="autoLaunchCheckBox">
              <property name="text">
               <string>Auto-launch last played instance on startup</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="0" colspan="2">
+           <item>
             <widget class="QCheckBox" name="minimizeToTrayCheckBox">
              <property name="text">
               <string>Minimize to system tray instead of closing</string>
              </property>
             </widget>
            </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="foldersBox">
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="foldersBox">
          <property name="title">
           <string>Folders</string>
          </property>
