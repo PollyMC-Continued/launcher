@@ -37,7 +37,8 @@ BotManagerDialog::BotManagerDialog(QWidget* parent)
     m_addBtn = new QPushButton("+ Add Bot", this);
     m_editBtn = new QPushButton("Edit", this);
     m_removeBtn = new QPushButton("Remove", this);
-    m_startAllBtn = new QPushButton("Start All", this);
+    m_startBtn = new QPushButton("Start", this);
+    m_selectAllBtn = new QPushButton("Select All", this);
     m_stopAllBtn = new QPushButton("Stop All", this);
 
     m_editBtn->setEnabled(false);
@@ -47,7 +48,8 @@ BotManagerDialog::BotManagerDialog(QWidget* parent)
     toolbar->addWidget(m_editBtn);
     toolbar->addWidget(m_removeBtn);
     toolbar->addSpacing(16);
-    toolbar->addWidget(m_startAllBtn);
+    toolbar->addWidget(m_startBtn);
+    toolbar->addWidget(m_selectAllBtn);
     toolbar->addWidget(m_stopAllBtn);
     toolbar->addStretch();
 
@@ -65,7 +67,7 @@ BotManagerDialog::BotManagerDialog(QWidget* parent)
     m_table->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
     m_table->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
     m_table->setSelectionBehavior(QAbstractItemView::SelectRows);
-    m_table->setSelectionMode(QAbstractItemView::SingleSelection);
+    m_table->setSelectionMode(QAbstractItemView::ExtendedSelection);
     m_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
     m_table->verticalHeader()->hide();
     m_table->setMinimumWidth(420);
@@ -97,10 +99,6 @@ BotManagerDialog::BotManagerDialog(QWidget* parent)
         "QLineEdit { background: #111; color: #dde1e7; font-family: 'Courier New', monospace; font-size: 12px; border: 1px solid #333; padding: 6px 8px; }"
     );
     m_sendBtn = new QPushButton("Send", this);
-    m_sendBtn->setStyleSheet(
-        "QPushButton { background: #a8ff78; color: #000; border: none; padding: 6px 16px; font-size: 12px; }"
-        "QPushButton:hover { background: #c8ffaa; }"
-    );
     inputBar->addWidget(m_input);
     inputBar->addWidget(m_sendBtn);
     rightLayout->addLayout(inputBar);
@@ -114,7 +112,8 @@ BotManagerDialog::BotManagerDialog(QWidget* parent)
     connect(m_addBtn, &QPushButton::clicked, this, &BotManagerDialog::onAddBot);
     connect(m_editBtn, &QPushButton::clicked, this, &BotManagerDialog::onEditBot);
     connect(m_removeBtn, &QPushButton::clicked, this, &BotManagerDialog::onRemoveBot);
-    connect(m_startAllBtn, &QPushButton::clicked, this, &BotManagerDialog::onStartAll);
+    connect(m_startBtn, &QPushButton::clicked, this, &BotManagerDialog::onStart);
+    connect(m_selectAllBtn, &QPushButton::clicked, this, &BotManagerDialog::onSelectAll);
     connect(m_stopAllBtn, &QPushButton::clicked, this, &BotManagerDialog::onStopAll);
     connect(m_table, &QTableWidget::itemSelectionChanged, this, &BotManagerDialog::onSelectionChanged);
     connect(m_table, &QTableWidget::cellDoubleClicked, this, &BotManagerDialog::onTableDoubleClicked);
@@ -273,10 +272,21 @@ void BotManagerDialog::onRemoveBot()
     saveConfigs();
 }
 
-void BotManagerDialog::onStartAll()
+void BotManagerDialog::onStart()
 {
-    for (int i = 0; i < m_bots.size(); i++)
-        connectBot(i);
+    auto rows = m_table->selectionModel()->selectedRows();
+    if (rows.isEmpty()) {
+        for (int i = 0; i < m_bots.size(); i++)
+            connectBot(i);
+    } else {
+        for (const auto& idx : rows)
+            connectBot(idx.row());
+    }
+}
+
+void BotManagerDialog::onSelectAll()
+{
+    m_table->selectAll();
 }
 
 void BotManagerDialog::onStopAll()

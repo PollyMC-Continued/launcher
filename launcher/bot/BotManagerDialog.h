@@ -28,7 +28,8 @@ private slots:
     void onAddBot();
     void onEditBot();
     void onRemoveBot();
-    void onStartAll();
+    void onStart();
+    void onSelectAll();
     void onStopAll();
     void onTableDoubleClicked(int row, int column);
     void onSelectionChanged();
@@ -60,7 +61,8 @@ private:
     QPushButton* m_addBtn;
     QPushButton* m_editBtn;
     QPushButton* m_removeBtn;
-    QPushButton* m_startAllBtn;
+    QPushButton* m_startBtn;
+    QPushButton* m_selectAllBtn;
     QPushButton* m_stopAllBtn;
 
     QString m_configPath;

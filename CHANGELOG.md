@@ -1,5 +1,17 @@
 # Changelog
 
+## v9.2.0
+
+**Added:**
+- Bot system (mineflayer-based): BotProcess, BotManagerDialog (two-panel UI), AddBotDialog
+- Bots menu item in Help menu with robot.svg icon
+- npm install + bot-server bundling in CI (Windows portable zip)
+
+**Fixed:**
+- linuxdeploy sha256 check removed (unreliable continuous release tags)
+- Updater layout: restore checkboxes no longer overlap interval spinner
+- Auto-updater: repo URL missing `https://github.com/` prefix caused `QUrl::fromUserInput` to resolve host as `corecommit` instead of `github.com`, blocking release list fetch
+
 ## v9.1.1
 
 **Added:**

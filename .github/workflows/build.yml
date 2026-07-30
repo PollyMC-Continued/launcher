@@ -109,7 +109,7 @@ jobs:
           # If it's saved under a different filename, hashFiles returns "" and
           # this key never changes when the workflow is edited. Verify the
           # actual path, or hash something more stable like CMakeLists.txt.
-          key: msys2-${{ hashFiles('.github/workflows/build.yml') }}
+          key: msys2-v1
           restore-keys: msys2-
 
       - name: Setup MSYS2
@@ -154,8 +154,15 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .ccache
-          key: ccache-windows-${{ hashFiles('.github/workflows/build.yml') }}
+          key: ccache-windows-v1
           restore-keys: ccache-windows-
+
+      - name: Setup Node.js
+        shell: bash
+        run: |
+          # Node.js is available via MSYS2; just install deps
+          cd bot-server
+          npm install --omit=dev
 
       - name: Configure
         run: |
@@ -175,6 +182,14 @@ jobs:
           set -euo pipefail
           cmake --build build -j$(nproc)
           cmake --install build
+
+      - name: Bundle bot-server
+        run: |
+          set -euo pipefail
+          cp -r bot-server install/bot-server
+          rm -f install/bot-server/.gitignore
+          # Remove any dev-only files to keep the bundle lean
+          rm -rf install/bot-server/node_modules/.cache 2>/dev/null || true
 
       - name: Deploy Qt
         run: |
@@ -364,7 +379,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ env.CCACHE_DIR }}
-          key: ccache-linux-${{ hashFiles('.github/workflows/build.yml') }}
+          key: ccache-linux-v1
           restore-keys: ccache-linux-
 
       - name: Configure
@@ -492,8 +507,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ env.CCACHE_DIR }}
-          key: ccache-macos2-${{ hashFiles('.github/workflows/build.yml') }}
-          restore-keys: ccache-macos2-
+          key: ccache-macos-v1
+          restore-keys: ccache-macos-
 
       - name: Configure
         run: |
