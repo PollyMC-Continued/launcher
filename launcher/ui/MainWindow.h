@@ -142,6 +142,8 @@ class MainWindow : public QMainWindow {
 
     void on_actionOpenWiki_triggered();
 
+    void on_actionBots_triggered();
+
     void on_actionMoreNews_triggered();
 
     void newsButtonClicked();

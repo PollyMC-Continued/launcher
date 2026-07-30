@@ -230,6 +230,7 @@
     <addaction name="actionMoreNews"/>
     <addaction name="actionCheckUpdate"/>
     <addaction name="actionOpenWiki"/>
+    <addaction name="actionBots"/>
     <addaction name="actionAbout"/>
    </widget>
    <addaction name="fileMenu"/>
@@ -809,18 +810,29 @@
     <string>Open the cat packs folder in a file browser.</string>
    </property>
   </action>
-  <action name="actionViewJavaFolder">
-   <property name="icon">
-    <iconset theme="viewfolder"/>
-   </property>
-   <property name="text">
-    <string>Java</string>
-   </property>
-   <property name="toolTip">
-    <string>Open the Java folder in a file browser. Only available if the built-in Java downloader is used.</string>
-   </property>
-  </action>
- </widget>
+   <action name="actionViewJavaFolder">
+    <property name="icon">
+     <iconset theme="viewfolder"/>
+    </property>
+    <property name="text">
+     <string>Java</string>
+    </property>
+    <property name="toolTip">
+     <string>Open the Java folder in a file browser. Only available if the built-in Java downloader is used.</string>
+    </property>
+   </action>
+   <action name="actionBots">
+    <property name="icon">
+     <iconset theme="robot"/>
+    </property>
+    <property name="text">
+     <string>&amp;Bots</string>
+    </property>
+    <property name="toolTip">
+     <string>Open the bot terminal to control Minecraft bots.</string>
+    </property>
+   </action>
+  </widget>
  <customwidgets>
   <customwidget>
    <class>WideBar</class>

@@ -888,6 +888,16 @@ SET(LAUNCHER_SOURCES
     ui/themes/CatPainter.cpp
     ui/themes/CatPainter.h
 
+    # Bot manager
+    bot/BotProcess.h
+    bot/BotProcess.cpp
+    bot/BotTerminalPage.h
+    bot/BotTerminalPage.cpp
+    bot/AddBotDialog.h
+    bot/AddBotDialog.cpp
+    bot/BotManagerDialog.h
+    bot/BotManagerDialog.cpp
+
     # Processes
     LaunchMode.h
     LaunchController.h

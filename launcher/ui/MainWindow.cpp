@@ -94,6 +94,7 @@
 
 #include "ui/GuiUtil.h"
 #include "ui/ViewLogWindow.h"
+#include "bot/BotManagerDialog.h"
 #include "ui/dialogs/AboutDialog.h"
 #include "ui/dialogs/CopyInstanceDialog.h"
 #include "ui/dialogs/CreateShortcutDialog.h"
@@ -1195,6 +1196,14 @@ void MainWindow::on_actionREDDIT_triggered()
 void MainWindow::on_actionDISCORD_triggered()
 {
     DesktopServices::openUrl(QUrl(BuildConfig.DISCORD_URL));
+}
+
+void MainWindow::on_actionBots_triggered()
+{
+    auto* mgr = new BotManagerDialog();
+    mgr->setWindowFlags(Qt::Window);
+    mgr->setAttribute(Qt::WA_DeleteOnClose);
+    mgr->show();
 }
 
 void MainWindow::on_actionMATRIX_triggered()

@@ -496,7 +496,11 @@ else()
     message(FATAL_ERROR "Platform not supported")
 endif()
 
-
+# Bot server
+install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bot-server/" DESTINATION "bot-server"
+    FILES_MATCHING REGEX "\\.(json|js)$"
+    PATTERN "node_modules" EXCLUDE
+)
 
 ################################ Included Libs ################################
 
