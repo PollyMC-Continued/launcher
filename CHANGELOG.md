@@ -14,6 +14,7 @@
 
 **Changed:**
 - Update README: remove downloads section, add contributor avatars
+- Add Discord badge and enable Discord Guild menu item in launcher
 - Installer now uses CI version instead of hardcoded "1.0.0" for registry DisplayVersion
 - Enable auto-updater (Windows/Linux via GitHub releases, macOS via Sparkle)
 
