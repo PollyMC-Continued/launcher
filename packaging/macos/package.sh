@@ -45,6 +45,22 @@ find "$app" \( -name '.DS_Store' -o -name '._*' \) -delete
 xattr -cr "$app"
 chmod +x "$app_executable"
 
+# Bundle bot-server (JS + node_modules) NEXT TO the app bundle, not inside it:
+# codesign fails on unsigned files inside the bundle, and
+# BotProcess::findBotServerDir() resolves ../bot-server from the app dir.
+# Only bundled when npm install ran.
+bundle_bot_server() {
+    dest=$1
+    cmake -E rm -rf "$dest/bot-server"
+    cp -R "$source_root/bot-server" "$dest/bot-server"
+    rm -f "$dest/bot-server/.gitignore"
+    rm -rf "$dest/bot-server/node_modules/.cache" 2>/dev/null || true
+}
+
+if [[ -d "$source_root/bot-server/node_modules" ]]; then
+    bundle_bot_server "$install_dir"
+fi
+
 # Remove build-machine search paths.
 while IFS= read -r -d '' candidate; do
     file "$candidate" | grep -q 'Mach-O' || continue
@@ -138,6 +154,9 @@ if [[ $notarize_count -eq 3 ]]; then
 fi
 
 cmake -E rm -f "$zip_path" "$dmg_path"
+# ponytail: bot-server deliberately excluded from the portable zip - ditto
+# rejects --keepParent with multiple sources; the dmg carries it. Add it back
+# with /usr/bin/zip if the zip build needs bots.
 ditto -c -k --norsrc --noextattr --noqtn --noacl --keepParent "$app" "$zip_path"
 
 if unzip -Z1 "$zip_path" | grep -Eq '(^|/)__MACOSX/|(^|/)\._'; then
@@ -164,6 +183,9 @@ dmg_check="$install_dir/dmg-check"
 cmake -E rm -rf "$dmg_root"
 cmake -E make_directory "$dmg_root"
 ditto --norsrc --noextattr --noqtn --noacl "$app" "$dmg_root/PollyMC.app"
+if [[ -d "$source_root/bot-server/node_modules" ]]; then
+    bundle_bot_server "$dmg_root"
+fi
 ln -s /Applications "$dmg_root/Applications"
 cp "$app/Contents/Resources/PollyMC.icns" "$dmg_root/.VolumeIcon.icns"
 

@@ -81,6 +81,41 @@ jobs:
 
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
+  changelog-check:
+    name: Verify changelog entry
+    needs: [skip-check]
+    if: needs.skip-check.outputs.skip != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for matching CHANGELOG.md section
+        run: |
+          set -euo pipefail
+
+          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
+            EXPECTED_TAG="${{ github.ref_name }}"
+          else
+            EXPECTED_TAG="v${{ needs.skip-check.outputs.version }}"
+          fi
+
+          HEAD_MSG=$(git log --format="%s %b" HEAD -1)
+          if echo "$HEAD_MSG" | grep -qF '[skip changelog]'; then
+            echo "Skipping changelog check: [skip changelog] found in the latest commit."
+            exit 0
+          fi
+
+          echo "Looking for '## ${EXPECTED_TAG}' in CHANGELOG.md ..."
+          if ! sed 's/\r$//' CHANGELOG.md | grep -qxF "## ${EXPECTED_TAG}"; then
+            echo "::error::CHANGELOG.md has no '## ${EXPECTED_TAG}' section, but the computed release version is ${EXPECTED_TAG}."
+            echo "::error::Add a '## ${EXPECTED_TAG}' section (Added/Changed/Fixed/Removed) to CHANGELOG.md, or add '[skip changelog]' to the commit message if this change doesn't need a release note."
+            exit 1
+          fi
+
+          echo "Found matching CHANGELOG.md section for ${EXPECTED_TAG}."
+
   build-windows:
     name: Windows (MinGW)
     needs: [skip-check]
@@ -193,6 +228,7 @@ jobs:
           cmake --install build
           echo "=== ccache stats ==="
           ccache -s
+          ccache --print-stats
 
       - name: Bundle bot-server
         run: |
@@ -401,6 +437,12 @@ jobs:
           restore-keys: |
             ccache-linux-
 
+      - name: Setup Node.js
+        run: |
+          # Node.js ships preinstalled on GitHub-hosted runners; just install deps
+          cd bot-server
+          npm install --omit=dev
+
       - name: Configure
         run: |
           set -euo pipefail
@@ -421,6 +463,7 @@ jobs:
           cmake --build build -j$(nproc)
           echo "=== ccache stats ==="
           ccache -s
+          ccache --print-stats
 
       - name: Package
         run: |
@@ -438,6 +481,15 @@ jobs:
           cp -L /usr/lib/x86_64-linux-gnu/libcrypto.so.* appdir/usr/lib/ 2>/dev/null || true
           cp -L /usr/lib/x86_64-linux-gnu/libgamemode.so.* appdir/usr/lib/ 2>/dev/null || true
           cp -L /usr/lib/x86_64-linux-gnu/libgamemodeauto.so.* appdir/usr/lib/ 2>/dev/null || true
+
+      - name: Bundle bot-server
+        run: |
+          set -euo pipefail
+          # applicationDirPath() = appdir/usr/bin at runtime inside the AppImage
+          cp -r bot-server appdir/usr/bin/bot-server
+          rm -f appdir/usr/bin/bot-server/.gitignore
+          # Remove any dev-only files to keep the bundle lean
+          rm -rf appdir/usr/bin/bot-server/node_modules/.cache 2>/dev/null || true
 
       - name: Cache linuxdeploy
         uses: actions/cache@v4
@@ -542,6 +594,12 @@ jobs:
           restore-keys: |
             ccache-macos-
 
+      - name: Setup Node.js
+        run: |
+          # Node.js ships preinstalled on GitHub-hosted runners; just install deps
+          cd bot-server
+          npm install --omit=dev
+
       - name: Configure
         run: |
           set -euo pipefail
@@ -581,6 +639,7 @@ jobs:
           cmake --build --preset macos_universal --config "$BUILD_TYPE"
           echo "=== ccache stats ==="
           ccache -s
+          ccache --print-stats
 
       - name: Import signing certificate
         env:
@@ -643,8 +702,8 @@ jobs:
 
   release:
     name: Publish Release
-    needs: [skip-check, build-windows, build-linux, build-macos]
-    if: always() && needs.skip-check.outputs.skip != 'true' && (needs.build-windows.result == 'success' || needs.build-linux.result == 'success' || needs.build-macos.result == 'success') && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch')
+    needs: [skip-check, changelog-check, build-windows, build-linux, build-macos]
+    if: always() && needs.skip-check.outputs.skip != 'true' && needs.changelog-check.result == 'success' && (needs.build-windows.result == 'success' || needs.build-linux.result == 'success' || needs.build-macos.result == 'success') && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -695,13 +754,43 @@ jobs:
           echo "tag_name=${NEW_TAG}" >> "$GITHUB_OUTPUT"
           echo "release_name=PollyMC Continued ${NEW_TAG}" >> "$GITHUB_OUTPUT"
 
+      - name: Extract changelog section
+        if: steps.skipcheck.outputs.skip != 'true'
+        id: changelog
+        run: |
+          set -euo pipefail
+          TAG="${{ steps.prep.outputs.tag_name }}"
+
+          # CHANGELOG.md uses CRLF; strip \r so awk pattern matching is reliable
+          sed 's/\r$//' CHANGELOG.md > /tmp/changelog_lf.md
+
+          awk -v ver="## ${TAG}" '
+            $0 == ver { found=1; next }
+            found && /^## / { exit }
+            found { print }
+          ' /tmp/changelog_lf.md > /tmp/section.md
+
+          if [[ -s /tmp/section.md ]]; then
+            # trim leading/trailing blank lines
+            sed -e '/./,$!d' -e ':a' -e '/^\n*$/{$d;N;ba' -e '}' /tmp/section.md > release_notes.md
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "_No changelog entry found for ${TAG}._" > release_notes.md
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::No CHANGELOG.md section found for ${TAG} - check that the version header matches exactly."
+          fi
+
+          echo "--- release_notes.md ---"
+          cat release_notes.md
+
       - name: Publish release
         if: steps.skipcheck.outputs.skip != 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.prep.outputs.tag_name }}
           name: "${{ steps.prep.outputs.release_name }}"
-          generate_release_notes: true
+          body_path: release_notes.md
+          generate_release_notes: false
           prerelease: ${{ github.ref == 'refs/heads/develop' || github.event_name == 'workflow_dispatch' || contains(github.ref_name, '-rc') }}
           files: |
             PollyMC-Continued-*-Setup.exe

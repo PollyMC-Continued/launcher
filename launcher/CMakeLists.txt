@@ -1331,6 +1331,10 @@ if(${Launcher_USE_PCH})
         include/qtcore.pch.hpp
         include/qtgui.pch.hpp
     )
+    # ccache cannot cache PCH compiles without this flag - the preprocessed
+    # output would otherwise depend on the .gch file (91% of compile calls
+    # were uncacheable without it).
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpch-preprocess")
 endif()
 
 ####### Targets ########

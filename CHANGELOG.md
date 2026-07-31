@@ -3,37 +3,31 @@
 ## v9.2.0
 
 **Added:**
-- Bot system (mineflayer-based): BotProcess, BotManagerDialog (two-panel UI), AddBotDialog
-- Bots menu item in Help menu with robot.svg icon
+- Bot system: manage Minecraft bots in the new Bot Manager window (Help menu) — add, edit, remove, start and stop bots, multi-select rows
+- Bot Manager: console commands `/join <server> [username] [port]`, `/quit`, `/list`, `/say <message>`, `/follow <player>`, `/stop`, `/goto <x> <y> <z>`, `/home`, `/pos`, `/health`, `/inventory`, `/drop <item> [count]`, `/equip <item>`, `/whisper <player> <message>`, `/respawn`, `/players`, `/help`, `/clear` (clears the console)
+- Bot Manager: Commands button showing every command with its usage
+- Bot Manager: slash-command autocomplete popup — type `/` in the console to see available commands
+- Bot Manager: per-bot Minecraft version picker, actually used when the bot connects
 - System tray icon with Show/Quit menu — "Minimize to Tray" no longer makes the app unreachable
-- Bot Manager: "Start" (selected bots only), "Select All", multi-select rows
-- Bot Manager: slash-command autocomplete popup — type `/` in the console to see all valid commands with usage syntax, driven from the same source as the command parser
-- Bot config: per-bot version now actually forwarded to mineflayer
-- CI: npm install + bot-server bundling in Windows portable zip
-- CI: pass CI-computed version to Windows/Linux cmake configure (binary version now matches artifact names)
-- CI: stable ccache/msys2 cache keys (editing the workflow no longer busts the entire build cache)
 
 **Fixed:**
-- Auto-updater: repo URL missing `https://github.com/` prefix caused `QUrl::fromUserInput` to resolve host as `corecommit` instead of `github.com`, blocking release list fetch
-- Updater layout: restore checkboxes no longer overlap interval spinner
-- Discord Rich Presence: IPC probing no longer blocks the UI thread (async QLocalSocket instead of `waitForConnected`)
+- Auto-updater: release list fetch blocked by a malformed repo URL
+- Updater layout: restore checkboxes no longer overlap the interval spinner
+- Discord Rich Presence: IPC probing no longer freezes the UI
 - Plaintext account password no longer written to `accounts.json` on hard auth failure
 - Auth server URL validated in login dialog (auto-prepends `https://`, rejects non-http schemes)
 - Yggdrasil skin model read from texture metadata ("slim"/"classic") instead of hardcoded slim
 - Multi-profile picker now has a proper parent window
-- Bot Manager: opening it twice no longer spawns duplicate Node processes
-- Bot Manager: "Stop All" actually disconnects bots (server-side `quit_all` implemented)
+- Bot Manager: opening it twice no longer spawns duplicate bot servers
+- Bot Manager: Stop actually disconnects bots
 - Bot Manager: Add/Edit dialog can't accept an empty bot name (cancelled vs empty now unambiguous)
 - Bot Manager: `/join` supports a port argument
 - Bot Manager: duplicate bot names rejected
-- CI: fixed bot-server ending up nested at `install/bot-server/bot-server/` in the portable zip
 
 **Changed:**
 - Bot Manager: Send button now inherits the launcher theme instead of a hardcoded green
 
 **Removed:**
-- linuxdeploy sha256 check (unreliable continuous release tags)
-- Bot Manager: unimplemented `/goto` `/follow` `/come` `/mine` `/stop` commands
 - Bot Manager: "Microsoft account" login option (not implemented)
 - Dead BotTerminalPage code
 

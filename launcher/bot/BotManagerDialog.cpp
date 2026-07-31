@@ -33,6 +33,20 @@ static const BotCommand BOT_COMMANDS[] = {
     { "/quit", "/quit <username>", "Disconnect a bot" },
     { "/list", "/list", "List the bots currently connected" },
     { "/say",  "/say <message>", "Send a chat message as the bot selected in the table" },
+    { "/follow", "/follow <player>", "Make the selected bot walk to a player" },
+    { "/stop", "/stop", "Stop the selected bot's movement" },
+    { "/goto", "/goto <x> <y> <z>", "Make the selected bot walk to coordinates" },
+    { "/home", "/home", "Make the selected bot walk back to spawn" },
+    { "/pos", "/pos", "Show the selected bot's position" },
+    { "/health", "/health", "Show the selected bot's health and food" },
+    { "/inventory", "/inventory", "List the selected bot's items" },
+    { "/drop", "/drop <item> [count]", "Drop an item from the selected bot" },
+    { "/equip", "/equip <item>", "Make the selected bot hold an item" },
+    { "/whisper", "/whisper <player> <message>", "Send a private message as the selected bot" },
+    { "/respawn", "/respawn", "Respawn the selected bot" },
+    { "/players", "/players", "List players near the selected bot" },
+    { "/help", "/help", "List available commands" },
+    { "/clear", "/clear", "Clear the console log" },
 };
 
 static const BotCommand* findBotCommand(const QString& cmd)
@@ -63,7 +77,8 @@ BotManagerDialog::BotManagerDialog(QWidget* parent)
     m_removeBtn = new QPushButton("Remove", this);
     m_startBtn = new QPushButton("Start", this);
     m_selectAllBtn = new QPushButton("Select All", this);
-    m_stopAllBtn = new QPushButton("Stop All", this);
+    m_stopAllBtn = new QPushButton("Stop", this);
+    m_commandsBtn = new QPushButton("Commands", this);
 
     m_editBtn->setEnabled(false);
     m_removeBtn->setEnabled(false);
@@ -73,8 +88,9 @@ BotManagerDialog::BotManagerDialog(QWidget* parent)
     toolbar->addWidget(m_removeBtn);
     toolbar->addSpacing(16);
     toolbar->addWidget(m_startBtn);
-    toolbar->addWidget(m_selectAllBtn);
     toolbar->addWidget(m_stopAllBtn);
+    toolbar->addWidget(m_selectAllBtn);
+    toolbar->addWidget(m_commandsBtn);
     toolbar->addStretch();
 
     m_statusLabel = new QLabel("Bot server: stopped", this);
@@ -159,7 +175,8 @@ BotManagerDialog::BotManagerDialog(QWidget* parent)
     connect(m_removeBtn, &QPushButton::clicked, this, &BotManagerDialog::onRemoveBot);
     connect(m_startBtn, &QPushButton::clicked, this, &BotManagerDialog::onStart);
     connect(m_selectAllBtn, &QPushButton::clicked, this, &BotManagerDialog::onSelectAll);
-    connect(m_stopAllBtn, &QPushButton::clicked, this, &BotManagerDialog::onStopAll);
+    connect(m_stopAllBtn, &QPushButton::clicked, this, &BotManagerDialog::onStop);
+    connect(m_commandsBtn, &QPushButton::clicked, this, &BotManagerDialog::showHelp);
     connect(m_table, &QTableWidget::itemSelectionChanged, this, &BotManagerDialog::onSelectionChanged);
     connect(m_table, &QTableWidget::cellDoubleClicked, this, &BotManagerDialog::onTableDoubleClicked);
 
@@ -339,12 +356,23 @@ void BotManagerDialog::onSelectAll()
     m_table->selectAll();
 }
 
-void BotManagerDialog::onStopAll()
+void BotManagerDialog::onStop()
 {
-    QJsonObject p;
-    m_bot->sendCommand("quit_all", p);
-    for (auto& e : m_bots)
+    auto rows = m_table->selectionModel()->selectedRows();
+    if (rows.isEmpty()) {
+        m_bot->sendCommand("quit_all");
+        for (auto& e : m_bots)
+            e.connected = false;
+        refreshTable();
+        return;
+    }
+    for (const auto& idx : rows) {
+        auto& e = m_bots[idx.row()];
+        QJsonObject p;
+        p["username"] = e.config.name;
+        m_bot->sendCommand("quit", p);
         e.connected = false;
+    }
     refreshTable();
 }
 
@@ -451,7 +479,92 @@ void BotManagerDialog::onSendCommand()
         p["username"] = targetName;
         p["message"] = msg;
         m_bot->sendCommand("say", p);
+    } else if (cmd == "/follow") {
+        if (!entry) { appendLog("Select a bot first"); return; }
+        if (parts.size() < 2) { appendLog("Usage: /follow <player>"); return; }
+        QJsonObject p;
+        p["username"] = targetName;
+        p["player"] = parts[1];
+        m_bot->sendCommand("follow", p);
+    } else if (cmd == "/stop") {
+        if (!entry) { appendLog("Select a bot first"); return; }
+        QJsonObject p;
+        p["username"] = targetName;
+        m_bot->sendCommand("stop", p);
+    } else if (cmd == "/help") {
+        showHelp();
+    } else if (cmd == "/clear") {
+        m_log->clear();
+    } else if (cmd == "/goto") {
+        if (!entry) { appendLog("Select a bot first"); return; }
+        if (parts.size() < 4) { appendLog("Usage: /goto <x> <y> <z>"); return; }
+        QJsonObject p;
+        p["username"] = targetName;
+        p["x"] = parts[1].toDouble();
+        p["y"] = parts[2].toDouble();
+        p["z"] = parts[3].toDouble();
+        m_bot->sendCommand("goto", p);
+    } else if (cmd == "/home") {
+        if (!entry) { appendLog("Select a bot first"); return; }
+        QJsonObject p;
+        p["username"] = targetName;
+        m_bot->sendCommand("home", p);
+    } else if (cmd == "/pos") {
+        if (!entry) { appendLog("Select a bot first"); return; }
+        QJsonObject p;
+        p["username"] = targetName;
+        m_bot->sendCommand("pos", p);
+    } else if (cmd == "/health") {
+        if (!entry) { appendLog("Select a bot first"); return; }
+        QJsonObject p;
+        p["username"] = targetName;
+        m_bot->sendCommand("health", p);
+    } else if (cmd == "/inventory") {
+        if (!entry) { appendLog("Select a bot first"); return; }
+        QJsonObject p;
+        p["username"] = targetName;
+        m_bot->sendCommand("inventory", p);
+    } else if (cmd == "/drop") {
+        if (!entry) { appendLog("Select a bot first"); return; }
+        if (parts.size() < 2) { appendLog("Usage: /drop <item> [count]"); return; }
+        QJsonObject p;
+        p["username"] = targetName;
+        p["item"] = parts[1];
+        p["count"] = (parts.size() > 2) ? parts[2].toInt() : 0;
+        m_bot->sendCommand("drop", p);
+    } else if (cmd == "/equip") {
+        if (!entry) { appendLog("Select a bot first"); return; }
+        if (parts.size() < 2) { appendLog("Usage: /equip <item>"); return; }
+        QJsonObject p;
+        p["username"] = targetName;
+        p["item"] = parts[1];
+        m_bot->sendCommand("equip", p);
+    } else if (cmd == "/whisper") {
+        if (!entry) { appendLog("Select a bot first"); return; }
+        if (parts.size() < 3) { appendLog("Usage: /whisper <player> <message>"); return; }
+        QJsonObject p;
+        p["username"] = targetName;
+        p["player"] = parts[1];
+        p["message"] = text.mid(10 + parts[1].length()).trimmed();
+        m_bot->sendCommand("whisper", p);
+    } else if (cmd == "/respawn") {
+        if (!entry) { appendLog("Select a bot first"); return; }
+        QJsonObject p;
+        p["username"] = targetName;
+        m_bot->sendCommand("respawn", p);
+    } else if (cmd == "/players") {
+        if (!entry) { appendLog("Select a bot first"); return; }
+        QJsonObject p;
+        p["username"] = targetName;
+        m_bot->sendCommand("players", p);
     }
+}
+
+void BotManagerDialog::showHelp()
+{
+    for (const auto& c : BOT_COMMANDS)
+        appendLog("<span style='color:#aaa;'>" + QString(c.usage).toHtmlEscaped() + " — "
+            + QString(c.description).toHtmlEscaped() + "</span>");
 }
 
 void BotManagerDialog::appendLog(const QString& text)
