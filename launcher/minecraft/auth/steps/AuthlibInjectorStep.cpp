@@ -170,7 +170,7 @@ void AuthlibInjectorStep::onAuthDone(QByteArray* response)
                 defaultIdx = i;
         }
         bool ok;
-        QString chosen = QInputDialog::getItem(nullptr, tr("Choose Profile"),
+        QString chosen = QInputDialog::getItem(APPLICATION->activeWindow(), tr("Choose Profile"),
             tr("Multiple profiles found. Select one:"), items, defaultIdx, false, &ok);
         if (ok) {
             int idx = items.indexOf(chosen);
@@ -250,7 +250,10 @@ void AuthlibInjectorStep::onProfileDone(QByteArray* response)
                 if (!skinUrl.isEmpty()) {
                     m_data->minecraftProfile.skin.url = skinUrl;
                     m_data->minecraftProfile.skin.id = m_data->minecraftProfile.id;
-                    m_data->minecraftProfile.skin.variant = "slim";
+                    // "metadata.model" is only present (as "slim") when the skin uses the
+                    // Alex arm model; its absence means classic/Steve.
+                    QString model = skin.value("metadata").toObject().value("model").toString();
+                    m_data->minecraftProfile.skin.variant = model.isEmpty() ? "classic" : model;
 
                     auto [skinRequest, skinResponse] = Net::Download::makeByteArray(QUrl(skinUrl));
                     auto skinDownload = skinRequest;

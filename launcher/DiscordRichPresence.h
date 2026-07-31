@@ -58,10 +58,12 @@ class DiscordRichPresence : public QObject {
 
     // ── IPC transport ────────────────────────────────────────────────────────
     void ipcConnect();
+    void ipcProbeNext();
     void ipcSendHandshake();
     void ipcSendClose();
     void ipcSendFrame(const QJsonObject& payload);
     void ipcOnReadyRead();
+    void ipcOnConnected();
     void ipcOnDisconnected();
     void ipcOnError(QLocalSocket::LocalSocketError error);
     void ipcSetConnected(bool connected);
@@ -70,6 +72,9 @@ class DiscordRichPresence : public QObject {
     QLocalSocket* m_ipcSocket         = nullptr;
     QTimer*       m_ipcReconnectTimer = nullptr;
     bool          m_ipcConnected      = false;
+    bool          m_ipcProbing        = false;
+    QStringList   m_ipcCandidates;
+    int           m_ipcCandidateIdx   = 0;
 
     static constexpr int IPC_RECONNECT_MIN_MS = 5'000;
     static constexpr int IPC_RECONNECT_MAX_MS = 60'000;

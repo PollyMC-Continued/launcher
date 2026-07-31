@@ -68,6 +68,7 @@
 #include <QProgressDialog>
 #include <QShortcut>
 #include <QStatusBar>
+#include <QSystemTrayIcon>
 #include <QToolBar>
 #include <QToolButton>
 #include <QWidget>
@@ -157,6 +158,23 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     setWindowIcon(APPLICATION->logo());
     setWindowTitle(APPLICATION->applicationDisplayName());
+
+    // System tray icon — used by "Minimize to Tray"
+    if (QSystemTrayIcon::isSystemTrayAvailable()) {
+        m_trayIcon = new QSystemTrayIcon(APPLICATION->logo(), this);
+        m_trayIcon->setToolTip(APPLICATION->applicationDisplayName());
+        auto* trayMenu = new QMenu(this);
+        auto* showAction = trayMenu->addAction(tr("Show PollyMC"));
+        connect(showAction, &QAction::triggered, this, &MainWindow::showFromTray);
+        auto* quitAction = trayMenu->addAction(tr("Quit"));
+        connect(quitAction, &QAction::triggered, this, &MainWindow::forceClose);
+        m_trayIcon->setContextMenu(trayMenu);
+        connect(m_trayIcon, &QSystemTrayIcon::activated, this,
+                [this](QSystemTrayIcon::ActivationReason reason) {
+                    if (reason == QSystemTrayIcon::Trigger || reason == QSystemTrayIcon::DoubleClick)
+                        showFromTray();
+                });
+    }
 #ifndef QT_NO_ACCESSIBILITY
     setAccessibleName(BuildConfig.LAUNCHER_DISPLAYNAME);
 #endif
@@ -1200,10 +1218,14 @@ void MainWindow::on_actionDISCORD_triggered()
 
 void MainWindow::on_actionBots_triggered()
 {
-    auto* mgr = new BotManagerDialog();
-    mgr->setWindowFlags(Qt::Window);
-    mgr->setAttribute(Qt::WA_DeleteOnClose);
-    mgr->show();
+    if (!m_botManager) {
+        m_botManager = new BotManagerDialog(this);
+        m_botManager->setWindowFlags(Qt::Window);
+        connect(m_botManager, &QObject::destroyed, this, [this] { m_botManager = nullptr; });
+    }
+    m_botManager->show();
+    m_botManager->raise();
+    m_botManager->activateWindow();
 }
 
 void MainWindow::on_actionMATRIX_triggered()
@@ -1623,6 +1645,8 @@ void MainWindow::closeEvent(QCloseEvent* event)
     // Minimize to tray instead of closing
     if (APPLICATION->settings()->get("MinimizeToTray").toBool() && !m_forceClose) {
         hide();
+        if (m_trayIcon)
+            m_trayIcon->show();
         event->ignore();
         return;
     }
@@ -1635,6 +1659,15 @@ void MainWindow::forceClose()
 {
     m_forceClose = true;
     close();
+}
+
+void MainWindow::showFromTray()
+{
+    show();
+    raise();
+    activateWindow();
+    if (m_trayIcon)
+        m_trayIcon->hide();
 }
 
 void MainWindow::changeEvent(QEvent* event)

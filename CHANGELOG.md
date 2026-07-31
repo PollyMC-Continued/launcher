@@ -6,11 +6,27 @@
 - Bot system (mineflayer-based): BotProcess, BotManagerDialog (two-panel UI), AddBotDialog
 - Bots menu item in Help menu with robot.svg icon
 - npm install + bot-server bundling in CI (Windows portable zip)
+- System tray icon with Show/Quit menu — "Minimize to Tray" no longer makes the app unreachable
+- Bot Manager: "Start" (selected bots only), "Select All", multi-select rows
+- Bot config: per-bot version now actually forwarded to mineflayer
 
 **Fixed:**
 - linuxdeploy sha256 check removed (unreliable continuous release tags)
 - Updater layout: restore checkboxes no longer overlap interval spinner
 - Auto-updater: repo URL missing `https://github.com/` prefix caused `QUrl::fromUserInput` to resolve host as `corecommit` instead of `github.com`, blocking release list fetch
+- Discord Rich Presence: IPC probing no longer blocks the UI thread (async QLocalSocket instead of `waitForConnected`)
+- Plaintext account password no longer written to `accounts.json` on hard auth failure
+- Auth server URL validated in login dialog (auto-prepends `https://`, rejects non-http schemes)
+- Yggdrasil skin model read from texture metadata ("slim"/"classic") instead of hardcoded slim
+- Multi-profile picker now has a proper parent window
+- Bot Manager: opening it twice no longer spawns duplicate Node processes
+- Bot Manager: "Stop All" actually disconnects bots (server-side `quit_all` implemented)
+- Bot Manager: unimplemented `/goto` `/follow` `/come` `/mine` `/stop` commands removed
+- Bot Manager: removed "Microsoft account" login option (not implemented)
+- Bot Manager: Add/Edit dialog can't accept an empty bot name (cancelled vs empty now unambiguous)
+- Bot Manager: `/join` supports a port argument
+- Bot Manager: duplicate bot names rejected
+- Removed dead BotTerminalPage code
 
 ## v9.1.1
 

@@ -35,10 +35,6 @@ AddBotDialog::AddBotDialog(QWidget* parent)
     m_version->addItems({"1.21", "1.20.4", "1.20.1", "1.19.4", "1.18.2", "1.17.1", "1.16.5", "1.12.2"});
     form->addRow("Version:", m_version);
 
-    m_loginType = new QComboBox(this);
-    m_loginType->addItems({"Offline (cracked)", "Microsoft account"});
-    form->addRow("Login:", m_loginType);
-
     m_autoStart = new QCheckBox("Connect immediately", this);
     m_autoStart->setChecked(true);
     form->addRow("", m_autoStart);
@@ -48,10 +44,15 @@ AddBotDialog::AddBotDialog(QWidget* parent)
 
     auto* buttons = new QDialogButtonBox(this);
     buttons->addButton(QDialogButtonBox::Cancel);
-    buttons->addButton(QDialogButtonBox::Ok);
+    auto* okButton = buttons->addButton(QDialogButtonBox::Ok);
     connect(buttons, &QDialogButtonBox::accepted, this, &QDialog::accept);
     connect(buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
     main->addWidget(buttons);
+
+    // A bot must have a name; disabling OK makes "cancelled" unambiguous
+    okButton->setEnabled(false);
+    connect(m_name, &QLineEdit::textChanged, this,
+            [okButton](const QString& text) { okButton->setEnabled(!text.trimmed().isEmpty()); });
 }
 
 BotConfig AddBotDialog::config() const
@@ -61,7 +62,6 @@ BotConfig AddBotDialog::config() const
     c.server = m_server->text().trimmed();
     c.port = m_port->value();
     c.version = m_version->currentText().trimmed();
-    c.loginType = m_loginType->currentIndex();
     c.autoStart = m_autoStart->isChecked();
     return c;
 }
@@ -72,7 +72,6 @@ void AddBotDialog::setConfig(const BotConfig& cfg)
     m_server->setText(cfg.server);
     m_port->setValue(cfg.port);
     m_version->setCurrentText(cfg.version);
-    m_loginType->setCurrentIndex(cfg.loginType);
     m_autoStart->setChecked(cfg.autoStart);
 }
 

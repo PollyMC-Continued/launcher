@@ -11,7 +11,6 @@ struct BotConfig {
     QString server;
     int port = 25565;
     QString version = "1.20.4";
-    int loginType = 0; // 0 = Offline, 1 = Microsoft
     bool autoStart = true;
 };
 
@@ -30,6 +29,5 @@ private:
     QLineEdit* m_server;
     QSpinBox* m_port;
     QComboBox* m_version;
-    QComboBox* m_loginType;
     QCheckBox* m_autoStart;
 };

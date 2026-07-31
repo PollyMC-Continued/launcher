@@ -61,6 +61,8 @@ class InstanceView;
 class KonamiCode;
 class InstanceTask;
 class LabeledToolButton;
+class QSystemTrayIcon;
+class BotManagerDialog;
 
 namespace Ui {
 class MainWindow;
@@ -160,6 +162,8 @@ class MainWindow : public QMainWindow {
 
     void forceClose();
 
+    void showFromTray();
+
     void on_actionKillInstance_triggered();
 
     void on_actionDeleteInstance_triggered();
@@ -253,6 +257,8 @@ class MainWindow : public QMainWindow {
     QLabel* m_statusMemory = nullptr;
     QTimer* m_memoryTimer = nullptr;
     bool m_forceClose = false;
+    QSystemTrayIcon* m_trayIcon = nullptr;
+    BotManagerDialog* m_botManager = nullptr;
     LabeledToolButton* changeIconButton = nullptr;
     LabeledToolButton* renameButton = nullptr;
     QToolButton* helpMenuButton = nullptr;

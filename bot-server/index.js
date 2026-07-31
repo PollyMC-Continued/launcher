@@ -7,13 +7,15 @@ function send(event, data) {
   process.stdout.write(JSON.stringify({ event, ...data }) + '\n');
 }
 
-function createBot(username, server, port = 25565) {
+function createBot(username, server, port = 25565, version) {
   if (bots[username]) {
     send('error', { text: `Bot "${username}" already exists` });
     return;
   }
   send('log', { text: `Connecting ${username} to ${server}:${port}...` });
-  const bot = mineflayer.createBot({ host: server, port, username });
+  const options = { host: server, port, username };
+  if (version) options.version = version;
+  const bot = mineflayer.createBot(options);
   bots[username] = bot;
 
   bot.on('login', () => {
@@ -65,6 +67,15 @@ function disconnectBot(username) {
   send('log', { text: `${username} disconnected` });
 }
 
+function disconnectAllBots() {
+  const names = Object.keys(bots);
+  for (const name of names) {
+    bots[name].end();
+    delete bots[name];
+    send('log', { text: `${name} disconnected` });
+  }
+}
+
 function listBots() {
   const names = Object.keys(bots);
   send('log', { text: names.length ? `Bots: ${names.join(', ')}` : 'No bots connected' });
@@ -76,13 +87,16 @@ rl.on('line', (line) => {
     const msg = JSON.parse(line);
     switch (msg.cmd) {
       case 'join':
-        createBot(msg.username, msg.server, msg.port || 25565);
+        createBot(msg.username, msg.server, msg.port || 25565, msg.version);
         break;
       case 'say':
         runCommand(msg.username, msg.message);
         break;
       case 'quit':
         disconnectBot(msg.username);
+        break;
+      case 'quit_all':
+        disconnectAllBots();
         break;
       case 'list':
         listBots();

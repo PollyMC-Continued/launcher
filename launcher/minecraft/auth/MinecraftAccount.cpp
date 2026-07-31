@@ -186,10 +186,14 @@ void MinecraftAccount::authFailed(QString reason)
                 data.yggdrasilToken.validity = Validity::None;
                 data.validity_ = Validity::None;
             }
+            // Never persist the plaintext password (the login dialog stashes it
+            // in extra["password"] during the auth flow).
+            data.yggdrasilToken.extra.remove("password");
             emit changed();
         } break;
         case AccountTaskState::STATE_FAILED_GONE: {
             data.validity_ = Validity::None;
+            data.yggdrasilToken.extra.remove("password");
             emit changed();
         } break;
         case AccountTaskState::STATE_WORKING: {

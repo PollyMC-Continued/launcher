@@ -50,6 +50,8 @@ DiscordRichPresence::DiscordRichPresence(QObject* parent) : QObject(parent)
     m_ipcSocket = new QLocalSocket(this);
     connect(m_ipcSocket, &QLocalSocket::readyRead,
             this, &DiscordRichPresence::ipcOnReadyRead);
+    connect(m_ipcSocket, &QLocalSocket::connected,
+            this, &DiscordRichPresence::ipcOnConnected);
     connect(m_ipcSocket, &QLocalSocket::disconnected,
             this, &DiscordRichPresence::ipcOnDisconnected);
     connect(m_ipcSocket, &QLocalSocket::errorOccurred,
@@ -182,7 +184,7 @@ QJsonObject DiscordRichPresence::buildActivityJson() const
 // ============================================================================
 void DiscordRichPresence::ipcConnect()
 {
-    if (m_shuttingDown)
+    if (m_shuttingDown || m_ipcProbing)
         return;
     if (m_ipcSocket->state() == QLocalSocket::ConnectedState ||
         m_ipcSocket->state() == QLocalSocket::ConnectingState)
@@ -191,50 +193,41 @@ void DiscordRichPresence::ipcConnect()
     // Search order matches the official Discord SDK:
     // Windows: named pipe \\.\pipe\discord-ipc-N
     // Unix:    XDG_RUNTIME_DIR → TMPDIR → TMP → TEMP → /tmp
-    auto candidateDirs = [&]() -> QStringList {
+    m_ipcCandidates.clear();
 #ifdef Q_OS_WIN
-        return {};
+    for (int i = 0; i < 10; ++i)
+        m_ipcCandidates << QStringLiteral("\\\\.\\pipe\\discord-ipc-%1").arg(i);
 #else
-        QStringList dirs;
-        for (const char* var : { "XDG_RUNTIME_DIR", "TMPDIR", "TMP", "TEMP" })
-        {
-            QString v = qEnvironmentVariable(var);
-            if (!v.isEmpty() && !dirs.contains(v))
-                dirs << v;
-        }
-        dirs << QStringLiteral("/tmp");
-        return dirs;
-#endif
-    }();
-
-    for (int i = 0; i < 10; ++i) {
-#ifdef Q_OS_WIN
-        const QString pipe = QStringLiteral("\\\\.\\pipe\\discord-ipc-%1").arg(i);
-        m_ipcSocket->connectToServer(pipe);
-        if (m_ipcSocket->waitForConnected(200)) {
-            qCDebug(drp) << "IPC connected:" << pipe;
-            ipcSendHandshake();
-            return;
-        }
-        if (m_ipcSocket->state() != QLocalSocket::UnconnectedState)
-            m_ipcSocket->abort();
-#else
-        for (const QString& dir : candidateDirs) {
-            const QString sock = QStringLiteral("%1/discord-ipc-%2").arg(dir).arg(i);
-            m_ipcSocket->connectToServer(sock);
-            if (m_ipcSocket->waitForConnected(200)) {
-                qCDebug(drp) << "IPC connected:" << sock;
-                ipcSendHandshake();
-                return;
-            }
-            if (m_ipcSocket->state() != QLocalSocket::UnconnectedState)
-                m_ipcSocket->abort();
-        }
-#endif
+    QStringList dirs;
+    for (const char* var : { "XDG_RUNTIME_DIR", "TMPDIR", "TMP", "TEMP" }) {
+        QString v = qEnvironmentVariable(var);
+        if (!v.isEmpty() && !dirs.contains(v))
+            dirs << v;
     }
+    dirs << QStringLiteral("/tmp");
+    for (const QString& dir : dirs)
+        for (int i = 0; i < 10; ++i)
+            m_ipcCandidates << QStringLiteral("%1/discord-ipc-%2").arg(dir).arg(i);
+#endif
 
-    qCDebug(drp) << "Discord IPC not found; retry in" << m_ipcReconnectMs / 1000 << "s";
-    ipcScheduleReconnect();
+    m_ipcCandidateIdx = 0;
+    m_ipcProbing = true;
+    ipcProbeNext();
+}
+
+void DiscordRichPresence::ipcProbeNext()
+{
+    if (m_shuttingDown || !m_ipcProbing)
+        return;
+    if (m_ipcSocket->state() != QLocalSocket::UnconnectedState)
+        m_ipcSocket->abort();
+    if (m_ipcCandidateIdx >= m_ipcCandidates.size()) {
+        m_ipcProbing = false;
+        qCDebug(drp) << "Discord IPC not found; retry in" << m_ipcReconnectMs / 1000 << "s";
+        ipcScheduleReconnect();
+        return;
+    }
+    m_ipcSocket->connectToServer(m_ipcCandidates[m_ipcCandidateIdx++]);
 }
 
 void DiscordRichPresence::ipcScheduleReconnect()
@@ -336,6 +329,15 @@ void DiscordRichPresence::ipcOnReadyRead()
     }
 }
 
+void DiscordRichPresence::ipcOnConnected()
+{
+    if (!m_ipcProbing)
+        return;
+    m_ipcProbing = false;
+    qCDebug(drp) << "IPC connected:" << m_ipcSocket->fullServerName();
+    ipcSendHandshake();
+}
+
 void DiscordRichPresence::ipcOnDisconnected()
 {
     qCInfo(drp) << "Discord IPC disconnected";
@@ -351,6 +353,10 @@ void DiscordRichPresence::ipcOnError(QLocalSocket::LocalSocketError error)
         qCDebug(drp) << "IPC:" << m_ipcSocket->errorString();
     else
         qCWarning(drp) << "IPC error:" << m_ipcSocket->errorString();
+
+    // Failure while probing candidates — try the next one without blocking
+    if (m_ipcProbing)
+        ipcProbeNext();
 }
 
 // ============================================================================

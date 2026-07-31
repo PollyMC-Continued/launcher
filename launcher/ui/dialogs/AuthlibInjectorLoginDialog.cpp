@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QDialogButtonBox>
 #include <QPushButton>
+#include <QUrl>
 
 AuthlibInjectorLoginDialog::AuthlibInjectorLoginDialog(QWidget* parent)
     : QDialog(parent), ui(new Ui::AuthlibInjectorLoginDialog)
@@ -22,6 +23,15 @@ AuthlibInjectorLoginDialog::AuthlibInjectorLoginDialog(QWidget* parent)
 
         if (serverUrl.isEmpty() || username.isEmpty() || password.isEmpty()) {
             ui->statusLabel->setText(tr("Please fill in all fields."));
+            ui->loginButton->setEnabled(true);
+            return;
+        }
+
+        QUrl url(serverUrl);
+        if (url.scheme().isEmpty()) {
+            serverUrl = "https://" + serverUrl;
+        } else if (url.scheme() != "http" && url.scheme() != "https") {
+            ui->statusLabel->setText(tr("Server URL must start with http:// or https://"));
             ui->loginButton->setEnabled(true);
             return;
         }

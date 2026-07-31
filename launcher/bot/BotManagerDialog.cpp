@@ -13,6 +13,7 @@
 #include <QDateTime>
 #include <QScrollBar>
 #include <QMessageBox>
+#include <QItemSelectionModel>
 
 static const char* BOT_COLORS[] = {
     "#6ee7b7", "#60a5fa", "#fbbf24", "#f472b6",
@@ -156,7 +157,6 @@ void BotManagerDialog::saveConfigs()
         obj["server"] = e.config.server;
         obj["port"] = e.config.port;
         obj["version"] = e.config.version;
-        obj["loginType"] = e.config.loginType;
         obj["autoStart"] = e.config.autoStart;
         arr.append(obj);
     }
@@ -179,7 +179,6 @@ void BotManagerDialog::loadConfigs()
         e.config.server = obj["server"].toString();
         e.config.port = obj["port"].toInt(25565);
         e.config.version = obj["version"].toString("1.20.4");
-        e.config.loginType = obj["loginType"].toInt(0);
         e.config.autoStart = obj["autoStart"].toBool(true);
         e.connected = false;
         e.colorIndex = m_bots.size() % 8;
@@ -234,6 +233,13 @@ void BotManagerDialog::onAddBot()
 {
     BotConfig cfg = AddBotDialog::showDialog(this);
     if (cfg.name.isEmpty()) return;
+
+    for (const auto& e : m_bots) {
+        if (e.config.name.compare(cfg.name, Qt::CaseInsensitive) == 0) {
+            appendLog("<span style='color:#f87171;'>A bot named \"" + cfg.name.toHtmlEscaped() + "\" already exists.</span>");
+            return;
+        }
+    }
 
     BotEntry e;
     e.config = cfg;
@@ -322,7 +328,6 @@ void BotManagerDialog::connectBot(int index)
     p["port"] = e.config.port;
     p["username"] = e.config.name;
     p["version"] = e.config.version;
-    p["loginType"] = e.config.loginType;
     m_bot->sendCommand("join", p);
 
     appendLog(QString("<span style='color:%1'>[%2] Connecting to %3...</span>")
@@ -360,14 +365,16 @@ void BotManagerDialog::onSendCommand()
 
     if (cmd == "/join") {
         if (parts.size() < 2) {
-            appendLog("Usage: /join <server> [username]");
+            appendLog("Usage: /join <server> [username] [port]");
             return;
         }
         QString server = parts[1];
         QString username = (parts.size() > 2) ? parts[2] : ("Bot" + QString::number(QDateTime::currentSecsSinceEpoch() % 10000));
+        int port = (parts.size() > 3) ? parts[3].toInt() : 25565;
         QJsonObject p;
         p["server"] = server;
         p["username"] = username;
+        p["port"] = port;
         m_bot->sendCommand("join", p);
     } else if (cmd == "/quit") {
         if (parts.size() < 2) {
@@ -393,13 +400,6 @@ void BotManagerDialog::onSendCommand()
         p["username"] = targetName;
         p["message"] = msg;
         m_bot->sendCommand("say", p);
-    } else if (cmd == "/goto" || cmd == "/follow" || cmd == "/come" || cmd == "/mine" || cmd == "/stop") {
-        if (!entry) { appendLog("Select a bot first"); return; }
-        QString rest = text.mid(cmd.length()).trimmed();
-        QJsonObject p;
-        p["username"] = targetName;
-        if (!rest.isEmpty()) p["arg"] = rest;
-        m_bot->sendCommand(cmd.mid(1), p);
     } else {
         m_log->appendHtml("<span style='color:#f87171;'>Unknown command: " + cmd.toHtmlEscaped() + "</span>");
         m_log->verticalScrollBar()->setValue(m_log->verticalScrollBar()->maximum());
