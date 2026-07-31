@@ -14,11 +14,34 @@
 #include <QScrollBar>
 #include <QMessageBox>
 #include <QItemSelectionModel>
+#include <QCompleter>
 
 static const char* BOT_COLORS[] = {
     "#6ee7b7", "#60a5fa", "#fbbf24", "#f472b6",
     "#a78bfa", "#34d399", "#f87171", "#38bdf8"
 };
+
+struct BotCommand {
+    const char* name;
+    const char* usage;
+    const char* description;
+};
+
+// Single source of truth for both the completer popup and onSendCommand()'s parser.
+static const BotCommand BOT_COMMANDS[] = {
+    { "/join", "/join <server> [username] [port]", "Connect a bot to a server" },
+    { "/quit", "/quit <username>", "Disconnect a bot" },
+    { "/list", "/list", "List the bots currently connected" },
+    { "/say",  "/say <message>", "Send a chat message as the bot selected in the table" },
+};
+
+static const BotCommand* findBotCommand(const QString& cmd)
+{
+    for (const auto& c : BOT_COMMANDS)
+        if (cmd == QLatin1String(c.name))
+            return &c;
+    return nullptr;
+}
 
 BotManagerDialog::BotManagerDialog(QWidget* parent)
     : QWidget(parent)
@@ -95,10 +118,31 @@ BotManagerDialog::BotManagerDialog(QWidget* parent)
 
     auto* inputBar = new QHBoxLayout();
     m_input = new QLineEdit(this);
-    m_input->setPlaceholderText("Type a command... (targets selected bot)");
+    m_input->setPlaceholderText("Type / to see available commands");
     m_input->setStyleSheet(
         "QLineEdit { background: #111; color: #dde1e7; font-family: 'Courier New', monospace; font-size: 12px; border: 1px solid #333; padding: 6px 8px; }"
     );
+    QStringList usages;
+    for (const auto& c : BOT_COMMANDS)
+        usages << QLatin1String(c.usage);
+    m_completer = new QCompleter(usages, this);
+    m_completer->setCaseSensitivity(Qt::CaseInsensitive);
+    m_completer->setCompletionMode(QCompleter::PopupCompletion);
+    m_input->setCompleter(m_completer);
+    connect(m_input, &QLineEdit::textChanged, this, [this](const QString& text) {
+        int space = text.indexOf(' ');
+        const QString word = text.left(space < 0 ? text.size() : space);
+        if (!word.startsWith('/')) {
+            m_completer->popup()->hide();
+            return;
+        }
+        m_completer->setCompletionPrefix(word);
+    });
+    connect(m_completer, qOverload<const QString&>(&QCompleter::activated), this,
+            [this](const QString& completion) {
+                m_input->setText(completion.section(' ', 0, 0) + " ");
+                m_input->setCursorPosition(m_input->text().size());
+            });
     m_sendBtn = new QPushButton("Send", this);
     inputBar->addWidget(m_input);
     inputBar->addWidget(m_sendBtn);
@@ -363,6 +407,13 @@ void BotManagerDialog::onSendCommand()
     auto* entry = currentBot();
     QString targetName = entry ? entry->config.name : QString();
 
+    if (!findBotCommand(cmd)) {
+        m_log->appendHtml("<span style='color:#f87171;'>Unknown command: " + cmd.toHtmlEscaped()
+            + " — type / to see available commands</span>");
+        m_log->verticalScrollBar()->setValue(m_log->verticalScrollBar()->maximum());
+        return;
+    }
+
     if (cmd == "/join") {
         if (parts.size() < 2) {
             appendLog("Usage: /join <server> [username] [port]");
@@ -400,9 +451,6 @@ void BotManagerDialog::onSendCommand()
         p["username"] = targetName;
         p["message"] = msg;
         m_bot->sendCommand("say", p);
-    } else {
-        m_log->appendHtml("<span style='color:#f87171;'>Unknown command: " + cmd.toHtmlEscaped() + "</span>");
-        m_log->verticalScrollBar()->setValue(m_log->verticalScrollBar()->maximum());
     }
 }
 

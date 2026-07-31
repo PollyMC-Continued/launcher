@@ -12,6 +12,8 @@
 #include "BotProcess.h"
 #include "AddBotDialog.h"
 
+class QCompleter;
+
 struct BotEntry {
     BotConfig config;
     bool connected = false;
@@ -56,6 +58,7 @@ private:
     QTableWidget* m_table;
     QPlainTextEdit* m_log;
     QLineEdit* m_input;
+    QCompleter* m_completer;
     QPushButton* m_sendBtn;
     QLabel* m_statusLabel;
     QPushButton* m_addBtn;
