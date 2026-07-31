@@ -154,8 +154,15 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .ccache
-          key: ccache-windows-v1
-          restore-keys: ccache-windows-
+          # Unique per run so a fresh save always succeeds (actions/cache
+          # entries are immutable per key - reusing a static key means every
+          # run after the first silently fails to save, so ccache never
+          # learns about new commits and hit rate degrades over time).
+          # restore-keys still picks up the most recent prior cache to warm
+          # from.
+          key: ccache-windows-${{ github.run_id }}
+          restore-keys: |
+            ccache-windows-
 
       - name: Setup Node.js
         shell: bash
@@ -175,17 +182,22 @@ jobs:
             -DCMAKE_C_FLAGS="-Wno-error" \
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -DLauncher_VERSION="${{ needs.skip-check.outputs.version }}" \
             -S . -B build
 
       - name: Build
         run: |
           set -euo pipefail
+          ccache -z
           cmake --build build -j$(nproc)
           cmake --install build
+          echo "=== ccache stats ==="
+          ccache -s
 
       - name: Bundle bot-server
         run: |
           set -euo pipefail
+          rm -rf install/bot-server
           cp -r bot-server install/bot-server
           rm -f install/bot-server/.gitignore
           # Remove any dev-only files to keep the bundle lean
@@ -379,8 +391,15 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ env.CCACHE_DIR }}
-          key: ccache-linux-v1
-          restore-keys: ccache-linux-
+          # Unique per run so a fresh save always succeeds (actions/cache
+          # entries are immutable per key - reusing a static key means every
+          # run after the first silently fails to save, so ccache never
+          # learns about new commits and hit rate degrades over time).
+          # restore-keys still picks up the most recent prior cache to warm
+          # from.
+          key: ccache-linux-${{ github.run_id }}
+          restore-keys: |
+            ccache-linux-
 
       - name: Configure
         run: |
@@ -392,10 +411,16 @@ jobs:
             -DCMAKE_C_FLAGS="-Wno-error" \
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -DLauncher_VERSION="${{ needs.skip-check.outputs.version }}" \
             -S . -B build
 
       - name: Build
-        run: cmake --build build -j$(nproc)
+        run: |
+          set -euo pipefail
+          ccache -z
+          cmake --build build -j$(nproc)
+          echo "=== ccache stats ==="
+          ccache -s
 
       - name: Package
         run: |
@@ -507,8 +532,15 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ env.CCACHE_DIR }}
-          key: ccache-macos-v1
-          restore-keys: ccache-macos-
+          # Unique per run so a fresh save always succeeds (actions/cache
+          # entries are immutable per key - reusing a static key means every
+          # run after the first silently fails to save, so ccache never
+          # learns about new commits and hit rate degrades over time).
+          # restore-keys still picks up the most recent prior cache to warm
+          # from.
+          key: ccache-macos-${{ github.run_id }}
+          restore-keys: |
+            ccache-macos-
 
       - name: Configure
         run: |
@@ -544,7 +576,11 @@ jobs:
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Build
-        run: cmake --build --preset macos_universal --config "$BUILD_TYPE"
+        run: |
+          ccache -z
+          cmake --build --preset macos_universal --config "$BUILD_TYPE"
+          echo "=== ccache stats ==="
+          ccache -s
 
       - name: Import signing certificate
         env:
