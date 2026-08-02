@@ -44,6 +44,7 @@
 #include "FileSystem.h"
 #include "launch/LaunchTask.h"
 #include "minecraft/MinecraftInstance.h"
+#include "minecraft/PackProfile.h"
 
 #ifdef Q_OS_LINUX
 #include "gamemode_client.h"
@@ -118,7 +119,12 @@ void LauncherPartLaunch::executeTask()
     args << "-Djava.library.path=" + natPath;
 
     // Inject skin agent for offline accounts
-    if (m_session && m_session->user_type == "offline") {
+    // Quilt's Knot classloader owns its own URL/JAR handling and does not tolerate the
+    // JVM-wide HTTPS handler replacement the agent installs, so skip it for Quilt.
+    bool isQuilt = false;
+    if (auto profile = instance->getPackProfile(); profile)
+        isQuilt = profile->getComponent("org.quiltmc.quilt-loader") != nullptr;
+    if (m_session && m_session->user_type == "offline" && !isQuilt) {
         QString skinAgentPath = APPLICATION->getJarPath("SkinAgent.jar");
         if (!skinAgentPath.isEmpty()) {
             args << ("-javaagent:" + skinAgentPath);
@@ -127,6 +133,8 @@ void LauncherPartLaunch::executeTask()
             args << "--add-opens=java.base/sun.net.www.protocol.https=ALL-UNNAMED";
             emit logLine("Offline skin agent injected.\n", MessageLevel::Launcher);
         }
+    } else if (m_session && m_session->user_type == "offline" && isQuilt) {
+        emit logLine("Offline skin agent skipped: incompatible with Quilt loader.\n", MessageLevel::Launcher);
     }
 
     // Inject authlib-injector for Yggdrasil accounts

@@ -52,6 +52,7 @@ private:
     void connectBot(int index);
     void disconnectBot(int index);
     BotEntry* currentBot();
+    QVector<BotEntry*> selectedBots();
 
     BotProcess* m_bot = nullptr;
     QVector<BotEntry> m_bots;

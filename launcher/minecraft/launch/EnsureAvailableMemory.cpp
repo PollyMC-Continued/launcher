@@ -25,19 +25,30 @@ EnsureAvailableMemory::EnsureAvailableMemory(LaunchTask* parent, MinecraftInstan
 
 void EnsureAvailableMemory::executeTask()
 {
+    const uint64_t total = HardwareInfo::totalRamMiB();
     const uint64_t available = HardwareInfo::availableRamMiB();
     const uint64_t min = m_instance->settings()->get("MinMemAlloc").toUInt();
     const uint64_t max = m_instance->settings()->get("MaxMemAlloc").toUInt();
     const uint64_t required = std::max(min, max);
 
-    if (required > available) {
+    // Reserve a safety margin for the OS and other running software rather
+    // than requiring the full amount to be free right this instant — total
+    // installed RAM is what determines whether an allocation is fundamentally
+    // viable on this hardware, not a momentary snapshot of free memory.
+    constexpr uint64_t safetyMarginMiB = 1024;
+    const uint64_t usableTotal = (total > safetyMarginMiB) ? (total - safetyMarginMiB) : 0;
+
+    if (total > 0 && required > usableTotal) {
+        // Hard incompatibility: the system physically cannot back this
+        // allocation no matter what else is running. Keep this as a blocking
+        // warning (existing Yes/No dialog), but base the message on total RAM.
         auto* dialog = CustomMessageBox::selectable(
             nullptr, tr("Not enough RAM"),
-            tr("There is not enough RAM available to launch this instance with the current memory settings.\n\n"
-               "Required: %1 MiB\nAvailable: %2 MiB\n\n"
-               "Continue anyway? This may cause slowdowns in the game and your system.")
+            tr("This instance is configured to use more memory than your system has installed.\n\n"
+               "Required: %1 MiB\nTotal system RAM: %2 MiB\n\n"
+               "Continue anyway? This may cause severe slowdowns or crashes.")
                 .arg(required)
-                .arg(available),
+                .arg(total),
             QMessageBox::Icon::Warning, QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
             QMessageBox::StandardButton::No);
         const auto response = dialog->exec();
@@ -51,6 +62,15 @@ void EnsureAvailableMemory::executeTask()
         }
 
         emit logLine(message, MessageLevel::Warning);
+    } else if (required > available) {
+        // Soft warning: fundamentally viable on this hardware, but not enough
+        // is free right now due to other running programs. Log only, don't
+        // block launch — this is not the instance's fault.
+        emit logLine(tr("Note: only %1 MiB RAM is currently free, but this instance requests %2 MiB. "
+                         "Other running programs may cause slowdowns; consider closing some before playing.")
+                         .arg(available)
+                         .arg(required),
+                     MessageLevel::Warning);
     }
 
     emitSucceeded();

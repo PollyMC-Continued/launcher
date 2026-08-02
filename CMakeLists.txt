@@ -191,6 +191,11 @@ set(Launcher_VERSION_NAME "${Launcher_VERSION_MAJOR}.${Launcher_VERSION_MINOR}.$
 set(Launcher_VERSION_NAME4 "${Launcher_VERSION_MAJOR}.${Launcher_VERSION_MINOR}.${Launcher_VERSION_PATCH}.0")
 set(Launcher_VERSION_NAME4_COMMA "${Launcher_VERSION_MAJOR},${Launcher_VERSION_MINOR},${Launcher_VERSION_PATCH},0")
 
+# Monotonically increasing build number, distinct from the marketing version.
+# CI overrides this on every run (github.run_number) so builds sharing a
+# marketing version are still distinguishable to the updater/Sparkle.
+set(Launcher_BUILD_NUMBER "0" CACHE STRING "Build number (CI override)")
+
 # Build platform.
 set(Launcher_BUILD_PLATFORM "unknown" CACHE STRING "A short string identifying the platform that this build was built for. Only used to display in the about dialog.")
 
@@ -390,7 +395,7 @@ if(UNIX AND APPLE)
     set(MACOSX_BUNDLE_BUNDLE_NAME "${Launcher_DisplayName}")
     set(MACOSX_BUNDLE_INFO_STRING "${Launcher_DisplayName}: A custom launcher for Minecraft that allows you to easily manage multiple installations of Minecraft at once.")
     set(MACOSX_BUNDLE_GUI_IDENTIFIER "${Launcher_AppID}")
-    set(MACOSX_BUNDLE_BUNDLE_VERSION "${Launcher_VERSION_NAME}")
+    set(MACOSX_BUNDLE_BUNDLE_VERSION "${Launcher_VERSION_NAME}.${Launcher_BUILD_NUMBER}")
     set(MACOSX_BUNDLE_SHORT_VERSION_STRING "${Launcher_VERSION_NAME}")
     set(MACOSX_BUNDLE_LONG_VERSION_STRING "${Launcher_VERSION_NAME}")
     set(MACOSX_BUNDLE_ICON_FILE ${Launcher_Name}.icns)

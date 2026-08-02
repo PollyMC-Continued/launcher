@@ -30,21 +30,21 @@ struct BotCommand {
 // Single source of truth for both the completer popup and onSendCommand()'s parser.
 static const BotCommand BOT_COMMANDS[] = {
     { "/join", "/join <server> [username] [port]", "Connect a bot to a server" },
-    { "/quit", "/quit <username>", "Disconnect a bot" },
+    { "/quit", "/quit", "Disconnect the selected bot(s)" },
     { "/list", "/list", "List the bots currently connected" },
-    { "/say",  "/say <message>", "Send a chat message as the bot selected in the table" },
-    { "/follow", "/follow <player>", "Make the selected bot walk to a player" },
-    { "/stop", "/stop", "Stop the selected bot's movement" },
-    { "/goto", "/goto <x> <y> <z>", "Make the selected bot walk to coordinates" },
-    { "/home", "/home", "Make the selected bot walk back to spawn" },
-    { "/pos", "/pos", "Show the selected bot's position" },
-    { "/health", "/health", "Show the selected bot's health and food" },
-    { "/inventory", "/inventory", "List the selected bot's items" },
-    { "/drop", "/drop <item> [count]", "Drop an item from the selected bot" },
-    { "/equip", "/equip <item>", "Make the selected bot hold an item" },
-    { "/whisper", "/whisper <player> <message>", "Send a private message as the selected bot" },
-    { "/respawn", "/respawn", "Respawn the selected bot" },
-    { "/players", "/players", "List players near the selected bot" },
+    { "/say",  "/say <message>", "Send a chat message as the selected bot(s)" },
+    { "/follow", "/follow <player>", "Make the selected bot(s) walk to a player" },
+    { "/stop", "/stop", "Stop the selected bot(s)' movement" },
+    { "/goto", "/goto <x> <y> <z>", "Make the selected bot(s) walk to coordinates" },
+    { "/home", "/home", "Make the selected bot(s) walk back to spawn" },
+    { "/pos", "/pos", "Show the selected bot(s)' position" },
+    { "/health", "/health", "Show the selected bot(s)' health and food" },
+    { "/inventory", "/inventory", "List the selected bot(s)' items" },
+    { "/drop", "/drop <item> [count]", "Drop an item from the selected bot(s)" },
+    { "/equip", "/equip <item>", "Make the selected bot(s) hold an item" },
+    { "/whisper", "/whisper <player> <message>", "Send a private message as the selected bot(s)" },
+    { "/respawn", "/respawn", "Respawn the selected bot(s)" },
+    { "/players", "/players", "List players near the selected bot(s)" },
     { "/help", "/help", "List available commands" },
     { "/clear", "/clear", "Clear the console log" },
 };
@@ -290,6 +290,16 @@ BotEntry* BotManagerDialog::currentBot()
     return &m_bots[row];
 }
 
+QVector<BotEntry*> BotManagerDialog::selectedBots()
+{
+    QVector<BotEntry*> result;
+    for (const auto& idx : m_table->selectionModel()->selectedRows()) {
+        if (idx.row() >= 0 && idx.row() < m_bots.size())
+            result.append(&m_bots[idx.row()]);
+    }
+    return result;
+}
+
 void BotManagerDialog::onAddBot()
 {
     BotConfig cfg = AddBotDialog::showDialog(this);
@@ -432,8 +442,7 @@ void BotManagerDialog::onSendCommand()
     if (parts.isEmpty()) return;
     QString cmd = parts[0].toLower();
 
-    auto* entry = currentBot();
-    QString targetName = entry ? entry->config.name : QString();
+    auto bots = selectedBots();
 
     if (!findBotCommand(cmd)) {
         m_log->appendHtml("<span style='color:#f87171;'>Unknown command: " + cmd.toHtmlEscaped()
@@ -456,107 +465,127 @@ void BotManagerDialog::onSendCommand()
         p["port"] = port;
         m_bot->sendCommand("join", p);
     } else if (cmd == "/quit") {
-        if (parts.size() < 2) {
-            appendLog("Usage: /quit <username>");
-            return;
-        }
-        QJsonObject p;
-        p["username"] = parts[1];
-        m_bot->sendCommand("quit", p);
-        for (auto& e : m_bots) {
-            if (e.config.name == parts[1]) {
-                e.connected = false;
-                break;
-            }
+        if (bots.isEmpty()) { appendLog("Select a bot first"); return; }
+        for (auto* entry : bots) {
+            QJsonObject p;
+            p["username"] = entry->config.name;
+            m_bot->sendCommand("quit", p);
+            entry->connected = false;
         }
         refreshTable();
     } else if (cmd == "/list") {
         m_bot->sendCommand("list");
     } else if (cmd == "/say") {
-        if (!entry) { appendLog("Select a bot first"); return; }
+        if (bots.isEmpty()) { appendLog("Select a bot first"); return; }
         QString msg = text.mid(5).trimmed();
-        QJsonObject p;
-        p["username"] = targetName;
-        p["message"] = msg;
-        m_bot->sendCommand("say", p);
+        for (auto* entry : bots) {
+            QJsonObject p;
+            p["username"] = entry->config.name;
+            p["message"] = msg;
+            m_bot->sendCommand("say", p);
+        }
     } else if (cmd == "/follow") {
-        if (!entry) { appendLog("Select a bot first"); return; }
+        if (bots.isEmpty()) { appendLog("Select a bot first"); return; }
         if (parts.size() < 2) { appendLog("Usage: /follow <player>"); return; }
-        QJsonObject p;
-        p["username"] = targetName;
-        p["player"] = parts[1];
-        m_bot->sendCommand("follow", p);
+        for (auto* entry : bots) {
+            QJsonObject p;
+            p["username"] = entry->config.name;
+            p["player"] = parts[1];
+            m_bot->sendCommand("follow", p);
+        }
     } else if (cmd == "/stop") {
-        if (!entry) { appendLog("Select a bot first"); return; }
-        QJsonObject p;
-        p["username"] = targetName;
-        m_bot->sendCommand("stop", p);
+        if (bots.isEmpty()) { appendLog("Select a bot first"); return; }
+        for (auto* entry : bots) {
+            QJsonObject p;
+            p["username"] = entry->config.name;
+            m_bot->sendCommand("stop", p);
+        }
     } else if (cmd == "/help") {
         showHelp();
     } else if (cmd == "/clear") {
         m_log->clear();
     } else if (cmd == "/goto") {
-        if (!entry) { appendLog("Select a bot first"); return; }
+        if (bots.isEmpty()) { appendLog("Select a bot first"); return; }
         if (parts.size() < 4) { appendLog("Usage: /goto <x> <y> <z>"); return; }
-        QJsonObject p;
-        p["username"] = targetName;
-        p["x"] = parts[1].toDouble();
-        p["y"] = parts[2].toDouble();
-        p["z"] = parts[3].toDouble();
-        m_bot->sendCommand("goto", p);
+        for (auto* entry : bots) {
+            QJsonObject p;
+            p["username"] = entry->config.name;
+            p["x"] = parts[1].toDouble();
+            p["y"] = parts[2].toDouble();
+            p["z"] = parts[3].toDouble();
+            m_bot->sendCommand("goto", p);
+        }
     } else if (cmd == "/home") {
-        if (!entry) { appendLog("Select a bot first"); return; }
-        QJsonObject p;
-        p["username"] = targetName;
-        m_bot->sendCommand("home", p);
+        if (bots.isEmpty()) { appendLog("Select a bot first"); return; }
+        for (auto* entry : bots) {
+            QJsonObject p;
+            p["username"] = entry->config.name;
+            m_bot->sendCommand("home", p);
+        }
     } else if (cmd == "/pos") {
-        if (!entry) { appendLog("Select a bot first"); return; }
-        QJsonObject p;
-        p["username"] = targetName;
-        m_bot->sendCommand("pos", p);
+        if (bots.isEmpty()) { appendLog("Select a bot first"); return; }
+        for (auto* entry : bots) {
+            QJsonObject p;
+            p["username"] = entry->config.name;
+            m_bot->sendCommand("pos", p);
+        }
     } else if (cmd == "/health") {
-        if (!entry) { appendLog("Select a bot first"); return; }
-        QJsonObject p;
-        p["username"] = targetName;
-        m_bot->sendCommand("health", p);
+        if (bots.isEmpty()) { appendLog("Select a bot first"); return; }
+        for (auto* entry : bots) {
+            QJsonObject p;
+            p["username"] = entry->config.name;
+            m_bot->sendCommand("health", p);
+        }
     } else if (cmd == "/inventory") {
-        if (!entry) { appendLog("Select a bot first"); return; }
-        QJsonObject p;
-        p["username"] = targetName;
-        m_bot->sendCommand("inventory", p);
+        if (bots.isEmpty()) { appendLog("Select a bot first"); return; }
+        for (auto* entry : bots) {
+            QJsonObject p;
+            p["username"] = entry->config.name;
+            m_bot->sendCommand("inventory", p);
+        }
     } else if (cmd == "/drop") {
-        if (!entry) { appendLog("Select a bot first"); return; }
+        if (bots.isEmpty()) { appendLog("Select a bot first"); return; }
         if (parts.size() < 2) { appendLog("Usage: /drop <item> [count]"); return; }
-        QJsonObject p;
-        p["username"] = targetName;
-        p["item"] = parts[1];
-        p["count"] = (parts.size() > 2) ? parts[2].toInt() : 0;
-        m_bot->sendCommand("drop", p);
+        for (auto* entry : bots) {
+            QJsonObject p;
+            p["username"] = entry->config.name;
+            p["item"] = parts[1];
+            p["count"] = (parts.size() > 2) ? parts[2].toInt() : 0;
+            m_bot->sendCommand("drop", p);
+        }
     } else if (cmd == "/equip") {
-        if (!entry) { appendLog("Select a bot first"); return; }
+        if (bots.isEmpty()) { appendLog("Select a bot first"); return; }
         if (parts.size() < 2) { appendLog("Usage: /equip <item>"); return; }
-        QJsonObject p;
-        p["username"] = targetName;
-        p["item"] = parts[1];
-        m_bot->sendCommand("equip", p);
+        for (auto* entry : bots) {
+            QJsonObject p;
+            p["username"] = entry->config.name;
+            p["item"] = parts[1];
+            m_bot->sendCommand("equip", p);
+        }
     } else if (cmd == "/whisper") {
-        if (!entry) { appendLog("Select a bot first"); return; }
+        if (bots.isEmpty()) { appendLog("Select a bot first"); return; }
         if (parts.size() < 3) { appendLog("Usage: /whisper <player> <message>"); return; }
-        QJsonObject p;
-        p["username"] = targetName;
-        p["player"] = parts[1];
-        p["message"] = text.mid(10 + parts[1].length()).trimmed();
-        m_bot->sendCommand("whisper", p);
+        for (auto* entry : bots) {
+            QJsonObject p;
+            p["username"] = entry->config.name;
+            p["player"] = parts[1];
+            p["message"] = text.mid(10 + parts[1].length()).trimmed();
+            m_bot->sendCommand("whisper", p);
+        }
     } else if (cmd == "/respawn") {
-        if (!entry) { appendLog("Select a bot first"); return; }
-        QJsonObject p;
-        p["username"] = targetName;
-        m_bot->sendCommand("respawn", p);
+        if (bots.isEmpty()) { appendLog("Select a bot first"); return; }
+        for (auto* entry : bots) {
+            QJsonObject p;
+            p["username"] = entry->config.name;
+            m_bot->sendCommand("respawn", p);
+        }
     } else if (cmd == "/players") {
-        if (!entry) { appendLog("Select a bot first"); return; }
-        QJsonObject p;
-        p["username"] = targetName;
-        m_bot->sendCommand("players", p);
+        if (bots.isEmpty()) { appendLog("Select a bot first"); return; }
+        for (auto* entry : bots) {
+            QJsonObject p;
+            p["username"] = entry->config.name;
+            m_bot->sendCommand("players", p);
+        }
     }
 }
 

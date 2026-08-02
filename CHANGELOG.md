@@ -1,5 +1,15 @@
 # Changelog
 
+## v9.2.1
+
+**Changed:**
+- Bot Manager: commands that act on a bot no longer take a username — you must select the bot(s) in the table first; multi-selected bots are targeted together, and `/quit` now disconnects the selected bot(s) instead of `<username>`
+
+**Fixed:**
+- Quilt instances no longer fail to launch when using an offline account
+- "Not enough RAM" warning no longer triggers on momentary free RAM: the blocking check now compares the allocation against total installed RAM (minus a 1 GiB OS margin), and a temporarily low free-RAM count is only a log note, not a launch blocker
+- Updater no longer nags "new version available" when the installed version matches the latest release: macOS builds now carry a strictly increasing build number (`MACOSX_BUNDLE_BUNDLE_VERSION` = marketing version + CI run number) distinct from the marketing version
+
 ## v9.2.0
 
 **Added:**
