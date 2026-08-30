@@ -24,6 +24,7 @@
 - Resolving the cache could stall the UI with a full-file MD5 read and unbounded `xdg-mime` wait
 - Bot dependency install could hang forever if npm failed to start; the bot status now shows the install progress
 - Launcher shutdown no longer blocks on draining the global thread pool
+- World save ZIPs with `level.dat` at the archive root are recognized again (dropping the file onto the launcher installs the world into an instance instead of opening the import-modpack dialog; nested ZIPs no longer fail silently)
 
 ## v9.2.6
 
