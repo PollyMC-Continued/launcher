@@ -455,7 +455,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     // GitHub star reminder toast — hidden until maybeShowStarToast() decides
     // it is time to show it.
     m_toast = new ToastNotification(this);
-    connect(m_toast, &ToastNotification::dismissed, this, [this] {
+    connect(m_toast, &ToastNotification::dismissed, this, [] {
         APPLICATION->settings()->set("StarReminderDismissed", true);
     });
 
@@ -573,9 +573,10 @@ void MainWindow::maybeShowStarToast()
         return;
 
     settings->set("StarReminderLastShown", QDate::currentDate().toString(Qt::ISODate));
-    m_toast->showToast(toastPosition(), tr("Enjoying PollyMC-Continued?"),
-                       tr("Give the project a star on GitHub!"), tr("Star on GitHub"),
-                       [this] { DesktopServices::openUrl(QUrl(kStarRepoUrl)); });
+    m_toast->prepareToast(tr("Enjoying PollyMC-Continued?"),
+                          tr("Give the project a star on GitHub!"), tr("Star on GitHub"),
+                          [] { DesktopServices::openUrl(QUrl(kStarRepoUrl)); });
+    m_toast->showToast(toastPosition());
 }
 
 void MainWindow::lockToolbars(bool state)
@@ -1922,4 +1923,3 @@ void MainWindow::refreshCurrentInstance()
     auto current = view->selectionModel()->currentIndex();
     instanceChanged(current, current);
 }
-       
