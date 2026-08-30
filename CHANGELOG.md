@@ -1,6 +1,6 @@
 # Changelog
 
-## v9.2.7
+## v9.2.8
 
 **Added:**
 - Linux binary tarball release artifact (`PollyMC-Continued-*-Linux-x86_64.tar.gz`) — portable install with the same layout as the Windows portable zip
