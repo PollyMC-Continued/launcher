@@ -361,12 +361,14 @@ jobs:
           # dropped by the shell wrapper; !addplugindir inside the script
           # is the one mechanism that reliably works.
           PLUGIN_DIR="$(cygpath -m /ucrt64/share/nsis/Plugins/unicode)"
-          { echo "!addplugindir \"$PLUGIN_DIR\""; cat pollymc_installer_versioned.nsi; } > pollymc_installer_versioned.nsi.tmp
+          { echo "!addplugindir /x86-unicode \"$PLUGIN_DIR\""; cat pollymc_installer_versioned.nsi; } > pollymc_installer_versioned.nsi.tmp
           mv pollymc_installer_versioned.nsi.tmp pollymc_installer_versioned.nsi
-
           # Show where nsExec lives so the directive above can be corrected
           # if MSYS2 ever changes its NSIS layout.
           find /ucrt64/share/nsis -name 'nsExec.dll' 2>/dev/null || echo "nsExec not found"
+
+           mkdir -p /ucrt64/share/nsis/Plugins/x86-unicode
+           cp -n /ucrt64/share/nsis/Plugins/unicode/*.dll /ucrt64/share/nsis/Plugins/x86-unicode/
 
           makensis \
             "-DBUILD_DIR=${BUILD_DIR_WIN}" \
