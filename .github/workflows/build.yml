@@ -355,20 +355,40 @@ jobs:
           sed "s/PollyMC-Continued-[^ ]*-Setup/PollyMC-Continued-${VERSION}-Windows-Setup/" \
             pollymc_installer.nsi > pollymc_installer_versioned.nsi
 
-          # Register the MSYS2 plugin directory with makensis via a
-          # script directive, not a command-line flag. The MSYS2 build of
-          # makensis does not honor NSISDIR, and -X flags are being
-          # dropped by the shell wrapper; !addplugindir inside the script
-          # is the one mechanism that reliably works.
-          PLUGIN_DIR="$(cygpath -m /ucrt64/share/nsis/Plugins/unicode)"
-          { echo "!addplugindir /x86-unicode \"$PLUGIN_DIR\""; cat pollymc_installer_versioned.nsi; } > pollymc_installer_versioned.nsi.tmp
-          mv pollymc_installer_versioned.nsi.tmp pollymc_installer_versioned.nsi
-          # Show where nsExec lives so the directive above can be corrected
-          # if MSYS2 ever changes its NSIS layout.
-          find /ucrt64/share/nsis -name 'nsExec.dll' 2>/dev/null || echo "nsExec not found"
+          # MSYS2's NSIS package has shipped its plugins under different
+          # folder names over time ("unicode"/"ansi" in older builds,
+          # "amd64-unicode"/"x86-unicode"/"x86-ansi" in newer ones). Neither
+          # layout is guaranteed to be on makensis' default search path, so
+          # discover what is actually installed and register every plugin
+          # folder explicitly, with the matching target switch. The switch
+          # matters: a bare !addplugindir only applies to whichever target
+          # is active at that point (ANSI), so a later `Unicode true` /
+          # `Target` line would not see it.
+          NSIS_PLUGINS=/ucrt64/share/nsis/Plugins
+          echo "=== NSIS plugin layout ==="
+          find "$NSIS_PLUGINS" -name 'nsExec.dll'
+          if [ -z "$(find "$NSIS_PLUGINS" -name 'nsExec.dll' | head -1)" ]; then
+            echo "::error::nsExec.dll not found under $NSIS_PLUGINS (is mingw-w64-ucrt-x86_64-nsis installed?)"
+            exit 1
+          fi
 
-           mkdir -p /ucrt64/share/nsis/Plugins/x86-unicode
-           cp -n /ucrt64/share/nsis/Plugins/unicode/*.dll /ucrt64/share/nsis/Plugins/x86-unicode/
+          : > nsis_plugin_dirs.nsh
+          for d in "$NSIS_PLUGINS"/*/; do
+            d="${d%/}"
+            case "$(basename "$d")" in
+              amd64-unicode) SWITCH=/amd64-unicode ;;
+              x86-unicode|unicode) SWITCH=/x86-unicode ;;
+              x86-ansi|ansi) SWITCH=/x86-ansi ;;
+              *) continue ;;
+            esac
+            echo "!addplugindir $SWITCH \"$(cygpath -m "$d")\"" >> nsis_plugin_dirs.nsh
+          done
+          cat nsis_plugin_dirs.nsh
+
+          # Prepend via the script itself (-X flags get dropped by the
+          # MSYS2 shell wrapper, and NSISDIR is not honored).
+          cat nsis_plugin_dirs.nsh pollymc_installer_versioned.nsi > pollymc_installer_versioned.nsi.tmp
+          mv pollymc_installer_versioned.nsi.tmp pollymc_installer_versioned.nsi
 
           makensis \
             "-DBUILD_DIR=${BUILD_DIR_WIN}" \
