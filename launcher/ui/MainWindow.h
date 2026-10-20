@@ -242,6 +242,7 @@ class MainWindow : public QMainWindow {
 
     void refreshCurrentInstance();
 
+    // Developer entry points are declared in the public section above.
 
    private:
     void retranslateUi();
