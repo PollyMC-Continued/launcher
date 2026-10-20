@@ -586,11 +586,12 @@ void MainWindow::triggerInstanceAction(const QString& id, QAction* action)
 
 void MainWindow::triggerStarToastForDeveloper()
 {
-    // Settings may be hidden/reused instead of destroyed when it closes, so waiting
-    // for QObject::destroyed can leave this developer action looking like a no-op.
-    // Poll until there is no active modal dialog, then show the toast on the main window.
+    // The Developer page lives inside the modal Settings dialog. Do not show the
+    // toast while that dialog is active, and avoid keeping raw pointers to widgets
+    // across the dialog's close/destruction sequence.
     if (QApplication::activeModalWidget()) {
         statusBar()->showMessage(tr("The star reminder will appear after the Settings dialog closes."), 5000);
+
         auto* waitForModal = new QTimer(this);
         waitForModal->setInterval(100);
         connect(waitForModal, &QTimer::timeout, this, [this, waitForModal]() {
@@ -599,18 +600,26 @@ void MainWindow::triggerStarToastForDeveloper()
 
             waitForModal->stop();
             waitForModal->deleteLater();
-            if (!isVisible() || isMinimized())
-                return;
 
-            // Ignore the normal schedule and dismissed state for this explicit test action.
-            prepareStarToast();
-            m_toast->showToast(toastPosition());
+            // Defer one more event-loop turn so Qt can finish closing the modal
+            // dialog before the main-window child widget is shown.
+            QTimer::singleShot(0, this, [this]() {
+                if (!isVisible() || isMinimized() || !m_toast)
+                    return;
+
+                // This explicit developer action bypasses schedule/dismissal gates.
+                prepareStarToast();
+                m_toast->showToast(toastPosition());
+            });
         });
         waitForModal->start();
         return;
     }
 
-    // Keep this explicit developer action independent of the normal weekly/dismissed gates.
+    if (!isVisible() || isMinimized() || !m_toast)
+        return;
+
+    // Keep this explicit developer action independent of normal weekly/dismissed gates.
     prepareStarToast();
     m_toast->showToast(toastPosition());
 }
