@@ -63,6 +63,7 @@ class HttpMetaCache;
 class SettingsObject;
 class InstanceList;
 class AccountList;
+class QSplashScreen;
 class IconList;
 class QNetworkAccessManager;
 class JavaInstallList;
@@ -158,6 +159,9 @@ class Application : public QApplication {
 
     void detectLibraries();
 
+    // applies the user-chosen font to the whole launcher
+    void applyLauncherFont();
+
     /*!
      * Finds and returns the full path to a jar file.
      * Returns a null-string if it could not be found.
@@ -191,6 +195,9 @@ class Application : public QApplication {
     InstanceWindow* showInstanceWindow(BaseInstance* instance, QString page = QString());
     MainWindow* showMainWindow(bool minimized = false);
     ViewLogWindow* showLogWindow();
+
+    /// Closes and releases the startup splash screen, if it is still visible.
+    void closeSplashScreen();
 
     void updateIsRunning(bool running);
     bool updatesAreAllowed();
@@ -231,6 +238,7 @@ class Application : public QApplication {
    private:
     bool handleDataMigration(const QString& currentData, const QString& oldData, const QString& name, const QString& configFile) const;
     bool handleFlippedDataRoot(const QString& currentData, const QString& oldData) const;
+    bool handlePortableMigration(const QString& currentData) const;
     bool createSetupWizard();
     void performMainStartupAction();
 
@@ -295,6 +303,9 @@ class Application : public QApplication {
 
     // main window, if any
     MainWindow* m_mainWindow = nullptr;
+
+    // startup splash, shown until the main window takes over
+    QSplashScreen* m_splash = nullptr;
 
     // log window, if any
     ViewLogWindow* m_viewLogWindow = nullptr;

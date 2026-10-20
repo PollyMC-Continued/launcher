@@ -89,6 +89,7 @@
 #include <mutex>
 
 #include <QAccessible>
+#include <QCheckBox>
 #include <QCommandLineParser>
 #include <QDebug>
 #include <QDir>
@@ -98,9 +99,13 @@
 #include <QLibraryInfo>
 #include <QList>
 #include <QNetworkAccessManager>
+#include <QPainter>
 #include <QStringList>
 #include <QStringLiteral>
+#include <QSplashScreen>
+#include <QSvgRenderer>
 #include <QStyleFactory>
+#include <QStyleHints>
 #include <QTranslator>
 #include <QTimer>
 #include <QWindow>
@@ -160,7 +165,6 @@
 #define WIN32_LEAN_AND_MEAN
 #endif
 #include <windows.h>
-#include <QStyleHints>
 #endif
 
 #include "console/Console.h"
@@ -294,6 +298,35 @@ std::tuple<QDateTime, QString, QString, QString, QString> read_lock_File(const Q
 
 Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 {
+    // Skip splash in headless/offscreen environments.
+    const bool headless = QGuiApplication::platformName() == "offscreen"
+                          || qEnvironmentVariableIsSet("POLLYMC_NO_SPLASH");
+    if (!headless) {
+        QSvgRenderer renderer(QStringLiteral(":/branding/splash-logo.svg"));
+        if (renderer.isValid()) {
+            // Splash canvas: 400x260 dark, matching the app's dark theme
+            QPixmap splashPixmap(400, 260);
+            splashPixmap.fill(QColor("#191919"));
+            QPainter p(&splashPixmap);
+            p.setRenderHint(QPainter::Antialiasing);
+            p.setRenderHint(QPainter::SmoothPixmapTransform);
+            // Wordmark is 144:48 aspect (3:1). Scale to 320x107,
+            // centered horizontally and vertically with a slight
+            // upward bias for visual balance.
+            const QRectF targetRect(
+                (400 - 320) / 2.0,
+                (260 - 107) / 2.0 - 10,
+                320,
+                107
+            );
+            renderer.render(&p, targetRect);
+            p.end();
+            m_splash = new QSplashScreen(splashPixmap, Qt::WindowStaysOnTopHint);
+            m_splash->show();
+            // Paint it once so the user sees it before we block on init.
+            QApplication::processEvents();
+        }
+    }
     if (console::isConsole()) {
         isANSIColorConsole = true;
     }
@@ -421,24 +454,18 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
     if (!FS::ensureFolderPathExists(dataPath)) {
         showFatalErrorMessage(
-            "The launcher data folder could not be created.",
-            QString("The launcher data folder could not be created.\n"
-                    "\n"
-                    "Make sure you have the right permissions to the launcher data folder and any folder needed to access it.\n"
-                    "(%1)\n"
-                    "\n"
-                    "The launcher cannot continue until you fix this problem.")
+            tr("Could not create data folder"),
+            tr("The launcher could not create its data folder at %1.\n"
+               "\n"
+               "Check that you have permission to create folders there. The launcher cannot start until this is fixed.")
                 .arg(dataPath));
         return;
     }
     if (!QDir::setCurrent(dataPath)) {
-        showFatalErrorMessage("The launcher data folder could not be opened.",
-                              QString("The launcher data folder could not be opened.\n"
-                                      "\n"
-                                      "Make sure you have the right permissions to the launcher data folder.\n"
-                                      "(%1)\n"
-                                      "\n"
-                                      "The launcher cannot continue until you fix this problem.")
+        showFatalErrorMessage(tr("Could not open data folder"),
+                              tr("The launcher could not open its data folder at %1.\n"
+                                 "\n"
+                                 "Check that you have permission to open it. The launcher cannot start until this is fixed.")
                                   .arg(dataPath));
         return;
     }
@@ -517,13 +544,10 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
         logFile = std::unique_ptr<QFile>(new QFile(logBase.arg(0)));
         if (!logFile->open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate)) {
-            showFatalErrorMessage("The launcher data folder is not writable!",
-                                  QString("The launcher couldn't create a log file - %1.\n"
-                                          "\n"
-                                          "Make sure you have write permissions to the data folder.\n"
-                                          "(%2)\n"
-                                          "\n"
-                                          "The launcher cannot continue until you fix this problem.")
+            showFatalErrorMessage(tr("Data folder is not writable"),
+                                  tr("The launcher could not create a log file: %1.\n"
+                                     "\n"
+                                     "Check that you have write permission for the data folder at %2. The launcher cannot start until this is fixed.")
                                       .arg(logFile->errorString())
                                       .arg(dataPath));
             return;
@@ -583,6 +607,10 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
     {
         bool migrated = false;
+
+        // portable tarball first: offer system data before anything else claims the decision
+        if (!migrated)
+            migrated = handlePortableMigration(dataPath);
 
         if (!migrated)
             migrated = handleDataMigration(
@@ -658,6 +686,23 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         // Theming
         m_settings->registerSetting("IconTheme", QString());
         m_settings->registerSetting("ApplicationTheme", QString());
+        // One-time migration from the pre-split theme model. The
+        // sentinel is registered first so get() on it is always valid;
+        // it is written once and never consulted again.
+        // NOTE: AppearanceMode must be registered BEFORE the mapped
+        // set() calls below — SettingsObject::set() on an unregistered
+        // id is a no-op (logs "Setting doesn't exist").
+        m_settings->registerSetting("AppearanceMigrated", false);
+        m_settings->registerSetting("AppearanceMode", "Light");
+        if (!m_settings->get("AppearanceMigrated").toBool()) {
+            const QString legacyTheme = m_settings->get("ApplicationTheme").toString();
+            if (legacyTheme == "dark")
+                m_settings->set("AppearanceMode", "Dark");
+            else if (legacyTheme == "bright")
+                m_settings->set("AppearanceMode", "Light");
+            // native, custom, or fresh: leave at the default
+            m_settings->set("AppearanceMigrated", true);
+        }
 
         // Remembered state
         m_settings->registerSetting("LastUsedGroupForNewInstance", QString());
@@ -697,6 +742,11 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
         m_settings->registerSetting("ConsoleFont", resolvedDefaultMonospace);
         m_settings->registerSetting("ConsoleFontSize", defaultSize);
+
+        QFont systemFont = QApplication::font();
+        m_settings->registerSetting("LauncherFont", systemFont.family());
+        m_settings->registerSetting("LauncherFontSize", systemFont.pointSize() > 0 ? systemFont.pointSize() : 10);
+        applyLauncherFont();
         m_settings->registerSetting("ConsoleMaxLines", 100000);
         m_settings->registerSetting("ConsoleOverflowStop", true);
 
@@ -786,6 +836,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_settings->registerSetting("LastLaunchedInstance", "");
         m_settings->registerSetting("AutoLaunchLastInstance", false);
         m_settings->registerSetting("MinimizeToTray", false);
+        m_settings->registerSetting("DiscordRPEnabled", true);
         m_settings->registerSetting("EnableMangoHud", false);
         m_settings->registerSetting("UseDiscreteGpu", false);
         m_settings->registerSetting("UseZink", false);
@@ -975,6 +1026,15 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
     // Themes
     m_themeManager = std::make_unique<ThemeManager>();
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+    // Live-follow the OS appearance, but only while the user asked for
+    // System mode. Placed here (not in ThemeManager) because
+    // ThemeManager is not a QObject and cannot own the connection.
+    connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, [this] {
+        if (m_settings->get("AppearanceMode").toString() == "System")
+            m_themeManager->applyCurrentlySelectedTheme();
+    });
+#endif
 
 #ifdef Q_OS_MACOS
     // for macOS: getting directory settings will generate URL security-scoped bookmarks if needed and not present
@@ -1040,8 +1100,10 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         qInfo() << "<> Cache initialized.";
     }
 
-    // now we have network, download translation updates
-    m_translations->downloadIndex();
+    // Now we have network, download translation updates. Defer the request
+    // until the event loop is running so startup can paint the UI (in English,
+    // or in the cached language) instead of touching the network first.
+    QTimer::singleShot(0, this, [this]() { m_translations->downloadIndex(); });
 
     // FIXME: what to do with these?
     m_profilers.insert("jprofiler", std::shared_ptr<BaseProfilerFactory>(new JProfilerFactory()));
@@ -1084,28 +1146,20 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
         auto update_lock = QFileInfo(FS::PathCombine(m_dataPath, ".prism_launcher_update.lock"));
         if (update_lock.exists()) {
+            closeSplashScreen();
             auto [timestamp, from, to, target, data_path] = read_lock_File(update_lock.absoluteFilePath());
-            auto infoMsg = tr("This installation has a update lock file present at: %1\n"
+            auto infoMsg = tr("A previous update attempt was interrupted, so an update lock file is still present.\n"
                               "\n"
-                              "Timestamp: %2\n"
-                              "Updating from version %3 to %4\n"
-                              "Target install path: %5\n"
-                              "Data Path: %6"
-                              "\n"
-                              "This likely means that a update attempt failed. Please ensure your installation is in working order before "
-                              "proceeding.\n"
-                              "Check the PollyMC-Continued updater log at: \n"
-                              "%7\n"
-                              "for details on the last update attempt.\n"
-                              "\n"
-                              "To delete this lock and proceed select \"Ignore\" below.")
-                               .arg(update_lock.absoluteFilePath())
-                               .arg(timestamp.toString(Qt::ISODate), from, to, target, data_path)
-                               .arg(update_log_path);
-            auto msgBox = QMessageBox(QMessageBox::Warning, tr("Update In Progress"), infoMsg, QMessageBox::Ignore | QMessageBox::Abort);
+                              "Make sure no other launcher update is running. To delete the lock file and continue, select \"Ignore\" below.");
+            auto msgBox = QMessageBox(QMessageBox::Warning, tr("Update interrupted"), infoMsg, QMessageBox::Ignore | QMessageBox::Abort);
             msgBox.setDefaultButton(QMessageBox::Abort);
             msgBox.setModal(true);
-            msgBox.setDetailedText(FS::read(update_log_path));
+            msgBox.setDetailedText(tr(
+                "Lock file: %1\nTimestamp: %2\nUpdating from version %3 to %4\nTarget install path: %5\nData path: %6\nUpdater log: %7")
+                .arg(update_lock.absoluteFilePath())
+                .arg(timestamp.toString(Qt::ISODate), from, to, target, data_path)
+                .arg(update_log_path)
+                + "\n\n" + FS::read(update_log_path));
             msgBox.setMinimumWidth(460);
             msgBox.adjustSize();
             auto res = msgBox.exec();
@@ -1126,18 +1180,16 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
         auto update_fail_marker = QFileInfo(FS::PathCombine(m_dataPath, ".prism_launcher_update.fail"));
         if (update_fail_marker.exists()) {
-            auto infoMsg = tr("An update attempt failed\n"
+            closeSplashScreen();
+            auto infoMsg = tr("The last update attempt failed.\n"
                               "\n"
-                              "Please ensure your installation is in working order before "
-                              "proceeding.\n"
-                              "Check the PollyMC-Continued updater log at: \n"
-                              "%1\n"
-                              "for details on the last update attempt.")
-                               .arg(update_log_path);
-            auto msgBox = QMessageBox(QMessageBox::Warning, tr("Update Failed"), infoMsg, QMessageBox::Ignore | QMessageBox::Abort);
+                              "Make sure the installation works, then select \"Ignore\" to continue starting the launcher.");
+            auto msgBox = QMessageBox(QMessageBox::Warning, tr("Update failed"), infoMsg, QMessageBox::Ignore | QMessageBox::Abort);
             msgBox.setDefaultButton(QMessageBox::Abort);
             msgBox.setModal(true);
-            msgBox.setDetailedText(FS::read(update_log_path));
+            msgBox.setDetailedText(
+                tr("Updater log: %1").arg(update_log_path)
+                + "\n\n" + FS::read(update_log_path));
             msgBox.setMinimumWidth(460);
             msgBox.adjustSize();
             auto res = msgBox.exec();
@@ -1158,15 +1210,12 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
         auto update_success_marker = QFileInfo(FS::PathCombine(m_dataPath, ".prism_launcher_update.success"));
         if (update_success_marker.exists()) {
-            auto infoMsg = tr("Update succeeded\n"
+            closeSplashScreen();
+            auto infoMsg = tr("You are now running %1.\n"
                               "\n"
-                              "You are now running %1 .\n"
-                              "Check the PollyMC-Continued updater log at: \n"
-                              "%2\n"
-                              "for details.")
-                               .arg(BuildConfig.printableVersionString())
-                               .arg(update_log_path);
-            auto msgBox = new QMessageBox(QMessageBox::Information, tr("Update Succeeded"), infoMsg, QMessageBox::Ok);
+                              "See the updater log for details.")
+                               .arg(BuildConfig.printableVersionString());
+            auto msgBox = new QMessageBox(QMessageBox::Information, tr("Update installed"), infoMsg, QMessageBox::Ok);
             msgBox->setDefaultButton(QMessageBox::Ok);
             msgBox->setDetailedText(FS::read(update_log_path));
             msgBox->setAttribute(Qt::WA_DeleteOnClose);
@@ -1197,6 +1246,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 #endif
 
         if (is_tmp_noexec) {
+            closeSplashScreen();
             auto infoMsg =
                 tr("Your /tmp directory is currently mounted with the 'noexec' flag enabled.\n"
                    "Some versions of Minecraft may not launch.\n"
@@ -1222,6 +1272,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
     }
 
     m_themeManager->applyCurrentlySelectedTheme(true);
+    qDebug() << "Installed style:" << QApplication::style()->metaObject()->className()
+             << "objectName:" << QApplication::style()->objectName();
     performMainStartupAction();
 }
 
@@ -1294,6 +1346,9 @@ bool Application::createSetupWizard()
             m_setupWizard->addPage(new LoginWizardPage(m_setupWizard));
         }
         connect(m_setupWizard, &QDialog::finished, this, &Application::setupWizardFinished);
+        // The wizard is its own top-level window; do not leave the splash
+        // hanging over it for as long as the user takes to finish setup.
+        closeSplashScreen();
         m_setupWizard->show();
     }
 
@@ -1352,9 +1407,21 @@ void Application::setupWizardFinished(int status)
     performMainStartupAction();
 }
 
+void Application::closeSplashScreen()
+{
+    if (!m_splash)
+        return;
+    m_splash->close();
+    m_splash->deleteLater();
+    m_splash = nullptr;
+}
+
 void Application::performMainStartupAction()
 {
     m_status = Application::Initialized;
+    // Any window shown from here on is the real startup UI, so the splash
+    // must be gone before we branch into launching or opening windows.
+    closeSplashScreen();
     if (!m_instanceIdToLaunch.isEmpty()) {
         auto inst = instances()->getInstanceById(m_instanceIdToLaunch);
         if (inst) {
@@ -1430,6 +1497,7 @@ void Application::performMainStartupAction()
 
 void Application::showFatalErrorMessage(const QString& title, const QString& content)
 {
+    closeSplashScreen();
     m_status = Application::Failed;
     auto dialog = CustomMessageBox::selectable(nullptr, title, content, QMessageBox::Critical);
     dialog->exec();
@@ -1589,8 +1657,9 @@ bool Application::launch(BaseInstance* instance,
                 mcVersion = mc->getPackProfile()->getComponentVersion(QStringLiteral("net.minecraft"));
             if (mcVersion.isEmpty())
                 mcVersion = QStringLiteral("Loading...");
-            DiscordRichPresence::instance()->updatePlayingMinecraft(
-                instance->name(), mcVersion, QDateTime::currentSecsSinceEpoch());
+            if (APPLICATION->settings()->get("DiscordRPEnabled").toBool())
+                DiscordRichPresence::instance()->updatePlayingMinecraft(
+                    instance->name(), mcVersion, QDateTime::currentSecsSinceEpoch());
         });
 
         return true;
@@ -1675,7 +1744,8 @@ void Application::controllerFinished()
     const bool wasSuccessful = controller->wasSuccessful();
 
     // Update Discord Rich Presence back to idle
-    DiscordRichPresence::instance()->updateIdle();
+    if (APPLICATION->settings()->get("DiscordRPEnabled").toBool())
+        DiscordRichPresence::instance()->updateIdle();
 
     // on success, do...
     if (wasSuccessful && controller->instance()->settings()->get("AutoCloseConsole").toBool()) {
@@ -1698,6 +1768,7 @@ void Application::ShowGlobalSettings(class QWidget* parent, QString open_page)
     if (!m_globalSettingsProvider) {
         return;
     }
+    closeSplashScreen();
     emit globalSettingsAboutToOpen();
     {
         SettingsObject::Lock lock(APPLICATION->settings());
@@ -1707,8 +1778,18 @@ void Application::ShowGlobalSettings(class QWidget* parent, QString open_page)
     }
 }
 
+void Application::applyLauncherFont()
+{
+    QFont font(settings()->get("LauncherFont").toString());
+    int pointSize = settings()->get("LauncherFontSize").toInt();
+    if (pointSize > 0)
+        font.setPointSize(pointSize);
+    setFont(font);
+}
+
 MainWindow* Application::showMainWindow(bool minimized)
 {
+    closeSplashScreen();
     if (m_mainWindow) {
         m_mainWindow->setWindowState(m_mainWindow->windowState() & ~Qt::WindowMinimized);
         m_mainWindow->raise();
@@ -1741,13 +1822,15 @@ MainWindow* Application::showMainWindow(bool minimized)
         }
 
         // Discord Rich Presence
-        DiscordRichPresence::instance()->init();
+        if (APPLICATION->settings()->get("DiscordRPEnabled").toBool())
+            DiscordRichPresence::instance()->init();
     }
     return m_mainWindow;
 }
 
 ViewLogWindow* Application::showLogWindow()
 {
+    closeSplashScreen();
     if (m_viewLogWindow) {
         m_viewLogWindow->setWindowState(m_viewLogWindow->windowState() & ~Qt::WindowMinimized);
         m_viewLogWindow->raise();
@@ -1764,6 +1847,7 @@ InstanceWindow* Application::showInstanceWindow(BaseInstance* instance, QString 
 {
     if (!instance)
         return nullptr;
+    closeSplashScreen();
     auto id = instance->id();
     QMutexLocker locker(&m_instanceExtrasMutex);
     auto& extras = m_instanceExtras[id];
@@ -2120,6 +2204,103 @@ bool Application::handleFlippedDataRoot(const QString& currentData, const QStrin
     }
 
     QMessageBox::critical(nullptr, BuildConfig.LAUNCHER_DISPLAYNAME, tr("Migration failed! Reason: %1").arg(task.failReason()));
+    return false;
+}
+
+// First launch of a portable install: offer to copy data from an existing system install.
+bool Application::handlePortableMigration(const QString& currentData) const
+{
+    const QString portableRoot = QDir(m_rootPath).absolutePath();
+    const QString curRoot = QDir(currentData).absolutePath();
+
+    // (a) portable mode is active via the marker or the resolved portable paths
+    if (!m_portable && !QFile::exists(FS::PathCombine(portableRoot, "portable.txt")))
+        return false;
+
+    // only when the portable folder itself is the data dir
+    const QString userDataRoot = QDir(FS::PathCombine(portableRoot, "UserData")).absolutePath();
+    if (curRoot != portableRoot && curRoot != userDataRoot)
+        return false;
+
+    // never ask twice for the same portable folder
+    const QString declinedPath = FS::PathCombine(curRoot, ".portable_migration_declined");
+    if (QFileInfo::exists(declinedPath)) {
+        qDebug() << "<> Portable migration previously declined for" << curRoot;
+        return false;
+    }
+
+    const auto instanceCountIn = [](const QString& root) {
+        return QDir(FS::PathCombine(root, "instances")).entryList(QDir::Dirs | QDir::NoDotAndDotDot).size();
+    };
+
+    // (b) the portable folder must hold no launcher data yet
+    const bool portableHasData = instanceCountIn(curRoot) > 0 ||
+                                 QFileInfo::exists(FS::PathCombine(curRoot, "accounts.json")) ||
+                                 QFileInfo::exists(FS::PathCombine(curRoot, BuildConfig.LAUNCHER_CONFIGFILE));
+    if (portableHasData)
+        return false;
+
+    // (c) the system path is where the launcher looks with portable mode off
+    QDir systemDir(FS::PathCombine(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation), ".."));
+    const QString systemRoot = systemDir.absolutePath();
+    if (systemRoot == curRoot)
+        return false;
+    const int instanceCount = instanceCountIn(systemRoot);
+    if (instanceCount <= 0)
+        return false;
+
+    const QString message =
+        tr("Found %n instance(s) in your existing install at %1.\nCopy them into this portable folder? This will move your accounts, settings, and instance list into the portable location.", "", instanceCount)
+            .arg(systemRoot);
+
+    if (logModel)
+        logModel->append(MessageLevel::Launcher, QStringLiteral("<> Portable migration prompt shown for ") + systemRoot);
+    qInfo() << "<> Portable migration prompt shown for" << systemRoot;
+
+    // these dialogs are the only windows alive; closing them must not quit the app
+    const bool quitOnClose = qApp->quitOnLastWindowClosed();
+    qApp->setQuitOnLastWindowClosed(false);
+
+    QCheckBox dontAskAgain(tr("Don't ask again for this portable folder"));
+    std::unique_ptr<QMessageBox> box(CustomMessageBox::selectable(nullptr, BuildConfig.LAUNCHER_DISPLAYNAME, message,
+                                                                  QMessageBox::Question, QMessageBox::Yes | QMessageBox::No,
+                                                                  QMessageBox::Yes, &dontAskAgain));
+    box->button(QMessageBox::Yes)->setText(tr("Yes, copy them"));
+    box->button(QMessageBox::No)->setText(tr("No, start fresh"));
+    const bool accepted = box->exec() == QMessageBox::Yes;
+
+    if (!accepted) {
+        if (logModel)
+            logModel->append(MessageLevel::Launcher, QStringLiteral("<> Portable migration declined for ") + systemRoot);
+        qInfo() << "<> Portable migration declined for" << systemRoot;
+        if (dontAskAgain.isChecked()) {
+            QFile marker(declinedPath);
+            if (!marker.open(QIODevice::WriteOnly))
+                qWarning() << "Failed to write portable migration marker" << declinedPath << ":" << marker.errorString();
+        }
+        qApp->setQuitOnLastWindowClosed(quitOnClose);
+        return false;
+    }
+
+    if (logModel)
+        logModel->append(MessageLevel::Launcher, QStringLiteral("<> Portable migration accepted for ") + systemRoot);
+    qInfo() << "<> Portable migration accepted for" << systemRoot;
+
+    qDebug() << "MIGRATION: starting";
+    ProgressDialog diag;
+    DataMigrationTask task(systemRoot, curRoot, Filters::any(migrationFilters(BuildConfig.LAUNCHER_CONFIGFILE)));
+    const bool result = diag.execWithTask(&task);
+    qDebug() << "MIGRATION: finished, result =" << result;
+    if (result) {
+        qInfo() << "<> Portable migration succeeded for" << systemRoot;
+        qDebug() << "STARTUP: continuing into normal launcher startup";
+        qApp->setQuitOnLastWindowClosed(quitOnClose);
+        return true;
+    }
+
+    QMessageBox::critical(nullptr, BuildConfig.LAUNCHER_DISPLAYNAME, tr("Migration failed! Reason: %1").arg(task.failReason()));
+    qApp->setQuitOnLastWindowClosed(quitOnClose);
+    QMetaObject::invokeMethod(qApp, []() { exit(1); }, Qt::QueuedConnection);
     return false;
 }
 

@@ -18,9 +18,78 @@
 
 #include "HintOverrideProxyStyle.h"
 
+#include <QDebug>
+#include <QStyleFactory>
+
+#include "ui/themes/ThemeManager.h"
+
 HintOverrideProxyStyle::HintOverrideProxyStyle(QStyle* style) : QProxyStyle(style)
 {
     setObjectName(baseStyle()->objectName());
+}
+
+namespace {
+// Primitives QWindows11Style draws with Segoe Fluent Icons glyphs.
+// Without that font they render as .notdef boxes (Win10, Wine,
+// Winlator) — these alone fall back to Fusion rendering.
+bool usesFluentGlyph(QStyle::PrimitiveElement pe)
+{
+    switch (pe) {
+        case QStyle::PE_IndicatorSpinUp:
+        case QStyle::PE_IndicatorSpinDown:
+        case QStyle::PE_IndicatorArrowUp:
+        case QStyle::PE_IndicatorArrowDown:
+        case QStyle::PE_IndicatorArrowLeft:
+        case QStyle::PE_IndicatorArrowRight:
+        case QStyle::PE_IndicatorCheckBox:
+        case QStyle::PE_IndicatorRadioButton:
+        case QStyle::PE_IndicatorBranch:
+        case QStyle::PE_IndicatorItemViewItemCheck:
+            return true;
+        default:
+            return false;
+    }
+}
+
+// One lazily-created Fusion style shared by both intercepts below.
+// Function-local static: thread-safe, created once, lives forever.
+QStyle* fluentFallbackStyle()
+{
+    static QStyle* fallback = QStyleFactory::create("fusion");
+    return fallback;
+}
+}  // namespace
+
+void HintOverrideProxyStyle::drawPrimitive(PrimitiveElement element,
+                                           const QStyleOption* option,
+                                           QPainter* painter,
+                                           const QWidget* widget) const
+{
+    qDebug() << "PROXY drawPrimitive" << element
+             << "font-usable:" << ThemeManager::windows11StyleIsUsable();
+    if (!ThemeManager::windows11StyleIsUsable() && usesFluentGlyph(element)) {
+        if (QStyle* fallback = fluentFallbackStyle()) {
+            fallback->drawPrimitive(element, option, painter, widget);
+            return;
+        }
+    }
+    QProxyStyle::drawPrimitive(element, option, painter, widget);
+}
+
+void HintOverrideProxyStyle::drawComplexControl(ComplexControl control,
+                                                const QStyleOptionComplex* option,
+                                                QPainter* painter,
+                                                const QWidget* widget) const
+{
+    qDebug() << "PROXY drawComplexControl" << control
+             << "font-usable:" << ThemeManager::windows11StyleIsUsable();
+    if (!ThemeManager::windows11StyleIsUsable() && (control == CC_SpinBox || control == CC_ComboBox)) {
+        if (QStyle* fallback = fluentFallbackStyle()) {
+            fallback->drawComplexControl(control, option, painter, widget);
+            return;
+        }
+    }
+    QProxyStyle::drawComplexControl(control, option, painter, widget);
 }
 
 int HintOverrideProxyStyle::styleHint(QStyle::StyleHint hint,

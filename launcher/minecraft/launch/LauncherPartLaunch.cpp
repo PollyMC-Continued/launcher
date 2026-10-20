@@ -50,6 +50,11 @@
 #include "gamemode_client.h"
 #endif
 
+// NOTE: keep this include last. JavaUtils.h pulls in <windows.h> on Windows,
+// whose OPTIONAL/IN/OUT SAL macros break ModIndex.h's DependencyType enum
+// if they are defined before the project headers above are parsed.
+#include "java/JavaUtils.h"
+
 LauncherPartLaunch::LauncherPartLaunch(LaunchTask* parent)
     : LaunchStep(parent)
     , m_process(parent->instance()->getJavaVersion().defaultsToUtf8() ? QStringConverter::Utf8 : QStringConverter::System)
@@ -100,6 +105,24 @@ void LauncherPartLaunch::executeTask()
     emit logLine("Java arguments:\n  " + m_parent->censorPrivateInfo(allArgs) + "\n", MessageLevel::Launcher);
 
     auto javaPath = FS::ResolveExecutable(instance->settings()->get("JavaPath").toString());
+
+#ifdef Q_OS_WIN
+    // Extend the "Use discrete GPU" toggle to Windows: record a High
+    // performance GPU preference for the exact binary about to be spawned.
+    // Fail-open — a registry failure must never abort the launch. The else
+    // branch matters: it removes stale preferences written for a previous
+    // binary when the user unticks the checkbox or AutoInstallJava switches
+    // the runtime between launches.
+    if (instance->settings()->get("UseDiscreteGpu").toBool()) {
+        if (!WinGpuPreference::setHighPerformance(javaPath))
+            emit logLine(tr("Could not set the Windows GPU preference for this Java installation; launching anyway."),
+                         MessageLevel::Warning);
+    } else {
+        if (!WinGpuPreference::clearPreference(javaPath))
+            emit logLine(tr("Could not clear the Windows GPU preference for this Java installation; launching anyway."),
+                         MessageLevel::Warning);
+    }
+#endif
 
     m_process.setProcessEnvironment(instance->createLaunchEnvironment());
 

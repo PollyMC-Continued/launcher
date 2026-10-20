@@ -90,6 +90,10 @@ class MainWindow : public QMainWindow {
     void updatesAllowedChanged(bool allowed);
 
     void processURLs(QList<QUrl> urls);
+
+    // Selects an instance and triggers a per-instance action for it.
+    // Used by the command palette's intent suggestions.
+    void triggerInstanceAction(const QString& id, QAction* action);
    signals:
     void isClosing();
 
@@ -250,6 +254,7 @@ class MainWindow : public QMainWindow {
 
     void maybeShowStarToast();
     QPoint toastPosition() const;
+    void showCommandPalette();
 
    private:
     Ui::MainWindow* ui;

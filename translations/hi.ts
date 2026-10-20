@@ -586,6 +586,11 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation>थीम:</translation>
     </message>
     <message>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.ui" line="126"/>
+        <source>Launcher Font:</source>
+        <translation>लॉन्चर लेख:</translation>
+    </message>
+    <message>
         <source>Cat Opacity</source>
         <translation type="vanished">बिल्ली की अस्पष्टता</translation>
     </message>
@@ -594,17 +599,17 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation type="vanished">&amp;बिल्ली पैक:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="216"/>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="228"/>
         <source>[INFO] A harmless message...</source>
         <translation>[सूचना] एक हनहीन संदेश..।</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/AppearanceWidget.ui" line="189"/>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.ui" line="251"/>
         <source>Preview</source>
         <translation>पूर्व दर्शन</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="214"/>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="226"/>
         <source>[ERROR] A spooky error!</source>
         <translation>[गलती] एक डरावनी गलती!</translation>
     </message>
@@ -623,7 +628,7 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation type="vanished">बिल्ली की सकलिंग</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="219"/>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="231"/>
         <source>[FATAL] A terrifying fatal error!</source>
         <translation>[FATAL] एक डरावना घोर चेतावनी!</translation>
     </message>
@@ -641,22 +646,22 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation>&amp;आइकन:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="218"/>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="230"/>
         <source>[DEBUG] A secret debugging message...</source>
         <translation>[DEBUG] एक खूफ़िया डिबगिंग सूचना</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/AppearanceWidget.ui" line="126"/>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.ui" line="188"/>
         <source>Console Font:</source>
         <translation>कंसोल लेख:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="212"/>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="224"/>
         <source>[ERROR] OOoooOOOoooo! A spooky error!</source>
         <translation>[गलती] OOoooOOOoooo! एक डरावनी गलती!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="217"/>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="229"/>
         <source>[WARN] A not so spooky warning.</source>
         <translation>[चेतावनी] एक चेतावनी जो उतनी दरवानी नहीं ह है।</translation>
     </message>
@@ -664,18 +669,19 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
 <context>
     <name>Application</name>
     <message>
-        <location filename="../launcher/Application.cpp" line="1169"/>
+        <location filename="../launcher/Application.cpp" line="1179"/>
         <source>Update Succeeded</source>
         <translation>अपडेट सफल रहा</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="1207"/>
+        <location filename="../launcher/Application.cpp" line="1217"/>
         <source>Incompatible system configuration</source>
         <translation>सिस्टम configuration is incompatible</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="2070"/>
-        <location filename="../launcher/Application.cpp" line="2122"/>
+        <location filename="../launcher/Application.cpp" line="2089"/>
+        <location filename="../launcher/Application.cpp" line="2141"/>
+        <location filename="../launcher/Application.cpp" line="2226"/>
         <source>Migration failed! Reason: %1</source>
         <translation>स्थानांतरण विफल रहा! कारण: %1</translation>
     </message>
@@ -708,22 +714,22 @@ for details on the last update attempt.</source>
 %1 ।</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="705"/>
+        <location filename="../launcher/Application.cpp" line="715"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>इस लॉग को नहीं दिखाया जा सकता है क्योंकि यह %1 पंक्तियाँ पार कर चुका है।</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="2039"/>
+        <location filename="../launcher/Application.cpp" line="2058"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>ऐसा लगता है कि आपने पहले %2 पर %1 का उपयोग किया था। क्या आप अपने डेटा को %3 के नए स्थान पर स्थानांतरित करना चाहेंगे?</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="2033"/>
+        <location filename="../launcher/Application.cpp" line="2052"/>
         <source>It looks like you used %1 before. Do you want to migrate your data to the new location of %2?</source>
         <translation>ऐसा लगता है कि आपने पहले %1 का उपयोग किया था। क्या आप अपने डेटा को %2 के नए स्थान पर स्थानांतरित करना चाहेंगे?</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="1088"/>
+        <location filename="../launcher/Application.cpp" line="1098"/>
         <source>This installation has a update lock file present at: %1
 
 Timestamp: %2
@@ -750,7 +756,7 @@ PollyMC-Continued अपडेटर लॉग देखें:
 इस लॉक को हटाने और आगे बढ़ने के लिए नीचे &quot;अनदेखा करें&quot; चुनें।</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="1129"/>
+        <location filename="../launcher/Application.cpp" line="1139"/>
         <source>An update attempt failed
 
 Please ensure your installation is in working order before proceeding.
@@ -765,12 +771,12 @@ for details on the last update attempt.</source>
 पर विवरण देखें।</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="1137"/>
+        <location filename="../launcher/Application.cpp" line="1147"/>
         <source>Update Failed</source>
         <translation>अपडेट असफल रहा</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="1161"/>
+        <location filename="../launcher/Application.cpp" line="1171"/>
         <source>Update succeeded
 
 You are now running %1 .
@@ -785,7 +791,7 @@ for details.</source>
 में विवरण देखें।</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="1201"/>
+        <location filename="../launcher/Application.cpp" line="1211"/>
         <source>Your /tmp directory is currently mounted with the &apos;noexec&apos; flag enabled.
 Some versions of Minecraft may not launch.
 
@@ -798,17 +804,43 @@ Minecraft के कुछ versions शुरु होने में अस�
 </translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="2104"/>
+        <location filename="../launcher/Application.cpp" line="2123"/>
         <source>Instances were found at %1, but %2 is looking in %3. Do you want to migrate them to the new location?</source>
         <translation>इंस्टेंस %1 में पाए गए, लेकिन %2 %3 में खोज रहा है। क्या आप उन्हें नए स्थान पर स्थानांतरित करना चाहते हैं?</translation>
     </message>
+    <message numerus="yes">
+        <location filename="../launcher/Application.cpp" line="2188"/>
+        <source>Found %n instance(s) in your existing install at %1.
+Copy them into this portable folder? This will move your accounts, settings, and instance list into the portable location.</source>
+        <translation>
+            <numerusform>तुम्हारे मौजूदा इंस्टॉल में %1 पर %n इंस्टेंस मिला।
+इसे इस पोर्टेबल फ़ोल्डर में कॉपी करें? इससे तुम्हारे खाते, सेटिंग और इंस्टेंस सूची पोर्टेबल स्थान पर चली जाएगी।</numerusform>
+            <numerusform>तुम्हारे मौजूदा इंस्टॉल में %1 पर %n इंस्टेंस मिले।
+इन्हें इस पोर्टेबल फ़ोल्डर में कॉपी करें? इससे तुम्हारे खाते, सेटिंग और इंस्टेंस सूची पोर्टेबल स्थान पर चली जाएँगी।</numerusform>
+        </translation>
+    </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="1105"/>
+        <location filename="../launcher/Application.cpp" line="2195"/>
+        <source>Don&apos;t ask again for this portable folder</source>
+        <translation>इस पोर्टेबल फ़ोल्डर के लिए फिर मत पूछें</translation>
+    </message>
+    <message>
+        <location filename="../launcher/Application.cpp" line="2199"/>
+        <source>Yes, copy them</source>
+        <translation>हाँ, कॉपी करें</translation>
+    </message>
+    <message>
+        <location filename="../launcher/Application.cpp" line="2200"/>
+        <source>No, start fresh</source>
+        <translation>नहीं, नए सिरे से शुरू करें</translation>
+    </message>
+    <message>
+        <location filename="../launcher/Application.cpp" line="1115"/>
         <source>Update In Progress</source>
         <translation>अपडेट प्रगति में है</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="923"/>
+        <location filename="../launcher/Application.cpp" line="933"/>
         <source>Settings</source>
         <translation>सेटिंग्स</translation>
     </message>
@@ -839,7 +871,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 इस लॉक को हटाने और आगे बढ़ने के लिए &quot;अनदेखा&quot; नीचे का चयन करें।</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="2029"/>
+        <location filename="../launcher/Application.cpp" line="2048"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>%1 से पुराना डेटा मिला, लेकिन आपके पास पहले से ही %2 के लिए मौजूदा डेटा है। दुर्भाग्यवश, आपको खुद ही migration करना होगा। क्या आप चाहेंगे कि आपको अगली बार जब आप %2 को शुरू करें तो लंबित डेटा अंतर्निहित की जाने वाली स्मरण दिलाई जाए?</translation>
     </message>
@@ -12108,9 +12140,13 @@ Are you sure?</source>
 <context>
     <name>SkinBrowserDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="14"/>
         <source>View skins online</source>
-        <translation>स्किन ऑनलाइन देखें</translation>
+        <translation type="vanished">स्किन ऑनलाइन देखें</translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="14"/>
+        <source>Browse online skins</source>
+        <translation>स्किन ऑनलाइन ब्राउज़ करें</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="22"/>
@@ -12123,48 +12159,57 @@ Are you sure?</source>
         <translation>खोजें</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="52"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="134"/>
+        <source>Close</source>
+        <translation>बंद करें</translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="137"/>
+        <source>Close this window</source>
+        <translation>यह विंडो बंद करें</translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="157"/>
         <source>◀</source>
         <translation>◀</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="55"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="160"/>
         <source>Previous page</source>
         <translation>पिछला पृष्ठ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="62"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="167"/>
         <source>Page 1</source>
         <translation>पृष्ठ 1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="69"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="174"/>
         <source>▶</source>
         <translation>▶</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="72"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="177"/>
         <source>Next page</source>
         <translation>अगला पृष्ठ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="132"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="276"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="105"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="275"/>
         <source>Select a skin</source>
         <translation>स्किन चुनें</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="155"/>
         <source>View on crafty.gg</source>
-        <translation>crafty.gg पर देखें</translation>
+        <translation type="vanished">crafty.gg पर देखें</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="178"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="197"/>
         <source>Use skin</source>
         <translation>स्किन उपयोग करें</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="184"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="203"/>
         <source>Apply this skin to the selected account</source>
         <translation>यह स्किन चुने गए खाते पर लागू करें</translation>
     </message>
@@ -12179,18 +12224,18 @@ Are you sure?</source>
         <translation>स्किन कैटलॉग</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="144"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="143"/>
         <source>The skin image could not be stored on disk.</source>
         <translation>स्किन इमेज डिस्क पर संग्रहीत नहीं हो सकी।</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="157"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="156"/>
         <source>Loading…</source>
         <translation>लोड हो रहा है…</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="166"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="173"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="165"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="172"/>
         <source>Page %1</source>
         <translation>पृष्ठ %1</translation>
     </message>
@@ -12215,27 +12260,27 @@ Are you sure?</source>
         <translation>%1 · %2 प्लेयर द्वारा उपयोग की गई</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="286"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="285"/>
         <source>Unknown player</source>
         <translation>अज्ञात प्लेयर</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="290"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="289"/>
         <source>%1 players</source>
         <translation>%1 प्लेयर</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="292"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="291"/>
         <source>%1 views</source>
         <translation>%1 व्यू</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="294"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="293"/>
         <source>%1 upvotes</source>
         <translation>%1 अपवोट</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="297"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="296"/>
         <source>added %1</source>
         <translation>%1 जोड़ा गया</translation>
     </message>
@@ -12343,8 +12388,12 @@ Are you sure?</source>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="152"/>
+        <source>Browse online skins</source>
+        <translation>स्किन ऑनलाइन ब्राउज़ करें</translation>
+    </message>
+    <message>
         <source>View skins online</source>
-        <translation>स्किन ऑनलाइन देखें</translation>
+        <translation type="vanished">स्किन ऑनलाइन देखें</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="155"/>

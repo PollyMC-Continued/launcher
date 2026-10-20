@@ -200,7 +200,7 @@ set(Launcher_BUILD_NUMBER "0" CACHE STRING "Build number (CI override)")
 set(Launcher_BUILD_PLATFORM "unknown" CACHE STRING "A short string identifying the platform that this build was built for. Only used to display in the about dialog.")
 
 # Github repo URL with releases for updater
-set(Launcher_UPDATER_GITHUB_REPO "https://github.com/corecommit/PollyMC-Continued" CACHE STRING "Base github URL for the updater.")
+set(Launcher_UPDATER_GITHUB_REPO "https://github.com/PollyMC-Continued/launcher" CACHE STRING "Base github URL for the updater.")
 
 # Name to help updater identify valid artifacts
 if(WIN32)
@@ -221,8 +221,8 @@ set(Launcher_IMGUR_CLIENT_ID "5b97b0713fba4a3" CACHE STRING "Client ID you can g
 set(Launcher_BUG_TRACKER_URL "" CACHE STRING "URL for the bug tracker.")
 
 # Translations Platform URL
-set(Launcher_TRANSLATIONS_URL "https://github.com/corecommit/PollyMC-Continued" CACHE STRING "URL for the translations platform.")
-set(Launcher_TRANSLATION_FILES_URL "https://corecommit.github.io/PollyMC-Continued/translations/" CACHE STRING "URL for the translations files.")
+set(Launcher_TRANSLATIONS_URL "https://github.com/PollyMC-Continued/launcher" CACHE STRING "URL for the translations platform.")
+set(Launcher_TRANSLATION_FILES_URL "https://pollymc.vercel.app/translation/" CACHE STRING "URL for the translations files.")
 
 # Matrix Space
 set(Launcher_MATRIX_URL "" CACHE STRING "URL to the Matrix Space")
@@ -358,6 +358,60 @@ endif()
 
 find_package(ZLIB REQUIRED)
 
+# ONNX Runtime for the palette's natural-language intent matcher.
+# NOTE: the official prebuilt zips ship a CMake config, but it hardcodes
+# a lib64/ layout that does not match the archive contents, so whenever
+# onnxruntime_ROOT is given (CI downloads) the config is bypassed and the
+# manual search below is used instead. Layouts differ per platform
+# (flat include/ vs include/onnxruntime/), so search both explicitly
+# and never fall through to unrelated system paths.
+if(onnxruntime_ROOT)
+    set(ORT_USE_CONFIG FALSE)
+else()
+    set(ORT_USE_CONFIG TRUE)
+endif()
+if(ORT_USE_CONFIG)
+    find_package(onnxruntime QUIET)
+endif()
+if(NOT onnxruntime_FOUND)
+    find_path(onnxruntime_INCLUDE_DIR NAMES onnxruntime_cxx_api.h
+        HINTS ${onnxruntime_ROOT}/include ${onnxruntime_ROOT}/include/onnxruntime
+        NO_DEFAULT_PATH)
+    if(NOT onnxruntime_INCLUDE_DIR)
+        message(FATAL_ERROR "ONNX Runtime headers not found. Checked ${onnxruntime_ROOT}/include and ${onnxruntime_ROOT}/include/onnxruntime. Install libonnxruntime-dev, 'brew install onnxruntime', or set onnxruntime_ROOT to an official build.")
+    endif()
+    if(WIN32)
+        # Never touch the MSVC import .lib with MinGW: link the DLL
+        # directly instead (GNU ld handles PE DLLs for the plain-C API).
+        find_file(onnxruntime_BINARY NAMES onnxruntime.dll
+            HINTS ${onnxruntime_ROOT} PATH_SUFFIXES bin lib
+            NO_DEFAULT_PATH)
+        if(NOT onnxruntime_BINARY)
+            message(FATAL_ERROR "onnxruntime.dll not found under ${onnxruntime_ROOT}.")
+        endif()
+        add_library(onnxruntime::onnxruntime UNKNOWN IMPORTED)
+        set_target_properties(onnxruntime::onnxruntime PROPERTIES
+            IMPORTED_LOCATION "${onnxruntime_BINARY}"
+            INTERFACE_INCLUDE_DIRECTORIES "${onnxruntime_INCLUDE_DIR}")
+        set(onnxruntime_FOUND TRUE)
+    else()
+        find_library(onnxruntime_LIBRARY NAMES onnxruntime
+            HINTS ${onnxruntime_ROOT} PATH_SUFFIXES lib lib64 lib/x86_64-linux-gnu lib/aarch64-linux-gnu
+            NO_DEFAULT_PATH)
+        if(NOT onnxruntime_LIBRARY)
+            message(FATAL_ERROR "libonnxruntime not found under ${onnxruntime_ROOT}/lib.")
+        endif()
+        add_library(onnxruntime::onnxruntime UNKNOWN IMPORTED)
+        set_target_properties(onnxruntime::onnxruntime PROPERTIES
+            IMPORTED_LOCATION "${onnxruntime_LIBRARY}"
+            INTERFACE_INCLUDE_DIRECTORIES "${onnxruntime_INCLUDE_DIR}")
+        set(onnxruntime_FOUND TRUE)
+    endif()
+endif()
+if(NOT onnxruntime_FOUND)
+    message(FATAL_ERROR "ONNX Runtime not found. Install libonnxruntime-dev, 'brew install onnxruntime', or set onnxruntime_ROOT to an official build.")
+endif()
+
 
 include(ECMQtDeclareLoggingCategory)
 
@@ -484,6 +538,24 @@ elseif(UNIX)
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${Launcher_MIMEInfo} DESTINATION ${KDE_INSTALL_MIMEDIR})
 
     install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/launcher/qtlogging.ini" DESTINATION "share/${Launcher_Name}")
+
+    # Distro packages (.deb) have no system onnxruntime to depend on, so
+    # bundle the .so where the loader always looks. Enabled per-package
+    # build with -DLauncher_BUNDLE_ONNXRUNTIME=ON. This deliberately
+    # avoids RPATH games: the multiarch system libdir needs none, and
+    # dpkg-shlibdeps resolves it with no extra help.
+    option(Launcher_BUNDLE_ONNXRUNTIME "Install libonnxruntime.so into the system multiarch libdir (distro packages)" OFF)
+    if(Launcher_BUNDLE_ONNXRUNTIME)
+        file(GLOB ORT_BUNDLE_LIBS
+            "${onnxruntime_ROOT}/lib/libonnxruntime.so*"
+            "${onnxruntime_ROOT}/lib64/libonnxruntime.so*"
+            "${onnxruntime_ROOT}/lib/x86_64-linux-gnu/libonnxruntime.so*"
+            "${onnxruntime_ROOT}/lib/aarch64-linux-gnu/libonnxruntime.so*")
+        if(NOT ORT_BUNDLE_LIBS)
+            message(FATAL_ERROR "Launcher_BUNDLE_ONNXRUNTIME=ON but no libonnxruntime.so* under ${onnxruntime_ROOT}/lib.")
+        endif()
+        install(FILES ${ORT_BUNDLE_LIBS} DESTINATION "lib/x86_64-linux-gnu")
+    endif()
 
     set(PLUGIN_DEST_DIR "plugins")
     set(BUNDLE_DEST_DIR ".")

@@ -889,6 +889,11 @@ SET(LAUNCHER_SOURCES
     # Bot manager
     bot/BotProcess.h
     bot/BotProcess.cpp
+    bot/BotScript.h
+    bot/BotScript.cpp
+    bot/BotScriptEditor.h
+    bot/BotScriptEditor.cpp
+    bot/BotScriptEditor.ui
     bot/AddBotDialog.h
     bot/AddBotDialog.cpp
     bot/BotManagerDialog.h
@@ -1107,6 +1112,10 @@ SET(LAUNCHER_SOURCES
     ui/dialogs/ResourceUpdateDialog.h
     ui/dialogs/InstallLoaderDialog.cpp
     ui/dialogs/InstallLoaderDialog.h
+    ui/dialogs/CommandPalette.cpp
+    ui/dialogs/CommandPalette.h
+    ui/dialogs/CommandRegistry.cpp
+    ui/dialogs/CommandRegistry.h
     ui/dialogs/ChooseOfflineNameDialog.cpp
     ui/dialogs/ChooseOfflineNameDialog.h
 
@@ -1145,6 +1154,10 @@ SET(LAUNCHER_SOURCES
     ui/widgets/InfoFrame.h
     ui/widgets/ToastNotification.cpp
     ui/widgets/ToastNotification.h
+    voice/VoiceIntentMatcher.cpp
+    voice/VoiceIntentMatcher.h
+    voice/ModelDownloader.cpp
+    voice/ModelDownloader.h
     ui/widgets/ModFilterWidget.cpp
     ui/widgets/ModFilterWidget.h
     ui/widgets/ModListView.cpp
@@ -1286,6 +1299,7 @@ qt_wrap_ui(LAUNCHER_UI
     ui/dialogs/skins/SkinManageDialog.ui
     ui/dialogs/skins/SkinBrowserDialog.ui
     ui/dialogs/ChooseOfflineNameDialog.ui
+    bot/BotScriptEditor.ui
 )
 
 qt_wrap_ui(PRISM_UPDATE_UI
@@ -1298,6 +1312,7 @@ endif()
 
 qt_add_resources(LAUNCHER_RESOURCES
     resources/backgrounds/backgrounds.qrc
+    resources/branding/branding.qrc
     resources/multimc/multimc.qrc
     resources/pe_dark/pe_dark.qrc
     resources/pe_light/pe_light.qrc
@@ -1400,6 +1415,7 @@ target_link_libraries(Launcher_logic
 )
 target_link_libraries(Launcher_logic
     cmark::cmark
+    onnxruntime::onnxruntime
     LocalPeer
     Launcher_rainbow
 )
@@ -1437,6 +1453,11 @@ if(${Launcher_USE_PCH})
 endif()
 
 target_link_libraries(${Launcher_Name} Launcher_logic)
+
+# Headless command dump for the embedding pipeline (CI regenerates
+# training/export/commands.json from it; QT_QPA_PLATFORM=offscreen).
+add_executable(command-registry-dump command-registry-dump.cpp)
+target_link_libraries(command-registry-dump Launcher_logic)
 
 if(APPLE)
     # Match the app bundle name.
