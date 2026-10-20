@@ -1,5 +1,11 @@
 # Changelog
 
+## v9.4.1
+
+**Fixed:**
+
+- **Star reminder toast bugs** — The "Star on GitHub" card now shows its close button correctly, sits above the status bar even with longer translated text, follows theme and language changes while open, stays on top of other widgets, repositions correctly when the status bar is toggled, and pauses auto-hide while the mouse is over it.
+
 ## v9.4.0
 
 **Added:**

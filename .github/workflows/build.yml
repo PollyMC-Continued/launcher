@@ -1814,31 +1814,3 @@ jobs:
           key: embeddings-${{ hashFiles('training/**/*.py') }}
           restore-keys: |
             embeddings-
-
-      - name: Regenerate intent embeddings
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          # Static command list (no build tree in this job); the
-          # command-registry-dump tool covers runtime truth locally.
-          python3 training/gen_commands.py
-          python3 training/generate_paraphrases.py
-          # Two installs on purpose: --index-url replaces PyPI, and the PyTorch
-          # CPU index does not host sentence-transformers or its dependencies.
-          pip install --quiet torch --index-url https://download.pytorch.org/whl/cpu
-          pip install --quiet sentence-transformers
-          python3 training/build_embeddings.py
-          # Vectors + labels refresh every release. The ~120 MB model file
-          # only changes when the embedder changes, so it is uploaded once
-          # by hand to the voice-models tag instead of every release.
-          for f in training/export/embeddings.json training/export/labels.json; do
-            test -s "$f" || { echo "::error::Missing $f after embedding build."; exit 1; }
-          done
-          if gh release view voice-models >/dev/null 2>&1; then
-            gh release upload voice-models training/export/embeddings.json training/export/labels.json --clobber
-          else
-            gh release create voice-models training/export/embeddings.json training/export/labels.json \
-              --title "Voice intent models" \
-              --notes "Precomputed command embeddings and labels. Model file uploaded separately."
-          fi

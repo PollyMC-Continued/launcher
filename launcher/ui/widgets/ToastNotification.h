@@ -93,6 +93,10 @@ class ToastNotification : public QFrame {
     /*! Emitted when the user closes the card or clicks the action button. */
     void dismissed();
 
+   protected:
+    void changeEvent(QEvent* event) override;
+    bool event(QEvent* event) override;
+
    private slots:
     void onCloseClicked();
     void onActionClicked();
@@ -100,6 +104,7 @@ class ToastNotification : public QFrame {
 
    private:
     void slideOut(bool emitDismissed);
+    void applyStyle();
 
     QLabel* m_iconLabel = nullptr;
     QLabel* m_titleLabel = nullptr;
@@ -112,4 +117,8 @@ class ToastNotification : public QFrame {
     QPoint m_finalPos;
     std::function<void()> m_action;
     bool m_visible = false;
+    bool m_hovered = false;
+    bool m_applyingStyle = false;
+    int m_displayMs = 8000;
+    QString m_appliedStyle;
 };

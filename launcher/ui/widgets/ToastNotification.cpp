@@ -36,6 +36,8 @@
 #include "ToastNotification.h"
 
 #include <QAbstractAnimation>
+#include <QApplication>
+#include <QEvent>
 #include <QGraphicsDropShadowEffect>
 #include <QHBoxLayout>
 #include <QLabel>
@@ -59,30 +61,7 @@ ToastNotification::ToastNotification(QWidget* parent) : QFrame(parent)
     setFixedWidth(340);
     hide();
 
-    auto palette = this->palette();
-    const auto background = palette.color(QPalette::Window);
-    const auto border = palette.color(QPalette::Mid);
-    const auto accent = palette.color(QPalette::Highlight);
-    const auto accentText = palette.color(QPalette::HighlightedText);
-    setStyleSheet(QStringLiteral(
-        "#ToastNotification {"
-        "  background-color: %1;"
-        "  border: 1px solid %2;"
-        "  border-radius: 8px;"
-        "}"
-        "#ToastNotification QPushButton {"
-        "  border: none;"
-        "  border-radius: 4px;"
-        "  padding: 6px 14px;"
-        "}"
-        "#ToastNotification QPushButton:hover {"
-        "  background-color: %3;"
-        "  color: %4;"
-        "}")
-        .arg(background.name())
-        .arg(border.name())
-        .arg(accent.name())
-        .arg(accentText.name()));
+    applyStyle();
 
     auto* shadow = new QGraphicsDropShadowEffect(this);
     shadow->setBlurRadius(24);
@@ -140,6 +119,70 @@ ToastNotification::ToastNotification(QWidget* parent) : QFrame(parent)
     connect(m_animation, &QPropertyAnimation::finished, this, &ToastNotification::onAnimationFinished);
 }
 
+void ToastNotification::applyStyle()
+{
+    // Read colours from the parent/app palette rather than our own: once a
+    // stylesheet is applied our own palette is rewritten by it, which would
+    // otherwise feed back into itself.
+    const QPalette palette = parentWidget() ? parentWidget()->palette() : QApplication::palette();
+    const auto background = palette.color(QPalette::Window);
+    const auto border = palette.color(QPalette::Mid);
+    const auto accent = palette.color(QPalette::Highlight);
+    const auto accentText = palette.color(QPalette::HighlightedText);
+    const QString style = QStringLiteral(
+        "#ToastNotification {"
+        "  background-color: %1;"
+        "  border: 1px solid %2;"
+        "  border-radius: 8px;"
+        "}"
+        "#ToastNotification QPushButton {"
+        "  border: none;"
+        "  border-radius: 4px;"
+        "  padding: 6px 14px;"
+        "}"
+        "#ToastNotification QPushButton#closeButton {"
+        "  padding: 0px;"
+        "}"
+        "#ToastNotification QPushButton:hover {"
+        "  background-color: %3;"
+        "  color: %4;"
+        "}")
+        .arg(background.name())
+        .arg(border.name())
+        .arg(accent.name())
+        .arg(accentText.name());
+
+    if (m_applyingStyle || style == m_appliedStyle)
+        return;
+    m_applyingStyle = true;
+    m_appliedStyle = style;
+    setStyleSheet(style);
+    m_applyingStyle = false;
+}
+
+void ToastNotification::changeEvent(QEvent* event)
+{
+    // Follow runtime light/dark (or theme) switches.
+    if (event->type() == QEvent::ApplicationPaletteChange || event->type() == QEvent::PaletteChange)
+        applyStyle();
+    QFrame::changeEvent(event);
+}
+
+bool ToastNotification::event(QEvent* event)
+{
+    // Pause auto-hide while the pointer is over the card so it doesn't vanish mid-click.
+    if (event->type() == QEvent::Enter) {
+        m_hovered = true;
+        if (m_visible)
+            m_autoHideTimer->stop();
+    } else if (event->type() == QEvent::Leave) {
+        m_hovered = false;
+        if (m_visible)
+            m_autoHideTimer->start(m_displayMs);
+    }
+    return QFrame::event(event);
+}
+
 void ToastNotification::prepareToast(const QString& title,
                                      const QString& body,
                                      const QString& actionText,
@@ -159,12 +202,15 @@ void ToastNotification::showToast(const QPoint& finalPos, int displayMs)
         return;
 
     m_finalPos = finalPos;
+    m_displayMs = displayMs;
 
     move(m_finalPos.x(), m_finalPos.y() + kSlideOffset);
     show();
+    raise();  // always sit above sibling widgets (status bar, view, ...)
 
     m_visible = true;
-    m_autoHideTimer->start(displayMs);
+    if (!m_hovered)
+        m_autoHideTimer->start(displayMs);
     m_animation->setStartValue(pos());
     m_animation->setEndValue(m_finalPos);
     m_animation->start();

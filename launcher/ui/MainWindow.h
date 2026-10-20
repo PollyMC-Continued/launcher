@@ -253,6 +253,7 @@ class MainWindow : public QMainWindow {
     void instanceFromInstanceTask(InstanceTask* task);
 
     void maybeShowStarToast();
+    void prepareStarToast();
     QPoint toastPosition() const;
     void showCommandPalette();
 

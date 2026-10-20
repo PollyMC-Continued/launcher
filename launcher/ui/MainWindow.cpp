@@ -492,6 +492,11 @@ void MainWindow::retranslateUi()
 
     ui->retranslateUi(this);
 
+    if (m_toast && m_toast->isToastVisible()) {
+        prepareStarToast();
+        m_toast->updatePosition(toastPosition());
+    }
+
     MinecraftAccountPtr defaultAccount = APPLICATION->accounts()->defaultAccount();
     if (defaultAccount) {
         auto profileLabel = profileInUseFilter(defaultAccount->displayName(), defaultAccount->isInUse());
@@ -529,8 +534,11 @@ void MainWindow::setStatusBarVisibility(bool state)
 {
     statusBar()->setVisible(state);
     APPLICATION->settings()->set("StatusBarVisible", state);
-    if (m_toast && m_toast->isToastVisible())
-        m_toast->updatePosition(toastPosition());
+    // The status bar's height isn't final until the layout has run.
+    QTimer::singleShot(0, this, [this] {
+        if (m_toast && m_toast->isToastVisible())
+            m_toast->updatePosition(toastPosition());
+    });
 }
 
 void MainWindow::showEvent(QShowEvent* event)
@@ -556,7 +564,8 @@ QPoint MainWindow::toastPosition() const
     const int margin = 12;
     const int statusBarHeight = statusBar()->isVisible() ? statusBar()->height() : 0;
     const int x = margin;
-    const int y = height() - statusBarHeight - m_toast->sizeHint().height() - margin;
+    // height() (not sizeHint()) so word-wrapped / translated text is accounted for
+    const int y = height() - statusBarHeight - m_toast->height() - margin;
     return QPoint(x, qMax(margin, y));
 }
 
@@ -595,10 +604,15 @@ void MainWindow::maybeShowStarToast()
         return;
 
     settings->set("StarReminderLastShown", QDate::currentDate().toString(Qt::ISODate));
+    prepareStarToast();
+    m_toast->showToast(toastPosition());
+}
+
+void MainWindow::prepareStarToast()
+{
     m_toast->prepareToast(tr("Enjoying PollyMC-Continued?"),
                           tr("Give the project a star on GitHub!"), tr("Star on GitHub"),
                           [] { DesktopServices::openUrl(QUrl(kStarRepoUrl)); });
-    m_toast->showToast(toastPosition());
 }
 
 void MainWindow::lockToolbars(bool state)
