@@ -9,25 +9,32 @@ index_v2.json in the same directory.
 import hashlib
 import json
 import os
-import re
 import sys
 import xml.etree.ElementTree as ET
 
-NS = ""
+# Message states that are not part of the live source and must not be counted.
+IGNORED_TYPES = {"vanished", "obsolete"}
+
 
 def parse_ts(path):
     root = ET.parse(path).getroot()
     translated = untranslated = fuzzy = 0
-    for context in root.findall(f"{NS}context"):
-        for msg in context.findall(f"{NS}message"):
-            transl = msg.find(f"{NS}translation")
+    for context in root.findall("context"):
+        for msg in context.findall("message"):
+            transl = msg.find("translation")
             if transl is None:
                 continue
-            text = "".join(transl.itertext())
             ttype = transl.get("type")
-            if ttype == "vanished":
+            if ttype in IGNORED_TYPES:
                 continue
-            if ttype == "unfinished" or not text.strip():
+            # Plural messages carry one <numerusform> per plural form; the
+            # message is only finished if every form has text.
+            forms = transl.findall("numerusform")
+            if forms:
+                texts = ["".join(f.itertext()) for f in forms]
+            else:
+                texts = ["".join(transl.itertext())]
+            if ttype == "unfinished" or any(not t.strip() for t in texts):
                 untranslated += 1
             elif ttype == "fuzzy":
                 fuzzy += 1
@@ -35,16 +42,21 @@ def parse_ts(path):
                 translated += 1
     return translated, untranslated, fuzzy
 
+
 def main():
+    if len(sys.argv) != 2 or not os.path.isdir(sys.argv[1]):
+        print(f"usage: {os.path.basename(sys.argv[0])} <dir-with-mmc_*.qm-and-*.ts>", file=sys.stderr)
+        return 2
     d = sys.argv[1]
     languages = {}
-    for f in os.listdir(d):
+    for f in sorted(os.listdir(d)):
         if not (f.startswith("mmc_") and f.endswith(".qm")):
             continue
         key = f[4:-3]
         ts = os.path.join(d, f"{key}.ts")
         if not os.path.exists(ts):
             # index should only contain languages we have source stats for
+            print(f"warning: no {key}.ts next to {f}; skipping", file=sys.stderr)
             continue
         qm_path = os.path.join(d, f)
         with open(qm_path, "rb") as fh:
@@ -59,6 +71,11 @@ def main():
             "untranslated": untranslated,
             "fuzzy": fuzzy,
         }
+    if not languages:
+        # An empty index would silently tell every launcher there are no
+        # translations; fail the deploy instead.
+        print("error: no languages found; refusing to write an empty index", file=sys.stderr)
+        return 1
     index = {
         "file_type": "MMC-TRANSLATION-INDEX",
         "version": 2,
@@ -68,6 +85,8 @@ def main():
     with open(out, "w", encoding="utf-8") as fh:
         json.dump(index, fh, ensure_ascii=False, sort_keys=True)
     print(f"wrote {out} with {len(languages)} languages")
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
