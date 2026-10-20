@@ -2,6 +2,14 @@
 
 ## v9.4.1
 
+**Added:**
+
+- **Developer tools page** — A hidden Developer page in Settings with testing and troubleshooting tools: preview the star reminder, splash screen and update dialog, open the logs folder, copy a diagnostic summary, toggle verbose Qt logging for the session, and simulate update failures and slow networks.
+
+**Changed:**
+
+- **Updater renamed to PollyMC** — The updater's settings file, update log, marker files, temp folder, classes and source files now use PollyMC names instead of Prism names. Existing settings, logs and update markers from older releases are still read, so skipped versions are kept and updating from an older release still reports its result.
+
 **Fixed:**
 
 - **Star reminder toast bugs** — The "Star on GitHub" card now shows its close button correctly, sits above the status bar even with longer translated text, follows theme and language changes while open, stays on top of other widgets, repositions correctly when the status bar is toggled, and pauses auto-hide while the mouse is over it.

@@ -20,7 +20,7 @@
  *
  */
 
-#include "PrismUpdater.h"
+#include "PollyMCUpdater.h"
 
 #if defined Q_OS_WIN32
 #include "console/WindowsConsole.h"
@@ -33,16 +33,16 @@ int main(int argc, char* argv[])
     console::WindowsConsoleGuard _consoleGuard;
 #endif
 
-    PrismUpdaterApp wUpApp(argc, argv);
+    PollyMCUpdaterApp wUpApp(argc, argv);
 
     switch (wUpApp.status()) {
-        case PrismUpdaterApp::Starting:
-        case PrismUpdaterApp::Initialized: {
+        case PollyMCUpdaterApp::Starting:
+        case PollyMCUpdaterApp::Initialized: {
             return wUpApp.exec();
         }
-        case PrismUpdaterApp::Failed:
+        case PollyMCUpdaterApp::Failed:
             return 1;
-        case PrismUpdaterApp::Succeeded:
+        case PollyMCUpdaterApp::Succeeded:
             return 0;
         default:
             return -1;

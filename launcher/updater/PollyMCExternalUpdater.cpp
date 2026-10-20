@@ -20,7 +20,7 @@
  *
  */
 
-#include "PrismExternalUpdater.h"
+#include "PollyMCExternalUpdater.h"
 #include <QCoreApplication>
 #include <QDateTime>
 #include <QDebug>
@@ -34,6 +34,7 @@
 #include <memory>
 
 #include "StringUtils.h"
+#include "UpdaterNames.h"
 
 #include "Application.h"
 #include "BuildConfig.h"
@@ -45,7 +46,7 @@ namespace {
 constexpr int startupCheckDelayMs = 5000;
 }  // namespace
 
-class PrismExternalUpdater::Private {
+class PollyMCExternalUpdater::Private {
    public:
     QDir appDir;
     QDir dataDir;
@@ -74,12 +75,12 @@ class PrismExternalUpdater::Private {
     bool checkIsPreview = false;
 };
 
-PrismExternalUpdater::PrismExternalUpdater(QWidget* parent, const QString& appDir, const QString& dataDir)
-    : priv(new PrismExternalUpdater::Private())
+PollyMCExternalUpdater::PollyMCExternalUpdater(QWidget* parent, const QString& appDir, const QString& dataDir)
+    : priv(new PollyMCExternalUpdater::Private())
 {
     priv->appDir = QDir(appDir);
     priv->dataDir = QDir(dataDir);
-    auto settings_file = priv->dataDir.absoluteFilePath("prismlauncher_update.cfg");
+    auto settings_file = UpdaterNames::migrateFile(priv->dataDir.absolutePath(), UpdaterNames::SettingsFile);
     priv->settings = std::make_unique<QSettings>(settings_file, QSettings::Format::IniFormat);
     priv->allowBeta = priv->settings->value("allow_beta", false).toBool();
     priv->autoUpdateMode = priv->settings->value("auto_update_mode", "Ask").toString();
@@ -106,7 +107,7 @@ PrismExternalUpdater::PrismExternalUpdater(QWidget* parent, const QString& appDi
     }
 }
 
-PrismExternalUpdater::~PrismExternalUpdater()
+PollyMCExternalUpdater::~PollyMCExternalUpdater()
 {
     if (priv->proc) {
         priv->proc->disconnect(this);
@@ -125,18 +126,18 @@ PrismExternalUpdater::~PrismExternalUpdater()
     delete priv;
 }
 
-void PrismExternalUpdater::checkForUpdates()
+void PollyMCExternalUpdater::checkForUpdates()
 {
     checkForUpdates(true);
 }
 
-bool PrismExternalUpdater::previewLatestRelease()
+bool PollyMCExternalUpdater::previewLatestRelease()
 {
     checkForUpdates(true, true);
     return true;
 }
 
-void PrismExternalUpdater::checkForUpdates(bool triggeredByUser, bool preview)
+void PollyMCExternalUpdater::checkForUpdates(bool triggeredByUser, bool preview)
 {
     if (priv->checkingUpdates) {
         if (priv->updateTimer.isActive()) {
@@ -223,7 +224,7 @@ void PrismExternalUpdater::checkForUpdates(bool triggeredByUser, bool preview)
     priv->proc->start(priv->appDir.absoluteFilePath(exe_name), args);
 }
 
-void PrismExternalUpdater::finishCheck(int exit_code, const QByteArray& std_output, const QByteArray& std_error, const QString& failureReason)
+void PollyMCExternalUpdater::finishCheck(int exit_code, const QByteArray& std_output, const QByteArray& std_error, const QString& failureReason)
 {
     // Tear down the helper objects first so nothing below can re-enter this function.
     if (priv->killTimer) {
@@ -340,22 +341,22 @@ void PrismExternalUpdater::finishCheck(int exit_code, const QByteArray& std_outp
     priv->checkingUpdates = false;
 }
 
-bool PrismExternalUpdater::getAutomaticallyChecksForUpdates()
+bool PollyMCExternalUpdater::getAutomaticallyChecksForUpdates()
 {
     return priv->autoCheck;
 }
 
-double PrismExternalUpdater::getUpdateCheckInterval()
+double PollyMCExternalUpdater::getUpdateCheckInterval()
 {
     return priv->updateInterval;
 }
 
-bool PrismExternalUpdater::getBetaAllowed()
+bool PollyMCExternalUpdater::getBetaAllowed()
 {
     return priv->allowBeta;
 }
 
-void PrismExternalUpdater::setAutomaticallyChecksForUpdates(bool check)
+void PollyMCExternalUpdater::setAutomaticallyChecksForUpdates(bool check)
 {
     priv->autoCheck = check;
     priv->settings->setValue("auto_check", check);
@@ -363,7 +364,7 @@ void PrismExternalUpdater::setAutomaticallyChecksForUpdates(bool check)
     resetAutoCheckTimer();
 }
 
-void PrismExternalUpdater::setUpdateCheckInterval(double seconds)
+void PollyMCExternalUpdater::setUpdateCheckInterval(double seconds)
 {
     priv->updateInterval = seconds;
     priv->settings->setValue("update_interval", seconds);
@@ -371,19 +372,19 @@ void PrismExternalUpdater::setUpdateCheckInterval(double seconds)
     resetAutoCheckTimer();
 }
 
-void PrismExternalUpdater::setBetaAllowed(bool allowed)
+void PollyMCExternalUpdater::setBetaAllowed(bool allowed)
 {
     priv->allowBeta = allowed;
     priv->settings->setValue("auto_beta", allowed);
     priv->settings->sync();
 }
 
-QString PrismExternalUpdater::getAutoUpdateMode()
+QString PollyMCExternalUpdater::getAutoUpdateMode()
 {
     return priv->autoUpdateMode;
 }
 
-void PrismExternalUpdater::setAutoUpdateMode(const QString& mode)
+void PollyMCExternalUpdater::setAutoUpdateMode(const QString& mode)
 {
     if (mode != "Always" && mode != "Ask" && mode != "Never")
         return;
@@ -392,7 +393,7 @@ void PrismExternalUpdater::setAutoUpdateMode(const QString& mode)
     priv->settings->sync();
 }
 
-void PrismExternalUpdater::resetAutoCheckTimer()
+void PollyMCExternalUpdater::resetAutoCheckTimer()
 {
     if (priv->autoCheck && priv->updateInterval > 0) {
         auto now = QDateTime::currentDateTime();
@@ -419,17 +420,17 @@ void PrismExternalUpdater::resetAutoCheckTimer()
     }
 }
 
-void PrismExternalUpdater::connectTimer()
+void PollyMCExternalUpdater::connectTimer()
 {
-    connect(&priv->updateTimer, &QTimer::timeout, this, &PrismExternalUpdater::autoCheckTimerFired);
+    connect(&priv->updateTimer, &QTimer::timeout, this, &PollyMCExternalUpdater::autoCheckTimerFired);
 }
 
-void PrismExternalUpdater::disconnectTimer()
+void PollyMCExternalUpdater::disconnectTimer()
 {
-    disconnect(&priv->updateTimer, &QTimer::timeout, this, &PrismExternalUpdater::autoCheckTimerFired);
+    disconnect(&priv->updateTimer, &QTimer::timeout, this, &PollyMCExternalUpdater::autoCheckTimerFired);
 }
 
-void PrismExternalUpdater::armDeferredRetry()
+void PollyMCExternalUpdater::armDeferredRetry()
 {
     priv->deferredForGameRunning = true;
     // Single-shot: exactly one retry. The flag is consumed at the top of
@@ -440,7 +441,7 @@ void PrismExternalUpdater::armDeferredRetry()
     priv->updateTimer.start();
 }
 
-void PrismExternalUpdater::autoCheckTimerFired()
+void PollyMCExternalUpdater::autoCheckTimerFired()
 {
     qDebug() << "Auto update Timer fired";
     if (priv->autoUpdateMode == "Never")
@@ -448,7 +449,7 @@ void PrismExternalUpdater::autoCheckTimerFired()
     checkForUpdates(false);
 }
 
-void PrismExternalUpdater::offerUpdate(const QString& version_name, const QString& version_tag,
+void PollyMCExternalUpdater::offerUpdate(const QString& version_name, const QString& version_tag,
                                        const QString& release_notes, bool triggeredByUser, bool preview)
 {
     // Developer preview: always show the regular dialog (ignoring skipped versions, the auto-update
@@ -510,7 +511,7 @@ void PrismExternalUpdater::offerUpdate(const QString& version_name, const QStrin
     }
 }
 
-void PrismExternalUpdater::performUpdate(const QString& version_tag, bool silent)
+void PollyMCExternalUpdater::performUpdate(const QString& version_tag, bool silent)
 {
     QProcess proc;
     auto exe_name = QStringLiteral("%1_updater").arg(BuildConfig.LAUNCHER_APP_BINARY_NAME);

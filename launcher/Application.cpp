@@ -153,7 +153,8 @@
 #include <sys/types.h>
 #endif
 
-#include "updater/PrismExternalUpdater.h"
+#include "updater/PollyMCExternalUpdater.h"
+#include "updater/UpdaterNames.h"
 
 #if defined(Q_OS_MAC)
 #if defined(SPARKLE_ENABLED)
@@ -1146,9 +1147,10 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
     // check update locks
     {
-        auto update_log_path = FS::PathCombine(m_dataPath, "logs", "prism_launcher_update.log");
+        // Older releases wrote the legacy names; resolve() picks whichever exists.
+        auto update_log_path = UpdaterNames::resolve(FS::PathCombine(m_dataPath, "logs"), UpdaterNames::LogFile);
 
-        auto update_lock = QFileInfo(FS::PathCombine(m_dataPath, ".prism_launcher_update.lock"));
+        auto update_lock = QFileInfo(UpdaterNames::resolve(m_dataPath, UpdaterNames::LockFile));
         if (update_lock.exists()) {
             closeSplashScreen();
             auto [timestamp, from, to, target, data_path] = read_lock_File(update_lock.absoluteFilePath());
@@ -1182,7 +1184,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
             }
         }
 
-        auto update_fail_marker = QFileInfo(FS::PathCombine(m_dataPath, ".prism_launcher_update.fail"));
+        auto update_fail_marker = QFileInfo(UpdaterNames::resolve(m_dataPath, UpdaterNames::FailMarker));
         if (update_fail_marker.exists()) {
             closeSplashScreen();
             auto infoMsg = tr("The last update attempt failed.\n"
@@ -1212,7 +1214,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
             }
         }
 
-        auto update_success_marker = QFileInfo(FS::PathCombine(m_dataPath, ".prism_launcher_update.success"));
+        auto update_success_marker = QFileInfo(UpdaterNames::resolve(m_dataPath, UpdaterNames::SuccessMarker));
         if (update_success_marker.exists()) {
             closeSplashScreen();
             auto infoMsg = tr("You are now running %1.\n"
@@ -1480,9 +1482,9 @@ void Application::performMainStartupAction()
             m_updater.reset(new MacSparkleUpdater());
         else
 #endif
-            m_updater.reset(new PrismExternalUpdater(m_mainWindow, m_rootPath, m_dataPath));
+            m_updater.reset(new PollyMCExternalUpdater(m_mainWindow, m_rootPath, m_dataPath));
 #else
-        m_updater.reset(new PrismExternalUpdater(m_mainWindow, m_rootPath, m_dataPath));
+        m_updater.reset(new PollyMCExternalUpdater(m_mainWindow, m_rootPath, m_dataPath));
 #endif
         qDebug() << "<> Updater started.";
     }

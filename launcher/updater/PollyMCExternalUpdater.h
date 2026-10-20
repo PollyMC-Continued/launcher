@@ -30,12 +30,12 @@
  * An implementation for the updater on windows and linux that uses out external updater.
  */
 
-class PrismExternalUpdater : public ExternalUpdater {
+class PollyMCExternalUpdater : public ExternalUpdater {
     Q_OBJECT
 
    public:
-    PrismExternalUpdater(QWidget* parent, const QString& appDir, const QString& dataDir);
-    ~PrismExternalUpdater() override;
+    PollyMCExternalUpdater(QWidget* parent, const QString& appDir, const QString& dataDir);
+    ~PollyMCExternalUpdater() override;
 
     /*!
      * Check for updates manually, showing the user a progress bar and an alert if no updates are found.

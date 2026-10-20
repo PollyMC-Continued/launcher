@@ -40,17 +40,17 @@
 #include "QObjectPtr.h"
 #include "net/Download.h"
 
-#define PRISM_EXTERNAL_EXE
+#define POLLYMC_EXTERNAL_EXE
 #include "FileSystem.h"
 
 #include "GitHubRelease.h"
 
-class PrismUpdaterApp : public QApplication {
+class PollyMCUpdaterApp : public QApplication {
     Q_OBJECT
    public:
     enum Status { Starting, Failed, Succeeded, Initialized, Aborted };
-    PrismUpdaterApp(int& argc, char** argv);
-    virtual ~PrismUpdaterApp();
+    PollyMCUpdaterApp(int& argc, char** argv);
+    virtual ~PollyMCUpdaterApp();
     void loadReleaseList();
     void run();
     Status status() const { return m_status; }
@@ -60,7 +60,7 @@ class PrismUpdaterApp : public QApplication {
     void abort(const QString& reason);
     void showFatalErrorMessage(const QString& title, const QString& content);
 
-    bool loadPrismVersionFromExe(const QString& exe_path);
+    bool loadPollyMCVersionFromExe(const QString& exe_path);
 
     void downloadReleasePage(const QString& api_url, int page);
     int parseReleasePage(const QByteArray* response);
@@ -104,8 +104,8 @@ class PrismUpdaterApp : public QApplication {
     bool m_isAppimage = false;
     bool m_isFlatpak = false;
     QString m_appimagePath;
-    QString m_prismExecutable;
-    QUrl m_prismRepoUrl;
+    QString m_pollymcExecutable;
+    QUrl m_pollymcRepoUrl;
     Version m_userSelectedVersion;
     bool m_checkOnly;
     bool m_showLatest = false;
@@ -118,13 +118,13 @@ class PrismUpdaterApp : public QApplication {
 
     QString m_updateLogPath;
 
-    QString m_prismBinaryName;
-    QString m_prismVersion;
-    int m_prismVersionMajor = -1;
-    int m_prismVersionMinor = -1;
-    int m_prismVersionPatch = -1;
-    QString m_prsimVersionChannel;
-    QString m_prismGitCommit;
+    QString m_pollymcBinaryName;
+    QString m_pollymcVersion;
+    int m_pollymcVersionMajor = -1;
+    int m_pollymcVersionMinor = -1;
+    int m_pollymcVersionPatch = -1;
+    QString m_pollymcVersionChannel;
+    QString m_pollymcGitCommit;
 
     GitHubRelease m_install_release;
 
