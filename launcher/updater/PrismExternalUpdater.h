@@ -96,6 +96,8 @@ class PrismExternalUpdater : public ExternalUpdater {
     void autoCheckTimerFired();
 
    private:
+    void finishCheck(int exit_code, const QByteArray& std_output, const QByteArray& std_error, const QString& failureReason);
+
     class Private;
 
     Private* priv;
