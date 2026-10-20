@@ -196,6 +196,9 @@ class Application : public QApplication {
     MainWindow* showMainWindow(bool minimized = false);
     ViewLogWindow* showLogWindow();
 
+    /// Closes and releases the startup splash screen, if it is still visible.
+    void closeSplashScreen();
+
     void updateIsRunning(bool running);
     bool updatesAreAllowed();
 
