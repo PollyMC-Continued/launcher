@@ -231,7 +231,9 @@ jobs:
           cd website
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/translation
+          # -f: the website repo's .gitignore lists public/translation (for local
+          # dev); CI still has to commit it. -A also stages removed languages.
+          git add -f -A public/translation
           if git diff --staged --quiet; then
             echo "No changes to translations"
             exit 0
