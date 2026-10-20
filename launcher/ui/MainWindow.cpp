@@ -72,6 +72,7 @@
 #include <QShortcut>
 #include <QStatusBar>
 #include <QSystemTrayIcon>
+#include <QTimer>
 #include <QToolBar>
 #include <QToolButton>
 #include <QWidget>
@@ -585,17 +586,27 @@ void MainWindow::triggerInstanceAction(const QString& id, QAction* action)
 
 void MainWindow::triggerStarToastForDeveloper()
 {
-    // Settings is modal, so wait until it closes before showing a toast owned by the
-    // main window. Otherwise the toast would be behind the settings dialog and could
-    // time out before the user sees it.
-    if (QWidget* modal = QApplication::activeModalWidget()) {
-        connect(modal, &QObject::destroyed, this, [this]() {
+    // Settings may be hidden/reused instead of destroyed when it closes, so waiting
+    // for QObject::destroyed can leave this developer action looking like a no-op.
+    // Poll until there is no active modal dialog, then show the toast on the main window.
+    if (QApplication::activeModalWidget()) {
+        statusBar()->showMessage(tr("The star reminder will appear after the Settings dialog closes."), 5000);
+        auto* waitForModal = new QTimer(this);
+        waitForModal->setInterval(100);
+        connect(waitForModal, &QTimer::timeout, this, [this, waitForModal]() {
+            if (QApplication::activeModalWidget())
+                return;
+
+            waitForModal->stop();
+            waitForModal->deleteLater();
             if (!isVisible() || isMinimized())
                 return;
+
+            // Ignore the normal schedule and dismissed state for this explicit test action.
             prepareStarToast();
             m_toast->showToast(toastPosition());
-        }, Qt::SingleShotConnection);
-        statusBar()->showMessage(tr("The star reminder will appear after the Settings dialog closes."), 5000);
+        });
+        waitForModal->start();
         return;
     }
 
