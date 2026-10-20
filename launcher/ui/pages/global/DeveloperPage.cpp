@@ -59,7 +59,11 @@ QString diagnosticsText()
     return lines.join(QLatin1Char('\n'));
 }
 
+<<<<<<< HEAD
 void showSplashPreview(QWidget* parent)
+=======
+void showSplashPreview()
+>>>>>>> b8f275a (Fixed errors)
 {
     QPixmap pixmap(400, 260);
     pixmap.fill(QColor(QStringLiteral("#191919")));
@@ -70,7 +74,11 @@ void showSplashPreview(QWidget* parent)
         painter.setRenderHint(QPainter::SmoothPixmapTransform);
         renderer.render(&painter, QRectF(40, 76, 320, 107));
     }
+<<<<<<< HEAD
     auto* splash = new QSplashScreen(parent, pixmap, Qt::WindowStaysOnTopHint);
+=======
+    auto* splash = new QSplashScreen(pixmap, Qt::WindowStaysOnTopHint);
+>>>>>>> b8f275a (Fixed errors)
     splash->show();
     splash->raise();
     QTimer::singleShot(1800, splash, &QSplashScreen::close);
@@ -120,7 +128,11 @@ DeveloperPage::DeveloperPage(QWidget* parent) : QWidget(parent)
     auto* splash = new QPushButton(tr("Preview splash screen"), this);
     splash->setToolTip(tr("Show a temporary preview; this does not change startup behavior."));
     layout->addWidget(splash);
+<<<<<<< HEAD
     connect(splash, &QPushButton::clicked, this, [this]() { showSplashPreview(this); });
+=======
+    connect(splash, &QPushButton::clicked, this, []() { showSplashPreview(); });
+>>>>>>> b8f275a (Fixed errors)
 
     auto* openLogs = new QPushButton(tr("Open logs folder"), this);
     layout->addWidget(openLogs);
@@ -165,7 +177,11 @@ DeveloperPage::DeveloperPage(QWidget* parent) : QWidget(parent)
             QMessageBox::information(this, tr("Developer tools"), tr("The updater is not enabled in this build."));
             return;
         }
+<<<<<<< HEAD
         mainWindow->checkForUpdates();
+=======
+        mainWindow->checkForUpdatesForDeveloper();
+>>>>>>> b8f275a (Fixed errors)
     });
 
     auto* simulateFailure = new QPushButton(tr("Simulate update-check failure"), this);

@@ -1492,6 +1492,11 @@ void MainWindow::refreshInstances()
     APPLICATION->instances()->loadList();
 }
 
+void MainWindow::checkForUpdatesForDeveloper()
+{
+    checkForUpdates();
+}
+
 void MainWindow::checkForUpdates()
 {
     if (APPLICATION->updaterEnabled()) {

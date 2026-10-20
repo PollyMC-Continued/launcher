@@ -94,6 +94,10 @@ class MainWindow : public QMainWindow {
     // Selects an instance and triggers a per-instance action for it.
     // Used by the command palette's intent suggestions.
     void triggerInstanceAction(const QString& id, QAction* action);
+
+    // Narrow entry points used by the hidden Developer Mode page.
+    void triggerStarToastForDeveloper();
+    void checkForUpdatesForDeveloper();
    signals:
     void isClosing();
 
@@ -238,8 +242,11 @@ class MainWindow : public QMainWindow {
 
     void refreshCurrentInstance();
 
+<<<<<<< HEAD
     /// Developer-only entry point that bypasses the reminder schedule.
     void triggerStarToastForDeveloper();
+=======
+>>>>>>> b8f275a (Fixed errors)
 
    private:
     void retranslateUi();
