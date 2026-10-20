@@ -1,6 +1,6 @@
 # Changelog
 
-## v9.4.0 
+## v9.4.0
 
 **Added:**
 
