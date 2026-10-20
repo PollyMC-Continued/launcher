@@ -24,7 +24,7 @@
 
 #include "Application.h"
 #include "BuildConfig.h"
-#include "MainWindow.h"
+#include "ui/MainWindow.h"
 #include "settings/SettingsObject.h"
 
 namespace {
