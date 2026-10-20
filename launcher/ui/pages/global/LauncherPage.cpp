@@ -47,12 +47,14 @@
 
 #include <FileSystem.h>
 #include "Application.h"
+#include "DiscordRichPresence.h"
 #include "BuildConfig.h"
 #include "DesktopServices.h"
 #include "settings/SettingsObject.h"
 #include "ui/themes/ITheme.h"
 #include "ui/themes/ThemeManager.h"
 #include "updater/ExternalUpdater.h"
+#include "updater/PrismExternalUpdater.h"
 
 #include <QApplication>
 #include <QProcess>
@@ -200,6 +202,18 @@ void LauncherPage::on_metadataEnableBtn_clicked()
     ui->metadataWarningLabel->setHidden(ui->metadataEnableBtn->isChecked());
 }
 
+void LauncherPage::on_discordRPEnabledCheckBox_stateChanged(int state)
+{
+    const bool enabled = (state == Qt::Checked);
+    APPLICATION->settings()->set("DiscordRPEnabled", enabled);
+    auto* presence = DiscordRichPresence::instance();
+    if (!enabled) {
+        presence->shutdown();
+    } else if (!presence->isIpcConnected() && !presence->isWsActive()) {
+        presence->init();
+    }
+}
+
 void LauncherPage::applySettings()
 {
     auto s = APPLICATION->settings();
@@ -208,10 +222,13 @@ void LauncherPage::applySettings()
     if (APPLICATION->updater()) {
         APPLICATION->updater()->setAutomaticallyChecksForUpdates(ui->autoUpdateCheckBox->isChecked());
         APPLICATION->updater()->setUpdateCheckInterval(ui->updateIntervalSpinBox->value() * 3600);
+        if (auto* prismUpdater = qobject_cast<PrismExternalUpdater*>(APPLICATION->updater()))
+            prismUpdater->setAutoUpdateMode(ui->updateBehaviorComboBox->currentData().toString());
     }
 
     s->set("AutoLaunchLastInstance", ui->autoLaunchCheckBox->isChecked());
     s->set("MinimizeToTray", ui->minimizeToTrayCheckBox->isChecked());
+    s->set("DiscordRPEnabled", ui->discordRPEnabledCheckBox->isChecked());
 
     s->set("MenuBarInsteadOfToolBar", ui->preferMenuBarCheckBox->isChecked());
 
@@ -268,10 +285,16 @@ void LauncherPage::loadSettings()
     if (APPLICATION->updater()) {
         ui->autoUpdateCheckBox->setChecked(APPLICATION->updater()->getAutomaticallyChecksForUpdates());
         ui->updateIntervalSpinBox->setValue(APPLICATION->updater()->getUpdateCheckInterval() / 3600);
+        if (auto* prismUpdater = qobject_cast<PrismExternalUpdater*>(APPLICATION->updater())) {
+            const int idx = ui->updateBehaviorComboBox->findData(prismUpdater->getAutoUpdateMode());
+            ui->updateBehaviorComboBox->setCurrentIndex(idx >= 0 ? idx : 1);  // default Ask
+            ui->updateIntervalSpinBox->setEnabled(prismUpdater->getAutoUpdateMode() != "Never");
+        }
     }
 
     ui->autoLaunchCheckBox->setChecked(s->get("AutoLaunchLastInstance").toBool());
     ui->minimizeToTrayCheckBox->setChecked(s->get("MinimizeToTray").toBool());
+    ui->discordRPEnabledCheckBox->setChecked(s->get("DiscordRPEnabled").toBool());
 
     ui->preferMenuBarCheckBox->setChecked(s->get("MenuBarInsteadOfToolBar").toBool());
 

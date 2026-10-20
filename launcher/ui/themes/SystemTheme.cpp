@@ -40,6 +40,10 @@
 #include "HintOverrideProxyStyle.h"
 #include "ThemeManager.h"
 
+#include "Application.h"
+
+#include "settings/SettingsObject.h"
+
 // See https://github.com/MultiMC/Launcher/issues/1790
 // or https://github.com/PrismLauncher/PrismLauncher/issues/490
 static const QStringList S_NATIVE_STYLES{ "windows11", "windowsvista", "macos", "system", "windows" };
@@ -59,10 +63,16 @@ SystemTheme::SystemTheme(const QString& styleName, const QPalette& defaultPalett
     }
 }
 
+bool SystemTheme::isNativeStyle(const QString& id)
+{
+    return S_NATIVE_STYLES.contains(id);
+}
+
 void SystemTheme::apply(bool initial)
 {
-    // See S_NATIVE_STYLES comment
-    if (initial && S_NATIVE_STYLES.contains(m_themeName)) {
+    // Native styles must never get a palette stamped over them, on any
+    // apply — not just the first. See S_NATIVE_STYLES comment.
+    if (S_NATIVE_STYLES.contains(m_themeName)) {
         QApplication::setStyle(new HintOverrideProxyStyle(QStyleFactory::create(qtTheme())));
         return;
     }
@@ -114,7 +124,13 @@ QString SystemTheme::qtTheme()
 
 QPalette SystemTheme::colorScheme()
 {
-    return m_colorPalette;
+    // Native styles keep the constructor palette (defaultPalette);
+    // they never reach this value through apply(), which
+    // short-circuits above, but log colors still derive from it.
+    if (S_NATIVE_STYLES.contains(m_themeName))
+        return m_colorPalette;
+    return ThemeManager::paletteFor(
+        APPLICATION->settings()->get("AppearanceMode").toString());
 }
 
 QString SystemTheme::appStyleSheet()

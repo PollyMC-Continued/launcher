@@ -31,6 +31,7 @@
 
 #include <QAccessible>
 #include <QCommandLineParser>
+#include <QEventLoop>
 #include <QFileInfo>
 #include <QMessageBox>
 #include <QNetworkProxy>
@@ -108,6 +109,8 @@ PrismUpdaterApp::PrismUpdaterApp(int& argc, char** argv) : QApplication(argc, ar
           { "debug", tr("Log debug to console.") },
           { { "S", "select-ui" }, tr("Select the version to install with a GUI.") },
           { { "D", "allow-downgrade" }, tr("Allow the updater to downgrade to previous versions.") } });
+    parser.addOptions({ QCommandLineOption(QStringLiteral("silent"),
+                                           tr("Run without any UI (for automatic updates). Errors go to stderr and the update log.")) });
 
     parser.addHelpOption();
     parser.addVersionOption();
@@ -353,6 +356,7 @@ PrismUpdaterApp::PrismUpdaterApp(int& argc, char** argv) : QApplication(argc, ar
     }
 
     m_allowPreRelease = parser.isSet("pre-release");
+    m_silent = parser.isSet("silent");
 
     auto marker_file_path = QDir(m_rootPath).absoluteFilePath(".prism_launcher_updater_unpack.marker");
     auto marker_file = QFileInfo(marker_file_path);
@@ -394,6 +398,11 @@ void PrismUpdaterApp::abort(const QString& reason)
 void PrismUpdaterApp::showFatalErrorMessage(const QString& title, const QString& content)
 {
     m_status = Failed;
+    if (m_silent) {
+        qCritical() << "FATAL:" << title << "-" << content;
+        logUpdate(QStringLiteral("FATAL: %1 - %2").arg(title, content));
+        exit(1);
+    }
     auto msgBox = new QMessageBox();
     msgBox->setWindowTitle(title);
     msgBox->setText(content);
@@ -483,7 +492,7 @@ void PrismUpdaterApp::run()
                     QString("Can not find a github release for specified version %1").arg(m_userSelectedVersion.toString()));
                 return;
             }
-        } else if (m_selectUI) {
+        } else if (m_selectUI && !m_silent) {
             update_release = selectRelease();
             if (!update_release.isValid()) {
                 showFatalErrorMessage("No version selected.", "No version was selected.");
@@ -538,7 +547,8 @@ void PrismUpdaterApp::moveAndFinishUpdate(QDir target)
     progress.setCancelButton(nullptr);
     progress.setMinimumWidth(400);
     progress.adjustSize();
-    progress.show();
+    if (!m_silent)
+        progress.show();
     QCoreApplication::processEvents();
 
     logUpdate(tr("Installing from %1").arg(m_rootPath));
@@ -798,6 +808,15 @@ QFileInfo PrismUpdaterApp::downloadAsset(const GitHubReleaseAsset& asset)
     qDebug() << "downloading" << file_url << "to" << out_file_path;
     auto download = Net::Download::makeFile(file_url, out_file_path);
     download->setNetwork(m_network.get());
+    if (m_silent) {
+        QEventLoop loop;
+        QObject::connect(download.get(), &Task::finished, &loop, &QEventLoop::quit);
+        download->start();
+        loop.exec();
+        qDebug() << "download complete";
+        QFileInfo out_file(out_file_path);
+        return out_file;
+    }
     auto progress_dialog = ProgressDialog();
     progress_dialog.adjustSize();
 
@@ -885,28 +904,24 @@ void PrismUpdaterApp::performInstall(QFileInfo file)
     QFileInfo update_lock(update_lock_path);
     if (update_lock.exists()) {
         auto [timestamp, from, to, target, data_path] = read_lock_File(update_lock_path);
-        auto msg = tr("Update already in progress\n");
+        if (m_silent) {
+            qCritical() << "Update lock present, aborting silent update:" << update_lock_path;
+            logUpdate(tr("Update lock present, aborting silent update."));
+            return showFatalErrorMessage(tr("Update Aborted"), tr("A previous update lock file is present."));
+        }
+        auto msg = tr("Update interrupted");
         auto infoMsg =
-            tr("This installation has a update lock file present at: %1\n"
+            tr("A previous update attempt was interrupted, so an update lock file is still present.\n"
                "\n"
-               "Timestamp: %2\n"
-               "Updating from version %3 to %4\n"
-               "Target install path: %5\n"
-               "Data Path: %6"
-               "\n"
-               "This likely means that a previous update attempt failed. Please ensure your installation is in working order before "
-               "proceeding.\n"
-               "Check the PollyMC-Continued updater log at: \n"
-               "%7\n"
-               "for details on the last update attempt.\n"
-               "\n"
-               "To overwrite this lock and proceed with this update anyway, select \"Ignore\" below.")
-                .arg(update_lock_path)
-                .arg(timestamp.toString(Qt::ISODate), from, to, target, data_path)
-                .arg(m_updateLogPath);
+               "Make sure no other update is running. To delete the lock file and continue anyway, select \"Ignore\" below.");
         QMessageBox msgBox;
         msgBox.setText(msg);
         msgBox.setInformativeText(infoMsg);
+        msgBox.setDetailedText(
+            tr("Lock file: %1\nTimestamp: %2\nUpdating from version %3 to %4\nTarget install path: %5\nData path: %6\nUpdater log: %7")
+                .arg(update_lock_path)
+                .arg(timestamp.toString(Qt::ISODate), from, to, target, data_path)
+                .arg(m_updateLogPath));
         msgBox.setStandardButtons(QMessageBox::Ignore | QMessageBox::Cancel);
         msgBox.setDefaultButton(QMessageBox::Cancel);
         msgBox.setMinimumWidth(460);

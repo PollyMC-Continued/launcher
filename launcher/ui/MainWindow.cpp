@@ -100,6 +100,8 @@
 #include "ui/ViewLogWindow.h"
 #include "bot/BotManagerDialog.h"
 #include "ui/dialogs/AboutDialog.h"
+#include "ui/dialogs/CommandPalette.h"
+#include "ui/dialogs/CommandRegistry.h"
 #include "ui/dialogs/CopyInstanceDialog.h"
 #include "ui/dialogs/CreateShortcutDialog.h"
 #include "ui/dialogs/CustomMessageBox.h"
@@ -150,7 +152,7 @@ QString profileInUseFilter(const QString& profile, bool used)
     }
 }
 
-const QString kStarRepoUrl = QStringLiteral("https://github.com/corecommit/PollyMC-Continued");
+const QString kStarRepoUrl = QStringLiteral("https://github.com/PollyMC-Continued/launcher");
 }  // namespace
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -296,6 +298,9 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
         // FIXME: This is kinda weird. and bad. We need some kind of managed shutdown.
         auto q = new QShortcut(QKeySequence::Quit, this);
         connect(q, &QShortcut::activated, APPLICATION, &Application::quit);
+
+        auto paletteShortcut = new QShortcut(QKeySequence("Ctrl+Shift+P"), this);
+        connect(paletteShortcut, &QShortcut::activated, this, &MainWindow::showCommandPalette);
     }
 
     // Konami Code
@@ -553,6 +558,20 @@ QPoint MainWindow::toastPosition() const
     const int x = margin;
     const int y = height() - statusBarHeight - m_toast->sizeHint().height() - margin;
     return QPoint(x, qMax(margin, y));
+}
+
+void MainWindow::showCommandPalette()
+{
+    // collected fresh per open so enablement is always current
+    CommandPalette palette(CommandRegistry::collect(this), this, this);
+    palette.exec();
+}
+
+void MainWindow::triggerInstanceAction(const QString& id, QAction* action)
+{
+    setSelectedInstanceById(id);
+    if (action)
+        action->trigger();
 }
 
 void MainWindow::maybeShowStarToast()

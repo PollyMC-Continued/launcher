@@ -1,6 +1,7 @@
 #include "BotManagerDialog.h"
 
 #include "Application.h"
+#include "BotScriptEditor.h"
 #include "FileSystem.h"
 
 #include <QVBoxLayout>
@@ -15,8 +16,10 @@
 #include <QDir>
 #include <QCoreApplication>
 #include <QDateTime>
+#include <QDebug>
 #include <QScrollBar>
 #include <QMessageBox>
+#include <QTabWidget>
 #include <QItemSelectionModel>
 #include <QCompleter>
 
@@ -108,6 +111,11 @@ BotManagerDialog::BotManagerDialog(QWidget* parent)
 
     main->addLayout(toolbar);
 
+    auto* tabs = new QTabWidget(this);
+    auto* botsPage = new QWidget(this);
+    auto* botsLayout = new QVBoxLayout(botsPage);
+    botsLayout->setContentsMargins(0, 0, 0, 0);
+
     auto* splitter = new QSplitter(Qt::Horizontal, this);
 
     m_table = new QTableWidget(0, 6, this);
@@ -176,7 +184,13 @@ BotManagerDialog::BotManagerDialog(QWidget* parent)
     splitter->addWidget(rightPanel);
     splitter->setSizes({420, 540});
 
-    main->addWidget(splitter, 1);
+    botsLayout->addWidget(splitter);
+    tabs->addTab(botsPage, tr("Bots"));
+
+    m_editor = new BotScriptEditor(this, this);
+    tabs->addTab(m_editor, tr("Script"));
+
+    main->addWidget(tabs, 1);
 
     // Wire toolbar
     connect(m_addBtn, &QPushButton::clicked, this, &BotManagerDialog::onAddBot);
@@ -202,6 +216,13 @@ BotManagerDialog::BotManagerDialog(QWidget* parent)
     connect(m_bot, &BotProcess::botChat, this, &BotManagerDialog::onBotChat);
     connect(m_bot, &BotProcess::processExited, this, &BotManagerDialog::onProcessExited);
     connect(m_bot, &BotProcess::dependenciesInstalled, this, &BotManagerDialog::onDependenciesInstalled);
+    connect(m_bot, &BotProcess::scriptStarted, this, &BotManagerDialog::onScriptStarted);
+    connect(m_bot, &BotProcess::scriptStep, this, &BotManagerDialog::onScriptStep);
+    connect(m_bot, &BotProcess::scriptFinished, this, &BotManagerDialog::onScriptFinished);
+    connect(m_bot, &BotProcess::scriptError, this, &BotManagerDialog::onScriptError);
+
+    BotScriptStore::instance()->setFilePath(FS::PathCombine(APPLICATION->dataRoot(), "bot-scripts.json"));
+    BotScriptStore::instance()->load();
 
     loadConfigs();
     refreshTable();
@@ -254,7 +275,9 @@ void BotManagerDialog::onDependenciesInstalled(bool ok)
 
 BotManagerDialog::~BotManagerDialog()
 {
-    saveConfigs();
+    QString error;
+    if (!saveConfigs(error))
+        qWarning() << "BotManagerDialog: failed to save bot configs:" << error;
 }
 
 void BotManagerDialog::startBotServer()
@@ -263,7 +286,7 @@ void BotManagerDialog::startBotServer()
     m_bot->start();
 }
 
-void BotManagerDialog::saveConfigs()
+bool BotManagerDialog::saveConfigs(QString& error)
 {
     QJsonArray arr;
     for (const auto& e : m_bots) {
@@ -273,11 +296,19 @@ void BotManagerDialog::saveConfigs()
         obj["port"] = e.config.port;
         obj["version"] = e.config.version;
         obj["autoStart"] = e.config.autoStart;
+        obj["scriptName"] = e.scriptName;
         arr.append(obj);
     }
     QFile f(m_configPath);
-    if (f.open(QIODevice::WriteOnly))
-        f.write(QJsonDocument(arr).toJson(QJsonDocument::Indented));
+    if (!f.open(QIODevice::WriteOnly)) {
+        error = f.errorString();
+        return false;
+    }
+    if (f.write(QJsonDocument(arr).toJson(QJsonDocument::Indented)) < 0) {
+        error = f.errorString();
+        return false;
+    }
+    return true;
 }
 
 void BotManagerDialog::loadConfigs()
@@ -299,6 +330,7 @@ void BotManagerDialog::loadConfigs()
         e.config.port = obj["port"].toInt(25565);
         e.config.version = obj["version"].toString("1.20.4");
         e.config.autoStart = obj["autoStart"].toBool(true);
+        e.scriptName = obj["scriptName"].toString();
         e.connected = false;
         e.colorIndex = m_bots.size() % 8;
         m_bots.append(e);
@@ -375,7 +407,10 @@ void BotManagerDialog::onAddBot()
     e.colorIndex = m_bots.size() % 8;
     m_bots.append(e);
     refreshTable();
-    saveConfigs();
+    QString configError;
+    if (!saveConfigs(configError))
+        QMessageBox::warning(this, tr("Bot Manager"),
+                             tr("Could not save bot config to %1: %2").arg(m_configPath, configError));
 
     if (e.config.autoStart)
         connectBot(m_bots.size() - 1);
@@ -391,7 +426,10 @@ void BotManagerDialog::onEditBot()
 
     entry->config = cfg;
     refreshTable();
-    saveConfigs();
+    QString configError;
+    if (!saveConfigs(configError))
+        QMessageBox::warning(this, tr("Bot Manager"),
+                             tr("Could not save bot config to %1: %2").arg(m_configPath, configError));
 }
 
 void BotManagerDialog::onRemoveBot()
@@ -404,7 +442,10 @@ void BotManagerDialog::onRemoveBot()
 
     m_bots.removeAt(row);
     refreshTable();
-    saveConfigs();
+    QString configError;
+    if (!saveConfigs(configError))
+        QMessageBox::warning(this, tr("Bot Manager"),
+                             tr("Could not save bot config to %1: %2").arg(m_configPath, configError));
 }
 
 void BotManagerDialog::onStart()
@@ -429,8 +470,11 @@ void BotManagerDialog::onStop()
     auto rows = m_table->selectionModel()->selectedRows();
     if (rows.isEmpty()) {
         m_bot->sendCommand("quit_all");
-        for (auto& e : m_bots)
+        for (auto& e : m_bots) {
             e.connected = false;
+            if (m_editor)
+                m_editor->setConnected(e.config.name, false);
+        }
         refreshTable();
         return;
     }
@@ -440,6 +484,8 @@ void BotManagerDialog::onStop()
         p["username"] = e.config.name;
         m_bot->sendCommand("quit", p);
         e.connected = false;
+        if (m_editor)
+            m_editor->setConnected(e.config.name, false);
     }
     refreshTable();
 }
@@ -456,6 +502,10 @@ void BotManagerDialog::onSelectionChanged()
     bool has = m_table->currentRow() >= 0;
     m_editBtn->setEnabled(has);
     m_removeBtn->setEnabled(has);
+    if (has && m_editor) {
+        auto& e = m_bots[m_table->currentRow()];
+        m_editor->setBot(e.config.name, e.scriptName, e.connected);
+    }
 }
 
 void BotManagerDialog::connectBot(int index)
@@ -484,6 +534,8 @@ void BotManagerDialog::disconnectBot(int index)
     p["username"] = e.config.name;
     m_bot->sendCommand("quit", p);
     e.connected = false;
+    if (m_editor)
+        m_editor->setConnected(e.config.name, false);
     refreshTable();
 }
 
@@ -529,6 +581,8 @@ void BotManagerDialog::onSendCommand()
             p["username"] = entry->config.name;
             m_bot->sendCommand("quit", p);
             entry->connected = false;
+            if (m_editor)
+                m_editor->setConnected(entry->config.name, false);
         }
         refreshTable();
     } else if (cmd == "/list") {
@@ -565,12 +619,20 @@ void BotManagerDialog::onSendCommand()
     } else if (cmd == "/goto") {
         if (bots.isEmpty()) { appendLog("Select a bot first"); return; }
         if (parts.size() < 4) { appendLog("Usage: /goto <x> <y> <z>"); return; }
+        bool okx, oky, okz;
+        double x = parts[1].toDouble(&okx);
+        double y = parts[2].toDouble(&oky);
+        double z = parts[3].toDouble(&okz);
+        if (!okx || !oky || !okz) {
+            appendLog("Usage: /goto <x> <y> <z>");
+            return;
+        }
         for (auto* entry : bots) {
             QJsonObject p;
             p["username"] = entry->config.name;
-            p["x"] = parts[1].toDouble();
-            p["y"] = parts[2].toDouble();
-            p["z"] = parts[3].toDouble();
+            p["x"] = x;
+            p["y"] = y;
+            p["z"] = z;
             m_bot->sendCommand("goto", p);
         }
     } else if (cmd == "/home") {
@@ -684,6 +746,59 @@ void BotManagerDialog::onBotConnected(const QString& username, const QString& se
     refreshTable();
     appendLog(QString("<span style='color:#6ee7b7;'>[%1] Connected to %2</span>")
         .arg(username.toHtmlEscaped(), server.toHtmlEscaped()));
+    if (m_editor)
+        m_editor->setConnected(username, true);
+}
+
+void BotManagerDialog::runScriptFor(const QString& botName, const BotScript& script)
+{
+    QJsonObject p;
+    p["username"] = botName;
+    p["script"] = BotScriptParser::serialize(script);
+    m_bot->sendCommand("run_script", p);
+}
+
+void BotManagerDialog::stopScriptFor(const QString& botName)
+{
+    QJsonObject p;
+    p["username"] = botName;
+    m_bot->sendCommand("stop_script", p);
+}
+
+void BotManagerDialog::setBotScript(const QString& botName, const QString& scriptName)
+{
+    for (auto& e : m_bots) {
+        if (e.config.name == botName) {
+            e.scriptName = scriptName;
+            break;
+        }
+    }
+}
+
+void BotManagerDialog::onScriptStarted(const QString& username, const QString& name)
+{
+    appendLog(QString("<span style='color:#a78bfa;'>[script:%1] started: %2</span>").arg(username.toHtmlEscaped(), name.toHtmlEscaped()));
+}
+
+void BotManagerDialog::onScriptStep(const QString& username, int index, const QString& stepType)
+{
+    appendLog(QString("<span style='color:#a78bfa;'>[script:%1] step %2: %3</span>")
+                  .arg(username.toHtmlEscaped(), QString::number(index), stepType.toHtmlEscaped()));
+}
+
+void BotManagerDialog::onScriptFinished(const QString& username, const QString& reason, const QString& error)
+{
+    QString text = QString("<span style='color:#a78bfa;'>[script:%1] finished: %2</span>")
+                       .arg(username.toHtmlEscaped(), reason.toHtmlEscaped());
+    if (!error.isEmpty())
+        text += " (" + error.toHtmlEscaped() + ")";
+    appendLog(text);
+}
+
+void BotManagerDialog::onScriptError(const QString& username, int stepIndex, const QString& message)
+{
+    appendLog(QString("<span style='color:#f87171;'>[script:%1] error at step %2: %3</span>")
+                  .arg(username.toHtmlEscaped(), QString::number(stepIndex), message.toHtmlEscaped()));
 }
 
 void BotManagerDialog::onBotChat(const QString& bot, const QString& from, const QString& message)
@@ -697,7 +812,10 @@ void BotManagerDialog::onProcessExited(int code)
     m_statusLabel->setText("Bot server: exited (" + QString::number(code) + ")");
     m_statusLabel->setStyleSheet("color: #f87171; padding: 0 12px; font-size: 12px;");
     appendLog("Bot server exited with code " + QString::number(code));
-    for (auto& e : m_bots)
+    for (auto& e : m_bots) {
         e.connected = false;
+        if (m_editor)
+            m_editor->setConnected(e.config.name, false);
+    }
     refreshTable();
 }

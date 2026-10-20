@@ -590,6 +590,11 @@ Sie können ein Microsoft-, Offline- oder Yggdrasil-(authlib-injector)-Konto hin
         <translation>Design:</translation>
     </message>
     <message>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.ui" line="126"/>
+        <source>Launcher Font:</source>
+        <translation>Launcher-Schriftart:</translation>
+    </message>
+    <message>
         <source>Cat Opacity</source>
         <translation type="vanished">Katzen-Deckkraft</translation>
     </message>
@@ -598,17 +603,17 @@ Sie können ein Microsoft-, Offline- oder Yggdrasil-(authlib-injector)-Konto hin
         <translation type="vanished">&amp;Katzenpaket:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="216"/>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="228"/>
         <source>[INFO] A harmless message...</source>
         <translation>[INFO] Eine harmlose Nachricht...</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/AppearanceWidget.ui" line="189"/>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.ui" line="251"/>
         <source>Preview</source>
         <translation>Vorschau</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="214"/>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="226"/>
         <source>[ERROR] A spooky error!</source>
         <translation>[FEHLER] Ein gespenstischer Fehler ist passiert!</translation>
     </message>
@@ -627,7 +632,7 @@ Sie können ein Microsoft-, Offline- oder Yggdrasil-(authlib-injector)-Konto hin
         <translation type="vanished">Katzen Skalierung</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="219"/>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="231"/>
         <source>[FATAL] A terrifying fatal error!</source>
         <translation>FATAL] Ein fataler Fehler!</translation>
     </message>
@@ -645,22 +650,22 @@ Sie können ein Microsoft-, Offline- oder Yggdrasil-(authlib-injector)-Konto hin
         <translation>&amp;Symbole:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="218"/>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="230"/>
         <source>[DEBUG] A secret debugging message...</source>
         <translation>[DEBUG] Eine geheime Debugging-Nachricht...</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/AppearanceWidget.ui" line="126"/>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.ui" line="188"/>
         <source>Console Font:</source>
         <translation>Konsolenschrifart:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="212"/>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="224"/>
         <source>[ERROR] OOoooOOOoooo! A spooky error!</source>
         <translation>[FEHLER] Uuuhuuuuh! Ein gespenstischer Fehler ist passiert!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="217"/>
+        <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="229"/>
         <source>[WARN] A not so spooky warning.</source>
         <translation>[WARN] Eine nicht so schaurige Warnung.</translation>
     </message>
@@ -668,18 +673,19 @@ Sie können ein Microsoft-, Offline- oder Yggdrasil-(authlib-injector)-Konto hin
 <context>
     <name>Application</name>
     <message>
-        <location filename="../launcher/Application.cpp" line="1169"/>
+        <location filename="../launcher/Application.cpp" line="1179"/>
         <source>Update Succeeded</source>
         <translation>Update erfolgreich</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="1207"/>
+        <location filename="../launcher/Application.cpp" line="1217"/>
         <source>Incompatible system configuration</source>
         <translation>Inkompatible System-Konfiguration</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="2070"/>
-        <location filename="../launcher/Application.cpp" line="2122"/>
+        <location filename="../launcher/Application.cpp" line="2089"/>
+        <location filename="../launcher/Application.cpp" line="2141"/>
+        <location filename="../launcher/Application.cpp" line="2226"/>
         <source>Migration failed! Reason: %1</source>
         <translation>Migration fehlgeschlagen! Grund: %1</translation>
     </message>
@@ -712,22 +718,22 @@ Bitte vergewissere dich vor dem Fortfahren, dass deine Installation funktional i
 für Details zum letzten Updateversuch.</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="705"/>
+        <location filename="../launcher/Application.cpp" line="715"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Dieser Log kann nicht angezeigt werden, da die Länge %1 Linien überschreitet.</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="2039"/>
+        <location filename="../launcher/Application.cpp" line="2058"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Es sieht so aus, als hättest du zuvor %1 am %2 verwendet. Möchtest du die Daten zum neuen Speicherort von %3 migrieren?</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="2033"/>
+        <location filename="../launcher/Application.cpp" line="2052"/>
         <source>It looks like you used %1 before. Do you want to migrate your data to the new location of %2?</source>
         <translation>Es sieht so aus, als hättest du zuvor %1 verwendet. Möchtest du die Daten zum neuen Speicherort von %2 migrieren?</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="1088"/>
+        <location filename="../launcher/Application.cpp" line="1098"/>
         <source>This installation has a update lock file present at: %1
 
 Timestamp: %2
@@ -755,7 +761,7 @@ für Details zum letzten Aktualisierungsversuch.
 Um diese Sperre zu löschen und fortzufahren, wählen Sie unten &quot;Ignorieren&quot;.</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="1129"/>
+        <location filename="../launcher/Application.cpp" line="1139"/>
         <source>An update attempt failed
 
 Please ensure your installation is in working order before proceeding.
@@ -771,12 +777,12 @@ Bitte stellen Sie sicher, dass Ihre Installation ordnungsgemäß funktioniert, b
 für Details zum letzten Aktualisierungsversuch.</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="1137"/>
+        <location filename="../launcher/Application.cpp" line="1147"/>
         <source>Update Failed</source>
         <translation>Update fehlgeschlagen</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="1161"/>
+        <location filename="../launcher/Application.cpp" line="1171"/>
         <source>Update succeeded
 
 You are now running %1 .
@@ -792,7 +798,7 @@ Sie führen jetzt %1 aus.
 für Details.</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="1201"/>
+        <location filename="../launcher/Application.cpp" line="1211"/>
         <source>Your /tmp directory is currently mounted with the &apos;noexec&apos; flag enabled.
 Some versions of Minecraft may not launch.
 
@@ -805,17 +811,43 @@ Sie können dieses Problem beheben, indem Sie /tmp als &apos;exec&apos; erneut e
 </translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="2104"/>
+        <location filename="../launcher/Application.cpp" line="2123"/>
         <source>Instances were found at %1, but %2 is looking in %3. Do you want to migrate them to the new location?</source>
         <translation>Instanzen wurden in %1 gefunden, aber %2 sucht in %3. Möchtest du sie an den neuen Ort verschieben?</translation>
     </message>
+    <message numerus="yes">
+        <location filename="../launcher/Application.cpp" line="2188"/>
+        <source>Found %n instance(s) in your existing install at %1.
+Copy them into this portable folder? This will move your accounts, settings, and instance list into the portable location.</source>
+        <translation>
+            <numerusform>%n Instanz aus deiner bestehenden Installation unter %1 gefunden.
+In diesen portablen Ordner kopieren? Dadurch werden deine Konten, Einstellungen und Instanzliste an den portablen Ort verschoben.</numerusform>
+            <numerusform>%n Instanzen aus deiner bestehenden Installation unter %1 gefunden.
+In diesen portablen Ordner kopieren? Dadurch werden deine Konten, Einstellungen und Instanzliste an den portablen Ort verschoben.</numerusform>
+        </translation>
+    </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="1105"/>
+        <location filename="../launcher/Application.cpp" line="2195"/>
+        <source>Don&apos;t ask again for this portable folder</source>
+        <translation>Nicht erneut fragen</translation>
+    </message>
+    <message>
+        <location filename="../launcher/Application.cpp" line="2199"/>
+        <source>Yes, copy them</source>
+        <translation>Ja, kopieren</translation>
+    </message>
+    <message>
+        <location filename="../launcher/Application.cpp" line="2200"/>
+        <source>No, start fresh</source>
+        <translation>Nein, neu beginnen</translation>
+    </message>
+    <message>
+        <location filename="../launcher/Application.cpp" line="1115"/>
         <source>Update In Progress</source>
         <translation>Update läuft</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="923"/>
+        <location filename="../launcher/Application.cpp" line="933"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
@@ -846,7 +878,7 @@ für Details zum letzten Updateversuch.
 Um diese Sperre zu löschen und fortzufahren, drücke &quot;Ignorieren&quot;.</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="2029"/>
+        <location filename="../launcher/Application.cpp" line="2048"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>Es wurden alte Daten von %1 gefunden, jedoch bestehen bereits Daten für %2. Leider muss die Migration selbst durchgeführt werden. Möchtest du beim nächsten Start von %2 an die anstehende Datenmigration erinnert werden?</translation>
     </message>
@@ -12500,9 +12532,13 @@ Sind Sie sicher?</translation>
 <context>
     <name>SkinBrowserDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="14"/>
         <source>View skins online</source>
-        <translation>Skins online ansehen</translation>
+        <translation type="vanished">Skins online ansehen</translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="14"/>
+        <source>Browse online skins</source>
+        <translation>Skins online durchsuchen</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="22"/>
@@ -12515,48 +12551,57 @@ Sind Sie sicher?</translation>
         <translation>Suchen</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="52"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="134"/>
+        <source>Close</source>
+        <translation>Schließen</translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="137"/>
+        <source>Close this window</source>
+        <translation>Dieses Fenster schließen</translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="157"/>
         <source>◀</source>
         <translation>◀</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="55"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="160"/>
         <source>Previous page</source>
         <translation>Vorherige Seite</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="62"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="167"/>
         <source>Page 1</source>
         <translation>Seite 1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="69"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="174"/>
         <source>▶</source>
         <translation>▶</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="72"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="177"/>
         <source>Next page</source>
         <translation>Nächste Seite</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="132"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="276"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="105"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="275"/>
         <source>Select a skin</source>
         <translation>Skin auswählen</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="155"/>
         <source>View on crafty.gg</source>
-        <translation>Auf crafty.gg ansehen</translation>
+        <translation type="vanished">Auf crafty.gg ansehen</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="178"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="197"/>
         <source>Use skin</source>
         <translation>Skin verwenden</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="184"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.ui" line="203"/>
         <source>Apply this skin to the selected account</source>
         <translation>Wende diesen Skin auf das ausgewählte Konto an</translation>
     </message>
@@ -12571,18 +12616,18 @@ Sind Sie sicher?</translation>
         <translation>Skin-Katalog</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="144"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="143"/>
         <source>The skin image could not be stored on disk.</source>
         <translation>Das Skin-Bild konnte nicht auf der Festplatte gespeichert werden.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="157"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="156"/>
         <source>Loading…</source>
         <translation>Lädt…</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="166"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="173"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="165"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="172"/>
         <source>Page %1</source>
         <translation>Seite %1</translation>
     </message>
@@ -12607,27 +12652,27 @@ Sind Sie sicher?</translation>
         <translation>%1 · von %2 Spielern verwendet</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="286"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="285"/>
         <source>Unknown player</source>
         <translation>Unbekannter Spieler</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="290"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="289"/>
         <source>%1 players</source>
         <translation>%1 Spieler</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="292"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="291"/>
         <source>%1 views</source>
         <translation>%1 Aufrufe</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="294"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="293"/>
         <source>%1 upvotes</source>
         <translation>%1 Daumen hoch</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="297"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="296"/>
         <source>added %1</source>
         <translation>hinzugefügt %1</translation>
     </message>
@@ -12702,8 +12747,12 @@ Sind Sie sicher?</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="152"/>
+        <source>Browse online skins</source>
+        <translation>Skins online durchsuchen</translation>
+    </message>
+    <message>
         <source>View skins online</source>
-        <translation>Skins online ansehen</translation>
+        <translation type="vanished">Skins online ansehen</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="155"/>

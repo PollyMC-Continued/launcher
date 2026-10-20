@@ -1,5 +1,83 @@
 # Changelog
 
+## v9.4.0
+
+**Added:**
+
+- **Portable data migration** — Portable installs now offer to migrate data from an existing system install on first launch.
+- **Launcher font picker** — Settings > Appearance now has a Launcher Font dropdown (same font list as the console font) with live preview across the whole launcher.
+- **Command palette** — Press Ctrl+Shift+P anywhere in the main window to fuzzy-search every launcher action and run it from the keyboard.
+- **Bot scripting** — Attach say/wait/loop scripts to bots from the new Script tab in the Bot Manager, with a built-in step editor and per-bot run control.
+- **Natural-language command search** — Prefix a palette query with `?` to match commands by meaning instead of name, using a downloadable multilingual model that runs fully offline after a one-time download.
+- **Startup splash screen** — A splash appears immediately on launch, before
+  heavy initialization, so slow systems and Winlator users get visual feedback
+  instead of a blank delay.
+- **Forced auto-update with opt-out** — New "Update behavior" dropdown in
+  Settings > Launcher: install updates silently (default), ask first, or
+  never check. Silent updates defer automatically if a game is running.
+- **Persistent model consent** — The first-run download prompt for the
+  natural-language model is now remembered. If you accepted once, future
+  model updates download automatically without prompting.
+- **Discord Rich Presence toggle** — Settings > General has a
+  new "Show what you're playing on Discord" checkbox. Discord
+  activity was always shared before; it's on by default, and
+  turning it off now applies immediately without a restart.
+- **Separate dark/light and widget style** — Settings >
+  Appearance now has an "Appearance" dropdown (Light / Dark /
+  System) independent of the "Theme" dropdown (which picks
+  the widget style). Previously dark and light were baked
+  into each theme; now they apply on top of any non-native
+  theme. Windows-native themes continue to follow your
+  Windows appearance setting and grey out the Appearance
+  dropdown.
+
+**Fixed:** 
+
+- **Windows 11 theme now renders correctly on Windows 10** — The style draws spin arrows, checkboxes, and
+  other indicators with glyphs from Segoe Fluent Icons, which
+  isn't present on Windows 10 or Wine. Those
+  primitives now fall back to Fusion's rendering while the rest
+  of the Windows 11 style is unchanged.
+- **Switching away from a Windows theme and back no longer
+  corrupts its look** — Re-selecting a native Windows style
+  used to stamp a default palette over the native rendering,
+  producing mismatched colors. Native styles are now left
+  untouched on every apply.
+- **OAuth response bodies are no longer logged** — A failed
+  Microsoft login used to write the full token-endpoint response
+  into the launcher log, which could expose the access token to
+  anyone the log was shared with. Only the HTTP status is now
+  recorded.
+- **Bots no longer stay online after quit** — The bot server now disconnects all bots and exits when the launcher closes, with a parent-process watchdog as backup.
+- **Bot respawn works** — Uses the vanilla respawn packet instead of a nonexistent API call, and skips when the bot isn't dead.
+- **Bot movement right after join** — Pathfinding is set up at login instead of spawn, and bad coordinates or a missing item count no longer throw.
+- **Clearer bot errors** — Input parse failures and command failures are now reported separately instead of everything showing as invalid JSON.
+- **AppImage runs on older Linux distributions** — The AppImage was built on Ubuntu 24.04, so everything bundled into it (the launcher, `AppRun`, Qt, libarchive, ONNX Runtime) needed glibc 2.38 or newer and failed to start on Ubuntu 22.04, Debian 12 and similar systems with errors like ``version `GLIBC_2.38' not found``. It is now built against glibc 2.35 (Qt 6.8.3 from the official Qt installer, everything else from Ubuntu 22.04), and CI both asserts the glibc floor and launches the AppImage inside an Ubuntu 22.04 container so this cannot regress silently.
+- **AppImage file name** — It is now `PollyMC-Continued-<version>-x86_64.AppImage` instead of `...-Linux-x86_64.AppImage`; the AppImage packaging guidelines explicitly ask not to put "Linux" in an AppImage name since every AppImage is for Linux. The name is now applied when the image is created, not patched afterwards.
+- **Translations no longer delay the first paint** — The translation index download now starts only after the event loop is running, so the launcher paints immediately in English (or a cached translation) and applies the downloaded language when it arrives.
+- **Update check no longer freezes or crashes startup** — The update check used to run synchronously on the UI thread, blocking it for up to 60 seconds, and fired immediately on a first launch (and from inside the updater's constructor with the "On Launch" setting). It now runs in the background, waits a few seconds after startup before the first automatic check, and fails silently when automatic (manual checks still report errors).
+
+**Changed:**
+
+- **AppImage widget style** — The AppImage no longer bundles the KDE Breeze widget style, because no distro package provides a build matching the Qt used for the AppImage. Breeze icons are unaffected: they are compiled into the launcher itself. The `.deb`, tarball and Arch packages keep it.
+- **Translations moved to pollymc.vercel.app** — Previously hosted on
+  GitHub Pages. The old URL is still served for backward compatibility
+  with older launcher builds.
+- **Clearer error dialogs** — Launcher error messages now lead
+  with what went wrong and put the technical details behind a
+  "Show Details" expander, instead of dumping paths and version
+  numbers into the main body.
+- **Translation strings updated** — Several launcher dialogs and
+  status messages have new source strings. Existing translations
+  will fall back to English until translators catch up.
+- **"Use discrete GPU" now works on Windows** — The toggle
+  previously did nothing on Windows, since the GPU preference
+  logic was Linux-only. Enabling it now writes the same
+  per-application GPU preference that Windows Settings >
+  Display > Graphics uses, for the Java binary the instance
+  actually launches. Note: this is per-binary — it affects
+  every app on the machine using the same javaw.exe.
+  
 ## v9.3.0
 
 **Added:**
