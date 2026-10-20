@@ -16,6 +16,7 @@
 #pragma once
 
 #include <QDialog>
+#include <QElapsedTimer>
 
 namespace Ui {
 class AboutDialog;
@@ -27,7 +28,10 @@ class AboutDialog : public QDialog {
    public:
     explicit AboutDialog(QWidget* parent = 0);
     ~AboutDialog();
+    bool eventFilter(QObject* watched, QEvent* event) override;
 
    private:
     Ui::AboutDialog* ui;
+    QElapsedTimer m_developerClickTimer;
+    int m_developerClickCount = 0;
 };

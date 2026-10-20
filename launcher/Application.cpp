@@ -63,6 +63,7 @@
 #include "ui/pages/global/AccountListPage.h"
 #include "ui/pages/global/AppearancePage.h"
 #include "ui/pages/global/ExternalToolsPage.h"
+#include "ui/pages/global/DeveloperPage.h"
 #include "ui/pages/global/JavaPage.h"
 #include "ui/pages/global/LanguagePage.h"
 #include "ui/pages/global/LauncherPage.h"
@@ -712,6 +713,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         // GitHub star reminder — dismissed means "never ask again"
         m_settings->registerSetting("StarReminderDismissed", false);
         m_settings->registerSetting("StarReminderLastShown", QString());
+        m_settings->registerSetting("DeveloperMode", false);
 
         m_settings->registerSetting("NumberOfConcurrentTasks", 10);
         m_settings->registerSetting("NumberOfConcurrentDownloads", 6);
@@ -980,6 +982,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
             m_globalSettingsProvider->addPage<AccountListPage>();
             m_globalSettingsProvider->addPage<APIPage>();
             m_globalSettingsProvider->addPage<ExternalToolsPage>();
+            m_globalSettingsProvider->addPage<DeveloperPage>();
             m_globalSettingsProvider->addPage<ProxyPage>();
         }
 

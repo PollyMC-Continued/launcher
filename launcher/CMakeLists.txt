@@ -958,6 +958,8 @@ SET(LAUNCHER_SOURCES
     ui/pages/global/AccountListPage.h
     ui/pages/global/ExternalToolsPage.cpp
     ui/pages/global/ExternalToolsPage.h
+    ui/pages/global/DeveloperPage.cpp
+    ui/pages/global/DeveloperPage.h
     ui/pages/global/JavaPage.cpp
     ui/pages/global/JavaPage.h
     ui/pages/global/LanguagePage.cpp

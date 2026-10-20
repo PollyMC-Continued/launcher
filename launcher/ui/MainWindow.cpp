@@ -583,6 +583,27 @@ void MainWindow::triggerInstanceAction(const QString& id, QAction* action)
         action->trigger();
 }
 
+void MainWindow::triggerStarToastForDeveloper()
+{
+    // Settings is modal, so wait until it closes before showing a toast owned by the
+    // main window. Otherwise the toast would be behind the settings dialog and could
+    // time out before the user sees it.
+    if (QWidget* modal = QApplication::activeModalWidget()) {
+        connect(modal, &QObject::destroyed, this, [this]() {
+            if (!isVisible() || isMinimized())
+                return;
+            prepareStarToast();
+            m_toast->showToast(toastPosition());
+        }, Qt::SingleShotConnection);
+        statusBar()->showMessage(tr("The star reminder will appear after the Settings dialog closes."), 5000);
+        return;
+    }
+
+    // Keep this explicit developer action independent of the normal weekly/dismissed gates.
+    prepareStarToast();
+    m_toast->showToast(toastPosition());
+}
+
 void MainWindow::maybeShowStarToast()
 {
     if (!isVisible() || isMinimized())
