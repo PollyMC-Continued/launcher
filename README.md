@@ -24,20 +24,20 @@ Download the artifact for your platform from the [releases page](https://github.
 
 ### Windows
 
-- **Installer** — `PollyMC-Continued-9.3.0-Windows-Setup.exe`. Runs the NSIS installer, creates a Start Menu entry, supports upgrade-in-place.
-- **Portable** — `PollyMC-Continued-9.3.0-Windows-portable.zip`. Extract anywhere, run `pollymc.exe`. Data lives next to the binary.
+- **Installer** — `PollyMC-Continued-9.4.0-Windows-Setup.exe`. Runs the NSIS installer, creates a Start Menu entry, supports upgrade-in-place.
+- **Portable** — `PollyMC-Continued-9.4.0-Windows-portable.zip`. Extract anywhere, run `pollymc.exe`. Data lives next to the binary.
 
 ### macOS (arm64)
 
-- **Disk image** — `PollyMC-Continued-9.3.0-macOS-arm64.dmg`. Open, drag `PollyMC.app` to Applications.
+- **Disk image** — `PollyMC-Continued-9.4.0-macOS-arm64.dmg`. Open, drag `PollyMC.app` to Applications.
 - **ZIP** — same contents, for scripted installs.
 
 Auto-update is not available on macOS yet — download the latest `.dmg` or `.zip` when a new release is out.
 
 ### Linux
 
-- **AppImage** — `PollyMC-Continued-9.3.0-x86_64.AppImage`. `chmod +x` and run. Self-contained; needs glibc 2.35 or newer (Ubuntu 22.04, Debian 12, Fedora 40+, Arch).
-- **Portable tarball** — `PollyMC-Continued-9.3.0-Linux-x86_64.tar.gz`. Extract, run `bin/pollymc`. Data lives in the extracted folder. Needs glibc 2.39 or newer plus a system Qt 6.4+, because it is built on Ubuntu 24.04.
+- **AppImage** — `PollyMC-Continued-9.4.0-x86_64.AppImage`. `chmod +x` and run. Self-contained; needs glibc 2.35 or newer (Ubuntu 22.04, Debian 12, Fedora 40+, Arch).
+- **Portable tarball** — `PollyMC-Continued-9.4.0-Linux-x86_64.tar.gz`. Extract, run `bin/pollymc`. Data lives in the extracted folder. Needs glibc 2.39 or newer plus a system Qt 6.4+, because it is built on Ubuntu 24.04.
 - **DEB** — see the apt repository below, or install a downloaded `.deb` with `sudo dpkg -i`.
 - **pacman** — see the Arch repository below, or install a downloaded `.pkg.tar.zst` with `sudo pacman -U`.
 
