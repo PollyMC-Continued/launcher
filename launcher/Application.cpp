@@ -1100,8 +1100,10 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         qInfo() << "<> Cache initialized.";
     }
 
-    // now we have network, download translation updates
-    m_translations->downloadIndex();
+    // Now we have network, download translation updates. Defer the request
+    // until the event loop is running so startup can paint the UI (in English,
+    // or in the cached language) instead of touching the network first.
+    QTimer::singleShot(0, this, [this]() { m_translations->downloadIndex(); });
 
     // FIXME: what to do with these?
     m_profilers.insert("jprofiler", std::shared_ptr<BaseProfilerFactory>(new JProfilerFactory()));
@@ -1144,6 +1146,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
         auto update_lock = QFileInfo(FS::PathCombine(m_dataPath, ".prism_launcher_update.lock"));
         if (update_lock.exists()) {
+            closeSplashScreen();
             auto [timestamp, from, to, target, data_path] = read_lock_File(update_lock.absoluteFilePath());
             auto infoMsg = tr("A previous update attempt was interrupted, so an update lock file is still present.\n"
                               "\n"
@@ -1177,6 +1180,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
         auto update_fail_marker = QFileInfo(FS::PathCombine(m_dataPath, ".prism_launcher_update.fail"));
         if (update_fail_marker.exists()) {
+            closeSplashScreen();
             auto infoMsg = tr("The last update attempt failed.\n"
                               "\n"
                               "Make sure the installation works, then select \"Ignore\" to continue starting the launcher.");
@@ -1206,6 +1210,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
         auto update_success_marker = QFileInfo(FS::PathCombine(m_dataPath, ".prism_launcher_update.success"));
         if (update_success_marker.exists()) {
+            closeSplashScreen();
             auto infoMsg = tr("You are now running %1.\n"
                               "\n"
                               "See the updater log for details.")
@@ -1241,6 +1246,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 #endif
 
         if (is_tmp_noexec) {
+            closeSplashScreen();
             auto infoMsg =
                 tr("Your /tmp directory is currently mounted with the 'noexec' flag enabled.\n"
                    "Some versions of Minecraft may not launch.\n"
@@ -1340,6 +1346,9 @@ bool Application::createSetupWizard()
             m_setupWizard->addPage(new LoginWizardPage(m_setupWizard));
         }
         connect(m_setupWizard, &QDialog::finished, this, &Application::setupWizardFinished);
+        // The wizard is its own top-level window; do not leave the splash
+        // hanging over it for as long as the user takes to finish setup.
+        closeSplashScreen();
         m_setupWizard->show();
     }
 
@@ -1398,9 +1407,21 @@ void Application::setupWizardFinished(int status)
     performMainStartupAction();
 }
 
+void Application::closeSplashScreen()
+{
+    if (!m_splash)
+        return;
+    m_splash->close();
+    m_splash->deleteLater();
+    m_splash = nullptr;
+}
+
 void Application::performMainStartupAction()
 {
     m_status = Application::Initialized;
+    // Any window shown from here on is the real startup UI, so the splash
+    // must be gone before we branch into launching or opening windows.
+    closeSplashScreen();
     if (!m_instanceIdToLaunch.isEmpty()) {
         auto inst = instances()->getInstanceById(m_instanceIdToLaunch);
         if (inst) {
@@ -1428,11 +1449,6 @@ void Application::performMainStartupAction()
             launch(inst, m_launchOffline ? LaunchMode::Offline : LaunchMode::Normal, targetToJoin, accountToUse, m_offlineName);
 
             if (!m_showMainWindow) {
-                if (m_splash) {
-                    m_splash->close();
-                    m_splash->deleteLater();
-                    m_splash = nullptr;
-                }
                 return;
             }
         }
@@ -1442,11 +1458,6 @@ void Application::performMainStartupAction()
         if (inst) {
             qDebug() << "<> Showing window of instance " << m_instanceIdToShowWindowOf;
             showInstanceWindow(inst);
-            if (m_splash) {
-                m_splash->close();
-                m_splash->deleteLater();
-                m_splash = nullptr;
-            }
             return;
         }
     }
@@ -1454,11 +1465,6 @@ void Application::performMainStartupAction()
         // normal main window
         showMainWindow(false);
         qDebug() << "<> Main window shown.";
-    }
-    if (m_splash) {
-        m_splash->finish(m_mainWindow);
-        m_splash->deleteLater();
-        m_splash = nullptr;
     }
 
     // initialize the updater
@@ -1491,6 +1497,7 @@ void Application::performMainStartupAction()
 
 void Application::showFatalErrorMessage(const QString& title, const QString& content)
 {
+    closeSplashScreen();
     m_status = Application::Failed;
     auto dialog = CustomMessageBox::selectable(nullptr, title, content, QMessageBox::Critical);
     dialog->exec();
@@ -1761,6 +1768,7 @@ void Application::ShowGlobalSettings(class QWidget* parent, QString open_page)
     if (!m_globalSettingsProvider) {
         return;
     }
+    closeSplashScreen();
     emit globalSettingsAboutToOpen();
     {
         SettingsObject::Lock lock(APPLICATION->settings());
@@ -1781,6 +1789,7 @@ void Application::applyLauncherFont()
 
 MainWindow* Application::showMainWindow(bool minimized)
 {
+    closeSplashScreen();
     if (m_mainWindow) {
         m_mainWindow->setWindowState(m_mainWindow->windowState() & ~Qt::WindowMinimized);
         m_mainWindow->raise();
@@ -1821,6 +1830,7 @@ MainWindow* Application::showMainWindow(bool minimized)
 
 ViewLogWindow* Application::showLogWindow()
 {
+    closeSplashScreen();
     if (m_viewLogWindow) {
         m_viewLogWindow->setWindowState(m_viewLogWindow->windowState() & ~Qt::WindowMinimized);
         m_viewLogWindow->raise();
@@ -1837,6 +1847,7 @@ InstanceWindow* Application::showInstanceWindow(BaseInstance* instance, QString 
 {
     if (!instance)
         return nullptr;
+    closeSplashScreen();
     auto id = instance->id();
     QMutexLocker locker(&m_instanceExtrasMutex);
     auto& extras = m_instanceExtras[id];
