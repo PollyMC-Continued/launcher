@@ -41,6 +41,14 @@ class ExternalUpdater : public QObject {
     virtual void checkForUpdates() = 0;
 
     /*!
+     * Developer aid: show the normal "update available" UI for the most recent release, even when the
+     * installed version is already up to date. Installing from this preview is disabled.
+     *
+     * \return false if this updater does not support previews.
+     */
+    virtual bool previewLatestRelease() { return false; }
+
+    /*!
      * Indicates whether or not to check for updates automatically.
      */
     virtual bool getAutomaticallyChecksForUpdates() = 0;

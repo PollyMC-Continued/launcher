@@ -30,7 +30,8 @@
 UpdateAvailableDialog::UpdateAvailableDialog(const QString& currentVersion,
                                              const QString& availableVersion,
                                              const QString& releaseNotes,
-                                             QWidget* parent)
+                                             QWidget* parent,
+                                             bool previewOnly)
     : QDialog(parent), ui(new Ui::UpdateAvailableDialog)
 {
     ui->setupUi(this);
@@ -45,6 +46,16 @@ UpdateAvailableDialog::UpdateAvailableDialog(const QString& currentVersion,
     auto releaseNotesHtml = markdownToHTML(releaseNotes);
     ui->releaseNotes->setHtml(StringUtils::htmlListPatch(releaseNotesHtml));
     ui->releaseNotes->setOpenExternalLinks(true);
+
+    if (previewOnly) {
+        // Developer preview of the real dialog: nothing here may install or skip anything.
+        setWindowTitle(tr("%1 (preview)").arg(windowTitle()));
+        ui->headerLabel->setText(tr("%1 (preview)").arg(ui->headerLabel->text()));
+        ui->skipButton->setVisible(false);
+        ui->installButton->setEnabled(false);
+        ui->installButton->setToolTip(tr("Disabled in preview mode."));
+        ui->delayButton->setText(tr("Close"));
+    }
 
     connect(ui->skipButton, &QPushButton::clicked, this, [this]() {
         setResult(ResultCode::Skip);

@@ -5,6 +5,9 @@
 #include <QCheckBox>
 #include <QClipboard>
 #include <QDateTime>
+#include <QDialog>
+#include <functional>
+#include <memory>
 #include <QDir>
 #include <QDesktopServices>
 #include <QFileInfoList>
@@ -59,6 +62,22 @@ QString diagnosticsText()
     return lines.join(QLatin1Char('\n'));
 }
 
+// The Settings dialog applies every page (e.g. LanguagePage) when it closes, which would overwrite
+// values changed from this page while it is open. Run `fn` once the dialog has finished instead.
+void runAfterSettingsClose(QWidget* page, std::function<void()> fn)
+{
+    auto* dialog = qobject_cast<QDialog*>(page->window());
+    if (!dialog) {
+        fn();
+        return;
+    }
+    auto conn = std::make_shared<QMetaObject::Connection>();
+    *conn = QObject::connect(dialog, &QDialog::finished, dialog, [conn, fn](int) {
+        QObject::disconnect(*conn);
+        fn();
+    });
+}
+
 void showSplashPreview()
 {
     QPixmap pixmap(400, 260);
@@ -99,12 +118,16 @@ DeveloperPage::DeveloperPage(QWidget* parent) : QWidget(parent)
     resetFirstRun->setToolTip(tr("Make the language and Java setup prompts eligible to appear again."));
     layout->addWidget(resetFirstRun);
     connect(resetFirstRun, &QPushButton::clicked, this, [this]() {
-        auto* settings = APPLICATION->settings();
-        settings->set("Language", QString());
-        settings->set("UserAskedAboutAutomaticJavaDownload", false);
-        settings->set("IgnoreJavaWizard", false);
-        settings->set("AppearanceMigrated", false);
-        QMessageBox::information(this, tr("Developer tools"), tr("First-run preferences have been reset. Some prompts may appear after restarting PollyMC-Continued."));
+        // Note: AppearanceMigrated is intentionally NOT reset. Re-running that migration would
+        // overwrite the user's chosen appearance mode from the legacy ApplicationTheme value.
+        runAfterSettingsClose(this, []() {
+            auto* settings = APPLICATION->settings();
+            settings->set("Language", QString());
+            settings->set("UserAskedAboutAutomaticJavaDownload", false);
+            settings->set("IgnoreJavaWizard", false);
+        });
+        QMessageBox::information(this, tr("Developer tools"),
+                                 tr("First-run preferences will be reset when Settings closes. The language and Java setup prompts may appear after restarting PollyMC-Continued."));
     });
 
     auto* resetStar = new QPushButton(tr("Reset GitHub star reminder"), this);
@@ -143,11 +166,14 @@ DeveloperPage::DeveloperPage(QWidget* parent) : QWidget(parent)
     layout->addWidget(verboseLogging);
     connect(verboseLogging, &QCheckBox::toggled, this, [](bool enabled) {
         if (enabled) {
-            QLoggingCategory::setFilterRules(QStringLiteral("*.debug=true\n*.info=true"));
+            // Keep the launcher's own startup rules and let the verbose rules win on top of them.
+            const QString base = APPLICATION->loggingRules();
+            QLoggingCategory::setFilterRules(base + (base.isEmpty() ? QString() : QStringLiteral("\n")) +
+                                             QStringLiteral("*.debug=true\n*.info=true"));
             qInfo() << "Developer Mode enabled verbose Qt logging for this session.";
         } else {
-            // Empty rules restore Qt's default category filtering; restart to reload custom rules.
-            QLoggingCategory::setFilterRules(QString());
+            // Restore exactly the rules the launcher loaded at startup (empty = Qt defaults).
+            QLoggingCategory::setFilterRules(APPLICATION->loggingRules());
             qInfo() << "Developer Mode disabled its verbose Qt logging override.";
         }
     });
@@ -168,6 +194,18 @@ DeveloperPage::DeveloperPage(QWidget* parent) : QWidget(parent)
         mainWindow->checkForUpdatesForDeveloper();
     });
 
+    auto* showUpdateUi = new QPushButton(tr("Show auto update UI"), this);
+    showUpdateUi->setToolTip(tr("Fetches the most recent release and shows it in the normal update dialog, even if you are already up to date. Installing is disabled in this preview."));
+    layout->addWidget(showUpdateUi);
+    connect(showUpdateUi, &QPushButton::clicked, this, [this]() {
+        if (!APPLICATION->updaterEnabled()) {
+            QMessageBox::information(this, tr("Developer tools"), tr("The updater is not enabled in this build."));
+            return;
+        }
+        if (!APPLICATION->triggerUpdatePreview())
+            QMessageBox::information(this, tr("Developer tools"), tr("This platform's updater does not support the update UI preview."));
+    });
+
     auto* simulateFailure = new QPushButton(tr("Simulate update-check failure"), this);
     simulateFailure->setToolTip(tr("Shows a test-only failure message. It does not contact the updater or change update settings."));
     layout->addWidget(simulateFailure);
@@ -181,28 +219,31 @@ DeveloperPage::DeveloperPage(QWidget* parent) : QWidget(parent)
     layout->addWidget(slowNetwork);
     connect(slowNetwork, &QPushButton::clicked, this, [this]() {
         auto* progress = new QProgressDialog(tr("Simulating a slow update response…"), tr("Cancel"), 0, 5, this);
+        progress->setAttribute(Qt::WA_DeleteOnClose);
         progress->setWindowTitle(tr("Slow-network test"));
         progress->setWindowModality(Qt::WindowModal);
         progress->setMinimumDuration(0);
         progress->setValue(0);
-        auto* elapsed = new int(0);
+
+        // The timer is a child of the dialog, so everything is cleaned up with it. There is no
+        // manually managed state: the counter lives in the lambda.
         auto* timer = new QTimer(progress);
-        connect(timer, &QTimer::timeout, progress, [this, progress, timer, elapsed]() {
-            ++(*elapsed);
-            progress->setValue(*elapsed);
-            if (*elapsed >= 5) {
+        connect(timer, &QTimer::timeout, progress, [this, progress, timer, elapsed = 0]() mutable {
+            ++elapsed;
+            progress->setValue(elapsed);
+            if (elapsed >= 5) {
                 timer->stop();
-                progress->close();
-                QMessageBox::information(this, tr("Slow-network test"), tr("The simulated response completed after five seconds. No network request was made."));
-                delete elapsed;
-                progress->deleteLater();
+                progress->close();  // emits canceled(), which is harmless now: it only stops the timer
+                // Show the result after this slot has returned, so the dialog that owns this
+                // lambda is never destroyed while the lambda is still running.
+                QTimer::singleShot(0, this, [this]() {
+                    QMessageBox::information(this, tr("Slow-network test"), tr("The simulated response completed after five seconds. No network request was made."));
+                });
             }
         });
-        connect(progress, &QProgressDialog::canceled, this, [timer, elapsed, progress]() {
-            timer->stop();
-            delete elapsed;
-            progress->deleteLater();
-        });
+        // Cancel button or window close: just stop ticking; WA_DeleteOnClose frees the dialog.
+        connect(progress, &QProgressDialog::canceled, timer, &QTimer::stop);
+        connect(progress, &QProgressDialog::canceled, progress, &QObject::deleteLater);
         timer->start(1000);
         progress->show();
     });

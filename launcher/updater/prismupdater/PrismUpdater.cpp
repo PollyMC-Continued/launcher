@@ -106,6 +106,7 @@ PrismUpdaterApp::PrismUpdaterApp(int& argc, char** argv) : QApplication(argc, ar
           { { "p", "pre-release" }, tr("Allow updating to pre-release releases") },
           { { "F", "force" }, tr("Force an update, even if one is not needed.") },
           { { "l", "list" }, tr("List available releases.") },
+          { "show-latest", tr("Together with --check-only: report the latest release even if it is not newer (exit status 100 if there is one).") },
           { "debug", tr("Log debug to console.") },
           { { "S", "select-ui" }, tr("Select the version to install with a GUI.") },
           { { "D", "allow-downgrade" }, tr("Allow the updater to downgrade to previous versions.") } });
@@ -328,6 +329,7 @@ PrismUpdaterApp::PrismUpdaterApp(int& argc, char** argv) : QApplication(argc, ar
     m_prismRepoUrl = QUrl::fromUserInput(prism_update_url);
 
     m_checkOnly = parser.isSet("check-only");
+    m_showLatest = parser.isSet("show-latest");
     m_forceUpdate = parser.isSet("force");
     m_printOnly = parser.isSet("list");
     auto user_version = parser.value("install-version");
@@ -449,7 +451,7 @@ void PrismUpdaterApp::run()
     auto need_update = needUpdate(latest);
 
     if (m_checkOnly) {
-        if (need_update) {
+        if (need_update || (m_showLatest && latest.isValid())) {
             QTextStream stdOutStream(stdout);
             stdOutStream << "Name: " << latest.name << "\n";
             stdOutStream << "Version: " << latest.tag_name << "\n";

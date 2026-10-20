@@ -41,7 +41,12 @@ class PrismExternalUpdater : public ExternalUpdater {
      * Check for updates manually, showing the user a progress bar and an alert if no updates are found.
      */
     void checkForUpdates() override;
-    void checkForUpdates(bool triggeredByUser);
+    void checkForUpdates(bool triggeredByUser, bool preview = false);
+
+    /*!
+     * Shows the regular update dialog for the latest release (preview only, cannot install).
+     */
+    bool previewLatestRelease() override;
 
     /*!
      * Indicates whether or not to check for updates automatically.
@@ -89,7 +94,7 @@ class PrismExternalUpdater : public ExternalUpdater {
     // Arms a one-shot 5-minute retry after deferring for a running game.
     void armDeferredRetry();
     void offerUpdate(const QString& version_name, const QString& version_tag, const QString& release_notes,
-                     bool triggeredByUser = true);
+                     bool triggeredByUser = true, bool preview = false);
     void performUpdate(const QString& version_tag, bool silent = false);
 
    public slots:

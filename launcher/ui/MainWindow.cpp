@@ -464,7 +464,9 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     // GitHub star reminder toast — hidden until maybeShowStarToast() decides
     // it is time to show it.
     m_toast = new ToastNotification(this);
-    connect(m_toast, &ToastNotification::dismissed, this, [] {
+    connect(m_toast, &ToastNotification::dismissed, this, [this] {
+        if (m_starToastIsPreview)
+            return;
         APPLICATION->settings()->set("StarReminderDismissed", true);
     });
 
@@ -586,47 +588,48 @@ void MainWindow::triggerInstanceAction(const QString& id, QAction* action)
 
 void MainWindow::triggerStarToastForDeveloper()
 {
-    // The Developer page lives inside the modal Settings dialog. Do not show the
-    // toast while that dialog is active, and avoid keeping raw pointers to widgets
-    // across the dialog's close/destruction sequence.
-    if (QApplication::activeModalWidget()) {
+    if (!m_toast || m_devStarWait)  // a request is already waiting; don't stack timers
+        return;
+
+    // The Developer page lives inside the modal Settings dialog, which blocks the main window, so
+    // wait until it has closed (and until a previous toast has finished animating) before showing.
+    if (QApplication::activeModalWidget())
         statusBar()->showMessage(tr("The star reminder will appear after the Settings dialog closes."), 5000);
 
-        auto* waitForModal = new QTimer(this);
-        waitForModal->setInterval(100);
-        connect(waitForModal, &QTimer::timeout, this, [this, waitForModal]() {
-            if (QApplication::activeModalWidget())
-                return;
+    m_devStarWait = new QTimer(this);
+    m_devStarWait->setInterval(100);
+    connect(m_devStarWait, &QTimer::timeout, this, [this, ticks = 0]() mutable {
+        ++ticks;
+        const bool giveUp = ticks > 600;  // ~60 seconds
+        if (!giveUp && (QApplication::activeModalWidget() || m_toast->isBusy()))
+            return;
 
-            waitForModal->stop();
-            waitForModal->deleteLater();
+        m_devStarWait->stop();
+        m_devStarWait->deleteLater();
+        m_devStarWait = nullptr;
 
-            // Defer one more event-loop turn so Qt can finish closing the modal
-            // dialog before the main-window child widget is shown.
-            QTimer::singleShot(0, this, [this]() {
-                if (!isVisible() || isMinimized() || !m_toast)
-                    return;
+        if (giveUp)
+            return;
+        if (!isVisible() || isMinimized()) {
+            statusBar()->showMessage(tr("The main window must be visible to show the star reminder."), 5000);
+            return;
+        }
 
-                // This explicit developer action bypasses schedule/dismissal gates.
-                prepareStarToast();
-                m_toast->showToast(toastPosition());
-            });
-        });
-        waitForModal->start();
-        return;
-    }
-
-    if (!isVisible() || isMinimized() || !m_toast)
-        return;
-
-    // Keep this explicit developer action independent of normal weekly/dismissed gates.
-    prepareStarToast();
-    m_toast->showToast(toastPosition());
+        // Explicit developer action: bypass the weekly/dismissed gates, and don't let dismissing
+        // this preview turn the real reminder off.
+        m_starToastIsPreview = true;
+        prepareStarToast();
+        m_toast->showToast(toastPosition());
+    });
+    m_devStarWait->start();
 }
 
 void MainWindow::maybeShowStarToast()
 {
     if (!isVisible() || isMinimized())
+        return;
+    // A toast (possibly a developer preview) is still on screen or animating.
+    if (m_toast && m_toast->isBusy())
         return;
     // Setup wizard or any modal dialog is in the way.
     if (QApplication::activeModalWidget())
@@ -645,6 +648,7 @@ void MainWindow::maybeShowStarToast()
         return;
 
     settings->set("StarReminderLastShown", QDate::currentDate().toString(Qt::ISODate));
+    m_starToastIsPreview = false;
     prepareStarToast();
     m_toast->showToast(toastPosition());
 }

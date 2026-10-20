@@ -129,6 +129,11 @@ class Application : public QApplication {
     ExternalUpdater* updater() { return m_updater.get(); }
 
     void triggerUpdateCheck();
+    // Developer aid: shows the regular update dialog for the latest release. Returns false if unsupported.
+    bool triggerUpdatePreview();
+
+    // The Qt logging rules loaded at startup (empty if none were found).
+    const QString& loggingRules() const { return m_loggingRules; }
 
     TranslationsModel* translations();
 
@@ -280,6 +285,7 @@ class Application : public QApplication {
     QIcon m_logo;
     QString m_rootPath;
     QString m_dataPath;
+    QString m_loggingRules;
     Status m_status = Application::StartingUp;
     Capabilities m_capabilities = None;
     bool m_portable = false;

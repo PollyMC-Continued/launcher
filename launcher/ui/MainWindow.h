@@ -278,6 +278,10 @@ class MainWindow : public QMainWindow {
     QSystemTrayIcon* m_trayIcon = nullptr;
     ToastNotification* m_toast = nullptr;
     bool m_starToastScheduled = false;
+    // Set while the star toast was triggered from the Developer page; dismissing it then must not
+    // permanently disable the real reminder.
+    bool m_starToastIsPreview = false;
+    QTimer* m_devStarWait = nullptr;
     BotManagerDialog* m_botManager = nullptr;
     LabeledToolButton* changeIconButton = nullptr;
     LabeledToolButton* renameButton = nullptr;

@@ -70,6 +70,8 @@ class PrismExternalUpdater::Private {
     QProgressDialog* progress = nullptr;
     bool checkTriggeredByUser = false;
     bool checkWasDeferredRetry = false;
+    // True when the running check only exists to preview the latest release in the update dialog.
+    bool checkIsPreview = false;
 };
 
 PrismExternalUpdater::PrismExternalUpdater(QWidget* parent, const QString& appDir, const QString& dataDir)
@@ -128,15 +130,25 @@ void PrismExternalUpdater::checkForUpdates()
     checkForUpdates(true);
 }
 
-void PrismExternalUpdater::checkForUpdates(bool triggeredByUser)
+bool PrismExternalUpdater::previewLatestRelease()
+{
+    checkForUpdates(true, true);
+    return true;
+}
+
+void PrismExternalUpdater::checkForUpdates(bool triggeredByUser, bool preview)
 {
     if (priv->checkingUpdates) {
         if (priv->updateTimer.isActive()) {
             priv->updateTimer.stop();
         }
+        if (preview) {
+            QMessageBox::information(priv->parent, tr("Update UI preview"), tr("An update check is already running. Try again in a moment."));
+        }
         return;
     }
     priv->checkingUpdates = true;
+    priv->checkIsPreview = preview;
 
     // Snapshot the pending-retry flag: a deferred retry arming later must
     // survive the end-of-check reschedule, while a completed retry must
@@ -168,6 +180,10 @@ void PrismExternalUpdater::checkForUpdates(bool triggeredByUser)
     QStringList args = { "--check-only", "--dir", priv->dataDir.absolutePath(), "--debug" };
     if (priv->allowBeta) {
         args.append("--pre-release");
+    }
+    if (preview) {
+        // Ask the updater to report the latest release even when it is not newer than the installed one.
+        args.append("--show-latest");
     }
 
     connect(priv->proc, &QProcess::errorOccurred, this, [this](QProcess::ProcessError err) {
@@ -228,6 +244,8 @@ void PrismExternalUpdater::finishCheck(int exit_code, const QByteArray& std_outp
 
     const bool triggeredByUser = priv->checkTriggeredByUser;
     const bool wasDeferredRetry = priv->checkWasDeferredRetry;
+    const bool preview = priv->checkIsPreview;
+    priv->checkIsPreview = false;
 
     if (!failureReason.isEmpty()) {
         // Background (automatic) checks fail silently: a missing network or updater must
@@ -244,7 +262,13 @@ void PrismExternalUpdater::finishCheck(int exit_code, const QByteArray& std_outp
         switch (exit_code) {
             case 0:
                 // no update available
-                if (triggeredByUser) {
+                if (preview) {
+                    auto msgBox = QMessageBox(QMessageBox::Information, tr("Update UI preview"),
+                                              tr("The updater did not report any release to show."), QMessageBox::Ok, priv->parent);
+                    msgBox.setMinimumWidth(460);
+                    msgBox.adjustSize();
+                    msgBox.exec();
+                } else if (triggeredByUser) {
                     qDebug() << "No update available";
                     auto msgBox = QMessageBox(QMessageBox::Information, tr("No Update Available"), tr("You are running the latest version."),
                                               QMessageBox::Ok, priv->parent);
@@ -277,7 +301,7 @@ void PrismExternalUpdater::finishCheck(int exit_code, const QByteArray& std_outp
                     qDebug() << "Update available:" << version_name << version_tag << release_timestamp;
                     qDebug() << "Update release notes:" << release_notes;
 
-                    offerUpdate(version_name, version_tag, release_notes, triggeredByUser);
+                    offerUpdate(version_name, version_tag, release_notes, triggeredByUser, preview);
                 }
                 break;
             default:
@@ -296,9 +320,12 @@ void PrismExternalUpdater::finishCheck(int exit_code, const QByteArray& std_outp
         }
     }
 
-    priv->lastCheck = QDateTime::currentDateTime();
-    priv->settings->setValue("last_check", priv->lastCheck.toString(Qt::ISODate));
-    priv->settings->sync();
+    if (!preview) {
+        // A UI preview is not a real check: do not move the automatic-check schedule.
+        priv->lastCheck = QDateTime::currentDateTime();
+        priv->settings->setValue("last_check", priv->lastCheck.toString(Qt::ISODate));
+        priv->settings->sync();
+    }
     if (priv->deferredForGameRunning) {
         // This check deferred to the armed 5-minute retry; leave
         // that timer alone instead of rescheduling the full interval.
@@ -422,8 +449,15 @@ void PrismExternalUpdater::autoCheckTimerFired()
 }
 
 void PrismExternalUpdater::offerUpdate(const QString& version_name, const QString& version_tag,
-                                       const QString& release_notes, bool triggeredByUser)
+                                       const QString& release_notes, bool triggeredByUser, bool preview)
 {
+    // Developer preview: always show the regular dialog (ignoring skipped versions, the auto-update
+    // mode and running games), but never install or record a skip.
+    if (preview) {
+        UpdateAvailableDialog dlg(BuildConfig.printableVersionString(), version_name, release_notes, priv->parent, true);
+        dlg.exec();
+        return;
+    }
     // Silent path: auto check, mode Always. No UI at all (not even the
     // per-version skip box); defer while a game runs, else install now.
     if (!triggeredByUser && priv->autoUpdateMode == "Always") {

@@ -600,6 +600,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
                 qInfo() << "    " << rule;
             }
             auto rules_str = rules.join("\n");
+            m_loggingRules = rules_str;
             QLoggingCategory::setFilterRules(rules_str);
         }
 
@@ -2316,6 +2317,13 @@ void Application::triggerUpdateCheck()
     } else {
         qDebug() << "Updater not available.";
     }
+}
+
+bool Application::triggerUpdatePreview()
+{
+    if (!m_updater)
+        return false;
+    return m_updater->previewLatestRelease();
 }
 
 QUrl Application::normalizeImportUrl(const QString& url)

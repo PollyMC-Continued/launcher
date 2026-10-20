@@ -89,6 +89,9 @@ class ToastNotification : public QFrame {
 
     bool isToastVisible() const { return m_visible; }
 
+    /*! True while the card is shown or still animating in/out (showToast() would be ignored). */
+    bool isBusy() const;
+
    signals:
     /*! Emitted when the user closes the card or clicks the action button. */
     void dismissed();

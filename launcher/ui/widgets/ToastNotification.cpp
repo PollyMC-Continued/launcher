@@ -227,6 +227,11 @@ void ToastNotification::updatePosition(const QPoint& finalPos)
         m_animation->setEndValue(m_finalPos);
 }
 
+bool ToastNotification::isBusy() const
+{
+    return m_visible || m_animation->state() != QAbstractAnimation::Stopped;
+}
+
 void ToastNotification::dismissToast()
 {
     slideOut(true);

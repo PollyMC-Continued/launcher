@@ -108,6 +108,7 @@ class PrismUpdaterApp : public QApplication {
     QUrl m_prismRepoUrl;
     Version m_userSelectedVersion;
     bool m_checkOnly;
+    bool m_showLatest = false;
     bool m_forceUpdate;
     bool m_printOnly;
     bool m_selectUI;
