@@ -242,11 +242,6 @@ class MainWindow : public QMainWindow {
 
     void refreshCurrentInstance();
 
-<<<<<<< HEAD
-    /// Developer-only entry point that bypasses the reminder schedule.
-    void triggerStarToastForDeveloper();
-=======
->>>>>>> b8f275a (Fixed errors)
 
    private:
     void retranslateUi();
