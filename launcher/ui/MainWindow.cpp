@@ -72,6 +72,7 @@
 #include <QShortcut>
 #include <QStatusBar>
 #include <QSystemTrayIcon>
+#include <QTimer>
 #include <QToolBar>
 #include <QToolButton>
 #include <QWidget>
@@ -463,7 +464,9 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     // GitHub star reminder toast — hidden until maybeShowStarToast() decides
     // it is time to show it.
     m_toast = new ToastNotification(this);
-    connect(m_toast, &ToastNotification::dismissed, this, [] {
+    connect(m_toast, &ToastNotification::dismissed, this, [this] {
+        if (m_starToastIsPreview)
+            return;
         APPLICATION->settings()->set("StarReminderDismissed", true);
     });
 
@@ -491,6 +494,11 @@ void MainWindow::retranslateUi()
     }
 
     ui->retranslateUi(this);
+
+    if (m_toast && m_toast->isToastVisible()) {
+        prepareStarToast();
+        m_toast->updatePosition(toastPosition());
+    }
 
     MinecraftAccountPtr defaultAccount = APPLICATION->accounts()->defaultAccount();
     if (defaultAccount) {
@@ -529,8 +537,11 @@ void MainWindow::setStatusBarVisibility(bool state)
 {
     statusBar()->setVisible(state);
     APPLICATION->settings()->set("StatusBarVisible", state);
-    if (m_toast && m_toast->isToastVisible())
-        m_toast->updatePosition(toastPosition());
+    // The status bar's height isn't final until the layout has run.
+    QTimer::singleShot(0, this, [this] {
+        if (m_toast && m_toast->isToastVisible())
+            m_toast->updatePosition(toastPosition());
+    });
 }
 
 void MainWindow::showEvent(QShowEvent* event)
@@ -556,7 +567,8 @@ QPoint MainWindow::toastPosition() const
     const int margin = 12;
     const int statusBarHeight = statusBar()->isVisible() ? statusBar()->height() : 0;
     const int x = margin;
-    const int y = height() - statusBarHeight - m_toast->sizeHint().height() - margin;
+    // height() (not sizeHint()) so word-wrapped / translated text is accounted for
+    const int y = height() - statusBarHeight - m_toast->height() - margin;
     return QPoint(x, qMax(margin, y));
 }
 
@@ -574,9 +586,50 @@ void MainWindow::triggerInstanceAction(const QString& id, QAction* action)
         action->trigger();
 }
 
+void MainWindow::triggerStarToastForDeveloper()
+{
+    if (!m_toast || m_devStarWait)  // a request is already waiting; don't stack timers
+        return;
+
+    // The Developer page lives inside the modal Settings dialog, which blocks the main window, so
+    // wait until it has closed (and until a previous toast has finished animating) before showing.
+    if (QApplication::activeModalWidget())
+        statusBar()->showMessage(tr("The star reminder will appear after the Settings dialog closes."), 5000);
+
+    m_devStarWait = new QTimer(this);
+    m_devStarWait->setInterval(100);
+    connect(m_devStarWait, &QTimer::timeout, this, [this, ticks = 0]() mutable {
+        ++ticks;
+        const bool giveUp = ticks > 600;  // ~60 seconds
+        if (!giveUp && (QApplication::activeModalWidget() || m_toast->isBusy()))
+            return;
+
+        m_devStarWait->stop();
+        m_devStarWait->deleteLater();
+        m_devStarWait = nullptr;
+
+        if (giveUp)
+            return;
+        if (!isVisible() || isMinimized()) {
+            statusBar()->showMessage(tr("The main window must be visible to show the star reminder."), 5000);
+            return;
+        }
+
+        // Explicit developer action: bypass the weekly/dismissed gates, and don't let dismissing
+        // this preview turn the real reminder off.
+        m_starToastIsPreview = true;
+        prepareStarToast();
+        m_toast->showToast(toastPosition());
+    });
+    m_devStarWait->start();
+}
+
 void MainWindow::maybeShowStarToast()
 {
     if (!isVisible() || isMinimized())
+        return;
+    // A toast (possibly a developer preview) is still on screen or animating.
+    if (m_toast && m_toast->isBusy())
         return;
     // Setup wizard or any modal dialog is in the way.
     if (QApplication::activeModalWidget())
@@ -595,10 +648,16 @@ void MainWindow::maybeShowStarToast()
         return;
 
     settings->set("StarReminderLastShown", QDate::currentDate().toString(Qt::ISODate));
+    m_starToastIsPreview = false;
+    prepareStarToast();
+    m_toast->showToast(toastPosition());
+}
+
+void MainWindow::prepareStarToast()
+{
     m_toast->prepareToast(tr("Enjoying PollyMC-Continued?"),
                           tr("Give the project a star on GitHub!"), tr("Star on GitHub"),
                           [] { DesktopServices::openUrl(QUrl(kStarRepoUrl)); });
-    m_toast->showToast(toastPosition());
 }
 
 void MainWindow::lockToolbars(bool state)
@@ -1455,6 +1514,11 @@ void MainWindow::on_actionViewJavaFolder_triggered()
 void MainWindow::refreshInstances()
 {
     APPLICATION->instances()->loadList();
+}
+
+void MainWindow::checkForUpdatesForDeveloper()
+{
+    checkForUpdates();
 }
 
 void MainWindow::checkForUpdates()

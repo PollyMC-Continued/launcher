@@ -94,6 +94,10 @@ class MainWindow : public QMainWindow {
     // Selects an instance and triggers a per-instance action for it.
     // Used by the command palette's intent suggestions.
     void triggerInstanceAction(const QString& id, QAction* action);
+
+    // Narrow entry points used by the hidden Developer Mode page.
+    void triggerStarToastForDeveloper();
+    void checkForUpdatesForDeveloper();
    signals:
     void isClosing();
 
@@ -238,6 +242,8 @@ class MainWindow : public QMainWindow {
 
     void refreshCurrentInstance();
 
+    // Developer entry points are declared in the public section above.
+
    private:
     void retranslateUi();
 
@@ -253,6 +259,7 @@ class MainWindow : public QMainWindow {
     void instanceFromInstanceTask(InstanceTask* task);
 
     void maybeShowStarToast();
+    void prepareStarToast();
     QPoint toastPosition() const;
     void showCommandPalette();
 
@@ -271,6 +278,10 @@ class MainWindow : public QMainWindow {
     QSystemTrayIcon* m_trayIcon = nullptr;
     ToastNotification* m_toast = nullptr;
     bool m_starToastScheduled = false;
+    // Set while the star toast was triggered from the Developer page; dismissing it then must not
+    // permanently disable the real reminder.
+    bool m_starToastIsPreview = false;
+    QTimer* m_devStarWait = nullptr;
     BotManagerDialog* m_botManager = nullptr;
     LabeledToolButton* changeIconButton = nullptr;
     LabeledToolButton* renameButton = nullptr;

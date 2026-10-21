@@ -35,8 +35,11 @@
 
 #include "AboutDialog.h"
 #include <QIcon>
+#include <QMouseEvent>
+#include <QMessageBox>
 #include "Application.h"
 #include "BuildConfig.h"
+#include "settings/SettingsObject.h"
 #include "Markdown.h"
 #include "StringUtils.h"
 #include "ui_AboutDialog.h"
@@ -98,7 +101,10 @@ AboutDialog::AboutDialog(QWidget* parent) : QDialog(parent), ui(new Ui::AboutDia
     ui->icon->setPixmap(APPLICATION->logo().pixmap(64));
     ui->title->setText(launcherName);
 
-    ui->versionLabel->setText(QString());
+    ui->versionLabel->setText(QString("%1.%2.%3")
+                                  .arg(BuildConfig.VERSION_MAJOR)
+                                  .arg(BuildConfig.VERSION_MINOR)
+                                  .arg(BuildConfig.VERSION_PATCH));
 
     if (!BuildConfig.BUILD_PLATFORM.isEmpty())
         ui->platformLabel->setText(tr("Platform") + ": " + BuildConfig.BUILD_PLATFORM);
@@ -115,6 +121,11 @@ AboutDialog::AboutDialog(QWidget* parent) : QDialog(parent), ui(new Ui::AboutDia
     else
         ui->buildDateLabel->setVisible(false);
 
+    // Hidden developer-mode unlock: Ctrl+click the build date seven times,
+    // with no more than two seconds between clicks.
+    ui->buildDateLabel->setCursor(Qt::PointingHandCursor);
+    ui->buildDateLabel->installEventFilter(this);
+
     if (!BuildConfig.VERSION_CHANNEL.isEmpty())
         ui->channelLabel->setText(tr("Channel") + ": " + BuildConfig.VERSION_CHANNEL);
     else
@@ -128,6 +139,27 @@ AboutDialog::AboutDialog(QWidget* parent) : QDialog(parent), ui(new Ui::AboutDia
     connect(ui->closeButton, &QPushButton::clicked, this, &AboutDialog::close);
 
     connect(ui->aboutQt, &QPushButton::clicked, &QApplication::aboutQt);
+}
+
+bool AboutDialog::eventFilter(QObject* watched, QEvent* event)
+{
+    if (watched == ui->buildDateLabel && event->type() == QEvent::MouseButtonPress) {
+        auto* mouseEvent = static_cast<QMouseEvent*>(event);
+        if (mouseEvent->button() == Qt::LeftButton && (mouseEvent->modifiers() & Qt::ControlModifier)) {
+            if (!m_developerClickTimer.isValid() || m_developerClickTimer.elapsed() > 2000) {
+                m_developerClickCount = 0;
+            }
+            m_developerClickTimer.restart();
+            ++m_developerClickCount;
+            if (m_developerClickCount >= 7) {
+                m_developerClickCount = 0;
+                APPLICATION->settings()->set("DeveloperMode", true);
+                QMessageBox::information(this, tr("Developer mode"), tr("Developer mode enabled. Reopen Settings to access Developer tools."));
+            }
+            return true;
+        }
+    }
+    return QDialog::eventFilter(watched, event);
 }
 
 AboutDialog::~AboutDialog()

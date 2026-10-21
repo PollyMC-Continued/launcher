@@ -187,8 +187,9 @@ set(MAC_UPDATE_SOURCES
 )
 
 set(PRISM_UPDATE_SOURCES
-    updater/PrismExternalUpdater.h
-    updater/PrismExternalUpdater.cpp
+    updater/PollyMCExternalUpdater.h
+    updater/UpdaterNames.h
+    updater/PollyMCExternalUpdater.cpp
 )
 
 # Backend for the news bar... there's usually no news.
@@ -610,13 +611,14 @@ set(LINKEXE_SOURCES
     DesktopServices.cpp
 )
 
-set(PRISMUPDATER_SOURCES
-    updater/prismupdater/PrismUpdater.h
-    updater/prismupdater/PrismUpdater.cpp
-    updater/prismupdater/UpdaterDialogs.h
-    updater/prismupdater/UpdaterDialogs.cpp
-    updater/prismupdater/GitHubRelease.h
-    updater/prismupdater/GitHubRelease.cpp
+set(POLLYMCUPDATER_SOURCES
+    updater/UpdaterNames.h
+    updater/pollymcupdater/PollyMCUpdater.h
+    updater/pollymcupdater/PollyMCUpdater.cpp
+    updater/pollymcupdater/UpdaterDialogs.h
+    updater/pollymcupdater/UpdaterDialogs.cpp
+    updater/pollymcupdater/GitHubRelease.h
+    updater/pollymcupdater/GitHubRelease.cpp
 
     Json.h
     Json.cpp
@@ -671,10 +673,10 @@ set(PRISMUPDATER_SOURCES
 )
 
 if(WIN32)
-    set(PRISMUPDATER_SOURCES
+    set(POLLYMCUPDATER_SOURCES
         console/WindowsConsole.h
         console/WindowsConsole.cpp
-        ${PRISMUPDATER_SOURCES}
+        ${POLLYMCUPDATER_SOURCES}
     )
 endif()
 
@@ -958,6 +960,8 @@ SET(LAUNCHER_SOURCES
     ui/pages/global/AccountListPage.h
     ui/pages/global/ExternalToolsPage.cpp
     ui/pages/global/ExternalToolsPage.h
+    ui/pages/global/DeveloperPage.cpp
+    ui/pages/global/DeveloperPage.h
     ui/pages/global/JavaPage.cpp
     ui/pages/global/JavaPage.h
     ui/pages/global/LanguagePage.cpp
@@ -1329,8 +1333,8 @@ qt_add_resources(LAUNCHER_RESOURCES
     "${CMAKE_CURRENT_BINARY_DIR}/../${Launcher_Branding_LogoQRC}"
 )
 
-qt_wrap_ui(PRISMUPDATER_UI
-    updater/prismupdater/SelectReleaseDialog.ui
+qt_wrap_ui(POLLYMCUPDATER_UI
+    updater/pollymcupdater/SelectReleaseDialog.ui
     ui/widgets/SubTaskProgressBar.ui
     ui/dialogs/ProgressDialog.ui
 )
@@ -1489,14 +1493,14 @@ endif()
 
 if(Launcher_BUILD_UPDATER)
     # Updater
-    add_library(prism_updater_logic STATIC ${PRISMUPDATER_SOURCES} ${TASKS_SOURCES} ${PRISMUPDATER_UI})
-    target_include_directories(prism_updater_logic PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+    add_library(pollymc_updater_logic STATIC ${POLLYMCUPDATER_SOURCES} ${TASKS_SOURCES} ${POLLYMCUPDATER_UI})
+    target_include_directories(pollymc_updater_logic PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
     if(${Launcher_USE_PCH})
-        target_precompile_headers(prism_updater_logic PRIVATE ${PRECOMPILED_HEADERS})
+        target_precompile_headers(pollymc_updater_logic PRIVATE ${PRECOMPILED_HEADERS})
     endif()
 
-    target_link_libraries(prism_updater_logic
+    target_link_libraries(pollymc_updater_logic
         ${ZLIB_LIBRARIES}
         BuildConfig
         Qt${QT_VERSION_MAJOR}::Widgets
@@ -1506,17 +1510,17 @@ if(Launcher_BUILD_UPDATER)
         cmark::cmark
     )
     if(TARGET PkgConfig::libarchive)
-        target_link_libraries(prism_updater_logic PkgConfig::libarchive)
+        target_link_libraries(pollymc_updater_logic PkgConfig::libarchive)
     else()
-        target_link_libraries(prism_updater_logic LibArchive::LibArchive)
+        target_link_libraries(pollymc_updater_logic LibArchive::LibArchive)
     endif()
 
-    add_executable("${Launcher_Name}_updater" WIN32 updater/prismupdater/updater_main.cpp)
-    target_sources("${Launcher_Name}_updater" PRIVATE updater/prismupdater/updater.exe.manifest)
-    target_link_libraries("${Launcher_Name}_updater" prism_updater_logic)
+    add_executable("${Launcher_Name}_updater" WIN32 updater/pollymcupdater/updater_main.cpp)
+    target_sources("${Launcher_Name}_updater" PRIVATE updater/pollymcupdater/updater.exe.manifest)
+    target_link_libraries("${Launcher_Name}_updater" pollymc_updater_logic)
 
     if(${Launcher_USE_PCH})
-        target_precompile_headers("${Launcher_Name}_updater" REUSE_FROM prism_updater_logic)
+        target_precompile_headers("${Launcher_Name}_updater" REUSE_FROM pollymc_updater_logic)
     endif()
 
     if(DEFINED Launcher_APP_BINARY_NAME)
@@ -1772,7 +1776,7 @@ if(CLANG_FORMAT)
     message(STATUS "Creating clang-format target")
     add_custom_target(
         clang-format
-        COMMAND ${CLANG_FORMAT} -i --style=file:${CMAKE_SOURCE_DIR}/.clang-format ${LOGIC_SOURCES} ${LAUNCHER_SOURCES} ${PRISMUPDATER_SOURCES} ${LINKEXE_SOURCES} ${PRECOMPILED_HEADERS}
+        COMMAND ${CLANG_FORMAT} -i --style=file:${CMAKE_SOURCE_DIR}/.clang-format ${LOGIC_SOURCES} ${LAUNCHER_SOURCES} ${POLLYMCUPDATER_SOURCES} ${LINKEXE_SOURCES} ${PRECOMPILED_HEADERS}
         WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
     )
 else()

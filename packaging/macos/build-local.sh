@@ -74,7 +74,7 @@ EXPECTED_ARCHS=$architecture \
 EXPECTED_MIN_MACOS=$deployment_target \
 SOURCE_ROOT=$source_root \
 SOURCE_BRANCH=$source_branch \
-    "$script_dir/verify_bundle.sh" "$standalone_app"
+    bash "$script_dir/verify_bundle.sh" "$standalone_app"
 
 dmg_path="$output_dir/PollyMC-Continued-${version}-macOS-${architecture}.dmg"
 app_icon="$standalone_app/Contents/Resources/PollyMC.icns"

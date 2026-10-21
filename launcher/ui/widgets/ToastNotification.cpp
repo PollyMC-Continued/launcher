@@ -36,12 +36,15 @@
 #include "ToastNotification.h"
 
 #include <QAbstractAnimation>
+#include <QApplication>
+#include <QEvent>
 #include <QGraphicsDropShadowEffect>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QPalette>
 #include <QPropertyAnimation>
 #include <QPushButton>
+#include <QSizePolicy>
 #include <QTimer>
 #include <QVBoxLayout>
 #include <QEasingCurve>
@@ -56,33 +59,9 @@ ToastNotification::ToastNotification(QWidget* parent) : QFrame(parent)
 {
     setObjectName(QStringLiteral("ToastNotification"));
     setFocusPolicy(Qt::NoFocus);
-    setFixedWidth(340);
     hide();
 
-    auto palette = this->palette();
-    const auto background = palette.color(QPalette::Window);
-    const auto border = palette.color(QPalette::Mid);
-    const auto accent = palette.color(QPalette::Highlight);
-    const auto accentText = palette.color(QPalette::HighlightedText);
-    setStyleSheet(QStringLiteral(
-        "#ToastNotification {"
-        "  background-color: %1;"
-        "  border: 1px solid %2;"
-        "  border-radius: 8px;"
-        "}"
-        "#ToastNotification QPushButton {"
-        "  border: none;"
-        "  border-radius: 4px;"
-        "  padding: 6px 14px;"
-        "}"
-        "#ToastNotification QPushButton:hover {"
-        "  background-color: %3;"
-        "  color: %4;"
-        "}")
-        .arg(background.name())
-        .arg(border.name())
-        .arg(accent.name())
-        .arg(accentText.name()));
+    applyStyle();
 
     auto* shadow = new QGraphicsDropShadowEffect(this);
     shadow->setBlurRadius(24);
@@ -97,7 +76,10 @@ ToastNotification::ToastNotification(QWidget* parent) : QFrame(parent)
     auto* headerRow = new QHBoxLayout();
     headerRow->setSpacing(6);
 
-    m_iconLabel = new QLabel(QStringLiteral("⭐"), this);
+    // A plain star glyph instead of the colour emoji: many Linux setups have no emoji font, which
+    // left an empty gap that pushed the title around.
+    m_iconLabel = new QLabel(QStringLiteral("★"), this);
+    m_iconLabel->setObjectName(QStringLiteral("iconLabel"));
     m_iconLabel->setFocusPolicy(Qt::NoFocus);
     headerRow->addWidget(m_iconLabel, 0, Qt::AlignTop);
 
@@ -106,6 +88,10 @@ ToastNotification::ToastNotification(QWidget* parent) : QFrame(parent)
     QFont titleFont = m_titleLabel->font();
     titleFont.setBold(true);
     m_titleLabel->setFont(titleFont);
+    // Wrap instead of clipping when the title is long (translations, larger fonts, high DPI).
+    m_titleLabel->setWordWrap(true);
+    m_titleLabel->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+    m_titleLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     headerRow->addWidget(m_titleLabel, 1);
 
     m_closeButton = new QPushButton(QStringLiteral("×"), this);
@@ -127,6 +113,7 @@ ToastNotification::ToastNotification(QWidget* parent) : QFrame(parent)
     m_actionButton = new QPushButton(this);
     m_actionButton->setObjectName(QStringLiteral("actionButton"));
     m_actionButton->setCursor(Qt::PointingHandCursor);
+    m_actionButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
     connect(m_actionButton, &QPushButton::clicked, this, &ToastNotification::onActionClicked);
     layout->addWidget(m_actionButton, 0, Qt::AlignRight);
 
@@ -140,6 +127,94 @@ ToastNotification::ToastNotification(QWidget* parent) : QFrame(parent)
     connect(m_animation, &QPropertyAnimation::finished, this, &ToastNotification::onAnimationFinished);
 }
 
+void ToastNotification::applyStyle()
+{
+    // Read colours from the parent/app palette rather than our own: once a
+    // stylesheet is applied our own palette is rewritten by it, which would
+    // otherwise feed back into itself.
+    const QPalette palette = parentWidget() ? parentWidget()->palette() : QApplication::palette();
+    const auto background = palette.color(QPalette::Window);
+    const auto border = palette.color(QPalette::Mid);
+    const auto accent = palette.color(QPalette::Highlight);
+    const auto accentText = palette.color(QPalette::HighlightedText);
+    const auto accentHover = accent.lighter(115);
+    const auto text = palette.color(QPalette::WindowText);
+    const QString style = QStringLiteral(
+        "#ToastNotification {"
+        "  background-color: %1;"
+        "  border: 1px solid %2;"
+        "  border-radius: 8px;"
+        "}"
+        "#ToastNotification QLabel {"
+        "  color: %6;"
+        "}"
+        "#ToastNotification QLabel#iconLabel {"
+        "  color: #e3b341;"
+        "}"
+        "#ToastNotification QPushButton {"
+        "  border: none;"
+        "  border-radius: 4px;"
+        "  padding: 6px 14px;"
+        "  color: %6;"
+        "  background-color: transparent;"
+        "}"
+        "#ToastNotification QPushButton:hover {"
+        "  background-color: %3;"
+        "  color: %4;"
+        "}"
+        "#ToastNotification QPushButton#closeButton {"
+        "  padding: 0px;"
+        "  border-radius: 12px;"
+        "}"
+        "#ToastNotification QPushButton#actionButton {"
+        "  background-color: %3;"
+        "  color: %4;"
+        "  font-weight: 600;"
+        "}"
+        "#ToastNotification QPushButton#actionButton:hover {"
+        "  background-color: %5;"
+        "}")
+        .arg(background.name())
+        .arg(border.name())
+        .arg(accent.name())
+        .arg(accentText.name())
+        .arg(accentHover.name())
+        .arg(text.name());
+
+    if (m_applyingStyle || style == m_appliedStyle)
+        return;
+    m_applyingStyle = true;
+    m_appliedStyle = style;
+    setStyleSheet(style);
+    m_applyingStyle = false;
+}
+
+void ToastNotification::changeEvent(QEvent* event)
+{
+    // Follow runtime light/dark (or theme) switches.
+    if (event->type() == QEvent::ApplicationPaletteChange || event->type() == QEvent::PaletteChange)
+        applyStyle();
+    QFrame::changeEvent(event);
+    // A font change alters how much room the text needs.
+    if (event->type() == QEvent::FontChange || event->type() == QEvent::ApplicationFontChange)
+        updateSize();
+}
+
+bool ToastNotification::event(QEvent* event)
+{
+    // Pause auto-hide while the pointer is over the card so it doesn't vanish mid-click.
+    if (event->type() == QEvent::Enter) {
+        m_hovered = true;
+        if (m_visible)
+            m_autoHideTimer->stop();
+    } else if (event->type() == QEvent::Leave) {
+        m_hovered = false;
+        if (m_visible)
+            m_autoHideTimer->start(m_displayMs);
+    }
+    return QFrame::event(event);
+}
+
 void ToastNotification::prepareToast(const QString& title,
                                      const QString& body,
                                      const QString& actionText,
@@ -150,7 +225,22 @@ void ToastNotification::prepareToast(const QString& title,
     m_bodyLabel->setText(body);
     m_actionButton->setText(actionText);
     m_actionButton->setVisible(!actionText.isEmpty());
-    adjustSize();
+    updateSize();
+}
+
+void ToastNotification::updateSize()
+{
+    if (!layout())
+        return;
+    // The width follows the font (so large UI fonts / high DPI / long translations don't clip the
+    // text) but never exceeds the parent. The height is then derived from the wrapped text, so the
+    // card is always exactly as tall as its content.
+    int w = qMax(340, fontMetrics().averageCharWidth() * 46);
+    if (parentWidget())
+        w = qMin(w, qMax(220, parentWidget()->width() - 2 * kMargin));
+    layout()->activate();
+    const int h = qMax(layout()->totalHeightForWidth(w), layout()->minimumSize().height());
+    setFixedSize(w, h);
 }
 
 void ToastNotification::showToast(const QPoint& finalPos, int displayMs)
@@ -159,12 +249,15 @@ void ToastNotification::showToast(const QPoint& finalPos, int displayMs)
         return;
 
     m_finalPos = finalPos;
+    m_displayMs = displayMs;
 
     move(m_finalPos.x(), m_finalPos.y() + kSlideOffset);
     show();
+    raise();  // always sit above sibling widgets (status bar, view, ...)
 
     m_visible = true;
-    m_autoHideTimer->start(displayMs);
+    if (!m_hovered)
+        m_autoHideTimer->start(displayMs);
     m_animation->setStartValue(pos());
     m_animation->setEndValue(m_finalPos);
     m_animation->start();
@@ -179,6 +272,11 @@ void ToastNotification::updatePosition(const QPoint& finalPos)
         move(m_finalPos);
     else  // retarget the in-flight slide-in so a resize mid-animation lands right
         m_animation->setEndValue(m_finalPos);
+}
+
+bool ToastNotification::isBusy() const
+{
+    return m_visible || m_animation->state() != QAbstractAnimation::Stopped;
 }
 
 void ToastNotification::dismissToast()
