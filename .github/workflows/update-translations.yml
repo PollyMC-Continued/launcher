@@ -1,0 +1,77 @@
+name: Update translation sources
+
+# Keeps translations/*.ts in sync with the texts in the launcher source code.
+# Runs lupdate when sources change on main (or manually), commits only if a text
+# was added, changed or removed, then asks gh-pages.yml to rebuild the .qm files.
+
+on:
+  push:
+    branches: [main]
+    # Only source changes. translations/** is deliberately NOT listed, so the
+    # commit this workflow makes cannot start it again.
+    paths:
+      - "launcher/**/*.cpp"
+      - "launcher/**/*.h"
+      - "launcher/**/*.ui"
+  workflow_dispatch:
+
+permissions:
+  contents: write   # push the updated .ts files
+  actions: write    # start gh-pages.yml (pushes made with GITHUB_TOKEN do not trigger other workflows)
+
+concurrency:
+  group: update-translations
+  cancel-in-progress: false
+
+jobs:
+  lupdate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install Qt translation tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends qt6-l10n-tools
+
+      - name: Run lupdate
+        run: |
+          set -euo pipefail
+          LUPDATE=$(command -v lupdate-qt6 || command -v lupdate || ls /usr/lib/qt6/bin/lupdate 2>/dev/null | head -n1 || true)
+          if [[ -z "$LUPDATE" ]]; then
+            echo "::error::lupdate not found on the runner"
+            exit 1
+          fi
+          echo "Using $LUPDATE"
+          "$LUPDATE" launcher -locations relative -ts translations/*.ts
+
+      - name: Commit if any text changed
+        id: commit
+        run: |
+          set -euo pipefail
+          # Count changed lines, ignoring the <location .../> lines: when only line
+          # numbers moved there is nothing for translators, so no commit is made.
+          changed=$(git diff -U0 -- translations \
+            | grep -E '^[+-]' \
+            | grep -vE '^(\+\+\+|---)' \
+            | grep -vcE '^[+-][[:space:]]*<location ' || true)
+          echo "Changed non-location lines: ${changed:-0}"
+          if [[ "${changed:-0}" -gt 0 ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add translations
+            git commit -m "Update translation sources"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No added, changed or removed texts; leaving translations untouched."
+            git checkout -- translations
+          fi
+
+      - name: Rebuild and deploy the translation files
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run gh-pages.yml --ref "${GITHUB_REF_NAME}" -f scope=translations
