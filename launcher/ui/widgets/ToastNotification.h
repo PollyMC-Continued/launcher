@@ -108,6 +108,7 @@ class ToastNotification : public QFrame {
    private:
     void slideOut(bool emitDismissed);
     void applyStyle();
+    void updateSize();
 
     QLabel* m_iconLabel = nullptr;
     QLabel* m_titleLabel = nullptr;
