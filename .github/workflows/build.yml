@@ -1,18 +1,22 @@
-name: Build PollyMC-Continued 
+name: Build PollyMC-Continued
 
 on:
   push:
     branches: ["**"]
     tags: ["v*"]
+    # Translation-only pushes don't build (tags and manual runs still do).
+    paths-ignore:
+      - "translations/**"
   pull_request:
     branches: [main]
+    paths-ignore:
+      - "translations/**"
   workflow_dispatch:
 
 permissions:
   contents: read
 
-# Superseded runs on feature branches are cancelled; main and tags always run
-# to completion so a release is never half-built.
+# Cancel superseded runs on feature branches; main and tags always finish.
 concurrency:
   group: build-${{ github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' && !startsWith(github.ref, 'refs/tags/') }}
@@ -28,35 +32,40 @@ jobs:
     outputs:
       skip: ${{ steps.check.outputs.skip }}
       skip_release: ${{ steps.check.outputs.skip_release }}
+      skip_changelog: ${{ steps.check.outputs.skip_changelog }}
       version: ${{ steps.check.outputs.version }}
     steps:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-      - id: check 
+      - id: check
         shell: bash
         run: |
           set -euo pipefail
           COMMITS=""
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
+          if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
             COMMITS=$(git log --format="%s %b" "${{ github.event.pull_request.base.sha }}".."${{ github.event.pull_request.head.sha }}")
-          elif [ "${{ github.event_name }}" = "push" ]; then
+          elif [ "$GITHUB_EVENT_NAME" = "push" ]; then
             COMMITS=$(git log --format="%s %b" "${{ github.event.before }}".."${{ github.event.after }}" 2>/dev/null || git log --format="%s %b" -1)
           else
             COMMITS=$(git log --format="%s %b" -1)
           fi
-          echo "DEBUG: event_name=${{ github.event_name }}"
+          echo "DEBUG: event_name=$GITHUB_EVENT_NAME"
           echo "DEBUG: commits=${COMMITS:0:500}"
 
-          # [skip-all] is honoured only on the NEWEST commit. Scanning the whole
-          # push range meant an old [skip-all] commit (e.g. the README bump)
-          # swallowed into a later push silently skipped that push's real commits.
+          if grep -qF '[skip changelog]' <<< "$COMMITS"; then
+            echo "skip_changelog=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip_changelog=false" >> "$GITHUB_OUTPUT"
+          fi
+
+          # [skip-all] counts only on the newest commit, so older ones in a push range can't skip it.
           HEAD_MSG=$(git log -1 --format="%s %b" "${{ github.event.pull_request.head.sha || github.sha }}" 2>/dev/null || true)
 
           SKIP_REASON=""
-          if echo "$HEAD_MSG" | grep -qF '[skip-all]'; then
+          if grep -qF '[skip-all]' <<< "$HEAD_MSG"; then
             SKIP_REASON="[skip-all] in the newest commit"
-          elif [ "${{ github.event_name }}" = "pull_request" ] && [ "${{ github.event.pull_request.head.repo.full_name }}" = "${{ github.repository }}" ]; then
+          elif [ "$GITHUB_EVENT_NAME" = "pull_request" ] && [ "${{ github.event.pull_request.head.repo.full_name }}" = "${{ github.repository }}" ]; then
             # Same-repo PRs are already built by the push event for their branch.
             SKIP_REASON="same-repo pull request (covered by the push run)"
           fi
@@ -69,7 +78,7 @@ jobs:
             echo "DEBUG: Workflow will run."
           fi
 
-          if [[ "${{ github.ref }}" != "refs/heads/main" ]] || echo "$COMMITS" | grep -qF '[skip release]'; then
+          if [[ "$GITHUB_REF" != "refs/heads/main" ]] || grep -qF '[skip release]' <<< "$COMMITS"; then
             echo "skip_release=true" >> "$GITHUB_OUTPUT"
             echo "DEBUG: skip_release=true (non-main branch or [skip release] tag)."
           else
@@ -77,8 +86,8 @@ jobs:
             echo "DEBUG: No [skip release] found and branch is main."
           fi
 
-          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
-            VERSION="${{ github.ref_name }}"
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            VERSION="$GITHUB_REF_NAME"
             VERSION="${VERSION#v}"
             echo "DEBUG: Tag push detected, using tag version: ${VERSION}"
           else
@@ -115,6 +124,11 @@ jobs:
             echo "DEBUG: Next version: ${VERSION} (${BUMP} bump)"
           fi
 
+          if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Computed version '${VERSION}' is not in X.Y.Z form."
+            exit 1
+          fi
+
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
   changelog-check:
@@ -125,45 +139,34 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
 
       - name: Check for matching CHANGELOG.md section
+        env:
+          VERSION: ${{ needs.skip-check.outputs.version }}
+          SKIP_CHANGELOG: ${{ needs.skip-check.outputs.skip_changelog }}
         run: |
           set -euo pipefail
 
-          if [[ "${{ github.ref }}" != "refs/heads/main" ]]; then
+          if [[ "$GITHUB_REF" != "refs/heads/main" ]]; then
             echo "Non-main branch: skipping changelog check."
             exit 0
           fi
 
-          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
-            EXPECTED_TAG="${{ github.ref_name }}"
-          else
-            EXPECTED_TAG="v${{ needs.skip-check.outputs.version }}"
-          fi
-
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            COMMITS=$(git log --format="%s %b" "${{ github.event.pull_request.base.sha }}".."${{ github.event.pull_request.head.sha }}")
-          elif [ "${{ github.event_name }}" = "push" ]; then
-            COMMITS=$(git log --format="%s %b" "${{ github.event.before }}".."${{ github.event.after }}" 2>/dev/null || git log --format="%s %b" -1)
-          else
-            COMMITS=$(git log --format="%s %b" -1)
-          fi
-
-          if echo "$COMMITS" | grep -qF '[skip changelog]'; then
-            echo "Skipping changelog check: [skip changelog] found in the push/PR range."
+          if [[ "$SKIP_CHANGELOG" == "true" ]]; then
+            echo "Skipping changelog check: [skip changelog] found in the push range."
             exit 0
           fi
-          
+
+          EXPECTED_TAG="v${VERSION}"
           echo "Looking for '## ${EXPECTED_TAG}' in CHANGELOG.md ..."
           if [ "$(sed 's/\r$//' CHANGELOG.md | grep -Fxc "## ${EXPECTED_TAG}" || true)" -eq 0 ]; then
             echo "::error::CHANGELOG.md has no '## ${EXPECTED_TAG}' section, but the computed release version is ${EXPECTED_TAG}."
-            echo "::error::Add a '## ${EXPECTED_TAG}' section (Added/Changed/Fixed/Removed) to CHANGELOG.md, or add '[skip changelog]' to the commit message if this change doesn't need a release note."
+            echo "::error::Add a '## ${EXPECTED_TAG}' section (Added/Changed/Fixed/Removed), or put '[skip changelog]' in the commit message if no release note is needed."
             exit 1
           fi
 
           echo "Found matching CHANGELOG.md section for ${EXPECTED_TAG}."
+
   build-windows:
     name: Windows (MinGW)
     needs: [skip-check]
@@ -173,9 +176,7 @@ jobs:
     permissions:
       contents: read
     env:
-      # Set once at job level so it's visible in every step (including the
-      # Build step, where ccache actually does its work) - a per-step
-      # `export` doesn't survive to the next step in Actions.
+      # Job-level so the Build step's ccache sees it.
       CCACHE_DIR: ${{ github.workspace }}/.ccache
       CCACHE_MAXSIZE: 400M
     defaults:
@@ -228,12 +229,7 @@ jobs:
         uses: actions/cache/restore@v5
         with:
           path: .ccache
-          # Unique per run so a fresh save always succeeds (actions/cache
-          # entries are immutable per key - reusing a static key means every
-          # run after the first silently fails to save, so ccache never
-          # learns about new commits and hit rate degrades over time).
-          # restore-keys still picks up the most recent prior cache to warm
-          # from.
+          # Unique key per run (cache entries are immutable); restore-keys warms from the latest.
           key: ccache-windows-${{ github.run_id }}
           restore-keys: |
             ccache-windows-
@@ -241,14 +237,8 @@ jobs:
       - name: Build cmark from source
         run: |
           set -euo pipefail
-          # MSYS2 dropped the MINGW64 (MSVCRT) build of cmark -- the
-          # mingw-w64-cmark base package now only ships ucrt64/clang64/
-          # clangarm64 binaries, so 'mingw-w64-x86_64-cmark' failed with
-          # 'target not found'. Compile the pinned release from source and
-          # install it into the standard UCRT64 prefix, where the main
-          # project's find_package(cmark) picks it up (the exported target is
-          # cmark::cmark, matching what the distro package used to provide).
-          curl -fsSL -o /tmp/cmark.tar.gz \
+          # MSYS2 dropped cmark for MINGW64; build the pinned release into /ucrt64.
+          curl -fsSL --retry 3 -o /tmp/cmark.tar.gz \
             "https://github.com/commonmark/cmark/archive/refs/tags/0.31.2.tar.gz"
           tar -xzf /tmp/cmark.tar.gz -C /tmp
           cmake -S /tmp/cmark-0.31.2 -B /tmp/cmark-0.31.2/build -G Ninja \
@@ -263,11 +253,8 @@ jobs:
       - name: Download ONNX Runtime
         run: |
           set -euo pipefail
-          # Version comes from the workflow-level ORT_VERSION env.
-          # There is no MSYS2 package (mingw-w64-x86_64-onnxruntime does
-          # not exist), so use the official build. MinGW links the DLL
-          # directly (see CMakeLists); the MSVC import .lib is ignored.
-          curl -fsSL -o /tmp/ort.zip \
+          # No MSYS2 package: use the official zip (MinGW links the DLL, the .lib is unused).
+          curl -fsSL --retry 3 -o /tmp/ort.zip \
             "https://github.com/microsoft/onnxruntime/releases/download/v${ORT_VERSION}/onnxruntime-win-x64-${ORT_VERSION}.zip"
           rm -rf /tmp/ort && mkdir -p /tmp/ort
           unzip -q -o /tmp/ort.zip -d /tmp/ort
@@ -301,7 +288,6 @@ jobs:
           cmake --install build
           echo "=== ccache stats ==="
           ccache -s
-          ccache --print-stats
 
       - name: Save ccache
         if: github.ref == 'refs/heads/main'
@@ -322,11 +308,7 @@ jobs:
       - name: Bundle ONNX Runtime
         run: |
           set -euo pipefail
-          # windeployqt will not pick this up on its own; copy explicitly
-          # next to pollymc.exe. The official zip keeps the DLLs in lib/
-          # (including onnxruntime_providers_shared.dll, needed at runtime).
-          # Runs before Deploy Qt so the DLL dependency scan below
-          # also validates it.
+          # windeployqt skips this DLL: copy it next to pollymc.exe before the DLL scan.
           cp -f "$ORT_ROOT"/lib/onnxruntime*.dll install/
           ls install/onnxruntime*.dll
 
@@ -373,8 +355,7 @@ jobs:
           BUILD_DIR_WIN="$(cygpath -w "$(pwd)/install")"
           VERSION="${{ needs.skip-check.outputs.version }}"
 
-          # Fail loudly instead of silently shipping an installer with the
-          # wrong name if the placeholder pattern doesn't match the .nsi file.
+          # Fail if the installer name placeholder no longer matches.
           if ! grep -q 'PollyMC-Continued-[^ ]*-Setup' pollymc_installer.nsi; then
             echo "::error::Expected placeholder 'PollyMC-Continued-*-Setup' not found in pollymc_installer.nsi"
             exit 1
@@ -383,15 +364,7 @@ jobs:
           sed "s/PollyMC-Continued-[^ ]*-Setup/PollyMC-Continued-${VERSION}-Windows-Setup/" \
             pollymc_installer.nsi > pollymc_installer_versioned.nsi
 
-          # MSYS2's NSIS package has shipped its plugins under different
-          # folder names over time ("unicode"/"ansi" in older builds,
-          # "amd64-unicode"/"x86-unicode"/"x86-ansi" in newer ones). Neither
-          # layout is guaranteed to be on makensis' default search path, so
-          # discover what is actually installed and register every plugin
-          # folder explicitly, with the matching target switch. The switch
-          # matters: a bare !addplugindir only applies to whichever target
-          # is active at that point (ANSI), so a later `Unicode true` /
-          # `Target` line would not see it.
+          # NSIS plugin folders vary between MSYS2 builds: register each with its target switch.
           NSIS_PLUGINS=/ucrt64/share/nsis/Plugins
           echo "=== NSIS plugin layout ==="
           find "$NSIS_PLUGINS" -name 'nsExec.dll'
@@ -413,8 +386,7 @@ jobs:
           done
           cat nsis_plugin_dirs.nsh
 
-          # Prepend via the script itself (-X flags get dropped by the
-          # MSYS2 shell wrapper, and NSISDIR is not honored).
+          # Prepend to the script itself (-X flags are dropped by the MSYS2 wrapper).
           cat nsis_plugin_dirs.nsh pollymc_installer_versioned.nsi > pollymc_installer_versioned.nsi.tmp
           mv pollymc_installer_versioned.nsi.tmp pollymc_installer_versioned.nsi
 
@@ -499,11 +471,9 @@ jobs:
           VERSION="${{ needs.skip-check.outputs.version }}"
           cd install
           ls -la pollymc.exe || (echo "ERROR: pollymc.exe not found in install!" && exit 1)
-          # portable.txt marks a portable install (data dir + updater asset matching depend on it),
-          # so the portable zip must contain it next to pollymc.exe
+          # portable.txt marks a portable install (data dir, updater asset matching).
           cp "$GITHUB_WORKSPACE/program_info/portable.txt" portable.txt
-          # manifest.txt lists every top-level entry of the install; the updater installs exactly
-          # this list, so files that are new to a release (like portable.txt) actually get deployed
+          # manifest.txt lists the top-level entries the updater installs.
           find . -mindepth 1 -maxdepth 1 -printf '%P\n' | sort > manifest.txt
           "/c/Program Files/7-Zip/7z.exe" a \
             "../PollyMC-Continued-${VERSION}-Windows-portable.zip" .
@@ -517,6 +487,7 @@ jobs:
           path: |
             PollyMC-Continued-*-Setup.exe
             PollyMC-Continued-*-Windows-portable.zip
+          if-no-files-found: error
 
   build-linux:
     name: Linux (.deb + tarball)
@@ -527,11 +498,7 @@ jobs:
     permissions:
       contents: read
     env:
-      # Set once at job level so it's visible in every step (including the
-      # Build step, where ccache actually does its work) - a per-step
-      # `export` doesn't survive to the next step in Actions. Explicit path
-      # also avoids relying on ccache's default cache dir, which changed
-      # location as of ccache 4.0 (now ~/.cache/ccache on Linux).
+      # Job-level so the Build step's ccache sees it; fixed path avoids the default dir.
       CCACHE_DIR: ${{ github.workspace }}/.ccache
       CCACHE_MAXSIZE: 400M
     steps:
@@ -556,18 +523,14 @@ jobs:
             liblz4-dev liblzma-dev libbz2-dev libzstd-dev \
             gamemode-dev \
             patchelf \
+            dpkg-dev \
             ccache
 
       - name: Restore ccache
         uses: actions/cache/restore@v5
         with:
           path: ${{ env.CCACHE_DIR }}
-          # Unique per run so a fresh save always succeeds (actions/cache
-          # entries are immutable per key - reusing a static key means every
-          # run after the first silently fails to save, so ccache never
-          # learns about new commits and hit rate degrades over time).
-          # restore-keys still picks up the most recent prior cache to warm
-          # from.
+          # Unique key per run (cache entries are immutable); restore-keys warms from the latest.
           key: ccache-linux-deb-${{ github.run_id }}
           restore-keys: |
             ccache-linux-deb-
@@ -575,10 +538,8 @@ jobs:
       - name: Download ONNX Runtime
         run: |
           set -euo pipefail
-          # Version comes from the workflow-level ORT_VERSION env.
-          # No distro package (libonnxruntime-dev does not exist on the
-          # runner), so use the official build like the other platforms.
-          curl -fsSL -o /tmp/ort.tgz \
+          # No distro package: use the official build (version from ORT_VERSION).
+          curl -fsSL --retry 3 -o /tmp/ort.tgz \
             "https://github.com/microsoft/onnxruntime/releases/download/v${ORT_VERSION}/onnxruntime-linux-x64-${ORT_VERSION}.tgz"
           rm -rf /tmp/ort && mkdir -p /tmp/ort
           tar -xzf /tmp/ort.tgz -C /tmp/ort
@@ -609,17 +570,11 @@ jobs:
           cmake --build build -j$(nproc)
           echo "=== ccache stats ==="
           ccache -s
-          ccache --print-stats
 
       - name: Build .deb package
         run: |
           set -euo pipefail
-          # CPack DEB requires dpkg-dev at runtime for shlibdeps resolution.
-          sudo apt-get install -y dpkg-dev
-          # Distro packages must NOT ship the in-app updater (the package
-          # manager owns updates), so configure a dedicated build with it off.
-          # ccache makes this second pass cheap (only updater-related files
-          # actually recompile).
+          # Distro packages must not ship the in-app updater, so build with it off.
           cmake -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_INSTALL_PREFIX=/usr \
@@ -658,36 +613,20 @@ jobs:
       - name: Install release layout
         run: |
           set -euo pipefail
-          # Only the tarball is produced here; the AppImage lives in the
-          # separate build-appimage job because it has to be compiled against
-          # an older glibc. The tarball step below fills /tmp/pollymc/bin with
-          # bot-server and the bundled libraries (cmark, toml++, qrencode and
-          # ONNX Runtime) on top of this install, so dropping the appdir tree
-          # loses nothing for the tarball.
+          # Tarball only (the AppImage has its own job); the next step adds bot-server and libs.
           cmake --install build --prefix /tmp/pollymc
 
       - name: Create Linux binary tarball
         run: |
           set -euo pipefail
           VERSION="${{ needs.skip-check.outputs.version }}"
-          # Same portable layout as the Windows zip: bot-server + portable.txt
-          # + manifest.txt next to the binary (/tmp/pollymc/bin). The updater
-          # copies the manifest's top-level entries wholesale, so files added
-          # inside bin/ ship and update automatically.
+          # Same portable layout as the Windows zip (bot-server, portable.txt, manifest.txt).
           cp -r bot-server /tmp/pollymc/bin/bot-server
           rm -f /tmp/pollymc/bin/bot-server/.gitignore
           rm -rf /tmp/pollymc/bin/bot-server/node_modules
 
-          # Bundle every non-standard shared library the binary links against
-          # into bin/, next to the binary (Launcher_BINARY_RPATH is $ORIGIN/,
-          # so they are found before system libs). Qt6 itself is deliberately
-          # left to the system, but these three are version-pinned or seldom
-          # preinstalled: cmark's SONAME in particular differs between distros
-          # (0.30.2 on Ubuntu 24.04 vs 0.31.2 on Arch/openSUSE), so unpackaged
-          # the tarball only ran on distros whose cmark matched the build image.
-          # Fail loudly if any lib can't be resolved on the runner.
-          # cmark's SONAME carries its full version, so read it from the installed
-          # binary rather than hard-coding it (a distro bump used to break this).
+          # Bundle cmark, toml++ and qrencode in bin/ (RPATH $ORIGIN); cmark's SONAME differs per distro.
+          # The cmark name is read from the binary; fail if any lib can't be resolved.
           CMARK_SO=$(ldd /tmp/pollymc/bin/pollymc | awk '/libcmark\.so/ {print $1; exit}')
           if [ -z "$CMARK_SO" ]; then
             echo "::error::pollymc does not link libcmark; cannot determine what to bundle."
@@ -704,11 +643,7 @@ jobs:
             echo "DEBUG: bundled $lib <- $SRC"
           done
 
-          # ONNX Runtime next to the binary (RPATH $ORIGIN finds it there).
-          # Same download as above; the guard below enforces it.
-          # cp -d keeps upstream's SONAME symlinks (libonnxruntime.so.1);
-          # cp -L alone only ships the real file (libonnxruntime.so.1.22.0)
-          # and the loader still reports libonnxruntime.so.1 => not found.
+          # ONNX Runtime next to the binary; cp -d keeps the SONAME symlinks.
           ORT_SO=$(find "$ORT_ROOT/lib" -type f -name 'libonnxruntime.so.*' | head -1)
           if [ -z "$ORT_SO" ]; then
             echo "::error::Could not find libonnxruntime.so under $ORT_ROOT/lib."
@@ -724,23 +659,14 @@ jobs:
           tar -czf "PollyMC-Continued-${VERSION}-Linux-x86_64.tar.gz" -C /tmp/pollymc .
           ls -la PollyMC-Continued-*-Linux-x86_64.tar.gz
 
-          # Guard the packaged artifact itself: the bundled libs must sit in
-          # bin/ next to the binary, or the tarball is broken. (tar -t prefixes
-          # every entry with ./ when created with -C dir .)
-          for lib in $BUNDLE_LIBS; do
-            if ! tar -tzf "PollyMC-Continued-${VERSION}-Linux-x86_64.tar.gz" | sed 's|^\./||' | grep -qx "bin/$lib"; then
-              echo "::error::$lib missing from packaged tarball (not in bin/)"
+          # Check the bundled libs really are in bin/ of the tarball.
+          tar -tzf "PollyMC-Continued-${VERSION}-Linux-x86_64.tar.gz" | sed 's|^\./||' > /tmp/tarball.list
+          for f in $BUNDLE_LIBS "$ORT_BASENAME" libonnxruntime.so.1; do
+            if ! grep -qx "bin/$f" /tmp/tarball.list; then
+              echo "::error::bin/$f is missing from the packaged tarball"
               exit 1
             fi
           done
-          if ! tar -tzf "PollyMC-Continued-${VERSION}-Linux-x86_64.tar.gz" | sed 's|^\./||' | grep -qx "bin/$ORT_BASENAME"; then
-            echo "::error::libonnxruntime ($ORT_BASENAME) missing from packaged tarball (not in bin/)"
-            exit 1
-          fi
-          if ! tar -tzf "PollyMC-Continued-${VERSION}-Linux-x86_64.tar.gz" | sed 's|^\./||' | grep -qx "bin/libonnxruntime.so.1"; then
-            echo "::error::libonnxruntime SONAME link (libonnxruntime.so.1) missing from packaged tarball (not in bin/)"
-            exit 1
-          fi
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -755,21 +681,11 @@ jobs:
     if: needs.skip-check.outputs.skip != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 90
-    # Deliberately NOT the ubuntu-24.04 runner used by build-linux. An AppImage
-    # built on 24.04 inherits that image's glibc (2.39) through every bundled
-    # object - the launcher binary, AppRun (which linuxdeploy symlinks to it),
-    # libarchive/ICU/Qt pulled from the image - so it only starts on hosts with
-    # glibc >= 2.38. Building on 22.04 pins the floor to glibc 2.35, which runs
-    # on Ubuntu 22.04+, Debian 12+, Fedora 40+ and Arch. Qt itself is not the
-    # limiting factor: the official aqt binaries are built on RHEL 8.10 and
-    # need at most GLIBC_2.28, and so is the official ONNX Runtime build used
-    # below (it asks for GLIBC_2.27).
+    # 22.04 container, not the 24.04 runner: pins the glibc floor to 2.35 (24.04 needs >= 2.38).
     container: ubuntu:22.04
     permissions:
       contents: read
-    # Jobs that run in a container default to `sh`, and on this image /bin/sh is
-    # dash, where `set -o pipefail` is an illegal option. Without this, every
-    # step below dies on its own first line with exit code 2.
+    # Container jobs default to dash, which lacks pipefail: force bash.
     defaults:
       run:
         shell: bash
@@ -779,12 +695,7 @@ jobs:
       CCACHE_MAXSIZE: 400M
       # Raise (never lower) if the bundled Qt ever needs newer symbol versions.
       APPIMAGE_MAX_GLIBC: "2.35"
-      # Qt for this job. jammy ships 6.2 and CMakeLists requires >= 6.4, so it
-      # comes from the official installer instead. The modules are the Qt
-      # features the build needs that jammy cannot provide: qtimageformats
-      # (JPEG/TIFF/WebP image plugins), qtnetworkauth and qtwebsockets.
-      # QT_CACHE_KEY covers the module list as well, so adding a module can
-      # never silently reuse a cached Qt that lacks it.
+      # Qt from aqt (jammy's 6.2 is too old). The cache key covers the module list.
       QT_VERSION: "6.8.3"
       QT_ARCH: "linux_gcc_64"
       QT_MODULES: "qtimageformats qtnetworkauth qtwebsockets"
@@ -799,13 +710,7 @@ jobs:
           set -euo pipefail
           export DEBIAN_FRONTEND=noninteractive
           apt-get update
-          # No qt6-*-dev packages: jammy ships Qt 6.2 and CMakeLists requires
-          # >= 6.4, so Qt comes from aqt instead (see the Install Qt step).
-          # Also absent on jammy and therefore not listed: libtomlplusplus-dev
-          # (installed from headers below), libquazip1-qt6-dev (unused) and
-          # breeze (the Breeze widget style needs a Qt match, see below).
-          # "cmark" itself is not optional either: jammy's libcmark-dev config
-          # file imports the cmark::cmark_exe target from the cmark package.
+          # No Qt dev packages (jammy's 6.2 is too old; Qt comes from aqt). cmark needs both packages.
           apt-get install -y --no-install-recommends \
             build-essential cmake ninja-build pkg-config \
             git curl ca-certificates \
@@ -823,29 +728,13 @@ jobs:
             libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 \
             libxcb-shape0 libxcb-sync1 libxcb-xfixes0 libxcb-xinerama0 \
             libxcb-xkb1 libxcb-glx0 libxcb-shm0 libxcb-util1
-          # The last group is what the Qt binaries themselves need at runtime
-          # (qmake, and every bundled Qt library loaded through ldd by
-          # linuxdeploy). Without it qmake cannot even start on this minimal
-          # image, and linuxdeploy would silently skip those libraries.
-          # default-jdk-headless is needed because libraries/launcher and
-          # libraries/javacheck build two jars with find_package(Java 1.7
-          # REQUIRED COMPONENTS Development); the 24.04 runner has a JDK
-          # preinstalled, this container does not. libvulkan-dev likewise:
-          # HardwareInfo.cpp uses vulkan.h, and without it the configure step
-          # reports "Could NOT find WrapVulkanHeaders" and the build fails.
-          # libgamemode0 is the package that actually ships libgamemode.so
-          # (-lgamemode at link time); gamemode-dev only has the headers and
-          # the auto client. The 24.04 runner has it preinstalled.
-          # file and squashfs-tools are required by appimagetool itself
-          # (it aborts with "file command is missing but required"); the
-          # 24.04 runner has both, this container image does not.
+          # Last group: runtime libs for the Qt tools and linuxdeploy. Also needed: a JDK (jar builds),
+          # libvulkan-dev (HardwareInfo), libgamemode0 (linking), file + squashfs-tools (appimagetool).
 
       - name: Install CMake
         run: |
           set -euo pipefail
-          # jammy ships CMake 3.22 but CMakeLists.txt requires >= 3.25. Use the
-          # same version as the ubuntu-24.04 runner so both Linux builds stay
-          # comparable; the official Kitware tarball needs nothing from jammy.
+          # jammy's CMake 3.22 is too old (>= 3.25 needed); use the 24.04 runner's 3.28.3.
           CMAKE_VERSION=3.28.3
           curl -fsSL --retry 3 \
             "https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-linux-x86_64.tar.gz" \
@@ -858,21 +747,9 @@ jobs:
       - name: Install tomlplusplus
         run: |
           set -euo pipefail
-          # jammy has no libtomlplusplus-dev (it only exists from noble on) and
-          # CMakeLists requires >= 3.2.0, so install the headers here.
-          #
-          # toml++ is a header-only library (upstream declares it as an
-          # INTERFACE target), so there is nothing to compile: the launcher
-          # only needs to #include <toml++/toml.hpp>. Upstream's own CMake
-          # package cannot be used - its tomlplusplusConfig.cmake never sets
-          # tomlplusplus_FOUND, so CMake rejects it and falls back to
-          # pkg_check_modules, which then needs a .pc file that upstream does
-          # not generate either. So write the .pc by hand, exactly like the
-          # Debian/Ubuntu package does but header-only (TOML_HEADER_ONLY=1,
-          # no -ltomlplusplus). CMakeLists.txt:356 consumes this via
-          # PkgConfig::tomlplusplus.
+          # jammy has no toml++ package. It is header-only: copy the headers and write the .pc by hand.
           TOMLPP_VERSION=3.4.0
-          curl -fsSL -o /tmp/tomlplusplus.tar.gz \
+          curl -fsSL --retry 3 -o /tmp/tomlplusplus.tar.gz \
             "https://github.com/marzer/tomlplusplus/archive/refs/tags/v${TOMLPP_VERSION}.tar.gz"
           rm -rf "/tmp/tomlplusplus-${TOMLPP_VERSION}"
           tar -xzf /tmp/tomlplusplus.tar.gz -C /tmp
@@ -902,12 +779,7 @@ jobs:
       - name: Install Qt
         run: |
           set -euo pipefail
-          # NOT jurplel/install-qt-action: v4 sets Python up through
-          # actions/setup-python at ">=3.14.0", and that CPython build needs
-          # GLIBC_2.38, so it cannot even start inside this container (jammy is
-          # 2.35). The container's own Python 3.10 runs aqtinstall fine, which
-          # is the same tool that action drives.
-          # No -type f: on some Qt layouts bin/qmake is a symlink to qmake6.
+          # Not install-qt-action: its Python needs glibc 2.38 and this container has 2.35.
           find_qmake() {
             find "$RUNNER_TEMP/qt" -maxdepth 4 \
               \( -name qmake -o -name qmake6 \) 2>/dev/null | head -n1 || true
@@ -917,13 +789,10 @@ jobs:
             echo "Reusing the cached Qt: $QMAKE"
           else
             apt-get install -y --no-install-recommends python3 python3-pip
-            # Pinned so a future aqt release cannot silently change what ends
-            # up bundled in the AppImage.
+            # Pinned so a new aqt release can't change the bundled Qt.
             python3 -m pip install --no-cache-dir "aqtinstall==3.3.0"
             mkdir -p "$RUNNER_TEMP/qt"
-            # aqt needs at most GLIBC_2.28: the official Qt 6.8.3 gcc_64 build
-            # is made on RHEL 8.10, so Qt does not raise the glibc floor that
-            # this job exists to pin.
+            # Qt 6.8.3 needs at most GLIBC_2.28, so it keeps the glibc floor.
             python3 -m aqt install-qt linux desktop "$QT_VERSION" "$QT_ARCH" \
               -m $QT_MODULES \
               --outputdir "$RUNNER_TEMP/qt"
@@ -933,15 +802,12 @@ jobs:
             echo "::error::aqt reported success but no qmake was installed under $RUNNER_TEMP/qt"
             exit 1
           fi
-          # Do not assume aqt's directory naming; derive the root from qmake so
-          # a layout change becomes a loud failure instead of a broken Qt path.
+          # Derive the root from qmake so a layout change fails loudly.
           QT_ROOT=$(dirname "$(dirname "$QMAKE")")
           "$QMAKE" -query QT_VERSION
           echo "QT_ROOT=${QT_ROOT}" >> "$GITHUB_ENV"
           echo "${QT_ROOT}/bin" >> "$GITHUB_PATH"
-          # linuxdeploy resolves DT_NEEDED with ldd, so Qt's lib dir must be on
-          # the search path or the scan fails with "Could not find dependency:
-          # libQt6Widgets.so.6". install-qt-action exported this; aqt does not.
+          # linuxdeploy uses ldd, so Qt's lib dir must be on LD_LIBRARY_PATH.
           echo "LD_LIBRARY_PATH=${QT_ROOT}/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" >> "$GITHUB_ENV"
           echo "QT_PLUGIN_PATH=${QT_ROOT}/plugins" >> "$GITHUB_ENV"
           echo "QML2_IMPORT_PATH=${QT_ROOT}/qml" >> "$GITHUB_ENV"
@@ -949,10 +815,8 @@ jobs:
       - name: Download ONNX Runtime
         run: |
           set -euo pipefail
-          # Version comes from the workflow-level ORT_VERSION env. Same
-          # official build build-linux uses, so the AppImage and the .deb ship
-          # the same library. No distro package exists for any platform.
-          curl -fsSL -o /tmp/ort.tgz \
+          # Same official ONNX Runtime build as build-linux (version from ORT_VERSION).
+          curl -fsSL --retry 3 -o /tmp/ort.tgz \
             "https://github.com/microsoft/onnxruntime/releases/download/v${ORT_VERSION}/onnxruntime-linux-x64-${ORT_VERSION}.tgz"
           rm -rf /tmp/ort && mkdir -p /tmp/ort
           tar -xzf /tmp/ort.tgz -C /tmp/ort
@@ -964,8 +828,7 @@ jobs:
         uses: actions/cache/restore@v5
         with:
           path: ${{ env.CCACHE_DIR }}
-          # Separate namespace from build-linux: different compiler and Qt, so
-          # the object files are not interchangeable.
+          # Own cache namespace: different compiler and Qt than build-linux.
           key: ccache-linux-appimage-${{ github.run_id }}
           restore-keys: |
             ccache-linux-appimage-
@@ -1001,7 +864,6 @@ jobs:
           cmake --build build -j$(nproc)
           echo "=== ccache stats ==="
           ccache -s
-          ccache --print-stats
 
       - name: Save ccache
         if: github.ref == 'refs/heads/main'
@@ -1056,9 +918,7 @@ jobs:
           cp -L /usr/lib/x86_64-linux-gnu/libcrypto.so.* appdir/usr/lib/ 2>/dev/null || true
           cp -L /usr/lib/x86_64-linux-gnu/libgamemode.so.* appdir/usr/lib/ 2>/dev/null || true
           cp -L /usr/lib/x86_64-linux-gnu/libgamemodeauto.so.* appdir/usr/lib/ 2>/dev/null || true
-          # ONNX Runtime for the palette's natural-language mode. Resolved
-          # from the downloaded build (see the Download step); the SONAME
-          # carries the ORT version, so it is never hardcoded.
+          # ONNX Runtime for the palette; the SONAME carries the version, so look it up.
           ORT_SO=$(find "$ORT_ROOT/lib" -type f -name 'libonnxruntime.so.*' | head -1)
           if [ -z "$ORT_SO" ]; then
             echo "::error::Could not find libonnxruntime.so under $ORT_ROOT/lib."
@@ -1066,9 +926,7 @@ jobs:
           fi
           cp -L "$ORT_SO" appdir/usr/lib/
           echo "DEBUG: bundled onnxruntime <- $ORT_SO"
-          # linuxdeploy resolves DT_NEEDED via soname links, so ship the
-          # archive's own symlinks too (cp -d keeps them as links).
-          # This also tracks future SONAME bumps automatically.
+          # Ship the archive's symlinks too (cp -d); linuxdeploy resolves via soname links.
           cp -d "$ORT_ROOT"/lib/libonnxruntime.so* appdir/usr/lib/
           ls -la appdir/usr/lib/ | grep onnxruntime
 
@@ -1077,42 +935,24 @@ jobs:
           cp -L "${QT_ROOT}"/plugins/imageformats/*.so appdir/usr/plugins/imageformats/ 2>/dev/null || true
           echo "DEBUG: bundled imageformats: $(ls appdir/usr/plugins/imageformats | tr '\n' ' ')"
 
-          # The Qt icon engine plugin (libqsvgicon.so) so SVG icons render in
-          # menus/toolbars; imageformats/libqsvg.so alone only handles SVG as a
-          # raster image.
+          # Icon engine plugin so SVG icons render in menus (libqsvg.so only handles images).
           mkdir -p appdir/usr/plugins/iconengines
           cp -L "${QT_ROOT}"/plugins/iconengines/*.so appdir/usr/plugins/iconengines/ 2>/dev/null || true
           echo "DEBUG: bundled icon engines: $(ls appdir/usr/plugins/iconengines | tr '\n' ' ')"
 
-          # NOTE: no Breeze widget style here. It is a KDE kstyle plugin, not a
-          # Qt one, and the only distro package for it is built against a
-          # different Qt than the one used here, so Qt refuses to load it and
-          # the AppImage falls back to a stock Qt style. The Breeze icon themes
-          # are unaffected: they are compiled into the launcher binary as Qt
-          # resources.
+          # No Breeze widget style: no build matches this Qt, so a stock style is used.
           echo "::warning::The Breeze widget style is not bundled (no Qt-matched build available); the AppImage uses a stock Qt style"
 
           # Fail loudly if upstream ever drops the unversioned link.
           test -e appdir/usr/lib/libonnxruntime.so || { echo "::error::appdir is missing libonnxruntime.so"; exit 1; }
 
-          # Name the AppImage properly at creation time. linuxdeploy's appimage
-          # output plugin forwards these to appimagetool's APPIMAGETOOL_APP_NAME
-          # and VERSION, which then produce
-          # PollyMC-Continued-<version>-x86_64.AppImage. The AppImage packaging
-          # guidelines explicitly forbid "Linux" in the filename (every AppImage
-          # is for Linux), and appimagetool warns about it.
+          # Name the AppImage at creation (AppImage guidelines forbid "Linux" in the name).
           export LINUXDEPLOY_OUTPUT_APP_NAME="PollyMC-Continued"
           export LINUXDEPLOY_OUTPUT_VERSION="$VERSION"
           echo "DEBUG: LINUXDEPLOY_OUTPUT_APP_NAME=$LINUXDEPLOY_OUTPUT_APP_NAME LINUXDEPLOY_OUTPUT_VERSION=$LINUXDEPLOY_OUTPUT_VERSION"
 
-          # QMAKE must be passed as an environment variable: that is how
-          # linuxdeploy-plugin-qt finds the Qt tools (qmake, lconvert,
-          # qtpaths, ...). linuxdeploy is a plain executable, so it is run
-          # directly; running it as "$QMAKE" ./linuxdeploy... just makes qmake
-          # try to parse the AppImage as a project file.
-          # LD_LIBRARY_PATH points at the privately bundled libonnxruntime:
-          # linuxdeploy's initial scan does not search appdir/usr/lib on its
-          # own, so without it the bundled copy resolves like a system lib.
+          # QMAKE goes in the environment (the Qt plugin reads it); LD_LIBRARY_PATH lets
+          # linuxdeploy find the bundled ONNX Runtime.
           QMAKE="$QMAKE" LD_LIBRARY_PATH="$PWD/appdir/usr/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" \
             ./linuxdeploy-x86_64.AppImage \
             --appdir appdir \
@@ -1120,8 +960,7 @@ jobs:
             --library appdir/usr/lib/libonnxruntime.so \
             --output appimage
 
-          # Belt and braces: appimagetool already named it correctly, but never
-          # ship a wrong name (a stale "Linux" suffix would come back silently).
+          # Safety net: never ship a wrongly named AppImage.
           FINAL="PollyMC-Continued-${VERSION}-x86_64.AppImage"
           FILE=$(ls PollyMC*.AppImage 2>/dev/null | head -n1 || true)
           if [ -z "$FILE" ]; then
@@ -1142,19 +981,13 @@ jobs:
           VERSION="${{ needs.skip-check.outputs.version }}"
           APPIMAGE="PollyMC-Continued-${VERSION}-x86_64.AppImage"
 
-          # AppImage consumers report failures like "libQt6Gui.so.6: version
-          # `GLIBC_2.38' not found" when a bundled object was compiled against
-          # a newer glibc than the host provides. Nothing else in CI ever runs
-          # the AppImage, so nothing used to catch that: assert the floor here
-          # and fail the build if it regresses.
+          # Fail if anything bundled needs a newer glibc than the supported floor.
           rm -rf /tmp/glibc-check
-          # The leading "./" matters: the workspace directory is not on PATH, so
-          # a bare "$APPIMAGE" is reported as "command not found".
+          # Keep the "./": the workspace is not on PATH.
           "./${APPIMAGE}" --appimage-extract >/dev/null
           mv squashfs-root /tmp/glibc-check
 
-          # readelf ignores non-ELF payloads; its non-zero exit on those must not
-          # abort the step, hence the trailing "|| true" under pipefail.
+          # readelf fails on non-ELF files; || true keeps pipefail from aborting.
           symbol_versions() {
             find /tmp/glibc-check -type f -exec readelf -V {} + 2>/dev/null \
               | grep -oE "$1" || true
@@ -1166,9 +999,7 @@ jobs:
             echo "::error::Could not read any GLIBC symbol versions from the AppImage payload"
             exit 1
           fi
-          # Fail when the payload needs something newer than the floor.
-          # sort -V puts the smaller of the two first, so "the floor came first
-          # and the two differ" means MAX > FLOOR.
+          # Fail if the payload needs glibc newer than the floor (sort -V puts the smaller first).
           MAXV="${MAX#GLIBC_}"
           if [ "$MAXV" != "$APPIMAGE_MAX_GLIBC" ] \
              && [ "$(printf '%s\n%s\n' "$APPIMAGE_MAX_GLIBC" "$MAXV" | sort -V | head -1)" = "$APPIMAGE_MAX_GLIBC" ]; then
@@ -1194,8 +1025,7 @@ jobs:
     if: needs.skip-check.outputs.skip != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    # Oldest glibc we claim to support: an AppImage that cannot start here
-    # cannot start on any older distro either.
+    # Oldest supported glibc: if it starts here, it starts on newer distros.
     container: ubuntu:22.04
     permissions:
       contents: read
@@ -1222,8 +1052,7 @@ jobs:
           echo "Testing ${APPIMAGE}"
           chmod +x "${APPIMAGE}"
 
-          # Dependencies the AppImage deliberately leaves to the host, plus
-          # xvfb and dbus-x11 to emulate a real desktop session.
+          # Libraries the AppImage leaves to the host, plus xvfb and dbus for a desktop session.
           apt-get update
           apt-get install -y --no-install-recommends \
             libgl1 libegl1 libxkbcommon0 libxkbcommon-x11-0 \
@@ -1234,19 +1063,10 @@ jobs:
             libxcb-xkb1 libxcb-glx0 libxcb-shm0 libxcb-util1 \
             xvfb dbus-x11
 
-          # APPIMAGE_EXTRACT_AND_RUN avoids needing FUSE inside the container;
-          # the extracted-and-run path is the same code path the runtime uses.
+          # Extract-and-run avoids needing FUSE in the container.
           export APPIMAGE_EXTRACT_AND_RUN=1
-          # Run the real xcb platform plugin under Xvfb instead of asking for
-          # QT_QPA_PLATFORM=offscreen: the AppImage bundles libqxcb.so only,
-          # which is the plugin users actually load, and offscreen would hide
-          # missing X libraries. A real desktop also has a session bus, so give
-          # the app one with dbus-run-session rather than relying on D-Bus
-          # X11 autolaunch: without a bus, the bundled libgamemode (1.6.1 from
-          # 22.04) cannot autolaunch one and aborts in gamemode_query_status()
-          # while probing for the GameMode service, which would fail this test
-          # for a reason no user would ever hit. Nothing here may leak a host Qt
-          # install: the point is to load every library from inside the AppImage.
+          # Use the real xcb plugin under Xvfb (offscreen hides missing X libs), in
+          # dbus-run-session so the bundled gamemode finds a bus.
           xvfb-run -a dbus-run-session -- ./"${APPIMAGE}" >/tmp/appimage-smoke.log 2>&1 &
           APP_PID=$!
           sleep 15
@@ -1294,18 +1114,14 @@ jobs:
           tar -xzf "$TARBALL" -C /tmp/pollymc-test
           cd /tmp/pollymc-test
 
-          # The tarball bundles libcmark.so.0.30.2 in bin/ (RUNPATH=$ORIGIN/).
-          # Arch's system cmark is 0.31.2, so if bundling ever breaks, this
-          # reproduces the user-visible "libcmark.so.0.30.2: cannot open shared
-          # object file" failure exactly.
+          # libcmark must load from bin/ (RUNPATH=$ORIGIN/); Arch ships a different cmark.
           CMARK_SO=$(cd bin && ls libcmark.so.* 2>/dev/null | head -n1 || true)
           if [ -z "$CMARK_SO" ]; then
             echo "::error::No libcmark bundled in bin/ of the extracted tarball"
             exit 1
           fi
-          # Sanity check: the container must NOT provide the SONAME the launcher
-          # was built against, otherwise this test would pass even without bundling.
-          if ldconfig -p | grep -qF " ${CMARK_SO} "; then
+          # The container must not provide this SONAME, or the test proves nothing.
+          if ldconfig -p | awk -v n="$CMARK_SO" '$1 == n { found = 1 } END { exit !found }'; then
             echo "::error::Arch container unexpectedly provides ${CMARK_SO}; the smoke test would be meaningless."
             exit 1
           fi
@@ -1329,8 +1145,7 @@ jobs:
         run: |
           set -euo pipefail
           cd /tmp/pollymc-test
-          # Start the launcher with the offscreen platform; it must still be
-          # alive after 10s (mirrors the Windows missing-DLL test).
+          # Must still be alive after 10s (mirrors the Windows DLL test).
           QT_QPA_PLATFORM=offscreen ./bin/pollymc >/tmp/pollymc-smoke.log 2>&1 &
           APP_PID=$!
           sleep 10
@@ -1353,11 +1168,7 @@ jobs:
     env:
       BUILD_TYPE: Release
       MACOSX_DEPLOYMENT_TARGET: "13.0"
-      # Set once at job level so it's visible in every step (including the
-      # Build step, where ccache actually does its work) - a per-step
-      # `export` doesn't survive to the next step in Actions. Explicit path
-      # also avoids relying on ccache's default cache dir, which changed
-      # location as of ccache 4.0 (now ~/Library/Caches/ccache on macOS).
+      # Job-level so the Build step's ccache sees it; fixed path avoids the default dir.
       CCACHE_DIR: ${{ github.workspace }}/.ccache
       CCACHE_MAXSIZE: 400M
     steps:
@@ -1368,13 +1179,13 @@ jobs:
 
       - name: Install build tools
         env:
-         HOMEBREW_NO_AUTO_UPDATE: "1"
-         HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: "1"
-         HOMEBREW_NO_INSTALL_CLEANUP: "1"
+          HOMEBREW_NO_AUTO_UPDATE: "1"
+          HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: "1"
+          HOMEBREW_NO_INSTALL_CLEANUP: "1"
         run: |
-         set -euo pipefail
-         brew install ninja extra-cmake-modules cmark qrencode libarchive tomlplusplus lz4 xz zstd libpng ccache
-         
+          set -euo pipefail
+          brew install ninja extra-cmake-modules cmark qrencode libarchive tomlplusplus lz4 xz zstd libpng ccache
+
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
@@ -1387,12 +1198,7 @@ jobs:
         uses: actions/cache/restore@v5
         with:
           path: ${{ env.CCACHE_DIR }}
-          # Unique per run so a fresh save always succeeds (actions/cache
-          # entries are immutable per key - reusing a static key means every
-          # run after the first silently fails to save, so ccache never
-          # learns about new commits and hit rate degrades over time).
-          # restore-keys still picks up the most recent prior cache to warm
-          # from.
+          # Unique key per run (cache entries are immutable); restore-keys warms from the latest.
           key: ccache-macos-${{ github.run_id }}
           restore-keys: |
             ccache-macos-
@@ -1401,7 +1207,7 @@ jobs:
         run: |
           set -euo pipefail
           # Version comes from the workflow-level ORT_VERSION env.
-          curl -fsSL -o "$RUNNER_TEMP/ort.tgz" \
+          curl -fsSL --retry 3 -o "$RUNNER_TEMP/ort.tgz" \
             "https://github.com/microsoft/onnxruntime/releases/download/v${ORT_VERSION}/onnxruntime-osx-arm64-${ORT_VERSION}.tgz"
           rm -rf "$RUNNER_TEMP/ort" && mkdir -p "$RUNNER_TEMP/ort"
           tar -xzf "$RUNNER_TEMP/ort.tgz" -C "$RUNNER_TEMP/ort"
@@ -1410,9 +1216,7 @@ jobs:
           test -n "$ORT_HDR"
           echo "ORT header: $ORT_HDR"
           echo "ORT_ROOT=${ORT_ROOT}" >> "$GITHUB_ENV"
-          # Exact real dylib for packaging (symlinks resolved, no globs).
-          # Exclude *.dSYM bundles: their DWARF files share the dylib
-          # name and install_name_tool cannot process them.
+          # Real dylib (no symlinks or globs); skip .dSYM bundles, install_name_tool can't read them.
           ORT_DYLIB=$(find "$ORT_ROOT/lib" -type f -name 'libonnxruntime.*.dylib' -not -path '*.dSYM/*' | head -1)
           test -n "$ORT_DYLIB"
           echo "ORT_DYLIB=${ORT_DYLIB}" >> "$GITHUB_ENV"
@@ -1426,7 +1230,7 @@ jobs:
       - name: Configure
         run: |
           set -euo pipefail
-          export PKG_CONFIG_PATH="/opt/homebrew/opt/libarchive/lib/pkgconfig:$PKG_CONFIG_PATH"
+          export PKG_CONFIG_PATH="/opt/homebrew/opt/libarchive/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
           cmake -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_INSTALL_PREFIX=install \
@@ -1460,11 +1264,11 @@ jobs:
 
       - name: Build
         run: |
+          set -euo pipefail
           ccache -z
           cmake --build build --config "$BUILD_TYPE"
           echo "=== ccache stats ==="
           ccache -s
-          ccache --print-stats
 
       - name: Save ccache
         if: github.ref == 'refs/heads/main'
@@ -1507,7 +1311,7 @@ jobs:
           ONNXRUNTIME_DYLIB: ${{ env.ORT_DYLIB }}
         run: |
           set -euo pipefail
-          chmod +x packaging/macos/package.sh
+          chmod +x packaging/macos/*.sh
           packaging/macos/package.sh \
             build \
             install-macos \
@@ -1573,41 +1377,30 @@ jobs:
           set -euo pipefail
           # makepkg refuses to run as root; build as an unprivileged user.
           useradd -m builder
-          # makepkg only uses ccache when BUILDENV enables it (it is '!ccache' by
-          # default, so installing the package alone did nothing).
+          # makepkg uses ccache only when BUILDENV enables it ('!ccache' by default).
           sed -i 's/!ccache/ccache/' /etc/makepkg.conf
           mkdir -p "$GITHUB_WORKSPACE/.ccache"
-          mkdir -p "$GITHUB_WORKSPACE"
           chown -R builder:builder "$GITHUB_WORKSPACE"
           VERSION="${{ needs.skip-check.outputs.version }}"
           # Point the PKGBUILD at the checked-out tree instead of a remote tarball.
           sed -i "s/pkgver=.*/pkgver=${VERSION}/" packaging/arch/PKGBUILD
           sed -i 's|source=.*|source=("${pkgname}-${pkgver}.tar.gz")|' packaging/arch/PKGBUILD
           sed -i "s/sha256sums=.*/sha256sums=('SKIP')/" packaging/arch/PKGBUILD
-          tar --exclude-vcs --exclude=build --exclude=.ccache \
+          tar --exclude-vcs --exclude=./build --exclude=./.ccache \
             --transform="s|^\./|PollyMC-Continued-${VERSION}/|" \
             -czf /tmp/pollymc-continued.tar.gz .
-          # Write the source tarball to /tmp and move it afterwards: writing it
-          # directly into packaging/arch/ (a directory inside the tree being
-          # archived) made tar read the file as it was writing it ("tar: ...:
-          # file changed as we read it") and exit 1, failing the job under
-          # set -e.
+          # Build the tarball in /tmp and move it in: writing inside the archived tree made tar fail.
           mv "/tmp/pollymc-continued.tar.gz" "packaging/arch/pollymc-continued-${VERSION}.tar.gz"
-          # No Arch repo package for ONNX Runtime: fetch the official
-          # linux-x64 build (pinned with the other platforms) into
-          # packaging/arch/ort, i.e. outside the source tarball above.
-          # PKGBUILD points CMake at it and bundles the .so privately.
-          curl -fsSL -o /tmp/ort.tgz \
+          # No Arch package for ONNX Runtime: fetch the official build into packaging/arch/ort
+          # (outside the source tarball).
+          curl -fsSL --retry 3 -o /tmp/ort.tgz \
             "https://github.com/microsoft/onnxruntime/releases/download/v${ORT_VERSION}/onnxruntime-linux-x64-${ORT_VERSION}.tgz"
           rm -rf packaging/arch/ort && mkdir -p packaging/arch/ort
           tar -xzf /tmp/ort.tgz -C packaging/arch/ort
           test -n "$(find packaging/arch/ort -name onnxruntime_cxx_api.h | head -1)"
           cd packaging/arch
           su builder -c "CCACHE_DIR='$GITHUB_WORKSPACE/.ccache' CCACHE_MAXSIZE=400M makepkg --noconfirm --force"
-          # makepkg names the file after pkgname (lowercase); rename it so the
-          # release artifact and repo files use the branded name. The container's
-          # makepkg.conf also builds a <pkgname>-debug package; drop it and name
-          # the main package explicitly (the glob would match both).
+          # Rename to the branded name and drop the -debug package.
           rm -f pollymc-continued-debug-*.pkg.tar.zst
           mv "pollymc-continued-${VERSION}-1-x86_64.pkg.tar.zst" "PollyMC-Continued-${VERSION}-1-x86_64.pkg.tar.zst"
 
@@ -1628,12 +1421,19 @@ jobs:
   release:
     name: Release
     needs: [skip-check, changelog-check, build-windows, build-linux, linux-tarball-cross-distro, build-appimage, linux-appimage-smoke, build-macos, build-arch]
-    if: always() && needs.skip-check.outputs.skip != 'true' && needs.skip-check.outputs.skip_release != 'true' && needs.changelog-check.result == 'success' && needs.build-windows.result == 'success' && needs.build-linux.result == 'success' && needs.linux-tarball-cross-distro.result == 'success' && needs.build-appimage.result == 'success' && needs.linux-appimage-smoke.result == 'success' && needs.build-macos.result == 'success' && needs.build-arch.result == 'success' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch')
+    if: >-
+      !cancelled() &&
+      needs.skip-check.outputs.skip != 'true' &&
+      needs.skip-check.outputs.skip_release != 'true' &&
+      !contains(needs.*.result, 'failure') &&
+      !contains(needs.*.result, 'cancelled') &&
+      !contains(needs.*.result, 'skipped') &&
+      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     timeout-minutes: 45
     permissions:
       contents: write
-      actions: write   # lets the job dispatch gh-pages.yml (GITHUB_TOKEN releases do not fire `on: release`)
+      actions: write   # dispatches gh-pages.yml
     # Two quick pushes to main would otherwise compute the same next version.
     concurrency:
       group: release-publish
@@ -1657,11 +1457,9 @@ jobs:
         id: prep
         run: |
           set -euo pipefail
-          # Version is computed once in skip-check and reused everywhere,
-          # so this no longer re-derives its own (potentially divergent)
-          # bump. On a tag push, use the tag itself as-is.
-          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
-            NEW_TAG="${{ github.ref_name }}"
+          # Version comes from skip-check; a tag push uses the tag itself.
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            NEW_TAG="$GITHUB_REF_NAME"
           else
             NEW_TAG="v${{ needs.skip-check.outputs.version }}"
           fi
@@ -1718,8 +1516,7 @@ jobs:
             PollyMC-Continued-*.pkg.tar.zst
 
       - name: Trigger apt/pacman repo deploy
-        # Releases created with GITHUB_TOKEN do not trigger `on: release`
-        # workflows, so dispatch gh-pages.yml explicitly (stable releases only).
+        # GITHUB_TOKEN releases don't fire `on: release`, so dispatch gh-pages.yml (stable only).
         if: ${{ !(github.ref == 'refs/heads/develop' || github.event_name == 'workflow_dispatch' || contains(github.ref_name, '-rc')) }}
         env:
           GH_TOKEN: ${{ github.token }}
@@ -1728,7 +1525,6 @@ jobs:
           gh workflow run gh-pages.yml --ref "${{ github.event.repository.default_branch }}" -f scope=repos
 
       - name: Update version in README
-        if: success()
         run: |
           set -euo pipefail
 
@@ -1757,8 +1553,7 @@ jobs:
             exit 0
           fi
 
-          # Rewrite every PollyMC-Continued-<semver>- prefix. The regex only
-          # touches the version segment, not the surrounding filename parts.
+          # Rewrite only the version segment of PollyMC-Continued-<semver>- names.
           sed -i -E "s/PollyMC-Continued-[0-9]+\.[0-9]+\.[0-9]+-/PollyMC-Continued-${VERSION}-/g" README.md
 
           if git diff --quiet -- README.md; then
@@ -1772,12 +1567,11 @@ jobs:
           git add README.md
           git commit -m "Chore: bump README version to ${VERSION} [skip-all]"
 
-          # Tag pushes are detached; push to the default branch.
-          # Branch pushes push back to the same branch.
-          if [[ "${{ github.ref }}" == refs/tags/v* ]]; then
+          # Tag pushes are detached: push to the default branch; branch pushes go back to their branch.
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
             TARGET_BRANCH="${{ github.event.repository.default_branch }}"
           else
-            TARGET_BRANCH="${{ github.ref_name }}"
+            TARGET_BRANCH="$GITHUB_REF_NAME"
           fi
 
           for attempt in 1 2 3 4 5; do
@@ -1790,27 +1584,3 @@ jobs:
           done
           echo "::error::Failed to push version update after 5 attempts."
           exit 1
-
-  embeddings:
-    name: Intent embeddings
-    needs: [release]
-    if: needs.release.result == 'success'
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    permissions:
-      contents: write
-    concurrency:
-      group: embeddings
-      cancel-in-progress: false
-    steps:
-      - uses: actions/checkout@v5
-
-      - name: Cache pip and model downloads
-        uses: actions/cache@v5
-        with:
-          path: |
-            ~/.cache/pip
-            ~/.cache/huggingface
-          key: embeddings-${{ hashFiles('training/**/*.py') }}
-          restore-keys: |
-            embeddings-
