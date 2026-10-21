@@ -4,7 +4,6 @@
 
 **Added:**
 
-- **Developer tools page** — A hidden Developer page in Settings with testing and troubleshooting tools: preview the star reminder, splash screen and update dialog, open the logs folder, copy a diagnostic summary, toggle verbose Qt logging for the session, and simulate update failures and slow networks.
 - **Automatic translation source sync** — A new `update-translations.yml` workflow runs `lupdate` whenever a `.cpp`, `.h` or `.ui` file under `launcher/` changes on `main` (or when started by hand from the Actions tab), so `translations/*.ts` always matches the current source strings. It commits only when a text was added, changed or removed — runs where only line numbers moved are discarded, so an ordinary code change no longer produces a commit touching every `.ts` file. After a real change it starts `gh-pages.yml` with `scope=translations` to rebuild the `.qm` files and redeploy the site, since pushes made with the default workflow token do not trigger other workflows. The workflow does not watch `translations/`, so its own commit cannot re-trigger it.
 
 **Changed:**
