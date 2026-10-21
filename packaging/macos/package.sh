@@ -131,7 +131,7 @@ EXPECTED_ARCHS="${EXPECTED_ARCHS:-}" \
 EXPECTED_MIN_MACOS="${EXPECTED_MIN_MACOS:-}" \
 SOURCE_ROOT=$source_root \
 SOURCE_BRANCH=$source_branch \
-    "$script_dir/verify_bundle.sh" "$app"
+    bash "$script_dir/verify_bundle.sh" "$app"
 
 artifact_arch=${ARTIFACT_ARCH:-$(uname -m)}
 artifact_base="PollyMC-Continued-${version}-macOS-${artifact_arch}"
@@ -186,7 +186,7 @@ EXPECTED_ARCHS="${EXPECTED_ARCHS:-}" \
 EXPECTED_MIN_MACOS="${EXPECTED_MIN_MACOS:-}" \
 SOURCE_ROOT=$source_root \
 SOURCE_BRANCH=$source_branch \
-    "$script_dir/verify_bundle.sh" "$zip_check_dir/PollyMC.app"
+    bash "$script_dir/verify_bundle.sh" "$zip_check_dir/PollyMC.app"
 cmake -E rm -rf "$zip_check_dir"
 
 dmg_root="$install_dir/dmg-root"
@@ -252,7 +252,7 @@ if ! EXPECTED_VERSION=$version \
     EXPECTED_MIN_MACOS="${EXPECTED_MIN_MACOS:-}" \
     SOURCE_ROOT=$source_root \
     SOURCE_BRANCH=$source_branch \
-        "$script_dir/verify_bundle.sh" "$dmg_check/PollyMC.app"; then
+        bash "$script_dir/verify_bundle.sh" "$dmg_check/PollyMC.app"; then
     hdiutil detach "$dmg_check" >/dev/null || true
     exit 1
 fi
