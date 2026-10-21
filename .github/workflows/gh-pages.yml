@@ -210,10 +210,14 @@ jobs:
           fi
           python3 .github/workflows/make_translation_index.py site/translations/
           ls -la site/translations/
-          # Mirror the same output for the website push.
+          # Mirror for the website push: compiled files (.qm + index_v2.json)
+          # at the top level, .ts sources in sources/ for the web translation
+          # editor.
           rm -rf translations-out
-          cp -r site/translations translations-out
-          ls -la translations-out/
+          mkdir -p translations-out/sources
+          cp site/translations/*.qm site/translations/index_v2.json translations-out/
+          cp site/translations/*.ts translations-out/sources/
+          ls -laR translations-out/
 
       - name: Push translations to website repo
         if: env.DO_TRANSLATIONS == 'true'
@@ -227,7 +231,7 @@ jobs:
             website
           rm -rf website/public/translation
           mkdir -p website/public/translation
-          cp translations-out/* website/public/translation/
+          cp -r translations-out/. website/public/translation/
           cd website
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
