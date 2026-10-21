@@ -1,5 +1,11 @@
 # Changelog
 
+## v9.4.2
+
+**Added:**
+
+- **In-launcher bug reports**  ^`^t Help > >
+
 ## v9.4.1
 
 **Added:**

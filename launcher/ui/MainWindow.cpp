@@ -112,6 +112,7 @@
 #include "ui/dialogs/ImportResourceDialog.h"
 #include "ui/dialogs/PerformancePresetsDialog.h"
 #include "ui/dialogs/NewInstanceDialog.h"
+#include "ui/dialogs/BugReportDialog.h"
 #include "ui/dialogs/NewsDialog.h"
 #include "ui/dialogs/ProgressDialog.h"
 #include "ui/instanceview/InstanceDelegate.h"
@@ -249,7 +250,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     // hide, disable and show stuff
     {
-        ui->actionReportBug->setVisible(!BuildConfig.BUG_TRACKER_URL.isEmpty());
+        ui->actionReportBug->setVisible(!BuildConfig.BUG_TRACKER_URL.isEmpty() || !BuildConfig.BUG_REPORT_API_URL.isEmpty());
         ui->actionMATRIX->setVisible(!BuildConfig.MATRIX_URL.isEmpty());
         ui->actionDISCORD->setVisible(!BuildConfig.DISCORD_URL.isEmpty());
         ui->actionREDDIT->setVisible(!BuildConfig.SUBREDDIT_URL.isEmpty());
@@ -1573,7 +1574,12 @@ void MainWindow::on_actionManageAccounts_triggered()
 
 void MainWindow::on_actionReportBug_triggered()
 {
-    DesktopServices::openUrl(QUrl(BuildConfig.BUG_TRACKER_URL));
+    if (BuildConfig.BUG_REPORT_API_URL.isEmpty()) {
+        DesktopServices::openUrl(QUrl(BuildConfig.BUG_TRACKER_URL));
+        return;
+    }
+    BugReportDialog dialog(this);
+    dialog.exec();
 }
 
 void MainWindow::on_actionClearMetadata_triggered()

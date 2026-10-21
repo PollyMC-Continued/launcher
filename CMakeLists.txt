@@ -220,6 +220,10 @@ set(Launcher_IMGUR_CLIENT_ID "5b97b0713fba4a3" CACHE STRING "Client ID you can g
 # Bug tracker URL
 set(Launcher_BUG_TRACKER_URL "" CACHE STRING "URL for the bug tracker.")
 
+# Bug report endpoint: receives reports from the in-launcher "Report a Bug" dialog and forwards them to a Discord channel (see report-server/).
+# Leave empty to disable the dialog (the menu item then opens Launcher_BUG_TRACKER_URL instead).
+set(Launcher_BUG_REPORT_API_URL "https://pollymc.vercel.app/api/report" CACHE STRING "URL of the bug report endpoint.")
+
 # Translations Platform URL
 set(Launcher_TRANSLATIONS_URL "https://github.com/PollyMC-Continued/launcher" CACHE STRING "URL for the translations platform.")
 set(Launcher_TRANSLATION_FILES_URL "https://pollymc.vercel.app/translation/" CACHE STRING "URL for the translations files.")
