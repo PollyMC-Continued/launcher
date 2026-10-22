@@ -21,9 +21,6 @@
 #include <QImage>
 #include <QList>
 
-class QDragEnterEvent;
-class QDropEvent;
-
 class QCheckBox;
 class QComboBox;
 class QDialogButtonBox;
@@ -43,8 +40,6 @@ class BugReportDialog : public QDialog {
     ~BugReportDialog() override = default;
 
    protected:
-    void dragEnterEvent(QDragEnterEvent* event) override;
-    void dropEvent(QDropEvent* event) override;
     void reject() override;
 
    private slots:

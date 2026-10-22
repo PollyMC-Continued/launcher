@@ -23,16 +23,11 @@
 #include <QClipboard>
 #include <QComboBox>
 #include <QDateTime>
-#include <QDragEnterEvent>
-#include <QDropEvent>
 #include <QFrame>
 #include <QGridLayout>
 #include <QGuiApplication>
-#include <QKeySequence>
-#include <QMimeData>
 #include <QScreen>
 #include <QScrollArea>
-#include <QShortcut>
 #include <QDialogButtonBox>
 #include <QFileDialog>
 #include <QJsonArray>
@@ -103,7 +98,6 @@ BugReportDialog::BugReportDialog(QWidget* parent) : QDialog(parent)
 {
     setWindowTitle(tr("Report a Bug"));
     setSizeGripEnabled(true);
-    setAcceptDrops(true);
 
     // Same idea as the settings window: a sensible default size that never exceeds the screen, and the content scrolls.
     setMinimumSize(460, 340);
@@ -202,7 +196,6 @@ BugReportDialog::BugReportDialog(QWidget* parent) : QDialog(parent)
     m_shots->setMovement(QListView::Static);
     m_shots->setIconSize(QSize(80, 80));
     m_shots->setFixedHeight(122);
-    m_shots->setToolTip(tr("You can also drag and drop images onto this window, or press Ctrl+V to paste one."));
     layout->addWidget(m_shots);
 
     auto shotButtons = new QHBoxLayout();
@@ -214,10 +207,6 @@ BugReportDialog::BugReportDialog(QWidget* parent) : QDialog(parent)
     shotButtons->addWidget(m_removeShot);
     shotButtons->addStretch(1);
     layout->addLayout(shotButtons);
-
-    auto hint = new QLabel(tr("Tip: drag and drop images anywhere on this window."), body);
-    hint->setEnabled(false);
-    layout->addWidget(hint);
 
     layout->addWidget(line());
 
@@ -255,13 +244,6 @@ BugReportDialog::BugReportDialog(QWidget* parent) : QDialog(parent)
     connect(m_removeShot, &QPushButton::clicked, this, &BugReportDialog::removeSelectedScreenshot);
     connect(m_shots, &QListWidget::itemSelectionChanged, this, &BugReportDialog::updateState);
 
-    // Ctrl+V pastes an image when the description box isn't the one receiving text; Delete removes the selected screenshot.
-    auto pasteShortcut = new QShortcut(QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_V), this);
-    connect(pasteShortcut, &QShortcut::activated, this, &BugReportDialog::addScreenshotFromClipboard);
-    auto deleteShortcut = new QShortcut(QKeySequence(Qt::Key_Delete), m_shots);
-    deleteShortcut->setContext(Qt::WidgetShortcut);
-    connect(deleteShortcut, &QShortcut::activated, this, &BugReportDialog::removeSelectedScreenshot);
-
     updateState();
 }
 
@@ -279,32 +261,6 @@ void BugReportDialog::reject()
             return;
     }
     QDialog::reject();
-}
-
-void BugReportDialog::dragEnterEvent(QDragEnterEvent* event)
-{
-    if (event->mimeData()->hasImage() || event->mimeData()->hasUrls())
-        event->acceptProposedAction();
-}
-
-void BugReportDialog::dropEvent(QDropEvent* event)
-{
-    const QMimeData* mime = event->mimeData();
-    if (mime->hasUrls()) {
-        for (const QUrl& url : mime->urls()) {
-            if (m_shotData.size() >= MaxScreenshots)
-                break;
-            if (!url.isLocalFile())
-                continue;
-            QImage image(url.toLocalFile());
-            if (!image.isNull())
-                addScreenshot(image);
-        }
-        event->acceptProposedAction();
-    } else if (mime->hasImage()) {
-        addScreenshot(qvariant_cast<QImage>(mime->imageData()));
-        event->acceptProposedAction();
-    }
 }
 
 QString BugReportDialog::systemInfoText() const
