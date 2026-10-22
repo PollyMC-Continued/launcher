@@ -23,6 +23,16 @@
 #include <QClipboard>
 #include <QComboBox>
 #include <QDateTime>
+#include <QDragEnterEvent>
+#include <QDropEvent>
+#include <QFrame>
+#include <QGridLayout>
+#include <QGuiApplication>
+#include <QKeySequence>
+#include <QMimeData>
+#include <QScreen>
+#include <QScrollArea>
+#include <QShortcut>
 #include <QDialogButtonBox>
 #include <QFileDialog>
 #include <QJsonArray>
@@ -92,83 +102,150 @@ QByteArray encodeScreenshot(const QImage& source)
 BugReportDialog::BugReportDialog(QWidget* parent) : QDialog(parent)
 {
     setWindowTitle(tr("Report a Bug"));
-    setMinimumSize(520, 560);
     setSizeGripEnabled(true);
+    setAcceptDrops(true);
 
-    auto layout = new QVBoxLayout(this);
+    // Same idea as the settings window: a sensible default size that never exceeds the screen, and the content scrolls.
+    setMinimumSize(460, 340);
+    QSize wanted(780, 640);
+    if (const QScreen* screen = parent && parent->screen() ? parent->screen() : QGuiApplication::primaryScreen()) {
+        const QSize avail = screen->availableSize();
+        wanted.setWidth(qMin(wanted.width(), int(avail.width() * 0.9)));
+        wanted.setHeight(qMin(wanted.height(), int(avail.height() * 0.85)));
+    }
+    resize(wanted);
+
+    auto outer = new QVBoxLayout(this);
+    outer->setContentsMargins(0, 0, 0, 0);
+    outer->setSpacing(0);
+
+    // ---- scrollable body ----
+    auto scroll = new QScrollArea(this);
+    scroll->setWidgetResizable(true);
+    scroll->setFrameShape(QFrame::NoFrame);
+    scroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    outer->addWidget(scroll, 1);
+
+    auto body = new QWidget(scroll);
+    scroll->setWidget(body);
+    auto layout = new QVBoxLayout(body);
+    layout->setContentsMargins(16, 14, 16, 14);
+    layout->setSpacing(8);
+
+    auto title = new QLabel(tr("Report a Bug"), body);
+    QFont titleFont = title->font();
+    titleFont.setBold(true);
+    if (titleFont.pointSize() > 0)
+        titleFont.setPointSize(titleFont.pointSize() + 4);
+    title->setFont(titleFont);
+    layout->addWidget(title);
 
     auto intro = new QLabel(tr("Tell us what went wrong or what you would like to see. Your report goes <b>privately</b> to the PollyMC team on Discord. "
                                "Please don't include passwords or other personal information."),
-                            this);
+                            body);
     intro->setWordWrap(true);
     layout->addWidget(intro);
 
-    layout->addWidget(new QLabel(tr("What kind of report is this?"), this));
-    m_type = new QComboBox(this);
+    auto line = [body]() {
+        auto f = new QFrame(body);
+        f->setFrameShape(QFrame::HLine);
+        f->setFrameShadow(QFrame::Sunken);
+        return f;
+    };
+    layout->addWidget(line());
+
+    // type / name / contact in a compact grid
+    auto grid = new QGridLayout();
+    grid->setHorizontalSpacing(10);
+    grid->setVerticalSpacing(6);
+    grid->setColumnStretch(1, 1);
+
+    m_type = new QComboBox(body);
     m_type->addItem(tr("Bug"), QStringLiteral("bug"));
     m_type->addItem(tr("Crash"), QStringLiteral("crash"));
     m_type->addItem(tr("Suggestion"), QStringLiteral("feature"));
     m_type->addItem(tr("Something else"), QStringLiteral("other"));
-    layout->addWidget(m_type);
+    grid->addWidget(new QLabel(tr("Type of report"), body), 0, 0);
+    grid->addWidget(m_type, 0, 1);
 
-    layout->addWidget(new QLabel(tr("Your name (optional)"), this));
-    m_name = new QLineEdit(this);
+    m_name = new QLineEdit(body);
     m_name->setMaxLength(MaxNameChars);
     m_name->setPlaceholderText(tr("Anonymous"));
-    layout->addWidget(m_name);
+    grid->addWidget(new QLabel(tr("Your name"), body), 1, 0);
+    grid->addWidget(m_name, 1, 1);
 
-    layout->addWidget(new QLabel(tr("Contact (optional)"), this));
-    m_contact = new QLineEdit(this);
+    m_contact = new QLineEdit(body);
     m_contact->setMaxLength(MaxContactChars);
     m_contact->setPlaceholderText(tr("Discord username or email, only if you want a reply"));
-    layout->addWidget(m_contact);
+    grid->addWidget(new QLabel(tr("Contact"), body), 2, 0);
+    grid->addWidget(m_contact, 2, 1);
+    layout->addLayout(grid);
 
-    layout->addWidget(new QLabel(tr("What happened?"), this));
-    m_description = new QPlainTextEdit(this);
-    m_description->setPlaceholderText(tr("Describe the bug and, if you can, the steps to make it happen again."));
+    auto descLabel = new QLabel(tr("<b>What happened?</b>"), body);
+    layout->addWidget(descLabel);
+    m_description = new QPlainTextEdit(body);
+    m_description->setPlaceholderText(tr("Describe the bug and, if you can, the steps to make it happen again.\n\n"
+                                         "What did you expect to happen? What happened instead?"));
+    m_description->setMinimumHeight(150);
     layout->addWidget(m_description, 1);
-    m_counter = new QLabel(this);
+    m_counter = new QLabel(body);
     m_counter->setAlignment(Qt::AlignRight);
     layout->addWidget(m_counter);
 
-    layout->addWidget(new QLabel(tr("Screenshots (optional, up to %1)").arg(MaxScreenshots), this));
-    m_shots = new QListWidget(this);
+    layout->addWidget(line());
+
+    layout->addWidget(new QLabel(tr("<b>Screenshots</b> (optional, up to %1)").arg(MaxScreenshots), body));
+    m_shots = new QListWidget(body);
     m_shots->setViewMode(QListView::IconMode);
     m_shots->setFlow(QListView::LeftToRight);
     m_shots->setWrapping(false);
     m_shots->setMovement(QListView::Static);
-    m_shots->setIconSize(QSize(96, 96));
-    m_shots->setFixedHeight(130);
+    m_shots->setIconSize(QSize(80, 80));
+    m_shots->setFixedHeight(122);
+    m_shots->setToolTip(tr("You can also drag and drop images onto this window, or press Ctrl+V to paste one."));
     layout->addWidget(m_shots);
 
     auto shotButtons = new QHBoxLayout();
-    m_addShot = new QPushButton(tr("Add image…"), this);
-    m_pasteShot = new QPushButton(tr("Paste from clipboard"), this);
-    m_removeShot = new QPushButton(tr("Remove"), this);
+    m_addShot = new QPushButton(tr("Add image…"), body);
+    m_pasteShot = new QPushButton(tr("Paste from clipboard"), body);
+    m_removeShot = new QPushButton(tr("Remove"), body);
     shotButtons->addWidget(m_addShot);
     shotButtons->addWidget(m_pasteShot);
     shotButtons->addWidget(m_removeShot);
     shotButtons->addStretch(1);
     layout->addLayout(shotButtons);
 
-    m_includeLog = new QCheckBox(tr("Include the launcher log (recommended, personal paths are hidden)"), this);
+    auto hint = new QLabel(tr("Tip: drag and drop images anywhere on this window."), body);
+    hint->setEnabled(false);
+    layout->addWidget(hint);
+
+    layout->addWidget(line());
+
+    m_includeLog = new QCheckBox(tr("Include the launcher log (recommended, personal paths are hidden)"), body);
     m_includeLog->setChecked(true);
     layout->addWidget(m_includeLog);
 
-    auto info = new QLabel(tr("Also sent automatically:<br>%1").arg(systemInfoText().toHtmlEscaped().replace("\n", "<br>")), this);
+    auto info = new QLabel(tr("Also sent automatically:<br>%1").arg(systemInfoText().toHtmlEscaped().replace("\n", "<br>")), body);
     info->setWordWrap(true);
     info->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    info->setEnabled(false);
     layout->addWidget(info);
 
     if (!BuildConfig.BUG_TRACKER_URL.isEmpty()) {
-        auto link = new QLabel(tr("Prefer GitHub? <a href=\"%1\">Open the issue tracker</a>.").arg(BuildConfig.BUG_TRACKER_URL), this);
+        auto link = new QLabel(tr("Prefer GitHub? <a href=\"%1\">Open the issue tracker</a>.").arg(BuildConfig.BUG_TRACKER_URL), body);
         link->setOpenExternalLinks(true);
         layout->addWidget(link);
     }
 
+    // ---- fixed footer: buttons are always visible ----
+    outer->addWidget(line());
+    auto footer = new QHBoxLayout();
+    footer->setContentsMargins(12, 8, 12, 10);
     m_buttons = new QDialogButtonBox(QDialogButtonBox::Cancel, this);
     m_sendButton = m_buttons->addButton(tr("Send Report"), QDialogButtonBox::AcceptRole);
-    layout->addWidget(m_buttons);
+    m_sendButton->setDefault(true);
+    footer->addWidget(m_buttons);
+    outer->addLayout(footer);
 
     connect(m_buttons, &QDialogButtonBox::accepted, this, &BugReportDialog::send);
     connect(m_buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
@@ -178,7 +255,56 @@ BugReportDialog::BugReportDialog(QWidget* parent) : QDialog(parent)
     connect(m_removeShot, &QPushButton::clicked, this, &BugReportDialog::removeSelectedScreenshot);
     connect(m_shots, &QListWidget::itemSelectionChanged, this, &BugReportDialog::updateState);
 
+    // Ctrl+V pastes an image when the description box isn't the one receiving text; Delete removes the selected screenshot.
+    auto pasteShortcut = new QShortcut(QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_V), this);
+    connect(pasteShortcut, &QShortcut::activated, this, &BugReportDialog::addScreenshotFromClipboard);
+    auto deleteShortcut = new QShortcut(QKeySequence(Qt::Key_Delete), m_shots);
+    deleteShortcut->setContext(Qt::WidgetShortcut);
+    connect(deleteShortcut, &QShortcut::activated, this, &BugReportDialog::removeSelectedScreenshot);
+
     updateState();
+}
+
+bool BugReportDialog::hasUnsentInput() const
+{
+    return m_description->toPlainText().trimmed().size() > 0 || !m_shotData.isEmpty();
+}
+
+void BugReportDialog::reject()
+{
+    if (hasUnsentInput()) {
+        const auto answer = QMessageBox::question(this, tr("Report a Bug"), tr("Discard this report? What you wrote will be lost."),
+                                                  QMessageBox::Discard | QMessageBox::Cancel, QMessageBox::Cancel);
+        if (answer != QMessageBox::Discard)
+            return;
+    }
+    QDialog::reject();
+}
+
+void BugReportDialog::dragEnterEvent(QDragEnterEvent* event)
+{
+    if (event->mimeData()->hasImage() || event->mimeData()->hasUrls())
+        event->acceptProposedAction();
+}
+
+void BugReportDialog::dropEvent(QDropEvent* event)
+{
+    const QMimeData* mime = event->mimeData();
+    if (mime->hasUrls()) {
+        for (const QUrl& url : mime->urls()) {
+            if (m_shotData.size() >= MaxScreenshots)
+                break;
+            if (!url.isLocalFile())
+                continue;
+            QImage image(url.toLocalFile());
+            if (!image.isNull())
+                addScreenshot(image);
+        }
+        event->acceptProposedAction();
+    } else if (mime->hasImage()) {
+        addScreenshot(qvariant_cast<QImage>(mime->imageData()));
+        event->acceptProposedAction();
+    }
 }
 
 QString BugReportDialog::systemInfoText() const
@@ -215,7 +341,7 @@ void BugReportDialog::addScreenshot(const QImage& image)
         return;
 
     m_shotData.append(bytes);
-    auto icon = QIcon(QPixmap::fromImage(image.scaled(96, 96, Qt::KeepAspectRatio, Qt::SmoothTransformation)));
+    auto icon = QIcon(QPixmap::fromImage(image.scaled(80, 80, Qt::KeepAspectRatio, Qt::SmoothTransformation)));
     m_shots->addItem(new QListWidgetItem(icon, tr("Screenshot %1").arg(m_shotData.size())));
     updateState();
 }

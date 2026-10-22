@@ -21,6 +21,9 @@
 #include <QImage>
 #include <QList>
 
+class QDragEnterEvent;
+class QDropEvent;
+
 class QCheckBox;
 class QComboBox;
 class QDialogButtonBox;
@@ -39,6 +42,11 @@ class BugReportDialog : public QDialog {
     explicit BugReportDialog(QWidget* parent = nullptr);
     ~BugReportDialog() override = default;
 
+   protected:
+    void dragEnterEvent(QDragEnterEvent* event) override;
+    void dropEvent(QDropEvent* event) override;
+    void reject() override;
+
    private slots:
     void addScreenshotFromFile();
     void addScreenshotFromClipboard();
@@ -48,6 +56,7 @@ class BugReportDialog : public QDialog {
 
    private:
     void addScreenshot(const QImage& image);
+    bool hasUnsentInput() const;
     QString systemInfoText() const;
     QByteArray buildPayload() const;
 
