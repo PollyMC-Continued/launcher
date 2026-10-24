@@ -32,6 +32,8 @@
 #include <QLineEdit>
 #include <QListWidget>
 #include <QMessageBox>
+#include <QNetworkReply>
+#include <QNetworkRequest>
 #include <QPainter>
 #include <QPlainTextEdit>
 #include <QPushButton>
@@ -45,10 +47,7 @@
 #include "DesktopServices.h"
 #include "FileSystem.h"
 #include "logs/AnonymizeLog.h"
-#include "net/BugReportUpload.h"
-#include "net/NetJob.h"
 #include "ui/dialogs/CustomMessageBox.h"
-#include "ui/dialogs/ProgressDialog.h"
 
 namespace {
 constexpr int MaxScreenshots = 3;
@@ -331,42 +330,60 @@ void BugReportDialog::send()
         return;
     }
 
-    auto upload = new BugReportUpload(QUrl(BuildConfig.BUG_REPORT_API_URL), payload);
-    auto job = NetJob::Ptr(new NetJob("Bug Report", APPLICATION->network()));
-    job->addNetAction(Net::NetRequest::Ptr(upload));
+    // A single plain POST: no NetJob, because NetJob retries failures up to 3 times (which trips the relay's rate limit and
+    // can post duplicate reports) and hides the real error behind a generic "Aborted".
+    QNetworkRequest request{ QUrl(BuildConfig.BUG_REPORT_API_URL) };
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    request.setHeader(QNetworkRequest::UserAgentHeader, APPLICATION->getUserAgent().toUtf8());
+    request.setTransferTimeout(30000);
 
-    QWidget* parentWidget = this;
-    connect(job.get(), &Task::failed, this, [parentWidget](QString reason) {
-        // reportable = false: no "Report Bug" button on the error window of the report sender itself
-        CustomMessageBox::selectable(parentWidget, QObject::tr("Failed to send the report"), reason, QMessageBox::Critical, QMessageBox::Ok,
-                                     QMessageBox::NoButton, nullptr, false)
-            ->show();
+    m_sendButton->setEnabled(false);
+    m_sendButton->setText(tr("Sending…"));
+
+    QNetworkReply* reply = APPLICATION->network()->post(request, payload);
+    connect(reply, &QNetworkReply::finished, reply, &QObject::deleteLater);  // safe even if the dialog is closed while sending
+    connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+        const int status = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+        const auto obj = QJsonDocument::fromJson(reply->readAll()).object();
+        const bool ok = reply->error() == QNetworkReply::NoError && status >= 200 && status < 300 && obj.value("ok").toBool();
+
+        m_sendButton->setText(tr("Send Report"));
+        updateState();
+
+        if (!ok) {
+            // The relay sends a short human-readable "error" string; fall back to the network error.
+            QString reason = obj.value("error").toString();
+            if (reason.isEmpty())
+                reason = status == 429 ? tr("Too many reports, please try again later.") : reply->errorString();
+            // reportable = false: no "Report Bug" button on the error window of the report sender itself
+            CustomMessageBox::selectable(this, tr("Failed to send the report"),
+                                         tr("The report could not be sent (HTTP %1): %2").arg(status).arg(reason), QMessageBox::Critical,
+                                         QMessageBox::Ok, QMessageBox::NoButton, nullptr, false)
+                ->show();
+            return;
+        }
+
+        s_lastSent = QDateTime::currentDateTime();
+        const bool gaveContact = !m_contact->text().trimmed().isEmpty();
+        const bool hasDiscord = !BuildConfig.DISCORD_URL.isEmpty();
+
+        QString thanks = tr("Thank you! Your report is on its way to the PollyMC team, and we read every one.");
+        if (hasDiscord) {
+            thanks += gaveContact ? tr("\n\nWe'll use the contact you gave if we need to ask anything. Want faster help, or to follow what happens next? "
+                                       "Come say hi on our Discord.")
+                                  : tr("\n\nSince you sent this anonymously we can't write back. Want help with this problem, or to see what happens next? "
+                                       "Come say hi on our Discord.");
+        }
+
+        QMessageBox sent(this);
+        sent.setIcon(QMessageBox::Information);
+        sent.setWindowTitle(tr("Report sent"));
+        sent.setText(thanks);
+        QPushButton* discordButton = hasDiscord ? sent.addButton(tr("Join our Discord"), QMessageBox::ActionRole) : nullptr;
+        sent.addButton(tr("Close"), QMessageBox::AcceptRole);
+        sent.exec();
+        if (discordButton && sent.clickedButton() == discordButton)
+            DesktopServices::openUrl(QUrl(BuildConfig.DISCORD_URL));
+        accept();
     });
-
-    ProgressDialog progress(this);
-    if (progress.execWithTask(job.get()) != QDialog::Accepted)
-        return;
-
-    s_lastSent = QDateTime::currentDateTime();
-    const bool gaveContact = !m_contact->text().trimmed().isEmpty();
-    const bool hasDiscord = !BuildConfig.DISCORD_URL.isEmpty();
-
-    QString thanks = tr("Thank you! Your report is on its way to the PollyMC team, and we read every one.");
-    if (hasDiscord) {
-        thanks += gaveContact ? tr("\n\nWe'll use the contact you gave if we need to ask anything. Want faster help, or to follow what happens next? "
-                                   "Come say hi on our Discord.")
-                              : tr("\n\nSince you sent this anonymously we can't write back. Want help with this problem, or to see what happens next? "
-                                   "Come say hi on our Discord.");
-    }
-
-    QMessageBox sent(this);
-    sent.setIcon(QMessageBox::Information);
-    sent.setWindowTitle(tr("Report sent"));
-    sent.setText(thanks);
-    QPushButton* discordButton = hasDiscord ? sent.addButton(tr("Join our Discord"), QMessageBox::ActionRole) : nullptr;
-    sent.addButton(tr("Close"), QMessageBox::AcceptRole);
-    sent.exec();
-    if (discordButton && sent.clickedButton() == discordButton)
-        DesktopServices::openUrl(QUrl(BuildConfig.DISCORD_URL));
-    accept();
 }
