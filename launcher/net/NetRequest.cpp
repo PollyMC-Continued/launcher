@@ -309,8 +309,10 @@ void NetRequest::downloadFinished()
     } else if (m_state == State::Failed) {
         qCDebug(logCat) << getUid().toString() << "Request failed in previous step:" << m_url.toString();
         m_sink->abort();
-        m_failReason = m_reply->errorString();
-        emit failed(m_reply->errorString());
+        // prefer the sink's reason (e.g. "Could not open ... for writing: Permission denied") over the generic network error
+        m_failReason = m_sink->failReason().isEmpty() ? m_reply->errorString() : m_sink->failReason();
+        qCCritical(logCat) << QString("[%1] Request for %2 failed: %3").arg(getUid().toString(), m_url.toString(), m_failReason);
+        emit failed(m_failReason);
         emit finished();
         return;
     } else if (m_state == State::AbortedByUser) {

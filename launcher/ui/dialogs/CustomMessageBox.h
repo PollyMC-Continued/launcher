@@ -24,5 +24,6 @@ QMessageBox* selectable(QWidget* parent,
                         QMessageBox::Icon icon = QMessageBox::NoIcon,
                         QMessageBox::StandardButtons buttons = QMessageBox::Ok,
                         QMessageBox::StandardButton defaultButton = QMessageBox::NoButton,
-                        QCheckBox* checkBox = nullptr);
+                        QCheckBox* checkBox = nullptr,
+                        bool reportable = true);  // Critical error boxes with only an OK button get a "Report Bug" button
 }

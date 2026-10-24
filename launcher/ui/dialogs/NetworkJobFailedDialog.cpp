@@ -23,10 +23,12 @@
 #include <QShortcut>
 #include <utility>
 
+#include "BuildConfig.h"
+#include "ui/dialogs/BugReportDialog.h"
 #include "ui_NetworkJobFailedDialog.h"
 
 NetworkJobFailedDialog::NetworkJobFailedDialog(const QString& jobName, const int attempts, const int requests, const int failed, QWidget* parent)
-    : QDialog(parent), m_ui(new Ui::NetworkJobFailedDialog)
+    : QDialog(parent), m_ui(new Ui::NetworkJobFailedDialog), m_jobName(jobName)
 {
     m_ui->setupUi(this);
     m_ui->failLabel->setText(m_ui->failLabel->text().arg(jobName));
@@ -48,6 +50,12 @@ NetworkJobFailedDialog::NetworkJobFailedDialog(const QString& jobName, const int
 
     const auto* copyButton = m_ui->dialogButtonBox->addButton(tr("Copy URL"), QDialogButtonBox::ActionRole);
     connect(copyButton, &QPushButton::clicked, this, &NetworkJobFailedDialog::copyUrl);
+
+    if (!BuildConfig.BUG_REPORT_API_URL.isEmpty()) {
+        const auto* reportButton = m_ui->dialogButtonBox->addButton(tr("Report Bug"), QDialogButtonBox::ActionRole);
+        reportButton->setToolTip(tr("Send this error to the PollyMC developers"));
+        connect(reportButton, &QPushButton::clicked, this, &NetworkJobFailedDialog::reportBug);
+    }
 
     connect(m_ui->dialogButtonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
     connect(m_ui->dialogButtonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
@@ -76,4 +84,15 @@ void NetworkJobFailedDialog::copyUrl() const
 
     auto* clipboard = QGuiApplication::clipboard();
     clipboard->setText(items.first()->text(0));
+}
+
+void NetworkJobFailedDialog::reportBug()
+{
+    QStringList lines;
+    for (int i = 0; i < m_ui->detailsTable->topLevelItemCount(); i++) {
+        const auto* item = m_ui->detailsTable->topLevelItem(i);
+        lines << QStringLiteral("%1 - %2").arg(item->text(0), item->text(1));
+    }
+    // The dialog stays open: the user can still Retry or Abort after reporting.
+    BugReportDialog::reportError(this, tr("Network error: %1").arg(m_jobName), lines.join('\n'));
 }

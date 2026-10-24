@@ -39,6 +39,13 @@ class BugReportDialog : public QDialog {
     explicit BugReportDialog(QWidget* parent = nullptr);
     ~BugReportDialog() override = default;
 
+    /// Fills in the form for an error the user just ran into (type "Bug", the error text, and a prompt to say what they were doing).
+    void prefillError(const QString& title, const QString& details);
+
+    /// Opens the report dialog pre-filled with an error. Used by the "Report Bug" buttons on error windows.
+    /// Falls back to the issue tracker when no report endpoint is configured.
+    static void reportError(QWidget* parent, const QString& title, const QString& details);
+
    private slots:
     void addScreenshotFromFile();
     void addScreenshotFromClipboard();
@@ -51,6 +58,7 @@ class BugReportDialog : public QDialog {
     QString systemInfoText() const;
     QByteArray buildPayload() const;
 
+    QLabel* m_intro = nullptr;
     QComboBox* m_type = nullptr;
     QLineEdit* m_name = nullptr;
     QLineEdit* m_contact = nullptr;

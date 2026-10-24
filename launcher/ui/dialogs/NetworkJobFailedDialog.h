@@ -37,7 +37,9 @@ class NetworkJobFailedDialog : public QDialog {
 
    private slots:
     void copyUrl() const;
+    void reportBug();
 
    private:
     Ui::NetworkJobFailedDialog* m_ui;
+    QString m_jobName;
 };

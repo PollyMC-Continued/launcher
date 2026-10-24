@@ -42,6 +42,7 @@
 
 #include "Application.h"
 #include "BuildConfig.h"
+#include "DesktopServices.h"
 #include "FileSystem.h"
 #include "logs/AnonymizeLog.h"
 #include "net/BugReportUpload.h"
@@ -97,11 +98,11 @@ BugReportDialog::BugReportDialog(QWidget* parent) : QDialog(parent)
 
     auto layout = new QVBoxLayout(this);
 
-    auto intro = new QLabel(tr("Tell us what went wrong or what you would like to see. Your report goes <b>privately</b> to the PollyMC team on Discord. "
+    m_intro = new QLabel(tr("Tell us what went wrong or what you would like to see. Your report goes <b>privately</b> to the PollyMC team on Discord. "
                                "Please don't include passwords or other personal information."),
                             this);
-    intro->setWordWrap(true);
-    layout->addWidget(intro);
+    m_intro->setWordWrap(true);
+    layout->addWidget(m_intro);
 
     layout->addWidget(new QLabel(tr("What kind of report is this?"), this));
     m_type = new QComboBox(this);
@@ -179,6 +180,33 @@ BugReportDialog::BugReportDialog(QWidget* parent) : QDialog(parent)
     connect(m_shots, &QListWidget::itemSelectionChanged, this, &BugReportDialog::updateState);
 
     updateState();
+}
+
+void BugReportDialog::prefillError(const QString& title, const QString& details)
+{
+    constexpr int MaxDetailChars = 2000;
+    m_intro->setText(tr("We filled in the error for you. Add what you were doing when it happened, then send it. "
+                        "Your report goes <b>privately</b> to the PollyMC team on Discord."));
+    m_type->setCurrentIndex(m_type->findData(QStringLiteral("bug")));
+
+    QString body = details.trimmed();
+    if (body.size() > MaxDetailChars)
+        body = body.left(MaxDetailChars) + QStringLiteral("\u2026");
+    m_description->setPlainText(tr("Error: %1\n%2\n\nWhat I was doing when this happened:\n").arg(title, body));
+    m_description->moveCursor(QTextCursor::End);
+    m_description->setFocus();
+}
+
+void BugReportDialog::reportError(QWidget* parent, const QString& title, const QString& details)
+{
+    if (BuildConfig.BUG_REPORT_API_URL.isEmpty()) {
+        if (!BuildConfig.BUG_TRACKER_URL.isEmpty())
+            DesktopServices::openUrl(QUrl(BuildConfig.BUG_TRACKER_URL));
+        return;
+    }
+    BugReportDialog dialog(parent);
+    dialog.prefillError(title, details);
+    dialog.exec();
 }
 
 QString BugReportDialog::systemInfoText() const
@@ -309,7 +337,10 @@ void BugReportDialog::send()
 
     QWidget* parentWidget = this;
     connect(job.get(), &Task::failed, this, [parentWidget](QString reason) {
-        CustomMessageBox::selectable(parentWidget, QObject::tr("Failed to send the report"), reason, QMessageBox::Critical)->show();
+        // reportable = false: no "Report Bug" button on the error window of the report sender itself
+        CustomMessageBox::selectable(parentWidget, QObject::tr("Failed to send the report"), reason, QMessageBox::Critical, QMessageBox::Ok,
+                                     QMessageBox::NoButton, nullptr, false)
+            ->show();
     });
 
     ProgressDialog progress(this);
@@ -317,6 +348,25 @@ void BugReportDialog::send()
         return;
 
     s_lastSent = QDateTime::currentDateTime();
-    CustomMessageBox::selectable(this, tr("Report sent"), tr("Thank you! Your report has been sent to the PollyMC team."), QMessageBox::Information)->exec();
+    const bool gaveContact = !m_contact->text().trimmed().isEmpty();
+    const bool hasDiscord = !BuildConfig.DISCORD_URL.isEmpty();
+
+    QString thanks = tr("Thank you! Your report is on its way to the PollyMC team, and we read every one.");
+    if (hasDiscord) {
+        thanks += gaveContact ? tr("\n\nWe'll use the contact you gave if we need to ask anything. Want faster help, or to follow what happens next? "
+                                   "Come say hi on our Discord.")
+                              : tr("\n\nSince you sent this anonymously we can't write back. Want help with this problem, or to see what happens next? "
+                                   "Come say hi on our Discord.");
+    }
+
+    QMessageBox sent(this);
+    sent.setIcon(QMessageBox::Information);
+    sent.setWindowTitle(tr("Report sent"));
+    sent.setText(thanks);
+    QPushButton* discordButton = hasDiscord ? sent.addButton(tr("Join our Discord"), QMessageBox::ActionRole) : nullptr;
+    sent.addButton(tr("Close"), QMessageBox::AcceptRole);
+    sent.exec();
+    if (discordButton && sent.clickedButton() == discordButton)
+        DesktopServices::openUrl(QUrl(BuildConfig.DISCORD_URL));
     accept();
 }

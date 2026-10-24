@@ -41,6 +41,17 @@
 
 namespace Net {
 
+namespace {
+// On Windows a "Permission denied" while writing a download is very often another program (real-time antivirus,
+// Defender ransomware protection, a cloud-sync client) holding or blocking the file, so say so.
+QString accessHint(const QString& errorString)
+{
+    if (errorString.contains("denied", Qt::CaseInsensitive) || errorString.contains("access", Qt::CaseInsensitive))
+        return " Another program (such as antivirus software, ransomware protection or a cloud-sync client) may be blocking or locking this file.";
+    return {};
+}
+}  // namespace
+
 Task::State FileSink::init(QNetworkRequest& request)
 {
     auto result = initCache(request);
@@ -58,7 +69,8 @@ Task::State FileSink::init(QNetworkRequest& request)
     m_wroteAnyData = false;
     m_output_file.reset(new PSaveFile(m_filename));
     if (!m_output_file->open(QIODevice::WriteOnly)) {
-        const auto error = QString("Could not open %1 for writing: %2").arg(m_filename).arg(m_output_file->errorString());
+        const auto error = QString("Could not open %1 for writing: %2.%3")
+                               .arg(m_filename, m_output_file->errorString(), accessHint(m_output_file->errorString()));
         qCCritical(taskNetLogC) << error;
         m_fail_reason = error;
         return Task::State::Failed;
@@ -123,7 +135,8 @@ Task::State FileSink::finalize(QNetworkReply& reply)
 
         // nothing went wrong...
         if (!m_output_file->commit()) {
-            const auto error = QString("Could not save downloaded file %1: %2").arg(m_filename).arg(m_output_file->errorString());
+            const auto error = QString("Could not save downloaded file %1: %2.%3")
+                               .arg(m_filename, m_output_file->errorString(), accessHint(m_output_file->errorString()));
             qCCritical(taskNetLogC) << error;
             m_fail_reason = error;
             m_output_file->cancelWriting();

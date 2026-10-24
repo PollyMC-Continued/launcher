@@ -37,6 +37,8 @@
 
 #include "NetJob.h"
 #include <QNetworkReply>
+#include <QTimer>
+#include "net/Logging.h"
 #include "net/NetRequest.h"
 #include "tasks/ConcurrentTask.h"
 #if defined(LAUNCHER_APPLICATION)
@@ -78,6 +80,15 @@ void NetJob::executeNextSubTask()
             m_queue.enqueue(*task);
             return true;
         });
+        if (!m_queue.isEmpty()) {
+            // Give antivirus scanners / indexers a moment to release a freshly written file before trying again:
+            // retrying instantly just hits the same lock. 1s, then 2s, then 3s.
+            QTimer::singleShot(m_try * 1000, this, [this] {
+                if (isRunning())
+                    ConcurrentTask::executeNextSubTask();
+            });
+            return;
+        }
     }
     ConcurrentTask::executeNextSubTask();
 }
@@ -173,7 +184,10 @@ void NetJob::emitFailed(QString reason)
         dialog->setAttribute(Qt::WA_DeleteOnClose);
 
         for (const auto& request : failed) {
-            dialog->addFailedRequest(request->url(), request->errorString());
+            // the request's own fail reason covers disk/validator errors that the network reply knows nothing about
+            const auto requestReason = request->failReason().isEmpty() ? request->errorString() : request->failReason();
+            qCCritical(taskNetLogC) << "Download failed:" << request->url().toString() << "-" << requestReason;
+            dialog->addFailedRequest(request->url(), requestReason);
         }
 
         dialog->open();

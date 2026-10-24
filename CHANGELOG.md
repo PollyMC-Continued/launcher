@@ -4,7 +4,12 @@
 
 **Added:**
 
-- **In-launcher bug reports**  ^`^t Help > >
+- **In-launcher bug reports** — Help > Report a Bug lets you send a bug, crash or suggestion to the team, with optional screenshots and the launcher log (personal paths hidden).
+- **Report Bug button on error windows** — Error windows, including the network error window, can now open the report form with the error already filled in.
+
+**Fixed:**
+
+- **Download errors** — Failed downloads now show the real reason (such as "Permission denied"), are retried after a short pause, and are written to the log. Task failures are no longer hidden from the log by default.
 
 ## v9.4.1
 
