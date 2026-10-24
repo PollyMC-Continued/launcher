@@ -52,7 +52,7 @@ NetworkJobFailedDialog::NetworkJobFailedDialog(const QString& jobName, const int
     connect(copyButton, &QPushButton::clicked, this, &NetworkJobFailedDialog::copyUrl);
 
     if (!BuildConfig.BUG_REPORT_API_URL.isEmpty()) {
-        const auto* reportButton = m_ui->dialogButtonBox->addButton(tr("Report Bug"), QDialogButtonBox::ActionRole);
+        auto* reportButton = m_ui->dialogButtonBox->addButton(tr("Report Bug"), QDialogButtonBox::ActionRole);
         reportButton->setToolTip(tr("Send this error to the PollyMC developers"));
         connect(reportButton, &QPushButton::clicked, this, &NetworkJobFailedDialog::reportBug);
     }
