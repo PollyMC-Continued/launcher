@@ -26,6 +26,8 @@
 
 #include "ExternalUpdater.h"
 
+class QWidget;
+
 /*!
  * An implementation for the updater on windows and linux that uses out external updater.
  */
@@ -102,6 +104,13 @@ class PollyMCExternalUpdater : public ExternalUpdater {
 
    private:
     void finishCheck(int exit_code, const QByteArray& std_output, const QByteArray& std_error, const QString& failureReason);
+
+    // A live parent for dialogs, or nullptr once the main window is gone (never dangling).
+    QWidget* safeParent() const;
+    // Collapses a failure reason into one short line for the status bar.
+    static QString singleLine(const QString& text);
+    // Quiet, non-blocking failure notice for background checks (status bar of the main window).
+    void quietNotify(const QString& message);
 
     class Private;
 

@@ -1,18 +1,28 @@
 # Changelog
 
-## v9.4.2
+## v9.5.0
 
 **Added:**
 
 - **In-launcher bug reports** — Help > Report a Bug lets you send a bug, crash or suggestion to the team, with optional screenshots and the launcher log (personal paths hidden).
-- **Report Bug button on error windows** — Error windows, including the network error window, can now open the report form with the error already filled in.
+- **Crash recovery prompt** — If the launcher closed without warning last time, it offers to send a crash report with the previous session's log attached.
+- **Copy diagnostics** — Help > Copy Diagnostics puts the launcher version, system, Qt and Java details on your clipboard in one click, ready to paste into a support chat.
+- **Instance health check** — Right-click an instance (or use the instance toolbar) and pick "Check instance" to find a missing Java, a broken mod jar or a wrong loader version before you launch.
+- **Search in settings** — The settings window has a search box (Ctrl+F) that jumps straight to a setting by its name, like the command palette.
+- **Mod download repair** — When a download fails with "Permission denied", the error window now offers to retry through a different temp folder or to open the antivirus exclusion guide.
 
-**Changed**
+**Changed:**
+
+- **Faster first-run translations** — The window now appears right away and switches to your language as soon as it finishes downloading, instead of holding back the UI.
+- **Quieter update checks** — A failed update check no longer disturbs startup: it just leaves a short note in the status bar, and a failed check can never take the launcher down with it.
+- **Remembered window sizes** — More windows (About, version pickers, export and copy dialogs, the network error window and others) now reopen at the size you left them.
 - **Windows Qt pinned to 6.11.2** — Qt 6.12.0 is unstable and breaks on some devices, so the Windows build now stays on 6.11.2 instead of the newest version MSYS2 ships. The build fails if the pin does not take effect.
 
 
 **Fixed:**
 
+- **Report drafts are kept** — Closing the "Report a Bug" window by accident no longer throws away what you typed; it is restored the next time you open it.
+- **Duplicate report warning** — If you already sent the same report this session, the launcher says so before sending it again.
 - **Download errors** — Failed downloads now show the real reason (such as "Permission denied"), are retried after a short pause, and are written to the log. Task failures are no longer hidden from the log by default.
 
 ## v9.4.1

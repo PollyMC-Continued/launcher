@@ -146,6 +146,10 @@ class MainWindow : public QMainWindow {
 
     void on_actionReportBug_triggered();
 
+    void on_actionCopyDiagnostics_triggered();
+
+    void on_actionCheckInstance_triggered();
+
     void on_actionClearMetadata_triggered();
 
 #ifdef Q_OS_MAC

@@ -40,6 +40,7 @@
 #include "Application.h"
 #include "BuildConfig.h"
 #include "CopyInstanceDialog.h"
+#include "ui/GuiUtil.h"
 #include "ui_CopyInstanceDialog.h"
 
 #include "ui/dialogs/IconPickerDialog.h"
@@ -112,6 +113,9 @@ CopyInstanceDialog::CopyInstanceDialog(BaseInstance* original, QWidget* parent)
     HelpButton->setText(tr("Help"));
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("OK"));
+
+    // remember the window size between runs, like the settings window does
+    GuiUtil::rememberGeometry(this, "CopyInstanceGeometry");
 }
 
 CopyInstanceDialog::~CopyInstanceDialog()

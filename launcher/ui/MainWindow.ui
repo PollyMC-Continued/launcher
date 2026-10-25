@@ -116,6 +116,7 @@
    <addaction name="actionLaunchInstance"/>
    <addaction name="actionQuickLaunch"/>
    <addaction name="actionKillInstance"/>
+   <addaction name="actionCheckInstance"/>
    <addaction name="separator"/>
    <addaction name="actionEditInstance"/>
    <addaction name="actionChangeInstGroup"/>
@@ -148,6 +149,7 @@
      <addaction name="actionLaunchInstance"/>
      <addaction name="actionQuickLaunch"/>
      <addaction name="actionKillInstance"/>
+    <addaction name="actionCheckInstance"/>
     <addaction name="separator"/>
     <addaction name="actionEditInstance"/>
     <addaction name="actionChangeInstGroup"/>
@@ -219,6 +221,7 @@
     </property>
     <addaction name="actionCheckUpdate"/>
     <addaction name="actionViewLog"/>
+    <addaction name="actionCopyDiagnostics"/>
     <addaction name="actionReportBug"/>
     <addaction name="separator"/>
     <addaction name="actionOpenWiki"/>
@@ -659,6 +662,28 @@
    </property>
    <property name="toolTip">
     <string>Switch the launcher's look between light, dark and other themes.</string>
+   </property>
+  </action>
+  <action name="actionCheckInstance">
+   <property name="icon">
+    <iconset theme="status-good"/>
+   </property>
+   <property name="text">
+    <string>Chec&amp;k Instance</string>
+   </property>
+   <property name="toolTip">
+    <string>Look for missing Java, broken mod files or a wrong loader version before launching.</string>
+   </property>
+  </action>
+  <action name="actionCopyDiagnostics">
+   <property name="icon">
+    <iconset theme="copy"/>
+   </property>
+   <property name="text">
+    <string>Copy &amp;Diagnostics</string>
+   </property>
+   <property name="toolTip">
+    <string>Copy the launcher version, system, Qt and Java information to the clipboard, ready to paste into a support chat.</string>
    </property>
   </action>
   <action name="actionReportBug">

@@ -25,6 +25,7 @@
 #include "BuildConfig.h"
 #include "Markdown.h"
 #include "StringUtils.h"
+#include "ui/GuiUtil.h"
 #include "ui_UpdateAvailableDialog.h"
 
 UpdateAvailableDialog::UpdateAvailableDialog(const QString& currentVersion,
@@ -71,4 +72,7 @@ UpdateAvailableDialog::UpdateAvailableDialog(const QString& currentVersion,
         setResult(ResultCode::Install);
         done(ResultCode::Install);
     });
+
+    // remember the window size between runs, like the settings window does
+    GuiUtil::rememberGeometry(this, "UpdateDialogGeometry");
 }

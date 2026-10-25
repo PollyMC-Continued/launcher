@@ -81,6 +81,8 @@
 
 #include "ui/dialogs/CustomMessageBox.h"
 
+#include "ui/dialogs/BugReportDialog.h"
+
 #include "ui/pagedialog/PageDialog.h"
 
 #include "ui/themes/ThemeManager.h"
@@ -904,6 +906,22 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_settings->registerSetting("DataPackDownloadGeometry", "");
         m_settings->registerSetting("SkinBrowserGeometry", "");
 
+        // further dialogs whose size is remembered between runs
+        m_settings->registerSetting("AboutGeometry", "");
+        m_settings->registerSetting("VersionSelectGeometry", "");
+        m_settings->registerSetting("NetworkErrorGeometry", "");
+        m_settings->registerSetting("ExportInstanceGeometry", "");
+        m_settings->registerSetting("ExportPackGeometry", "");
+        m_settings->registerSetting("ExportModListGeometry", "");
+        m_settings->registerSetting("CopyInstanceGeometry", "");
+        m_settings->registerSetting("CreateShortcutGeometry", "");
+        m_settings->registerSetting("ReviewMessageBoxGeometry", "");
+        m_settings->registerSetting("BlockedModsGeometry", "");
+        m_settings->registerSetting("ScrollMessageBoxGeometry", "");
+        m_settings->registerSetting("ResourceUpdateGeometry", "");
+        m_settings->registerSetting("ProfileSelectGeometry", "");
+        m_settings->registerSetting("InstanceCheckGeometry", "");
+
         // data pack window
         // in future, more pages may be added - so this name is chosen to avoid needing migration
         m_settings->registerSetting("WorldManagementGeometry", "");
@@ -1013,6 +1031,28 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         qInfo() << "<> Network done.";
     }
 
+    // init the http meta cache - the translations index needs it, so it comes first
+    {
+        m_metacache.reset(new HttpMetaCache("metacache"));
+        m_metacache->addBase("asset_indexes", QDir("assets/indexes").absolutePath());
+        m_metacache->addBase("libraries", QDir("libraries").absolutePath());
+        m_metacache->addBase("fmllibs", QDir("mods/minecraftforge/libs").absolutePath());
+        m_metacache->addBase("general", QDir("cache").absolutePath());
+        m_metacache->addBase("ATLauncherPacks", QDir("cache/ATLauncherPacks").absolutePath());
+        m_metacache->addBase("FTBPacks", QDir("cache/FTBPacks").absolutePath());
+        m_metacache->addBase("TechnicPacks", QDir("cache/TechnicPacks").absolutePath());
+        m_metacache->addBase("FlamePacks", QDir("cache/FlamePacks").absolutePath());
+        m_metacache->addBase("FlameMods", QDir("cache/FlameMods").absolutePath());
+        m_metacache->addBase("ModrinthPacks", QDir("cache/ModrinthPacks").absolutePath());
+        m_metacache->addBase("ModrinthModpacks", QDir("cache/ModrinthModpacks").absolutePath());
+        m_metacache->addBase("translations", QDir("translations").absolutePath());
+        m_metacache->addBase("meta", QDir("meta").absolutePath());
+        m_metacache->addBase("java", QDir("cache/java").absolutePath());
+        m_metacache->addBase("feed", QDir("cache/feed").absolutePath());
+        m_metacache->Load();
+        qInfo() << "<> Cache initialized.";
+    }
+
     // load translations
     {
         m_translations.reset(new TranslationsModel("translations"));
@@ -1020,6 +1060,13 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_translations->selectLanguage(bcp47Name);
         qInfo() << "Your language is" << bcp47Name;
         qInfo() << "<> Translations loaded.";
+
+        // Kick off the translation index download right away: the request goes out over the
+        // network immediately (it does not need the event loop), while the UI below keeps
+        // starting up in English or in the cached language. When the index - and, on a first
+        // run, the language file - arrives, it is applied to whatever is on screen by then.
+        // Nothing waits for it.
+        m_translations->downloadIndex();
     }
 
     // Instance icons
@@ -1087,33 +1134,6 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         qInfo() << "<> Accounts loaded.";
     }
 
-    // init the http meta cache
-    {
-        m_metacache.reset(new HttpMetaCache("metacache"));
-        m_metacache->addBase("asset_indexes", QDir("assets/indexes").absolutePath());
-        m_metacache->addBase("libraries", QDir("libraries").absolutePath());
-        m_metacache->addBase("fmllibs", QDir("mods/minecraftforge/libs").absolutePath());
-        m_metacache->addBase("general", QDir("cache").absolutePath());
-        m_metacache->addBase("ATLauncherPacks", QDir("cache/ATLauncherPacks").absolutePath());
-        m_metacache->addBase("FTBPacks", QDir("cache/FTBPacks").absolutePath());
-        m_metacache->addBase("TechnicPacks", QDir("cache/TechnicPacks").absolutePath());
-        m_metacache->addBase("FlamePacks", QDir("cache/FlamePacks").absolutePath());
-        m_metacache->addBase("FlameMods", QDir("cache/FlameMods").absolutePath());
-        m_metacache->addBase("ModrinthPacks", QDir("cache/ModrinthPacks").absolutePath());
-        m_metacache->addBase("ModrinthModpacks", QDir("cache/ModrinthModpacks").absolutePath());
-        m_metacache->addBase("translations", QDir("translations").absolutePath());
-        m_metacache->addBase("meta", QDir("meta").absolutePath());
-        m_metacache->addBase("java", QDir("cache/java").absolutePath());
-        m_metacache->addBase("feed", QDir("cache/feed").absolutePath());
-        m_metacache->Load();
-        qInfo() << "<> Cache initialized.";
-    }
-
-    // Now we have network, download translation updates. Defer the request
-    // until the event loop is running so startup can paint the UI (in English,
-    // or in the cached language) instead of touching the network first.
-    QTimer::singleShot(0, this, [this]() { m_translations->downloadIndex(); });
-
     // FIXME: what to do with these?
     m_profilers.insert("jprofiler", std::shared_ptr<BaseProfilerFactory>(new JProfilerFactory()));
     m_profilers.insert("jvisualvm", std::shared_ptr<BaseProfilerFactory>(new JVisualVMFactory()));
@@ -1140,6 +1160,9 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
             logFile->flush();
             logFile->close();
         }
+        // shutting down cleanly: take the crash marker with us so the next run
+        // knows this session ended normally
+        FS::deletePath(FS::PathCombine(m_dataPath, "crash.marker"));
     });
 
     // MSA/Flame flags are read by the first-run wizard; D-Bus and library probes can wait for the window
@@ -1275,6 +1298,24 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
     if (qgetenv("XDG_CURRENT_DESKTOP") == "gamescope") {
         installEventFilter(new ToolTipFilter);
+    }
+
+    // Crash recovery: a marker that survives everything except a clean shutdown.
+    // It is written once startup has come this far, and removed in aboutToQuit.
+    // If we find it now, the previous run died unexpectedly (crash, kill, power loss).
+    {
+        const QString markerPath = FS::PathCombine(m_dataPath, "crash.marker");
+        m_previousRunCrashed = QFileInfo::exists(markerPath);
+        if (m_previousRunCrashed) {
+            qWarning() << "The previous run did not shut down cleanly - a crash report will be offered.";
+        }
+        QFile marker(markerPath);
+        if (marker.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+            marker.write(QDateTime::currentDateTime().toString(Qt::ISODate).toUtf8());
+            marker.close();
+        } else {
+            qWarning() << "Could not write the crash marker" << markerPath << ":" << marker.errorString();
+        }
     }
 
     if (createSetupWizard()) {
@@ -1820,6 +1861,12 @@ MainWindow* Application::showMainWindow(bool minimized)
         connect(m_mainWindow, &MainWindow::isClosing, this, &Application::on_windowClose);
         m_openWindows++;
 
+        // The last run crashed: offer to report it once the window has settled.
+        if (m_previousRunCrashed) {
+            m_previousRunCrashed = false;
+            QTimer::singleShot(600, this, &Application::offerCrashRecovery);
+        }
+
         // Auto-launch last instance if enabled
         if (!minimized && settings()->get("AutoLaunchLastInstance").toBool()) {
             QString lastId = settings()->get("LastLaunchedInstance").toString();
@@ -1836,6 +1883,51 @@ MainWindow* Application::showMainWindow(bool minimized)
             DiscordRichPresence::instance()->init();
     }
     return m_mainWindow;
+}
+
+void Application::offerCrashRecovery()
+{
+    if (!m_mainWindow)
+        return;
+
+    // The logs are rotated on startup, so the crashed session's log is the "-1" file.
+    const QString logPath = FS::PathCombine(m_dataPath, "logs", QStringLiteral("%1-1.log").arg(BuildConfig.LAUNCHER_NAME));
+    QString crashedLog;
+    try {
+        crashedLog = QString::fromUtf8(FS::read(logPath));
+    } catch ([[maybe_unused]] const Exception& e) {
+        qWarning() << "Could not read the previous session's log" << logPath;
+    }
+
+    if (crashedLog.isEmpty()) {
+        qDebug() << "No previous-session log to attach to the crash report; skipping the prompt.";
+        return;
+    }
+
+    // shown in full in the details box, trimmed for the report description below
+    const QString logTail = crashedLog.right(8000);
+
+    QMessageBox box(QMessageBox::Warning, tr("Launcher closed unexpectedly"),
+                   tr("%1 did not shut down properly last time.\n\n"
+                      "If it crashed or froze on you, you can send us a crash report - the log from that session is "
+                      "attached automatically.")
+                       .arg(BuildConfig.LAUNCHER_DISPLAYNAME),
+                   QMessageBox::Yes | QMessageBox::No, m_mainWindow);
+    box.button(QMessageBox::Yes)->setText(tr("Report this crash"));
+    box.button(QMessageBox::No)->setText(tr("Ignore"));
+    box.setDefaultButton(QMessageBox::No);
+    box.setDetailedText(logTail);
+    box.setMinimumWidth(460);
+    box.adjustSize();
+
+    if (box.exec() != QMessageBox::Yes)
+        return;
+
+    // The report's own log checkbox only covers the *current* session, so put the tail of the
+    // crashed session's log into the description where it survives.
+    const QString details = tr("The launcher closed unexpectedly (crash or freeze). Last part of the log from that session:\n\n%1")
+                                .arg(crashedLog.right(1400));
+    BugReportDialog::reportError(m_mainWindow, tr("Launcher closed unexpectedly"), details);
 }
 
 ViewLogWindow* Application::showLogWindow()

@@ -9,6 +9,7 @@
 #include "modplatform/ModIndex.h"
 #include "modplatform/flame/FlameAPI.h"
 #include "tasks/SequentialTask.h"
+#include "ui/GuiUtil.h"
 #include "ui_ReviewMessageBox.h"
 
 #include "Markdown.h"
@@ -53,6 +54,10 @@ ResourceUpdateDialog::ResourceUpdateDialog(QWidget* parent,
 
     ui->explainLabel->setText(tr("You're about to update the following resources:"));
     ui->onlyCheckedLabel->setText(tr("Only resources with a check will be updated!"));
+
+    // remember the window size between runs, like the settings window does
+    // (own key: overrides the base class default above)
+    GuiUtil::rememberGeometry(this, "ResourceUpdateGeometry");
 }
 
 void ResourceUpdateDialog::checkCandidates()

@@ -39,16 +39,30 @@
 #include "BuildConfig.h"
 #include "PageContainer_p.h"
 
+#include <QCheckBox>
 #include <QDialogButtonBox>
+#include <QEvent>
 #include <QGridLayout>
+#include <QGroupBox>
+#include <QKeyEvent>
 #include <QLabel>
 #include <QLineEdit>
 #include <QListView>
 #include <QPushButton>
+#include <QRadioButton>
+#include <QScrollArea>
+#include <QScrollBar>
+#include <QSet>
+#include <QShortcut>
 #include <QSortFilterProxyModel>
 #include <QStackedLayout>
+#include <QStringListModel>
 #include <QStyledItemDelegate>
+#include <QTabWidget>
+#include <QTimer>
 #include <QUrl>
+
+#include <algorithm>
 
 #include "settings/SettingsObject.h"
 
@@ -56,6 +70,43 @@
 
 #include "Application.h"
 #include "DesktopServices.h"
+
+namespace {
+// Scrolls every scroll area between the widget and the window so the widget is actually visible.
+void scrollWidgetIntoView(QWidget* target)
+{
+    QWidget* child = target;
+    while (child) {
+        QWidget* parent = child->parentWidget();
+        if (auto* area = qobject_cast<QScrollArea*>(parent)) {
+            const QPoint pos = child->mapTo(area->widget(), QPoint(0, 0));
+            const int margin = 24;
+            const int targetY = qMax(0, pos.y() - area->viewport()->height() / 3);
+            area->verticalScrollBar()->setValue(qMin(targetY + margin, area->verticalScrollBar()->maximum()));
+            const int targetX = qMax(0, pos.x() - area->viewport()->width() / 3);
+            area->horizontalScrollBar()->setValue(qMin(targetX + margin, area->horizontalScrollBar()->maximum()));
+        }
+        child = parent;
+    }
+}
+
+// Brief highlight so the found setting is easy to spot after the jump.
+void flashWidget(QWidget* widget)
+{
+    if (!widget)
+        return;
+    const QString oldStyleSheet = widget->styleSheet();
+    const QColor color = widget->palette().color(QPalette::Highlight);
+    widget->setStyleSheet(oldStyleSheet + QStringLiteral("; background-color: rgba(%1, %2, %3, 70); border-radius: 3px;")
+                              .arg(color.red())
+                              .arg(color.green())
+                              .arg(color.blue()));
+    QTimer::singleShot(2400, widget, [widget, oldStyleSheet] {
+        if (widget)
+            widget->setStyleSheet(oldStyleSheet);
+    });
+}
+}  // namespace
 
 class PageEntryFilterModel : public QSortFilterProxyModel {
    public:
@@ -109,6 +160,13 @@ PageContainer::PageContainer(BasePageProvider* pageProvider, QString defaultId, 
     m_pageStack->setStackingMode(QStackedLayout::StackOne);
     m_pageList->setFocus();
     selectPage(defaultId);
+
+    // Ctrl+F jumps to the search box, like the command palette shortcut in the main window.
+    auto* findShortcut = new QShortcut(QKeySequence(QKeySequence::Find), this);
+    connect(findShortcut, &QShortcut::activated, this, [this] {
+        m_searchBox->setFocus();
+        m_searchBox->selectAll();
+    });
 }
 
 bool PageContainer::selectPage(QString pageId)
@@ -179,9 +237,31 @@ void PageContainer::createUI()
     m_pageStack->setContentsMargins(0, 0, 0, 0);
     m_pageStack->addWidget(new QWidget(this));
 
+    // ---- settings search (Ctrl+F): a small box under the page list ----
+    m_searchBox = new QLineEdit(this);
+    m_searchBox->setClearButtonEnabled(true);
+    m_searchBox->setPlaceholderText(tr("Search settings…"));
+    m_searchBox->installEventFilter(this);
+    connect(m_searchBox, &QLineEdit::textChanged, this, &PageContainer::searchTextChanged);
+    connect(m_searchBox, &QLineEdit::returnPressed, this, &PageContainer::searchReturnPressed);
+
+    m_searchResultsModel = new QStringListModel(this);
+    m_searchResults = new QListView(this);
+    m_searchResults->setModel(m_searchResultsModel);
+    m_searchResults->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    m_searchResults->setUniformItemSizes(true);
+    m_searchResults->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+    m_searchResults->hide();
+    m_searchResults->installEventFilter(this);
+    connect(m_searchResults, &QListView::activated, this, &PageContainer::searchResultActivated);
+    connect(m_searchResults, &QListView::clicked, this, &PageContainer::searchResultActivated);
+
     m_layout = new QGridLayout;
     m_layout->addLayout(headerHLayout, 0, 1, 1, 1);
     m_layout->addWidget(m_pageList, 0, 0, 3, 1);
+    // results live in the same cell as the page list; only one is visible at a time
+    m_layout->addWidget(m_searchResults, 0, 0, 3, 1);
+    m_layout->addWidget(m_searchBox, 3, 0, 1, 1);
     m_layout->addLayout(m_pageStack, 1, 1, 1, 1);
     m_layout->setColumnStretch(1, 4);
     m_layout->setContentsMargins(0, 0, 0, 0);
@@ -195,6 +275,11 @@ void PageContainer::retranslate()
 
     for (auto page : m_model->pages())
         page->retranslate();
+
+    // the search index holds translated labels - rebuild it (lazily) on the next search
+    m_searchIndexBuilt = false;
+    m_searchIndex.clear();
+    m_searchBox->setPlaceholderText(tr("Search settings…"));
 }
 
 void PageContainer::addButtons(QWidget* buttons)
@@ -285,4 +370,181 @@ void PageContainer::changeEvent(QEvent* event)
         retranslate();
     }
     QWidget::changeEvent(event);
+}
+
+void PageContainer::buildSearchIndex()
+{
+    m_searchIndex.clear();
+
+    // a label is worth indexing if it looks like the name of a setting, not a paragraph of prose
+    const auto usableText = [](QString text) -> QString {
+        text = text.simplified();
+        while (text.endsWith(QLatin1Char(':')))
+            text.chop(1);
+        if (text.isEmpty() || text.size() > 100)
+            return {};
+        if (text.contains('<') && text.contains('>'))  // rich text
+            return {};
+        if (text.startsWith("http:") || text.startsWith("https:"))
+            return {};
+        return text;
+    };
+
+    QSet<QString> seen;
+    const auto addEntry = [this, &seen](const QString& label, BasePage* page, QWidget* widget) {
+        if (label.isEmpty())
+            return;
+        const QString key = page->id() + QStringLiteral("|") + label;
+        if (!seen.contains(key)) {
+            seen.insert(key);
+            m_searchIndex.append(SearchEntry{ label, page->id(), page->displayName(), widget });
+        }
+    };
+
+    for (auto page : m_model->pages()) {
+        if (!page->shouldDisplay())
+            continue;
+        auto* widget = dynamic_cast<QWidget*>(page);
+        if (!widget)
+            continue;
+
+        for (auto* label : widget->findChildren<QLabel*>())
+            addEntry(usableText(label->text()), page, label);
+        for (auto* box : widget->findChildren<QCheckBox*>())
+            addEntry(usableText(box->text()), page, box);
+        for (auto* radio : widget->findChildren<QRadioButton*>())
+            addEntry(usableText(radio->text()), page, radio);
+        for (auto* group : widget->findChildren<QGroupBox*>())
+            addEntry(usableText(group->title()), page, group);
+        for (auto* tabs : widget->findChildren<QTabWidget*>())
+            for (int i = 0; i < tabs->count(); ++i)
+                addEntry(usableText(tabs->tabText(i)), page, tabs->widget(i));
+    }
+
+    m_searchIndexBuilt = true;
+}
+
+void PageContainer::searchTextChanged(const QString& text)
+{
+    const QString query = text.trimmed();
+    if (query.isEmpty()) {
+        clearSearch();
+        return;
+    }
+    if (!m_searchIndexBuilt)
+        buildSearchIndex();
+    runSearch(query);
+}
+
+void PageContainer::runSearch(const QString& query)
+{
+    struct Scored {
+        int index;
+        int score;
+    };
+    QList<Scored> scored;
+    for (int i = 0; i < m_searchIndex.size(); ++i) {
+        const auto& entry = m_searchIndex.at(i);
+        int score = 0;
+        if (entry.label.startsWith(query, Qt::CaseInsensitive))
+            score = 3;
+        else if (entry.label.contains(query, Qt::CaseInsensitive))
+            score = 2;
+        else if (entry.pageName.contains(query, Qt::CaseInsensitive))
+            score = 1;
+        if (score > 0)
+            scored.append({ i, score });
+    }
+    std::stable_sort(scored.begin(), scored.end(), [](const Scored& a, const Scored& b) { return a.score > b.score; });
+
+    constexpr int MaxResults = 60;
+    QStringList texts;
+    m_activeResults.clear();
+    for (int i = 0; i < scored.size() && i < MaxResults; ++i) {
+        const auto& entry = m_searchIndex.at(scored.at(i).index);
+        m_activeResults.append(scored.at(i).index);
+        texts << QStringLiteral("%1 — %2").arg(entry.label, entry.pageName);
+    }
+    if (texts.isEmpty())
+        texts << tr("No settings match \"%1\"").arg(query);
+
+    m_searchResultsModel->setStringList(texts);
+    m_pageList->hide();
+    m_searchResults->show();
+    m_inSearch = true;
+    if (!m_activeResults.isEmpty())
+        m_searchResults->setCurrentIndex(m_searchResultsModel->index(0, 0));
+}
+
+void PageContainer::clearSearch()
+{
+    if (!m_inSearch)
+        return;
+    m_inSearch = false;
+    m_searchResults->hide();
+    m_pageList->show();
+    m_searchResultsModel->setStringList({});
+}
+
+void PageContainer::searchReturnPressed()
+{
+    auto index = m_searchResults->currentIndex();
+    if (!index.isValid() && m_searchResultsModel->rowCount() > 0)
+        index = m_searchResultsModel->index(0, 0);
+    jumpToResult(index);
+}
+
+void PageContainer::searchResultActivated(const QModelIndex& index)
+{
+    jumpToResult(index);
+}
+
+void PageContainer::jumpToResult(const QModelIndex& index)
+{
+    if (!index.isValid())
+        return;
+    const int row = index.row();
+    if (row < 0 || row >= m_activeResults.size())
+        return;
+    const SearchEntry entry = m_searchIndex.at(m_activeResults.at(row));
+
+    // leaving search mode restores the regular page list
+    m_searchBox->clear();  // triggers searchTextChanged -> clearSearch()
+    selectPage(entry.pageId);
+
+    // QPointer: the widget must survive until the page switch has landed
+    QPointer<QWidget> safeTarget = entry.widget;
+    QTimer::singleShot(0, this, [safeTarget] {
+        QWidget* target = safeTarget;
+        if (!target)
+            return;
+        scrollWidgetIntoView(target);
+        if (target->focusPolicy() != Qt::NoFocus)
+            target->setFocus(Qt::ShortcutFocusReason);
+        flashWidget(target);
+    });
+}
+
+bool PageContainer::eventFilter(QObject* watched, QEvent* event)
+{
+    if ((watched == m_searchBox || watched == m_searchResults) && event->type() == QEvent::KeyPress) {
+        auto* keyEvent = static_cast<QKeyEvent*>(event);
+        if (keyEvent->key() == Qt::Key_Escape) {
+            // Esc leaves search mode instead of closing the whole dialog
+            if (!m_searchBox->text().isEmpty()) {
+                m_searchBox->clear();
+            } else {
+                clearSearch();
+                m_pageList->setFocus();
+            }
+            return true;
+        }
+        if (watched == m_searchBox && keyEvent->key() == Qt::Key_Down && m_searchResults->isVisible() &&
+            m_searchResultsModel->rowCount() > 0) {
+            m_searchResults->setFocus();
+            m_searchResults->setCurrentIndex(m_searchResultsModel->index(0, 0));
+            return true;
+        }
+    }
+    return QWidget::eventFilter(watched, event);
 }

@@ -35,6 +35,9 @@
 
 #include "FileSink.h"
 
+#include <QDir>
+#include <QUuid>
+
 #include "FileSystem.h"
 
 #include "net/Logging.h"
@@ -67,10 +70,30 @@ Task::State FileSink::init(QNetworkRequest& request)
     }
 
     m_wroteAnyData = false;
-    m_output_file.reset(new PSaveFile(m_filename));
+
+    // With a user-picked staging folder ("Permission denied" workaround), download there first and
+    // move the finished file over at the end: antivirus tools then never see partial writes in the
+    // folder they are blocking. Without one, keep writing directly next to the destination.
+    QString write_target = m_filename;
+    m_staging_path.clear();
+#if defined(LAUNCHER_APPLICATION)
+    if (APPLICATION_DYN && !APPLICATION->downloadStagingDir().isEmpty()) {
+        const QDir staging_dir(APPLICATION->downloadStagingDir());
+        if (staging_dir.exists()) {
+            m_staging_path = FS::PathCombine(
+                staging_dir.absolutePath(), QStringLiteral("download-%1.part").arg(QUuid::createUuid().toString(QUuid::Id128)));
+            write_target = m_staging_path;
+            qCDebug(taskNetLogC) << "Staging download in" << m_staging_path << "before moving to" << m_filename;
+        } else {
+            qCWarning(taskNetLogC) << "Configured download staging folder does not exist, downloading directly:" << staging_dir.absolutePath();
+        }
+    }
+#endif
+
+    m_output_file.reset(new PSaveFile(write_target));
     if (!m_output_file->open(QIODevice::WriteOnly)) {
         const auto error = QString("Could not open %1 for writing: %2.%3")
-                               .arg(m_filename, m_output_file->errorString(), accessHint(m_output_file->errorString()));
+                               .arg(write_target, m_output_file->errorString(), accessHint(m_output_file->errorString()));
         qCCritical(taskNetLogC) << error;
         m_fail_reason = error;
         return Task::State::Failed;
@@ -136,11 +159,25 @@ Task::State FileSink::finalize(QNetworkReply& reply)
         // nothing went wrong...
         if (!m_output_file->commit()) {
             const auto error = QString("Could not save downloaded file %1: %2.%3")
-                               .arg(m_filename, m_output_file->errorString(), accessHint(m_output_file->errorString()));
+                               .arg(m_output_file->fileName(), m_output_file->errorString(), accessHint(m_output_file->errorString()));
             qCCritical(taskNetLogC) << error;
             m_fail_reason = error;
             m_output_file->cancelWriting();
             return Task::State::Failed;
+        }
+
+        // A staged download: the finished file now moves from the staging folder to its real home.
+        if (!m_staging_path.isEmpty()) {
+            if (!FS::move(m_staging_path, m_filename)) {
+                const auto error = QString("Could not move the downloaded file from the staging folder to %1.").arg(m_filename);
+                qCCritical(taskNetLogC) << error;
+                m_fail_reason = error;
+                FS::deletePath(m_staging_path);
+                m_staging_path.clear();
+                return Task::State::Failed;
+            }
+            qCDebug(taskNetLogC) << "Moved staged download" << m_staging_path << "to" << m_filename;
+            m_staging_path.clear();
         }
     }
 

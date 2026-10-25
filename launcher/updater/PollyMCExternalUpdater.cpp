@@ -38,6 +38,7 @@
 
 #include "Application.h"
 #include "BuildConfig.h"
+#include "ui/MainWindow.h"
 
 #include "ui/dialogs/UpdateAvailableDialog.h"
 
@@ -98,6 +99,11 @@ PollyMCExternalUpdater::PollyMCExternalUpdater(QWidget* parent, const QString& a
         priv->lastCheck = QDateTime::fromString(last_check.toString(), Qt::ISODate);
     }
     priv->parent = parent;
+    // The parent (main window) can be destroyed while a background check is still running;
+    // every dialog created afterwards would crash on the dangling pointer. Null it out instead.
+    if (parent) {
+        connect(parent, &QObject::destroyed, this, [this] { priv->parent = nullptr; });
+    }
     connectTimer();
     resetAutoCheckTimer();
     if (priv->updateInterval == 0) {  // "On Launch"
@@ -144,7 +150,7 @@ void PollyMCExternalUpdater::checkForUpdates(bool triggeredByUser, bool preview)
             priv->updateTimer.stop();
         }
         if (preview) {
-            QMessageBox::information(priv->parent, tr("Update UI preview"), tr("An update check is already running. Try again in a moment."));
+            QMessageBox::information(safeParent(), tr("Update UI preview"), tr("An update check is already running. Try again in a moment."));
         }
         return;
     }
@@ -159,7 +165,7 @@ void PollyMCExternalUpdater::checkForUpdates(bool triggeredByUser, bool preview)
     priv->checkTriggeredByUser = triggeredByUser;
 
     if (triggeredByUser) {
-        priv->progress = new QProgressDialog(tr("Checking for updates..."), "", 0, 0, priv->parent);
+        priv->progress = new QProgressDialog(tr("Checking for updates..."), "", 0, 0, safeParent());
         priv->progress->setCancelButton(nullptr);
         priv->progress->setAttribute(Qt::WA_DeleteOnClose, false);
         priv->progress->adjustSize();
@@ -226,6 +232,12 @@ void PollyMCExternalUpdater::checkForUpdates(bool triggeredByUser, bool preview)
 
 void PollyMCExternalUpdater::finishCheck(int exit_code, const QByteArray& std_output, const QByteArray& std_error, const QString& failureReason)
 {
+    // Guard against a second result arriving for the same check (errorOccurred followed by
+    // finished, or a late kill timer): the first call already tore everything down.
+    if (!priv->checkingUpdates)
+        return;
+    priv->checkingUpdates = false;
+
     // Tear down the helper objects first so nothing below can re-enter this function.
     if (priv->killTimer) {
         priv->killTimer->stop();
@@ -249,15 +261,18 @@ void PollyMCExternalUpdater::finishCheck(int exit_code, const QByteArray& std_ou
     priv->checkIsPreview = false;
 
     if (!failureReason.isEmpty()) {
-        // Background (automatic) checks fail silently: a missing network or updater must
-        // never greet the user with a dialog at startup. Manual checks still tell them.
+        // Background (automatic) checks fail quietly: a missing network or updater must
+        // never block or crash the launcher at startup - a short status-bar note is all the
+        // user gets. Manual checks still get a dialog with the details.
         qDebug() << "Update check failed:" << failureReason << qPrintable(QString::fromUtf8(std_error));
         if (triggeredByUser) {
-            auto msgBox = QMessageBox(QMessageBox::Information, tr("Update Check Failed"), failureReason, QMessageBox::Ok, priv->parent);
+            auto msgBox = QMessageBox(QMessageBox::Information, tr("Update Check Failed"), failureReason, QMessageBox::Ok, safeParent());
             msgBox.setDetailedText(QString::fromUtf8(std_error));
             msgBox.setMinimumWidth(460);
             msgBox.adjustSize();
             msgBox.exec();
+        } else {
+            quietNotify(tr("Update check failed: %1").arg(singleLine(failureReason)));
         }
     } else {
         switch (exit_code) {
@@ -265,14 +280,14 @@ void PollyMCExternalUpdater::finishCheck(int exit_code, const QByteArray& std_ou
                 // no update available
                 if (preview) {
                     auto msgBox = QMessageBox(QMessageBox::Information, tr("Update UI preview"),
-                                              tr("The updater did not report any release to show."), QMessageBox::Ok, priv->parent);
+                                              tr("The updater did not report any release to show."), QMessageBox::Ok, safeParent());
                     msgBox.setMinimumWidth(460);
                     msgBox.adjustSize();
                     msgBox.exec();
                 } else if (triggeredByUser) {
                     qDebug() << "No update available";
                     auto msgBox = QMessageBox(QMessageBox::Information, tr("No Update Available"), tr("You are running the latest version."),
-                                              QMessageBox::Ok, priv->parent);
+                                              QMessageBox::Ok, safeParent());
                     msgBox.setMinimumWidth(460);
                     msgBox.adjustSize();
                     msgBox.exec();
@@ -283,11 +298,13 @@ void PollyMCExternalUpdater::finishCheck(int exit_code, const QByteArray& std_ou
                 qDebug() << "Updater subprocess error" << qPrintable(QString::fromUtf8(std_error));
                 if (triggeredByUser) {
                     auto msgBox = QMessageBox(QMessageBox::Warning, tr("Update Check Error"),
-                                              tr("There was an error running the update check."), QMessageBox::Ok, priv->parent);
+                                              tr("There was an error running the update check."), QMessageBox::Ok, safeParent());
                     msgBox.setDetailedText(QString::fromUtf8(std_error));
                     msgBox.setMinimumWidth(460);
                     msgBox.adjustSize();
                     msgBox.exec();
+                } else {
+                    quietNotify(tr("Update check failed"));
                 }
                 break;
             case 100:
@@ -311,12 +328,14 @@ void PollyMCExternalUpdater::finishCheck(int exit_code, const QByteArray& std_ou
                 if (triggeredByUser) {
                     auto msgBox = QMessageBox(QMessageBox::Information, tr("Unknown Update Error"),
                                               tr("The updater exited with an unknown condition.\nExit Code: %1").arg(QString::number(exit_code)),
-                                              QMessageBox::Ok, priv->parent);
+                                              QMessageBox::Ok, safeParent());
                     auto detail_txt = tr("StdOut: %1\nStdErr: %2").arg(QString::fromUtf8(std_output)).arg(QString::fromUtf8(std_error));
                     msgBox.setDetailedText(detail_txt);
                     msgBox.setMinimumWidth(460);
                     msgBox.adjustSize();
                     msgBox.exec();
+                } else {
+                    quietNotify(tr("Update check failed"));
                 }
         }
     }
@@ -338,7 +357,30 @@ void PollyMCExternalUpdater::finishCheck(int exit_code, const QByteArray& std_ou
             priv->updateTimer.setSingleShot(false);
         }
     }
-    priv->checkingUpdates = false;
+}
+
+QWidget* PollyMCExternalUpdater::safeParent() const
+{
+    // priv->parent is nulled by the destroyed-connection, so it is either a
+    // live window or nothing at all - never a dangling pointer.
+    return priv->parent;
+}
+
+QString PollyMCExternalUpdater::singleLine(const QString& text)
+{
+    QString line = text.simplified();
+    if (line.size() > 90)
+        line = line.left(90) + QStringLiteral("…");
+    return line;
+}
+
+void PollyMCExternalUpdater::quietNotify(const QString& message)
+{
+    // Quiet, non-blocking notice for background checks: a short status-bar message
+    // on the main window. Never creates the window and never raises a dialog.
+    if (auto* window = APPLICATION->mainWindow()) {
+        window->statusBar()->showMessage(message, 10000);
+    }
 }
 
 bool PollyMCExternalUpdater::getAutomaticallyChecksForUpdates()
@@ -455,7 +497,7 @@ void PollyMCExternalUpdater::offerUpdate(const QString& version_name, const QStr
     // Developer preview: always show the regular dialog (ignoring skipped versions, the auto-update
     // mode and running games), but never install or record a skip.
     if (preview) {
-        UpdateAvailableDialog dlg(BuildConfig.printableVersionString(), version_name, release_notes, priv->parent, true);
+        UpdateAvailableDialog dlg(BuildConfig.printableVersionString(), version_name, release_notes, safeParent(), true);
         dlg.exec();
         return;
     }
@@ -482,7 +524,7 @@ void PollyMCExternalUpdater::offerUpdate(const QString& version_name, const QStr
 
     if (should_skip) {
         auto msgBox = QMessageBox(QMessageBox::Information, tr("No Update Available"), tr("There are no new updates available."),
-                                  QMessageBox::Ok, priv->parent);
+                                  QMessageBox::Ok, safeParent());
         msgBox.setMinimumWidth(460);
         msgBox.adjustSize();
         msgBox.exec();

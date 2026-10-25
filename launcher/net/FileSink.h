@@ -60,5 +60,8 @@ class FileSink : public Sink {
     QString m_filename;
     bool m_wroteAnyData = false;
     std::unique_ptr<PSaveFile> m_output_file;
+    // Set when this download is staged in the user-picked temp folder (antivirus workaround);
+    // the finished file is moved onto m_filename in finalize().
+    QString m_staging_path;
 };
 }  // namespace Net

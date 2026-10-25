@@ -42,6 +42,7 @@
 #include "settings/SettingsObject.h"
 #include "Markdown.h"
 #include "StringUtils.h"
+#include "ui/GuiUtil.h"
 #include "ui_AboutDialog.h"
 
 #include <net/NetJob.h>
@@ -139,6 +140,9 @@ AboutDialog::AboutDialog(QWidget* parent) : QDialog(parent), ui(new Ui::AboutDia
     connect(ui->closeButton, &QPushButton::clicked, this, &AboutDialog::close);
 
     connect(ui->aboutQt, &QPushButton::clicked, &QApplication::aboutQt);
+
+    // remember the window size between runs, like the settings window does
+    GuiUtil::rememberGeometry(this, "AboutGeometry");
 }
 
 bool AboutDialog::eventFilter(QObject* watched, QEvent* event)

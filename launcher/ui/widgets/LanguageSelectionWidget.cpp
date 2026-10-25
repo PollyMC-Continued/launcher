@@ -25,6 +25,11 @@ LanguageSelectionWidget::LanguageSelectionWidget(QWidget* parent) : QWidget(pare
     languageView->header()->setCascadingSectionResizes(true);
     languageView->header()->setStretchLastSection(false);
     verticalLayout->addWidget(languageView);
+    loadingLabel = new QLabel(this);
+    loadingLabel->setObjectName(QStringLiteral("loadingLabel"));
+    loadingLabel->setWordWrap(true);
+    loadingLabel->setStyleSheet(QStringLiteral("color: gray;"));
+    verticalLayout->addWidget(loadingLabel);
     helpUsLabel = new QLabel(this);
     helpUsLabel->setObjectName(QStringLiteral("helpUsLabel"));
     helpUsLabel->setTextInteractionFlags(Qt::LinksAccessibleByMouse);
@@ -46,6 +51,11 @@ LanguageSelectionWidget::LanguageSelectionWidget(QWidget* parent) : QWidget(pare
     languageView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
     languageView->header()->setSectionResizeMode(0, QHeaderView::Stretch);
     connect(languageView->selectionModel(), &QItemSelectionModel::currentRowChanged, this, &LanguageSelectionWidget::languageRowChanged);
+    // First run: the language list fills in as soon as the index download lands. Until then,
+    // the widget is usable in English - say so instead of looking silently broken.
+    connect(translations, &QAbstractItemModel::rowsInserted, this, &LanguageSelectionWidget::updateLoadingHint);
+    connect(translations, &QAbstractItemModel::rowsRemoved, this, &LanguageSelectionWidget::updateLoadingHint);
+    updateLoadingHint();
     verticalLayout->setContentsMargins(0, 0, 0, 0);
 
     auto language_setting = APPLICATION->settings()->getSetting("Language");
@@ -64,6 +74,19 @@ void LanguageSelectionWidget::retranslate()
                        .arg(BuildConfig.TRANSLATIONS_URL);
     helpUsLabel->setText(text);
     formatCheckbox->setText(tr("Use system locales"));
+    updateLoadingHint();
+}
+
+void LanguageSelectionWidget::updateLoadingHint()
+{
+    const bool downloading = APPLICATION->translations()->rowCount() <= 1;
+    loadingLabel->setVisible(downloading);
+    if (downloading) {
+        loadingLabel->setText(tr("Downloading the list of languages… You can continue in English now and "
+                                 "switch languages at any time - the list fills in by itself."));
+    } else {
+        loadingLabel->clear();
+    }
 }
 
 void LanguageSelectionWidget::languageRowChanged(const QModelIndex& current, const QModelIndex& previous)

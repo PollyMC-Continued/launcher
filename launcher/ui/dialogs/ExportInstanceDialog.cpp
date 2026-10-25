@@ -44,6 +44,7 @@
 #include "FileIgnoreProxy.h"
 #include "QObjectPtr.h"
 #include "archive/ExportToZipTask.h"
+#include "ui/GuiUtil.h"
 #include "ui/dialogs/CustomMessageBox.h"
 #include "ui/dialogs/ProgressDialog.h"
 #include "ui_ExportInstanceDialog.h"
@@ -90,6 +91,9 @@ ExportInstanceDialog::ExportInstanceDialog(BaseInstance* instance, QWidget* pare
 
     m_ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
     m_ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("OK"));
+
+    // remember the window size between runs, like the settings window does
+    GuiUtil::rememberGeometry(this, "ExportInstanceGeometry");
 }
 
 ExportInstanceDialog::~ExportInstanceDialog()

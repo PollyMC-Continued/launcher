@@ -40,6 +40,7 @@
 
 #include "BuildConfig.h"
 #include "CreateShortcutDialog.h"
+#include "ui/GuiUtil.h"
 #include "ui_CreateShortcutDialog.h"
 
 #include "ui/dialogs/IconPickerDialog.h"
@@ -118,6 +119,9 @@ CreateShortcutDialog::CreateShortcutDialog(BaseInstance* instance, QWidget* pare
                 ui->accountSelectionBox->setCurrentIndex(i);
         }
     }
+
+    // remember the window size between runs, like the settings window does
+    GuiUtil::rememberGeometry(this, "CreateShortcutGeometry");
 }
 
 CreateShortcutDialog::~CreateShortcutDialog()

@@ -65,6 +65,7 @@ class BugReportDialog : public QDialog {
     void addScreenshotFromClipboard();
     void removeSelectedScreenshot();
     void updateState();
+    void updateTypeHints();
     void send();
 
    private:
@@ -72,6 +73,16 @@ class BugReportDialog : public QDialog {
     void setBusy(bool busy);
     QString systemInfoText() const;
     QByteArray buildPayload() const;
+
+    // ---- unsent-report draft: kept when the window is closed by accident ----
+    void saveDraft() const;
+    void restoreDraft();
+    void clearDraft() const;
+    QString draftPath() const;
+    bool m_sentThisSession = false;  // a successful send must not leave a draft behind
+
+    // ---- duplicate-report detection within this session ----
+    static QString normalizeForDuplicateCheck(const QString& text);
 
     QScrollArea* m_scroll = nullptr;
     QWidget* m_form = nullptr;
@@ -81,6 +92,7 @@ class BugReportDialog : public QDialog {
     QComboBox* m_type = nullptr;
     QLineEdit* m_name = nullptr;
     QLineEdit* m_contact = nullptr;
+    QLabel* m_descriptionLabel = nullptr;
     QPlainTextEdit* m_description = nullptr;
     QLabel* m_counter = nullptr;
     QListWidget* m_shots = nullptr;

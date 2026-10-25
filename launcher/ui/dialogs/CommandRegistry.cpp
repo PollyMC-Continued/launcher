@@ -26,10 +26,10 @@ QString paletteCategory(const QString& name)
     // also plain actions; keeps per-instance behavior discoverable
     if (name == "actionLaunchInstance" || name == "actionEditInstance" || name == "actionDeleteInstance" ||
         name == "actionCopyInstance" || name == "actionKillInstance" || name == "actionExportInstanceZip" ||
-        name == "actionExportInstanceMrPack" || name == "actionExportInstanceFlamePack")
+        name == "actionExportInstanceMrPack" || name == "actionExportInstanceFlamePack" || name == "actionCheckInstance")
         return "Instance";
     if (name == "actionAddInstance" || name == "actionSettings" || name == "actionAbout" ||
-        name == "actionCheckUpdate")
+        name == "actionCheckUpdate" || name == "actionCopyDiagnostics")
         return "Action";
     if (name.contains("Theme"))
         return "Theme";

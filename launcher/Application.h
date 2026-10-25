@@ -201,6 +201,9 @@ class Application : public QApplication {
     MainWindow* showMainWindow(bool minimized = false);
     ViewLogWindow* showLogWindow();
 
+    /// The main window, if one exists. Never creates one (unlike showMainWindow).
+    MainWindow* mainWindow() const { return m_mainWindow; }
+
     /// Closes and releases the startup splash screen, if it is still visible.
     void closeSplashScreen();
 
@@ -213,6 +216,12 @@ class Application : public QApplication {
     QString updaterBinaryName();
 
     QUrl normalizeImportUrl(const QString& url);
+
+    /// Folder used to stage downloads before they are moved to their final location.
+    /// Empty by default (downloads are written directly next to their destination).
+    /// Set from the network error window as an antivirus workaround.
+    const QString& downloadStagingDir() const { return m_downloadStagingDir; }
+    void setDownloadStagingDir(const QString& dir) { m_downloadStagingDir = dir; }
 
    signals:
     void updateAllowedChanged(bool status);
@@ -246,6 +255,9 @@ class Application : public QApplication {
     bool handlePortableMigration(const QString& currentData) const;
     bool createSetupWizard();
     void performMainStartupAction();
+
+    /// After an unclean exit, offers to send a crash report with the previous session's log.
+    void offerCrashRecovery();
 
     // sets the fatal error message and m_status to Failed.
     void showFatalErrorMessage(const QString& title, const QString& content);
@@ -286,6 +298,7 @@ class Application : public QApplication {
     QString m_rootPath;
     QString m_dataPath;
     QString m_loggingRules;
+    QString m_downloadStagingDir;
     Status m_status = Application::StartingUp;
     Capabilities m_capabilities = None;
     bool m_portable = false;
@@ -309,6 +322,9 @@ class Application : public QApplication {
 
     // main window, if any
     MainWindow* m_mainWindow = nullptr;
+
+    // true when the previous run left the crash marker behind (it did not shut down cleanly)
+    bool m_previousRunCrashed = false;
 
     // startup splash, shown until the main window takes over
     QSplashScreen* m_splash = nullptr;

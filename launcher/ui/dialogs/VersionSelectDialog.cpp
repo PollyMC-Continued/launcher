@@ -44,6 +44,8 @@
 
 #include "ui/widgets/VersionSelectWidget.h"
 
+#include "ui/GuiUtil.h"
+
 #include "BaseVersion.h"
 #include "BaseVersionList.h"
 
@@ -90,6 +92,9 @@ VersionSelectDialog::VersionSelectDialog(BaseVersionList* vlist, QString title, 
     if (!cancelable) {
         m_buttonBox->button(QDialogButtonBox::Cancel)->setEnabled(false);
     }
+
+    // remember the window size between runs, like the settings window does
+    GuiUtil::rememberGeometry(this, "VersionSelectGeometry");
 }
 
 void VersionSelectDialog::retranslate()

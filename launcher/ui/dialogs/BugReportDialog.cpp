@@ -26,7 +26,9 @@
 #include <QDialogButtonBox>
 #include <QDragEnterEvent>
 #include <QDropEvent>
+#include <QFile>
 #include <QFileDialog>
+#include <QFileInfo>
 #include <QFrame>
 #include <QGridLayout>
 #include <QGuiApplication>
@@ -46,6 +48,7 @@
 #include <QPushButton>
 #include <QScreen>
 #include <QScrollArea>
+#include <QSet>
 #include <QShortcut>
 #include <QSignalBlocker>
 #include <QSysInfo>
@@ -73,8 +76,12 @@ constexpr int MaxContactChars = 80;
 constexpr int MaxPayloadBytes = 4300000;  // stay below the relay's request size limit
 constexpr int MaxLogChars = 200000;  // keep the tail of the log: crashes are at the end
 constexpr int CooldownSeconds = 60;
+// An unsent draft older than this is silently dropped instead of restored.
+constexpr int DraftMaxAgeDays = 7;
 
 QDateTime s_lastSent;  // per run, stops accidental double submits
+// Descriptions already sent this session (normalized) - used to warn about duplicates.
+QSet<QString> s_sentThisSession;
 
 QByteArray encodeScreenshot(const QImage& source)
 {
@@ -164,9 +171,9 @@ BugReportDialog::BugReportDialog(QWidget* parent) : QDialog(parent)
     whoGrid->addWidget(m_contact, 1, 1);
     layout->addLayout(whoGrid);
 
-    layout->addWidget(new QLabel(tr("What happened?"), m_form));
+    m_descriptionLabel = new QLabel(m_form);
+    layout->addWidget(m_descriptionLabel);
     m_description = new QPlainTextEdit(m_form);
-    m_description->setPlaceholderText(tr("Describe the bug and, if you can, the steps to make it happen again."));
     m_description->setMinimumHeight(140);
     m_description->viewport()->setAcceptDrops(false);  // let image drops reach the dialog instead of being pasted as text
     layout->addWidget(m_description, 1);
@@ -231,6 +238,7 @@ BugReportDialog::BugReportDialog(QWidget* parent) : QDialog(parent)
     connect(m_buttons, &QDialogButtonBox::accepted, this, &BugReportDialog::send);
     connect(m_buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
     connect(m_description, &QPlainTextEdit::textChanged, this, &BugReportDialog::updateState);
+    connect(m_type, &QComboBox::currentIndexChanged, this, &BugReportDialog::updateTypeHints);
     connect(m_addShot, &QPushButton::clicked, this, &BugReportDialog::addScreenshotFromFile);
     connect(m_pasteShot, &QPushButton::clicked, this, &BugReportDialog::addScreenshotFromClipboard);
     connect(m_removeShot, &QPushButton::clicked, this, &BugReportDialog::removeSelectedScreenshot);
@@ -247,13 +255,120 @@ BugReportDialog::BugReportDialog(QWidget* parent) : QDialog(parent)
             send();
     });
 
+    updateTypeHints();
     updateState();
+
+    restoreDraft();
+}
+
+void BugReportDialog::updateTypeHints()
+{
+    // The label and the placeholder follow the report type, so a suggestion doesn't ask you to "describe the bug".
+    const QString type = m_type->currentData().toString();
+    if (type == QLatin1String("crash")) {
+        m_descriptionLabel->setText(tr("What were you doing when it crashed?"));
+        m_description->setPlaceholderText(tr("Tell us what you were doing right before the launcher closed or froze, and whether it happens every time."));
+    } else if (type == QLatin1String("feature")) {
+        m_descriptionLabel->setText(tr("What would you like to see?"));
+        m_description->setPlaceholderText(tr("Describe your idea and what it would make easier for you. Examples from other apps help too."));
+    } else if (type == QLatin1String("other")) {
+        m_descriptionLabel->setText(tr("What's on your mind?"));
+        m_description->setPlaceholderText(tr("Tell us anything that doesn't fit the other types: feedback, questions, or something that just feels off."));
+    } else {
+        m_descriptionLabel->setText(tr("What happened?"));
+        m_description->setPlaceholderText(tr("Describe the bug and, if you can, the steps to make it happen again."));
+    }
 }
 
 void BugReportDialog::done(int result)
 {
+    // Keep what was typed if the window is closed by accident (Esc, the X, a stray click on Cancel).
+    // A successful send clears the draft; a deliberately empty form clears it too.
+    if (!m_sentThisSession && m_description->toPlainText().trimmed().size() >= MinDescriptionChars) {
+        saveDraft();
+    } else {
+        clearDraft();
+    }
+
     APPLICATION->settings()->set("BugReportGeometry", QString::fromUtf8(saveGeometry().toBase64()));
     QDialog::done(result);
+}
+
+QString BugReportDialog::draftPath() const
+{
+    // relative on purpose: the launcher's working directory is its data folder
+    return QStringLiteral("bugreport_draft.json");
+}
+
+void BugReportDialog::saveDraft() const
+{
+    QJsonObject obj;
+    obj["type"] = m_type->currentData().toString();
+    obj["name"] = m_name->text();
+    obj["contact"] = m_contact->text();
+    obj["description"] = m_description->toPlainText();
+    obj["includeLog"] = m_includeLog->isChecked();
+    obj["saved"] = QDateTime::currentDateTime().toString(Qt::ISODate);
+
+    try {
+        FS::write(draftPath(), QJsonDocument(obj).toJson(QJsonDocument::Compact));
+        qDebug() << "Saved an unsent bug report draft";
+    } catch ([[maybe_unused]] const Exception& e) {
+        qWarning() << "Could not save the bug report draft";
+    }
+}
+
+void BugReportDialog::restoreDraft()
+{
+    const QString path = draftPath();
+    if (!QFileInfo::exists(path))
+        return;
+
+    // a draft from weeks ago is more confusing than helpful
+    const QFileInfo info(path);
+    if (info.lastModified().daysTo(QDateTime::currentDateTime()) > DraftMaxAgeDays) {
+        clearDraft();
+        return;
+    }
+
+    QJsonObject obj;
+    try {
+        obj = QJsonDocument::fromJson(FS::read(path)).object();
+    } catch ([[maybe_unused]] const Exception& e) {
+        qWarning() << "Could not read the bug report draft";
+        return;
+    }
+
+    const QString description = obj.value("description").toString().trimmed();
+    if (description.size() < MinDescriptionChars)
+        return;
+
+    const int typeIndex = m_type->findData(obj.value("type").toString());
+    if (typeIndex >= 0)
+        m_type->setCurrentIndex(typeIndex);
+    m_name->setText(obj.value("name").toString());
+    m_contact->setText(obj.value("contact").toString());
+    m_description->setPlainText(description);
+    m_includeLog->setChecked(obj.value("includeLog").toBool());
+
+    m_intro->setText(m_intro->text() + QStringLiteral("<br><br>") +
+                     tr("<i>An unsent report you started earlier was restored - it is ready to finish and send whenever you are.</i>"));
+
+    updateTypeHints();
+    updateState();
+    qDebug() << "Restored an unsent bug report draft from" << info.lastModified().toString(Qt::ISODate);
+}
+
+void BugReportDialog::clearDraft() const
+{
+    if (QFileInfo::exists(draftPath()))
+        FS::deletePath(draftPath());
+}
+
+QString BugReportDialog::normalizeForDuplicateCheck(const QString& text)
+{
+    // same words in the same order, ignoring whitespace and case, counts as the same report
+    return text.simplified().toLower();
 }
 
 void BugReportDialog::dragEnterEvent(QDragEnterEvent* event)
@@ -437,6 +552,17 @@ void BugReportDialog::send()
         return;
     }
 
+    // Sending the same text twice rarely helps the team - say so and let the user decide.
+    const QString duplicateKey = normalizeForDuplicateCheck(m_description->toPlainText());
+    if (s_sentThisSession.contains(duplicateKey)) {
+        const auto answer =
+            QMessageBox::question(this, tr("Report a Bug"),
+                                  tr("You already sent this exact report in this session.\n\nSend it again anyway?"),
+                                  QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
+        if (answer != QMessageBox::Yes)
+            return;
+    }
+
     const QByteArray payload = buildPayload();
     if (payload.size() > MaxPayloadBytes) {
         QMessageBox::information(this, tr("Report a Bug"),
@@ -477,6 +603,8 @@ void BugReportDialog::send()
         }
 
         s_lastSent = QDateTime::currentDateTime();
+        m_sentThisSession = true;
+        s_sentThisSession.insert(duplicateKey);
         const bool gaveContact = !m_contact->text().trimmed().isEmpty();
         const bool hasDiscord = !BuildConfig.DISCORD_URL.isEmpty();
 

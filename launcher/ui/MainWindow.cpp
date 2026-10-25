@@ -71,6 +71,7 @@
 #include <QProgressDialog>
 #include <QShortcut>
 #include <QStatusBar>
+#include <QSysInfo>
 #include <QSystemTrayIcon>
 #include <QTimer>
 #include <QToolBar>
@@ -110,6 +111,7 @@
 #include "ui/dialogs/ExportPackDialog.h"
 #include "ui/dialogs/IconPickerDialog.h"
 #include "ui/dialogs/ImportResourceDialog.h"
+#include "ui/dialogs/InstanceHealthCheckDialog.h"
 #include "ui/dialogs/PerformancePresetsDialog.h"
 #include "ui/dialogs/NewInstanceDialog.h"
 #include "ui/dialogs/BugReportDialog.h"
@@ -1567,6 +1569,24 @@ void MainWindow::on_actionEditInstance_triggered()
     }
 }
 
+void MainWindow::on_actionCheckInstance_triggered()
+{
+    if (!m_selectedInstance)
+        return;
+
+    // the checks are Minecraft-specific (Java, mods folder, loader components)
+    auto mcInstance = dynamic_cast<MinecraftInstance*>(m_selectedInstance);
+    if (!mcInstance) {
+        CustomMessageBox::selectable(this, tr("Check instance"),
+                                     tr("This kind of instance cannot be checked automatically."), QMessageBox::Information)
+            ->show();
+        return;
+    }
+
+    InstanceHealthCheckDialog dialog(mcInstance, this);
+    dialog.exec();
+}
+
 void MainWindow::on_actionManageAccounts_triggered()
 {
     APPLICATION->ShowGlobalSettings(this, "accounts");
@@ -1580,6 +1600,68 @@ void MainWindow::on_actionReportBug_triggered()
     }
     BugReportDialog dialog(this);
     dialog.exec();
+}
+
+void MainWindow::on_actionCopyDiagnostics_triggered()
+{
+    // One click -> everything a supporter usually asks for, on the clipboard.
+    QStringList lines;
+
+    {
+        QString version = BuildConfig.printableVersionString();
+        if (!BuildConfig.GIT_COMMIT.isEmpty())
+            version += tr(" (commit %1)").arg(BuildConfig.GIT_COMMIT.left(8));
+        lines << tr("Launcher: %1").arg(version);
+    }
+
+    if (!BuildConfig.BUILD_PLATFORM.isEmpty())
+        lines << tr("Platform: %1").arg(BuildConfig.BUILD_PLATFORM);
+
+    lines << tr("System: %1").arg(QSysInfo::prettyProductName());
+    lines << tr("CPU architecture: %1").arg(QSysInfo::currentCpuArchitecture());
+    lines << tr("Qt: %1").arg(QString::fromLatin1(qVersion()));
+
+    // Java: the global default, plus the selected instance's override (if any).
+    auto describeJava = [](SettingsObject* settings) -> QString {
+        const QString path = settings->get("JavaPath").toString();
+        if (path.isEmpty())
+            return {};
+        const QString version = settings->get("JavaVersion").toString();
+        const QString arch = settings->get("JavaRealArchitecture").toString().isEmpty()
+                                 ? settings->get("JavaArchitecture").toString()
+                                 : settings->get("JavaRealArchitecture").toString();
+        const QString vendor = settings->get("JavaVendor").toString();
+        const QString resolved = FS::ResolveExecutable(path);
+        QString out = QDir::toNativeSeparators(path);
+        if (!version.isEmpty() || !arch.isEmpty() || !vendor.isEmpty()) {
+            QStringList bits;
+            if (!version.isEmpty())
+                bits << version;
+            if (!arch.isEmpty())
+                bits << arch;
+            if (!vendor.isEmpty())
+                bits << vendor;
+            out += QStringLiteral(" (%1)").arg(bits.join(QStringLiteral(", ")));
+        }
+        out += resolved.isNull() ? QStringLiteral(" [not found]") : QStringLiteral("");
+        return out;
+    };
+
+    const QString globalJava = describeJava(APPLICATION->settings());
+    lines << tr("Java: %1").arg(globalJava.isEmpty() ? tr("not set") : globalJava);
+
+    if (m_selectedInstance) {
+        if (auto mcInstance = dynamic_cast<MinecraftInstance*>(m_selectedInstance)) {
+            const QString instanceJava = describeJava(mcInstance->settings());
+            if (!instanceJava.isEmpty() && instanceJava != globalJava)
+                lines << tr("Java (instance \"%1\"): %2").arg(mcInstance->name(), instanceJava);
+        }
+    }
+
+    const QString diagnostics = lines.join(QLatin1Char('\n'));
+    GuiUtil::setClipboardText(diagnostics);
+    statusBar()->showMessage(tr("Diagnostics copied to the clipboard - paste it into a support chat."), 5000);
+    qDebug() << "Diagnostics copied:" << lines;
 }
 
 void MainWindow::on_actionClearMetadata_triggered()
@@ -2022,6 +2104,7 @@ void MainWindow::setInstanceActionsEnabled(bool enabled)
     ui->actionDeleteInstance->setEnabled(enabled);
     ui->actionCopyInstance->setEnabled(enabled);
     ui->actionCreateInstanceShortcut->setEnabled(enabled);
+    ui->actionCheckInstance->setEnabled(enabled);
 }
 
 void MainWindow::refreshCurrentInstance()
