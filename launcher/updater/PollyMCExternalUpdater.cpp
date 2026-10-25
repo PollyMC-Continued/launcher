@@ -29,6 +29,7 @@
 #include <QProcess>
 #include <QProgressDialog>
 #include <QSettings>
+#include <QStatusBar>
 #include <QTimer>
 #include <algorithm>
 #include <memory>
