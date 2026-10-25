@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+**Added:**
+
+- **Boot & crash diagnostics (`boot-debug.log`)** — A new early-boot diagnostics layer writes `boot-debug.log` next to the executable from the very first statement of `main()` (before any Qt object exists). It records how far startup got (stage markers through the whole early path), captures Qt fatal startup messages verbatim (e.g. a platform plugin that fails to load), and installs crash handlers that log the exception code, faulting address and module for unhandled exceptions, `qFatal`/`abort()`, `std::terminate`, CRT invalid parameters and pure virtual calls. Wine/Winlator environments are detected and recorded. This closes the "crashes on start with no log file" blind spot: any failure that happens *before* the launcher's own `logs/PollyMC-0.log` is created now leaves a full trace.
+- **Build toolchain manifest (`build-env.txt`)** — CI records the exact MSYS2 package versions each build was made with and ships the manifest inside the portable zip, so "works on one machine, crashes on another" reports can be compared against known-good builds.
+
+**Fixed:**
+
+- **Download retry timer thread-safety** — The delayed download retry (added in v9.4.2) created a `QTimer` from whatever thread the network job's state machine ran on; on code paths where that is a worker thread, this can misbehave or crash. The retry now always hops to the job's own thread before starting the timer.
+- **CI smoke tests could ship a crashing build as green** — The Windows smoke test only failed when the process exited with `STATUS_DLL_NOT_FOUND`. A binary that crashed instantly (access violation, `qFatal`, stack overflow, ...) passed as "DLLs loaded OK". The smoke test now fails on *any* abnormal exit code during the startup window, verifies the launcher actually created its log file, and dumps `boot-debug.log`, stderr and the Windows event log on failure. The portable zip (the artifact Winlator users run) is now smoke-tested directly, including an explicit check that `platforms/qwindows.dll` is present.
+
 ## v9.4.2
 
 **Added:**

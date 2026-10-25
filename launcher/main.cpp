@@ -36,19 +36,66 @@
 #include <QDebug>
 #include <QScreen>
 
+#include <cstdio>
 #include <iostream>
 
 #include "Application.h"
+
+#include "console/BootDebug.h"
 
 #if defined Q_OS_WIN32
 #include "console/WindowsConsole.h"
 #endif
 
+// Forwards every Qt message emitted before the Application installs its real
+// logger (Application.cpp: qInstallMessageHandler(appDebugOutput)) into
+// boot-debug.log. This is what captures fatal startup errors such as
+// "Failed to load platform plugin 'windows'" verbatim — the kind of error
+// that kills the process before the launcher's own log file is ever created.
+static void bootMessageHandler(QtMsgType type, const QMessageLogContext& context, const QString& message)
+{
+    const char* tag = "qt-msg";
+    switch (type) {
+        case QtDebugMsg:
+            tag = "qt-debug";
+            break;
+        case QtWarningMsg:
+            tag = "qt-warning";
+            break;
+        case QtCriticalMsg:
+            tag = "qt-critical";
+            break;
+        case QtFatalMsg:
+            tag = "qt-FATAL";
+            break;
+        case QtInfoMsg:
+        default:
+            tag = "qt-info";
+            break;
+    }
+    const QByteArray utf8 = message.toUtf8();
+    char line[2100];
+    if (type == QtFatalMsg && context.file) {
+        snprintf(line, sizeof(line), "%s: %s (%s:%u)", tag, utf8.constData(), context.file, context.line);
+    } else {
+        snprintf(line, sizeof(line), "%s: %s", tag, utf8.constData());
+    }
+    line[sizeof(line) - 1] = '\0';
+    BootDebug::line(line);
+}
+
 int main(int argc, char* argv[])
 {
+    // Ultra-early crash diagnostics: must run before anything else so that a
+    // failure anywhere below (missing DLL, platform plugin, static init, ...)
+    // still leaves a trace in boot-debug.log next to the executable.
+    BootDebug::init();
+    BootDebug::stage("main: entered");
+
 #if defined Q_OS_WIN32
     // used on Windows to attach the standard IO streams
     console::WindowsConsoleGuard _consoleGuard;
+    BootDebug::stage("main: console streams attached");
 #endif
 
     // Qt6 enables high-DPI scaling automatically, but the default rounding
@@ -63,8 +110,13 @@ int main(int argc, char* argv[])
         QApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor);
 #endif
 
+    // Capture Qt startup messages (see bootMessageHandler above) until the
+    // Application constructor replaces this handler with its real one.
+    qInstallMessageHandler(bootMessageHandler);
+
     // initialize Qt
     Application app(argc, argv);
+    BootDebug::stage("main: Application constructed");
 
     switch (app.status()) {
         case Application::StartingUp:
@@ -87,6 +139,7 @@ int main(int argc, char* argv[])
             Q_INIT_RESOURCE(branding);
 
             Q_INIT_RESOURCE(shaders);
+            BootDebug::stage("main: entering event loop");
             for (auto* screen : app.screens()) {
                 qDebug() << "HiDPI screen:" << screen->name() << "DPR:" << screen->devicePixelRatio()
                          << "geometry:" << screen->geometry() << "logical DPI:" << screen->logicalDotsPerInch();

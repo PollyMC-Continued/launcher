@@ -225,6 +225,17 @@ jobs:
             mingw-w64-ucrt-x86_64-ccache
             mingw-w64-ucrt-x86_64-onnxruntime
 
+      - name: Record exact toolchain versions (build-env.txt)
+        # MSYS2 is a rolling release and `update: true` builds with whatever is
+        # current on run day. Recording the exact package set makes
+        # "works there / crashes here" reports diagnosable after the fact; the
+        # file also ships inside the portable zip for bug reports.
+        run: |
+          pacman -Q | sort > "$GITHUB_WORKSPACE/build-env.txt"
+          echo "::group::Exact toolchain versions"
+          cat "$GITHUB_WORKSPACE/build-env.txt"
+          echo "::endgroup::"
+
       - name: Restore ccache
         uses: actions/cache/restore@v5
         with:
@@ -397,7 +408,7 @@ jobs:
 
           ls -la PollyMC-Continued-*-Setup.exe || (echo "ERROR: Installer not found!" && exit 1)
 
-      - name: Test installed binary for missing DLLs
+      - name: Smoke-test installed binary (missing DLLs + startup + crash codes)
         shell: powershell
         run: |
           $installer = Get-ChildItem -Path "$env:GITHUB_WORKSPACE" -Filter "PollyMC-Continued-*-Setup.exe" | Select-Object -First 1
@@ -413,56 +424,77 @@ jobs:
             $exePath = Join-Path $installDir "PollyMC-Continued" "pollymc.exe"
           }
           if (-not (Test-Path $exePath)) { throw "pollymc.exe not found after installation" }
+          $exeDir = Split-Path -Parent $exePath
+
+          # Isolated data dir => deterministic location for the launcher's own log file.
+          $dataDir = Join-Path $env:RUNNER_TEMP "PollyMC-Test-Data"
+          if (Test-Path $dataDir) { Remove-Item $dataDir -Recurse -Force }
+          New-Item -ItemType Directory -Path $dataDir | Out-Null
 
           $stderrFile = Join-Path $env:RUNNER_TEMP "pollymc_stderr.txt"
           if (Test-Path $stderrFile) { Remove-Item $stderrFile -Force }
 
           $startTime = Get-Date
-          $process = Start-Process -FilePath $exePath -PassThru -RedirectStandardError $stderrFile
+
+          function Show-Diagnostics {
+            param([string]$Label)
+            Write-Host "::error::$Label"
+            $bootLog = Join-Path $exeDir "boot-debug.log"
+            if (Test-Path $bootLog) {
+              Write-Host "=== boot-debug.log (last 60 lines) ==="
+              Get-Content $bootLog | Select-Object -Last 60 | ForEach-Object { Write-Host $_ }
+            } else {
+              Write-Host "boot-debug.log was NOT created - the process never reached main() (loader-level failure)."
+            }
+            $appLog = Join-Path $dataDir "logs\PollyMC-0.log"
+            if (Test-Path $appLog) {
+              Write-Host "=== launcher log (last 40 lines) ==="
+              Get-Content $appLog | Select-Object -Last 40 | ForEach-Object { Write-Host $_ }
+            }
+            if (Test-Path $stderrFile) {
+              $stderr = Get-Content $stderrFile
+              if ($stderr) { Write-Host "=== stderr ===`n$stderr" }
+            }
+            $events = Get-WinEvent -FilterHashtable @{LogName='Application'; StartTime=$startTime} -MaxEvents 20 -ErrorAction SilentlyContinue
+            foreach ($event in $events) {
+              if ($event.Message -match "pollymc") {
+                Write-Host "EventLog: $($event.TimeCreated) -- $($event.Message)"
+                if ($event.Message -match "(?i)([a-zA-Z0-9_-]+\.dll)") {
+                  Write-Host "Faulting/missing module: $($matches[1])"
+                }
+              }
+            }
+          }
+
+          function Test-StartupCompleted {
+            $appLog = Join-Path $dataDir "logs\PollyMC-0.log"
+            if (-not (Test-Path $appLog)) { return $false }
+            return ((Get-Content $appLog -Raw -ErrorAction SilentlyContinue) -match "Log initialized")
+          }
+
+          # A healthy build stays alive for the window (first-run UI) and MUST have
+          # finished early startup: logs/PollyMC-0.log exists and contains
+          # "<> Log initialized". Anything else is a shipping blocker.
+          $process = Start-Process -FilePath $exePath -ArgumentList "-d", "`"$dataDir`"" -PassThru -RedirectStandardError $stderrFile
           $exited = $process.WaitForExit(10000)
 
           if (-not $exited) {
             $process.Kill()
             $process.WaitForExit()
-            $events = Get-WinEvent -FilterHashtable @{LogName='Application'; StartTime=$startTime} -MaxEvents 10 -ErrorAction SilentlyContinue
-            $hasError = $false
-            foreach ($event in $events) {
-              if ($event.Message -match "pollymc") {
-                Write-Host "::error::Application Error detected"
-                Write-Host "Event: $($event.TimeCreated) -- $($event.Message)"
-                if ($event.Message -match "([a-zA-Z0-9_-]+\.dll)") {
-                  Write-Host "::error::Missing or faulty module: $($matches[1])"
-                }
-                $hasError = $true
-              }
-            }
-            if (-not $hasError) {
-              Write-Host "pollymc.exe ran for 10s with no DLL errors"
+            if (Test-StartupCompleted) {
+              Write-Host "pollymc.exe ran for 10s and completed early startup (log file created) - OK"
             } else {
-              throw "Missing DLLs detected in pollymc.exe"
+              Show-Diagnostics "pollymc.exe ran 10s but never created its log file - early startup is broken"
+              throw "Startup smoke test failed: no logs/PollyMC-0.log containing 'Log initialized'"
             }
           } else {
             $exitCode = $process.ExitCode
+            $exitHex = "0x{0:X8}" -f ($exitCode -band [uint32]::MaxValue)
+            Show-Diagnostics "pollymc.exe exited during the startup window with code $exitCode ($exitHex)"
             if ($exitCode -eq -1073741515) {
-              Write-Host "::error::STATUS_DLL_NOT_FOUND (0xC0000135) -- a required DLL is missing"
-              $events = Get-WinEvent -FilterHashtable @{LogName='Application'; StartTime=$startTime} -MaxEvents 10 -ErrorAction SilentlyContinue
-              foreach ($event in $events) {
-                if ($event.Message -match "pollymc|$([regex]::Escape($exePath))") {
-                  Write-Host $event.Message
-                  if ($event.Message -match "(?i)([a-zA-Z0-9_-]+\.dll)") {
-                    Write-Host "::error::Missing DLL: $($matches[1])"
-                  }
-                }
-              }
-              throw "pollymc.exe failed -- missing DLL (STATUS_DLL_NOT_FOUND)"
-            } else {
-              Write-Host "pollymc.exe exited with code $exitCode (DLLs loaded OK)"
+              throw "pollymc.exe failed - missing DLL (STATUS_DLL_NOT_FOUND, 0xC0000135)"
             }
-          }
-
-          if (Test-Path $stderrFile) {
-            $stderr = Get-Content $stderrFile
-            if ($stderr) { Write-Host "=== stderr ===`n$stderr" }
+            throw "pollymc.exe failed - abnormal exit code $exitCode ($exitHex) during startup (crash or qFatal)"
           }
 
       - name: Zip portable build
@@ -473,12 +505,66 @@ jobs:
           ls -la pollymc.exe || (echo "ERROR: pollymc.exe not found in install!" && exit 1)
           # portable.txt marks a portable install (data dir, updater asset matching).
           cp "$GITHUB_WORKSPACE/program_info/portable.txt" portable.txt
+          # Exact toolchain manifest, shipped with the build (see "Record exact
+          # toolchain versions"); attach it to bug reports as-is.
+          cp "$GITHUB_WORKSPACE/build-env.txt" build-env.txt
           # manifest.txt lists the top-level entries the updater installs.
           find . -mindepth 1 -maxdepth 1 -printf '%P\n' | sort > manifest.txt
           "/c/Program Files/7-Zip/7z.exe" a \
             "../PollyMC-Continued-${VERSION}-Windows-portable.zip" .
           cd ..
           ls -la PollyMC-Continued-*-Windows-portable.zip || (echo "ERROR: Zip not found!" && exit 1)
+
+      - name: Smoke-test portable package (the artifact users run on Winlator & co.)
+        shell: powershell
+        run: |
+          $zip = Get-ChildItem -Path "$env:GITHUB_WORKSPACE" -Filter "PollyMC-Continued-*-Windows-portable.zip" | Select-Object -First 1
+          if (-not $zip) { throw "Portable zip not found" }
+
+          $portableDir = Join-Path $env:RUNNER_TEMP "PollyMC-Portable-Test"
+          if (Test-Path $portableDir) { Remove-Item $portableDir -Recurse -Force }
+          New-Item -ItemType Directory -Path $portableDir | Out-Null
+          & "C:\Program Files\7-Zip\7z.exe" x $zip.FullName "-o$portableDir" -y | Out-Null
+
+          $exePath = Join-Path $portableDir "pollymc.exe"
+          if (-not (Test-Path $exePath)) { throw "pollymc.exe missing from the portable zip" }
+          if (-not (Test-Path (Join-Path $portableDir "platforms\qwindows.dll"))) {
+            throw "platforms/qwindows.dll missing from the portable zip - the app would die at startup with no log file"
+          }
+
+          function Show-PortableDiagnostics {
+            $bootLog = Join-Path $portableDir "boot-debug.log"
+            if (Test-Path $bootLog) {
+              Write-Host "=== boot-debug.log (last 60 lines) ==="
+              Get-Content $bootLog | Select-Object -Last 60 | ForEach-Object { Write-Host $_ }
+            } else {
+              Write-Host "boot-debug.log was NOT created - the process never reached main()."
+            }
+          }
+
+          # portable.txt is included in the zip, so the data dir (and logs/) land
+          # in the extraction folder itself - exactly how Winlator users run it.
+          $proc = Start-Process -FilePath $exePath -WorkingDirectory $portableDir -PassThru
+          $exited = $proc.WaitForExit(10000)
+          $appLog = Join-Path $portableDir "logs\PollyMC-0.log"
+
+          if ($exited) {
+            $exitCode = $proc.ExitCode
+            $exitHex = "0x{0:X8}" -f ($exitCode -band [uint32]::MaxValue)
+            Write-Host "::error::Portable build exited during startup with code $exitCode ($exitHex)"
+            Show-PortableDiagnostics
+            throw "Portable package failed the startup smoke test"
+          }
+
+          $proc.Kill()
+          $proc.WaitForExit()
+
+          if (-not ((Test-Path $appLog) -and ((Get-Content $appLog -Raw -ErrorAction SilentlyContinue) -match "Log initialized"))) {
+            Write-Host "::error::Portable build never created its log file - early startup is broken"
+            Show-PortableDiagnostics
+            throw "Portable package failed the startup smoke test (no log file)"
+          }
+          Write-Host "Portable package OK: started up and created its log file"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4

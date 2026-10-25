@@ -83,10 +83,21 @@ void NetJob::executeNextSubTask()
         if (!m_queue.isEmpty()) {
             // Give antivirus scanners / indexers a moment to release a freshly written file before trying again:
             // retrying instantly just hits the same lock. 1s, then 2s, then 3s.
-            QTimer::singleShot(m_try * 1000, this, [this] {
-                if (isRunning())
-                    ConcurrentTask::executeNextSubTask();
-            });
+            //
+            // Thread-safety: executeNextSubTask() can be reached from worker threads (queued signals from
+            // sub-tasks on some code paths), but a QTimer may only be created on a thread that runs an event
+            // loop - i.e. the NetJob's own thread. Hop there first with a queued invocation; if the job is
+            // destroyed in the meantime, Qt simply drops the call (and the timer's context object below).
+            const int delayMs = qMin(m_try, 3) * 1000;
+            QMetaObject::invokeMethod(
+                this,
+                [this, delayMs] {
+                    QTimer::singleShot(delayMs, this, [this] {
+                        if (isRunning())
+                            ConcurrentTask::executeNextSubTask();
+                    });
+                },
+                Qt::QueuedConnection);
             return;
         }
     }
