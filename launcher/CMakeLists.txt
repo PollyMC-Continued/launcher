@@ -800,8 +800,6 @@ SET(LAUNCHER_SOURCES
     # Application base
     Application.h
     Application.cpp
-    BootDebug.h
-    BootDebug.cpp
     DiscordRichPresence.h
     DiscordRichPresence.cpp
     DataMigrationTask.h
@@ -815,6 +813,8 @@ SET(LAUNCHER_SOURCES
 
     # console utils
     console/Console.h
+    console/BootDebug.h
+    console/BootDebug.cpp
 
     # GUI - general utilities
     DesktopServices.h
