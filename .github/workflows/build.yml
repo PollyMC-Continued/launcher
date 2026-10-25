@@ -496,13 +496,6 @@ jobs:
           function Show-Diagnostics {
             param([string]$Label)
             Write-Host "::error::$Label"
-            $bootLog = Join-Path $exeDir "boot-debug.log"
-            if (Test-Path $bootLog) {
-              Write-Host "=== boot-debug.log (last 60 lines) ==="
-              Get-Content $bootLog | Select-Object -Last 60 | ForEach-Object { Write-Host $_ }
-            } else {
-              Write-Host "boot-debug.log was NOT created - the process never reached main() (loader-level failure)."
-            }
             $appLog = Join-Path $dataDir "logs\PollyMC-0.log"
             if (Test-Path $appLog) {
               Write-Host "=== launcher log (last 40 lines) ==="
@@ -590,12 +583,10 @@ jobs:
           }
 
           function Show-PortableDiagnostics {
-            $bootLog = Join-Path $portableDir "boot-debug.log"
-            if (Test-Path $bootLog) {
-              Write-Host "=== boot-debug.log (last 60 lines) ==="
-              Get-Content $bootLog | Select-Object -Last 60 | ForEach-Object { Write-Host $_ }
-            } else {
-              Write-Host "boot-debug.log was NOT created - the process never reached main()."
+            $appLog = Join-Path $portableDir "logs\PollyMC-0.log"
+            if (Test-Path $appLog) {
+              Write-Host "=== launcher log (last 40 lines) ==="
+              Get-Content $appLog | Select-Object -Last 40 | ForEach-Object { Write-Host $_ }
             }
           }
 

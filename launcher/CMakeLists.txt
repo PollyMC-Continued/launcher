@@ -813,8 +813,6 @@ SET(LAUNCHER_SOURCES
 
     # console utils
     console/Console.h
-    console/BootDebug.h
-    console/BootDebug.cpp
 
     # GUI - general utilities
     DesktopServices.h
@@ -1239,8 +1237,6 @@ endif()
 
 if(WIN32)
     set(LAUNCHER_SOURCES
-        console/BootDebug.h
-        console/BootDebug.cpp
         console/WindowsConsole.h
         console/WindowsConsole.cpp
         ${LAUNCHER_SOURCES}

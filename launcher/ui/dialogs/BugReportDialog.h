@@ -24,14 +24,22 @@
 class QCheckBox;
 class QComboBox;
 class QDialogButtonBox;
+class QDragEnterEvent;
+class QDropEvent;
 class QLabel;
 class QLineEdit;
 class QListWidget;
 class QPlainTextEdit;
 class QPushButton;
+class QScrollArea;
+class QToolButton;
+class QWidget;
 
 /// "Report a Bug" dialog: report type, optional name and contact, description, optional screenshots, optional log.
 /// OS / launcher version are added automatically and shown to the user before sending.
+///
+/// Sized like the settings window: it never opens larger than the screen, remembers its size, can be resized, and the
+/// form scrolls while the title and the Send / Cancel buttons stay in view. Images can be dragged onto the window.
 class BugReportDialog : public QDialog {
     Q_OBJECT
 
@@ -42,9 +50,15 @@ class BugReportDialog : public QDialog {
     /// Fills in the form for an error the user just ran into (type "Bug", the error text, and a prompt to say what they were doing).
     void prefillError(const QString& title, const QString& details);
 
+    void done(int result) override;
+
     /// Opens the report dialog pre-filled with an error. Used by the "Report Bug" buttons on error windows.
     /// Falls back to the issue tracker when no report endpoint is configured.
     static void reportError(QWidget* parent, const QString& title, const QString& details);
+
+   protected:
+    void dragEnterEvent(QDragEnterEvent* event) override;
+    void dropEvent(QDropEvent* event) override;
 
    private slots:
     void addScreenshotFromFile();
@@ -55,9 +69,14 @@ class BugReportDialog : public QDialog {
 
    private:
     void addScreenshot(const QImage& image);
+    void setBusy(bool busy);
     QString systemInfoText() const;
     QByteArray buildPayload() const;
 
+    QScrollArea* m_scroll = nullptr;
+    QWidget* m_form = nullptr;
+    QToolButton* m_detailsToggle = nullptr;
+    QLabel* m_details = nullptr;
     QLabel* m_intro = nullptr;
     QComboBox* m_type = nullptr;
     QLineEdit* m_name = nullptr;

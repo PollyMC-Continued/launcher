@@ -42,7 +42,6 @@
 
 #include "Application.h"
 
-#include "console/BootDebug.h"
 #include "BuildConfig.h"
 
 #include "DataMigrationTask.h"
@@ -302,8 +301,6 @@ std::tuple<QDateTime, QString, QString, QString, QString> read_lock_File(const Q
 
 Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 {
-    BootDebug::stage("app: constructor entered");
-
     // Skip splash in headless/offscreen environments.
     const bool headless = QGuiApplication::platformName() == "offscreen"
                           || qEnvironmentVariableIsSet("POLLYMC_NO_SPLASH");
@@ -336,7 +333,6 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
     if (console::isConsole()) {
         isANSIColorConsole = true;
     }
-    BootDebug::stage("app: splash screen shown");
 
     setOrganizationName(BuildConfig.LAUNCHER_NAME);
     setOrganizationDomain(BuildConfig.LAUNCHER_DOMAIN);
@@ -403,7 +399,6 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         return;
     }
 
-    BootDebug::stage("app: command line parsed");
 
     QString origcwdPath = QDir::currentPath();
     QString binPath = applicationDirPath();
@@ -479,14 +474,12 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         return;
     }
     m_dataPath = dataPath;
-    BootDebug::stage("app: data directory ready");
 
     /*
      * Establish the mechanism for communication with an already running PrismLauncher that uses the same data path.
      * If there is one, tell it what the user actually wanted to do and exit.
      * We want to initialize this before logging to avoid messing with the log of a potential already running copy.
      */
-    BootDebug::stage("app: single-instance check passed");
     auto appID = ApplicationId::fromPathAndVersion(QDir::currentPath(), BuildConfig.printableVersionString());
     {
         // FIXME: you can run the same binaries with multiple data dirs and they won't clash. This could cause issues for updates.
@@ -553,7 +546,6 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         for (auto i = 4; i > 0; i--)
             FS::move(logBase.arg(i - 1), logBase.arg(i));
 
-        BootDebug::stage("app: opening log file");
         logFile = std::unique_ptr<QFile>(new QFile(logBase.arg(0)));
         if (!logFile->open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate)) {
             showFatalErrorMessage(tr("Data folder is not writable"),
@@ -566,7 +558,6 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         }
         qInstallMessageHandler(appDebugOutput);
         qSetMessagePattern(defaultLogFormat);
-        BootDebug::stage("app: logger installed (launcher log active from here)");
 
         logModel.reset(new LogModel(this));
 
@@ -898,6 +889,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
         m_settings->registerSetting("PagedGeometry", "");
 
+        m_settings->registerSetting("BugReportGeometry", "");
+
         m_settings->registerSetting("NewInstanceGeometry", "");
 
         m_settings->registerSetting("UpdateDialogGeometry", "");
@@ -1082,7 +1075,6 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         qInfo() << "Loading Instances...";
         m_instances->loadList();
         qInfo() << "<> Instances loaded.";
-        BootDebug::stage("app: instances loaded");
     }
 
     // and accounts
@@ -1115,7 +1107,6 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_metacache->addBase("feed", QDir("cache/feed").absolutePath());
         m_metacache->Load();
         qInfo() << "<> Cache initialized.";
-        BootDebug::stage("app: network cache initialized");
     }
 
     // Now we have network, download translation updates. Defer the request
@@ -1294,7 +1285,6 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
     qDebug() << "Installed style:" << QApplication::style()->metaObject()->className()
              << "objectName:" << QApplication::style()->objectName();
     performMainStartupAction();
-    BootDebug::stage("app: constructor finished");
 }
 
 bool Application::createSetupWizard()
