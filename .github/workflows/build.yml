@@ -22,8 +22,8 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' && !startsWith(github.ref, 'refs/tags/') }}
 
 env:
-  # Single source of truth for every platform's ONNX Runtime download.
   ORT_VERSION: "1.22.0"
+  WINDOWS_QT_VERSION: "6.11.2"
 
 jobs:
   skip-check:
@@ -224,6 +224,63 @@ jobs:
             mingw-w64-ucrt-x86_64-nsis
             mingw-w64-ucrt-x86_64-ccache
             mingw-w64-ucrt-x86_64-onnxruntime
+
+      - name: Pin Qt to ${{ env.WINDOWS_QT_VERSION }}
+        # MSYS2 is rolling and `pacman -S qt6-*` always installs the newest Qt.
+        # Downgrade every installed Qt 6 package to the pinned version in ONE
+        # transaction (Qt modules require matching versions of each other).
+        run: |
+          set -euo pipefail
+          QT_PIN="$WINDOWS_QT_VERSION"
+          MIRROR="https://mirror.msys2.org/mingw/ucrt64"
+
+          echo "Installed Qt packages before pinning:"
+          pacman -Q | grep -E '^mingw-w64-ucrt-x86_64-qt6-' || true
+
+          curl -fsSL --retry 3 "$MIRROR/" -o /tmp/ucrt64-index.html
+
+          mapfile -t PKGS < <(pacman -Qq | grep -E '^mingw-w64-ucrt-x86_64-qt6-')
+          if [ "${#PKGS[@]}" -eq 0 ]; then
+            echo "::error::No Qt 6 packages are installed; nothing to pin."
+            exit 1
+          fi
+
+          URLS=()
+          MISSING=()
+          for pkg in "${PKGS[@]}"; do
+            # Newest packaging revision of the pinned version, e.g. <pkg>-6.11.2-1-any.pkg.tar.zst
+            file=$(grep -oE "href=\"${pkg}-${QT_PIN}-[0-9]+-any\.pkg\.tar\.zst\"" /tmp/ucrt64-index.html \
+                   | sed -E 's/^href="//; s/"$//' | sort -V | tail -n1 || true)
+            if [ -z "$file" ]; then
+              MISSING+=("$pkg")
+            else
+              URLS+=("$MIRROR/$file")
+            fi
+          done
+
+          if [ "${#MISSING[@]}" -gt 0 ]; then
+            echo "::error::No ${QT_PIN} build found on the MSYS2 mirror for: ${MISSING[*]}"
+            echo "::error::Mixing Qt versions would break the build, so aborting. The mirror may have pruned ${QT_PIN}."
+            exit 1
+          fi
+
+          printf '%s\n' "${URLS[@]}"
+          # One transaction so Qt's inter-module version dependencies resolve together.
+          pacman -U --noconfirm "${URLS[@]}"
+
+          # Prevent any later pacman call in this job from upgrading Qt again.
+          IGNORE=$(printf '%s ' "${PKGS[@]}")
+          sed -i "s|^#\?IgnorePkg.*|IgnorePkg = ${IGNORE}|" /etc/pacman.conf
+
+          echo "Installed Qt packages after pinning:"
+          pacman -Q | grep -E '^mingw-w64-ucrt-x86_64-qt6-' || true
+
+          GOT=$(/ucrt64/bin/qmake6 -query QT_VERSION | tr -d '\r')
+          if [ "$GOT" != "$QT_PIN" ]; then
+            echo "::error::Qt pin failed: expected ${QT_PIN}, qmake6 reports ${GOT}."
+            exit 1
+          fi
+          echo "Qt pinned to ${GOT}"
 
       - name: Record exact toolchain versions (build-env.txt)
         # MSYS2 is a rolling release and `update: true` builds with whatever is
