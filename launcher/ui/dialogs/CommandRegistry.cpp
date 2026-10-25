@@ -17,6 +17,7 @@
 
 #include <QAction>
 #include <QMainWindow>
+#include <QMenu>
 #include <QSet>
 
 namespace {

@@ -582,7 +582,7 @@ void BugReportDialog::send()
 
     QNetworkReply* reply = APPLICATION->network()->post(request, payload);
     connect(reply, &QNetworkReply::finished, reply, &QObject::deleteLater);  // safe even if the dialog is closed while sending
-    connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+    connect(reply, &QNetworkReply::finished, this, [this, reply, duplicateKey]() {
         const int status = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
         const auto obj = QJsonDocument::fromJson(reply->readAll()).object();
         const bool ok = reply->error() == QNetworkReply::NoError && status >= 200 && status < 300 && obj.value("ok").toBool();

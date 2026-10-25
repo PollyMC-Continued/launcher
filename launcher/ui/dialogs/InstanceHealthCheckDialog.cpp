@@ -211,10 +211,10 @@ void InstanceHealthCheckDialog::runChecks()
                                    "", issues.size())
                                     .arg(m_instance->name().toHtmlEscaped()));
         for (const auto& issue : issues) {
-            const QString text = QStringLiteral("<b>%1</b><br>%2").arg(issue.title.toHtmlEscaped(), issue.detail.toHtmlEscaped());
+            // QListWidget items are plain text (no HTML), and constructing with a parent already adds the item
+            const QString text = QStringLiteral("%1\n%2").arg(issue.title, issue.detail);
             auto* item = new QListWidgetItem(severityIcon(issue.severity), text, m_issuesList);
             item->setFlags(item->flags() & ~Qt::ItemIsSelectable);
-            m_issuesList->addItem(item);
         }
     }
 
