@@ -664,13 +664,18 @@ void MainWindow::presentWhatsNew(int retriesLeft, const QString& previousVersion
 
 void MainWindow::on_actionWhatsNew_triggered()
 {
-    WhatsNewBrowserDialog dialog(this);
-    dialog.exec();
+    showWhatsNewBrowser();
 }
 
 void MainWindow::showWhatsNewToolbar()
 {
     ui->newsToolBar->setVisible(true);
+}
+
+void MainWindow::showWhatsNewBrowser()
+{
+    WhatsNewBrowserDialog dialog(this);
+    dialog.exec();
 }
 
 void MainWindow::maybeShowStarToast()

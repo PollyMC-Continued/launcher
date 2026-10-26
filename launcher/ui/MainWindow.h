@@ -98,6 +98,10 @@ class MainWindow : public QMainWindow {
     // the toolbar is introduced, because a window state saved by an older release keeps it hidden.
     void showWhatsNewToolbar();
 
+    // Opens the What's New version browser (the same dialog as Help > What's New and the toolbar
+    // button). Exposed for the hidden Developer Mode page.
+    void showWhatsNewBrowser();
+
     // Narrow entry points used by the hidden Developer Mode page.
     void triggerStarToastForDeveloper();
     void checkForUpdatesForDeveloper();

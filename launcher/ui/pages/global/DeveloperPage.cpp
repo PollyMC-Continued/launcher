@@ -193,6 +193,31 @@ DeveloperPage::DeveloperPage(QWidget* parent) : QWidget(parent)
             QMessageBox::information(this, tr("Developer tools"), tr("This platform's updater does not support the update UI preview."));
     });
 
+    auto* showWhatsNewToolbar = new QPushButton(tr("Show What's New toolbar"), this);
+    showWhatsNewToolbar->setToolTip(
+        tr("Reveals the bottom What's New toolbar. Use this if it went missing, for example after running an older launcher that hid it again."));
+    layout->addWidget(showWhatsNewToolbar);
+    connect(showWhatsNewToolbar, &QPushButton::clicked, this, [this]() {
+        auto* mainWindow = APPLICATION->showMainWindow();
+        if (!mainWindow) {
+            QMessageBox::warning(this, tr("Developer tools"), tr("The main window is not available."));
+            return;
+        }
+        mainWindow->showWhatsNewToolbar();
+    });
+
+    auto* openWhatsNew = new QPushButton(tr("Open What's New browser"), this);
+    openWhatsNew->setToolTip(tr("Opens the What's New version browser without using the toolbar or the Help menu."));
+    layout->addWidget(openWhatsNew);
+    connect(openWhatsNew, &QPushButton::clicked, this, [this]() {
+        auto* mainWindow = APPLICATION->showMainWindow();
+        if (!mainWindow) {
+            QMessageBox::warning(this, tr("Developer tools"), tr("The main window is not available."));
+            return;
+        }
+        mainWindow->showWhatsNewBrowser();
+    });
+
     auto* simulateFailure = new QPushButton(tr("Simulate update-check failure"), this);
     simulateFailure->setToolTip(tr("Shows a test-only failure message. It does not contact the updater or change update settings."));
     layout->addWidget(simulateFailure);
