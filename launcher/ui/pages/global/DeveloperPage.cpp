@@ -22,7 +22,7 @@
 #include <QTimer>
 #include <QUrl>
 #include <QVBoxLayout>
-#include <QSplashScreen>
+#include "ui/widgets/SplashScreen.h"
 #include <QSvgRenderer>
 
 #include "Application.h"
@@ -80,20 +80,7 @@ void runAfterSettingsClose(QWidget* page, std::function<void()> fn)
 
 void showSplashPreview()
 {
-    QPixmap pixmap(400, 260);
-    pixmap.fill(QColor(QStringLiteral("#191919")));
-    QSvgRenderer renderer(QStringLiteral(":/branding/splash-logo.svg"));
-    if (renderer.isValid()) {
-        QPainter painter(&pixmap);
-        painter.setRenderHint(QPainter::Antialiasing);
-        painter.setRenderHint(QPainter::SmoothPixmapTransform);
-        renderer.render(&painter, QRectF(40, 76, 320, 107));
-    }
-    auto* splash = new QSplashScreen(pixmap, Qt::WindowStaysOnTopHint);
-    splash->show();
-    splash->raise();
-    QTimer::singleShot(1800, splash, &QSplashScreen::close);
-    QTimer::singleShot(1900, splash, &QObject::deleteLater);
+    SplashScreen::showPreview();
 }
 } // namespace
 

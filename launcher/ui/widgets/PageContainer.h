@@ -47,7 +47,7 @@
 class QLayout;
 class IconLabel;
 class QSortFilterProxyModel;
-class QStringListModel;
+class QStandardItemModel;
 class PageModel;
 class QLabel;
 class QListView;
@@ -140,14 +140,19 @@ class PageContainer : public QWidget, public BasePageContainer {
 
     // ---- settings search ----
     struct SearchEntry {
-        QString label;
+        QString label;     // what is shown and matched first
+        QString keywords;  // tooltips, combo box items, ... matched at a lower weight, never shown
+        QString section;   // "Tab › Group" the setting lives in
         QString pageId;
         QString pageName;
-        QPointer<QWidget> widget;
+        QPointer<QWidget> widget;  // what gets revealed, focused and highlighted
+        bool control = false;      // a real control (checkbox, labelled field, button) rather than loose text
+        bool flash = true;
     };
     QLineEdit* m_searchBox = nullptr;
     QListView* m_searchResults = nullptr;
-    QStringListModel* m_searchResultsModel = nullptr;
+    QStandardItemModel* m_searchResultsModel = nullptr;
+    QStringList m_queryTokens;  // lower-cased words of the current query, also used to highlight matches
     QList<SearchEntry> m_searchIndex;
     QList<int> m_activeResults;
     bool m_searchIndexBuilt = false;

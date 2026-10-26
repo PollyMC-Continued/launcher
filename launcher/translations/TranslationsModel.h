@@ -40,7 +40,19 @@ class TranslationsModel : public QAbstractListModel {
     void downloadIndex();
     void setUseSystemLocale(bool useSystemLocale);
 
+    /** Country code (e.g. "DE") the first-run language was guessed from, empty if it was not guessed from the IP. */
+    QString autoDetectedCountry() const;
+    /** Call when the user picks a language by hand so a late IP lookup can't override the choice. */
+    void cancelAutoDetect();
+
+   signals:
+    /** The language was picked from the user's region (IP lookup) after the first-run index arrived. */
+    void languageAutoDetected(QString key, QString country);
+
    private:
+    QString languageForSystemLocale();
+    QString languageForCountry(const QString& country);
+    void startRegionLookup();
     QList<Language>::Iterator findLanguage(const QString& key);
     std::optional<Language> findLanguageAsOptional(const QString& key);
     void reloadLocalFiles();
@@ -58,6 +70,8 @@ class TranslationsModel : public QAbstractListModel {
     void dlFailed(QString reason);
     void dlGood();
     void translationDirChanged(const QString& path);
+    void regionLookupSucceeded();
+    void regionLookupEnded();
 
    private: /* data */
     struct Private;

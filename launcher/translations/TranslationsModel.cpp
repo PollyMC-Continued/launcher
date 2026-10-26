@@ -40,7 +40,11 @@
 #include <QDebug>
 #include <QDir>
 #include <QLibraryInfo>
+#include <QHash>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QLocale>
+#include <QTimer>
 #include <QTranslator>
 #include <locale>
 
@@ -56,6 +60,11 @@
 #include "settings/SettingsObject.h"
 
 const static QLatin1String defaultLangCode("en_US");
+
+// Plain "who am I" country lookup; no key, HTTPS. The answer may be a JSON object with a country code
+// ("country" / "country_code" / "countryCode") or just the bare two-letter code, so the provider can be swapped.
+const static QLatin1String regionLookupUrl("https://api.country.is/");
+constexpr int regionLookupTimeoutMs = 4000;
 
 enum class FileType { NONE, QM, PO };
 
@@ -169,6 +178,12 @@ struct TranslationsModel::Private {
     const QString m_system_language = m_system_locale.split('_').front();
 
     bool no_language_set = false;
+
+    // first-run language guess from the IP's country
+    NetJob::Ptr m_region_job;
+    QByteArray* m_region_reply = nullptr;  // owned by the download inside m_region_job
+    QString m_auto_country;
+    bool m_auto_cancelled = false;
 };
 
 TranslationsModel::TranslationsModel(QString path, QObject* parent) : QAbstractListModel(parent)
@@ -202,16 +217,19 @@ void TranslationsModel::indexReceived()
     if (d->no_language_set) {
         reloadLocalFiles();
 
-        auto language = d->m_system_locale;
-        if (!findLanguageAsOptional(language).has_value()) {
-            language = d->m_system_language;
-        }
+        // 1) the OS language is the strongest signal - use it when we have a translation for it
+        auto language = languageForSystemLocale();
         selectLanguage(language);
         if (selectedLanguage() != defaultLangCode) {
             updateLanguage(selectedLanguage());
         }
         APPLICATION->settings()->set("Language", selectedLanguage());
         d->no_language_set = false;
+
+        // 2) the OS says English (or something we don't have): guess from where the user is
+        if (selectedLanguage() == defaultLangCode) {
+            startRegionLookup();
+        }
     }
 
     else if (d->m_selectedLanguage != defaultLangCode) {
@@ -424,6 +442,142 @@ std::optional<Language> TranslationsModel::findLanguageAsOptional(const QString&
     if (found != d->m_languages.end())
         return *found;
     return {};
+}
+
+QString TranslationsModel::languageForSystemLocale()
+{
+    const auto available = [this](const QString& key) { return !key.isEmpty() && findLanguageAsOptional(key).has_value(); };
+
+    QStringList candidates = { d->m_system_locale };
+    for (QString ui : QLocale::system().uiLanguages()) {  // "de-DE", "pt-BR", "zh-Hans-CN"
+        ui.replace('-', '_');
+        const QStringList parts = ui.split('_');
+        candidates << ui;
+        if (parts.size() == 3)  // drop the script: zh_Hans_CN -> zh_CN
+            candidates << parts.first() + '_' + parts.last();
+        candidates << parts.first();
+    }
+    candidates << d->m_system_language;
+
+    for (const QString& candidate : candidates) {
+        if (available(candidate))
+            return candidate;
+    }
+    return d->m_system_locale;  // not available: selectLanguage() falls back to the default
+}
+
+QString TranslationsModel::languageForCountry(const QString& country)
+{
+    // Only countries with one clearly dominant language. Multilingual countries (CH, BE, CA, IN, SG, ZA, LU, ...)
+    // and English-speaking ones are left out on purpose: guessing there is worse than staying in English.
+    static const QHash<QString, QString> primary = {
+        { "AR", "es" },    { "AT", "de" },    { "BG", "bg" },    { "BR", "pt_BR" }, { "CL", "es" },    { "CN", "zh_CN" }, { "CO", "es" },
+        { "CZ", "cs" },    { "DE", "de" },    { "DK", "da" },    { "EE", "et" },    { "ES", "es" },    { "FI", "fi" },    { "FR", "fr" },
+        { "GR", "el" },    { "HK", "zh_HK" }, { "HR", "hr" },    { "HU", "hu" },    { "ID", "id" },    { "IL", "he" },    { "IT", "it" },
+        { "JP", "ja" },    { "KR", "ko" },    { "LT", "lt" },    { "LV", "lv" },    { "MX", "es" },    { "NL", "nl" },    { "NO", "nb" },
+        { "PE", "es" },    { "PL", "pl" },    { "PT", "pt_PT" }, { "RO", "ro" },    { "RS", "sr" },    { "RU", "ru" },    { "SA", "ar" },
+        { "SE", "sv" },    { "SI", "sl" },    { "SK", "sk" },    { "TH", "th" },    { "TR", "tr" },    { "TW", "zh_TW" }, { "UA", "uk" },
+        { "VN", "vi" },
+    };
+    const QString lang = primary.value(country.toUpper());
+    if (lang.isEmpty())
+        return {};
+
+    // best match first: de_DE for DE, then plain de, then any other variant of the same language
+    const QString base = lang.section('_', 0, 0);
+    const QStringList exact = lang.contains('_') ? QStringList{ lang } : QStringList{ lang + '_' + country.toUpper(), lang, lang + '_' + base.toUpper() };
+    for (const QString& key : exact) {
+        if (key != defaultLangCode && findLanguageAsOptional(key).has_value())
+            return key;
+    }
+    for (const auto& language : d->m_languages) {
+        if (language.key.section('_', 0, 0) == base && language.key != defaultLangCode && language.key != "ja_KANJI")
+            return language.key;
+    }
+    return {};
+}
+
+QString TranslationsModel::autoDetectedCountry() const
+{
+    return d->m_auto_country;
+}
+
+void TranslationsModel::cancelAutoDetect()
+{
+    d->m_auto_cancelled = true;
+    if (d->m_region_job)
+        d->m_region_job->abort();
+}
+
+void TranslationsModel::startRegionLookup()
+{
+    if (d->m_region_job || d->m_auto_cancelled)
+        return;
+    if (!APPLICATION->settings()->get("AutoDetectLanguageByIp").toBool())
+        return;
+
+    qDebug() << "Guessing the language from the region...";
+    auto [dl, reply] = Net::Download::makeByteArray(QUrl(regionLookupUrl));
+    d->m_region_reply = reply;
+    d->m_region_job.reset(new NetJob("Language region lookup", APPLICATION->network()));
+    d->m_region_job->addNetAction(dl);
+    d->m_region_job->setAskRetry(false);
+    connect(d->m_region_job.get(), &NetJob::succeeded, this, &TranslationsModel::regionLookupSucceeded);
+    connect(d->m_region_job.get(), &NetJob::failed, this, &TranslationsModel::regionLookupEnded);
+    connect(d->m_region_job.get(), &NetJob::aborted, this, &TranslationsModel::regionLookupEnded);
+    d->m_region_job->start();
+
+    // never keep the first-run screen waiting on a slow lookup
+    QTimer::singleShot(regionLookupTimeoutMs, this, [this, job = d->m_region_job.get()] {
+        if (d->m_region_job.get() == job)
+            d->m_region_job->abort();
+    });
+}
+
+void TranslationsModel::regionLookupEnded()
+{
+    qDebug() << "Region lookup did not produce a language (failed, timed out or cancelled)";
+    d->m_region_reply = nullptr;
+    d->m_region_job.reset();
+}
+
+void TranslationsModel::regionLookupSucceeded()
+{
+    const QByteArray body = d->m_region_reply ? *d->m_region_reply : QByteArray();
+    d->m_region_reply = nullptr;
+    d->m_region_job.reset();
+
+    QString country;
+    const auto doc = QJsonDocument::fromJson(body);
+    if (doc.isObject()) {
+        const auto obj = doc.object();
+        for (const char* field : { "country", "country_code", "countryCode" }) {
+            if (obj.value(QLatin1String(field)).isString()) {
+                country = obj.value(QLatin1String(field)).toString();
+                break;
+            }
+        }
+    } else {
+        country = QString::fromUtf8(body).trimmed();
+    }
+    country = country.trimmed().toUpper();
+    if (country.size() != 2)
+        return;
+
+    // the user may have picked something themselves while we were waiting
+    if (d->m_auto_cancelled || d->m_selectedLanguage != defaultLangCode)
+        return;
+
+    const QString key = languageForCountry(country);
+    if (key.isEmpty())
+        return;
+
+    qDebug() << "Region" << country << "->" << key;
+    d->m_auto_country = country;
+    selectLanguage(key);
+    updateLanguage(key);
+    APPLICATION->settings()->set("Language", selectedLanguage());
+    emit languageAutoDetected(selectedLanguage(), country);
 }
 
 void TranslationsModel::setUseSystemLocale(bool useSystemLocale)

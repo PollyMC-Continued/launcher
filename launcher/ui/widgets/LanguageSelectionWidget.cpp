@@ -2,6 +2,7 @@
 
 #include <QCheckBox>
 #include <QHeaderView>
+#include <QLocale>
 #include <QLabel>
 #include <QTreeView>
 #include <QVBoxLayout>
@@ -30,6 +31,12 @@ LanguageSelectionWidget::LanguageSelectionWidget(QWidget* parent) : QWidget(pare
     loadingLabel->setWordWrap(true);
     loadingLabel->setStyleSheet(QStringLiteral("color: gray;"));
     verticalLayout->addWidget(loadingLabel);
+    autoDetectLabel = new QLabel(this);
+    autoDetectLabel->setObjectName(QStringLiteral("autoDetectLabel"));
+    autoDetectLabel->setWordWrap(true);
+    autoDetectLabel->setStyleSheet(QStringLiteral("color: gray;"));
+    autoDetectLabel->hide();
+    verticalLayout->addWidget(autoDetectLabel);
     helpUsLabel = new QLabel(this);
     helpUsLabel->setObjectName(QStringLiteral("helpUsLabel"));
     helpUsLabel->setTextInteractionFlags(Qt::LinksAccessibleByMouse);
@@ -56,6 +63,18 @@ LanguageSelectionWidget::LanguageSelectionWidget(QWidget* parent) : QWidget(pare
     connect(translations, &QAbstractItemModel::rowsInserted, this, &LanguageSelectionWidget::updateLoadingHint);
     connect(translations, &QAbstractItemModel::rowsRemoved, this, &LanguageSelectionWidget::updateLoadingHint);
     updateLoadingHint();
+    // The language can be guessed from the IP shortly after the page opens; show it when it happens.
+    connect(translations, &TranslationsModel::languageAutoDetected, this, &LanguageSelectionWidget::updateAutoDetectHint);
+    updateAutoDetectHint();
+    // A hand-made choice (click or keyboard) always wins over a late guess.
+    connect(languageView, &QTreeView::clicked, this, [this, translations] {
+        translations->cancelAutoDetect();
+        autoDetectLabel->hide();
+    });
+    connect(languageView, &QTreeView::activated, this, [this, translations] {
+        translations->cancelAutoDetect();
+        autoDetectLabel->hide();
+    });
     verticalLayout->setContentsMargins(0, 0, 0, 0);
 
     auto language_setting = APPLICATION->settings()->getSetting("Language");
@@ -75,6 +94,19 @@ void LanguageSelectionWidget::retranslate()
     helpUsLabel->setText(text);
     formatCheckbox->setText(tr("Use system locales"));
     updateLoadingHint();
+    updateAutoDetectHint();
+}
+
+void LanguageSelectionWidget::updateAutoDetectHint()
+{
+    const QString country = APPLICATION->translations()->autoDetectedCountry();
+    if (country.isEmpty()) {
+        autoDetectLabel->hide();
+        return;
+    }
+    const QString name = QLocale::territoryToString(QLocale::codeToTerritory(country));
+    autoDetectLabel->setText(tr("Language picked automatically from your region (%1). Not right? Choose another one above.").arg(name));
+    autoDetectLabel->show();
 }
 
 void LanguageSelectionWidget::updateLoadingHint()
@@ -95,6 +127,8 @@ void LanguageSelectionWidget::languageRowChanged(const QModelIndex& current, con
         return;
     }
     auto translations = APPLICATION->translations();
+    if (languageView->hasFocus())  // arrow keys; programmatic changes don't have focus
+        translations->cancelAutoDetect();
     QString key = translations->data(current, Qt::UserRole).toString();
     translations->selectLanguage(key);
     translations->updateLanguage(key);

@@ -39,15 +39,21 @@
 #include "BuildConfig.h"
 #include "PageContainer_p.h"
 
+#include <QAbstractButton>
+#include <QAbstractTextDocumentLayout>
+#include <QApplication>
 #include <QCheckBox>
+#include <QComboBox>
 #include <QDialogButtonBox>
 #include <QEvent>
 #include <QGridLayout>
 #include <QGroupBox>
+#include <QHash>
 #include <QKeyEvent>
 #include <QLabel>
 #include <QLineEdit>
 #include <QListView>
+#include <QPainter>
 #include <QPushButton>
 #include <QRadioButton>
 #include <QScrollArea>
@@ -56,10 +62,13 @@
 #include <QShortcut>
 #include <QSortFilterProxyModel>
 #include <QStackedLayout>
-#include <QStringListModel>
+#include <QStackedWidget>
+#include <QStandardItemModel>
 #include <QStyledItemDelegate>
 #include <QTabWidget>
+#include <QTextDocument>
 #include <QTimer>
+#include <QToolButton>
 #include <QUrl>
 
 #include <algorithm>
@@ -106,6 +115,137 @@ void flashWidget(QWidget* widget)
             widget->setStyleSheet(oldStyleSheet);
     });
 }
+
+constexpr int SecondaryRole = Qt::UserRole + 1;
+
+// Removes "&" keyboard-mnemonic markers ("&Name" -> "Name", "Fish && Chips" -> "Fish & Chips").
+QString stripMnemonic(QString text)
+{
+    text.replace(QStringLiteral("&&"), QStringLiteral("\x01"));
+    text.remove(QLatin1Char('&'));
+    text.replace(QLatin1Char('\x01'), QLatin1Char('&'));
+    return text;
+}
+
+// True for widgets that were hidden on purpose (a feature that is turned off), not just not shown yet.
+bool explicitlyHidden(const QWidget* widget, const QWidget* root)
+{
+    for (const QWidget* w = widget; w && w != root; w = w->parentWidget()) {
+        if (w->testAttribute(Qt::WA_WState_ExplicitShowHide) && w->testAttribute(Qt::WA_WState_Hidden))
+            return true;
+    }
+    return false;
+}
+
+// "Tab › Group" for a widget, outermost first.
+QString sectionFor(const QWidget* widget, const QWidget* root)
+{
+    QStringList parts;
+    const QWidget* child = widget;
+    for (const QWidget* parent = widget->parentWidget(); parent && child != root; child = parent, parent = parent->parentWidget()) {
+        if (auto* group = qobject_cast<const QGroupBox*>(parent)) {
+            const QString title = stripMnemonic(group->title()).simplified();
+            if (!title.isEmpty())
+                parts.prepend(title);
+        }
+        if (auto* tabs = qobject_cast<const QTabWidget*>(parent->parentWidget())) {
+            const int i = tabs->indexOf(const_cast<QWidget*>(child));
+            if (i >= 0)
+                parts.prepend(stripMnemonic(tabs->tabText(i)).simplified());
+        }
+    }
+    parts.removeDuplicates();
+    return parts.join(QStringLiteral(" › "));
+}
+
+// Makes a widget actually visible: switches tabs / stacked pages on the way up to the page.
+void revealWidget(QWidget* target, const QWidget* stopAt)
+{
+    for (QWidget* child = target; child && child != stopAt; child = child->parentWidget()) {
+        QWidget* parent = child->parentWidget();
+        if (!parent)
+            break;
+        if (auto* tabs = qobject_cast<QTabWidget*>(parent->parentWidget())) {
+            if (tabs->indexOf(child) >= 0)
+                tabs->setCurrentWidget(child);
+        } else if (auto* stack = qobject_cast<QStackedWidget*>(parent)) {
+            stack->setCurrentWidget(child);
+        }
+    }
+}
+
+// Two-line result: the setting name with the typed words in bold, and "Page › Section" underneath.
+class SearchResultDelegate : public QStyledItemDelegate {
+   public:
+    SearchResultDelegate(const QStringList* tokens, QObject* parent) : QStyledItemDelegate(parent), m_tokens(tokens) {}
+
+    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex&) const override
+    {
+        return QSize(0, QFontMetrics(option.font).height() * 2 + 10);
+    }
+
+    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const override
+    {
+        QStyleOptionViewItem opt = option;
+        initStyleOption(&opt, index);
+        const QString primary = opt.text;
+        const QString secondary = index.data(SecondaryRole).toString();
+        opt.text.clear();
+        const QWidget* widget = opt.widget;
+        (widget ? widget->style() : QApplication::style())->drawControl(QStyle::CE_ItemViewItem, &opt, painter, widget);
+
+        const bool selected = opt.state & QStyle::State_Selected;
+        const QColor mainColor = opt.palette.color(selected ? QPalette::HighlightedText : QPalette::Text);
+        QColor subColor = mainColor;
+        subColor.setAlphaF(selected ? 0.85 : 0.6);
+
+        const QFontMetrics fm(opt.font);
+        const QRect area = opt.rect.adjusted(8, 4, -8, -4);
+
+        painter->save();
+        painter->setClipRect(area);
+
+        QTextDocument doc;
+        doc.setDefaultFont(opt.font);
+        doc.setDocumentMargin(0);
+        doc.setHtml(QStringLiteral("<span style=\"color:%1\">%2</span>").arg(mainColor.name(), highlighted(primary)));
+        painter->translate(area.topLeft());
+        doc.drawContents(painter, QRectF(0, 0, area.width(), fm.height() + 2));
+        painter->translate(-area.topLeft());
+
+        if (!secondary.isEmpty()) {
+            painter->setPen(subColor);
+            const QRect subRect(area.left(), area.top() + fm.height() + 2, area.width(), fm.height());
+            painter->drawText(subRect, Qt::AlignLeft | Qt::AlignVCenter, fm.elidedText(secondary, Qt::ElideRight, subRect.width()));
+        }
+        painter->restore();
+    }
+
+   private:
+    QString highlighted(const QString& text) const
+    {
+        QVector<bool> mask(text.size(), false);
+        for (const QString& token : *m_tokens) {
+            if (token.isEmpty())
+                continue;
+            for (int from = 0; (from = text.indexOf(token, from, Qt::CaseInsensitive)) >= 0; from += token.size())
+                for (int i = from; i < from + token.size() && i < mask.size(); ++i)
+                    mask[i] = true;
+        }
+        QString html;
+        for (int i = 0; i < text.size();) {
+            int j = i;
+            while (j < text.size() && mask[j] == mask[i])
+                ++j;
+            const QString part = text.mid(i, j - i).toHtmlEscaped();
+            html += mask[i] ? QStringLiteral("<b>%1</b>").arg(part) : part;
+            i = j;
+        }
+        return html;
+    }
+
+    const QStringList* m_tokens;
+};
 }  // namespace
 
 class PageEntryFilterModel : public QSortFilterProxyModel {
@@ -241,15 +381,17 @@ void PageContainer::createUI()
     m_searchBox = new QLineEdit(this);
     m_searchBox->setClearButtonEnabled(true);
     m_searchBox->setPlaceholderText(tr("Search settings…"));
+    m_searchBox->setToolTip(tr("Search all settings (Ctrl+F). Several words narrow the results down."));
     m_searchBox->installEventFilter(this);
     connect(m_searchBox, &QLineEdit::textChanged, this, &PageContainer::searchTextChanged);
     connect(m_searchBox, &QLineEdit::returnPressed, this, &PageContainer::searchReturnPressed);
 
-    m_searchResultsModel = new QStringListModel(this);
+    m_searchResultsModel = new QStandardItemModel(this);
     m_searchResults = new QListView(this);
     m_searchResults->setModel(m_searchResultsModel);
     m_searchResults->setEditTriggers(QAbstractItemView::NoEditTriggers);
     m_searchResults->setUniformItemSizes(true);
+    m_searchResults->setItemDelegate(new SearchResultDelegate(&m_queryTokens, m_searchResults));
     m_searchResults->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
     m_searchResults->hide();
     m_searchResults->installEventFilter(this);
@@ -280,6 +422,7 @@ void PageContainer::retranslate()
     m_searchIndexBuilt = false;
     m_searchIndex.clear();
     m_searchBox->setPlaceholderText(tr("Search settings…"));
+    m_searchBox->setToolTip(tr("Search all settings (Ctrl+F). Several words narrow the results down."));
 }
 
 void PageContainer::addButtons(QWidget* buttons)
@@ -378,7 +521,7 @@ void PageContainer::buildSearchIndex()
 
     // a label is worth indexing if it looks like the name of a setting, not a paragraph of prose
     const auto usableText = [](QString text) -> QString {
-        text = text.simplified();
+        text = stripMnemonic(text).simplified();
         while (text.endsWith(QLatin1Char(':')))
             text.chop(1);
         if (text.isEmpty() || text.size() > 100)
@@ -387,38 +530,87 @@ void PageContainer::buildSearchIndex()
             return {};
         if (text.startsWith("http:") || text.startsWith("https:"))
             return {};
+        if (text == QStringLiteral("…") || text == QStringLiteral("..."))
+            return {};
         return text;
     };
 
-    QSet<QString> seen;
-    const auto addEntry = [this, &seen](const QString& label, BasePage* page, QWidget* widget) {
-        if (label.isEmpty())
+    QHash<QString, int> byKey;  // page + label -> index, so a control beats a plain label of the same name
+    const auto addEntry = [&](SearchEntry entry, BasePage* page, const QWidget* pageWidget) {
+        if (entry.label.isEmpty() || !entry.widget || explicitlyHidden(entry.widget, pageWidget))
             return;
-        const QString key = page->id() + QStringLiteral("|") + label;
-        if (!seen.contains(key)) {
-            seen.insert(key);
-            m_searchIndex.append(SearchEntry{ label, page->id(), page->displayName(), widget });
+        entry.pageId = page->id();
+        entry.pageName = page->displayName();
+        entry.section = sectionFor(entry.widget, pageWidget);
+        const QString key = entry.pageId + QLatin1Char('|') + entry.label.toLower();
+        const auto it = byKey.constFind(key);
+        if (it == byKey.constEnd()) {
+            byKey.insert(key, m_searchIndex.size());
+            m_searchIndex.append(entry);
+        } else if (entry.control && !m_searchIndex.at(*it).control) {
+            m_searchIndex[*it] = entry;
         }
+    };
+
+    // everything a user might type that is not the label: tooltips and the choices of a drop-down
+    const auto keywordsFor = [](const QWidget* widget) {
+        QStringList words;
+        if (widget) {
+            words << stripMnemonic(widget->toolTip()).simplified();
+            if (auto* combo = qobject_cast<const QComboBox*>(widget))
+                for (int i = 0; i < combo->count() && i < 40; ++i)
+                    words << combo->itemText(i);
+        }
+        words.removeAll(QString());
+        return words.join(QLatin1Char(' '));
     };
 
     for (auto page : m_model->pages()) {
         if (!page->shouldDisplay())
             continue;
-        auto* widget = dynamic_cast<QWidget*>(page);
-        if (!widget)
+        auto* pageWidget = dynamic_cast<QWidget*>(page);
+        if (!pageWidget)
             continue;
 
-        for (auto* label : widget->findChildren<QLabel*>())
-            addEntry(usableText(label->text()), page, label);
-        for (auto* box : widget->findChildren<QCheckBox*>())
-            addEntry(usableText(box->text()), page, box);
-        for (auto* radio : widget->findChildren<QRadioButton*>())
-            addEntry(usableText(radio->text()), page, radio);
-        for (auto* group : widget->findChildren<QGroupBox*>())
-            addEntry(usableText(group->title()), page, group);
-        for (auto* tabs : widget->findChildren<QTabWidget*>())
-            for (int i = 0; i < tabs->count(); ++i)
-                addEntry(usableText(tabs->tabText(i)), page, tabs->widget(i));
+        // Field captions point at their field through the buddy: search finds the field itself, with its
+        // tooltip and choices as extra keywords.
+        for (auto* label : pageWidget->findChildren<QLabel*>()) {
+            SearchEntry entry;
+            entry.label = usableText(label->text());
+            QWidget* buddy = label->buddy();
+            entry.widget = buddy ? buddy : label;
+            entry.control = buddy != nullptr;
+            entry.keywords = keywordsFor(buddy ? buddy : label);
+            addEntry(entry, page, pageWidget);
+        }
+        for (auto* box : pageWidget->findChildren<QAbstractButton*>()) {
+            const bool isToggle = qobject_cast<QCheckBox*>(box) || qobject_cast<QRadioButton*>(box);
+            const bool isAction = qobject_cast<QPushButton*>(box) || qobject_cast<QToolButton*>(box);
+            if (!isToggle && !isAction)
+                continue;
+            SearchEntry entry;
+            entry.label = usableText(box->text());
+            entry.widget = box;
+            entry.control = true;
+            entry.keywords = keywordsFor(box);
+            addEntry(entry, page, pageWidget);
+        }
+        for (auto* group : pageWidget->findChildren<QGroupBox*>()) {
+            SearchEntry entry;
+            entry.label = usableText(group->title());
+            entry.widget = group;
+            entry.keywords = keywordsFor(group);
+            addEntry(entry, page, pageWidget);
+        }
+        for (auto* tabs : pageWidget->findChildren<QTabWidget*>()) {
+            for (int i = 0; i < tabs->count(); ++i) {
+                SearchEntry entry;
+                entry.label = usableText(tabs->tabText(i));
+                entry.widget = tabs->widget(i);
+                entry.flash = false;  // the tab itself opens; flashing a whole tab page is just noise
+                addEntry(entry, page, pageWidget);
+            }
+        }
     }
 
     m_searchIndexBuilt = true;
@@ -426,7 +618,7 @@ void PageContainer::buildSearchIndex()
 
 void PageContainer::searchTextChanged(const QString& text)
 {
-    const QString query = text.trimmed();
+    const QString query = text.simplified();
     if (query.isEmpty()) {
         clearSearch();
         return;
@@ -436,39 +628,102 @@ void PageContainer::searchTextChanged(const QString& text)
     runSearch(query);
 }
 
+namespace {
+bool isWordStart(const QString& text, int pos)
+{
+    return pos == 0 || !text.at(pos - 1).isLetterOrNumber();
+}
+
+// Typed characters appear in the same order in the text ("jvmargs" in "JVM arguments"): forgiving, so lowest rank.
+bool isSubsequence(const QString& needle, const QString& haystack)
+{
+    int h = 0;
+    for (const QChar c : needle) {
+        h = haystack.indexOf(c, h, Qt::CaseInsensitive);
+        if (h < 0)
+            return false;
+        ++h;
+    }
+    return true;
+}
+}  // namespace
+
 void PageContainer::runSearch(const QString& query)
 {
+    m_queryTokens = query.toLower().split(QLatin1Char(' '), Qt::SkipEmptyParts);
+
     struct Scored {
         int index;
         int score;
     };
+
+    // Every word has to match somewhere (name, then keywords, then section / page). Words matching the name
+    // and matching it early or at the start of a word score highest.
+    const auto scoreEntry = [this](const SearchEntry& entry) -> int {
+        const QString label = entry.label.toLower();
+        int total = 0;
+        for (const QString& token : std::as_const(m_queryTokens)) {
+            int score = 0;
+            const int pos = label.indexOf(token);
+            if (label == token)
+                score = 100;
+            else if (pos == 0)
+                score = 60;
+            else if (pos > 0 && isWordStart(label, pos))
+                score = 40;
+            else if (pos > 0)
+                score = 20;
+            else if (entry.keywords.contains(token, Qt::CaseInsensitive))
+                score = 8;
+            else if (entry.section.contains(token, Qt::CaseInsensitive) || entry.pageName.contains(token, Qt::CaseInsensitive))
+                score = 4;
+            else
+                return 0;
+            total += score;
+        }
+        // real controls beat loose text; shorter names beat long ones that merely contain the words
+        total += entry.control ? 6 : 0;
+        total -= qMin(entry.label.size() / 8, 5);
+        return qMax(total, 1);
+    };
+
     QList<Scored> scored;
     for (int i = 0; i < m_searchIndex.size(); ++i) {
-        const auto& entry = m_searchIndex.at(i);
-        int score = 0;
-        if (entry.label.startsWith(query, Qt::CaseInsensitive))
-            score = 3;
-        else if (entry.label.contains(query, Qt::CaseInsensitive))
-            score = 2;
-        else if (entry.pageName.contains(query, Qt::CaseInsensitive))
-            score = 1;
-        if (score > 0)
+        if (const int score = scoreEntry(m_searchIndex.at(i)); score > 0)
             scored.append({ i, score });
     }
+
+    // nothing matched strictly: forgive typos in the middle / skipped letters
+    if (scored.isEmpty() && query.size() >= 3) {
+        const QString squashed = QString(query).remove(QLatin1Char(' '));
+        for (int i = 0; i < m_searchIndex.size(); ++i) {
+            if (isSubsequence(squashed, m_searchIndex.at(i).label))
+                scored.append({ i, 1 });
+        }
+    }
+
     std::stable_sort(scored.begin(), scored.end(), [](const Scored& a, const Scored& b) { return a.score > b.score; });
 
     constexpr int MaxResults = 60;
-    QStringList texts;
+    m_searchResultsModel->clear();
     m_activeResults.clear();
     for (int i = 0; i < scored.size() && i < MaxResults; ++i) {
         const auto& entry = m_searchIndex.at(scored.at(i).index);
         m_activeResults.append(scored.at(i).index);
-        texts << QStringLiteral("%1 — %2").arg(entry.label, entry.pageName);
+        auto* item = new QStandardItem(entry.label);
+        QString where = entry.pageName;
+        if (!entry.section.isEmpty())
+            where += QStringLiteral(" › ") + entry.section;
+        item->setData(where, SecondaryRole);
+        m_searchResultsModel->appendRow(item);
     }
-    if (texts.isEmpty())
-        texts << tr("No settings match \"%1\"").arg(query);
+    if (m_activeResults.isEmpty()) {
+        auto* item = new QStandardItem(tr("No settings match \"%1\"").arg(query));
+        item->setData(tr("Try fewer or shorter words, or part of the setting's name."), SecondaryRole);
+        item->setFlags(Qt::NoItemFlags);
+        m_searchResultsModel->appendRow(item);
+    }
 
-    m_searchResultsModel->setStringList(texts);
     m_pageList->hide();
     m_searchResults->show();
     m_inSearch = true;
@@ -483,13 +738,14 @@ void PageContainer::clearSearch()
     m_inSearch = false;
     m_searchResults->hide();
     m_pageList->show();
-    m_searchResultsModel->setStringList({});
+    m_searchResultsModel->clear();
+    m_queryTokens.clear();
 }
 
 void PageContainer::searchReturnPressed()
 {
     auto index = m_searchResults->currentIndex();
-    if (!index.isValid() && m_searchResultsModel->rowCount() > 0)
+    if (!index.isValid() && !m_activeResults.isEmpty())
         index = m_searchResultsModel->index(0, 0);
     jumpToResult(index);
 }
@@ -514,14 +770,17 @@ void PageContainer::jumpToResult(const QModelIndex& index)
 
     // QPointer: the widget must survive until the page switch has landed
     QPointer<QWidget> safeTarget = entry.widget;
-    QTimer::singleShot(0, this, [safeTarget] {
+    const bool flash = entry.flash;
+    QTimer::singleShot(0, this, [this, safeTarget, flash] {
         QWidget* target = safeTarget;
         if (!target)
             return;
+        revealWidget(target, this);  // switch to the right tab first, otherwise the target is invisible
         scrollWidgetIntoView(target);
         if (target->focusPolicy() != Qt::NoFocus)
             target->setFocus(Qt::ShortcutFocusReason);
-        flashWidget(target);
+        if (flash)
+            flashWidget(target);
     });
 }
 

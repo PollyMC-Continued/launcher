@@ -67,6 +67,7 @@
 #include "ui/pages/global/DeveloperPage.h"
 #include "ui/pages/global/JavaPage.h"
 #include "ui/pages/global/LanguagePage.h"
+#include "ui/widgets/SplashScreen.h"
 #include "ui/pages/global/LauncherPage.h"
 #include "ui/pages/global/MinecraftPage.h"
 #include "ui/pages/global/ProxyPage.h"
@@ -106,7 +107,6 @@
 #include <QPainter>
 #include <QStringList>
 #include <QStringLiteral>
-#include <QSplashScreen>
 #include <QSvgRenderer>
 #include <QStyleFactory>
 #include <QStyleHints>
@@ -307,30 +307,12 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
     const bool headless = QGuiApplication::platformName() == "offscreen"
                           || qEnvironmentVariableIsSet("POLLYMC_NO_SPLASH");
     if (!headless) {
-        QSvgRenderer renderer(QStringLiteral(":/branding/splash-logo.svg"));
-        if (renderer.isValid()) {
-            // Splash canvas: 400x260 dark, matching the app's dark theme
-            QPixmap splashPixmap(400, 260);
-            splashPixmap.fill(QColor("#191919"));
-            QPainter p(&splashPixmap);
-            p.setRenderHint(QPainter::Antialiasing);
-            p.setRenderHint(QPainter::SmoothPixmapTransform);
-            // Wordmark is 144:48 aspect (3:1). Scale to 320x107,
-            // centered horizontally and vertically with a slight
-            // upward bias for visual balance.
-            const QRectF targetRect(
-                (400 - 320) / 2.0,
-                (260 - 107) / 2.0 - 10,
-                320,
-                107
-            );
-            renderer.render(&p, targetRect);
-            p.end();
-            m_splash = new QSplashScreen(splashPixmap, Qt::WindowStaysOnTopHint);
-            m_splash->show();
-            // Paint it once so the user sees it before we block on init.
-            QApplication::processEvents();
-        }
+        m_splash = new SplashScreen;
+        m_splash->show();
+        // Paint it once so the user sees it before we block on init.
+        QApplication::processEvents();
+        // Safety net: the splash must never stay on screen over another window (settings, wizards, dialogs).
+        installEventFilter(this);
     }
     if (console::isConsole()) {
         isANSIColorConsole = true;
@@ -788,6 +770,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         // Language
         m_settings->registerSetting("Language", QString());
         m_settings->registerSetting("UseSystemLocale", false);
+        // first run only: when the OS language has no translation, guess one from the IP's country
+        m_settings->registerSetting("AutoDetectLanguageByIp", true);
 
         // Console
         m_settings->registerSetting("ShowConsole", false);
@@ -1013,6 +997,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         PixmapCache::setInstance(new PixmapCache(this));
 
         qInfo() << "<> Settings loaded.";
+        if (m_splash)
+            m_splash->setStatus(QString(), 0.15);
     }
 
 #ifndef QT_NO_ACCESSIBILITY
@@ -1051,6 +1037,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_metacache->addBase("feed", QDir("cache/feed").absolutePath());
         m_metacache->Load();
         qInfo() << "<> Cache initialized.";
+        if (m_splash)
+            m_splash->setStatus(QString(), 0.30);
     }
 
     // load translations
@@ -1060,6 +1048,9 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_translations->selectLanguage(bcp47Name);
         qInfo() << "Your language is" << bcp47Name;
         qInfo() << "<> Translations loaded.";
+        // from here on the splash speaks the language the user picked (as far as it is translated)
+        if (m_splash)
+            m_splash->setStatus(tr("Loading icons…"), 0.40);
 
         // Kick off the translation index download right away: the request goes out over the
         // network immediately (it does not need the event loop), while the UI below keeps
@@ -1078,6 +1069,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         connect(setting.get(), &Setting::SettingChanged,
                 [this](const Setting&, QVariant value) { m_icons->directoryChanged(value.toString()); });
         qInfo() << "<> Instance icons initialized.";
+        if (m_splash)
+            m_splash->setStatus(tr("Loading instances…"), 0.55);
     }
 
     // Themes
@@ -1122,6 +1115,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         qInfo() << "Loading Instances...";
         m_instances->loadList();
         qInfo() << "<> Instances loaded.";
+        if (m_splash)
+            m_splash->setStatus(tr("Loading accounts…"), 0.75);
     }
 
     // and accounts
@@ -1132,6 +1127,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_accounts->loadList();
         m_accounts->fillQueue();
         qInfo() << "<> Accounts loaded.";
+        if (m_splash)
+            m_splash->setStatus(tr("Almost ready…"), 0.90);
     }
 
     // FIXME: what to do with these?
@@ -1462,9 +1459,27 @@ void Application::closeSplashScreen()
 {
     if (!m_splash)
         return;
+    removeEventFilter(this);
     m_splash->close();
     m_splash->deleteLater();
     m_splash = nullptr;
+}
+
+bool Application::eventFilter(QObject* watched, QEvent* event)
+{
+    // The splash is only for the time before the real UI exists. As soon as any other top-level window
+    // (settings, a dialog, the setup wizard, the main window...) is shown, get it out of the way.
+    if (m_splash && event->type() == QEvent::Show) {
+        auto* widget = qobject_cast<QWidget*>(watched);
+        if (widget && widget != m_splash && widget->isWindow()) {
+            const auto type = widget->windowType();
+            if (type == Qt::Window || type == Qt::Dialog) {
+                qDebug() << "Closing the splash: another window is being shown:" << widget->metaObject()->className();
+                closeSplashScreen();
+            }
+        }
+    }
+    return QApplication::eventFilter(watched, event);
 }
 
 void Application::performMainStartupAction()

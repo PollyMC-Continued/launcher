@@ -63,7 +63,7 @@ class HttpMetaCache;
 class SettingsObject;
 class InstanceList;
 class AccountList;
-class QSplashScreen;
+class SplashScreen;
 class IconList;
 class QNetworkAccessManager;
 class JavaInstallList;
@@ -117,6 +117,7 @@ class Application : public QApplication {
     virtual ~Application();
 
     bool event(QEvent* event) override;
+    bool eventFilter(QObject* watched, QEvent* event) override;
 
     SettingsObject* settings() const { return m_settings.get(); }
 
@@ -327,7 +328,7 @@ class Application : public QApplication {
     bool m_previousRunCrashed = false;
 
     // startup splash, shown until the main window takes over
-    QSplashScreen* m_splash = nullptr;
+    SplashScreen* m_splash = nullptr;
 
     // log window, if any
     ViewLogWindow* m_viewLogWindow = nullptr;

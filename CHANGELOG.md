@@ -8,11 +8,13 @@
 - **Crash recovery prompt** — If the launcher closed without warning last time, it offers to send a crash report with the previous session's log attached.
 - **Copy diagnostics** — Help > Copy Diagnostics puts the launcher version, system, Qt and Java details on your clipboard in one click, ready to paste into a support chat.
 - **Instance health check** — Right-click an instance (or use the instance toolbar) and pick "Check instance" to find a missing Java, a broken mod jar or a wrong loader version before you launch.
-- **Search in settings** — The settings window has a search box (Ctrl+F) that jumps straight to a setting by its name, like the command palette.
+- **Search in settings** — The settings window has a search box (Ctrl+F) that jumps straight to a setting. It understands several words, tooltips and drop-down choices, forgives skipped letters, shows where each result lives and opens the right tab for you.
+- **Language from your region** — On first run, if your system language has no translation, the launcher picks one from your region (via a quick country lookup) and says so on the language page. Choosing a language yourself always wins.
 - **Mod download repair** — When a download fails with "Permission denied", the error window now offers to retry through a different temp folder or to open the antivirus exclusion guide.
 
 **Changed:**
 
+- **New splash screen** — The startup splash has a fresh look (logo on a soft glow, an animated progress bar and a status line) and shows what the launcher is doing. The status text uses the language you picked, as far as it is translated. It also no longer stays over other windows such as Settings: it closes as soon as any other window opens.
 - **Faster first-run translations** — The window now appears right away and switches to your language as soon as it finishes downloading, instead of holding back the UI.
 - **Quieter update checks** — A failed update check no longer disturbs startup: it just leaves a short note in the status bar, and a failed check can never take the launcher down with it.
 - **Remembered window sizes** — More windows (About, version pickers, export and copy dialogs, the network error window and others) now reopen at the size you left them.

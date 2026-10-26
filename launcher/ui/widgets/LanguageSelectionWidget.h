@@ -39,10 +39,13 @@ class LanguageSelectionWidget : public QWidget {
    private:
     // Shows "still downloading" feedback while only the built-in language is available (first run).
     void updateLoadingHint();
+    // Tells the user the language was picked from their region and that they can change it.
+    void updateAutoDetectHint();
 
     QVBoxLayout* verticalLayout = nullptr;
     QTreeView* languageView = nullptr;
     QLabel* helpUsLabel = nullptr;
     QLabel* loadingLabel = nullptr;
+    QLabel* autoDetectLabel = nullptr;
     QCheckBox* formatCheckbox = nullptr;
 };
