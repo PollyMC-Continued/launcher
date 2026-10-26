@@ -44,6 +44,14 @@ class SplashScreen : public QWidget {
      */
     void setStatus(const QString& text, double progress = -1.0);
 
+    /**
+     * Shows the splash and makes sure something is really on screen before returning: waits (briefly)
+     * until the window system has mapped the window, then paints it synchronously. Without this a window
+     * shown right before a long blocking startup stays blank until the event loop finally runs.
+     * The static part of the picture is pre-rendered in the constructor, so this first paint is just a blit.
+     */
+    void presentNow();
+
     /** Short self-running demo for the developer page. */
     static void showPreview();
 
@@ -54,11 +62,14 @@ class SplashScreen : public QWidget {
 
    private:
     void tick();
-    const QPixmap& logoPixmap();
+    /// Renders everything that never changes (background, glow, logo, version, border) into m_base.
+    /// Called from the constructor, so the expensive first-use work (SVG, fonts) is done before the
+    /// window is mapped and the very first frame the user sees is already complete.
+    void ensureBase();
 
     QSvgRenderer m_logo;
-    QPixmap m_logoCache;
-    qreal m_logoCacheRatio = 0;
+    QPixmap m_base;
+    qreal m_baseRatio = 0;
 
     QTimer m_timer;
     QElapsedTimer m_clock;

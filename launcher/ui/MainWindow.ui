@@ -220,6 +220,7 @@
      <bool>true</bool>
     </property>
     <addaction name="actionCheckUpdate"/>
+    <addaction name="actionWhatsNew"/>
     <addaction name="actionViewLog"/>
     <addaction name="actionCopyDiagnostics"/>
     <addaction name="actionReportBug"/>
@@ -311,6 +312,17 @@
    </property>
    <property name="menuRole">
     <enum>QAction::ApplicationSpecificRole</enum>
+   </property>
+  </action>
+  <action name="actionWhatsNew">
+   <property name="icon">
+    <iconset theme="news"/>
+   </property>
+   <property name="text">
+    <string>What's New...</string>
+   </property>
+   <property name="toolTip">
+    <string>Show the release notes of the version of %1 you are running.</string>
    </property>
   </action>
   <action name="actionSettings">

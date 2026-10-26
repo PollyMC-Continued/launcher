@@ -102,6 +102,7 @@
 #include "ui/ViewLogWindow.h"
 #include "bot/BotManagerDialog.h"
 #include "ui/dialogs/AboutDialog.h"
+#include "ui/dialogs/WhatsNewDialog.h"
 #include "ui/dialogs/CommandPalette.h"
 #include "ui/dialogs/CommandRegistry.h"
 #include "ui/dialogs/CopyInstanceDialog.h"
@@ -550,6 +551,11 @@ void MainWindow::setStatusBarVisibility(bool state)
 void MainWindow::showEvent(QShowEvent* event)
 {
     QMainWindow::showEvent(event);
+    // After an update, tell the user what is new (once per session, as soon as the window is up).
+    if (!m_whatsNewScheduled) {
+        m_whatsNewScheduled = true;
+        QTimer::singleShot(600, this, &MainWindow::maybeShowWhatsNew);
+    }
     // Try the star reminder once per session, shortly after the window is up.
     // maybeShowStarToast() re-checks visibility, modals, and running instances.
     if (!m_starToastScheduled) {
@@ -625,6 +631,60 @@ void MainWindow::triggerStarToastForDeveloper()
         m_toast->showToast(toastPosition());
     });
     m_devStarWait->start();
+}
+
+void MainWindow::maybeShowWhatsNew()
+{
+    auto* settings = APPLICATION->settings();
+    const QString current = BuildConfig.printableVersionString();
+    const QString previous = settings->get("LastRunVersion").toString();
+
+    if (previous == current) {
+        // same version as last time: any release notes still lying around belong to an update that never happened
+        WhatsNewDialog::discardPendingNotes();
+        return;
+    }
+
+    // From here on this version counts as seen, whatever happens below.
+    settings->set("LastRunVersion", current);
+    const QString notes = WhatsNewDialog::takePendingNotes();
+
+    // No notes: a fresh install, or the version changed without the updater. Stay quiet.
+    // (A missing "previous" alone does not mean a fresh install: users coming from a release that did not
+    // track the version yet have notes from the updater, and are exactly who this window is for.)
+    if (notes.isEmpty())
+        return;
+
+    // Keep a copy for Help > What's New.
+    WhatsNewDialog::storeNotes(current, notes);
+
+    if (!settings->get("WhatsNewEnabled").toBool())
+        return;
+
+    presentWhatsNew(5, previous);
+}
+
+void MainWindow::presentWhatsNew(int retriesLeft, const QString& previousVersion)
+{
+    // Another dialog (setup wizard, error box...) is in the way: try again in a moment instead of stacking windows.
+    if (!isVisible() || isMinimized() || QApplication::activeModalWidget()) {
+        if (retriesLeft > 0)
+            QTimer::singleShot(3000, this, [this, retriesLeft, previousVersion] { presentWhatsNew(retriesLeft - 1, previousVersion); });
+        return;
+    }
+    const auto stored = WhatsNewDialog::loadStoredNotes();
+    WhatsNewDialog dialog(BuildConfig.printableVersionString(), previousVersion, stored.markdown, this);
+    dialog.exec();
+}
+
+void MainWindow::on_actionWhatsNew_triggered()
+{
+    const auto stored = WhatsNewDialog::loadStoredNotes();
+    const QString current = BuildConfig.printableVersionString();
+    // notes of an older version would be misleading: show the "not stored" hint instead
+    const bool matches = stored.version == current;
+    WhatsNewDialog dialog(current, QString(), matches ? stored.markdown : QString(), this);
+    dialog.exec();
 }
 
 void MainWindow::maybeShowStarToast()

@@ -377,7 +377,7 @@ void PageContainer::createUI()
     m_pageStack->setContentsMargins(0, 0, 0, 0);
     m_pageStack->addWidget(new QWidget(this));
 
-    // ---- settings search (Ctrl+F): a small box under the page list ----
+    // ---- settings search (Ctrl+F): a small box above the page list ----
     m_searchBox = new QLineEdit(this);
     m_searchBox->setClearButtonEnabled(true);
     m_searchBox->setPlaceholderText(tr("Search settings…"));
@@ -400,10 +400,11 @@ void PageContainer::createUI()
 
     m_layout = new QGridLayout;
     m_layout->addLayout(headerHLayout, 0, 1, 1, 1);
-    m_layout->addWidget(m_pageList, 0, 0, 3, 1);
+    // the search box sits at the top of the left column, level with the page header
+    m_layout->addWidget(m_searchBox, 0, 0, 1, 1);
+    m_layout->addWidget(m_pageList, 1, 0, 2, 1);
     // results live in the same cell as the page list; only one is visible at a time
-    m_layout->addWidget(m_searchResults, 0, 0, 3, 1);
-    m_layout->addWidget(m_searchBox, 3, 0, 1, 1);
+    m_layout->addWidget(m_searchResults, 1, 0, 2, 1);
     m_layout->addLayout(m_pageStack, 1, 1, 1, 1);
     m_layout->setColumnStretch(1, 4);
     m_layout->setContentsMargins(0, 0, 0, 0);

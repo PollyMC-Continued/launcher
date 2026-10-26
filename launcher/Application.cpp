@@ -308,9 +308,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
                           || qEnvironmentVariableIsSet("POLLYMC_NO_SPLASH");
     if (!headless) {
         m_splash = new SplashScreen;
-        m_splash->show();
-        // Paint it once so the user sees it before we block on init.
-        QApplication::processEvents();
+        // Really paint it before we block on init, otherwise it stays blank until the event loop runs.
+        m_splash->presentNow();
         // Safety net: the splash must never stay on screen over another window (settings, wizards, dialogs).
         installEventFilter(this);
     }
@@ -592,6 +591,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         }
 
         qInfo() << "<> Log initialized.";
+        if (m_splash)
+            m_splash->setStatus(QString(), 0.05);
     }
 
     {
@@ -647,6 +648,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
             qInfo() << "Name of the world to join  :" << m_worldToJoin;
         }
         qInfo() << "<> Paths set.";
+        if (m_splash)
+            m_splash->setStatus(QString(), 0.10);
     }
 
     if (m_liveCheck) {
@@ -880,6 +883,11 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_settings->registerSetting("NewInstanceGeometry", "");
 
         m_settings->registerSetting("UpdateDialogGeometry", "");
+        // "What's New" window after an update: the version that ran last (empty on a fresh install),
+        // whether to show the window, and its remembered size
+        m_settings->registerSetting("LastRunVersion", QString());
+        m_settings->registerSetting("WhatsNewEnabled", true);
+        m_settings->registerSetting("WhatsNewDialogGeometry", "");
 
         m_settings->registerSetting("NewsGeometry", "");
 
@@ -1239,7 +1247,13 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         }
 
         auto update_success_marker = QFileInfo(UpdaterNames::resolve(m_dataPath, UpdaterNames::SuccessMarker));
-        if (update_success_marker.exists()) {
+        // When the updater left release notes and the "What's New" window is enabled, that window
+        // announces the update (once the main window is up), so the plain message box is not needed.
+        const bool whatsNewWillShow = m_settings->get("WhatsNewEnabled").toBool()
+                                      && QFileInfo::exists(UpdaterNames::resolve(m_dataPath, UpdaterNames::ChangelogFile));
+        if (update_success_marker.exists() && whatsNewWillShow) {
+            FS::deletePath(update_success_marker.absoluteFilePath());
+        } else if (update_success_marker.exists()) {
             closeSplashScreen();
             auto infoMsg = tr("You are now running %1.\n"
                               "\n"
@@ -1485,9 +1499,13 @@ bool Application::eventFilter(QObject* watched, QEvent* event)
 void Application::performMainStartupAction()
 {
     m_status = Application::Initialized;
-    // Any window shown from here on is the real startup UI, so the splash
-    // must be gone before we branch into launching or opening windows.
-    closeSplashScreen();
+    // The splash stays up while the main window is being built, so there is no empty gap between the
+    // two; the event filter closes it the moment any other window is shown. Launching an instance
+    // closes it too, and the timer is a last resort if nothing ever shows up.
+    if (m_splash) {
+        m_splash->setStatus(tr("Opening the launcher…"), 0.97);
+        QTimer::singleShot(12000, this, [this] { closeSplashScreen(); });
+    }
     if (!m_instanceIdToLaunch.isEmpty()) {
         auto inst = instances()->getInstanceById(m_instanceIdToLaunch);
         if (inst) {

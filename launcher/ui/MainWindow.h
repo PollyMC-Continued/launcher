@@ -106,6 +106,7 @@ class MainWindow : public QMainWindow {
 
    private slots:
     void on_actionAbout_triggered();
+    void on_actionWhatsNew_triggered();
 
     void on_actionAddInstance_triggered();
 
@@ -262,6 +263,8 @@ class MainWindow : public QMainWindow {
     void runModalTask(Task* task);
     void instanceFromInstanceTask(InstanceTask* task);
 
+    void maybeShowWhatsNew();
+    void presentWhatsNew(int retriesLeft, const QString& previousVersion);
     void maybeShowStarToast();
     void prepareStarToast();
     QPoint toastPosition() const;
@@ -282,6 +285,7 @@ class MainWindow : public QMainWindow {
     QSystemTrayIcon* m_trayIcon = nullptr;
     ToastNotification* m_toast = nullptr;
     bool m_starToastScheduled = false;
+    bool m_whatsNewScheduled = false;
     // Set while the star toast was triggered from the Developer page; dismissing it then must not
     // permanently disable the real reminder.
     bool m_starToastIsPreview = false;

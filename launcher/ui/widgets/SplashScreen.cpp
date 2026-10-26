@@ -17,6 +17,8 @@
 
 #include "SplashScreen.h"
 
+#include <QCoreApplication>
+#include <QEventLoop>
 #include <QFontMetrics>
 #include <QGuiApplication>
 #include <QLinearGradient>
@@ -25,6 +27,7 @@
 #include <QPointer>
 #include <QRadialGradient>
 #include <QScreen>
+#include <QWindow>
 #include <QtMath>
 
 #include <algorithm>
@@ -47,6 +50,14 @@ SplashScreen::SplashScreen(QWidget* parent) : QWidget(parent, Qt::SplashScreen |
 {
     setAttribute(Qt::WA_ShowWithoutActivating);
     setFixedSize(Width, Height);
+    // never a black rectangle: even before the first paint the window has the splash's own background
+    QPalette pal = palette();
+    pal.setColor(QPalette::Window, QColor(0x17, 0x1A, 0x17));
+    setPalette(pal);
+    setAutoFillBackground(true);
+    // we paint every pixel ourselves: tell Qt not to clear the window to the system colour first
+    setAttribute(Qt::WA_OpaquePaintEvent);
+    setAttribute(Qt::WA_NoSystemBackground);
 
     m_logo.load(QStringLiteral(":/branding/splash-logo.svg"));
     m_version = BuildConfig.printableVersionString();
@@ -58,6 +69,9 @@ SplashScreen::SplashScreen(QWidget* parent) : QWidget(parent, Qt::SplashScreen |
     m_timer.setInterval(16);
     connect(&m_timer, &QTimer::timeout, this, &SplashScreen::tick);
     m_clock.start();
+
+    // do the slow first-use work (SVG rasterising, font database, gradients) now, before the window exists
+    ensureBase();
 }
 
 void SplashScreen::setStatus(const QString& text, double progress)
@@ -71,6 +85,20 @@ void SplashScreen::setStatus(const QString& text, double progress)
     }
     if (isVisible())
         repaint();
+}
+
+void SplashScreen::presentNow()
+{
+    show();
+    // wait (at most ~0.5 s) for the window system to map the window, then paint synchronously
+    QElapsedTimer waited;
+    waited.start();
+    while (waited.elapsed() < 500) {
+        QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents, 20);
+        if (windowHandle() && windowHandle()->isExposed())
+            break;
+    }
+    repaint();
 }
 
 void SplashScreen::showEvent(QShowEvent* event)
@@ -94,30 +122,19 @@ void SplashScreen::tick()
     update();
 }
 
-const QPixmap& SplashScreen::logoPixmap()
+void SplashScreen::ensureBase()
 {
-    // rendered once per pixel ratio: the wordmark is a big path and the bar repaints at 60 fps
     const qreal ratio = devicePixelRatioF();
-    if (m_logoCache.isNull() || !qFuzzyCompare(m_logoCacheRatio, ratio)) {
-        m_logoCacheRatio = ratio;
-        m_logoCache = QPixmap(QSize(qCeil(LogoWidth * ratio), qCeil(LogoWidth / 3 * ratio)));
-        m_logoCache.setDevicePixelRatio(ratio);
-        m_logoCache.fill(Qt::transparent);
-        if (m_logo.isValid()) {
-            QPainter painter(&m_logoCache);
-            painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
-            m_logo.render(&painter, QRectF(0, 0, LogoWidth, LogoWidth / 3));
-        }
-    }
-    return m_logoCache;
-}
+    if (!m_base.isNull() && qFuzzyCompare(m_baseRatio, ratio))
+        return;
+    m_baseRatio = ratio;
+    m_base = QPixmap(QSize(qCeil(Width * ratio), qCeil(Height * ratio)));
+    m_base.setDevicePixelRatio(ratio);
+    m_base.fill(QColor(0x17, 0x1A, 0x17));
 
-void SplashScreen::paintEvent(QPaintEvent*)
-{
-    QPainter p(this);
+    QPainter p(&m_base);
     p.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform | QPainter::TextAntialiasing);
     const QRectF r(0, 0, Width, Height);
-    const qreal seconds = m_clock.elapsed() / 1000.0;
 
     // background: deep charcoal with a faint green cast, then a glow behind the logo
     QLinearGradient bg(0, 0, 0, Height);
@@ -138,9 +155,8 @@ void SplashScreen::paintEvent(QPaintEvent*)
     p.fillRect(QRectF(0, 0, Width, 2), top);
 
     // logo
-    const QPixmap& logo = logoPixmap();
-    if (!logo.isNull() && m_logo.isValid()) {
-        p.drawPixmap(QPointF((Width - LogoWidth) / 2, LogoTop), logo);
+    if (m_logo.isValid()) {
+        m_logo.render(&p, QRectF((Width - LogoWidth) / 2, LogoTop, LogoWidth, LogoWidth / 3));
     } else {
         QFont f = font();
         f.setBold(true);
@@ -149,6 +165,33 @@ void SplashScreen::paintEvent(QPaintEvent*)
         p.setPen(Qt::white);
         p.drawText(QRectF(0, LogoTop, Width, LogoWidth / 3), Qt::AlignCenter, BuildConfig.LAUNCHER_DISPLAYNAME);
     }
+
+    // version
+    {
+        QFont f = font();
+        if (f.pointSizeF() > 0)
+            f.setPointSizeF(f.pointSizeF() * 0.85);
+        p.setFont(f);
+        p.setPen(QColor(255, 255, 255, 85));
+        p.drawText(QRectF(0, Height - 34, Width, 20), Qt::AlignHCenter | Qt::AlignVCenter, m_version);
+    }
+
+    // hairline border
+    p.setBrush(Qt::NoBrush);
+    p.setPen(QColor(255, 255, 255, 26));
+    p.drawRect(r.adjusted(0.5, 0.5, -0.5, -0.5));
+}
+
+void SplashScreen::paintEvent(QPaintEvent*)
+{
+    ensureBase();  // normally a no-op; re-renders only if the window moved to a screen with another pixel ratio
+
+    QPainter p(this);
+    p.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform | QPainter::TextAntialiasing);
+    const qreal seconds = m_clock.elapsed() / 1000.0;
+
+    // everything static comes from one pre-rendered picture
+    p.drawPixmap(QPointF(0, 0), m_base);
 
     // progress bar
     const qreal barWidth = Width - 2 * BarLeft;
@@ -208,21 +251,6 @@ void SplashScreen::paintEvent(QPaintEvent*)
         const QRectF line(BarLeft, BarTop + 16, barWidth, 24);
         p.drawText(line, Qt::AlignHCenter | Qt::AlignVCenter, QFontMetrics(f).elidedText(m_status, Qt::ElideRight, qFloor(line.width())));
     }
-
-    // version
-    {
-        QFont f = font();
-        if (f.pointSizeF() > 0)
-            f.setPointSizeF(f.pointSizeF() * 0.85);
-        p.setFont(f);
-        p.setPen(QColor(255, 255, 255, 85));
-        p.drawText(QRectF(0, Height - 34, Width, 20), Qt::AlignHCenter | Qt::AlignVCenter, m_version);
-    }
-
-    // hairline border
-    p.setBrush(Qt::NoBrush);
-    p.setPen(QColor(255, 255, 255, 26));
-    p.drawRect(r.adjusted(0.5, 0.5, -0.5, -0.5));
 }
 
 void SplashScreen::showPreview()
