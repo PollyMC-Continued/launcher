@@ -93,7 +93,6 @@
 #include <minecraft/auth/AccountList.h>
 #include <net/ApiDownload.h>
 #include <net/NetJob.h>
-#include <news/NewsChecker.h>
 #include <tools/BaseProfiler.h>
 #include <updater/ExternalUpdater.h>
 #include "InstanceWindow.h"
@@ -102,6 +101,7 @@
 #include "ui/ViewLogWindow.h"
 #include "bot/BotManagerDialog.h"
 #include "ui/dialogs/AboutDialog.h"
+#include "ui/dialogs/WhatsNewBrowserDialog.h"
 #include "ui/dialogs/WhatsNewDialog.h"
 #include "ui/dialogs/CommandPalette.h"
 #include "ui/dialogs/CommandRegistry.h"
@@ -116,7 +116,6 @@
 #include "ui/dialogs/PerformancePresetsDialog.h"
 #include "ui/dialogs/NewInstanceDialog.h"
 #include "ui/dialogs/BugReportDialog.h"
-#include "ui/dialogs/NewsDialog.h"
 #include "ui/dialogs/ProgressDialog.h"
 #include "ui/instanceview/InstanceDelegate.h"
 #include "ui/instanceview/InstanceProxyModel.h"
@@ -158,35 +157,11 @@ QString profileInUseFilter(const QString& profile, bool used)
 }
 
 const QString kStarRepoUrl = QStringLiteral("https://github.com/PollyMC-Continued/launcher");
-
-// Sample release notes for the Developer page preview of the What's New window. Used when no notes
-// are stored for the running version (fresh data directory, or stored notes from an older release).
-QString sampleWhatsNewNotes()
-{
-    const QString releasesUrl = WhatsNewDialog::releasesUrl();
-    const QString releasesLink = releasesUrl.isEmpty() ? QStringLiteral("the releases page")
-                                                       : QStringLiteral("[the releases page](%1)").arg(releasesUrl);
-    return QStringLiteral(
-               "*(Developer preview with sample notes — no release notes are stored for this version. After a real "
-               "update, this window shows the notes of the version that was installed.)*\n\n"
-               "**Added:**\n\n"
-               "- **Sample feature** — this is how a new feature appears in the What's New window.\n\n"
-               "**Changed:**\n\n"
-               "- **Sample change** — entries support **bold** text and links to %1.\n\n"
-               "**Fixed:**\n\n"
-               "- **Sample fix** — the window opens once after an update and can be reopened any time from Help > "
-               "What's New.\n")
-        .arg(releasesLink);
-}
 }  // namespace
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    // Hide news toolbar (disabled)
-    ui->newsToolBar->hide();
-    ui->actionMoreNews->setVisible(false);
 
     setWindowIcon(APPLICATION->logo());
     // only the main window shows name and version, no branch or channel suffix
@@ -334,12 +309,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
         connect(secretEventFilter, &KonamiCode::triggered, this, &MainWindow::konamiTriggered);
     }
 
-    // Add the news label to the news toolbar (hidden - disabled)
-    {
-        ui->newsToolBar->hide();
-        ui->actionMoreNews->setVisible(false);
-    }
-
     // Create the instance list widget
     {
         view = new InstanceView(ui->centralWidget);
@@ -455,14 +424,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     // TODO: refresh accounts here?
     // auto accounts = APPLICATION->accounts();
-
-    // load the news
-    {
-        if (m_newsChecker) {
-            m_newsChecker->reloadNews();
-        }
-        updateNewsLabel();
-    }
 
     if (APPLICATION->updaterEnabled()) {
         bool updatesAllowed = APPLICATION->updatesAreAllowed();
@@ -699,30 +660,13 @@ void MainWindow::presentWhatsNew(int retriesLeft, const QString& previousVersion
 
 void MainWindow::on_actionWhatsNew_triggered()
 {
-    const auto stored = WhatsNewDialog::loadStoredNotes();
-    const QString current = BuildConfig.printableVersionString();
-    // notes of an older version would be misleading: show the "not stored" hint instead
-    const bool matches = stored.version == current;
-    WhatsNewDialog dialog(current, QString(), matches ? stored.markdown : QString(), this);
+    WhatsNewBrowserDialog dialog(this);
     dialog.exec();
 }
 
-void MainWindow::showWhatsNewForDeveloper()
+void MainWindow::showWhatsNewToolbar()
 {
-    const auto stored = WhatsNewDialog::loadStoredNotes();
-    const QString current = BuildConfig.printableVersionString();
-    // notes of an older version would be misleading: show sample notes instead, so the window can
-    // still be previewed (layout, theme, translations) without a stored release
-    const bool matches = stored.version == current;
-    QString notes = matches ? stored.markdown : QString();
-    // With sample notes, pass the stored version (when there is one) so the "You updated from %1 to
-    // %2." caption is shown too — it is part of what this preview exists to test.
-    QString previous = matches ? QString() : stored.version;
-    if (notes.isEmpty()) {
-        notes = sampleWhatsNewNotes();
-    }
-    WhatsNewDialog dialog(current, previous, notes, this);
-    dialog.exec();
+    ui->newsToolBar->setVisible(true);
 }
 
 void MainWindow::maybeShowStarToast()
@@ -1065,28 +1009,6 @@ bool MainWindow::eventFilter(QObject* obj, QEvent* ev)
         }
     }
     return QMainWindow::eventFilter(obj, ev);
-}
-
-void MainWindow::updateNewsLabel()
-{
-    if (!newsLabel || !m_newsChecker) return;
-
-    if (m_newsChecker->isLoadingNews()) {
-        newsLabel->setText(tr("Loading news..."));
-        newsLabel->setEnabled(false);
-        ui->actionMoreNews->setVisible(false);
-    } else {
-        QList<NewsEntryPtr> entries = m_newsChecker->getNewsEntries();
-        if (entries.length() > 0) {
-            newsLabel->setText(entries[0]->title);
-            newsLabel->setEnabled(true);
-            ui->actionMoreNews->setVisible(true);
-        } else {
-            newsLabel->setText(tr("No news available."));
-            newsLabel->setEnabled(false);
-            ui->actionMoreNews->setVisible(false);
-        }
-    }
 }
 
 QList<int> stringToIntList(const QString& string)
@@ -1798,28 +1720,6 @@ void MainWindow::on_actionAddToPATH_triggered()
     }
 }
 #endif
-
-void MainWindow::on_actionOpenWiki_triggered()
-{
-    DesktopServices::openUrl(QUrl(BuildConfig.WIKI_URL));
-}
-
-void MainWindow::on_actionMoreNews_triggered()
-{
-    if (!m_newsChecker) return;
-    auto entries = m_newsChecker->getNewsEntries();
-    NewsDialog news_dialog(entries, this);
-    news_dialog.exec();
-}
-
-void MainWindow::newsButtonClicked()
-{
-    if (!m_newsChecker) return;
-    auto entries = m_newsChecker->getNewsEntries();
-    NewsDialog news_dialog(entries, this);
-    news_dialog.toggleArticleList();
-    news_dialog.exec();
-}
 
 void MainWindow::on_actionAbout_triggered()
 {

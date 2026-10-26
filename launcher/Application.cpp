@@ -888,6 +888,11 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_settings->registerSetting("LastRunVersion", QString());
         m_settings->registerSetting("WhatsNewEnabled", true);
         m_settings->registerSetting("WhatsNewDialogGeometry", "");
+        // The "What's New" browser (Help > What's New and the What's New toolbar) and its size
+        m_settings->registerSetting("WhatsNewBrowserGeometry", "");
+        // Set once the What's New toolbar has been revealed; a window state saved by an older
+        // release keeps the toolbar hidden, so Application shows it one time after restoring it.
+        m_settings->registerSetting("WhatsNewToolbarShown", false);
 
         m_settings->registerSetting("NewsGeometry", "");
 
@@ -1882,6 +1887,13 @@ MainWindow* Application::showMainWindow(bool minimized)
         m_mainWindow = new MainWindow();
         m_mainWindow->restoreState(QByteArray::fromBase64(APPLICATION->settings()->get("MainWindowState").toString().toUtf8()));
         m_mainWindow->restoreGeometry(QByteArray::fromBase64(APPLICATION->settings()->get("MainWindowGeometry").toString().toUtf8()));
+
+        // The What's New toolbar (the renamed News toolbar) is new: a window state saved by an
+        // older release still has it hidden, so reveal it once. Hiding it again afterwards sticks.
+        if (!settings()->get("WhatsNewToolbarShown").toBool()) {
+            m_mainWindow->showWhatsNewToolbar();
+            settings()->set("WhatsNewToolbarShown", true);
+        }
 
         if (minimized) {
             m_mainWindow->showMinimized();

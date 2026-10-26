@@ -1229,6 +1229,8 @@ if (NOT Apple)
     ui/dialogs/UpdateAvailableDialog.cpp
     ui/dialogs/WhatsNewDialog.h
     ui/dialogs/WhatsNewDialog.cpp
+    ui/dialogs/WhatsNewBrowserDialog.h
+    ui/dialogs/WhatsNewBrowserDialog.cpp
 )
 endif()
 

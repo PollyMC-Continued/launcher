@@ -50,7 +50,6 @@
 #include "minecraft/auth/MinecraftAccount.h"
 
 class LaunchController;
-class NewsChecker;
 class QToolButton;
 class InstanceProxyModel;
 class LabeledToolButton;
@@ -95,10 +94,13 @@ class MainWindow : public QMainWindow {
     // Used by the command palette's intent suggestions.
     void triggerInstanceAction(const QString& id, QAction* action);
 
+    // Reveals the What's New toolbar (the renamed News toolbar). Application calls this once when
+    // the toolbar is introduced, because a window state saved by an older release keeps it hidden.
+    void showWhatsNewToolbar();
+
     // Narrow entry points used by the hidden Developer Mode page.
     void triggerStarToastForDeveloper();
     void checkForUpdatesForDeveloper();
-    void showWhatsNewForDeveloper();
    signals:
     void isClosing();
 
@@ -158,13 +160,7 @@ class MainWindow : public QMainWindow {
     void on_actionAddToPATH_triggered();
 #endif
 
-    void on_actionOpenWiki_triggered();
-
     void on_actionBots_triggered();
-
-    void on_actionMoreNews_triggered();
-
-    void newsButtonClicked();
 
     void on_actionLaunchInstance_triggered();
 
@@ -232,8 +228,6 @@ class MainWindow : public QMainWindow {
 
     void repopulateAccountsMenu();
 
-    void updateNewsLabel();
-
     void konamiTriggered();
 
     void globalSettingsClosed();
@@ -276,7 +270,6 @@ class MainWindow : public QMainWindow {
     // these are managed by Qt's memory management model!
     InstanceView* view = nullptr;
     InstanceProxyModel* proxymodel = nullptr;
-    QToolButton* newsLabel = nullptr;
     QLabel* m_statusLeft = nullptr;
     QActionGroup* m_themeGroup = nullptr;
     QLabel* m_statusCenter = nullptr;
@@ -298,8 +291,6 @@ class MainWindow : public QMainWindow {
     KonamiCode* secretEventFilter = nullptr;
 
     std::shared_ptr<Setting> instanceToolbarSetting = nullptr;
-
-    unique_qobject_ptr<NewsChecker> m_newsChecker;
 
     BaseInstance* m_selectedInstance = nullptr;
     QString m_currentInstIcon;

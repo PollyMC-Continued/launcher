@@ -60,7 +60,7 @@
   </widget>
   <widget class="QToolBar" name="newsToolBar">
    <property name="windowTitle">
-    <string>News Toolbar</string>
+    <string>What's New Toolbar</string>
    </property>
    <property name="allowedAreas">
     <set>Qt::BottomToolBarArea|Qt::TopToolBarArea</set>
@@ -83,7 +83,7 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionMoreNews"/>
+   <addaction name="actionWhatsNew"/>
   </widget>
   <widget class="WideBar" name="instanceToolBar">
    <property name="windowTitle">
@@ -225,8 +225,6 @@
     <addaction name="actionCopyDiagnostics"/>
     <addaction name="actionReportBug"/>
     <addaction name="separator"/>
-    <addaction name="actionOpenWiki"/>
-    <addaction name="actionMoreNews"/>
     <addaction name="actionBots"/>
     <addaction name="separator"/>
     <addaction name="actionDISCORD"/>
@@ -245,17 +243,6 @@
    <addaction name="accountsMenu"/>
    <addaction name="helpMenu"/>
   </widget>
-  <action name="actionMoreNews">
-   <property name="icon">
-    <iconset theme="news"/>
-   </property>
-   <property name="text">
-    <string>More News...</string>
-   </property>
-   <property name="toolTip">
-    <string>Open the development blog to read more news about %1.</string>
-   </property>
-  </action>
   <action name="actionToggleStatusBar">
    <property name="checkable">
     <bool>true</bool>
@@ -322,7 +309,7 @@
     <string>What's New...</string>
    </property>
    <property name="toolTip">
-    <string>Show the release notes of the version of %1 you are running.</string>
+    <string>Browse what changed in each release of %1.</string>
    </property>
   </action>
   <action name="actionSettings">
@@ -821,17 +808,6 @@
    </property>
    <property name="toolTip">
     <string>Choose which account to play with.</string>
-   </property>
-  </action>
-  <action name="actionOpenWiki">
-   <property name="icon">
-    <iconset theme="help"/>
-   </property>
-   <property name="text">
-    <string>%1 &amp;Wiki</string>
-   </property>
-   <property name="toolTip">
-    <string>Open the %1 wiki</string>
    </property>
   </action>
   <action name="actionViewWidgetThemeFolder">
