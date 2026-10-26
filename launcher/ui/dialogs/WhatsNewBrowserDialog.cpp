@@ -82,6 +82,12 @@ WhatsNewBrowserDialog::WhatsNewBrowserDialog(QWidget* parent) : QDialog(parent)
     splitter->setChildrenCollapsible(false);
 
     m_versionList = new QListWidget(splitter);
+    // The version names are the main way around this window, so draw them a bit larger than
+    // the notes below. The factor scales with the launcher's font setting.
+    QFont listFont = m_versionList->font();
+    if (listFont.pointSizeF() > 0)
+        listFont.setPointSizeF(listFont.pointSizeF() * 1.25);
+    m_versionList->setFont(listFont);
     m_notesBrowser = new QTextBrowser(splitter);
     m_notesBrowser->setOpenExternalLinks(true);
     m_notesBrowser->setLineWrapMode(QTextBrowser::LineWrapMode::WidgetWidth);
@@ -91,7 +97,7 @@ WhatsNewBrowserDialog::WhatsNewBrowserDialog(QWidget* parent) : QDialog(parent)
     splitter->addWidget(m_notesBrowser);
     splitter->setStretchFactor(0, 0);
     splitter->setStretchFactor(1, 1);
-    splitter->setSizes(QList<int>{ 150, 710 });
+    splitter->setSizes(QList<int>{ 170, 690 });
     root->addWidget(splitter, 1);
 
     // ---- footer: the releases page on the left, close on the right ----

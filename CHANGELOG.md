@@ -11,6 +11,7 @@
 - **Search in settings** — The settings window has a search box (Ctrl+F) that jumps straight to a setting. It understands several words, tooltips and drop-down choices, forgives skipped letters, shows where each result lives and opens the right tab for you.
 - **Language from your region** — On first run, if your system language has no translation, the launcher picks one from your region (via a quick country lookup) and says so on the language page. Choosing a language yourself always wins.
 - **Mod download repair** — When a download fails with "Permission denied", the error window now offers to retry through a different temp folder or to open the antivirus exclusion guide.
+- **What's New** — Replaced the original News section with a version history interface that lists published releases in a sidebar and displays the selected version's release notes.
 
 **Changed:**
 
@@ -26,6 +27,10 @@
 - **Report drafts are kept** — Closing the "Report a Bug" window by accident no longer throws away what you typed; it is restored the next time you open it.
 - **Duplicate report warning** — If you already sent the same report this session, the launcher says so before sending it again.
 - **Download errors** — Failed downloads now show the real reason (such as "Permission denied"), are retried after a short pause, and are written to the log. Task failures are no longer hidden from the log by default.
+
+**Removed**
+
+- **PollyMC-Continued Wiki** — Removed the Wiki entry from the More menu.
 
 ## v9.4.1
 

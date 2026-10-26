@@ -232,7 +232,11 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
         helpMenuButton = dynamic_cast<QToolButton*>(ui->mainToolBar->widgetForAction(ui->actionHelpButton));
         ui->actionHelpButton->setMenu(new QMenu(this));
         ui->actionHelpButton->menu()->setToolTipsVisible(true);
-        ui->actionHelpButton->menu()->addActions(ui->helpMenu->actions());
+        // The What's New toolbar button already opens the browser, so the More menu skips it.
+        for (QAction* action : ui->helpMenu->actions()) {
+            if (action != ui->actionWhatsNew)
+                ui->actionHelpButton->menu()->addAction(action);
+        }
         helpMenuButton->setPopupMode(QToolButton::InstantPopup);
 
         auto accountMenuButton = dynamic_cast<QToolButton*>(ui->mainToolBar->widgetForAction(ui->actionAccountsButton));
