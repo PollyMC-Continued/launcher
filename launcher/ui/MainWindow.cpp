@@ -158,6 +158,26 @@ QString profileInUseFilter(const QString& profile, bool used)
 }
 
 const QString kStarRepoUrl = QStringLiteral("https://github.com/PollyMC-Continued/launcher");
+
+// Sample release notes for the Developer page preview of the What's New window. Used when no notes
+// are stored for the running version (fresh data directory, or stored notes from an older release).
+QString sampleWhatsNewNotes()
+{
+    const QString releasesUrl = WhatsNewDialog::releasesUrl();
+    const QString releasesLink = releasesUrl.isEmpty() ? QStringLiteral("the releases page")
+                                                       : QStringLiteral("[the releases page](%1)").arg(releasesUrl);
+    return QStringLiteral(
+               "*(Developer preview with sample notes — no release notes are stored for this version. After a real "
+               "update, this window shows the notes of the version that was installed.)*\n\n"
+               "**Added:**\n\n"
+               "- **Sample feature** — this is how a new feature appears in the What's New window.\n\n"
+               "**Changed:**\n\n"
+               "- **Sample change** — entries support **bold** text and links to %1.\n\n"
+               "**Fixed:**\n\n"
+               "- **Sample fix** — the window opens once after an update and can be reopened any time from Help > "
+               "What's New.\n")
+        .arg(releasesLink);
+}
 }  // namespace
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -684,6 +704,24 @@ void MainWindow::on_actionWhatsNew_triggered()
     // notes of an older version would be misleading: show the "not stored" hint instead
     const bool matches = stored.version == current;
     WhatsNewDialog dialog(current, QString(), matches ? stored.markdown : QString(), this);
+    dialog.exec();
+}
+
+void MainWindow::showWhatsNewForDeveloper()
+{
+    const auto stored = WhatsNewDialog::loadStoredNotes();
+    const QString current = BuildConfig.printableVersionString();
+    // notes of an older version would be misleading: show sample notes instead, so the window can
+    // still be previewed (layout, theme, translations) without a stored release
+    const bool matches = stored.version == current;
+    QString notes = matches ? stored.markdown : QString();
+    // With sample notes, pass the stored version (when there is one) so the "You updated from %1 to
+    // %2." caption is shown too — it is part of what this preview exists to test.
+    QString previous = matches ? QString() : stored.version;
+    if (notes.isEmpty()) {
+        notes = sampleWhatsNewNotes();
+    }
+    WhatsNewDialog dialog(current, previous, notes, this);
     dialog.exec();
 }
 

@@ -41,6 +41,7 @@
 #include "StringUtils.h"
 #include "ui/GuiUtil.h"
 #include "updater/UpdaterNames.h"
+#include "settings/SettingsObject.h"
 
 namespace {
 QString storedNotesPath()

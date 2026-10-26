@@ -98,6 +98,7 @@ class MainWindow : public QMainWindow {
     // Narrow entry points used by the hidden Developer Mode page.
     void triggerStarToastForDeveloper();
     void checkForUpdatesForDeveloper();
+    void showWhatsNewForDeveloper();
    signals:
     void isClosing();
 

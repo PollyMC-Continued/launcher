@@ -193,6 +193,18 @@ DeveloperPage::DeveloperPage(QWidget* parent) : QWidget(parent)
             QMessageBox::information(this, tr("Developer tools"), tr("This platform's updater does not support the update UI preview."));
     });
 
+    auto* whatsNew = new QPushButton(tr("Show What's New window"), this);
+    whatsNew->setToolTip(tr("Opens the release-notes window that appears after an update. Shows the stored notes of this version, or sample notes when none are stored."));
+    layout->addWidget(whatsNew);
+    connect(whatsNew, &QPushButton::clicked, this, [this]() {
+        auto* mainWindow = APPLICATION->showMainWindow();
+        if (!mainWindow) {
+            QMessageBox::warning(this, tr("Developer tools"), tr("The main window is not available."));
+            return;
+        }
+        mainWindow->showWhatsNewForDeveloper();
+    });
+
     auto* simulateFailure = new QPushButton(tr("Simulate update-check failure"), this);
     simulateFailure->setToolTip(tr("Shows a test-only failure message. It does not contact the updater or change update settings."));
     layout->addWidget(simulateFailure);
