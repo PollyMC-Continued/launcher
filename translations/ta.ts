@@ -291,7 +291,7 @@
     </message>
     <message>
         <location line="-9"/>
-        <location filename="../launcher/ui/dialogs/AboutDialog.cpp" line="+91"/>
+        <location filename="../launcher/ui/dialogs/AboutDialog.cpp" line="+92"/>
         <source>About</source>
         <translation>பற்றி</translation>
     </message>
@@ -321,7 +321,7 @@
         <translation>உருவாக்க தேதி: %1</translation>
     </message>
     <message>
-        <location line="+37"/>
+        <location line="+40"/>
         <source>Developer mode</source>
         <translation type="unfinished"></translation>
     </message>
@@ -350,7 +350,7 @@
         <translation type="vanished">சுமார் %1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/AboutDialog.cpp" line="-27"/>
+        <location filename="../launcher/ui/dialogs/AboutDialog.cpp" line="-30"/>
         <source>Channel</source>
         <translation>வாய்க்கால்</translation>
     </message>
@@ -715,12 +715,12 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation type="vanished">புதுப்பிப்பு செய் பெற்றது</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1263"/>
+        <location filename="../launcher/Application.cpp" line="+1306"/>
         <source>Incompatible system configuration</source>
         <translation>பொருந்தாத கணினி உள்ளமைவு</translation>
     </message>
     <message>
-        <location line="+897"/>
+        <location line="+995"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -755,12 +755,12 @@ for details on the last update attempt.</source>
  கடைசி புதுப்பிப்பு முயற்சி குறித்த விவரங்களுக்கு.</translation>
     </message>
     <message>
-        <location line="-1548"/>
+        <location line="-1700"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>பதிவு நீளம் %1 வரிகளைத் தாண்டியதால் இந்த பதிவைக் காட்ட முடியாது.</translation>
     </message>
     <message>
-        <location line="+1370"/>
+        <location line="+1522"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>இதற்கு முன்பு %2 இல் %1 ஐப் பயன்படுத்தியது போல் தெரிகிறது. உங்கள் தரவை %3 இன் புதிய இடத்திற்கு மாற்ற விரும்புகிறீர்களா?</translation>
     </message>
@@ -774,7 +774,7 @@ for details on the last update attempt.</source>
         <translation type="vanished">புதுப்பிப்பு தோல்வியடைந்தது</translation>
     </message>
     <message>
-        <location line="-1664"/>
+        <location line="-1820"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -810,7 +810,27 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+607"/>
+        <location line="+531"/>
+        <source>Loading icons…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>Loading instances…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+46"/>
+        <source>Loading accounts…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Almost ready…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other launcher update is running. To delete the lock file and continue, select &quot;Ignore&quot; below.</source>
@@ -849,7 +869,7 @@ Make sure the installation works, then select &quot;Ignore&quot; to continue sta
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+29"/>
         <source>You are now running %1.
 
 See the updater log for details.</source>
@@ -874,7 +894,42 @@ You may solve this issue by remounting /tmp as &apos;exec&apos; or setting the j
 </translation>
     </message>
     <message>
-        <location line="+937"/>
+        <location line="+211"/>
+        <source>Opening the launcher…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+444"/>
+        <location line="+20"/>
+        <source>Launcher closed unexpectedly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-19"/>
+        <source>%1 did not shut down properly last time.
+
+If it crashed or froze on you, you can send us a crash report - the log from that session is attached automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Report this crash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Ignore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>The launcher closed unexpectedly (crash or freeze). Last part of the log from that session:
+
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+362"/>
         <source>Instances were found at %1, but %2 is looking in %3. Do you want to migrate them to the new location?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -907,7 +962,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">புதுப்பிப்பு செயலில் உள்ளது</translation>
     </message>
     <message>
-        <location line="-1297"/>
+        <location line="-1419"/>
         <source>Settings</source>
         <translation>அமைப்புகள்</translation>
     </message>
@@ -938,7 +993,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
  இந்த பூட்டை நீக்கி, கீழே உள்ள &quot;புறக்கணிக்கவும்&quot; என்பதைத் தேர்ந்தெடுக்கவும்.</translation>
     </message>
     <message>
-        <location line="+1141"/>
+        <location line="+1263"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>%1 இலிருந்து பழைய தரவு கண்டறியப்பட்டது, ஆனால் உங்களிடம் ஏற்கனவே %2 க்கு தரவு உள்ளது. துரதிர்ச்டவசமாக நீங்கள் உங்களை குடிபெயர வேண்டும். அடுத்த முறை நீங்கள் %2 ஐத் தொடங்கும்போது நிலுவையில் உள்ள தரவு இடம்பெயர்வு நினைவூட்டப்பட விரும்புகிறீர்களா?</translation>
     </message>
@@ -1373,8 +1428,8 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 <context>
     <name>BlockedModsDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BlockedModsDialog.cpp" line="+56"/>
-        <location line="+120"/>
+        <location filename="../launcher/ui/dialogs/BlockedModsDialog.cpp" line="+58"/>
+        <location line="+123"/>
         <source>OK</source>
         <translation>சரி</translation>
     </message>
@@ -1394,7 +1449,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation>காணாமல் போன மோட்சைப் பதிவிறக்கவும்.</translation>
     </message>
     <message>
-        <location line="-123"/>
+        <location line="-126"/>
         <source>Cancel</source>
         <translation>ரத்துசெய்</translation>
     </message>
@@ -1404,7 +1459,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation>திறந்த காணவில்லை</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/BlockedModsDialog.cpp" line="+119"/>
+        <location filename="../launcher/ui/dialogs/BlockedModsDialog.cpp" line="+122"/>
         <source>All mods found</source>
         <translation>அனைத்து மோட்சும் காணப்பட்டன</translation>
     </message>
@@ -1573,6 +1628,284 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <location line="+6"/>
         <source>Saved.</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BugReportDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+114"/>
+        <location line="+374"/>
+        <location line="+11"/>
+        <location line="+52"/>
+        <location line="+8"/>
+        <location line="+9"/>
+        <source>Report a Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-436"/>
+        <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+18"/>
+        <source>What kind of report is this?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Crash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Suggestion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Something else</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Anonymous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Discord username or email</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Only fill this in if you want a reply.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Your name (optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Contact (optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Screenshots (optional, up to %1). You can also drag images into this window.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Add image…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Paste from clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Remove</source>
+        <translation type="unfinished">அகற்று</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Include the launcher log (recommended, personal paths are hidden)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>What else is sent automatically?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Prefer GitHub? &lt;a href=&quot;%1&quot;&gt;Open the issue tracker&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <location line="+171"/>
+        <source>Send Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-135"/>
+        <source>What were you doing when it crashed?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Tell us what you were doing right before the launcher closed or froze, and whether it happens every time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>What would you like to see?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Describe your idea and what it would make easier for you. Examples from other apps help too.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>What&apos;s on your mind?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Tell us anything that doesn&apos;t fit the other types: feedback, questions, or something that just feels off.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>What happened?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Describe the bug and, if you can, the steps to make it happen again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+76"/>
+        <source>&lt;i&gt;An unsent report you started earlier was restored - it is ready to finish and send whenever you are.&lt;/i&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+49"/>
+        <source>Sending…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Error: %1
+%2
+
+What I was doing when this happened:
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>Launcher: %1 (%2)
+System: %3
+CPU architecture: %4
+Qt: %5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Write at least %1 characters to send (%2 / %3)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <location line="+38"/>
+        <source>Screenshot %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-32"/>
+        <source>Choose screenshots</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Images (*.png *.jpg *.jpeg *.webp *.bmp)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Could not open %1 as an image.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>There is no image on the clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+52"/>
+        <source>You just sent a report. Please wait a minute before sending another one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>You already sent this exact report in this session.
+
+Send it again anyway?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>This report is too large to send (%1 MB). Remove a screenshot or untick &quot;Include the launcher log&quot; and try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>Too many reports, please try again later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Failed to send the report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The report could not be sent (HTTP %1): %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Thank you! Your report is on its way to the PollyMC team, and we read every one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>
+
+We&apos;ll use the contact you gave if we need to ask anything. Want faster help, or to follow what happens next? Come say hi on our Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>
+
+Since you sent this anonymously we can&apos;t write back. Want help with this problem, or to see what happens next? Come say hi on our Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Report sent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Join our Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Close</source>
+        <translation type="unfinished">மூடு</translation>
     </message>
 </context>
 <context>
@@ -1876,7 +2209,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 <context>
     <name>CopyInstanceDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/CopyInstanceDialog.cpp" line="+114"/>
+        <location filename="../launcher/ui/dialogs/CopyInstanceDialog.cpp" line="+115"/>
         <source>OK</source>
         <translation>சரி</translation>
     </message>
@@ -2114,7 +2447,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation>பெயர்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+112"/>
+        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+113"/>
         <source>%1 (in use)</source>
         <translation>%1 (பயன்பாட்டில்)</translation>
     </message>
@@ -2124,7 +2457,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation>பெயர்:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+88"/>
+        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+91"/>
         <source>world</source>
         <translation>உலகம்</translation>
     </message>
@@ -2139,7 +2472,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation>குறிப்பு: படைப்புக்குப் பிறகு ஒரு குறுக்குவழி நகர்த்தப்பட்டால், உதாரணத்தை நீக்கும்போது அது நீக்கப்படாது.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="-104"/>
+        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="-107"/>
         <source>%1 [%2] - Last Played: %3</source>
         <translation>%1 [ %2] - கடைசியாக விளையாடியது: %3</translation>
     </message>
@@ -2150,7 +2483,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation>சேவையக முகவரி:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+100"/>
+        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+103"/>
         <source>instance</source>
         <translation>சான்று</translation>
     </message>
@@ -2185,17 +2518,17 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation>அப்படியானால் அவற்றை கைமுறையாக நீக்க வேண்டும்.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="-94"/>
+        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="-97"/>
         <source>Desktop</source>
         <translation>டெச்க்டாப்</translation>
     </message>
     <message>
-        <location line="+96"/>
+        <location line="+99"/>
         <source>%1 - Server %2</source>
         <translation>%1 - சேவையகம் %2</translation>
     </message>
     <message>
-        <location line="-91"/>
+        <location line="-94"/>
         <source>Other...</source>
         <translation>மற்றவை ...</translation>
     </message>
@@ -2558,7 +2891,7 @@ Are you sure?</source>
 <context>
     <name>DeveloperPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/DeveloperPage.cpp" line="+103"/>
+        <location filename="../launcher/ui/pages/global/DeveloperPage.cpp" line="+90"/>
         <source>Developer tools are intended for testing and troubleshooting. Actions below change launcher preferences; they do not delete instances or accounts.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2590,12 +2923,14 @@ Are you sure?</source>
         <location line="+4"/>
         <location line="+11"/>
         <location line="+4"/>
-        <location line="+62"/>
+        <location line="+10"/>
+        <location line="+12"/>
+        <location line="+65"/>
         <source>Developer tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-138"/>
+        <location line="-163"/>
         <source>First-run preferences will be reset when Settings closes. The language and Java setup prompts may appear after restarting PollyMC-Continued.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2667,11 +3002,13 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+5"/>
+        <location line="+29"/>
+        <location line="+12"/>
         <source>The main window is not available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="-37"/>
         <location line="+11"/>
         <source>The updater is not enabled in this build.</source>
         <translation type="unfinished"></translation>
@@ -2693,6 +3030,26 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+3"/>
+        <source>Show What&apos;s New toolbar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Reveals the bottom What&apos;s New toolbar. Use this if it went missing, for example after running an older launcher that hid it again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Open What&apos;s New browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Opens the What&apos;s New version browser without using the toolbar or the Help menu.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>Simulate update-check failure</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2898,12 +3255,12 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
 <context>
     <name>ExportInstanceDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportInstanceDialog.cpp" line="+92"/>
+        <location filename="../launcher/ui/dialogs/ExportInstanceDialog.cpp" line="+93"/>
         <source>OK</source>
         <translation>சரி</translation>
     </message>
     <message>
-        <location line="+69"/>
+        <location line="+72"/>
         <source>Abort</source>
         <translation>கருக்கலைப்பு</translation>
     </message>
@@ -2919,12 +3276,12 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation>ஏற்றுமதி நிகழ்வு</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportInstanceDialog.cpp" line="-66"/>
+        <location filename="../launcher/ui/dialogs/ExportInstanceDialog.cpp" line="-69"/>
         <source>Cancel</source>
         <translation>ரத்துசெய்</translation>
     </message>
     <message>
-        <location line="+46"/>
+        <location line="+49"/>
         <source>Export %1</source>
         <translation>ஏற்றுமதி %1</translation>
     </message>
@@ -2937,7 +3294,7 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
 <context>
     <name>ExportPackDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="+132"/>
+        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="+133"/>
         <source>OK</source>
         <translation>சரி</translation>
     </message>
@@ -2952,7 +3309,7 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation>1.0.0</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="+76"/>
+        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="+79"/>
         <source>Abort</source>
         <translation>கருக்கலைப்பு</translation>
     </message>
@@ -2967,7 +3324,7 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation>பணி கைவிடப்பட்டது</translation>
     </message>
     <message>
-        <location line="-143"/>
+        <location line="-146"/>
         <source>Export CurseForge Pack</source>
         <translation>ஏற்றுமதி Curseforge Pack</translation>
     </message>
@@ -2987,7 +3344,7 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation>ரத்துசெய்</translation>
     </message>
     <message>
-        <location line="+42"/>
+        <location line="+45"/>
         <source>CurseForge pack</source>
         <translation>Curseforge pack</translation>
     </message>
@@ -3013,7 +3370,7 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation>ஏற்றுமதி %1</translation>
     </message>
     <message>
-        <location line="-122"/>
+        <location line="-125"/>
         <source>Export Modrinth Pack</source>
         <translation>ஏற்றுமதி மோட்ரிந்த் பேக்</translation>
     </message>
@@ -3043,7 +3400,7 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation>&amp; பதிப்பு:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="+116"/>
+        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="+119"/>
         <source>Modrinth pack</source>
         <translation>மோட்ரிந்த் பேக்</translation>
     </message>
@@ -3067,7 +3424,7 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation>நகலெடு</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="+166"/>
+        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="+170"/>
         <source>File</source>
         <translation>கோப்பு</translation>
     </message>
@@ -3082,7 +3439,7 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation>சேசன்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="-97"/>
+        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="-100"/>
         <source>Save</source>
         <translation>சேமி</translation>
     </message>
@@ -3138,7 +3495,7 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation>இது மோட்சின் மெட்டாடேட்டாவைப் பொறுத்தது. இது கிடைப்பதை உறுதிசெய்ய, நிகழ்வில் ஒரு புதுப்பிப்பை இயக்கவும். புதுப்பிப்புகளை நிறுவுவது தேவையில்லை.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="+97"/>
+        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="+100"/>
         <source>Export %1</source>
         <translation>ஏற்றுமதி %1</translation>
     </message>
@@ -4464,6 +4821,95 @@ Are you sure?</source>
     </message>
 </context>
 <context>
+    <name>InstanceHealthCheckDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+61"/>
+        <source>No Java selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance has no Java installation selected, so it cannot start.
+Pick one in the instance&apos;s Java settings, or let the launcher download a matching Java automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Java not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The Java installation for this instance does not exist or cannot be run:
+%1
+It may have been moved, uninstalled, or blocked by antivirus software.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>This instance needs Java %1, but the selected Java is version %2.
+Switch Java in the instance&apos;s Java settings, or turn off the compatibility check if you know what you&apos;re doing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Java version mismatch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+35"/>
+        <source>Broken mod files (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These files in the mods folder are empty or damaged, and usually make the game crash on startup:
+%1
+
+Delete or re-download them (a fresh download of the same version is usually enough).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Version information not loaded yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The launcher could not read this instance&apos;s version list, so the loader check was skipped.
+Open the instance, go to the Version page and let it load once (or press Reload) before launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>%1 (loader component)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Check instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Close</source>
+        <translation type="unfinished">மூடு</translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, no broken mod files, and the loader version checks out. Nothing stood in the way of launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+5"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting. The details are below each entry.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>InstanceImportTask</name>
     <message>
         <location filename="../launcher/InstanceImportTask.cpp" line="+99"/>
@@ -5147,13 +5593,23 @@ You can change the Java version in the settings later.
 <context>
     <name>LanguageSelectionWidget</name>
     <message>
-        <location filename="../launcher/ui/widgets/LanguageSelectionWidget.cpp" line="+63"/>
+        <location filename="../launcher/ui/widgets/LanguageSelectionWidget.cpp" line="+92"/>
         <source>Don&apos;t see your language or the quality is poor?&lt;br/&gt;&lt;a href=&quot;%1&quot;&gt;Help us with translations!&lt;/a&gt;</source>
         <translation>உங்கள் மொழியைப் பார்க்கவில்லையா அல்லது தகுதி மோசமாக உள்ளது? &lt;br/&gt; &lt;a href = &quot;%1&quot;&gt; மொழிபெயர்ப்புகளுக்கு எங்களுக்கு உதவுங்கள்! &lt;/a&gt;</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Use system locales</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Language picked automatically from your region (%1). Not right? Choose another one above.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Downloading the list of languages… You can continue in English now and switch languages at any time - the list fills in by itself.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6442,7 +6898,7 @@ You&apos;ll have to correct this problem manually.</source>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+307"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+298"/>
         <source>Check for new updates for %1.</source>
         <translation>%1 க்கான புதிய புதுப்பிப்புகளைச் சரிபார்க்கவும்.</translation>
     </message>
@@ -6451,47 +6907,41 @@ You&apos;ll have to correct this problem manually.</source>
         <translation type="vanished">உதவி</translation>
     </message>
     <message>
-        <location line="+520"/>
+        <location line="+542"/>
         <source>Java</source>
         <translation>சாவா</translation>
     </message>
     <message>
-        <location line="-177"/>
+        <location line="-188"/>
         <source>Logs</source>
         <translation>பதிவுகள்</translation>
     </message>
     <message>
-        <location line="+166"/>
+        <location line="+177"/>
         <source>I&amp;con Theme</source>
         <translation>நான் &amp; கான் கருப்பொருள்</translation>
     </message>
     <message>
-        <location line="-651"/>
+        <location line="-662"/>
         <source>&amp;Edit</source>
         <translation>திருத்து (&amp;e)</translation>
     </message>
     <message>
-        <location line="-102"/>
         <source>News Toolbar</source>
-        <translation>செய்தி கருவிப்பட்டி</translation>
+        <translation type="vanished">செய்தி கருவிப்பட்டி</translation>
     </message>
     <message>
-        <location line="+78"/>
+        <location line="-25"/>
         <source>&amp;File</source>
         <translation>கோப்பு (&amp;f)</translation>
     </message>
     <message>
-        <location line="+74"/>
+        <location line="+75"/>
         <source>&amp;Help</source>
         <translation>உதவி (&amp;h)</translation>
     </message>
     <message>
-        <location line="+34"/>
-        <source>More News...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+14"/>
+        <location line="+37"/>
         <source>Show or hide the status bar at the bottom of the window.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6511,7 +6961,17 @@ You&apos;ll have to correct this problem manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+14"/>
+        <source>What&apos;s New...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Browse what changed in each release of %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
         <source>&amp;Performance Presets</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6571,6 +7031,26 @@ You&apos;ll have to correct this problem manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+8"/>
+        <source>Chec&amp;k Instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Look for missing Java, broken mod files or a wrong loader version before launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Copy &amp;Diagnostics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Copy the launcher version, system, Qt and Java information to the clipboard, ready to paste into a support chat.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+111"/>
         <source>More</source>
         <translation type="unfinished"></translation>
@@ -6581,7 +7061,7 @@ You&apos;ll have to correct this problem manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+41"/>
         <source>&amp;Bots</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6595,12 +7075,12 @@ You&apos;ll have to correct this problem manually.</source>
         <translation type="vanished">&amp; மியாவ்</translation>
     </message>
     <message>
-        <location line="-667"/>
+        <location line="-678"/>
         <source>&amp;View</source>
         <translation>காண்க (&amp;v)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1688"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1783"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -6611,17 +7091,17 @@ Are you sure?</source>
 நீங்கள் உறுதியாக இருக்கிறீர்களா?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+645"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+656"/>
         <source>Open the icon theme folder in a file browser.</source>
         <translation>கோப்பு உலாவியில் படவுரு கருப்பொருள் கோப்புறையைத் திறக்கவும்.</translation>
     </message>
     <message>
-        <location line="-332"/>
+        <location line="-343"/>
         <source>Copy the selected instance.</source>
         <translation>தேர்ந்தெடுக்கப்பட்ட நிகழ்வை நகலெடுக்கவும்.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-664"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-727"/>
         <location line="+140"/>
         <location line="+106"/>
         <source>Abort</source>
@@ -6634,22 +7114,82 @@ Are you sure?</source>
         <location line="+61"/>
         <location line="+15"/>
         <location line="+37"/>
-        <location line="+318"/>
+        <location line="+403"/>
         <source>Error</source>
         <translation>பிழை</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-452"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-454"/>
         <source>Main Toolbar</source>
         <translation>முதன்மையான கருவிப்பட்டி</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-324"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-409"/>
         <source>Modpack download</source>
         <translation>Modpack பதிவிறக்கம்</translation>
     </message>
     <message>
-        <location line="+402"/>
+        <location line="+318"/>
+        <source>Check instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This kind of instance cannot be checked automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source> (commit %1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Launcher: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Platform: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>System: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>CPU architecture: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Qt: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Java: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>not set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Java (instance &quot;%1&quot;): %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Diagnostics copied to the clipboard - paste it into a support chat.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+64"/>
         <source>Crash Reports</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6686,7 +7226,7 @@ Are you sure?</source>
         <translation>உங்கள் நிகழ்வு கோப்புறையில் &apos;!&apos; இது சாவா பிரச்சினைகளை ஏற்படுத்தும் என்று அறியப்படுகிறது!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+388"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+390"/>
         <source>&amp;Change Group...</source>
         <translation>&amp; குழுவை மாற்றவும் ...</translation>
     </message>
@@ -6701,7 +7241,7 @@ Are you sure?</source>
         <translation>உதாரணத்தை மறுபெயரிடுங்கள்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-141"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-152"/>
         <source>&amp;Undo Last Instance Deletion</source>
         <translation>&amp; கடைசி நிகழ்வு நீக்குதலை செயல்தவிர்க்கவும்</translation>
     </message>
@@ -6711,27 +7251,27 @@ Are you sure?</source>
         <translation>Instanc &amp; இ ஐச் சேர்க்கவும் ...</translation>
     </message>
     <message>
-        <location line="+398"/>
+        <location line="+431"/>
         <source>&amp;Matrix Space</source>
         <translation>&amp; மேட்ரிக்ச் இடம்</translation>
     </message>
     <message>
-        <location line="-49"/>
+        <location line="-71"/>
         <source>Open the instance icons folder in a file browser.</source>
         <translation>கோப்பு உலாவியில் நிகழ்வு ஐகான்கள் கோப்புறையைத் திறக்கவும்.</translation>
     </message>
     <message>
-        <location line="+111"/>
+        <location line="+133"/>
         <source>Install a %1 symlink to /usr/local/bin</source>
         <translation>/Usr/local/bin க்கு %1 சிம்லிங்கை நிறுவவும்</translation>
     </message>
     <message>
-        <location line="-663"/>
+        <location line="-687"/>
         <source>Instance Toolbar</source>
         <translation>நிகழ்வு கருவிப்பட்டி</translation>
     </message>
     <message>
-        <location line="+491"/>
+        <location line="+493"/>
         <source>Close &amp;Window</source>
         <translation>&amp;சாளரத்தை மூடு</translation>
     </message>
@@ -6744,12 +7284,12 @@ Are you sure?</source>
         </translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+91"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+113"/>
         <source>Open the bug tracker to report a bug with %1.</source>
         <translation>ஒரு பிழையை %1 உடன் புகாரளிக்க பிழை டிராக்கரைத் திறக்கவும்.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-666"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-729"/>
         <source>Task aborted</source>
         <translation>பணி கைவிடப்பட்டது</translation>
     </message>
@@ -6764,7 +7304,7 @@ Are you sure?</source>
         <translation>தற்போதைய மற்றும் முந்தைய துவக்கி பதிவுகளைக் காண்க</translation>
     </message>
     <message>
-        <location line="-114"/>
+        <location line="-136"/>
         <source>&amp;Skins</source>
         <translation>&amp; தோல்கள்</translation>
     </message>
@@ -6789,12 +7329,11 @@ Are you sure?</source>
         <translation>கோப்பு உலாவியில் சென்ட்ரல் மோட்ச் கோப்புறையைத் திறக்கவும்.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-469"/>
         <source>Loading news...</source>
-        <translation>செய்திகளை ஏற்றுகிறது ...</translation>
+        <translation type="vanished">செய்திகளை ஏற்றுகிறது ...</translation>
     </message>
     <message>
-        <location line="+478"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+9"/>
         <source>Group already exists. :/</source>
         <translation>குழு ஏற்கனவே உள்ளது. :/</translation>
     </message>
@@ -6809,7 +7348,7 @@ Are you sure?</source>
         <translation>குழுவை நீக்கு</translation>
     </message>
     <message>
-        <location line="+177"/>
+        <location line="+262"/>
         <source>Failed to add %1 to PATH</source>
         <translation>பாதையில் %1 ஐ சேர்க்கத் தவறிவிட்டது</translation>
     </message>
@@ -6849,32 +7388,31 @@ Are you sure?</source>
         <translation>Ctrl+k</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+65"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+43"/>
         <source>The selected instance is currently running and cannot be deleted. Please stop the instance before attempting to delete it.</source>
         <translation>தேர்ந்தெடுக்கப்பட்ட நிகழ்வு தற்போது இயங்குகிறது மற்றும் நீக்க முடியாது. அதை நீக்க முயற்சிக்கும் முன் தயவுசெய்து நிறுத்தவும்.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+448"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+459"/>
         <source>Open the Java folder in a file browser. Only available if the built-in Java downloader is used.</source>
         <translation>கோப்பு உலாவியில் சாவா கோப்புறையைத் திறக்கவும். உள்ளமைக்கப்பட்ட சாவா பதிவிறக்கம் பயன்படுத்தப்பட்டால் மட்டுமே கிடைக்கும்.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-691"/>
         <source>No news available.</source>
-        <translation>செய்தி எதுவும் கிடைக்கவில்லை.</translation>
+        <translation type="vanished">செய்தி எதுவும் கிடைக்கவில்லை.</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-718"/>
         <source>The task has been aborted by the user.</source>
         <translation>பணி பயனரால் கைவிடப்பட்டுள்ளது.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-66"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-55"/>
         <source>Open one of the folders shared between instances.</source>
         <translation>நிகழ்வுகளுக்கு இடையில் பகிரப்பட்ட கோப்புறைகளில் ஒன்றைத் திறக்கவும்.</translation>
     </message>
     <message>
-        <location line="-374"/>
+        <location line="-396"/>
         <source>Rename</source>
         <translation>மறுபெயரிடுங்கள்</translation>
     </message>
@@ -6888,7 +7426,7 @@ Are you sure?</source>
         <translation type="vanished">ப்ரிசம் துவக்கி (சிப்)</translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+69"/>
         <source>Open %1 subreddit.</source>
         <translation>திறந்த %1 சப்ரெடிட்.</translation>
     </message>
@@ -6898,7 +7436,7 @@ Are you sure?</source>
         <translation>மூன்றாம் தரப்பினருக்கு மோட்பேக், மோட் அல்லது வள %1 தடுக்கப்பட்டுள்ளது! தயவுசெய்து அதை கைமுறையாக பதிவிறக்கவும்.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-221"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-243"/>
         <source>Cop&amp;y...</source>
         <translation>காவல்துறை &amp; மற்றும் ...</translation>
     </message>
@@ -6920,7 +7458,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>நிகழ்வு அமைப்புகள், மோட்கள் மற்றும் பதிப்புகளை மாற்றவும்.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+671"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+734"/>
         <source>This is a problem: &lt;br/&gt; - The launcher will likely be deleted without warning by the operating system &lt;br/&gt; - close the launcher now and extract it to a real location, not a temporary folder</source>
         <translation>இது ஒரு சிக்கல்: &lt;br/&gt; - இயக்க முறைமையின் எச்சரிக்கை இல்லாமல் துவக்கி நீக்கப்படும் &lt;br/&gt; - இப்போது துவக்கியை மூடி, உண்மையான இடத்திற்கு பிரித்தெடுக்கவும், தற்காலிக கோப்புறை அல்ல</translation>
     </message>
@@ -6929,12 +7467,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="vanished">பூனை பொதிகள்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+235"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+257"/>
         <source>Open %1 Discord guild.</source>
         <translation>திறந்த %1 டிச்கார்ட் கில்ட்.</translation>
     </message>
     <message>
-        <location line="-221"/>
+        <location line="-243"/>
         <source>Open the selected instance&apos;s root folder in a file browser.</source>
         <translation>தேர்ந்தெடுக்கப்பட்ட நிகழ்வின் ரூட் கோப்புறையை கோப்பு உலாவியில் திறக்கவும்.</translation>
     </message>
@@ -6944,7 +7482,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>குறுக்குவழியை உருவாக்கவும்</translation>
     </message>
     <message>
-        <location line="-271"/>
+        <location line="-282"/>
         <source>Lock Toolbars</source>
         <translation>பூட்டு கருவிப்பட்டிகள்</translation>
     </message>
@@ -6954,52 +7492,51 @@ Please create a new instance before attempting to install this resource again.</
         <translation>நீக்குதலை உறுதிப்படுத்தவும்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+227"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+238"/>
         <source>E&amp;xport...</source>
         <translation>&amp;ஏற்றுமதி ...</translation>
     </message>
     <message>
-        <location line="+277"/>
+        <location line="+299"/>
         <source>Get help with %1 or Minecraft.</source>
         <translation>%1 அல்லது Minecraft உடன் உதவி பெறுங்கள்.</translation>
     </message>
     <message>
-        <location line="-166"/>
+        <location line="-188"/>
         <source>Open the launcher&apos;s root folder in a file browser.</source>
         <translation>ஒரு கோப்பு உலாவியில் லாஞ்சரின் ரூட் கோப்புறையைத் திறக்கவும்.</translation>
     </message>
     <message>
-        <location line="+60"/>
+        <location line="+82"/>
         <source>Report a Bug or Suggest a Feature</source>
         <translation>பிழையைப் புகாரளிக்கவும் அல்லது ஒரு அம்சத்தை பரிந்துரைக்கவும்</translation>
     </message>
     <message>
-        <location line="-326"/>
+        <location line="-348"/>
         <source>&amp;Manage Accounts...</source>
         <translation>&amp; கணக்குகளை நிர்வகிக்கவும் ...</translation>
     </message>
     <message>
-        <location line="+351"/>
+        <location line="+373"/>
         <source>Open %1 Matrix space.</source>
         <translation>திறந்த %1 மேட்ரிக்ச் இடம்.</translation>
     </message>
     <message>
-        <location line="+103"/>
         <source>Open the %1 wiki</source>
-        <translation>%1 விக்கியைத் திறக்கவும்</translation>
+        <translation type="vanished">%1 விக்கியைத் திறக்கவும்</translation>
     </message>
     <message>
-        <location line="-213"/>
+        <location line="-132"/>
         <source>Close the current window</source>
         <translation>தற்போதைய சாளரத்தை மூடு</translation>
     </message>
     <message>
-        <location line="+221"/>
+        <location line="+232"/>
         <source>&amp;Widget Themes</source>
         <translation>&amp; விட்செட் கருப்பொருள்கள்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-235"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-298"/>
         <source>Cannot set empty name.</source>
         <translation>வெற்று பெயரை அமைக்க முடியாது.</translation>
     </message>
@@ -7009,7 +7546,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>எச்சரிக்கைகள்</translation>
     </message>
     <message>
-        <location line="-839"/>
+        <location line="-872"/>
         <source>Show PollyMC</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7019,7 +7556,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+418"/>
+        <location line="+413"/>
         <source>The star reminder will appear after the Settings dialog closes.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7029,7 +7566,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+104"/>
         <source>Enjoying PollyMC-Continued?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7044,7 +7581,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+555"/>
+        <location line="+533"/>
         <source>Invalid import link: missing &apos;url&apos; parameter.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7083,33 +7620,33 @@ URL:
         <translation>குழுவை மறுபெயரிட முடியாது</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-92"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-81"/>
         <source>&amp;About %1</source>
         <translation>&amp; சுமார் %1</translation>
     </message>
     <message>
-        <location line="-506"/>
+        <location line="-528"/>
         <source>&amp;Accounts</source>
         <translation>&amp; கணக்குகள்</translation>
     </message>
     <message>
-        <location line="+576"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-516"/>
+        <location line="+598"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-494"/>
         <source>Accounts</source>
         <translation>கணக்குகள்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+671"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+734"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 உங்கள் பாதையில் வெற்றிகரமாக சேர்க்கப்பட்டது. `%2` ஐ இயக்குவதன் மூலம் இப்போது அதைத் தொடங்கலாம்.</translation>
     </message>
     <message>
-        <location line="+351"/>
+        <location line="+329"/>
         <source>You have now two options: &lt;br/&gt; - change the instance folder in the settings &lt;br/&gt; - move this installation of %1 to a different folder</source>
         <translation>உங்களிடம் இப்போது இரண்டு விருப்பங்கள் உள்ளன: &lt;br/&gt; - அமைப்புகளில் நிகழ்வு கோப்புறையை மாற்றவும் &lt;br/&gt; - இந்த %1 இன் நிறுவலை வேறு கோப்புறைக்கு நகர்த்தவும்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-487"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-520"/>
         <source>Add a new instance.</source>
         <translation>ஒரு புதிய நிகழ்வைச் சேர்க்கவும்.</translation>
     </message>
@@ -7119,12 +7656,11 @@ URL:
         <translation>இயங்கும் நிகழ்வை நீக்க முடியாது</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-44"/>
         <source>Open the development blog to read more news about %1.</source>
-        <translation>%1 பற்றிய கூடுதல் செய்திகளைப் படிக்க மேம்பாட்டு வலைப்பதிவைத் திறக்கவும்.</translation>
+        <translation type="vanished">%1 பற்றிய கூடுதல் செய்திகளைப் படிக்க மேம்பாட்டு வலைப்பதிவைத் திறக்கவும்.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1379"/>
+        <location line="-1471"/>
         <source>Backspace</source>
         <translation>பேக்ச்பேச்</translation>
     </message>
@@ -7133,12 +7669,12 @@ URL:
         <translation type="vanished">&amp; புதுப்பித்தல் ...</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+343"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+310"/>
         <source>&amp;Instances</source>
         <translation>&amp; நிகழ்வுகள்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+566"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+617"/>
         <source>Ctrl+%1</source>
         <translation>Ctrl%1</translation>
     </message>
@@ -7173,22 +7709,27 @@ URL:
         <translation>கணக்குகள் எதுவும் சேர்க்கப்படவில்லை!</translation>
     </message>
     <message>
-        <location line="+197"/>
+        <location line="+219"/>
         <source>Install to &amp;PATH</source>
         <translation>&amp;பாதைக்கு நிறுவவும்</translation>
     </message>
     <message>
-        <location line="-305"/>
+        <location line="-327"/>
         <source>&amp;Edit...</source>
         <translation>&amp; திருத்து ...</translation>
     </message>
     <message>
-        <location line="-185"/>
+        <location line="-384"/>
+        <source>What&apos;s New Toolbar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+188"/>
         <source>Status Bar</source>
         <translation>நிலை பட்டி</translation>
     </message>
     <message>
-        <location line="+141"/>
+        <location line="+152"/>
         <source>&amp;Backup Instance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7213,49 +7754,44 @@ URL:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+207"/>
+        <location line="+229"/>
         <source>View information about %1.</source>
         <translation>%1 பற்றிய தகவல்களைக் காண்க.</translation>
     </message>
     <message>
-        <location line="+78"/>
-        <source>%1 &amp;Wiki</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+14"/>
+        <location line="+81"/>
         <source>Open the widget themes folder in a file browser.</source>
         <translation>கோப்பு உலாவியில் விட்செட் தீம்கள் கோப்புறையைத் திறக்கவும்.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+560"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+538"/>
         <source>Group name</source>
         <translation>குழு பெயர்</translation>
     </message>
     <message>
-        <location line="+277"/>
+        <location line="+340"/>
         <source>Deleting</source>
         <translation>நீக்குதல்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-69"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-58"/>
         <source>View logs</source>
         <translation>பதிவுகளைக் காண்க</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-955"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-996"/>
         <source>&amp;Rename group</source>
         <translation>&amp; குழு மறுபெயரிடுதல்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-133"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-155"/>
         <source>Launcher &amp;Root</source>
         <translation>துவக்கி &amp; ரூட்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-346"/>
-        <location line="+96"/>
-        <location line="+1446"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-403"/>
+        <location line="+88"/>
+        <location line="+1552"/>
         <source>No instance selected</source>
         <translation>எந்த உதாரணமும் தேர்ந்தெடுக்கப்படவில்லை</translation>
     </message>
@@ -7265,12 +7801,12 @@ URL:
         <translation>ஐகானை மாற்றவும்</translation>
     </message>
     <message>
-        <location line="+246"/>
+        <location line="+268"/>
         <source>&amp;Discord Guild</source>
         <translation>&amp; டிச்கார்ட் கில்ட்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-355"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-333"/>
         <source>Metadata cache clear Failed!
 To clear the metadata cache manually, press Folders -&gt; View Launcher Root Folder, and after closing the launcher delete the folder named &quot;meta&quot;
 </source>
@@ -7284,42 +7820,42 @@ To clear the metadata cache manually, press Folders -&gt; View Launcher Root Fol
         <translation>&amp; தெளிவான மேனிலை தரவு கேச்</translation>
     </message>
     <message>
-        <location line="-540"/>
+        <location line="-562"/>
         <source>F&amp;olders</source>
         <translation>எஃப் &amp; ஓல்டர்ச்</translation>
     </message>
     <message>
-        <location line="+574"/>
+        <location line="+596"/>
         <source>Folders</source>
         <translation>கோப்புறைகள்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+388"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+366"/>
         <source>Your instance folder contains &apos;Rar$&apos; - that means you haven&apos;t extracted the launcher archive!</source>
         <translation>உங்கள் நிகழ்வு கோப்புறையில் &apos;ரார் $&apos; உள்ளது - அதாவது நீங்கள் லாஞ்சர் காப்பகத்தை பிரித்தெடுக்கவில்லை!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-144"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-166"/>
         <source>&amp;Central Mods</source>
         <translation>&amp; நடு மோட்ச்</translation>
     </message>
     <message>
-        <location line="+85"/>
+        <location line="+107"/>
         <source>Sub&amp;reddit</source>
         <translation>துணை &amp; ரெடிட்</translation>
     </message>
     <message>
-        <location line="-229"/>
+        <location line="-251"/>
         <source>Delete the selected instance.</source>
         <translation>தேர்ந்தெடுக்கப்பட்ட நிகழ்வை நீக்கு.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1233"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1274"/>
         <source>&amp;Delete group</source>
         <translation>&amp; குழுவை நீக்கு</translation>
     </message>
     <message>
-        <location line="+725"/>
+        <location line="+703"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>சில நிகழ்வுகளையும் குறுக்குவழிகளையும் மீட்டெடுக்க முடியவில்லை. 
@@ -7335,7 +7871,7 @@ Please check your trashbin to manually restore them.</source>
         <translation type="vanished">இது ஒரு பஞ்சுபோன்ற கிட்டி: 3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-739"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-717"/>
         <source>&amp;Create instance</source>
         <translation>&amp; உதாரணத்தை உருவாக்குங்கள்</translation>
     </message>
@@ -7360,43 +7896,43 @@ Please check your trashbin to manually restore them.</source>
         <translation>சருகல் (சிப்)</translation>
     </message>
     <message>
-        <location line="+199"/>
+        <location line="+221"/>
         <source>Clear cached metadata</source>
         <translation>தற்காலிக சேமிப்பு மேனிலை தரவு</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-327"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-384"/>
         <source>Total playtime: 0s</source>
         <translation>மொத்த விளையாட்டு நேரம்: 0 கள்</translation>
     </message>
     <message>
-        <location line="+1606"/>
+        <location line="+1704"/>
         <source>Total playtime: %1</source>
         <translation>மொத்த விளையாட்டு நேரம்: %1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-293"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-315"/>
         <source>Change the selected instance&apos;s icon.</source>
         <translation>தேர்ந்தெடுக்கப்பட்ட நிகழ்வின் ஐகானை மாற்றவும்.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-398"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-376"/>
         <source>Successfully added %1 to PATH</source>
         <translation>பாதையில் %1 ஐ வெற்றிகரமாகச் சேர்த்தது</translation>
     </message>
     <message>
-        <location line="-185"/>
+        <location line="-270"/>
         <location line="+22"/>
         <source>Enter a new group name.</source>
         <translation>புதிய குழு பெயரை உள்ளிடவும்.</translation>
     </message>
     <message>
-        <location line="+168"/>
+        <location line="+253"/>
         <source>An error occurred while trying to add %1 to PATH</source>
         <translation>பாதையில் %1 ஐ சேர்க்க முயற்சிக்கும்போது பிழை ஏற்பட்டது</translation>
     </message>
     <message>
-        <location line="-178"/>
+        <location line="-263"/>
         <source>Are you sure you want to delete the group &apos;%1&apos;?</source>
         <translation>&apos;%1&apos; குழுவை நீக்க விரும்புகிறீர்களா?</translation>
     </message>
@@ -8571,17 +9107,7 @@ Are you sure?</source>
  நீங்கள் உறுதியாக இருக்கிறீர்களா?</translation>
     </message>
     <message>
-        <location line="+105"/>
-        <source>Missing Mod Loader</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>You need to install a compatible mod loader before installing mods. Would you like to do so?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-343"/>
+        <location line="-237"/>
         <source>Download mods from online mod platforms</source>
         <translation>நிகழ்நிலை மோட் இயங்குதளங்களிலிருந்து மோட்சைப் பதிவிறக்கவும்</translation>
     </message>
@@ -9033,7 +9559,7 @@ Please update %1!</source>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+123"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+145"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9075,7 +9601,7 @@ Please update %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+34"/>
+        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+50"/>
         <source>All %1 requests failed after %2 attempts</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9092,6 +9618,51 @@ Please update %1!</source>
     <message>
         <location line="+9"/>
         <source>Copy URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Report Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Send this error to the PollyMC developers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>This looks like antivirus software (or ransomware protection) blocking the launcher&apos;s temporary files. You can retry through a different temporary folder, or open the guide on letting your antivirus leave the launcher alone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Retry with a different temp folder…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Pick a folder the launcher will use to stage downloads, then retry. Choose one that your antivirus does not watch, such as a folder in your home directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Open the antivirus exclusion guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Opens a guide explaining how to add the launcher to your antivirus exclusions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+61"/>
+        <source>Network error: %1</source>
+        <translation type="unfinished">பிணைய பிழை: %1</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Pick a temporary download folder</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -9584,6 +10155,28 @@ Are you sure?</source>
         <source>Help</source>
         <translation type="obsolete">உதவி</translation>
     </message>
+    <message>
+        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+383"/>
+        <location line="+42"/>
+        <source>Search settings…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-41"/>
+        <location line="+42"/>
+        <source>Search all settings (Ctrl+F). Several words narrow the results down.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+296"/>
+        <source>No settings match &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Try fewer or shorter words, or part of the setting&apos;s name.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PageDialog</name>
@@ -9732,13 +10325,13 @@ Maximum performance for demanding setups</source>
 <context>
     <name>PollyMCExternalUpdater</name>
     <message>
-        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+147"/>
-        <location line="+120"/>
+        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+154"/>
+        <location line="+129"/>
         <source>Update UI preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-120"/>
+        <location line="-129"/>
         <source>An update check is already running. Try again in a moment.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9764,23 +10357,28 @@ Reason: %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+43"/>
         <source>Update Check Failed</source>
         <translation type="unfinished">புதுப்பிப்பு காசோலை தோல்வியடைந்தது</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+6"/>
+        <source>Update check failed: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
         <source>The updater did not report any release to show.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+6"/>
-        <location line="+210"/>
+        <location line="+237"/>
         <source>No Update Available</source>
         <translation type="unfinished">புதுப்பிப்பு எதுவும் கிடைக்கவில்லை</translation>
     </message>
     <message>
-        <location line="-210"/>
+        <location line="-237"/>
         <source>You are running the latest version.</source>
         <translation type="unfinished">நீங்கள் அண்மைக் கால பதிப்பை இயக்குகிறீர்கள்.</translation>
     </message>
@@ -9795,7 +10393,13 @@ Reason: %1.</source>
         <translation type="unfinished">புதுப்பிப்பு காசோலையை இயக்கும் பிழை இருந்தது.</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+6"/>
+        <location line="+31"/>
+        <source>Update check failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-9"/>
         <source>Unknown Update Error</source>
         <translation type="unfinished">தெரியாத புதுப்பிப்பு பிழை</translation>
     </message>
@@ -9814,7 +10418,7 @@ StdErr: %2</source>
  Stderr: %2</translation>
     </message>
     <message>
-        <location line="+169"/>
+        <location line="+194"/>
         <source>There are no new updates available.</source>
         <translation type="unfinished">புதிய புதுப்பிப்புகள் எதுவும் கிடைக்கவில்லை.</translation>
     </message>
@@ -10576,7 +11180,7 @@ To overwrite this lock and proceed with this update anyway, select &quot;Ignore&
 <context>
     <name>ProfileSelectDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ProfileSelectDialog.cpp" line="+67"/>
+        <location filename="../launcher/ui/dialogs/ProfileSelectDialog.cpp" line="+68"/>
         <source>OK</source>
         <translation>சரி</translation>
     </message>
@@ -10840,7 +11444,7 @@ Choose your name carefully:</source>
         <translation type="vanished">மோட்ச்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/GuiUtil.cpp" line="+112"/>
+        <location filename="../launcher/ui/GuiUtil.cpp" line="+113"/>
         <source>The log has %1 lines, exceeding mclo.gs&apos; limit of %2.
 The launcher can keep the first %3 and last %4 lines, trimming the middle.
 
@@ -10864,7 +11468,7 @@ Proceed with truncation?</source>
         <translation type="vanished">அங்கீகரிக்கப்படாத</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1144"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1173"/>
         <source>%1 (in use)</source>
         <translation>%1 (பயன்பாட்டில்)</translation>
     </message>
@@ -11795,13 +12399,38 @@ New name: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/DeveloperPage.cpp" line="-128"/>
+        <location filename="../launcher/ui/pages/global/DeveloperPage.cpp" line="-153"/>
         <source>Developer tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The star reminder schedule has been reset.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/net/BugReportUpload.cpp" line="+51"/>
+        <source>Too many reports, please try again later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The report could not be sent: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>The report server returned an unexpected response.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <source>Report Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Send this error to the PollyMC developers</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -12517,7 +13146,7 @@ Are you sure you want to do this?</source>
 <context>
     <name>ResourceUpdateDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+178"/>
+        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+183"/>
         <source>Failed to check for updates</source>
         <translation>புதுப்பிப்புகளை சரிபார்க்கத் தவறிவிட்டது</translation>
     </message>
@@ -12548,12 +13177,12 @@ Are you sure you want to do this?</source>
         <translation>புதுப்பிப்புகளுக்கு பின்வரும் ஆதாரங்களை சரிபார்க்கவோ பெறவோ முடியவில்லை: &lt;br&gt; அந்த வளங்கள் இல்லாமல் தொடர விரும்புகிறீர்களா?</translation>
     </message>
     <message>
-        <location line="-136"/>
+        <location line="-140"/>
         <source>Confirm resources to update</source>
         <translation>புதுப்பிக்க ஆதாரங்களை உறுதிப்படுத்தவும்</translation>
     </message>
     <message>
-        <location line="+125"/>
+        <location line="+129"/>
         <source>Mod name: %1</source>
         <translation>மோட் பெயர்: %1</translation>
     </message>
@@ -12594,12 +13223,12 @@ Are you sure you want to do this?</source>
         <translation>தேர்ந்தெடுக்கப்பட்ட மோட் வழங்குநர் (கள்) இல் செல்லுபடியாகும் பதிப்பைக் கண்டுபிடிக்க முடியவில்லை</translation>
     </message>
     <message>
-        <location line="-379"/>
+        <location line="-383"/>
         <source>You&apos;re about to update the following resources:</source>
         <translation>பின்வரும் ஆதாரங்களை புதுப்பிக்க உள்ளீர்கள்:</translation>
     </message>
     <message>
-        <location line="+401"/>
+        <location line="+405"/>
         <source>Old version: %1</source>
         <translation>பழைய பதிப்பு: %1</translation>
     </message>
@@ -12645,12 +13274,12 @@ Are you sure you want to do this?</source>
         <translation>மோட் பெயர்: %1 &lt;br&gt; கோப்பு பெயர்: %2 &lt;br&gt; காரணம்: %3 &lt;br&gt; &lt;br&gt;</translation>
     </message>
     <message>
-        <location line="-18"/>
+        <location line="-22"/>
         <source>Only resources with a check will be updated!</source>
         <translation>காசோலை கொண்ட ஆதாரங்கள் மட்டுமே புதுப்பிக்கப்படும்!</translation>
     </message>
     <message>
-        <location line="+67"/>
+        <location line="+71"/>
         <source>Checking for updates...</source>
         <translation>புதுப்பிப்புகளைச் சரிபார்க்கிறது ...</translation>
     </message>
@@ -12678,7 +13307,7 @@ Are you sure you want to do this?</source>
 <context>
     <name>ReviewMessageBox</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ReviewMessageBox.cpp" line="+25"/>
+        <location filename="../launcher/ui/dialogs/ReviewMessageBox.cpp" line="+27"/>
         <source>OK</source>
         <translation>சரி</translation>
     </message>
@@ -12688,17 +13317,17 @@ Are you sure you want to do this?</source>
         <translation>பின்</translation>
     </message>
     <message>
-        <location line="+106"/>
+        <location line="+109"/>
         <source>You&apos;re about to download the following %1:</source>
         <translation>பின்வரும் %1 ஐ பதிவிறக்கம் செய்ய உள்ளீர்கள்:</translation>
     </message>
     <message>
-        <location line="-96"/>
+        <location line="-99"/>
         <source>Cancel</source>
         <translation>ரத்துசெய்</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+47"/>
         <source>Filename: %1</source>
         <translation>கோப்பு பெயர்: %1</translation>
     </message>
@@ -12890,7 +13519,7 @@ Are you sure?</source>
 <context>
     <name>ScrollMessageBox</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ScrollMessageBox.cpp" line="+19"/>
+        <location filename="../launcher/ui/dialogs/ScrollMessageBox.cpp" line="+20"/>
         <source>OK</source>
         <translation>சரி</translation>
     </message>
@@ -13742,6 +14371,29 @@ Are you sure?</source>
     </message>
 </context>
 <context>
+    <name>SplashScreen</name>
+    <message>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <source>Loading icons…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Loading instances…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Loading accounts…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Almost ready…</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>StepModel</name>
     <message>
         <location filename="../launcher/bot/BotScriptEditor.cpp" line="-378"/>
@@ -14158,7 +14810,7 @@ Are you sure you want to do this?</source>
 <context>
     <name>TranslationsModel</name>
     <message>
-        <location filename="../launcher/translations/TranslationsModel.cpp" line="+396"/>
+        <location filename="../launcher/translations/TranslationsModel.cpp" line="+414"/>
         <source>The native language name.</source>
         <translation>சொந்த மொழி பெயர்.</translation>
     </message>
@@ -14205,7 +14857,7 @@ Are you sure you want to do this?</source>
     </message>
     <message>
         <location line="-49"/>
-        <location filename="../launcher/ui/dialogs/UpdateAvailableDialog.cpp" line="+43"/>
+        <location filename="../launcher/ui/dialogs/UpdateAvailableDialog.cpp" line="+44"/>
         <source>Version %1 is now available - you have %2 . Would you like to download it now?</source>
         <translation>பதிப்பு %1 இப்போது கிடைக்கிறது - உங்களிடம் %2 உள்ளது. இப்போது அதை பதிவிறக்கம் செய்ய விரும்புகிறீர்களா?</translation>
     </message>
@@ -14754,7 +15406,7 @@ Please add a Microsoft account.</source>
         <translation type="vanished">சரி</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+99"/>
+        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+104"/>
         <source>Reloads the version list.</source>
         <translation>பதிப்பு பட்டியலை மீண்டும் ஏற்றுகிறது.</translation>
     </message>
@@ -14764,7 +15416,7 @@ Please add a Microsoft account.</source>
         <translation>பதிப்பைத் தேர்வுசெய்க</translation>
     </message>
     <message>
-        <location line="-26"/>
+        <location line="-29"/>
         <source>Ok</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14774,7 +15426,7 @@ Please add a Microsoft account.</source>
         <translation>ரத்துசெய்</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+30"/>
         <source>&amp;Refresh</source>
         <translation>&amp; புதுப்பிக்கவும்</translation>
     </message>
@@ -14810,6 +15462,92 @@ Please add a Microsoft account.</source>
         <location line="-4"/>
         <source>Launcher Logs</source>
         <translation>துவக்கி பதிவுகள்</translation>
+    </message>
+</context>
+<context>
+    <name>WhatsNewBrowserDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/WhatsNewBrowserDialog.cpp" line="+57"/>
+        <source>What&apos;s New</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+48"/>
+        <source>All releases</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Close</source>
+        <translation type="unfinished">மூடு</translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>What&apos;s new in %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The changelog could not be read. Use &quot;All releases&quot; to read the release notes on GitHub.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>The version this launcher is running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>What&apos;s new in %1 %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WhatsNewDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/WhatsNewDialog.cpp" line="+56"/>
+        <source>What&apos;s New</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>What&apos;s new in %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>What&apos;s new in %1 %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>You updated from %1 to %2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>The release notes for this version are not stored on this computer. Use &quot;All releases&quot; to read them on GitHub.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Show this after updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>You can always open this window again from Help &gt; What&apos;s New.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>All releases</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Got it</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

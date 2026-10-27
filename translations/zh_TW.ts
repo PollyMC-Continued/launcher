@@ -295,7 +295,7 @@
     </message>
     <message>
         <location line="-9"/>
-        <location filename="../launcher/ui/dialogs/AboutDialog.cpp" line="+91"/>
+        <location filename="../launcher/ui/dialogs/AboutDialog.cpp" line="+92"/>
         <source>About</source>
         <translation>關於</translation>
     </message>
@@ -325,7 +325,7 @@
         <translation>建構日期：%1</translation>
     </message>
     <message>
-        <location line="+37"/>
+        <location line="+40"/>
         <source>Developer mode</source>
         <translation type="unfinished"></translation>
     </message>
@@ -354,7 +354,7 @@
         <translation type="vanished">關於 %1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/AboutDialog.cpp" line="-27"/>
+        <location filename="../launcher/ui/dialogs/AboutDialog.cpp" line="-30"/>
         <source>Channel</source>
         <translation>通道</translation>
     </message>
@@ -728,12 +728,12 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation type="vanished">更新成功</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1263"/>
+        <location filename="../launcher/Application.cpp" line="+1306"/>
         <source>Incompatible system configuration</source>
         <translation>系統設定不相容</translation>
     </message>
     <message>
-        <location line="+897"/>
+        <location line="+995"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -768,12 +768,12 @@ for details on the last update attempt.</source>
 以了解上次更新嘗試的詳細資訊。</translation>
     </message>
     <message>
-        <location line="-1548"/>
+        <location line="-1700"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>由於紀錄檔長度超過 %1 行，無法顯示這個紀錄檔。</translation>
     </message>
     <message>
-        <location line="+1370"/>
+        <location line="+1522"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>看起來您以前在 %2 上使用過 %1。是否要將資料遷移到 %3 的新位置？</translation>
     </message>
@@ -841,7 +841,7 @@ for details.</source>
 以獲取詳細資訊。</translation>
     </message>
     <message>
-        <location line="-1664"/>
+        <location line="-1820"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -877,7 +877,27 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+607"/>
+        <location line="+531"/>
+        <source>Loading icons…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>Loading instances…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+46"/>
+        <source>Loading accounts…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Almost ready…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other launcher update is running. To delete the lock file and continue, select &quot;Ignore&quot; below.</source>
@@ -916,7 +936,7 @@ Make sure the installation works, then select &quot;Ignore&quot; to continue sta
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+29"/>
         <source>You are now running %1.
 
 See the updater log for details.</source>
@@ -941,7 +961,42 @@ You may solve this issue by remounting /tmp as &apos;exec&apos; or setting the j
 </translation>
     </message>
     <message>
-        <location line="+937"/>
+        <location line="+211"/>
+        <source>Opening the launcher…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+444"/>
+        <location line="+20"/>
+        <source>Launcher closed unexpectedly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-19"/>
+        <source>%1 did not shut down properly last time.
+
+If it crashed or froze on you, you can send us a crash report - the log from that session is attached automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Report this crash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Ignore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>The launcher closed unexpectedly (crash or freeze). Last part of the log from that session:
+
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+362"/>
         <source>Instances were found at %1, but %2 is looking in %3. Do you want to migrate them to the new location?</source>
         <translation>在 %1 中發現了實例，但 %2 正在 %3 中尋找。是否將其遷移到新位置？</translation>
     </message>
@@ -974,7 +1029,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">更新進行中</translation>
     </message>
     <message>
-        <location line="-1297"/>
+        <location line="-1419"/>
         <source>Settings</source>
         <translation>設定</translation>
     </message>
@@ -1005,7 +1060,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 如要刪除這個鎖定並繼續操作，請選擇下方的「忽略」。</translation>
     </message>
     <message>
-        <location line="+1141"/>
+        <location line="+1263"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>找到來自 %1 的舊資料，但您已有 %2 的現有資料。很遺憾，您需要自行遷移。下次啟動 %2 時是否要提醒您進行資料遷移？</translation>
     </message>
@@ -1440,8 +1495,8 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 <context>
     <name>BlockedModsDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BlockedModsDialog.cpp" line="+56"/>
-        <location line="+120"/>
+        <location filename="../launcher/ui/dialogs/BlockedModsDialog.cpp" line="+58"/>
+        <location line="+123"/>
         <source>OK</source>
         <translation>確定</translation>
     </message>
@@ -1461,7 +1516,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation>請下載缺少的模組。</translation>
     </message>
     <message>
-        <location line="-123"/>
+        <location line="-126"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
@@ -1471,7 +1526,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation>開啟下載網頁</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/BlockedModsDialog.cpp" line="+119"/>
+        <location filename="../launcher/ui/dialogs/BlockedModsDialog.cpp" line="+122"/>
         <source>All mods found</source>
         <translation>找到所有模組</translation>
     </message>
@@ -1640,6 +1695,284 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <location line="+6"/>
         <source>Saved.</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BugReportDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+114"/>
+        <location line="+374"/>
+        <location line="+11"/>
+        <location line="+52"/>
+        <location line="+8"/>
+        <location line="+9"/>
+        <source>Report a Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-436"/>
+        <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+18"/>
+        <source>What kind of report is this?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Crash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Suggestion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Something else</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Anonymous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Discord username or email</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Only fill this in if you want a reply.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Your name (optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Contact (optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Screenshots (optional, up to %1). You can also drag images into this window.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Add image…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Paste from clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Remove</source>
+        <translation type="unfinished">移除</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Include the launcher log (recommended, personal paths are hidden)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>What else is sent automatically?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Prefer GitHub? &lt;a href=&quot;%1&quot;&gt;Open the issue tracker&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <location line="+171"/>
+        <source>Send Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-135"/>
+        <source>What were you doing when it crashed?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Tell us what you were doing right before the launcher closed or froze, and whether it happens every time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>What would you like to see?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Describe your idea and what it would make easier for you. Examples from other apps help too.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>What&apos;s on your mind?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Tell us anything that doesn&apos;t fit the other types: feedback, questions, or something that just feels off.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>What happened?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Describe the bug and, if you can, the steps to make it happen again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+76"/>
+        <source>&lt;i&gt;An unsent report you started earlier was restored - it is ready to finish and send whenever you are.&lt;/i&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+49"/>
+        <source>Sending…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Error: %1
+%2
+
+What I was doing when this happened:
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>Launcher: %1 (%2)
+System: %3
+CPU architecture: %4
+Qt: %5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Write at least %1 characters to send (%2 / %3)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <location line="+38"/>
+        <source>Screenshot %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-32"/>
+        <source>Choose screenshots</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Images (*.png *.jpg *.jpeg *.webp *.bmp)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Could not open %1 as an image.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>There is no image on the clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+52"/>
+        <source>You just sent a report. Please wait a minute before sending another one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>You already sent this exact report in this session.
+
+Send it again anyway?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>This report is too large to send (%1 MB). Remove a screenshot or untick &quot;Include the launcher log&quot; and try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>Too many reports, please try again later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Failed to send the report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The report could not be sent (HTTP %1): %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Thank you! Your report is on its way to the PollyMC team, and we read every one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>
+
+We&apos;ll use the contact you gave if we need to ask anything. Want faster help, or to follow what happens next? Come say hi on our Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>
+
+Since you sent this anonymously we can&apos;t write back. Want help with this problem, or to see what happens next? Come say hi on our Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Report sent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Join our Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Close</source>
+        <translation type="unfinished">關閉</translation>
     </message>
 </context>
 <context>
@@ -1943,7 +2276,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 <context>
     <name>CopyInstanceDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/CopyInstanceDialog.cpp" line="+114"/>
+        <location filename="../launcher/ui/dialogs/CopyInstanceDialog.cpp" line="+115"/>
         <source>OK</source>
         <translation>確定</translation>
     </message>
@@ -2192,7 +2525,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation>名稱</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+112"/>
+        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+113"/>
         <source>%1 (in use)</source>
         <translation>%1（使用中）</translation>
     </message>
@@ -2202,7 +2535,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation>名稱：</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+88"/>
+        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+91"/>
         <source>world</source>
         <translation>世界</translation>
     </message>
@@ -2217,7 +2550,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation>注意：如果捷徑在建立後被移動，那麼在刪除實例時，該捷徑將不會被刪除。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="-104"/>
+        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="-107"/>
         <source>%1 [%2] - Last Played: %3</source>
         <translation>%1 [%2] - 上次遊玩時間：%3</translation>
     </message>
@@ -2228,7 +2561,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation>伺服器位址：</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+100"/>
+        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+103"/>
         <source>instance</source>
         <translation>實例</translation>
     </message>
@@ -2263,17 +2596,17 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation>如果發生這種情況，您需要手動刪除它們。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="-94"/>
+        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="-97"/>
         <source>Desktop</source>
         <translation>桌面</translation>
     </message>
     <message>
-        <location line="+96"/>
+        <location line="+99"/>
         <source>%1 - Server %2</source>
         <translation>%1 - %2 伺服器</translation>
     </message>
     <message>
-        <location line="-91"/>
+        <location line="-94"/>
         <source>Other...</source>
         <translation>其他…</translation>
     </message>
@@ -2659,7 +2992,7 @@ Are you sure?</source>
 <context>
     <name>DeveloperPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/DeveloperPage.cpp" line="+103"/>
+        <location filename="../launcher/ui/pages/global/DeveloperPage.cpp" line="+90"/>
         <source>Developer tools are intended for testing and troubleshooting. Actions below change launcher preferences; they do not delete instances or accounts.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2691,12 +3024,14 @@ Are you sure?</source>
         <location line="+4"/>
         <location line="+11"/>
         <location line="+4"/>
-        <location line="+62"/>
+        <location line="+10"/>
+        <location line="+12"/>
+        <location line="+65"/>
         <source>Developer tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-138"/>
+        <location line="-163"/>
         <source>First-run preferences will be reset when Settings closes. The language and Java setup prompts may appear after restarting PollyMC-Continued.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2768,11 +3103,13 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+5"/>
+        <location line="+29"/>
+        <location line="+12"/>
         <source>The main window is not available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="-37"/>
         <location line="+11"/>
         <source>The updater is not enabled in this build.</source>
         <translation type="unfinished"></translation>
@@ -2794,6 +3131,26 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+3"/>
+        <source>Show What&apos;s New toolbar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Reveals the bottom What&apos;s New toolbar. Use this if it went missing, for example after running an older launcher that hid it again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Open What&apos;s New browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Opens the What&apos;s New version browser without using the toolbar or the Help menu.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>Simulate update-check failure</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3060,12 +3417,12 @@ This instance cannot be launched because some libraries are missing or have not 
 <context>
     <name>ExportInstanceDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportInstanceDialog.cpp" line="+92"/>
+        <location filename="../launcher/ui/dialogs/ExportInstanceDialog.cpp" line="+93"/>
         <source>OK</source>
         <translation>確定</translation>
     </message>
     <message>
-        <location line="+69"/>
+        <location line="+72"/>
         <source>Abort</source>
         <translation>中止</translation>
     </message>
@@ -3081,12 +3438,12 @@ This instance cannot be launched because some libraries are missing or have not 
         <translation>匯出實例</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportInstanceDialog.cpp" line="-66"/>
+        <location filename="../launcher/ui/dialogs/ExportInstanceDialog.cpp" line="-69"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location line="+46"/>
+        <location line="+49"/>
         <source>Export %1</source>
         <translation>匯出 %1</translation>
     </message>
@@ -3099,7 +3456,7 @@ This instance cannot be launched because some libraries are missing or have not 
 <context>
     <name>ExportPackDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="+132"/>
+        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="+133"/>
         <source>OK</source>
         <translation>確定</translation>
     </message>
@@ -3114,7 +3471,7 @@ This instance cannot be launched because some libraries are missing or have not 
         <translation>1.0.0</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="+76"/>
+        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="+79"/>
         <source>Abort</source>
         <translation>中止</translation>
     </message>
@@ -3129,7 +3486,7 @@ This instance cannot be launched because some libraries are missing or have not 
         <translation>工作已中止</translation>
     </message>
     <message>
-        <location line="-143"/>
+        <location line="-146"/>
         <source>Export CurseForge Pack</source>
         <translation>匯出 CurseForge 模組包</translation>
     </message>
@@ -3149,7 +3506,7 @@ This instance cannot be launched because some libraries are missing or have not 
         <translation>取消</translation>
     </message>
     <message>
-        <location line="+42"/>
+        <location line="+45"/>
         <source>CurseForge pack</source>
         <translation>CurseForge 模組包</translation>
     </message>
@@ -3175,7 +3532,7 @@ This instance cannot be launched because some libraries are missing or have not 
         <translation>匯出 %1</translation>
     </message>
     <message>
-        <location line="-122"/>
+        <location line="-125"/>
         <source>Export Modrinth Pack</source>
         <translation>匯出 Modrinth 模組包</translation>
     </message>
@@ -3205,7 +3562,7 @@ This instance cannot be launched because some libraries are missing or have not 
         <translation>版本(&amp;V)：</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="+116"/>
+        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="+119"/>
         <source>Modrinth pack</source>
         <translation>Modrinth 模組包</translation>
     </message>
@@ -3229,7 +3586,7 @@ This instance cannot be launched because some libraries are missing or have not 
         <translation>複製</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="+166"/>
+        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="+170"/>
         <source>File</source>
         <translation>檔案</translation>
     </message>
@@ -3244,7 +3601,7 @@ This instance cannot be launched because some libraries are missing or have not 
         <translation>JSON</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="-97"/>
+        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="-100"/>
         <source>Save</source>
         <translation>儲存</translation>
     </message>
@@ -3300,7 +3657,7 @@ This instance cannot be launched because some libraries are missing or have not 
         <translation>這取決於這些模組的中繼資料。如果要保證其可用，可以該實例中執行更新，而不需要將更新安裝到實例中。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="+97"/>
+        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="+100"/>
         <source>Export %1</source>
         <translation>匯出 %1</translation>
     </message>
@@ -4685,6 +5042,94 @@ Are you sure?</source>
     </message>
 </context>
 <context>
+    <name>InstanceHealthCheckDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+61"/>
+        <source>No Java selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance has no Java installation selected, so it cannot start.
+Pick one in the instance&apos;s Java settings, or let the launcher download a matching Java automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Java not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The Java installation for this instance does not exist or cannot be run:
+%1
+It may have been moved, uninstalled, or blocked by antivirus software.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>This instance needs Java %1, but the selected Java is version %2.
+Switch Java in the instance&apos;s Java settings, or turn off the compatibility check if you know what you&apos;re doing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Java version mismatch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+35"/>
+        <source>Broken mod files (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These files in the mods folder are empty or damaged, and usually make the game crash on startup:
+%1
+
+Delete or re-download them (a fresh download of the same version is usually enough).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Version information not loaded yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The launcher could not read this instance&apos;s version list, so the loader check was skipped.
+Open the instance, go to the Version page and let it load once (or press Reload) before launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>%1 (loader component)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Check instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Close</source>
+        <translation type="unfinished">關閉</translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, no broken mod files, and the loader version checks out. Nothing stood in the way of launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+5"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting. The details are below each entry.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>InstanceImportTask</name>
     <message>
         <location filename="../launcher/InstanceImportTask.cpp" line="+99"/>
@@ -5388,7 +5833,7 @@ You can change the Java version in the settings later.
 <context>
     <name>LanguageSelectionWidget</name>
     <message>
-        <location filename="../launcher/ui/widgets/LanguageSelectionWidget.cpp" line="+63"/>
+        <location filename="../launcher/ui/widgets/LanguageSelectionWidget.cpp" line="+92"/>
         <source>Don&apos;t see your language or the quality is poor?&lt;br/&gt;&lt;a href=&quot;%1&quot;&gt;Help us with translations!&lt;/a&gt;</source>
         <translation>找不到您的語言？或是翻譯品質很差？&lt;br/&gt;&lt;a href=&quot;%1&quot;&gt;協助我們翻譯！&lt;/a&gt;</translation>
     </message>
@@ -5396,6 +5841,16 @@ You can change the Java version in the settings later.
         <location line="+3"/>
         <source>Use system locales</source>
         <translation>使用系統地區設定</translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Language picked automatically from your region (%1). Not right? Choose another one above.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Downloading the list of languages… You can continue in English now and switch languages at any time - the list fills in by itself.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Use system regional standards</source>
@@ -6742,7 +7197,7 @@ You&apos;ll have to correct this problem manually.</source>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+307"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+298"/>
         <source>Check for new updates for %1.</source>
         <translation>檢查 %1 是否有更新。</translation>
     </message>
@@ -6751,42 +7206,41 @@ You&apos;ll have to correct this problem manually.</source>
         <translation type="vanished">說明</translation>
     </message>
     <message>
-        <location line="+520"/>
+        <location line="+542"/>
         <source>Java</source>
         <translation>Java</translation>
     </message>
     <message>
-        <location line="-177"/>
+        <location line="-188"/>
         <source>Logs</source>
         <translation>紀錄檔</translation>
     </message>
     <message>
-        <location line="+166"/>
+        <location line="+177"/>
         <source>I&amp;con Theme</source>
         <translation>圖示主題(&amp;I)</translation>
     </message>
     <message>
-        <location line="-651"/>
+        <location line="-662"/>
         <source>&amp;Edit</source>
         <translation>編輯(&amp;E)</translation>
     </message>
     <message>
-        <location line="-102"/>
         <source>News Toolbar</source>
-        <translation>最新消息工具列</translation>
+        <translation type="vanished">最新消息工具列</translation>
     </message>
     <message>
-        <location line="+78"/>
+        <location line="-25"/>
         <source>&amp;File</source>
         <translation>檔案(&amp;F)</translation>
     </message>
     <message>
-        <location line="+74"/>
+        <location line="+75"/>
         <source>&amp;Help</source>
         <translation>說明(&amp;H)</translation>
     </message>
     <message>
-        <location line="+48"/>
+        <location line="+37"/>
         <source>Show or hide the status bar at the bottom of the window.</source>
         <translation>顯示或隱藏視窗底部的狀態列。</translation>
     </message>
@@ -6806,7 +7260,17 @@ You&apos;ll have to correct this problem manually.</source>
         <translation>檢查更新</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+14"/>
+        <source>What&apos;s New...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Browse what changed in each release of %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
         <source>&amp;Performance Presets</source>
         <translation>&amp;效能預設</translation>
     </message>
@@ -6866,6 +7330,26 @@ You&apos;ll have to correct this problem manually.</source>
         <translation>在淺色、深色及其他主題之間切換啟動器外觀。</translation>
     </message>
     <message>
+        <location line="+8"/>
+        <source>Chec&amp;k Instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Look for missing Java, broken mod files or a wrong loader version before launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Copy &amp;Diagnostics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Copy the launcher version, system, Qt and Java information to the clipboard, ready to paste into a support chat.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+111"/>
         <source>More</source>
         <translation>更多</translation>
@@ -6876,7 +7360,7 @@ You&apos;ll have to correct this problem manually.</source>
         <translation>選擇要使用的帳戶。</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+41"/>
         <source>&amp;Bots</source>
         <translation>&amp;機器人</translation>
     </message>
@@ -6890,12 +7374,12 @@ You&apos;ll have to correct this problem manually.</source>
         <translation type="vanished">喵(&amp;M)</translation>
     </message>
     <message>
-        <location line="-667"/>
+        <location line="-678"/>
         <source>&amp;View</source>
         <translation>檢視(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1688"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1783"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -6906,17 +7390,17 @@ Are you sure?</source>
 您確定嗎？</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+645"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+656"/>
         <source>Open the icon theme folder in a file browser.</source>
         <translation>在檔案管理員中開啟圖示主題資料夾。</translation>
     </message>
     <message>
-        <location line="-332"/>
+        <location line="-343"/>
         <source>Copy the selected instance.</source>
         <translation>複製所選的實例。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-664"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-727"/>
         <location line="+140"/>
         <location line="+106"/>
         <source>Abort</source>
@@ -6929,17 +7413,17 @@ Are you sure?</source>
         <location line="+61"/>
         <location line="+15"/>
         <location line="+37"/>
-        <location line="+318"/>
+        <location line="+403"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-452"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-454"/>
         <source>Main Toolbar</source>
         <translation>主工具列</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-354"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-439"/>
         <source>Invalid import link: URL must be http(s).</source>
         <translation>無效的匯入連結：網址必須是 HTTP(S)。</translation>
     </message>
@@ -6949,7 +7433,67 @@ Are you sure?</source>
         <translation>模組包下載</translation>
     </message>
     <message>
-        <location line="+402"/>
+        <location line="+318"/>
+        <source>Check instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This kind of instance cannot be checked automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source> (commit %1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Launcher: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Platform: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>System: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>CPU architecture: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Qt: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Java: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>not set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Java (instance &quot;%1&quot;): %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Diagnostics copied to the clipboard - paste it into a support chat.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+64"/>
         <source>Crash Reports</source>
         <translation>當機報告</translation>
     </message>
@@ -6986,7 +7530,7 @@ Are you sure?</source>
         <translation>您的實例資料夾名稱中包含了「!」，這會導致 Java 出現問題！</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+388"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+390"/>
         <source>&amp;Change Group...</source>
         <translation>變更群組(&amp;C)…</translation>
     </message>
@@ -7001,7 +7545,7 @@ Are you sure?</source>
         <translation>重新命名實例</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-141"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-152"/>
         <source>&amp;Undo Last Instance Deletion</source>
         <translation>復原上一個實例刪除操作(&amp;U)</translation>
     </message>
@@ -7011,32 +7555,31 @@ Are you sure?</source>
         <translation>新增實例(&amp;E)…</translation>
     </message>
     <message>
-        <location line="+398"/>
+        <location line="+431"/>
         <source>&amp;Matrix Space</source>
         <translation>Matrix Space(&amp;M)</translation>
     </message>
     <message>
-        <location line="-442"/>
         <source>More News...</source>
-        <translation>更多新聞…</translation>
+        <translation type="vanished">更多新聞…</translation>
     </message>
     <message>
-        <location line="+393"/>
+        <location line="-71"/>
         <source>Open the instance icons folder in a file browser.</source>
         <translation>在檔案管理員中開啟實例圖示資料夾。</translation>
     </message>
     <message>
-        <location line="+111"/>
+        <location line="+133"/>
         <source>Install a %1 symlink to /usr/local/bin</source>
         <translation>將 %1 符號連結安裝到 /usr/local/bin</translation>
     </message>
     <message>
-        <location line="-663"/>
+        <location line="-687"/>
         <source>Instance Toolbar</source>
         <translation>實例工具列</translation>
     </message>
     <message>
-        <location line="+491"/>
+        <location line="+493"/>
         <source>Close &amp;Window</source>
         <translation>關閉視窗(&amp;W)</translation>
     </message>
@@ -7048,12 +7591,12 @@ Are you sure?</source>
         </translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+91"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+113"/>
         <source>Open the bug tracker to report a bug with %1.</source>
         <translation>開啟錯誤追蹤器以回報 %1 的錯誤。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-666"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-729"/>
         <source>Task aborted</source>
         <translation>工作已中止</translation>
     </message>
@@ -7081,7 +7624,7 @@ URL:
         <translation>查看目前及先前的啟動器紀錄檔</translation>
     </message>
     <message>
-        <location line="-114"/>
+        <location line="-136"/>
         <source>&amp;Skins</source>
         <translation>外觀(&amp;S)</translation>
     </message>
@@ -7101,22 +7644,20 @@ URL:
         <translation>實例圖示</translation>
     </message>
     <message>
-        <location line="+155"/>
         <source>%1 &amp;Wiki</source>
-        <translation>%1 Wiki(&amp;W)</translation>
+        <translation type="vanished">%1 Wiki(&amp;W)</translation>
     </message>
     <message>
-        <location line="-174"/>
+        <location line="-19"/>
         <source>Open the central mods folder in a file browser.</source>
         <translation>在檔案管理員開啟共用模組資料夾。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-469"/>
         <source>Loading news...</source>
-        <translation>正在載入最新消息…</translation>
+        <translation type="vanished">正在載入最新消息…</translation>
     </message>
     <message>
-        <location line="+478"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+9"/>
         <source>Group already exists. :/</source>
         <translation>群組已存在。:/</translation>
     </message>
@@ -7131,7 +7672,7 @@ URL:
         <translation>刪除群組</translation>
     </message>
     <message>
-        <location line="+177"/>
+        <location line="+262"/>
         <source>Failed to add %1 to PATH</source>
         <translation>無法將 %1 加到 PATH</translation>
     </message>
@@ -7171,32 +7712,31 @@ URL:
         <translation>Ctrl+K</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+65"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+43"/>
         <source>The selected instance is currently running and cannot be deleted. Please stop the instance before attempting to delete it.</source>
         <translation>所選的實例正在執行中，無法刪除。請先停止實例，再嘗試刪除。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+448"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+459"/>
         <source>Open the Java folder in a file browser. Only available if the built-in Java downloader is used.</source>
         <translation>在檔案瀏覽器中開啟 Java 資料夾。僅在使用內建 Java 下載器時可用。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-691"/>
         <source>No news available.</source>
-        <translation>沒有可用的最新消息。</translation>
+        <translation type="vanished">沒有可用的最新消息。</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-718"/>
         <source>The task has been aborted by the user.</source>
         <translation>工作已被使用者中止。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-66"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-55"/>
         <source>Open one of the folders shared between instances.</source>
         <translation>開啟其中一個實例間共用的資料夾。</translation>
     </message>
     <message>
-        <location line="-374"/>
+        <location line="-396"/>
         <source>Rename</source>
         <translation>重新命名</translation>
     </message>
@@ -7210,7 +7750,7 @@ URL:
         <translation type="vanished">Prism Launcher (zip)</translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+69"/>
         <source>Open %1 subreddit.</source>
         <translation>開啟 %1 Reddit 子版。</translation>
     </message>
@@ -7220,7 +7760,7 @@ URL:
         <translation>模組包、模組或資源 %1 已封鎖第三方使用！請手動下載。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-221"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-243"/>
         <source>Cop&amp;y...</source>
         <translation>複製(&amp;Y)…</translation>
     </message>
@@ -7246,7 +7786,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>變更實例的設定、模組與版本。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+671"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+734"/>
         <source>This is a problem: &lt;br/&gt; - The launcher will likely be deleted without warning by the operating system &lt;br/&gt; - close the launcher now and extract it to a real location, not a temporary folder</source>
         <translation>發生一個問題： &lt;br/&gt; - 啟動器很有可能在未被警告的情況下遭到作業系統刪除 &lt;br/&gt; - 現在請關閉啟動器並將其解壓縮至實際存在的位置，而不是臨時的資料夾</translation>
     </message>
@@ -7255,12 +7795,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="vanished">貓包</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+235"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+257"/>
         <source>Open %1 Discord guild.</source>
         <translation>開啟 %1 Discord 伺服器。</translation>
     </message>
     <message>
-        <location line="-221"/>
+        <location line="-243"/>
         <source>Open the selected instance&apos;s root folder in a file browser.</source>
         <translation>在檔案管理員開啟實例的根資料夾。</translation>
     </message>
@@ -7270,7 +7810,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>建立捷徑</translation>
     </message>
     <message>
-        <location line="-271"/>
+        <location line="-282"/>
         <source>Lock Toolbars</source>
         <translation>鎖定工具欄</translation>
     </message>
@@ -7280,52 +7820,51 @@ Please create a new instance before attempting to install this resource again.</
         <translation>確認刪除</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+227"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+238"/>
         <source>E&amp;xport...</source>
         <translation>匯出(&amp;X)…</translation>
     </message>
     <message>
-        <location line="+277"/>
+        <location line="+299"/>
         <source>Get help with %1 or Minecraft.</source>
         <translation>取得關於 %1 或 Minecraft 的說明。</translation>
     </message>
     <message>
-        <location line="-166"/>
+        <location line="-188"/>
         <source>Open the launcher&apos;s root folder in a file browser.</source>
         <translation>在系統檔案管理員中開啟啟動器的根資料夾。</translation>
     </message>
     <message>
-        <location line="+60"/>
+        <location line="+82"/>
         <source>Report a Bug or Suggest a Feature</source>
         <translation>回報問題或建議功能</translation>
     </message>
     <message>
-        <location line="-326"/>
+        <location line="-348"/>
         <source>&amp;Manage Accounts...</source>
         <translation>管理帳號(&amp;M)…</translation>
     </message>
     <message>
-        <location line="+351"/>
+        <location line="+373"/>
         <source>Open %1 Matrix space.</source>
         <translation>開啟 %1 Matrix space。</translation>
     </message>
     <message>
-        <location line="+103"/>
         <source>Open the %1 wiki</source>
-        <translation>開啟 %1 百科</translation>
+        <translation type="vanished">開啟 %1 百科</translation>
     </message>
     <message>
-        <location line="-213"/>
+        <location line="-132"/>
         <source>Close the current window</source>
         <translation>關閉目前視窗</translation>
     </message>
     <message>
-        <location line="+221"/>
+        <location line="+232"/>
         <source>&amp;Widget Themes</source>
         <translation>控制項主題(&amp;W)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-235"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-298"/>
         <source>Cannot set empty name.</source>
         <translation>無法設為空名稱。</translation>
     </message>
@@ -7335,7 +7874,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>警告</translation>
     </message>
     <message>
-        <location line="-839"/>
+        <location line="-872"/>
         <source>Show PollyMC</source>
         <translation>顯示 PollyMC</translation>
     </message>
@@ -7345,7 +7884,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>退出</translation>
     </message>
     <message>
-        <location line="+418"/>
+        <location line="+413"/>
         <source>The star reminder will appear after the Settings dialog closes.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7355,7 +7894,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+104"/>
         <source>Enjoying PollyMC-Continued?</source>
         <translation>喜歡 PollyMC-Continued 嗎？</translation>
     </message>
@@ -7370,7 +7909,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>在 GitHub 上點星</translation>
     </message>
     <message>
-        <location line="+903"/>
+        <location line="+881"/>
         <source>Instance not editable</source>
         <translation>實例不可編輯</translation>
     </message>
@@ -7385,33 +7924,33 @@ Please create a new instance before attempting to install this resource again.</
         <translation>無法重新命名群組</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-92"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-81"/>
         <source>&amp;About %1</source>
         <translation>關於 %1(&amp;A)</translation>
     </message>
     <message>
-        <location line="-506"/>
+        <location line="-528"/>
         <source>&amp;Accounts</source>
         <translation>帳號(&amp;A)</translation>
     </message>
     <message>
-        <location line="+576"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-516"/>
+        <location line="+598"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-494"/>
         <source>Accounts</source>
         <translation>帳號</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+671"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+734"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 已成功加到您的 PATH 環境變數。現在您可以使用「%2」來啟動它。</translation>
     </message>
     <message>
-        <location line="+351"/>
+        <location line="+329"/>
         <source>You have now two options: &lt;br/&gt; - change the instance folder in the settings &lt;br/&gt; - move this installation of %1 to a different folder</source>
         <translation>您現在有兩個選項： &lt;br/&gt; - 在設定中變更實例資料夾 &lt;br/&gt; - 將 %1 移動到其他資料夾</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-487"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-520"/>
         <source>Add a new instance.</source>
         <translation>新增新的實例。</translation>
     </message>
@@ -7421,12 +7960,11 @@ Please create a new instance before attempting to install this resource again.</
         <translation>無法刪除正在執行的實例</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-44"/>
         <source>Open the development blog to read more news about %1.</source>
-        <translation>前往我們的開發部落格，閱讀更多有關 %1 的最新消息。</translation>
+        <translation type="vanished">前往我們的開發部落格，閱讀更多有關 %1 的最新消息。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1379"/>
+        <location line="-1471"/>
         <source>Backspace</source>
         <translation>返回鍵</translation>
     </message>
@@ -7435,12 +7973,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="vanished">更新(&amp;U)…</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+343"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+310"/>
         <source>&amp;Instances</source>
         <translation>實例(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+566"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+617"/>
         <source>Ctrl+%1</source>
         <translation>Ctrl+%1</translation>
     </message>
@@ -7460,7 +7998,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>資料夾(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+376"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+354"/>
         <source>Install modpack</source>
         <translation>安裝模組包</translation>
     </message>
@@ -7480,22 +8018,27 @@ Please create a new instance before attempting to install this resource again.</
         <translation>未新增任何帳號！</translation>
     </message>
     <message>
-        <location line="+197"/>
+        <location line="+219"/>
         <source>Install to &amp;PATH</source>
         <translation>安裝至 PATH(&amp;P)</translation>
     </message>
     <message>
-        <location line="-305"/>
+        <location line="-327"/>
         <source>&amp;Edit...</source>
         <translation>編輯(&amp;E)…</translation>
     </message>
     <message>
-        <location line="-185"/>
+        <location line="-384"/>
+        <source>What&apos;s New Toolbar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+188"/>
         <source>Status Bar</source>
         <translation>狀態欄</translation>
     </message>
     <message>
-        <location line="+141"/>
+        <location line="+152"/>
         <source>&amp;Backup Instance</source>
         <translation>&amp;備份實例</translation>
     </message>
@@ -7520,12 +8063,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation>PollyMC-Continued (zip)</translation>
     </message>
     <message>
-        <location line="+207"/>
+        <location line="+229"/>
         <source>View information about %1.</source>
         <translation>顯示 %1 的相關資訊。</translation>
     </message>
     <message>
-        <location line="+92"/>
+        <location line="+81"/>
         <source>Open the widget themes folder in a file browser.</source>
         <translation>在檔案管理員中開啟控制項主題資料夾。</translation>
     </message>
@@ -7535,34 +8078,34 @@ Please create a new instance before attempting to install this resource again.</
         <translation>群組名稱</translation>
     </message>
     <message>
-        <location line="+277"/>
+        <location line="+340"/>
         <source>Deleting</source>
         <translation>正在刪除</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-69"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-58"/>
         <source>View logs</source>
         <translation>查看紀錄檔</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-484"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-547"/>
         <source>Invalid import link: missing &apos;url&apos; parameter.</source>
         <translation>無效的匯入連結：缺少「url」參數。</translation>
     </message>
     <message>
-        <location line="-471"/>
+        <location line="-449"/>
         <source>&amp;Rename group</source>
         <translation>重新命名群組(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-133"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-155"/>
         <source>Launcher &amp;Root</source>
         <translation>啟動器根資料夾(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-346"/>
-        <location line="+96"/>
-        <location line="+1446"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-403"/>
+        <location line="+88"/>
+        <location line="+1552"/>
         <source>No instance selected</source>
         <translation>沒有選擇實例</translation>
     </message>
@@ -7572,12 +8115,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation>變更圖示</translation>
     </message>
     <message>
-        <location line="+246"/>
+        <location line="+268"/>
         <source>&amp;Discord Guild</source>
         <translation>Discord 伺服器(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-355"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-333"/>
         <source>Metadata cache clear Failed!
 To clear the metadata cache manually, press Folders -&gt; View Launcher Root Folder, and after closing the launcher delete the folder named &quot;meta&quot;
 </source>
@@ -7591,42 +8134,42 @@ To clear the metadata cache manually, press Folders -&gt; View Launcher Root Fol
         <translation>清除中繼資料快取(&amp;C)</translation>
     </message>
     <message>
-        <location line="-540"/>
+        <location line="-562"/>
         <source>F&amp;olders</source>
         <translation>資料夾(&amp;O)</translation>
     </message>
     <message>
-        <location line="+574"/>
+        <location line="+596"/>
         <source>Folders</source>
         <translation>資料夾</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+388"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+366"/>
         <source>Your instance folder contains &apos;Rar$&apos; - that means you haven&apos;t extracted the launcher archive!</source>
         <translation>您的實例資料夾名稱中包含了「Rar$」，這代表著您還尚未將啟動器檔案解壓縮！</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-144"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-166"/>
         <source>&amp;Central Mods</source>
         <translation>共用模組(&amp;C)</translation>
     </message>
     <message>
-        <location line="+85"/>
+        <location line="+107"/>
         <source>Sub&amp;reddit</source>
         <translation>Reddit 子版(&amp;R)</translation>
     </message>
     <message>
-        <location line="-229"/>
+        <location line="-251"/>
         <source>Delete the selected instance.</source>
         <translation>刪除所選的實例。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1233"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1274"/>
         <source>&amp;Delete group</source>
         <translation>刪除群組(&amp;D)</translation>
     </message>
     <message>
-        <location line="+725"/>
+        <location line="+703"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>部分實例與捷徑無法復原。
@@ -7642,7 +8185,7 @@ Please check your trashbin to manually restore them.</source>
         <translation type="vanished">牠是一隻毛茸茸的小貓 :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-739"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-717"/>
         <source>&amp;Create instance</source>
         <translation>新增實例(&amp;C)</translation>
     </message>
@@ -7667,43 +8210,43 @@ Please check your trashbin to manually restore them.</source>
         <translation>CurseForge (zip)</translation>
     </message>
     <message>
-        <location line="+199"/>
+        <location line="+221"/>
         <source>Clear cached metadata</source>
         <translation>清除中繼資料快取</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-327"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-384"/>
         <source>Total playtime: 0s</source>
         <translation>總遊戲時間：0 秒</translation>
     </message>
     <message>
-        <location line="+1606"/>
+        <location line="+1704"/>
         <source>Total playtime: %1</source>
         <translation>總遊戲時長：%1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-293"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-315"/>
         <source>Change the selected instance&apos;s icon.</source>
         <translation>變更所選實例的圖示。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-398"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-376"/>
         <source>Successfully added %1 to PATH</source>
         <translation>已成功將 %1 新增至 PATH</translation>
     </message>
     <message>
-        <location line="-185"/>
+        <location line="-270"/>
         <location line="+22"/>
         <source>Enter a new group name.</source>
         <translation>輸入新的群組名稱。</translation>
     </message>
     <message>
-        <location line="+168"/>
+        <location line="+253"/>
         <source>An error occurred while trying to add %1 to PATH</source>
         <translation>嘗試把 %1 新增至 PATH 時出現錯誤</translation>
     </message>
     <message>
-        <location line="-178"/>
+        <location line="-263"/>
         <source>Are you sure you want to delete the group &apos;%1&apos;?</source>
         <translation>確定要刪除群組「%1」嗎？</translation>
     </message>
@@ -8873,21 +9416,19 @@ Do you want to disable them?</source>
         <translation>變更模組的版本。</translation>
     </message>
     <message>
-        <location line="+315"/>
         <source>You need to install a compatible mod loader before installing mods. Would you like to do so?</source>
-        <translation>在安裝模組前，您需要先一個安裝相容的模組載入器。您想要現在安裝嗎？</translation>
+        <translation type="vanished">在安裝模組前，您需要先一個安裝相容的模組載入器。您想要現在安裝嗎？</translation>
     </message>
     <message>
-        <location line="-1"/>
         <source>Missing Mod Loader</source>
-        <translation>找不到模組載入器</translation>
+        <translation type="vanished">找不到模組載入器</translation>
     </message>
     <message>
         <source>The following mods depend on the mod(s) you want to remove:</source>
         <translation type="vanished">下列模組依賴您欲移除的模組：</translation>
     </message>
     <message>
-        <location line="-226"/>
+        <location line="+88"/>
         <location line="+67"/>
         <location line="+23"/>
         <source>Aborted</source>
@@ -9394,7 +9935,7 @@ Please update %1!</source>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+123"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+145"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9434,7 +9975,7 @@ Please update %1!</source>
         <translation type="vanished">在 %1 個請求中，有 %2 個在嘗試 %3 次後失敗</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+34"/>
+        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+50"/>
         <source>All %1 requests failed after %2 attempts</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9452,6 +9993,51 @@ Please update %1!</source>
         <location line="+9"/>
         <source>Copy URL</source>
         <translation>複製網址</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Report Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Send this error to the PollyMC developers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>This looks like antivirus software (or ransomware protection) blocking the launcher&apos;s temporary files. You can retry through a different temporary folder, or open the guide on letting your antivirus leave the launcher alone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Retry with a different temp folder…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Pick a folder the launcher will use to stage downloads, then retry. Choose one that your antivirus does not watch, such as a folder in your home directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Open the antivirus exclusion guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Opens a guide explaining how to add the launcher to your antivirus exclusions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+61"/>
+        <source>Network error: %1</source>
+        <translation type="unfinished">網路錯誤：%1</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Pick a temporary download folder</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.ui" line="+14"/>
@@ -9965,6 +10551,28 @@ Are you sure?</source>
         <source>Will fix later.</source>
         <translation type="vanished">稍後修復。</translation>
     </message>
+    <message>
+        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+383"/>
+        <location line="+42"/>
+        <source>Search settings…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-41"/>
+        <location line="+42"/>
+        <source>Search all settings (Ctrl+F). Several words narrow the results down.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+296"/>
+        <source>No settings match &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Try fewer or shorter words, or part of the setting&apos;s name.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PageDialog</name>
@@ -10135,13 +10743,13 @@ Maximum performance for demanding setups</source>
 <context>
     <name>PollyMCExternalUpdater</name>
     <message>
-        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+147"/>
-        <location line="+120"/>
+        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+154"/>
+        <location line="+129"/>
         <source>Update UI preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-120"/>
+        <location line="-129"/>
         <source>An update check is already running. Try again in a moment.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10167,23 +10775,28 @@ Reason: %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+43"/>
         <source>Update Check Failed</source>
         <translation type="unfinished">更新檢查失敗</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+6"/>
+        <source>Update check failed: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
         <source>The updater did not report any release to show.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+6"/>
-        <location line="+210"/>
+        <location line="+237"/>
         <source>No Update Available</source>
         <translation type="unfinished">沒有可用的更新</translation>
     </message>
     <message>
-        <location line="-210"/>
+        <location line="-237"/>
         <source>You are running the latest version.</source>
         <translation type="unfinished">您正在執行最新版本。</translation>
     </message>
@@ -10198,7 +10811,13 @@ Reason: %1.</source>
         <translation type="unfinished">在執行更新檢查時發生錯誤。</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+6"/>
+        <location line="+31"/>
+        <source>Update check failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-9"/>
         <source>Unknown Update Error</source>
         <translation type="unfinished">未知更新錯誤</translation>
     </message>
@@ -10217,7 +10836,7 @@ StdErr: %2</source>
 StdErr：%2</translation>
     </message>
     <message>
-        <location line="+169"/>
+        <location line="+194"/>
         <source>There are no new updates available.</source>
         <translation type="unfinished">沒有新的更新可用。</translation>
     </message>
@@ -11027,7 +11646,7 @@ To overwrite this lock and proceed with this update anyway, select &quot;Ignore&
 <context>
     <name>ProfileSelectDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ProfileSelectDialog.cpp" line="+67"/>
+        <location filename="../launcher/ui/dialogs/ProfileSelectDialog.cpp" line="+68"/>
         <source>OK</source>
         <translation>確定</translation>
     </message>
@@ -11291,7 +11910,7 @@ Choose your name carefully:</source>
         <translation type="vanished">模組</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/GuiUtil.cpp" line="+112"/>
+        <location filename="../launcher/ui/GuiUtil.cpp" line="+113"/>
         <source>The log has %1 lines, exceeding mclo.gs&apos; limit of %2.
 The launcher can keep the first %3 and last %4 lines, trimming the middle.
 
@@ -11315,7 +11934,7 @@ Proceed with truncation?</source>
         <translation type="vanished">無法識別</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1144"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1173"/>
         <source>%1 (in use)</source>
         <translation>%1（使用中）</translation>
     </message>
@@ -12252,13 +12871,38 @@ New name: %2</source>
         <translation>用於 pollymc 的 Windows 批次 MKLINK 程式</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/DeveloperPage.cpp" line="-128"/>
+        <location filename="../launcher/ui/pages/global/DeveloperPage.cpp" line="-153"/>
         <source>Developer tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The star reminder schedule has been reset.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/net/BugReportUpload.cpp" line="+51"/>
+        <source>Too many reports, please try again later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The report could not be sent: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>The report server returned an unexpected response.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <source>Report Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Send this error to the PollyMC developers</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -12990,7 +13634,7 @@ Are you sure you want to do this?</source>
 <context>
     <name>ResourceUpdateDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+178"/>
+        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+183"/>
         <source>Failed to check for updates</source>
         <translation>檢查更新失敗</translation>
     </message>
@@ -13021,12 +13665,12 @@ Are you sure you want to do this?</source>
         <translation>無法檢查或取得下列資源的更新：&lt;br&gt;您要略過這些資源並繼續嗎？</translation>
     </message>
     <message>
-        <location line="-136"/>
+        <location line="-140"/>
         <source>Confirm resources to update</source>
         <translation>確認要更新的資源</translation>
     </message>
     <message>
-        <location line="+125"/>
+        <location line="+129"/>
         <source>Mod name: %1</source>
         <translation>模組名稱：%1</translation>
     </message>
@@ -13067,12 +13711,12 @@ Are you sure you want to do this?</source>
         <translation>無法在所選的模組託管平台找到有效版本</translation>
     </message>
     <message>
-        <location line="-379"/>
+        <location line="-383"/>
         <source>You&apos;re about to update the following resources:</source>
         <translation>您即將更新下列資源：</translation>
     </message>
     <message>
-        <location line="+401"/>
+        <location line="+405"/>
         <source>Old version: %1</source>
         <translation>舊版本：%1</translation>
     </message>
@@ -13118,12 +13762,12 @@ Are you sure you want to do this?</source>
         <translation>模組名稱：%1&lt;br&gt;檔案名稱：%2&lt;br&gt;原因：%3&lt;br&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location line="-18"/>
+        <location line="-22"/>
         <source>Only resources with a check will be updated!</source>
         <translation>只有勾選的資源才會更新！</translation>
     </message>
     <message>
-        <location line="+67"/>
+        <location line="+71"/>
         <source>Checking for updates...</source>
         <translation>正在檢查更新…</translation>
     </message>
@@ -13151,7 +13795,7 @@ Are you sure you want to do this?</source>
 <context>
     <name>ReviewMessageBox</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ReviewMessageBox.cpp" line="+25"/>
+        <location filename="../launcher/ui/dialogs/ReviewMessageBox.cpp" line="+27"/>
         <source>OK</source>
         <translation>確定</translation>
     </message>
@@ -13161,17 +13805,17 @@ Are you sure you want to do this?</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location line="+106"/>
+        <location line="+109"/>
         <source>You&apos;re about to download the following %1:</source>
         <translation>您即將下載下列%1：</translation>
     </message>
     <message>
-        <location line="-96"/>
+        <location line="-99"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+47"/>
         <source>Filename: %1</source>
         <translation>檔案名稱：%1</translation>
     </message>
@@ -13363,7 +14007,7 @@ Are you sure?</source>
 <context>
     <name>ScrollMessageBox</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ScrollMessageBox.cpp" line="+19"/>
+        <location filename="../launcher/ui/dialogs/ScrollMessageBox.cpp" line="+20"/>
         <source>OK</source>
         <translation>確定</translation>
     </message>
@@ -14215,6 +14859,29 @@ Are you sure?</source>
     </message>
 </context>
 <context>
+    <name>SplashScreen</name>
+    <message>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <source>Loading icons…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Loading instances…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Loading accounts…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Almost ready…</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>StepModel</name>
     <message>
         <location filename="../launcher/bot/BotScriptEditor.cpp" line="-378"/>
@@ -14639,7 +15306,7 @@ Are you sure you want to do this?</source>
 <context>
     <name>TranslationsModel</name>
     <message>
-        <location filename="../launcher/translations/TranslationsModel.cpp" line="+396"/>
+        <location filename="../launcher/translations/TranslationsModel.cpp" line="+414"/>
         <source>The native language name.</source>
         <translation>母語名稱。</translation>
     </message>
@@ -14689,7 +15356,7 @@ Are you sure you want to do this?</source>
     </message>
     <message>
         <location line="-49"/>
-        <location filename="../launcher/ui/dialogs/UpdateAvailableDialog.cpp" line="+43"/>
+        <location filename="../launcher/ui/dialogs/UpdateAvailableDialog.cpp" line="+44"/>
         <source>Version %1 is now available - you have %2 . Would you like to download it now?</source>
         <translation>版本 %1 現在可用，現在版本為 %2。您現在想要下載它嗎？</translation>
     </message>
@@ -15239,7 +15906,7 @@ Please add a Microsoft account.</source>
         <translation type="vanished">確定</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+99"/>
+        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+104"/>
         <source>Reloads the version list.</source>
         <translation>重新載入版本清單。</translation>
     </message>
@@ -15249,7 +15916,7 @@ Please add a Microsoft account.</source>
         <translation>選擇版本</translation>
     </message>
     <message>
-        <location line="-26"/>
+        <location line="-29"/>
         <source>Ok</source>
         <translation>確定</translation>
     </message>
@@ -15259,7 +15926,7 @@ Please add a Microsoft account.</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+30"/>
         <source>&amp;Refresh</source>
         <translation>重新整理(&amp;R)</translation>
     </message>
@@ -15295,6 +15962,92 @@ Please add a Microsoft account.</source>
         <location line="-4"/>
         <source>Launcher Logs</source>
         <translation>啟動器紀錄檔</translation>
+    </message>
+</context>
+<context>
+    <name>WhatsNewBrowserDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/WhatsNewBrowserDialog.cpp" line="+57"/>
+        <source>What&apos;s New</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+48"/>
+        <source>All releases</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Close</source>
+        <translation type="unfinished">關閉</translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>What&apos;s new in %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The changelog could not be read. Use &quot;All releases&quot; to read the release notes on GitHub.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>The version this launcher is running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>What&apos;s new in %1 %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WhatsNewDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/WhatsNewDialog.cpp" line="+56"/>
+        <source>What&apos;s New</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>What&apos;s new in %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>What&apos;s new in %1 %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>You updated from %1 to %2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>The release notes for this version are not stored on this computer. Use &quot;All releases&quot; to read them on GitHub.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Show this after updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>You can always open this window again from Help &gt; What&apos;s New.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>All releases</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Got it</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
