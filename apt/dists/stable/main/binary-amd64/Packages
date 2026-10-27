@@ -1,15 +1,15 @@
 Package: pollymc-continued
-Version: 9.4.1
+Version: 9.5.0
 Architecture: amd64
 Maintainer: PollyMC-Continued Contributors <corecommit>
-Installed-Size: 78123
+Installed-Size: 78440
 Depends: libarchive13t64 (>= 3.2.1), libc6 (>= 2.38), libcmark0.30.2 (>= 0.30.2), libgcc-s1 (>= 4.0), libqrencode4 (>= 3.2.0), libqt6core6t64 (>= 6.4.0), libqt6dbus6t64 (>= 6.4.0), libqt6gui6t64 (>= 6.4.0), libqt6network6t64 (>= 6.4.0), libqt6networkauth6 (>= 6.2.1), libqt6opengl6t64 (>= 6.1.2), libqt6svg6 (>= 6.2.0), libqt6websockets6 (>= 6.2.1), libqt6widgets6t64 (>= 6.3.0), libqt6xml6t64 (>= 6.1.2), libstdc++6 (>= 13.1), libtomlplusplus3t64 (>= 3.2.0), qt6-websockets-abi (= 6.4.2), zlib1g (>= 1:1.1.4)
 Recommends: gamemode, mangohud
-Filename: pool/main/p/pollymc-continued/PollyMC-Continued-9.4.1-Linux-x86_64.deb
-Size: 14857126
-MD5sum: 87df3db4e3b1a6b8629e110d5c2ecb67
-SHA1: 27f2f3e1e14e305c7697c2ae3fb798d43441d725
-SHA256: ff0a7738e30b156d912a3b8f2e97e9b304e208d88861bec14996f0153cfc2243
+Filename: pool/main/p/pollymc-continued/PollyMC-Continued-9.5.0-Linux-x86_64.deb
+Size: 14991210
+MD5sum: efb01d75eb23bba162ebaaf6d5557f93
+SHA1: 29cbe02fa716d3b7272d74f32ed7859a7b37e3d1
+SHA256: b55fdf00c06c300de616e1334f2b502cb658a91c769e31d520a95471a7cf66f7
 Section: games
 Priority: optional
 Homepage: https://github.com/PollyMC-Continued/launcher
