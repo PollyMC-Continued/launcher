@@ -1599,17 +1599,17 @@ Sarraila hau ezabatzeko eta beheko &quot;Ez ikusiarena&quot; hautatzeko.</transl
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+114"/>
-        <location line="+374"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
+        <location line="+392"/>
         <location line="+11"/>
-        <location line="+52"/>
+        <location line="+56"/>
         <location line="+8"/>
         <location line="+9"/>
         <source>Report a Bug</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-436"/>
+        <location line="-458"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1694,7 +1694,7 @@ Sarraila hau ezabatzeko eta beheko &quot;Ez ikusiarena&quot; hautatzeko.</transl
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+32"/>
         <source>Prefer GitHub? &lt;a href=&quot;%1&quot;&gt;Open the issue tracker&lt;/a&gt;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1755,6 +1755,11 @@ Sarraila hau ezabatzeko eta beheko &quot;Ez ikusiarena&quot; hautatzeko.</transl
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+3"/>
+        <source>Step 1 of 2: preparing your report…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+10"/>
         <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
         <translation type="unfinished"></translation>
@@ -1808,7 +1813,7 @@ Qt: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+56"/>
         <source>You just sent a report. Please wait a minute before sending another one.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1825,7 +1830,17 @@ Send it again anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+22"/>
+        <source>Step 2 of 2: sending your report to the team…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Still sending… the server is a little slow. Please keep this window open.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
         <source>Too many reports, please try again later.</source>
         <translation type="unfinished"></translation>
     </message>
