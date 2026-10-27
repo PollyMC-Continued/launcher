@@ -294,7 +294,7 @@
     </message>
     <message>
         <location line="-9"/>
-        <location filename="../launcher/ui/dialogs/AboutDialog.cpp" line="+91"/>
+        <location filename="../launcher/ui/dialogs/AboutDialog.cpp" line="+92"/>
         <source>About</source>
         <translation>Par</translation>
     </message>
@@ -324,7 +324,7 @@
         <translation>Būvēšanas datums: %1</translation>
     </message>
     <message>
-        <location line="+37"/>
+        <location line="+40"/>
         <source>Developer mode</source>
         <translation type="unfinished"></translation>
     </message>
@@ -353,7 +353,7 @@
         <translation type="vanished">Par %1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/AboutDialog.cpp" line="-27"/>
+        <location filename="../launcher/ui/dialogs/AboutDialog.cpp" line="-30"/>
         <source>Channel</source>
         <translation>Kanāls</translation>
     </message>
@@ -722,12 +722,12 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation type="vanished">Atjaunināšana ir izdevusies</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1263"/>
+        <location filename="../launcher/Application.cpp" line="+1306"/>
         <source>Incompatible system configuration</source>
         <translation>Nesaderīga sistēmas konfigurācija</translation>
     </message>
     <message>
-        <location line="+897"/>
+        <location line="+995"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -762,12 +762,12 @@ Pārbaudiet Prism Launcher atjauninātāja žurnālu vietnē:
 lai iegūtu sīkāku informāciju par pēdējo atjaunināšanas mēģinājumu.</translation>
     </message>
     <message>
-        <location line="-1548"/>
+        <location line="-1700"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Nevar uzrādīt žurnāla failu jo tas ir pārsniedzis %1 rindiņās.</translation>
     </message>
     <message>
-        <location line="+1370"/>
+        <location line="+1522"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Izskatās ka jau esi lietojis %1 uz %2 iepriekš. Vai vēlies migrēt savus datus uz jauno vietu %3?</translation>
     </message>
@@ -781,7 +781,7 @@ lai iegūtu sīkāku informāciju par pēdējo atjaunināšanas mēģinājumu.</
         <translation type="vanished">Atjaunināšana neizdevās</translation>
     </message>
     <message>
-        <location line="-1664"/>
+        <location line="-1820"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -817,7 +817,27 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+607"/>
+        <location line="+531"/>
+        <source>Loading icons…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>Loading instances…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+46"/>
+        <source>Loading accounts…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Almost ready…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other launcher update is running. To delete the lock file and continue, select &quot;Ignore&quot; below.</source>
@@ -856,7 +876,7 @@ Make sure the installation works, then select &quot;Ignore&quot; to continue sta
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+29"/>
         <source>You are now running %1.
 
 See the updater log for details.</source>
@@ -881,7 +901,42 @@ Varat atrisināt šo problēmu, atkārtoti uzstādot /tmp kā &quot;exec&quot; v
 </translation>
     </message>
     <message>
-        <location line="+937"/>
+        <location line="+211"/>
+        <source>Opening the launcher…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+444"/>
+        <location line="+20"/>
+        <source>Launcher closed unexpectedly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-19"/>
+        <source>%1 did not shut down properly last time.
+
+If it crashed or froze on you, you can send us a crash report - the log from that session is attached automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Report this crash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Ignore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>The launcher closed unexpectedly (crash or freeze). Last part of the log from that session:
+
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+362"/>
         <source>Instances were found at %1, but %2 is looking in %3. Do you want to migrate them to the new location?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -915,7 +970,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">Notiek atjaunināšana</translation>
     </message>
     <message>
-        <location line="-1297"/>
+        <location line="-1419"/>
         <source>Settings</source>
         <translation>Iestatījumi</translation>
     </message>
@@ -946,7 +1001,7 @@ lai iegūtu sīkāku informāciju par pēdējo atjaunināšanas mēģinājumu.
 Lai dzēstu šo slēdzeni un turpinātu, tālāk atlasiet “Ignorēt”.</translation>
     </message>
     <message>
-        <location line="+1141"/>
+        <location line="+1263"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>Veci dati no %1 tika atrasti, bet tev jau ir pastāvoši dati priekš %2. Diemžēl tev nāksies migrēt pašam. Vai vēlies tikt atgādināts par datu migrāciju nākošreiz kad tu atver %2?</translation>
     </message>
@@ -1381,8 +1436,8 @@ Lai dzēstu šo slēdzeni un turpinātu, tālāk atlasiet “Ignorēt”.</trans
 <context>
     <name>BlockedModsDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BlockedModsDialog.cpp" line="+56"/>
-        <location line="+120"/>
+        <location filename="../launcher/ui/dialogs/BlockedModsDialog.cpp" line="+58"/>
+        <location line="+123"/>
         <source>OK</source>
         <translation>Labi</translation>
     </message>
@@ -1402,7 +1457,7 @@ Lai dzēstu šo slēdzeni un turpinātu, tālāk atlasiet “Ignorēt”.</trans
         <translation>Lūdzu lejupielādējiet pietrūkstošās modifikācijas.</translation>
     </message>
     <message>
-        <location line="-123"/>
+        <location line="-126"/>
         <source>Cancel</source>
         <translation>Atcelt</translation>
     </message>
@@ -1412,7 +1467,7 @@ Lai dzēstu šo slēdzeni un turpinātu, tālāk atlasiet “Ignorēt”.</trans
         <translation>Atvērt trūkstošo</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/BlockedModsDialog.cpp" line="+119"/>
+        <location filename="../launcher/ui/dialogs/BlockedModsDialog.cpp" line="+122"/>
         <source>All mods found</source>
         <translation>Visas modifikācijas atrastas</translation>
     </message>
@@ -1581,6 +1636,284 @@ Lai dzēstu šo slēdzeni un turpinātu, tālāk atlasiet “Ignorēt”.</trans
         <location line="+6"/>
         <source>Saved.</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BugReportDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+114"/>
+        <location line="+374"/>
+        <location line="+11"/>
+        <location line="+52"/>
+        <location line="+8"/>
+        <location line="+9"/>
+        <source>Report a Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-436"/>
+        <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+18"/>
+        <source>What kind of report is this?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Crash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Suggestion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Something else</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Anonymous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Discord username or email</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Only fill this in if you want a reply.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Your name (optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Contact (optional)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Screenshots (optional, up to %1). You can also drag images into this window.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Add image…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Paste from clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Remove</source>
+        <translation type="unfinished">Noņemt</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Include the launcher log (recommended, personal paths are hidden)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>What else is sent automatically?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Prefer GitHub? &lt;a href=&quot;%1&quot;&gt;Open the issue tracker&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <location line="+171"/>
+        <source>Send Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-135"/>
+        <source>What were you doing when it crashed?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Tell us what you were doing right before the launcher closed or froze, and whether it happens every time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>What would you like to see?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Describe your idea and what it would make easier for you. Examples from other apps help too.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>What&apos;s on your mind?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Tell us anything that doesn&apos;t fit the other types: feedback, questions, or something that just feels off.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>What happened?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Describe the bug and, if you can, the steps to make it happen again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+76"/>
+        <source>&lt;i&gt;An unsent report you started earlier was restored - it is ready to finish and send whenever you are.&lt;/i&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+49"/>
+        <source>Sending…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Error: %1
+%2
+
+What I was doing when this happened:
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>Launcher: %1 (%2)
+System: %3
+CPU architecture: %4
+Qt: %5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Write at least %1 characters to send (%2 / %3)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <location line="+38"/>
+        <source>Screenshot %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-32"/>
+        <source>Choose screenshots</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Images (*.png *.jpg *.jpeg *.webp *.bmp)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Could not open %1 as an image.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>There is no image on the clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+52"/>
+        <source>You just sent a report. Please wait a minute before sending another one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>You already sent this exact report in this session.
+
+Send it again anyway?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>This report is too large to send (%1 MB). Remove a screenshot or untick &quot;Include the launcher log&quot; and try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>Too many reports, please try again later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Failed to send the report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The report could not be sent (HTTP %1): %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Thank you! Your report is on its way to the PollyMC team, and we read every one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>
+
+We&apos;ll use the contact you gave if we need to ask anything. Want faster help, or to follow what happens next? Come say hi on our Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>
+
+Since you sent this anonymously we can&apos;t write back. Want help with this problem, or to see what happens next? Come say hi on our Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Report sent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Join our Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Close</source>
+        <translation type="unfinished">Aizvērt</translation>
     </message>
 </context>
 <context>
@@ -1884,7 +2217,7 @@ Lai dzēstu šo slēdzeni un turpinātu, tālāk atlasiet “Ignorēt”.</trans
 <context>
     <name>CopyInstanceDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/CopyInstanceDialog.cpp" line="+114"/>
+        <location filename="../launcher/ui/dialogs/CopyInstanceDialog.cpp" line="+115"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -2133,7 +2466,7 @@ Lai dzēstu šo slēdzeni un turpinātu, tālāk atlasiet “Ignorēt”.</trans
         <translation>Nosaukums</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+112"/>
+        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+113"/>
         <source>%1 (in use)</source>
         <translation>%1 (izmantojās)</translation>
     </message>
@@ -2143,7 +2476,7 @@ Lai dzēstu šo slēdzeni un turpinātu, tālāk atlasiet “Ignorēt”.</trans
         <translation>Vārds:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+88"/>
+        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+91"/>
         <source>world</source>
         <translation>pasaule</translation>
     </message>
@@ -2158,7 +2491,7 @@ Lai dzēstu šo slēdzeni un turpinātu, tālāk atlasiet “Ignorēt”.</trans
         <translation>Piezīme: Ja saīsne tiks pārnesta citur, tā netiks izdzēsta pēc instances izdzēšanas.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="-104"/>
+        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="-107"/>
         <source>%1 [%2] - Last Played: %3</source>
         <translation>%1 [%2] - Pēdējo reizi spēlēts: %3</translation>
     </message>
@@ -2169,7 +2502,7 @@ Lai dzēstu šo slēdzeni un turpinātu, tālāk atlasiet “Ignorēt”.</trans
         <translation>Servera Adrese:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+100"/>
+        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="+103"/>
         <source>instance</source>
         <translation>instance</translation>
     </message>
@@ -2204,17 +2537,17 @@ Lai dzēstu šo slēdzeni un turpinātu, tālāk atlasiet “Ignorēt”.</trans
         <translation>Tādā gadījumā, tie būs jādzēš manuāli.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="-94"/>
+        <location filename="../launcher/ui/dialogs/CreateShortcutDialog.cpp" line="-97"/>
         <source>Desktop</source>
         <translation>Darbvirsma</translation>
     </message>
     <message>
-        <location line="+96"/>
+        <location line="+99"/>
         <source>%1 - Server %2</source>
         <translation>%1 - Serveris %2</translation>
     </message>
     <message>
-        <location line="-91"/>
+        <location line="-94"/>
         <source>Other...</source>
         <translation>Cits...</translation>
     </message>
@@ -2578,7 +2911,7 @@ Are you sure?</source>
 <context>
     <name>DeveloperPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/DeveloperPage.cpp" line="+103"/>
+        <location filename="../launcher/ui/pages/global/DeveloperPage.cpp" line="+90"/>
         <source>Developer tools are intended for testing and troubleshooting. Actions below change launcher preferences; they do not delete instances or accounts.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2610,12 +2943,14 @@ Are you sure?</source>
         <location line="+4"/>
         <location line="+11"/>
         <location line="+4"/>
-        <location line="+62"/>
+        <location line="+10"/>
+        <location line="+12"/>
+        <location line="+65"/>
         <source>Developer tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-138"/>
+        <location line="-163"/>
         <source>First-run preferences will be reset when Settings closes. The language and Java setup prompts may appear after restarting PollyMC-Continued.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2687,11 +3022,13 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+5"/>
+        <location line="+29"/>
+        <location line="+12"/>
         <source>The main window is not available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="-37"/>
         <location line="+11"/>
         <source>The updater is not enabled in this build.</source>
         <translation type="unfinished"></translation>
@@ -2713,6 +3050,26 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+3"/>
+        <source>Show What&apos;s New toolbar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Reveals the bottom What&apos;s New toolbar. Use this if it went missing, for example after running an older launcher that hid it again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Open What&apos;s New browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Opens the What&apos;s New version browser without using the toolbar or the Help menu.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>Simulate update-check failure</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2918,12 +3275,12 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
 <context>
     <name>ExportInstanceDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportInstanceDialog.cpp" line="+92"/>
+        <location filename="../launcher/ui/dialogs/ExportInstanceDialog.cpp" line="+93"/>
         <source>OK</source>
         <translation>Labi</translation>
     </message>
     <message>
-        <location line="+69"/>
+        <location line="+72"/>
         <source>Abort</source>
         <translation>Pārtraukt</translation>
     </message>
@@ -2939,12 +3296,12 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation>Eksportēt Instanci</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportInstanceDialog.cpp" line="-66"/>
+        <location filename="../launcher/ui/dialogs/ExportInstanceDialog.cpp" line="-69"/>
         <source>Cancel</source>
         <translation>Atcelt</translation>
     </message>
     <message>
-        <location line="+46"/>
+        <location line="+49"/>
         <source>Export %1</source>
         <translation>Eksportēt %1</translation>
     </message>
@@ -2957,7 +3314,7 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
 <context>
     <name>ExportPackDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="+132"/>
+        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="+133"/>
         <source>OK</source>
         <translation>Labi</translation>
     </message>
@@ -3012,7 +3369,7 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="+76"/>
+        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="+79"/>
         <source>Abort</source>
         <translation>Pārtraukt</translation>
     </message>
@@ -3022,7 +3379,7 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation>Kļūda</translation>
     </message>
     <message>
-        <location line="-150"/>
+        <location line="-153"/>
         <source>Export Modrinth Pack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3032,7 +3389,7 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+107"/>
+        <location line="+110"/>
         <source>Modrinth pack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3052,12 +3409,12 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation>&amp;Vārds:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="-71"/>
+        <location filename="../launcher/ui/dialogs/ExportPackDialog.cpp" line="-74"/>
         <source>Cancel</source>
         <translation>Atcelt</translation>
     </message>
     <message>
-        <location line="+71"/>
+        <location line="+74"/>
         <source>The task has been aborted by the user.</source>
         <translation>Lietotājs pārtrauca uzdevumu.</translation>
     </message>
@@ -3087,7 +3444,7 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation>Kopēt</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="+166"/>
+        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="+170"/>
         <source>File</source>
         <translation>Fails</translation>
     </message>
@@ -3102,7 +3459,7 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation>JSON</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="-97"/>
+        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="-100"/>
         <source>Save</source>
         <translation>Saglabāt</translation>
     </message>
@@ -3138,7 +3495,7 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation>Rezultāts</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="+97"/>
+        <location filename="../launcher/ui/dialogs/ExportToModListDialog.cpp" line="+100"/>
         <source>Export %1</source>
         <translation>Eksportēt %1</translation>
     </message>
@@ -4455,6 +4812,96 @@ Are you sure you want to do this?</source>
     </message>
 </context>
 <context>
+    <name>InstanceHealthCheckDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+61"/>
+        <source>No Java selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance has no Java installation selected, so it cannot start.
+Pick one in the instance&apos;s Java settings, or let the launcher download a matching Java automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Java not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The Java installation for this instance does not exist or cannot be run:
+%1
+It may have been moved, uninstalled, or blocked by antivirus software.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>This instance needs Java %1, but the selected Java is version %2.
+Switch Java in the instance&apos;s Java settings, or turn off the compatibility check if you know what you&apos;re doing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Java version mismatch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+35"/>
+        <source>Broken mod files (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These files in the mods folder are empty or damaged, and usually make the game crash on startup:
+%1
+
+Delete or re-download them (a fresh download of the same version is usually enough).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Version information not loaded yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The launcher could not read this instance&apos;s version list, so the loader check was skipped.
+Open the instance, go to the Version page and let it load once (or press Reload) before launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>%1 (loader component)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Check instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Close</source>
+        <translation type="unfinished">Aizvērt</translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, no broken mod files, and the loader version checks out. Nothing stood in the way of launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+5"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting. The details are below each entry.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>InstanceImportTask</name>
     <message>
         <location filename="../launcher/InstanceImportTask.cpp" line="+99"/>
@@ -5121,13 +5568,23 @@ You can change the Java version in the settings later.
 <context>
     <name>LanguageSelectionWidget</name>
     <message>
-        <location filename="../launcher/ui/widgets/LanguageSelectionWidget.cpp" line="+63"/>
+        <location filename="../launcher/ui/widgets/LanguageSelectionWidget.cpp" line="+92"/>
         <source>Don&apos;t see your language or the quality is poor?&lt;br/&gt;&lt;a href=&quot;%1&quot;&gt;Help us with translations!&lt;/a&gt;</source>
         <translation>Neredzat savu valodu vai kvalitāte ir slikta?&lt;br/&gt;&lt;a href=&quot;%1&quot;&gt;Palīdziet mums ar tulkojumiem!&lt;/a&gt;</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Use system locales</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Language picked automatically from your region (%1). Not right? Choose another one above.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Downloading the list of languages… You can continue in English now and switch languages at any time - the list fills in by itself.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6403,17 +6860,7 @@ Jums vajadzēs šo kļūdu salabot manuāli.</translation>
         <translation type="vanished">Palīdzība</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+794"/>
-        <source>%1 &amp;Wiki</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Open the %1 wiki</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+818"/>
         <source>&amp;Widget Themes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6438,12 +6885,12 @@ Jums vajadzēs šo kļūdu salabot manuāli.</translation>
         <translation>Java</translation>
     </message>
     <message>
-        <location line="-340"/>
+        <location line="-351"/>
         <source>Copy the selected instance.</source>
         <translation>Kopējiet izvēlēto instanci.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+177"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+176"/>
         <source>Show PollyMC</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6453,17 +6900,17 @@ Jums vajadzēs šo kļūdu salabot manuāli.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+116"/>
+        <location line="+120"/>
         <source>Backspace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+97"/>
         <source>Total playtime: 0s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+199"/>
+        <location line="+196"/>
         <source>The star reminder will appear after the Settings dialog closes.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6473,7 +6920,7 @@ Jums vajadzēs šo kļūdu salabot manuāli.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+104"/>
         <source>Enjoying PollyMC-Continued?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6498,17 +6945,7 @@ Jums vajadzēs šo kļūdu salabot manuāli.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+113"/>
-        <source>Loading news...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>No news available.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+32"/>
+        <location line="+133"/>
         <source>Warnings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6622,7 +7059,67 @@ Please check your trashbin to manually restore them.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+14"/>
+        <source>Check instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This kind of instance cannot be checked automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source> (commit %1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Launcher: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Platform: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>System: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>CPU architecture: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Qt: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Java: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>not set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Java (instance &quot;%1&quot;): %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Diagnostics copied to the clipboard - paste it into a support chat.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
         <source>Metadata cache clear Failed!
 To clear the metadata cache manually, press Folders -&gt; View Launcher Root Folder, and after closing the launcher delete the folder named &quot;meta&quot;
 </source>
@@ -6649,7 +7146,7 @@ To clear the metadata cache manually, press Folders -&gt; View Launcher Root Fol
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+28"/>
         <source>Crash Reports</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6753,23 +7250,23 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-992"/>
+        <location line="-1055"/>
         <location line="+126"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
         <location line="+37"/>
-        <location line="+318"/>
+        <location line="+403"/>
         <source>Error</source>
         <translation>Kļūda</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-452"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-454"/>
         <source>Main Toolbar</source>
         <translation>Galvenā Rīkjosla</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-324"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-409"/>
         <source>Modpack download</source>
         <translation>Modpaka lejuplāde</translation>
     </message>
@@ -6784,7 +7281,7 @@ Are you sure?</source>
         <translation>Uzdevums pārtraukts</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+530"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+532"/>
         <source>Open the central mods folder in a file browser.</source>
         <translation>Atvērt centrālo modu mapi faila pārlūkā.</translation>
     </message>
@@ -6799,27 +7296,22 @@ Are you sure?</source>
         <translation>Lietotājs pārtrauca uzdevumu.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+371"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+393"/>
         <source>Open one of the folders shared between instances.</source>
         <translation>Atvērt vienām no mapēm savienotas ar instancēm.</translation>
     </message>
     <message>
-        <location line="-374"/>
+        <location line="-396"/>
         <source>Rename</source>
         <translation>Pārdēvēt</translation>
     </message>
     <message>
-        <location line="-327"/>
-        <source>News Toolbar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+78"/>
+        <location line="-250"/>
         <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+25"/>
         <source>&amp;Edit</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6845,16 +7337,6 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+34"/>
-        <source>More News...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Open the development blog to read more news about %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
         <source>Status Bar</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6895,6 +7377,16 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+11"/>
+        <source>What&apos;s New...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Browse what changed in each release of %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
         <source>Setti&amp;ngs...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7160,6 +7652,26 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+8"/>
+        <source>Chec&amp;k Instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Look for missing Java, broken mod files or a wrong loader version before launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Copy &amp;Diagnostics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Copy the launcher version, system, Qt and Java information to the clipboard, ready to paste into a support chat.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
         <source>Report a Bug or Suggest a Feature</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7250,7 +7762,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-84"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-62"/>
         <source>Accounts</source>
         <translation>Konti</translation>
     </message>
@@ -7260,7 +7772,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+33"/>
         <source>Open the Java folder in a file browser. Only available if the built-in Java downloader is used.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7275,19 +7787,19 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-545"/>
+        <location line="-567"/>
         <source>Add a new instance.</source>
         <translation>Pievienot jaunu instanci.</translation>
     </message>
     <message>
-        <location line="+257"/>
+        <location line="+268"/>
         <source>No accounts added!</source>
         <translation>Neviens konts nav pievienots!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-539"/>
-        <location line="+96"/>
-        <location line="+1446"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-596"/>
+        <location line="+88"/>
+        <location line="+1552"/>
         <source>No instance selected</source>
         <translation>Nav specificētas instances</translation>
     </message>
@@ -7297,17 +7809,17 @@ Are you sure?</source>
         <translation>Nomainīt Ikonu</translation>
     </message>
     <message>
-        <location line="+327"/>
+        <location line="+349"/>
         <source>Folders</source>
         <translation>Mapes</translation>
     </message>
     <message>
-        <location line="-288"/>
+        <location line="-310"/>
         <source>Delete the selected instance.</source>
         <translation>Skatīt pasaules kuras ir no šīs instances.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1200"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1241"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Dzēst grupu</translation>
     </message>
@@ -7331,12 +7843,17 @@ Are you sure?</source>
         <translation>Palaist iezīmēto instanci.</translation>
     </message>
     <message>
-        <location line="-53"/>
+        <location line="-296"/>
+        <source>What&apos;s New Toolbar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+232"/>
         <source>Check for update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+122"/>
+        <location line="+133"/>
         <source>Change the selected instance&apos;s group.</source>
         <translation>Pārmainīt izvēlētās instances ikonu.</translation>
     </message>
@@ -8555,16 +9072,6 @@ Are you sure you want to do this?</source>
 Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location line="+105"/>
-        <source>Missing Mod Loader</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>You need to install a compatible mod loader before installing mods. Would you like to do so?</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>ModMinecraftJar</name>
@@ -8946,7 +9453,7 @@ Please update %1!</source>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+123"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+145"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8984,7 +9491,7 @@ Please update %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+34"/>
+        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+50"/>
         <source>All %1 requests failed after %2 attempts</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9001,6 +9508,51 @@ Please update %1!</source>
     <message>
         <location line="+9"/>
         <source>Copy URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Report Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Send this error to the PollyMC developers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>This looks like antivirus software (or ransomware protection) blocking the launcher&apos;s temporary files. You can retry through a different temporary folder, or open the guide on letting your antivirus leave the launcher alone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Retry with a different temp folder…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Pick a folder the launcher will use to stage downloads, then retry. Choose one that your antivirus does not watch, such as a folder in your home directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Open the antivirus exclusion guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Opens a guide explaining how to add the launcher to your antivirus exclusions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+61"/>
+        <source>Network error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Pick a temporary download folder</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -9458,6 +10010,28 @@ Are you sure?</source>
         <source>Help</source>
         <translation type="obsolete">Palīdzība</translation>
     </message>
+    <message>
+        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+383"/>
+        <location line="+42"/>
+        <source>Search settings…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-41"/>
+        <location line="+42"/>
+        <source>Search all settings (Ctrl+F). Several words narrow the results down.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+296"/>
+        <source>No settings match &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Try fewer or shorter words, or part of the setting&apos;s name.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PageDialog</name>
@@ -9606,13 +10180,13 @@ Maximum performance for demanding setups</source>
 <context>
     <name>PollyMCExternalUpdater</name>
     <message>
-        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+147"/>
-        <location line="+120"/>
+        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+154"/>
+        <location line="+129"/>
         <source>Update UI preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-120"/>
+        <location line="-129"/>
         <source>An update check is already running. Try again in a moment.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9638,23 +10212,28 @@ Reason: %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+43"/>
         <source>Update Check Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+6"/>
+        <source>Update check failed: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
         <source>The updater did not report any release to show.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+6"/>
-        <location line="+210"/>
+        <location line="+237"/>
         <source>No Update Available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-210"/>
+        <location line="-237"/>
         <source>You are running the latest version.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9669,7 +10248,13 @@ Reason: %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+6"/>
+        <location line="+31"/>
+        <source>Update check failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-9"/>
         <source>Unknown Update Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9686,7 +10271,7 @@ StdErr: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+169"/>
+        <location line="+194"/>
         <source>There are no new updates available.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10109,7 +10694,7 @@ Updater log: %7</source>
 <context>
     <name>ProfileSelectDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ProfileSelectDialog.cpp" line="+67"/>
+        <location filename="../launcher/ui/dialogs/ProfileSelectDialog.cpp" line="+68"/>
         <source>OK</source>
         <translation>Labi</translation>
     </message>
@@ -10315,7 +10900,7 @@ Choose your name carefully:</source>
         <translation type="vanished">Neatpazīts</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-575"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-626"/>
         <source>%1 (in use)</source>
         <translation>%1 (Tiek izmantots)</translation>
     </message>
@@ -10412,7 +10997,7 @@ This message will be displayed until you remove this from the JVM arguments.</so
         <translation>Gaišs</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/GuiUtil.cpp" line="+98"/>
+        <location filename="../launcher/ui/GuiUtil.cpp" line="+99"/>
         <source>Confirm Upload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11230,13 +11815,38 @@ Error message: %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/DeveloperPage.cpp" line="-128"/>
+        <location filename="../launcher/ui/pages/global/DeveloperPage.cpp" line="-153"/>
         <source>Developer tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The star reminder schedule has been reset.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/net/BugReportUpload.cpp" line="+51"/>
+        <source>Too many reports, please try again later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The report could not be sent: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>The report server returned an unexpected response.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <source>Report Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Send this error to the PollyMC developers</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -11925,7 +12535,7 @@ Are you sure?</source>
 <context>
     <name>ResourceUpdateDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+43"/>
+        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+44"/>
         <source>Confirm resources to update</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11940,7 +12550,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+22"/>
         <source>Mod name: %1&lt;br&gt;File name: %2&lt;br&gt;Reason: %3&lt;br&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12086,7 +12696,7 @@ Are you sure?</source>
 <context>
     <name>ReviewMessageBox</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ReviewMessageBox.cpp" line="+14"/>
+        <location filename="../launcher/ui/dialogs/ReviewMessageBox.cpp" line="+16"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12096,7 +12706,7 @@ Are you sure?</source>
         <translation>Labi</translation>
     </message>
     <message>
-        <location line="+39"/>
+        <location line="+42"/>
         <source>Mod was disabled as it may be already installed.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12141,7 +12751,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-97"/>
+        <location line="-100"/>
         <source>Cancel</source>
         <translation>Atcelt</translation>
     </message>
@@ -12286,7 +12896,7 @@ Are you sure?</source>
 <context>
     <name>ScrollMessageBox</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ScrollMessageBox.cpp" line="+19"/>
+        <location filename="../launcher/ui/dialogs/ScrollMessageBox.cpp" line="+20"/>
         <source>OK</source>
         <translation>Labi</translation>
     </message>
@@ -13128,6 +13738,29 @@ Are you sure?</source>
     </message>
 </context>
 <context>
+    <name>SplashScreen</name>
+    <message>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <source>Loading icons…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Loading instances…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Loading accounts…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Almost ready…</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>StepModel</name>
     <message>
         <location filename="../launcher/bot/BotScriptEditor.cpp" line="-378"/>
@@ -13542,7 +14175,7 @@ Are you sure?</source>
 <context>
     <name>TranslationsModel</name>
     <message>
-        <location filename="../launcher/translations/TranslationsModel.cpp" line="+371"/>
+        <location filename="../launcher/translations/TranslationsModel.cpp" line="+389"/>
         <source>%1:
 %2 translated
 %3 fuzzy
@@ -13584,7 +14217,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+7"/>
-        <location filename="../launcher/ui/dialogs/UpdateAvailableDialog.cpp" line="+43"/>
+        <location filename="../launcher/ui/dialogs/UpdateAvailableDialog.cpp" line="+44"/>
         <source>Version %1 is now available - you have %2 . Would you like to download it now?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14123,12 +14756,12 @@ Are you sure?</source>
         <translation type="vanished">Labi</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+98"/>
+        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+103"/>
         <source>Choose Version</source>
         <translation>Izvēlēties Versiju</translation>
     </message>
     <message>
-        <location line="-25"/>
+        <location line="-28"/>
         <source>Cancel</source>
         <translation>Atcelt</translation>
     </message>
@@ -14138,7 +14771,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+30"/>
         <source>Reloads the version list.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14177,6 +14810,92 @@ Are you sure?</source>
     <message>
         <location line="+4"/>
         <source>View Launcher Logs</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WhatsNewBrowserDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/WhatsNewBrowserDialog.cpp" line="+57"/>
+        <source>What&apos;s New</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+48"/>
+        <source>All releases</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Close</source>
+        <translation type="unfinished">Aizvērt</translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>What&apos;s new in %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The changelog could not be read. Use &quot;All releases&quot; to read the release notes on GitHub.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>The version this launcher is running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>What&apos;s new in %1 %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WhatsNewDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/WhatsNewDialog.cpp" line="+56"/>
+        <source>What&apos;s New</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>What&apos;s new in %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>What&apos;s new in %1 %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>You updated from %1 to %2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>The release notes for this version are not stored on this computer. Use &quot;All releases&quot; to read them on GitHub.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Show this after updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>You can always open this window again from Help &gt; What&apos;s New.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>All releases</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Got it</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
