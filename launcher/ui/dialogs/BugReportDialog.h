@@ -103,6 +103,8 @@ class BugReportDialog : public QDialog {
     QCheckBox* m_includeLog = nullptr;
     QDialogButtonBox* m_buttons = nullptr;
     QPushButton* m_sendButton = nullptr;
+    QWidget* m_sendStatus = nullptr;  // progress row shown while a report is being sent
+    QLabel* m_sendStatusText = nullptr;
 
     QList<QByteArray> m_shotData;  // JPEG bytes, parallel to the items in m_shots
 };

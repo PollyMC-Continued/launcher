@@ -47,6 +47,7 @@
 #include <QNetworkRequest>
 #include <QPainter>
 #include <QPlainTextEdit>
+#include <QProgressBar>
 #include <QPushButton>
 #include <QScreen>
 #include <QScrollArea>
@@ -54,6 +55,7 @@
 #include <QShortcut>
 #include <QSignalBlocker>
 #include <QSysInfo>
+#include <QTimer>
 #include <QtConcurrent/QtConcurrentRun>
 #include <QTextCursor>
 #include <QToolButton>
@@ -83,7 +85,7 @@ constexpr int CooldownSeconds = 60;
 // Costs about a second of CPU per report; it exists so mass-posting from scripts is expensive.
 constexpr int PowBits = 20;
 
-bool hasLeadingZeroBits(const QByteArray& hash, int bits)
+bool hasLeadingZeroBits(QByteArrayView hash, int bits)
 {
     int full = bits / 8;
     for (int i = 0; i < full; ++i)
@@ -102,9 +104,13 @@ quint64 solveProofOfWork(qint64 ts, const QString& description)
     const QByteArray digest = QCryptographicHash::hash(description.toUtf8(), QCryptographicHash::Sha256).toHex();
     const QByteArray prefix = QByteArray::number(ts) + ':';
     const QByteArray suffix = ':' + digest;
+    QCryptographicHash hasher(QCryptographicHash::Sha256);  // reused for every try: no allocation in the hot loop
     for (quint64 nonce = 0;; ++nonce) {
-        const QByteArray hash = QCryptographicHash::hash(prefix + QByteArray::number(nonce) + suffix, QCryptographicHash::Sha256);
-        if (hasLeadingZeroBits(hash, PowBits))
+        hasher.reset();
+        hasher.addData(prefix);
+        hasher.addData(QByteArray::number(nonce));
+        hasher.addData(suffix);
+        if (hasLeadingZeroBits(hasher.resultView(), PowBits))
             return nonce;
     }
 }
@@ -252,6 +258,21 @@ BugReportDialog::BugReportDialog(QWidget* parent) : QDialog(parent)
     m_details->setContentsMargins(18, 0, 0, 0);
     m_details->setVisible(false);
     layout->addWidget(m_details);
+
+    // ---- sending feedback: hidden until a report is on its way, so the greyed-out form never looks frozen ----
+    m_sendStatus = new QWidget(this);
+    auto statusLayout = new QHBoxLayout(m_sendStatus);
+    statusLayout->setContentsMargins(0, 0, 0, 0);
+    auto busyBar = new QProgressBar(m_sendStatus);
+    busyBar->setRange(0, 0);  // endless "working" animation
+    busyBar->setTextVisible(false);
+    busyBar->setFixedWidth(140);
+    m_sendStatusText = new QLabel(m_sendStatus);
+    m_sendStatusText->setWordWrap(true);
+    statusLayout->addWidget(busyBar);
+    statusLayout->addWidget(m_sendStatusText, 1);
+    m_sendStatus->setVisible(false);
+    outer->addWidget(m_sendStatus);
 
     // ---- footer (always visible) ----
     auto footer = new QHBoxLayout();
@@ -434,6 +455,9 @@ void BugReportDialog::setBusy(bool busy)
     // lock the form while a report is on its way so nothing changes (or gets sent twice) mid-send
     m_form->setEnabled(!busy);
     m_sendButton->setText(busy ? tr("Sending…") : tr("Send Report"));
+    m_sendStatus->setVisible(busy);
+    if (busy)
+        m_sendStatusText->setText(tr("Step 1 of 2: preparing your report…"));
     if (busy)
         m_sendButton->setEnabled(false);
     else
@@ -623,6 +647,12 @@ void BugReportDialog::send()
 void BugReportDialog::submit(qint64 powTime, quint64 powNonce, const QString& duplicateKey)
 {
     const QByteArray payload = buildPayload(powTime, powNonce);
+
+    m_sendStatusText->setText(tr("Step 2 of 2: sending your report to the team…"));
+    QTimer::singleShot(6000, this, [this]() {
+        if (m_sendStatus->isVisible())
+            m_sendStatusText->setText(tr("Still sending… the server is a little slow. Please keep this window open."));
+    });
 
     // A single plain POST: no NetJob, because NetJob retries failures up to 3 times (which trips the relay's rate limit and
     // can post duplicate reports) and hides the real error behind a generic "Aborted".
