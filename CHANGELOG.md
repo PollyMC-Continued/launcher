@@ -2,19 +2,16 @@
 
 ## v9.5.1
 
-**Security:**
-
-- **Spam-proof bug reports** — Every report now carries a small proof of work that the launcher solves in the background (about a second). Scripts that post to the report server without it are rejected, and sending large amounts of spam now costs real computing time.
-- **One report, one use** — A report that was already received can no longer be sent a second time.
-- **Report limits** — The report server now limits how many reports one network can send per hour and how many it accepts overall, so the team's Discord can no longer be flooded.
-- **Safe failure** — If the server's protection service is unavailable, reports are refused instead of being let through unchecked.
-
 **Changed:**
 
-- **Sending progress** — While a report is on its way the window now shows a progress bar and what is happening ("preparing", then "sending"), plus a note if the server is slow, instead of just greying out.
-- **Clearer report errors** — Rate limits, a wrong system clock and an outdated launcher now each show a plain message explaining what to do.
+- **Clearer report sending** — The bug report window now shows a progress bar and tells you what it's doing while your report is sent.
+- **Clearer report errors** — If a report can't be sent, the message now tells you what to do.
 
-**Note:** Older versions cannot send reports once the server requires the proof of work. Update to 9.5.1 to keep sending them.
+**Fixed:**
+
+- **Spam reports blocked** — Bug reports are now protected against spam, so the team's inbox stays usable.
+
+**Note:** Older launcher versions can no longer send bug reports. Please update to keep reporting problems.
 
 ## v9.5.0
 
