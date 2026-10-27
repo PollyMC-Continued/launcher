@@ -72,7 +72,8 @@ class BugReportDialog : public QDialog {
     void addScreenshot(const QImage& image);
     void setBusy(bool busy);
     QString systemInfoText() const;
-    QByteArray buildPayload() const;
+    QByteArray buildPayload(qint64 powTime = 0, quint64 powNonce = 0) const;
+    void submit(qint64 powTime, quint64 powNonce, const QString& duplicateKey);
 
     // ---- unsent-report draft: kept when the window is closed by accident ----
     void saveDraft() const;

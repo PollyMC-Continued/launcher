@@ -21,12 +21,14 @@
 #include <QBuffer>
 #include <QCheckBox>
 #include <QClipboard>
+#include <QCryptographicHash>
 #include <QComboBox>
 #include <QDateTime>
 #include <QDialogButtonBox>
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QFile>
+#include <QFutureWatcher>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QFrame>
@@ -52,6 +54,7 @@
 #include <QShortcut>
 #include <QSignalBlocker>
 #include <QSysInfo>
+#include <QtConcurrent/QtConcurrentRun>
 #include <QTextCursor>
 #include <QToolButton>
 #include <QUrl>
@@ -76,6 +79,35 @@ constexpr int MaxContactChars = 80;
 constexpr int MaxPayloadBytes = 4300000;  // stay below the relay's request size limit
 constexpr int MaxLogChars = 200000;  // keep the tail of the log: crashes are at the end
 constexpr int CooldownSeconds = 60;
+// Proof of work required by the report relay (api/report). Must be >= REPORT_POW_BITS on the server (default 20).
+// Costs about a second of CPU per report; it exists so mass-posting from scripts is expensive.
+constexpr int PowBits = 20;
+
+bool hasLeadingZeroBits(const QByteArray& hash, int bits)
+{
+    int full = bits / 8;
+    for (int i = 0; i < full; ++i)
+        if (hash[i] != 0)
+            return false;
+    int rest = bits % 8;
+    if (rest == 0)
+        return true;
+    return (static_cast<unsigned char>(hash[full]) >> (8 - rest)) == 0;
+}
+
+// Finds a nonce so that SHA-256("<ts>:<nonce>:<hex SHA-256 of description>") starts with PowBits zero bits.
+// Must match checkPow() in the relay exactly. Runs on a worker thread.
+quint64 solveProofOfWork(qint64 ts, const QString& description)
+{
+    const QByteArray digest = QCryptographicHash::hash(description.toUtf8(), QCryptographicHash::Sha256).toHex();
+    const QByteArray prefix = QByteArray::number(ts) + ':';
+    const QByteArray suffix = ':' + digest;
+    for (quint64 nonce = 0;; ++nonce) {
+        const QByteArray hash = QCryptographicHash::hash(prefix + QByteArray::number(nonce) + suffix, QCryptographicHash::Sha256);
+        if (hasLeadingZeroBits(hash, PowBits))
+            return nonce;
+    }
+}
 // An unsent draft older than this is silently dropped instead of restored.
 constexpr int DraftMaxAgeDays = 7;
 
@@ -515,7 +547,7 @@ void BugReportDialog::removeSelectedScreenshot()
     updateState();
 }
 
-QByteArray BugReportDialog::buildPayload() const
+QByteArray BugReportDialog::buildPayload(qint64 powTime, quint64 powNonce) const
 {
     QJsonObject obj;
     obj["type"] = m_type->currentData().toString();
@@ -527,6 +559,10 @@ QByteArray BugReportDialog::buildPayload() const
     obj["system"] = QSysInfo::prettyProductName();
     obj["arch"] = QSysInfo::currentCpuArchitecture();
     obj["qt"] = QString::fromLatin1(qVersion());
+    if (powTime > 0) {
+        obj["powTime"] = powTime;
+        obj["powNonce"] = QString::number(powNonce);  // string: JSON numbers lose precision above 2^53
+    }
 
     if (m_includeLog->isChecked() && APPLICATION->logFile) {
         APPLICATION->logFile->flush();
@@ -563,13 +599,30 @@ void BugReportDialog::send()
             return;
     }
 
-    const QByteArray payload = buildPayload();
-    if (payload.size() > MaxPayloadBytes) {
+    const qsizetype payloadSize = buildPayload().size();
+    if (payloadSize > MaxPayloadBytes) {
         QMessageBox::information(this, tr("Report a Bug"),
                                  tr("This report is too large to send (%1 MB). Remove a screenshot or untick \"Include the launcher log\" and try again.")
-                                     .arg(payload.size() / 1000000.0, 0, 'f', 1));
+                                     .arg(payloadSize / 1000000.0, 0, 'f', 1));
         return;
     }
+
+    // Solve the relay's proof of work off the GUI thread (about a second), then send.
+    setBusy(true);
+    const QString description = m_description->toPlainText().trimmed();
+    const qint64 powTime = QDateTime::currentSecsSinceEpoch();
+    auto* watcher = new QFutureWatcher<quint64>(this);
+    connect(watcher, &QFutureWatcher<quint64>::finished, this, [this, watcher, powTime, duplicateKey]() {
+        const quint64 powNonce = watcher->result();
+        watcher->deleteLater();
+        submit(powTime, powNonce, duplicateKey);
+    });
+    watcher->setFuture(QtConcurrent::run([powTime, description]() { return solveProofOfWork(powTime, description); }));
+}
+
+void BugReportDialog::submit(qint64 powTime, quint64 powNonce, const QString& duplicateKey)
+{
+    const QByteArray payload = buildPayload(powTime, powNonce);
 
     // A single plain POST: no NetJob, because NetJob retries failures up to 3 times (which trips the relay's rate limit and
     // can post duplicate reports) and hides the real error behind a generic "Aborted".
@@ -577,8 +630,6 @@ void BugReportDialog::send()
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     request.setHeader(QNetworkRequest::UserAgentHeader, APPLICATION->getUserAgent().toUtf8());
     request.setTransferTimeout(30000);
-
-    setBusy(true);
 
     QNetworkReply* reply = APPLICATION->network()->post(request, payload);
     connect(reply, &QNetworkReply::finished, reply, &QObject::deleteLater);  // safe even if the dialog is closed while sending
