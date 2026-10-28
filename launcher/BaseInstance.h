@@ -181,6 +181,10 @@ class BaseInstance : public QObject {
     /// Sets the last launched time to 'val' milliseconds since epoch
     void setLastLaunch(qint64 val = QDateTime::currentMSecsSinceEpoch());
 
+    /// Pinned instances are listed before the others of their group, whatever the sort mode is.
+    bool isPinned() const;
+    void setPinned(bool pinned);
+
     /*!
      * \brief Gets this instance's settings object.
      * This settings object stores instance-specific settings.

@@ -250,6 +250,13 @@ void ModFolderPage::updateMods(bool includeDeps)
     if (use_all)
         mods_list = m_model->allResources();
 
+    // nothing to check (empty folder): the "up to date" message below reads the first entry
+    if (mods_list.isEmpty()) {
+        CustomMessageBox::selectable(this, tr("Update checker"), tr("There are no mods to check for updates."), QMessageBox::Information)
+            ->exec();
+        return;
+    }
+
     ResourceUpdateDialog update_dialog(this, m_instance, m_model, mods_list, includeDeps, profile->getModLoadersList());
     update_dialog.checkCandidates();
 
@@ -265,6 +272,10 @@ void ModFolderPage::updateMods(bool includeDeps)
             } else {
                 message = tr("All selected mods are up-to-date! :)");
             }
+        }
+        // don't claim more than we checked
+        if (update_dialog.failedCount() > 0) {
+            message = tr("No updates were found, but %n mod(s) could not be checked.", "", update_dialog.failedCount());
         }
         CustomMessageBox::selectable(this, tr("Update checker"), message)->exec();
         return;

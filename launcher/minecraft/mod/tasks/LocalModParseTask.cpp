@@ -25,6 +25,32 @@ namespace ModUtils {
 
 // OLD format:
 // https://github.com/MinecraftForge/FML/wiki/FML-mod-information-file/5bf6a2d05145ec79387acc0d45c958642fb049fc
+namespace {
+// A version predicate that matches every version of the other mod. Only those are turned into "breaks" entries,
+// because we don't evaluate version ranges here.
+bool matchesAnyVersion(const QString& predicate)
+{
+    const QString p = predicate.trimmed();
+    return p.isEmpty() || p == "*" || p == "x" || p == "[0,)" || p == "[1,)" || p == "(,)";
+}
+
+// Fabric/Quilt let a predicate be a string or an array of strings (any of them matching is enough).
+bool jsonMatchesAnyVersion(const QJsonValue& value)
+{
+    if (value.isUndefined() || value.isNull())
+        return true;
+    if (value.isString())
+        return matchesAnyVersion(value.toString());
+    if (value.isArray()) {
+        for (const auto& entry : value.toArray()) {
+            if (entry.isString() && matchesAnyVersion(entry.toString()))
+                return true;
+        }
+    }
+    return false;
+}
+}  // namespace
+
 ModDetails ReadMCModInfo(QByteArray contents)
 {
     auto getInfoFromArray = [](QJsonArray arr) -> ModDetails {
@@ -253,6 +279,14 @@ ModDetails ReadMCModTOML(QByteArray contents)
             }
             if (isNeoForgeDep(dep_table) || isForgeDep(dep_table)) {
                 details.dependencies.append(QString::fromStdString(modId->get()));
+            } else if (auto type = (*dep_table)["type"].as_string(); type && type->get() == "incompatible") {
+                QString range;
+                if (auto rangeDatum = (*dep_table)["versionRange"].as_string()) {
+                    range = QString::fromStdString(rangeDatum->get());
+                }
+                if (matchesAnyVersion(range)) {
+                    details.breaks.append(QString::fromStdString(modId->get()));
+                }
             }
         }
     };
@@ -366,9 +400,18 @@ ModDetails ReadFabricModInfo(QByteArray contents)
             if (depends.isObject()) {
                 auto obj = depends.toObject();
                 for (auto key : obj.keys()) {
-                    if (key != "fabricloader" && key != "minecraft" && !key.startsWith("fabric-")) {
+                    if (key != "fabricloader" && key != "minecraft" && key != "java" && !key.startsWith("fabric-")) {
                         details.dependencies.append(key);
                     }
+                }
+            }
+        }
+        // "breaks": the game refuses to start when one of these is present (in a matching version)
+        if (object.value("breaks").isObject()) {
+            const auto obj = object.value("breaks").toObject();
+            for (const auto& key : obj.keys()) {
+                if (key != "fabricloader" && key != "minecraft" && jsonMatchesAnyVersion(obj.value(key))) {
+                    details.breaks.append(key);
                 }
             }
         }
@@ -458,8 +501,21 @@ ModDetails ReadQuiltModInfo(QByteArray contents)
                     details.icon_file = icon.toString();
                 }
             }
-            if (object.contains("depends")) {
-                auto depends = object.value("depends");
+            // note: "depends" and "breaks" live inside "quilt_loader", not at the top level of quilt.mod.json
+            if (modInfo.value("breaks").isArray()) {
+                for (const auto& entry : modInfo.value("breaks").toArray()) {
+                    if (entry.isString()) {
+                        details.breaks.append(entry.toString());
+                    } else if (entry.isObject()) {
+                        const auto obj = entry.toObject();
+                        const auto id = obj.value("id").toString();
+                        if (!id.isEmpty() && id != "minecraft" && jsonMatchesAnyVersion(obj.value("versions")))
+                            details.breaks.append(id);
+                    }
+                }
+            }
+            if (modInfo.contains("depends")) {
+                auto depends = modInfo.value("depends");
                 if (depends.isArray()) {
                     auto array = depends.toArray();
                     for (auto obj : array) {

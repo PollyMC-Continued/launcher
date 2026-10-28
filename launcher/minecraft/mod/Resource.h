@@ -131,7 +131,16 @@ class Resource : public QObject {
      */
     QStringList issues() const;
     void updateIssues(const BaseInstance* inst);
-    bool hasIssues() const { return !m_issues.empty(); }
+    bool hasIssues() const { return !m_issues.empty() || !m_conflictIssues.empty(); }
+
+    /**
+     * Conflicts with other mods of the same instance (duplicates, declared incompatibilities).
+     * Unlike the compatibility issues above they stop the game from starting, so they are always shown.
+     * They depend on the other mods, so the mod list sets them after every scan.
+     */
+    const QStringList& conflictIssues() const { return m_conflictIssues; }
+    bool hasConflicts() const { return !m_conflictIssues.empty(); }
+    void setConflictIssues(QStringList issues) { m_conflictIssues = std::move(issues); }
 
     /** Compares two Resources, for sorting purposes, considering a ascending order, returning:
      *  > 0: 'this' comes after 'other'
@@ -203,6 +212,7 @@ class Resource : public QObject {
     bool m_enabled = true;
 
     QList<const char*> m_issues;
+    QStringList m_conflictIssues;
 
     /* Used to keep trach of pending / concluded actions on the resource. */
     bool m_is_resolving = false;

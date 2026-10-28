@@ -71,6 +71,7 @@ class Mod : public Resource {
     auto mcVersions() const -> QString;
     auto releaseType() const -> QString;
     QStringList dependencies() const;
+    QStringList breaks() const;
 
     int requiredByCount() const;
     int requiresCount() const;

@@ -505,7 +505,8 @@ bool ResourceFolderModel::validateIndex(const QModelIndex& index) const
 // and they only delegate to the superclass for compatible columns
 QBrush ResourceFolderModel::rowBackground(int row) const
 {
-    if (APPLICATION->settings()->get("ShowModIncompat").toBool() && m_resources[row]->hasIssues()) {
+    // conflicts with other mods stop the game from starting, so they are shown even when "ShowModIncompat" is off
+    if ((APPLICATION->settings()->get("ShowModIncompat").toBool() && m_resources[row]->hasIssues()) || m_resources[row]->hasConflicts()) {
         return { QColor(255, 0, 0, 40) };
     } else {
         return {};
@@ -544,6 +545,10 @@ QVariant ResourceFolderModel::data(const QModelIndex& index, int role) const
                     for (const QString& issue : at(row).issues()) {
                         tooltip += "\n" + issue;
                     }
+                } else {
+                    for (const QString& issue : at(row).conflictIssues()) {
+                        tooltip += "\n" + issue;
+                    }
                 }
 
                 if (at(row).isSymLinkUnder(instDirPath())) {
@@ -563,7 +568,7 @@ QVariant ResourceFolderModel::data(const QModelIndex& index, int role) const
         }
         case Qt::DecorationRole: {
             if (column == NameColumn) {
-                if (APPLICATION->settings()->get("ShowModIncompat").toBool() && at(row).hasIssues()) {
+                if ((APPLICATION->settings()->get("ShowModIncompat").toBool() && at(row).hasIssues()) || at(row).hasConflicts()) {
                     return QIcon::fromTheme("status-bad");
                 } else if (at(row).isSymLinkUnder(instDirPath()) || at(row).isMoreThanOneHardLink()) {
                     return QIcon::fromTheme("status-yellow");

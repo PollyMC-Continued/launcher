@@ -157,6 +157,7 @@ class MainWindow : public QMainWindow {
     void on_actionCopyDiagnostics_triggered();
 
     void on_actionCheckInstance_triggered();
+    void on_actionPinInstance_triggered();
 
     void on_actionClearMetadata_triggered();
 

@@ -143,7 +143,6 @@ void ResourceUpdateDialog::checkCandidates()
             qDebug() << QString("Mod %1 has an update available!").arg(updatable.name);
 
             appendResource(updatable);
-            m_tasks.insert(updatable.name, updatable.download);
         }
         selectedVers.append(m_modrinthCheckTask->getDependencies());
     }
@@ -155,7 +154,6 @@ void ResourceUpdateDialog::checkCandidates()
             qDebug() << QString("Mod %1 has an update available!").arg(updatable.name);
 
             appendResource(updatable);
-            m_tasks.insert(updatable.name, updatable.download);
         }
         selectedVers.append(m_flameCheckTask->getDependencies());
     }
@@ -247,7 +245,6 @@ void ResourceUpdateDialog::checkCandidates()
                 };
 
                 appendResource(updatable, extraInfo.required_by);
-                m_tasks.insert(updatable.name, updatable.download);
             }
         }
     }
@@ -267,6 +264,9 @@ void ResourceUpdateDialog::checkCandidates()
             item->sortChildren(0, Qt::SortOrder::DescendingOrder);
             item = ui->modTreeWidget->topLevelItem(i);
         }
+
+        ui->explainLabel->setText(
+            tr("%n update(s) found. You're about to update the following resources:", "", ui->modTreeWidget->topLevelItemCount()));
     }
 
     if (m_aborted || m_noUpdates)
@@ -444,6 +444,9 @@ void ResourceUpdateDialog::onMetadataFailed(Resource* resource, bool try_others,
 void ResourceUpdateDialog::appendResource(CheckUpdateTask::Update const& info, QStringList requiredBy)
 {
     auto item_top = new QTreeWidgetItem(ui->modTreeWidget);
+    const QString taskKey = QString::number(m_nextTaskKey++);
+    m_tasks.insert(taskKey, info.download);
+    item_top->setData(0, Qt::UserRole + 1, taskKey);
     item_top->setCheckState(0, info.enabled ? Qt::CheckState::Checked : Qt::CheckState::Unchecked);
     if (!info.enabled) {
         item_top->setToolTip(0, tr("Mod was disabled as it may be already installed."));
@@ -517,7 +520,9 @@ auto ResourceUpdateDialog::getTasks() -> const QList<ResourceDownloadTask::Ptr>
 
     for (int i = 1; item != nullptr; ++i) {
         if (item->checkState(0) == Qt::CheckState::Checked) {
-            list.push_back(m_tasks.find(item->text(0)).value());
+            const auto task = m_tasks.value(item->data(0, Qt::UserRole + 1).toString());
+            if (task)
+                list.push_back(task);
         }
 
         item = ui->modTreeWidget->topLevelItem(i);

@@ -37,6 +37,7 @@
 #include <QApplication>
 #include <QDebug>
 #include <QPainter>
+#include <QPainterPath>
 #include <QTextLayout>
 #include <QTextOption>
 #include <QtMath>
@@ -154,8 +155,40 @@ void drawProgressOverlay(QPainter* painter, const QStyleOptionViewItem& option, 
     painter->restore();
 }
 
+// A small push-pin in the top-left corner, drawn with the painter so it needs no icon in every theme.
+void drawPinBadge(QPainter* painter, const QStyleOptionViewItem& option)
+{
+    painter->save();
+    painter->setRenderHint(QPainter::Antialiasing, true);
+    painter->translate(option.rect.topLeft() + QPoint(4, 4));
+
+    const QColor body = QColor(0xE5, 0x39, 0x35);
+    const QColor outline = QColor(0, 0, 0, 140);
+
+    // tilt it a little, like a pin stuck in a board
+    painter->translate(8, 8);
+    painter->rotate(35);
+    painter->translate(-8, -8);
+
+    QPainterPath head;
+    head.addRoundedRect(QRectF(3.5, 0.5, 9, 3), 1.2, 1.2);  // cap
+    head.addRect(QRectF(5.5, 3.5, 5, 5));                    // shaft
+    head.addRoundedRect(QRectF(2.5, 8.5, 11, 2.5), 1.2, 1.2);  // flange
+    painter->setPen(QPen(outline, 0.8));
+    painter->setBrush(body);
+    painter->drawPath(head);
+
+    painter->setPen(QPen(outline, 1.2));
+    painter->drawLine(QPointF(8, 11), QPointF(8, 16));  // needle
+    painter->restore();
+}
+
 void drawBadges(QPainter* painter, const QStyleOptionViewItem& option, BaseInstance* instance, QIcon::Mode mode, QIcon::State state)
 {
+    if (instance->isPinned()) {
+        drawPinBadge(painter, option);
+    }
+
     QList<QString> pixmaps;
     if (instance->isRunning()) {
         pixmaps.append("status-running");

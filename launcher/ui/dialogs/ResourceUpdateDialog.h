@@ -33,6 +33,9 @@ class ResourceUpdateDialog final : public ReviewMessageBox {
     auto noUpdates() const -> bool { return m_noUpdates; };
     auto aborted() const -> bool { return m_aborted; };
 
+    /// Resources that could not be checked (no metadata found, or the provider failed): "up to date" must not claim more than we know.
+    auto failedCount() const -> int { return static_cast<int>(m_failedMetadata.size() + m_failedCheckUpdate.size()); }
+
    private:
     auto ensureMetadata() -> bool;
 
@@ -58,7 +61,9 @@ class ResourceUpdateDialog final : public ReviewMessageBox {
     QList<std::tuple<Resource*, QString>> m_failedMetadata;
     QList<std::tuple<Resource*, QString, QUrl>> m_failedCheckUpdate;
 
+    // keyed by a unique number, not by the resource name: two files (or a mod and a dependency) can share a name
     QHash<QString, ResourceDownloadTask::Ptr> m_tasks;
+    int m_nextTaskKey = 0;
     BaseInstance* m_instance;
 
     bool m_noUpdates = false;

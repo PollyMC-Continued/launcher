@@ -53,6 +53,7 @@
 #include <algorithm>
 
 #include "minecraft/Component.h"
+#include "minecraft/mod/ModConflictChecker.h"
 #include "minecraft/mod/Resource.h"
 #include "minecraft/mod/ResourceFolderModel.h"
 #include "minecraft/mod/tasks/LocalModParseTask.h"
@@ -322,6 +323,31 @@ void ModFolderModel::onParseFinished()
             int row = m_resources_index[mod->internal_id()];
             emit dataChanged(index(row), index(row, columnCount(QModelIndex()) - 1));
         }
+    }
+
+    updateConflictIssues(modsList);
+}
+
+void ModFolderModel::updateConflictIssues(const QList<Mod*>& mods)
+{
+    // only real conflicts get a red row; "possibly missing dependency" is shown by the instance check instead,
+    // because a dependency can be bundled in another mod and we'd be crying wolf
+    QHash<const Mod*, QStringList> byMod;
+    for (const auto& conflict : ModConflictChecker::check(mods)) {
+        if (conflict.severity != ModConflictChecker::Severity::Error)
+            continue;
+        for (const Mod* mod : conflict.mods)
+            byMod[mod] << conflict.title;
+    }
+
+    for (Mod* mod : mods) {
+        const QStringList issues = byMod.value(mod);
+        if (mod->conflictIssues() == issues)
+            continue;
+        mod->setConflictIssues(issues);
+        auto it = m_resources_index.constFind(mod->internal_id());
+        if (it != m_resources_index.constEnd())
+            emit dataChanged(index(it.value()), index(it.value(), columnCount(QModelIndex()) - 1));
     }
 }
 

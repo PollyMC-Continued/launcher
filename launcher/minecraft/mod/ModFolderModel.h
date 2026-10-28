@@ -105,6 +105,9 @@ class ModFolderModel : public ResourceFolderModel {
     void onParseFinished();
 
    private:
+    /// Re-runs the conflict checker and marks the mods that conflict with each other.
+    void updateConflictIssues(const QList<Mod*>& mods);
+
     QHash<QString, QSet<Mod*>> m_requiredBy;
     QHash<QString, QSet<Mod*>> m_requires;
 };

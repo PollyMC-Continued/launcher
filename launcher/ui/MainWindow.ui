@@ -120,6 +120,7 @@
    <addaction name="separator"/>
    <addaction name="actionEditInstance"/>
    <addaction name="actionChangeInstGroup"/>
+   <addaction name="actionPinInstance"/>
    <addaction name="actionViewSelectedInstFolder"/>
    <addaction name="actionExportInstance"/>
    <addaction name="actionBackupInstance"/>
@@ -153,6 +154,7 @@
     <addaction name="separator"/>
     <addaction name="actionEditInstance"/>
     <addaction name="actionChangeInstGroup"/>
+    <addaction name="actionPinInstance"/>
     <addaction name="actionViewSelectedInstFolder"/>
     <addaction name="actionExportInstance"/>
     <addaction name="actionCopyInstance"/>
@@ -663,6 +665,20 @@
     <string>Switch the launcher's look between light, dark and other themes.</string>
    </property>
   </action>
+  <action name="actionPinInstance">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="star"/>
+   </property>
+   <property name="text">
+    <string>&amp;Pin Instance</string>
+   </property>
+   <property name="toolTip">
+    <string>Keep the selected instance at the top of its group.</string>
+   </property>
+  </action>
   <action name="actionCheckInstance">
    <property name="icon">
     <iconset theme="status-good"/>
@@ -671,7 +687,7 @@
     <string>Chec&amp;k Instance</string>
    </property>
    <property name="toolTip">
-    <string>Look for missing Java, broken mod files or a wrong loader version before launching.</string>
+    <string>Look for missing Java, broken or conflicting mods, a wrong loader version or too little memory/disk space before launching.</string>
    </property>
   </action>
   <action name="actionCopyDiagnostics">

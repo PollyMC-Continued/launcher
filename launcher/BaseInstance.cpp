@@ -82,6 +82,7 @@ BaseInstance::BaseInstance(SettingsObject* globalSettings, std::unique_ptr<Setti
     m_settings->registerSetting("notes", "");
 
     m_settings->registerSetting("lastLaunchTime", 0);
+    m_settings->registerSetting("pinned", false);
     m_settings->registerSetting("totalTimePlayed", 0);
     if (m_settings->get("totalTimePlayed").toLongLong() < 0)
         m_settings->reset("totalTimePlayed");
@@ -365,6 +366,19 @@ void BaseInstance::setLastLaunch(qint64 val)
 {
     // FIXME: if no change, do not set. setting involves saving a file.
     m_settings->set("lastLaunchTime", val);
+    emit propertiesChanged(this);
+}
+
+bool BaseInstance::isPinned() const
+{
+    return m_settings->get("pinned").toBool();
+}
+
+void BaseInstance::setPinned(bool pinned)
+{
+    if (isPinned() == pinned)
+        return;  // setting involves saving a file
+    m_settings->set("pinned", pinned);
     emit propertiesChanged(this);
 }
 

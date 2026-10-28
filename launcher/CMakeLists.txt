@@ -330,6 +330,8 @@ set(MINECRAFT_SOURCES
     minecraft/mod/MetadataHandler.h
     minecraft/mod/Mod.h
     minecraft/mod/Mod.cpp
+    minecraft/mod/ModConflictChecker.h
+    minecraft/mod/ModConflictChecker.cpp
     minecraft/mod/ModDetails.h
     minecraft/mod/ModFolderModel.h
     minecraft/mod/ModFolderModel.cpp

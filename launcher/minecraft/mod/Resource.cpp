@@ -116,11 +116,12 @@ void Resource::setMetadata(std::shared_ptr<Metadata::ModStruct>&& metadata)
 QStringList Resource::issues() const
 {
     QStringList result;
-    result.reserve(m_issues.length());
+    result.reserve(m_issues.length() + m_conflictIssues.length());
 
     for (const char* issue : m_issues) {
         result.append(tr(issue));
     }
+    result.append(m_conflictIssues);
 
     return result;
 }

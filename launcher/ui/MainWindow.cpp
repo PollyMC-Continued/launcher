@@ -1598,6 +1598,22 @@ void MainWindow::on_actionEditInstance_triggered()
     }
 }
 
+void MainWindow::on_actionPinInstance_triggered()
+{
+    if (!m_selectedInstance)
+        return;
+
+    // the action is checkable, but the instance is the source of truth: toggling its state
+    // emits propertiesChanged, which re-sorts the list and syncs the check mark again
+    m_selectedInstance->setPinned(!m_selectedInstance->isPinned());
+    ui->actionPinInstance->setChecked(m_selectedInstance->isPinned());
+
+    // keep the (possibly moved) instance in view
+    const auto current = view->selectionModel()->currentIndex();
+    if (current.isValid())
+        view->scrollTo(current);
+}
+
 void MainWindow::on_actionCheckInstance_triggered()
 {
     if (!m_selectedInstance)
@@ -1995,6 +2011,7 @@ void MainWindow::instanceChanged(const QModelIndex& current, [[maybe_unused]] co
 
         ui->actionKillInstance->setEnabled(m_selectedInstance->isRunning());
         ui->actionExportInstance->setEnabled(m_selectedInstance->canExport());
+        ui->actionPinInstance->setChecked(m_selectedInstance->isPinned());
         renameButton->setText(m_selectedInstance->name());
         updateStatusDescription();
         updateStatusCenter();
@@ -2106,6 +2123,7 @@ void MainWindow::setInstanceActionsEnabled(bool enabled)
 {
     ui->actionEditInstance->setEnabled(enabled);
     ui->actionChangeInstGroup->setEnabled(enabled);
+    ui->actionPinInstance->setEnabled(enabled);
     ui->actionViewSelectedInstFolder->setEnabled(enabled);
     ui->actionExportInstance->setEnabled(enabled);
     ui->actionDeleteInstance->setEnabled(enabled);

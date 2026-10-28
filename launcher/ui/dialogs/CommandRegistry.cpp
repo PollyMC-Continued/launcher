@@ -27,7 +27,7 @@ QString paletteCategory(const QString& name)
     // also plain actions; keeps per-instance behavior discoverable
     if (name == "actionLaunchInstance" || name == "actionEditInstance" || name == "actionDeleteInstance" ||
         name == "actionCopyInstance" || name == "actionKillInstance" || name == "actionExportInstanceZip" ||
-        name == "actionExportInstanceMrPack" || name == "actionExportInstanceFlamePack" || name == "actionCheckInstance")
+        name == "actionExportInstanceMrPack" || name == "actionExportInstanceFlamePack" || name == "actionCheckInstance" || name == "actionPinInstance")
         return "Instance";
     if (name == "actionAddInstance" || name == "actionSettings" || name == "actionAbout" ||
         name == "actionCheckUpdate" || name == "actionCopyDiagnostics")
