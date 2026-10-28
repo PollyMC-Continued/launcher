@@ -18,6 +18,7 @@
 
 #include "HintOverrideProxyStyle.h"
 
+#include <QApplication>
 #include <QDebug>
 #include <QStyleFactory>
 
@@ -26,6 +27,26 @@
 HintOverrideProxyStyle::HintOverrideProxyStyle(QStyle* style) : QProxyStyle(style)
 {
     setObjectName(baseStyle()->objectName());
+}
+
+void HintOverrideProxyStyle::installFor(const QString& baseStyleName)
+{
+    // Re-installing the same style is pointless and dangerous: QApplication::setStyle()
+    // deletes the previous style immediately, and this can be reached from inside a
+    // widget's signal (e.g. a settings combo box whose popup is still being torn down).
+    if (auto* current = qobject_cast<HintOverrideProxyStyle*>(QApplication::style())) {
+        if (current->objectName().compare(baseStyleName, Qt::CaseInsensitive) == 0)
+            return;
+    }
+
+    QStyle* base = QStyleFactory::create(baseStyleName);
+    if (!base) {
+        qWarning() << "Widget style" << baseStyleName << "is not available, falling back to Fusion";
+        base = QStyleFactory::create("fusion");
+    }
+    if (!base)
+        return;
+    QApplication::setStyle(new HintOverrideProxyStyle(base));
 }
 
 namespace {
@@ -65,8 +86,6 @@ void HintOverrideProxyStyle::drawPrimitive(PrimitiveElement element,
                                            QPainter* painter,
                                            const QWidget* widget) const
 {
-    qDebug() << "PROXY drawPrimitive" << element
-             << "font-usable:" << ThemeManager::windows11StyleIsUsable();
     if (!ThemeManager::windows11StyleIsUsable() && usesFluentGlyph(element)) {
         if (QStyle* fallback = fluentFallbackStyle()) {
             fallback->drawPrimitive(element, option, painter, widget);
@@ -81,8 +100,6 @@ void HintOverrideProxyStyle::drawComplexControl(ComplexControl control,
                                                 QPainter* painter,
                                                 const QWidget* widget) const
 {
-    qDebug() << "PROXY drawComplexControl" << control
-             << "font-usable:" << ThemeManager::windows11StyleIsUsable();
     if (!ThemeManager::windows11StyleIsUsable() && (control == CC_SpinBox || control == CC_ComboBox)) {
         if (QStyle* fallback = fluentFallbackStyle()) {
             fallback->drawComplexControl(control, option, painter, widget);

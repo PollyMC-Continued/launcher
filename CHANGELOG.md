@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v9.6.0
 
 **Added:**
 
@@ -15,6 +15,7 @@
 
 **Fixed:**
 
+- **Crash when changing the theme or icons in Settings** — The launcher could close right after picking a theme or icon set (seen on Windows 11). The window style is now swapped after the dropdown has finished closing, and it is no longer replaced when it is already the right one.
 - **Mod updates picking the wrong file** — When two updates had the same name, only one of them was downloaded (and the other was skipped or downloaded twice). Each update is now tracked on its own.
 - **Update check on an empty mod folder** — Checking for updates with no mods installed could crash; it now says there is nothing to check.
 - **Quilt mod dependencies** — They were read from the wrong place in quilt.mod.json and never found. Fabric's "java" requirement is no longer mistaken for a missing mod.

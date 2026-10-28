@@ -19,6 +19,7 @@
 #pragma once
 
 #include <QProxyStyle>
+#include <QString>
 #include <iostream>
 
 /// Used to override platform-specific behaviours which the launcher does work well with.
@@ -26,6 +27,10 @@ class HintOverrideProxyStyle : public QProxyStyle {
     Q_OBJECT
    public:
     explicit HintOverrideProxyStyle(QStyle* style);
+
+    /// Installs a HintOverrideProxyStyle around the named Qt style on the application.
+    /// Does nothing if that style is already installed.
+    static void installFor(const QString& baseStyleName);
 
     int styleHint(QStyle::StyleHint hint,
                   const QStyleOption* option = nullptr,

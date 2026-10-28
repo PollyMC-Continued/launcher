@@ -73,7 +73,7 @@ void SystemTheme::apply(bool initial)
     // Native styles must never get a palette stamped over them, on any
     // apply — not just the first. See S_NATIVE_STYLES comment.
     if (S_NATIVE_STYLES.contains(m_themeName)) {
-        QApplication::setStyle(new HintOverrideProxyStyle(QStyleFactory::create(qtTheme())));
+        HintOverrideProxyStyle::installFor(qtTheme());
         return;
     }
 

@@ -1094,7 +1094,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
     // ThemeManager is not a QObject and cannot own the connection.
     connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, [this] {
         if (m_settings->get("AppearanceMode").toString() == "System")
-            m_themeManager->applyCurrentlySelectedTheme();
+            m_themeManager->applyCurrentlySelectedThemeLater();
     });
 #endif
 
