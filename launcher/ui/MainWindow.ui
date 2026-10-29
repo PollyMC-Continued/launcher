@@ -226,6 +226,7 @@
     <addaction name="actionViewLog"/>
     <addaction name="actionCopyDiagnostics"/>
     <addaction name="actionReportBug"/>
+    <addaction name="actionMyReports"/>
     <addaction name="separator"/>
     <addaction name="actionBots"/>
     <addaction name="separator"/>
