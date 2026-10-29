@@ -66,6 +66,7 @@
 #include "BugReportTracker.h"
 #include "BuildConfig.h"
 #include "DesktopServices.h"
+#include "ui/dialogs/MyReportsDialog.h"
 #include "FileSystem.h"
 #include "logs/AnonymizeLog.h"
 #include "settings/SettingsObject.h"
@@ -172,7 +173,26 @@ BugReportDialog::BugReportDialog(QWidget* parent) : QDialog(parent)
                             "Please don't include passwords or other personal information."),
                          this);
     m_intro->setWordWrap(true);
-    outer->addWidget(m_intro);
+
+    // "My Reports" sits in the top corner, right where people are when they think about a report. A count shows
+    // how many of their reports have news they have not looked at yet.
+    auto header = new QHBoxLayout();
+    header->addWidget(m_intro, 1);
+    if (!BuildConfig.BUG_REPORT_STATUS_URL.isEmpty()) {
+        int news = 0;
+        for (const auto& e : BugReportTracker::load())
+            if (e.status != e.announced)
+                ++news;
+        auto myReports = new QPushButton(news > 0 ? tr("My Reports (%1 new)").arg(news) : tr("My Reports"), this);
+        myReports->setToolTip(tr("See what the team answered to the reports you sent from this launcher."));
+        myReports->setAutoDefault(false);
+        connect(myReports, &QPushButton::clicked, this, [this]() {
+            MyReportsDialog dialog(this);
+            dialog.exec();
+        });
+        header->addWidget(myReports, 0, Qt::AlignTop | Qt::AlignRight);
+    }
+    outer->addLayout(header);
 
     // ---- scrollable form ----
     m_scroll = new QScrollArea(this);
@@ -704,7 +724,7 @@ void BugReportDialog::submit(qint64 powTime, quint64 powNonce, const QString& du
         }
 
         if (!reportId.isEmpty() && !BuildConfig.BUG_REPORT_STATUS_URL.isEmpty()) {
-            thanks += tr("\n\nYour report ID: %1\nThis launcher will tell you when the team has an update (Help > My Reports).")
+            thanks += tr("\n\nYour report ID: %1\nThis launcher will tell you when the team has an update. You can also check any time with \"My Reports\".")
                           .arg(BugReportTracker::displayId(reportId));
         }
 
@@ -713,10 +733,17 @@ void BugReportDialog::submit(qint64 powTime, quint64 powNonce, const QString& du
         sent.setWindowTitle(tr("Report sent"));
         sent.setText(thanks);
         QPushButton* discordButton = hasDiscord ? sent.addButton(tr("Join our Discord"), QMessageBox::ActionRole) : nullptr;
+        QPushButton* reportsButton = nullptr;
+        if (!reportId.isEmpty() && !BuildConfig.BUG_REPORT_STATUS_URL.isEmpty())
+            reportsButton = sent.addButton(tr("View My Reports"), QMessageBox::ActionRole);
         sent.addButton(tr("Close"), QMessageBox::AcceptRole);
         sent.exec();
         if (discordButton && sent.clickedButton() == discordButton)
             DesktopServices::openUrl(QUrl(BuildConfig.DISCORD_URL));
+        if (reportsButton && sent.clickedButton() == reportsButton) {
+            MyReportsDialog dialog(this);
+            dialog.exec();
+        }
         accept();
     });
 }

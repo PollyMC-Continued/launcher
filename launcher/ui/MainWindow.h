@@ -65,7 +65,6 @@ class QShowEvent;
 class QResizeEvent;
 class QActionGroup;
 
-class ToastNotification;
 class BugReportStatusChecker;
 class BotManagerDialog;
 
@@ -105,6 +104,7 @@ class MainWindow : public QMainWindow {
 
     // Narrow entry points used by the hidden Developer Mode page.
     void triggerStarToastForDeveloper();
+    void triggerReportToastForDeveloper();
     void checkForUpdatesForDeveloper();
    signals:
     void isClosing();
@@ -270,8 +270,7 @@ class MainWindow : public QMainWindow {
     void presentWhatsNew(int retriesLeft, const QString& previousVersion);
     void maybeShowStarToast();
     void maybeCheckReportStatus();
-    void prepareStarToast();
-    QPoint toastPosition() const;
+    void postStarToast(bool preview);
     void showCommandPalette();
 
    private:
@@ -286,17 +285,13 @@ class MainWindow : public QMainWindow {
     QTimer* m_memoryTimer = nullptr;
     bool m_forceClose = false;
     QSystemTrayIcon* m_trayIcon = nullptr;
-    ToastNotification* m_toast = nullptr;
     bool m_starToastScheduled = false;
     // Status of the bug reports this launcher sent (the team answers through PollyBot)
     BugReportStatusChecker* m_reportChecker = nullptr;
     bool m_reportCheckScheduled = false;
     bool m_reportCheckRunning = false;
     bool m_whatsNewScheduled = false;
-    // Set while the star toast was triggered from the Developer page; dismissing it then must not
-    // permanently disable the real reminder.
-    bool m_starToastIsPreview = false;
-    QTimer* m_devStarWait = nullptr;
+    QTimer* m_reportPoll = nullptr;  // re-checks the bug reports while the launcher stays open
     BotManagerDialog* m_botManager = nullptr;
     LabeledToolButton* changeIconButton = nullptr;
     LabeledToolButton* renameButton = nullptr;

@@ -1170,6 +1170,8 @@ SET(LAUNCHER_SOURCES
     ui/widgets/InfoFrame.h
     ui/widgets/SplashScreen.cpp
     ui/widgets/SplashScreen.h
+    ui/widgets/ToastCenter.cpp
+    ui/widgets/ToastCenter.h
     ui/widgets/ToastNotification.cpp
     ui/widgets/ToastNotification.h
     voice/VoiceIntentMatcher.cpp

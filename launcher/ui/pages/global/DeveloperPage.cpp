@@ -101,6 +101,16 @@ DeveloperPage::DeveloperPage(QWidget* parent) : QWidget(parent)
         }
     });
 
+    auto* reportToast = new QPushButton(tr("Show bug report update notification now"), this);
+    reportToast->setToolTip(tr("Display a sample \"your report has news\" notification in the window you are in, to test notifications without waiting for the team."));
+    layout->addWidget(reportToast);
+    connect(reportToast, &QPushButton::clicked, this, []() {
+        auto* mainWindow = APPLICATION->showMainWindow();
+        if (mainWindow) {
+            mainWindow->triggerReportToastForDeveloper();
+        }
+    });
+
     auto* resetFirstRun = new QPushButton(tr("Reset first-run prompts"), this);
     resetFirstRun->setToolTip(tr("Make the language and Java setup prompts eligible to appear again."));
     layout->addWidget(resetFirstRun);

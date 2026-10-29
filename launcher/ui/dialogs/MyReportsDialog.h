@@ -18,13 +18,16 @@
 #pragma once
 
 #include <QDialog>
+#include <QSet>
+#include <QString>
 
 class BugReportStatusChecker;
 class QLabel;
 class QPushButton;
-class QTreeWidget;
+class QVBoxLayout;
+class QWidget;
 
-/// Lists the bug reports sent from this launcher and what the team answered.
+/// Lists the bug reports sent from this launcher and what the team answered, one card per report, newest first.
 class MyReportsDialog : public QDialog {
     Q_OBJECT
 
@@ -35,8 +38,11 @@ class MyReportsDialog : public QDialog {
     void reload();
     void refresh();
 
-    QTreeWidget* m_tree = nullptr;
-    QLabel* m_empty = nullptr;
+    QVBoxLayout* m_cards = nullptr;    // the cards (inside the scroll area)
+    QWidget* m_listPage = nullptr;     // scroll area with the cards
+    QWidget* m_emptyPage = nullptr;    // shown when no report was sent yet
+    QLabel* m_checked = nullptr;       // "Last checked: ..."
     QPushButton* m_refresh = nullptr;
     BugReportStatusChecker* m_checker = nullptr;
+    QSet<QString> m_newIds;            // reports whose status the user had not seen when the window opened
 };

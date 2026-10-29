@@ -45,7 +45,7 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
-#include "ui/widgets/ToastNotification.h"
+#include "ui/widgets/ToastCenter.h"
 
 #include <QDate>
 #include <QDir>
@@ -453,21 +453,15 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     // removing this looks stupid
     view->setFocus();
 
-    // GitHub star reminder toast — hidden until maybeShowStarToast() decides
-    // it is time to show it.
-    m_toast = new ToastNotification(this);
-    connect(m_toast, &ToastNotification::dismissed, this, [this] {
-        if (m_starToastIsPreview)
-            return;
-        APPLICATION->settings()->set("StarReminderDismissed", true);
-    });
+    // Toasts (GitHub star reminder, answers to bug reports) are shown by the ToastCenter in whichever
+    // launcher window the user is working in; the main window is where they go when none is active.
+    ToastCenter::instance()->setHomeWindow(this);
 
-    // Answers from the team to bug reports sent from this launcher. Checked once per start (see showEvent).
+    // Answers from the team to bug reports sent from this launcher. Checked shortly after start and then every few minutes.
     m_reportChecker = new BugReportStatusChecker(this);
     connect(m_reportChecker, &BugReportStatusChecker::finished, this, [this](const QList<BugReportTracker::Entry>& unseen) {
         m_reportCheckRunning = false;
-        // Can't show it right now? Nothing is lost: the reports stay "unseen" and the toast comes back on the next start.
-        if (unseen.isEmpty() || !isVisible() || isMinimized() || !m_toast || m_toast->isBusy() || QApplication::activeModalWidget())
+        if (unseen.isEmpty())
             return;
 
         QString title;
@@ -480,15 +474,29 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
             title = tr("Updates on your bug reports");
             body = tr("%1 of your reports have news.").arg(unseen.size());
         }
-        // This card shares the star reminder's widget: flag it so dismissing it does not switch the reminder off.
-        m_starToastIsPreview = true;
-        m_toast->prepareToast(title, body, tr("My Reports"), [this] { on_actionMyReports_triggered(); });
-        m_toast->showToast(toastPosition());
 
         QStringList ids;
         for (const auto& e : unseen)
             ids << e.id;
-        BugReportTracker::markAnnounced(ids);
+
+        ToastCenter::Request request;
+        request.key = QStringLiteral("bug-report-update");
+        request.icon = QStringLiteral("●");
+        request.title = title;
+        request.body = body;
+        request.actionText = tr("My Reports");
+        request.action = [this] { on_actionMyReports_triggered(); };
+        // Only now does the user count as informed. If the toast could not be shown (no window to show it in),
+        // the reports stay "unseen" and it is tried again at the next check.
+        request.onShown = [ids] { BugReportTracker::markAnnounced(ids); };
+        ToastCenter::instance()->post(std::move(request));
+    });
+
+    m_reportPoll = new QTimer(this);
+    m_reportPoll->setInterval(3 * 60 * 1000);
+    connect(m_reportPoll, &QTimer::timeout, this, [this] {
+        if (!m_reportChecker->isRunning())
+            m_reportChecker->check();
     });
 
     retranslateUi();
@@ -515,11 +523,6 @@ void MainWindow::retranslateUi()
     }
 
     ui->retranslateUi(this);
-
-    if (m_toast && m_toast->isToastVisible()) {
-        prepareStarToast();
-        m_toast->updatePosition(toastPosition());
-    }
 
     MinecraftAccountPtr defaultAccount = APPLICATION->accounts()->defaultAccount();
     if (defaultAccount) {
@@ -559,10 +562,7 @@ void MainWindow::setStatusBarVisibility(bool state)
     statusBar()->setVisible(state);
     APPLICATION->settings()->set("StatusBarVisible", state);
     // The status bar's height isn't final until the layout has run.
-    QTimer::singleShot(0, this, [this] {
-        if (m_toast && m_toast->isToastVisible())
-            m_toast->updatePosition(toastPosition());
-    });
+    QTimer::singleShot(0, this, [] { ToastCenter::instance()->reposition(); });
 }
 
 void MainWindow::showEvent(QShowEvent* event)
@@ -590,18 +590,6 @@ void MainWindow::showEvent(QShowEvent* event)
 void MainWindow::resizeEvent(QResizeEvent* event)
 {
     QMainWindow::resizeEvent(event);
-    if (m_toast && m_toast->isToastVisible())
-        m_toast->updatePosition(toastPosition());
-}
-
-QPoint MainWindow::toastPosition() const
-{
-    const int margin = 12;
-    const int statusBarHeight = statusBar()->isVisible() ? statusBar()->height() : 0;
-    const int x = margin;
-    // height() (not sizeHint()) so word-wrapped / translated text is accounted for
-    const int y = height() - statusBarHeight - m_toast->height() - margin;
-    return QPoint(x, qMax(margin, y));
 }
 
 void MainWindow::showCommandPalette()
@@ -620,40 +608,21 @@ void MainWindow::triggerInstanceAction(const QString& id, QAction* action)
 
 void MainWindow::triggerStarToastForDeveloper()
 {
-    if (!m_toast || m_devStarWait)  // a request is already waiting; don't stack timers
-        return;
+    // Explicit developer action: skip the weekly/dismissed gates, and don't let closing this preview turn the real
+    // reminder off. The toast appears in whichever window is active (including Settings), so there is nothing to wait for.
+    postStarToast(true);
+}
 
-    // The Developer page lives inside the modal Settings dialog, which blocks the main window, so
-    // wait until it has closed (and until a previous toast has finished animating) before showing.
-    if (QApplication::activeModalWidget())
-        statusBar()->showMessage(tr("The star reminder will appear after the Settings dialog closes."), 5000);
-
-    m_devStarWait = new QTimer(this);
-    m_devStarWait->setInterval(100);
-    connect(m_devStarWait, &QTimer::timeout, this, [this, ticks = 0]() mutable {
-        ++ticks;
-        const bool giveUp = ticks > 600;  // ~60 seconds
-        if (!giveUp && (QApplication::activeModalWidget() || m_toast->isBusy()))
-            return;
-
-        m_devStarWait->stop();
-        m_devStarWait->deleteLater();
-        m_devStarWait = nullptr;
-
-        if (giveUp)
-            return;
-        if (!isVisible() || isMinimized()) {
-            statusBar()->showMessage(tr("The main window must be visible to show the star reminder."), 5000);
-            return;
-        }
-
-        // Explicit developer action: bypass the weekly/dismissed gates, and don't let dismissing
-        // this preview turn the real reminder off.
-        m_starToastIsPreview = true;
-        prepareStarToast();
-        m_toast->showToast(toastPosition());
-    });
-    m_devStarWait->start();
+void MainWindow::triggerReportToastForDeveloper()
+{
+    // Same card the team's answers use, with sample text: checks the toast itself, separately from the Discord/relay side.
+    ToastCenter::Request request;
+    request.icon = QStringLiteral("●");
+    request.title = tr("Update on your bug report");
+    request.body = tr("\"Sample report\": Seen - the team is looking into it");
+    request.actionText = tr("My Reports");
+    request.action = [this] { on_actionMyReports_triggered(); };
+    ToastCenter::instance()->post(std::move(request));
 }
 
 void MainWindow::maybeShowWhatsNew()
@@ -722,12 +691,16 @@ void MainWindow::maybeCheckReportStatus()
         m_reportCheckRunning = false;
         return;
     }
+    if (!m_reportPoll->isActive())
+        m_reportPoll->start();
     m_reportChecker->check();  // always ends in finished(), which clears m_reportCheckRunning
 }
 
 void MainWindow::on_actionMyReports_triggered()
 {
-    MyReportsDialog dialog(this);
+    // Opened from a toast while Settings (or another window) is in front? Then it belongs to that window.
+    QWidget* parent = QApplication::activeWindow();
+    MyReportsDialog dialog(parent ? parent : this);
     dialog.exec();
 }
 
@@ -741,7 +714,7 @@ void MainWindow::maybeShowStarToast()
     if (!isVisible() || isMinimized())
         return;
     // A toast (possibly a developer preview) is still on screen or animating.
-    if (m_toast && m_toast->isBusy())
+    if (ToastCenter::instance()->isBusy())
         return;
     // Setup wizard or any modal dialog is in the way.
     if (QApplication::activeModalWidget())
@@ -760,16 +733,20 @@ void MainWindow::maybeShowStarToast()
         return;
 
     settings->set("StarReminderLastShown", QDate::currentDate().toString(Qt::ISODate));
-    m_starToastIsPreview = false;
-    prepareStarToast();
-    m_toast->showToast(toastPosition());
+    postStarToast(false);
 }
 
-void MainWindow::prepareStarToast()
+void MainWindow::postStarToast(bool preview)
 {
-    m_toast->prepareToast(tr("Enjoying PollyMC-Continued?"),
-                          tr("Give the project a star on GitHub!"), tr("Star on GitHub"),
-                          [] { DesktopServices::openUrl(QUrl(kStarRepoUrl)); });
+    ToastCenter::Request request;
+    request.key = QStringLiteral("star-reminder");
+    request.title = tr("Enjoying PollyMC-Continued?");
+    request.body = tr("Give the project a star on GitHub!");
+    request.actionText = tr("Star on GitHub");
+    request.action = [] { DesktopServices::openUrl(QUrl(kStarRepoUrl)); };
+    if (!preview)  // closing a developer preview must not switch the real reminder off
+        request.onDismissed = [] { APPLICATION->settings()->set("StarReminderDismissed", true); };
+    ToastCenter::instance()->post(std::move(request));
 }
 
 void MainWindow::lockToolbars(bool state)

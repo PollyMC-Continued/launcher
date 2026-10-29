@@ -1071,6 +1071,13 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         // run, the language file - arrives, it is applied to whatever is on screen by then.
         // Nothing waits for it.
         m_translations->downloadIndex();
+
+        // The job and the request behind it are started through queued calls, which only run once the event loop
+        // does - and that is not until the whole UI below has been built (almost 3 seconds in a slow start, all of it
+        // wasted waiting). Run the queued calls now so the request leaves immediately; the transfer itself then
+        // proceeds on the network thread while startup continues. A few passes, because each step queues the next.
+        for (int pass = 0; pass < 8; ++pass)
+            QCoreApplication::sendPostedEvents(nullptr, QEvent::MetaCall);
     }
 
     // Instance icons
