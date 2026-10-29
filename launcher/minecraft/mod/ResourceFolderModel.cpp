@@ -27,6 +27,8 @@
 #include "tasks/Task.h"
 #include "ui/dialogs/CustomMessageBox.h"
 
+static QMutex s_update_task_mutex;
+
 ResourceFolderModel::ResourceFolderModel(const QDir& dir, BaseInstance* instance, bool is_indexed, bool create_dir, QObject* parent)
     : QAbstractListModel(parent), m_dir(dir), m_instance(instance), m_watcher(this), m_is_indexed(is_indexed)
 {
@@ -49,11 +51,34 @@ ResourceFolderModel::ResourceFolderModel(const QDir& dir, BaseInstance* instance
 
 ResourceFolderModel::~ResourceFolderModel()
 {
-    // Parse tasks only write to their shared Result pointers, so destroying
-    // the model while they are still queued or running is safe; the queued
-    // watcher callbacks are dropped together with this object. There is no
-    // need to drain the whole global thread pool (which could block the UI
-    // thread at shutdown for unrelated work).
+    // Subclasses call this from their own destructors (before their members and vtable go away);
+    // doing it here as well covers any subclass that forgets, and is a no-op when already done.
+    stopBackgroundWork();
+}
+
+void ResourceFolderModel::stopBackgroundWork()
+{
+    if (m_stopping)
+        return;
+    m_stopping = true;
+
+    // No new updates from now on.
+    m_scheduled_update = false;
+    m_watcher.disconnect(this);
+
+    // Ask the running jobs to stop early...
+    {
+        QMutexLocker lock(&s_update_task_mutex);
+        if (m_current_update_task)
+            m_current_update_task->abort();
+    }
+    // (m_resourceResolver is left alone on purpose: on the pool it only queues work to the GUI thread, and
+    //  its parse jobs work on copies, so they can't touch this model after it is gone.)
+
+    // ...and wait for the ones that are still inside the pool. They only use this model (the create-resource
+    // lambda), their own members and queued signals, so they never need the GUI thread to finish.
+    m_pool.clear();
+    m_pool.waitForDone();
 }
 
 bool ResourceFolderModel::startWatching(const QStringList& paths)
@@ -308,9 +333,11 @@ bool ResourceFolderModel::setResourceEnabled(const QModelIndexList& indexes, Ena
     return succeeded;
 }
 
-static QMutex s_update_task_mutex;
 bool ResourceFolderModel::update()
 {
+    if (m_stopping)
+        return false;
+
     // We hold a lock here to prevent race conditions on the m_current_update_task reset.
     QMutexLocker lock(&s_update_task_mutex);
 
@@ -350,9 +377,9 @@ bool ResourceFolderModel::update()
 
         connect(task, &Task::finished, [task] { task->deleteLater(); });
 
-        QThreadPool::globalInstance()->start(task);
+        m_pool.start(task);
     } else {
-        QThreadPool::globalInstance()->start(m_current_update_task.get());
+        m_pool.start(m_current_update_task.get());
     }
 
     return true;
@@ -390,7 +417,7 @@ void ResourceFolderModel::resolveResource(Resource::Ptr res)
     m_resourceResolver.addTask(task);
 
     if (!m_resourceResolverRunning) {
-        QThreadPool::globalInstance()->start(&m_resourceResolver);
+        m_pool.start(&m_resourceResolver);
         m_resourceResolverRunning = true;
     }
 }

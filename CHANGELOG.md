@@ -23,6 +23,9 @@
 - **Mod updates picking the wrong file** — When two updates had the same name, only one of them was downloaded (and the other was skipped or downloaded twice). Each update is now tracked on its own.
 - **Update check on an empty mod folder** — Checking for updates with no mods installed could crash; it now says there is nothing to check.
 - **Quilt mod dependencies** — They were read from the wrong place in quilt.mod.json and never found. Fabric's "java" requirement is no longer mistaken for a missing mod.
+- **Native crash when launching certain modpacks** ^`^t Fixed a resource-folder model lifetime issue where background tasks could outlive their models.
+- **Background task cleanup** ^`^t Resource-folder tasks are now stopped and cleaned up safely when their models are destroyed.
+
 
 **Where to find the mod incompatibility option:**
 

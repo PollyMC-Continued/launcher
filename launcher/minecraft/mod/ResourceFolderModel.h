@@ -7,6 +7,7 @@
 #include <QHeaderView>
 #include <QMutex>
 #include <QSet>
+#include <QThreadPool>
 #include <QSortFilterProxyModel>
 #include <QTreeView>
 
@@ -189,6 +190,12 @@ class ResourceFolderModel : public QAbstractListModel {
     void parseFinished();
 
    protected:
+    /** Aborts and waits for every background job of this model.
+     *
+     *  Must be called from the destructor of the MOST DERIVED model class: the worker threads call the virtual
+     *  createResource() through a lambda, so they have to be finished before the derived part is destroyed. */
+    void stopBackgroundWork();
+
     [[nodiscard]] virtual Task* createPreUpdateTask() { return nullptr; }
     /** This creates a new update task to be executed by update().
      *
@@ -256,6 +263,11 @@ class ResourceFolderModel : public QAbstractListModel {
 
     Task::Ptr m_current_update_task = nullptr;
     bool m_scheduled_update = false;
+
+    // Worker pool owned by this model. Everything this model runs off-thread goes through it, so the
+    // destructor can wait for exactly its own work (and not for the whole global pool).
+    QThreadPool m_pool;
+    bool m_stopping = false;  // GUI thread only
 
     QList<Resource::Ptr> m_resources;
 
