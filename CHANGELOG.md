@@ -7,15 +7,15 @@
 - **Pin instances** — Right-click an instance (or use the instance toolbar) and pick "Pin Instance" to keep it at the top of its group, whatever the sort order is. Pinned instances show a small pin.
 - **Mod conflict detection** — Two files with the same mod id, mods that declare themselves incompatible with each other (from the jar and from Modrinth/CurseForge data) and mods whose dependency is disabled or missing are now found. Conflicting mods get a red row in the mod list, and everything is listed in "Check instance".
 - **Check instance: more checks** — Also looks at free disk space, whether the memory setting fits the computer, and mods not marked for the instance's game version. Results are sorted worst first, there is a "Check Again" button, and "Copy Report" puts the list on the clipboard.
-- **Answers to your bug reports** - After you send a report you get a report ID (like K7X9F-3QD2M). When the team updates its status, the launcher shows a notification the next time it starts, e.g. "Fixed in version 9.4.3". Clicking it opens My Reports.
-- **Help > My Reports** - Lists the bug reports and suggestions you sent from this launcher, with their ID, what you wrote, the current status and the date. "Check for updates" looks again straight away.
+- **Answers to your bug reports** — After you send a report you get a report ID (like K7X9F-3QD2M). When the team updates its status, the launcher shows a notification the next time it starts, e.g. "Fixed in version 9.4.3". Clicking it opens My Reports.
+- **My Reports** — Lists the bug reports and suggestions you sent from this launcher, one card each: a colored status pill (Waiting, In review, Needs info, Fixed...), what you wrote, the team's answer in plain words, the type (Bug, Crash, Suggestion, Other), the date and the report ID with a "Copy ID" button. Open it from the "My Reports" button in the top corner of the report window (it counts reports with news), from "View My Reports" in the window that confirms your report was sent, or from the notification when the team answers. "Check for updates" looks again straight away.
 
 **Changed:**
 
 - **Check instance no longer freezes** — Mod jars are scanned in the background, so big modpacks don't lock the window.
 - **Update checker is more honest** — The update window shows how many updates were found, and "up to date" no longer appears when some mods could not be checked.
-- **Notifications don't overlap** - The GitHub star reminder now waits until the report check has finished, so the two never pop up at the same time.
-- **Clearer thank-you message** - After sending a report, the window shows your report ID and says where to check for updates.
+- **Notifications don't overlap** — The GitHub star reminder now waits until the report check has finished, so the two never pop up at the same time.
+- **Clearer thank-you message** — After sending a report, the window shows your report ID, a "View My Reports" button, and says the launcher will tell you when the team answers.
 
 **Fixed:**
 
