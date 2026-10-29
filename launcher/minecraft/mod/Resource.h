@@ -35,6 +35,8 @@
 
 #pragma once
 
+#include <cstdint>
+
 #include <QDateTime>
 #include <QFileInfo>
 #include <QObject>
@@ -220,4 +222,5 @@ class Resource : public QObject {
     int m_resolution_ticket = 0;
     QString m_size_str;
     qint64 m_size_info;
+    std::uintmax_t m_hardLinkCount = 0;
 };

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.25) # Required for features like `CMAKE_MSVC_DEBUG_INFORMATION_FORMAT`
 
-set(Launcher_VERSION "9.5.0" CACHE STRING "Launcher version in MAJOR.MINOR.PATCH format")
+set(Launcher_VERSION "10.0.0" CACHE STRING "Launcher version in MAJOR.MINOR.PATCH format")
 if(Launcher_VERSION STREQUAL "")
     set(Launcher_VERSION "9.0.10" CACHE STRING "Launcher version in MAJOR.MINOR.PATCH format" FORCE)
 endif()
@@ -187,6 +187,8 @@ set(Launcher_LOGIN_CALLBACK_URL "https://login.live.com/oauth20_desktop.srf" CAC
 set(Launcher_LEGACY_FMLLIBS_BASE_URL "https://files.prismlauncher.org/fmllibs/" CACHE STRING "URL for legacy (<=1.5.2) FML Libraries.")
 
 ######## Set version numbers ########
+# (PollyMC: version is derived from project(Launcher VERSION ...) at the top of this file,
+#  which defines Launcher_VERSION_MAJOR/MINOR/PATCH automatically. Do not hardcode them here.)
 set(Launcher_VERSION_NAME "${Launcher_VERSION_MAJOR}.${Launcher_VERSION_MINOR}.${Launcher_VERSION_PATCH}")
 set(Launcher_VERSION_NAME4 "${Launcher_VERSION_MAJOR}.${Launcher_VERSION_MINOR}.${Launcher_VERSION_PATCH}.0")
 set(Launcher_VERSION_NAME4_COMMA "${Launcher_VERSION_MAJOR},${Launcher_VERSION_MINOR},${Launcher_VERSION_PATCH},0")

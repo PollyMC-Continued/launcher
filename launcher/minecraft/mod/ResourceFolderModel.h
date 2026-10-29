@@ -184,6 +184,7 @@ class ResourceFolderModel : public QAbstractListModel {
     };
 
     QString instDirPath() const;
+    BaseInstance* instance() const { return m_instance; }
 
    signals:
     void updateFinished();

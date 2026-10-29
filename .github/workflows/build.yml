@@ -232,12 +232,19 @@ jobs:
         run: |
           set -euo pipefail
           QT_PIN="$WINDOWS_QT_VERSION"
-          MIRROR="https://mirror.msys2.org/mingw/ucrt64"
+          # repo.msys2.org is the canonical origin; the rest are official
+          # mirrors (https://www.msys2.org/docs/mirrors/). A single mirror can
+          # stall or rate-limit mid-run, so every network access below falls
+          # back through this list instead of failing the build.
+          MIRRORS=(
+            "https://mirror.msys2.org/mingw/ucrt64"
+            "https://repo.msys2.org/mingw/ucrt64"
+            "https://mirror.sjtu.edu.cn/msys2/mingw/ucrt64"
+            "https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/ucrt64"
+          )
 
           echo "Installed Qt packages before pinning:"
           pacman -Q | grep -E '^mingw-w64-ucrt-x86_64-qt6-' || true
-
-          curl -fsSL --retry 3 "$MIRROR/" -o /tmp/ucrt64-index.html
 
           mapfile -t PKGS < <(pacman -Qq | grep -E '^mingw-w64-ucrt-x86_64-qt6-')
           if [ "${#PKGS[@]}" -eq 0 ]; then
@@ -245,7 +252,22 @@ jobs:
             exit 1
           fi
 
-          URLS=()
+          # Fetch the directory index from the first mirror that answers.
+          MIRROR=""
+          for m in "${MIRRORS[@]}"; do
+            echo "Fetching package index from $m ..."
+            if curl -fsSL --retry 2 --connect-timeout 15 --max-time 120 "$m/" -o /tmp/ucrt64-index.html; then
+              MIRROR="$m"
+              break
+            fi
+            echo "::warning::Index fetch from $m failed, trying the next mirror."
+          done
+          if [ -z "$MIRROR" ]; then
+            echo "::error::Could not fetch the ucrt64 package index from any mirror."
+            exit 1
+          fi
+
+          FILES=()
           MISSING=()
           for pkg in "${PKGS[@]}"; do
             # Newest packaging revision of the pinned version, e.g. <pkg>-6.11.2-1-any.pkg.tar.zst
@@ -254,7 +276,7 @@ jobs:
             if [ -z "$file" ]; then
               MISSING+=("$pkg")
             else
-              URLS+=("$MIRROR/$file")
+              FILES+=("$file")
             fi
           done
 
@@ -264,9 +286,30 @@ jobs:
             exit 1
           fi
 
-          printf '%s\n' "${URLS[@]}"
+          # Download the packages (and their signatures) with curl instead of
+          # handing URLs to pacman: curl gives per-file retries, stall
+          # detection and per-mirror fallback. pacman -U then installs the
+          # local files in one transaction and verifies signatures as usual.
+          DLDIR="$(mktemp -d)"
+          download() {
+            local file="$1"
+            for m in "${MIRRORS[@]}"; do
+              if curl -fL --retry 3 --retry-delay 5 --connect-timeout 15 \
+                   --speed-limit 1024 --speed-time 30 \
+                   "$m/$file" -o "$DLDIR/$file"; then
+                return 0
+              fi
+              echo "::warning::Download of $file from $m failed, trying the next mirror."
+            done
+            return 1
+          }
+          for file in "${FILES[@]}"; do
+            download "$file" || { echo "::error::Could not download $file from any mirror."; exit 1; }
+            download "$file.sig" || { echo "::error::Could not download $file.sig from any mirror."; exit 1; }
+          done
+
           # One transaction so Qt's inter-module version dependencies resolve together.
-          pacman -U --noconfirm "${URLS[@]}"
+          pacman -U --noconfirm "$DLDIR"/*.pkg.tar.zst
 
           # Prevent any later pacman call in this job from upgrading Qt again.
           IGNORE=$(printf '%s ' "${PKGS[@]}")

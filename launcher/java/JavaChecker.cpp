@@ -181,11 +181,18 @@ void JavaChecker::finished(int exitcode, QProcess::ExitStatus status)
 void JavaChecker::error(QProcess::ProcessError err)
 {
     if (err == QProcess::FailedToStart) {
-        qDebug() << "Java checker has failed to start.";
+        qDebug() << "Java checker has failed to start:" << process->errorString();
         qCDebug(javaCheckLogC) << "Process environment (secret values redacted):" << envToStringList(process->processEnvironment());
         qCDebug(javaCheckLogC) << "Native environment (secret values redacted):" << envToStringList(QProcessEnvironment::systemEnvironment());
         killTimer.stop();
-        emit checkFinished({ m_path, m_id });
+
+        Result result = {
+            m_path,
+            m_id,
+        };
+        result.errorLog = process->errorString();
+        result.validity = Result::Validity::Errored;
+        emit checkFinished(result);
     }
     emitSucceeded();
 }

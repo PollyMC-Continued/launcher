@@ -1,6 +1,8 @@
 # Changelog
 
-## v9.6.0
+## v10.0.0
+
+**This update brings the launcher's own new features together with a big core update.** New in the launcher itself: pinning instances, mod conflict detection, a smarter "Check instance" and the new "My Reports" page for your bug reports. Under the hood, the launcher's core has been brought up to date with Prism Launcher 11.1.1 (we were on 11.0.0 before), pulling in five upstream releases' worth of fixes and improvements. Offline accounts, offline skins and everything else you're used to work exactly as before, and your instances, accounts and settings carry over untouched.
 
 **Added:**
 
@@ -9,6 +11,11 @@
 - **Check instance: more checks** — Also looks at free disk space, whether the memory setting fits the computer, and mods not marked for the instance's game version. Results are sorted worst first, there is a "Check Again" button, and "Copy Report" puts the list on the clipboard.
 - **Answers to your bug reports** — After you send a report you get a report ID (like K7X9F-3QD2M). When the team updates its status, the launcher shows a notification the next time it starts, e.g. "Fixed in version 9.4.3". Clicking it opens My Reports.
 - **My Reports** — Lists the bug reports and suggestions you sent from this launcher, one card each: a colored status pill (Waiting, In review, Needs info, Fixed...), what you wrote, the team's answer in plain words, the type (Bug, Crash, Suggestion, Other), the date and the report ID with a "Copy ID" button. Open it from the "My Reports" button in the top corner of the report window (it counts reports with news), from "View My Reports" in the window that confirms your report was sent, or from the notification when the team answers. "Check for updates" looks again straight away.
+- **Play offline when the login servers are down** — If Microsoft's login servers are unreachable, you now get a clear message with a retry button, and you can start the game in offline mode instead of being stuck at the login screen.
+- **Warning for untrusted mods in imported modpacks** — When you import a Modrinth or CurseForge modpack containing mods that don't come from the platform itself, the launcher warns you before installing, so you know what you're getting.
+- **Better graphics card detection** — On computers with more than one graphics card (like most gaming laptops), the launcher now asks the operating system directly which cards you have, and on Windows the fastest card is listed first. The game launches on the right card more often.
+- **Clearer errors when the game won't start** — If Java refuses to start, the launcher now shows the actual reason in the log instead of a generic failure message.
+- **Option to turn off the low memory warning** — If you deliberately run the game with little free memory, you can now switch the warning off in the settings.
 
 **Changed:**
 
@@ -16,6 +23,13 @@
 - **Update checker is more honest** — The update window shows how many updates were found, and "up to date" no longer appears when some mods could not be checked.
 - **Notifications don't overlap** — The GitHub star reminder now waits until the report check has finished, so the two never pop up at the same time.
 - **Clearer thank-you message** — After sending a report, the window shows your report ID, a "View My Reports" button, and says the launcher will tell you when the team answers.
+- **Memory slider now shows free memory** — In the Java settings, the slider shows how much memory is actually free right now instead of the total amount installed, making it much easier to pick a sensible value.
+- **The launcher freezes less** — Settings are saved far less often and information is cached instead of being recalculated every time. The launcher feels snappier all round, especially on slower hard drives.
+- **Faster instance list and mod lists** — Starting the launcher, browsing instances and opening the mods of a big modpack are all noticeably quicker.
+- **More reliable CurseForge downloads** — Downloads from CurseForge's file servers are now more reliable.
+- **Safer folder names for imported modpacks** — Special characters and symbols that cause trouble in folder names are kept out when the launcher creates an instance from a modpack.
+- **The Modrinth modpack page now shows the pack's changelog** — You can see what's new in a pack before you install or update it.
+- **Language settings are better behaved** — The confusing "Use system locale" option is now called "Use system regional standards", and turning it on or off no longer resets your chosen language by accident.
 
 **Fixed:**
 
@@ -23,14 +37,35 @@
 - **Mod updates picking the wrong file** — When two updates had the same name, only one of them was downloaded (and the other was skipped or downloaded twice). Each update is now tracked on its own.
 - **Update check on an empty mod folder** — Checking for updates with no mods installed could crash; it now says there is nothing to check.
 - **Quilt mod dependencies** — They were read from the wrong place in quilt.mod.json and never found. Fabric's "java" requirement is no longer mistaken for a missing mod.
-- **Native crash when launching certain modpacks** ^`^t Fixed a resource-folder model lifetime issue where background tasks could outlive their models.
-- **Background task cleanup** ^`^t Resource-folder tasks are now stopped and cleaned up safely when their models are destroyed.
-
+- **Native crash when launching certain modpacks** — A rare crash caused by background work being cleaned up at the wrong moment is fixed.
+- **Background work is cleaned up safely** — When a window or list closes, its leftover background work is now stopped properly, preventing rare crashes.
+- **Safer modpack imports (security)** — A maliciously crafted modpack could, in certain cases, place files outside the instance folder during import. This affected CurseForge and ATLauncher packs and is now blocked.
+- **Importing the same modpack twice no longer causes conflicts** — Each import now gets its own identity instead of sharing one with the original.
+- **Renaming an instance while the game is running is no longer allowed** — This used to break the running instance.
+- **Instance shortcuts** — Shortcuts keep working when you rename an instance, and existing shortcuts are found again after restarting the launcher.
+- **Duplicating an instance** — The copy now gets its own identity, so the two no longer clash.
+- **Crash when installing a mod loader that was disabled** — Fixed.
+- **Mod dependencies of dependencies** — Enabling or disabling a mod now correctly handles mods that sit behind other dependencies as well.
+- **Microsoft accounts are kept until sign-in works** — The launcher no longer removes an account just because a re-login attempt failed; your account stays in the list.
+- **No more empty account picker** — The launcher no longer opens the account selection window when there are no accounts to choose from.
+- **Offline accounts are refreshed properly at launch** — Skins and profiles update as they should when you start the game.
+- **A rare case where the launcher's own folders could be deleted during cleanup** — Fixed. Your data is safe.
+- **Crash when opening the "Other logs" page** — Fixed.
+- **Crash when closing the data packs window** — Fixed, along with a small memory leak.
+- **Sign-in with a code now shows the real error** — Instead of failing silently, you see what actually went wrong.
+- **Updating an installed modpack works again** — The "Update" button on an installed Modrinth or CurseForge pack no longer fails.
+- **macOS fixes** — The menu bar is readable again in dark mode, and Cmd+Q now quits the whole launcher instead of closing only the active window.
+- **Translation downloads** — If the list of translations can't be fetched, your chosen language no longer falls back to English.
 
 **Where to find the mod incompatibility option:**
 
 - Mod conflicts (duplicate mods, mods that conflict with each other, disabled or missing dependencies) are shown in the mod list and in "Check instance".
 - The option **Detect and show mod incompatibilities (experimental)** is off by default. It controls the highlighting of mods that are not marked as compatible with the instance's Minecraft version. Turn it on in **Settings > General > Mods and Modpacks**.
+
+**Notes:**
+
+- Your instances, accounts, settings and skins carry over exactly as they are — nothing to do after updating.
+- Offline accounts, offline skins and the launcher's other own features work exactly as before.
 
 ## v9.5.1
 

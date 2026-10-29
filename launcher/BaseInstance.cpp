@@ -42,6 +42,7 @@
 #include <QFileInfo>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QUuid>
 
 #include "Application.h"
 #include "Json.h"
@@ -90,6 +91,14 @@ BaseInstance::BaseInstance(SettingsObject* globalSettings, std::unique_ptr<Setti
 
     m_settings->registerSetting("linkedInstances", "[]");
     m_settings->registerSetting("shortcuts", QString());
+    m_settings->registerSetting("uuid", QString());
+
+    const auto savedUUID = m_settings->get("uuid").toString();
+    if (savedUUID.isEmpty()) {
+        regenerateUuid();
+    } else {
+        m_uuid = savedUUID;
+    }
 
     // Game time override
     auto gameTimeOverride = m_settings->registerSetting("OverrideGameTime", false);
@@ -268,6 +277,13 @@ BaseInstance::Status BaseInstance::currentStatus() const
 QString BaseInstance::id() const
 {
     return QFileInfo(instanceRoot()).fileName();
+}
+
+void BaseInstance::regenerateUuid()
+{
+    const auto newUUID = QUuid::createUuid().toString(QUuid::Id128);
+    m_settings->set("uuid", newUUID);
+    m_uuid = newUUID;
 }
 
 bool BaseInstance::isRunning() const
@@ -460,7 +476,7 @@ QList<ShortcutData> BaseInstance::shortcuts() const
 
         QString shortcutName = dict["name"].toString();
         QString filePath = dict["filePath"].toString();
-        if (!QDir(filePath).exists()) {
+        if (!QFileInfo::exists(filePath)) {
             qWarning() << "Shortcut" << shortcutName << "for instance" << name() << "have non-existent path" << filePath;
             continue;
         }
