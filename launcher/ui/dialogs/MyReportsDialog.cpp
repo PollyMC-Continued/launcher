@@ -54,7 +54,7 @@ QString statusColor(const QString& status)
 QString pillText(const QString& status)
 {
     if (status == QLatin1String("received"))
-        return QObject::tr("Received");
+        return QObject::tr("Waiting");
     if (status == QLatin1String("seen"))
         return QObject::tr("In review");
     if (status == QLatin1String("need_info"))

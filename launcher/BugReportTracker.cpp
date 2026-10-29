@@ -161,7 +161,7 @@ QString displayId(const QString& id)
 QString statusText(const QString& status, const QString& version)
 {
     if (status == QLatin1String("received"))
-        return QObject::tr("Received");
+        return QObject::tr("Waiting for a dev to check it");
     if (status == QLatin1String("seen"))
         return QObject::tr("Seen - the team is looking into it");
     if (status == QLatin1String("need_info"))
