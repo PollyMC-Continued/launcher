@@ -133,6 +133,8 @@ set(NET_SOURCES
     net/NetUtils.h
     net/BugReportUpload.cpp
     net/BugReportUpload.h
+    BugReportTracker.cpp
+    BugReportTracker.h
     net/PasteUpload.cpp
     net/PasteUpload.h
     net/Sink.h
@@ -1094,6 +1096,8 @@ SET(LAUNCHER_SOURCES
     ui/dialogs/AuthlibInjectorLoginDialog.h
     ui/dialogs/BugReportDialog.cpp
     ui/dialogs/BugReportDialog.h
+    ui/dialogs/MyReportsDialog.cpp
+    ui/dialogs/MyReportsDialog.h
     ui/dialogs/NetworkJobFailedDialog.cpp
     ui/dialogs/NetworkJobFailedDialog.h
     ui/dialogs/NewComponentDialog.cpp

@@ -226,6 +226,7 @@
     <addaction name="actionViewLog"/>
     <addaction name="actionCopyDiagnostics"/>
     <addaction name="actionReportBug"/>
+    <addaction name="actionMyReports"/>
     <addaction name="separator"/>
     <addaction name="actionBots"/>
     <addaction name="separator"/>
@@ -710,6 +711,17 @@
    </property>
    <property name="toolTip">
     <string>Open the bug tracker to report a bug with %1.</string>
+   </property>
+  </action>
+  <action name="actionMyReports">
+   <property name="icon">
+    <iconset theme="bug"/>
+   </property>
+   <property name="text">
+    <string>My Reports</string>
+   </property>
+   <property name="toolTip">
+    <string>See what the team answered to the bug reports you sent from this launcher.</string>
    </property>
   </action>
   <action name="actionDISCORD">

@@ -63,6 +63,7 @@
 #include <QVBoxLayout>
 
 #include "Application.h"
+#include "BugReportTracker.h"
 #include "BuildConfig.h"
 #include "DesktopServices.h"
 #include "FileSystem.h"
@@ -686,6 +687,11 @@ void BugReportDialog::submit(qint64 powTime, quint64 powNonce, const QString& du
         s_lastSent = QDateTime::currentDateTime();
         m_sentThisSession = true;
         s_sentThisSession.insert(duplicateKey);
+
+        // The relay gives every report an ID. Keep it so the launcher can show the team's answer later.
+        const QString reportId = obj.value("id").toString();
+        if (!reportId.isEmpty())
+            BugReportTracker::add(reportId, m_type->currentData().toString(), m_description->toPlainText().trimmed().section('\n', 0, 0));
         const bool gaveContact = !m_contact->text().trimmed().isEmpty();
         const bool hasDiscord = !BuildConfig.DISCORD_URL.isEmpty();
 
@@ -695,6 +701,11 @@ void BugReportDialog::submit(qint64 powTime, quint64 powNonce, const QString& du
                                        "Come say hi on our Discord.")
                                   : tr("\n\nSince you sent this anonymously we can't write back. Want help with this problem, or to see what happens next? "
                                        "Come say hi on our Discord.");
+        }
+
+        if (!reportId.isEmpty() && !BuildConfig.BUG_REPORT_STATUS_URL.isEmpty()) {
+            thanks += tr("\n\nYour report ID: %1\nThis launcher will tell you when the team has an update (Help > My Reports).")
+                          .arg(BugReportTracker::displayId(reportId));
         }
 
         QMessageBox sent(this);

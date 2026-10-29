@@ -223,6 +223,7 @@ set(Launcher_BUG_TRACKER_URL "" CACHE STRING "URL for the bug tracker.")
 # Bug report endpoint: receives reports from the in-launcher "Report a Bug" dialog and forwards them to a Discord channel (see report-server/).
 # Leave empty to disable the dialog (the menu item then opens Launcher_BUG_TRACKER_URL instead).
 set(Launcher_BUG_REPORT_API_URL "https://pollymc.vercel.app/api/report" CACHE STRING "URL of the bug report endpoint.")
+set(Launcher_BUG_REPORT_STATUS_URL "https://pollymc.vercel.app/api/status" CACHE STRING "URL of the bug report status endpoint (empty = no status tracking).")
 
 # Antivirus exclusion guide opened from the network error window when a download fails with "Permission denied".
 set(Launcher_AV_EXCLUSION_URL "https://pollymc.vercel.app/antivirus/" CACHE STRING "URL for the antivirus exclusion guide.")

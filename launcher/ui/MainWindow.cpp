@@ -116,6 +116,8 @@
 #include "ui/dialogs/PerformancePresetsDialog.h"
 #include "ui/dialogs/NewInstanceDialog.h"
 #include "ui/dialogs/BugReportDialog.h"
+#include "ui/dialogs/MyReportsDialog.h"
+#include "BugReportTracker.h"
 #include "ui/dialogs/ProgressDialog.h"
 #include "ui/instanceview/InstanceDelegate.h"
 #include "ui/instanceview/InstanceProxyModel.h"
@@ -253,6 +255,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     // hide, disable and show stuff
     {
         ui->actionReportBug->setVisible(!BuildConfig.BUG_TRACKER_URL.isEmpty() || !BuildConfig.BUG_REPORT_API_URL.isEmpty());
+        ui->actionMyReports->setVisible(!BuildConfig.BUG_REPORT_API_URL.isEmpty() && !BuildConfig.BUG_REPORT_STATUS_URL.isEmpty());
         ui->actionMATRIX->setVisible(!BuildConfig.MATRIX_URL.isEmpty());
         ui->actionDISCORD->setVisible(!BuildConfig.DISCORD_URL.isEmpty());
         ui->actionREDDIT->setVisible(!BuildConfig.SUBREDDIT_URL.isEmpty());
@@ -459,6 +462,35 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
         APPLICATION->settings()->set("StarReminderDismissed", true);
     });
 
+    // Answers from the team to bug reports sent from this launcher. Checked once per start (see showEvent).
+    m_reportChecker = new BugReportStatusChecker(this);
+    connect(m_reportChecker, &BugReportStatusChecker::finished, this, [this](const QList<BugReportTracker::Entry>& unseen) {
+        m_reportCheckRunning = false;
+        // Can't show it right now? Nothing is lost: the reports stay "unseen" and the toast comes back on the next start.
+        if (unseen.isEmpty() || !isVisible() || isMinimized() || !m_toast || m_toast->isBusy() || QApplication::activeModalWidget())
+            return;
+
+        QString title;
+        QString body;
+        if (unseen.size() == 1) {
+            const auto& e = unseen.first();
+            title = tr("Update on your bug report");
+            body = tr("\"%1\": %2").arg(e.title.left(48), BugReportTracker::statusText(e.status, e.version));
+        } else {
+            title = tr("Updates on your bug reports");
+            body = tr("%1 of your reports have news.").arg(unseen.size());
+        }
+        // This card shares the star reminder's widget: flag it so dismissing it does not switch the reminder off.
+        m_starToastIsPreview = true;
+        m_toast->prepareToast(title, body, tr("My Reports"), [this] { on_actionMyReports_triggered(); });
+        m_toast->showToast(toastPosition());
+
+        QStringList ids;
+        for (const auto& e : unseen)
+            ids << e.id;
+        BugReportTracker::markAnnounced(ids);
+    });
+
     retranslateUi();
 }
 
@@ -543,6 +575,12 @@ void MainWindow::showEvent(QShowEvent* event)
     }
     // Try the star reminder once per session, shortly after the window is up.
     // maybeShowStarToast() re-checks visibility, modals, and running instances.
+    // Check for answers to the user's bug reports first; the star reminder below waits for the result.
+    if (!m_reportCheckScheduled) {
+        m_reportCheckScheduled = true;
+        m_reportCheckRunning = true;
+        QTimer::singleShot(1000, this, &MainWindow::maybeCheckReportStatus);
+    }
     if (!m_starToastScheduled) {
         m_starToastScheduled = true;
         QTimer::singleShot(1500, this, &MainWindow::maybeShowStarToast);
@@ -678,8 +716,28 @@ void MainWindow::showWhatsNewBrowser()
     dialog.exec();
 }
 
+void MainWindow::maybeCheckReportStatus()
+{
+    if (BuildConfig.BUG_REPORT_API_URL.isEmpty() || BuildConfig.BUG_REPORT_STATUS_URL.isEmpty()) {
+        m_reportCheckRunning = false;
+        return;
+    }
+    m_reportChecker->check();  // always ends in finished(), which clears m_reportCheckRunning
+}
+
+void MainWindow::on_actionMyReports_triggered()
+{
+    MyReportsDialog dialog(this);
+    dialog.exec();
+}
+
 void MainWindow::maybeShowStarToast()
 {
+    // A bug report answer goes first: wait for the check (a few seconds at most), then try again.
+    if (m_reportCheckRunning) {
+        QTimer::singleShot(1500, this, &MainWindow::maybeShowStarToast);
+        return;
+    }
     if (!isVisible() || isMinimized())
         return;
     // A toast (possibly a developer preview) is still on screen or animating.

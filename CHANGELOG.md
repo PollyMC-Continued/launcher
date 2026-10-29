@@ -7,11 +7,15 @@
 - **Pin instances** — Right-click an instance (or use the instance toolbar) and pick "Pin Instance" to keep it at the top of its group, whatever the sort order is. Pinned instances show a small pin.
 - **Mod conflict detection** — Two files with the same mod id, mods that declare themselves incompatible with each other (from the jar and from Modrinth/CurseForge data) and mods whose dependency is disabled or missing are now found. Conflicting mods get a red row in the mod list, and everything is listed in "Check instance".
 - **Check instance: more checks** — Also looks at free disk space, whether the memory setting fits the computer, and mods not marked for the instance's game version. Results are sorted worst first, there is a "Check Again" button, and "Copy Report" puts the list on the clipboard.
+- **Answers to your bug reports** - After you send a report you get a report ID (like K7X9F-3QD2M). When the team updates its status, the launcher shows a notification the next time it starts, e.g. "Fixed in version 9.4.3". Clicking it opens My Reports.
+- **Help > My Reports** - Lists the bug reports and suggestions you sent from this launcher, with their ID, what you wrote, the current status and the date. "Check for updates" looks again straight away.
 
 **Changed:**
 
 - **Check instance no longer freezes** — Mod jars are scanned in the background, so big modpacks don't lock the window.
 - **Update checker is more honest** — The update window shows how many updates were found, and "up to date" no longer appears when some mods could not be checked.
+- **Notifications don't overlap** - The GitHub star reminder now waits until the report check has finished, so the two never pop up at the same time.
+- **Clearer thank-you message** - After sending a report, the window shows your report ID and says where to check for updates.
 
 **Fixed:**
 
@@ -19,6 +23,11 @@
 - **Mod updates picking the wrong file** — When two updates had the same name, only one of them was downloaded (and the other was skipped or downloaded twice). Each update is now tracked on its own.
 - **Update check on an empty mod folder** — Checking for updates with no mods installed could crash; it now says there is nothing to check.
 - **Quilt mod dependencies** — They were read from the wrong place in quilt.mod.json and never found. Fabric's "java" requirement is no longer mistaken for a missing mod.
+
+**Where to find the mod incompatibility option:**
+
+- Mod conflicts (duplicate mods, mods that conflict with each other, disabled or missing dependencies) are shown in the mod list and in "Check instance".
+- The option **Detect and show mod incompatibilities (experimental)** is off by default. It controls the highlighting of mods that are not marked as compatible with the instance's Minecraft version. Turn it on in **Settings > General > Mods and Modpacks**.
 
 ## v9.5.1
 

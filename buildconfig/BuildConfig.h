@@ -168,6 +168,7 @@ class Config {
     QString BUG_TRACKER_URL;
     /// Endpoint that turns in-launcher bug reports into GitHub issues
     QString BUG_REPORT_API_URL;
+    QString BUG_REPORT_STATUS_URL;
     /// Antivirus exclusion guide opened from the network error window
     QString AV_EXCLUSION_URL;
     QString TRANSLATIONS_URL;

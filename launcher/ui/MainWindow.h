@@ -66,6 +66,7 @@ class QResizeEvent;
 class QActionGroup;
 
 class ToastNotification;
+class BugReportStatusChecker;
 class BotManagerDialog;
 
 namespace Ui {
@@ -153,6 +154,8 @@ class MainWindow : public QMainWindow {
     void on_actionManageAccounts_triggered();
 
     void on_actionReportBug_triggered();
+
+    void on_actionMyReports_triggered();
 
     void on_actionCopyDiagnostics_triggered();
 
@@ -266,6 +269,7 @@ class MainWindow : public QMainWindow {
     void maybeShowWhatsNew();
     void presentWhatsNew(int retriesLeft, const QString& previousVersion);
     void maybeShowStarToast();
+    void maybeCheckReportStatus();
     void prepareStarToast();
     QPoint toastPosition() const;
     void showCommandPalette();
@@ -284,6 +288,10 @@ class MainWindow : public QMainWindow {
     QSystemTrayIcon* m_trayIcon = nullptr;
     ToastNotification* m_toast = nullptr;
     bool m_starToastScheduled = false;
+    // Status of the bug reports this launcher sent (the team answers through PollyBot)
+    BugReportStatusChecker* m_reportChecker = nullptr;
+    bool m_reportCheckScheduled = false;
+    bool m_reportCheckRunning = false;
     bool m_whatsNewScheduled = false;
     // Set while the star toast was triggered from the Developer page; dismissing it then must not
     // permanently disable the real reminder.
