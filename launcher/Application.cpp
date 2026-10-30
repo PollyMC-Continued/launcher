@@ -304,7 +304,17 @@ std::tuple<QDateTime, QString, QString, QString, QString> read_lock_File(const Q
 Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 {
     // Skip splash in headless/offscreen environments.
-    const bool headless = QGuiApplication::platformName() == "offscreen"
+    // Also skipped for --version / --help: those just print text and exit, and the updater runs
+    // "--version" on a child launcher process, which must not wait for (or show) a splash screen.
+    bool infoOnly = false;
+    for (int i = 1; i < argc; ++i) {
+        const QByteArray arg = argv[i];
+        if (arg == "--version" || arg == "-v" || arg == "--help" || arg == "-h") {
+            infoOnly = true;
+            break;
+        }
+    }
+    const bool headless = infoOnly || QGuiApplication::platformName() == "offscreen"
                           || qEnvironmentVariableIsSet("POLLYMC_NO_SPLASH");
     if (!headless) {
         m_splash = new SplashScreen;

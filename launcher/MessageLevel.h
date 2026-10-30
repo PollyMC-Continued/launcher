@@ -1,7 +1,9 @@
 #pragma once
 
 #include <QString>
+#ifndef Q_MOC_RUN
 #include <compare>
+#endif
 
 /**
  * @brief the MessageLevel Enum

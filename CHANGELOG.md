@@ -30,10 +30,14 @@
 - **Safer folder names for imported modpacks** — Special characters and symbols that cause trouble in folder names are kept out when the launcher creates an instance from a modpack.
 - **The Modrinth modpack page now shows the pack's changelog** — You can see what's new in a pack before you install or update it.
 - **Language settings are better behaved** — The confusing "Use system locale" option is now called "Use system regional standards", and turning it on or off no longer resets your chosen language by accident.
+- **New Instance window order** — The install sources are now listed as Custom, Import, Modrinth, CurseForge, ATLauncher, FTB and then the rest.
+- **A shorter More menu** — "My Reports" is no longer in the More menu. You can still open it from the report window, the report-sent window and the notification when the team answers.
 
 **Fixed:**
 
+- **Windows 11 theme** — selected rows in lists, trees and tables are now readable whatever their highlight color is: the text turns white on dark highlights and black on light ones (gray, green…). Unselected rows are unchanged.
 - **Crash when changing the theme or icons in Settings** — The launcher could close right after picking a theme or icon set (seen on Windows 11). The window style is now swapped after the dropdown has finished closing, and it is no longer replaced when it is already the right one.
+- **"Child launcher process failed" during the update check** — The launcher no longer shows this error when checking for updates. The check skips the splash screen, waits longer on slow computers, and falls back to the installed version if the check still can't finish.
 - **Mod updates picking the wrong file** — When two updates had the same name, only one of them was downloaded (and the other was skipped or downloaded twice). Each update is now tracked on its own.
 - **Update check on an empty mod folder** — Checking for updates with no mods installed could crash; it now says there is nothing to check.
 - **Quilt mod dependencies** — They were read from the wrong place in quilt.mod.json and never found. Fabric's "java" requirement is no longer mistaken for a missing mod.
@@ -56,6 +60,8 @@
 - **Updating an installed modpack works again** — The "Update" button on an installed Modrinth or CurseForge pack no longer fails.
 - **macOS fixes** — The menu bar is readable again in dark mode, and Cmd+Q now quits the whole launcher instead of closing only the active window.
 - **Translation downloads** — If the list of translations can't be fetched, your chosen language no longer falls back to English.
+- **Crash when opening or importing some instances (0xC0000005)** — Instances whose packwiz metadata contains unusual Minecraft versions could crash the launcher on a background thread while the mod list was loading.
+- **Version sorting** — Minecraft version strings are now compared with a total ordering, so sorting mod metadata can no longer walk past the end of the list and read garbage memory.
 
 **Where to find the mod incompatibility option:**
 

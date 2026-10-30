@@ -18,9 +18,12 @@
 
 #pragma once
 
+#include <QColor>
 #include <QProxyStyle>
 #include <QString>
 #include <iostream>
+
+class QStyleOptionViewItem;
 
 /// Used to override platform-specific behaviours which the launcher does work well with.
 class HintOverrideProxyStyle : public QProxyStyle {
@@ -42,8 +45,16 @@ class HintOverrideProxyStyle : public QProxyStyle {
                             QPainter* painter,
                             const QWidget* widget = nullptr) const override;
 
+    void drawControl(ControlElement element,
+                     const QStyleOption* option,
+                     QPainter* painter,
+                     const QWidget* widget = nullptr) const override;
+
     void drawPrimitive(PrimitiveElement element,
                        const QStyleOption* option,
                        QPainter* painter,
                        const QWidget* widget = nullptr) const override;
+
+   private:
+    QColor readableTextColorFor(const QStyleOptionViewItem& item, const QWidget* widget) const;
 };
