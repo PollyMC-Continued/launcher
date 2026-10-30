@@ -142,7 +142,7 @@
 <context>
     <name>ATLauncher::PackInstallTask</name>
     <message>
-        <location filename="../launcher/modplatform/atlauncher/ATLPackInstallTask.cpp" line="+123"/>
+        <location filename="../launcher/modplatform/atlauncher/ATLPackInstallTask.cpp" line="+134"/>
         <source>Could not understand pack manifest:
 </source>
         <translation>Не вдалося розібрати маніфест пакета:
@@ -158,12 +158,12 @@
         <translation type="vanished">Не вдалося отримати локальний індекс метаданих для &apos;%1&apos; v%2</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+42"/>
         <source>Deleting existing files...</source>
         <translation>Видалення наявних файлів...</translation>
     </message>
     <message>
-        <location line="+147"/>
+        <location line="+151"/>
         <source>Unknown mod type: %1</source>
         <translation>Невідомий тип моду: %1</translation>
     </message>
@@ -180,32 +180,32 @@
         <translation type="vanished">Не встановлено версію завантажувача для модпаку!</translation>
     </message>
     <message>
-        <location line="-178"/>
+        <location line="-182"/>
         <source>Could not get local metadata index for &apos;%1&apos; v%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+194"/>
         <source>Could not get local metadata index for %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+34"/>
         <source>Could not find a version for the %1 loader</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>No loader version set for modpack.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+130"/>
+        <location line="+132"/>
         <source>Unknown or unsupported download type: %1</source>
         <translation>Невідомий або не підтримуваний тип завантаження: %1</translation>
     </message>
     <message>
-        <location line="+114"/>
+        <location line="+115"/>
         <source>Downloading configs...</source>
         <translation>Завантаження конфігурацій…</translation>
     </message>
@@ -235,13 +235,13 @@
         <translation>Завантаження мода</translation>
     </message>
     <message>
-        <location line="+25"/>
-        <location line="+130"/>
+        <location line="+27"/>
+        <location line="+133"/>
         <source>Unknown download type: %1</source>
         <translation>Невідомий тип завантаження: %1</translation>
     </message>
     <message>
-        <location line="-50"/>
+        <location line="-52"/>
         <source>Blocked mods found</source>
         <translation>Знайдено заблоковані моди</translation>
     </message>
@@ -251,7 +251,7 @@
         <translation>Наступні файли недоступні для завантаження в сторонніх лаунчерах.&lt;br/&gt;Вам потрібно буде завантажити їх вручну та додати до екземпляра.</translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+58"/>
         <source>%1 out of %2 complete</source>
         <translation>%1 з %2 завершено</translation>
     </message>
@@ -266,7 +266,7 @@
         <translation>Розпакування модів...</translation>
     </message>
     <message>
-        <location line="+72"/>
+        <location line="+81"/>
         <source>Installing modpack</source>
         <translation>Встановлення збірки</translation>
     </message>
@@ -276,7 +276,7 @@
         <translation>Не вдалося створити компонент бібліотек</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+30"/>
         <source>Unknown loader type: </source>
         <translation>Невідомий тип завантажувача: </translation>
     </message>
@@ -728,7 +728,7 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation type="vanished">Оновлення виконано</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1306"/>
+        <location filename="../launcher/Application.cpp" line="+1319"/>
         <source>Incompatible system configuration</source>
         <translation>Несумісні системні налаштування</translation>
     </message>
@@ -768,12 +768,12 @@ for details on the last update attempt.</source>
 щоб побачити подробиці останньої спроби оновлення.</translation>
     </message>
     <message>
-        <location line="-1700"/>
+        <location line="-1703"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Неможливо відобразити цей журнал, оскільки його довжина перевищила %1 рядків.</translation>
     </message>
     <message>
-        <location line="+1522"/>
+        <location line="+1525"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Схоже ви вже використовували %1 у %2. Чи хочете ви перенести дані до %3?</translation>
     </message>
@@ -841,7 +841,7 @@ for details.</source>
 для деталей.</translation>
     </message>
     <message>
-        <location line="-1820"/>
+        <location line="-1823"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -877,12 +877,12 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+531"/>
+        <location line="+526"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+28"/>
         <source>Loading instances…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1033,7 +1033,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">Йде оновлення</translation>
     </message>
     <message>
-        <location line="-1419"/>
+        <location line="-1427"/>
         <source>Settings</source>
         <translation>Налаштування</translation>
     </message>
@@ -1064,7 +1064,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 Виберіть «Ігнорувати» нижче, щоб видалити цей файл оновлення та продовжити.</translation>
     </message>
     <message>
-        <location line="+1263"/>
+        <location line="+1271"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>Знайдено старі дані з %1, проте у вас вже є наявні дані для %2. На жаль, вам потрібно провести перенесення даних. Нагадати вам про перенесення коли ви запустите %2 наступного разу?</translation>
     </message>
@@ -1704,8 +1704,8 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+154"/>
+        <location line="+411"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1714,12 +1714,27 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-477"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+14"/>
+        <source>My Reports (%1 new)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>See what the team answered to the reports you sent from this launcher.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1960,7 +1975,7 @@ Send it again anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+17"/>
         <source>Thank you! Your report is on its way to the PollyMC team, and we read every one.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1979,6 +1994,14 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+5"/>
+        <source>
+
+Your report ID: %1
+This launcher will tell you when the team has an update. You can also check any time with &quot;My Reports&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+6"/>
         <source>Report sent</source>
         <translation type="unfinished"></translation>
@@ -1986,6 +2009,11 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
     <message>
         <location line="+2"/>
         <source>Join our Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>View My Reports</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2866,30 +2894,30 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
 <context>
     <name>DataPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/DataPackPage.cpp" line="+86"/>
-        <location line="+84"/>
-        <location line="+73"/>
+        <location filename="../launcher/ui/pages/instance/DataPackPage.cpp" line="+87"/>
+        <location line="+89"/>
+        <location line="+78"/>
         <source>Download stopped by user.</source>
         <translation>Завантаження припинене користувачем.</translation>
     </message>
     <message>
-        <location line="-137"/>
-        <location line="+80"/>
-        <location line="+73"/>
+        <location line="-146"/>
+        <location line="+84"/>
+        <location line="+79"/>
         <source>Abort</source>
         <translation>Перервати</translation>
     </message>
     <message>
-        <location line="-177"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
-        <location line="+19"/>
+        <location line="-188"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
+        <location line="+21"/>
         <source>Error</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-219"/>
         <source>Download Packs</source>
         <translation>Завантажити пакети</translation>
     </message>
@@ -2899,7 +2927,7 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
         <translation>Зміни версію пакета даних.</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+79"/>
         <source>Updating data packs while the game is running may cause pack duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -2913,65 +2941,65 @@ Are you sure you want to do this?</source>
         <translation>Підтвердити оновлення</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+78"/>
         <source>You are about to remove the metadata for %1 data packs.
 Are you sure?</source>
         <translation>Ви збираєтеся видалити метадані для %1 пакетів даних.
 Продовжити?</translation>
     </message>
     <message>
-        <location line="-50"/>
+        <location line="-51"/>
         <source>&apos;%1&apos; is up-to-date! :)</source>
         <translation>&apos;%1&apos; актуальний! :)</translation>
     </message>
     <message>
-        <location line="-119"/>
+        <location line="-125"/>
         <source>Download data packs from online mod platforms</source>
         <translation>Завантажити пакети даних з онлайн-платформ модів</translation>
     </message>
     <message>
-        <location line="+122"/>
+        <location line="+128"/>
         <source>All data packs are up-to-date! :)</source>
         <translation>Всі пакети даних оновлені! :)</translation>
     </message>
     <message>
-        <location line="-68"/>
-        <location line="+61"/>
+        <location line="-73"/>
+        <location line="+66"/>
         <location line="+23"/>
-        <location line="+73"/>
+        <location line="+78"/>
         <source>Aborted</source>
         <translation>Перервано</translation>
     </message>
     <message>
-        <location line="-151"/>
-        <location line="+84"/>
-        <location line="+73"/>
+        <location line="-161"/>
+        <location line="+89"/>
+        <location line="+78"/>
         <source>Warnings</source>
         <translation>Попередження</translation>
     </message>
     <message>
-        <location line="-128"/>
-        <location line="+99"/>
+        <location line="-135"/>
+        <location line="+104"/>
         <source>Data pack updates are unavailable when metadata is disabled!</source>
         <translation>Оновлення пакета даних недоступно, коли метадані вимкнені!</translation>
     </message>
     <message>
-        <location line="-73"/>
+        <location line="-76"/>
         <source>The data pack updater was aborted!</source>
         <translation>Оновлення пакета даних перервано!</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+54"/>
         <source>Confirm Removal</source>
         <translation>Підтвердити видалення</translation>
     </message>
     <message>
-        <location line="-162"/>
+        <location line="-169"/>
         <source>Try to check or update all selected data packs (all data packs if none are selected)</source>
         <translation>Спробувати перевірити або оновити всі вибрані пакети даних (або всі пакети даних, якщо жодного не вибрано)</translation>
     </message>
     <message>
-        <location line="+118"/>
+        <location line="+124"/>
         <source>All selected data packs are up-to-date! :)</source>
         <translation>Всі вибрані пакети даних оновлені! :)</translation>
     </message>
@@ -2981,7 +3009,7 @@ Are you sure?</source>
         <translation>Перевірка оновлень</translation>
     </message>
     <message>
-        <location line="-79"/>
+        <location line="-84"/>
         <source>Download Data Packs</source>
         <translation>Завантажити пакети даних</translation>
     </message>
@@ -3001,6 +3029,16 @@ Are you sure?</source>
     <message>
         <location line="+1"/>
         <source>Display the reminder immediately, ignoring its normal schedule and dismissed state.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show bug report update notification now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Display a sample &quot;your report has news&quot; notification in the window you are in, to test notifications without waiting for the team.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3240,19 +3278,20 @@ Are you sure?</source>
         <translation type="vanished">Мало вільної пам&apos;яті</translation>
     </message>
     <message>
+        <location filename="../launcher/minecraft/launch/EnsureAvailableMemory.cpp" line="+43"/>
         <source>Your system is under critical memory pressure.
 This may lead to severe slowdowns, crashes or system instability.
 It is recommended to close other applications or restart your system.
 
 Launch anyway?</source>
-        <translation type="vanished">Ваша система перебуває під критичним навантаженням на пам&apos;ять.
+        <translation>Ваша система перебуває під критичним навантаженням на пам&apos;ять.
 Це може призвести до серйозних уповільнень, збоїв або нестабільності системи.
 Рекомендується закрити інші програми або перезавантажити систему.
 
 Все одно запустити?</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/launch/EnsureAvailableMemory.cpp" line="+46"/>
+        <location line="+48"/>
         <source>Not enough RAM</source>
         <translation>Недостатньо оперативної пам&apos;яті</translation>
     </message>
@@ -3272,34 +3311,37 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
 Продовжити все одно? Це може призвести до серйозного уповільнення або збоїв.</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="-4"/>
         <source>Not enough RAM available to launch this instance</source>
         <translation>Недостатньо ОЗП для запуску цього екземпляра</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+29"/>
         <source>Note: only %1 MiB RAM is currently free, but this instance requests %2 MiB. Other running programs may cause slowdowns; consider closing some before playing.</source>
         <translation>Примітка: зараз вільно лише %1 МіБ оперативної пам&apos;яті, але цей екземпляр запитує %2 МіБ. Інші запущені програми можуть спричиняти уповільнення; розгляньте можливість закриття деяких перед грою.</translation>
     </message>
     <message>
+        <location line="-64"/>
         <source>High memory pressure</source>
-        <translation type="vanished">Високе навантаження на пам&apos;ять</translation>
+        <translation>Високе навантаження на пам&apos;ять</translation>
     </message>
     <message>
+        <location line="-17"/>
         <source>The system is under increased memory pressure.
 This may lead to lag or slowdowns.
 If possible, close other applications before continuing.
 
 Launch anyway?</source>
-        <translation type="vanished">Система перебуває під підвищеним навантаженням на пам&apos;ять.
+        <translation>Система перебуває під підвищеним навантаженням на пам&apos;ять.
 Це може призвести до затримки або уповільнення.
 Якщо можливо, закрийте інші програми, перш ніж продовжити.
 
 Все одно запустити?</translation>
     </message>
     <message>
+        <location line="+25"/>
         <source>The system is under high memory pressure</source>
-        <translation type="vanished">Система перебуває під високим навантаженням на пам&apos;ять</translation>
+        <translation>Система перебуває під високим навантаженням на пам&apos;ять</translation>
     </message>
     <message>
         <source>There might not be enough free RAM to launch this instance with the current memory settings.
@@ -3349,15 +3391,15 @@ Launch anyway? This may cause slowdowns in the game and your system.</source>
 <context>
     <name>EnsureOfflineLibraries</name>
     <message>
+        <location filename="../launcher/minecraft/launch/EnsureOfflineLibraries.cpp" line="+49"/>
         <source>
 This instance cannot be launched because some libraries are missing or have not been downloaded yet. Please try again in online mode with a working Internet connection</source>
-        <translation type="vanished">
+        <translation>
 Цей екземпляр неможливо запустити, оскільки деякі бібліотеки відсутні або ще не завантажені. Будь ласка спробуйте ще раз в онлайн-режимі з робочим підключенням до Інтернету</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/launch/EnsureOfflineLibraries.cpp" line="+33"/>
         <source>This instance cannot be launched because some libraries are missing or have not been downloaded yet. Please try again in online mode with a working Internet connection</source>
-        <translation>Цей екземпляр неможливо запустити, оскільки відсутні деякі бібліотеки або вони ще не завантажені. Будь ласка, спробуйте ще раз в онлайн-режимі з робочим інтернет-з&apos;єднанням</translation>
+        <translation type="vanished">Цей екземпляр неможливо запустити, оскільки відсутні деякі бібліотеки або вони ще не завантажені. Будь ласка, спробуйте ще раз в онлайн-режимі з робочим інтернет-з&apos;єднанням</translation>
     </message>
 </context>
 <context>
@@ -4213,42 +4255,42 @@ Are you sure?</source>
 <context>
     <name>FlameCheckUpdate</name>
     <message>
-        <location filename="../launcher/modplatform/flame/FlameCheckUpdate.cpp" line="+177"/>
+        <location filename="../launcher/modplatform/flame/FlameCheckUpdate.cpp" line="+182"/>
         <source>Parsing API response from CurseForge for &apos;%1&apos;...</source>
         <translation>Виконується обробка відповіді від API CurseForge для &apos;%1&apos;...</translation>
     </message>
     <message>
-        <location line="-85"/>
+        <location line="-90"/>
         <source>Parsing the API response from CurseForge for &apos;%1&apos;...</source>
         <translation>Виконується обробка відповіді від API CurseForge для &apos;%1&apos;...</translation>
     </message>
     <message>
-        <location line="-52"/>
+        <location line="-54"/>
         <source>Preparing resources for CurseForge...</source>
         <translation>Підготовка ресурсів для CurseForge...</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+63"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version.</source>
         <translation>Не знайдено дійсної версії для цього ресурсу. Ймовірно, він недоступний для поточної версії гри.</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+19"/>
         <source>Unknown</source>
         <translation>Невідомо</translation>
     </message>
     <message>
-        <location line="-21"/>
+        <location line="-22"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version / mod loader.</source>
         <translation>Не знайдено дійсної версії для цього ресурсу. Ймовірно, він недоступний для поточної версії гри / завантажувача модів.</translation>
     </message>
     <message>
-        <location line="+83"/>
+        <location line="+88"/>
         <source>Resource has a new update available, but is not downloadable using CurseForge.</source>
         <translation>Для цього ресурсу доступна нова версія, але його неможливо завантажити за допомогою CurseForge.</translation>
     </message>
     <message>
-        <location line="-64"/>
+        <location line="-68"/>
         <source>Not installed</source>
         <translation>Не встановлено</translation>
     </message>
@@ -4256,7 +4298,7 @@ Are you sure?</source>
 <context>
     <name>FlameCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+598"/>
+        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+636"/>
         <source>Downloading mods...</source>
         <translation>Завантаження модів...</translation>
     </message>
@@ -4266,17 +4308,22 @@ Are you sure?</source>
         <translation>Наступні файли недоступні для завантаження в сторонніх лаунчерах.&lt;br/&gt;Вам потрібно буде завантажити їх вручну та додати до екземпляра.</translation>
     </message>
     <message>
-        <location line="-197"/>
+        <location line="-218"/>
+        <source>The overrides has a path that leads to an arbitrary location (%1). This is a security risk and isn&apos;t allowed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
         <source>The specified overrides folder (%1) is missing. Maybe the modpack was already used before?</source>
         <translation>Відсутня вказана тека перевизначень (%1). Можливо, збірка модів уже використовувалася раніше?</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+35"/>
         <source>Unknown mod loader in manifest: %1</source>
         <translation>Невідомий завантажувач модів у маніфесті: %1</translation>
     </message>
     <message>
-        <location line="-70"/>
+        <location line="-107"/>
         <source>No loader version set for modpack!</source>
         <translation>Не встановлено версію завантажувача для збірки модів!</translation>
     </message>
@@ -4289,7 +4336,7 @@ Are you sure?</source>
         <translation type="vanished">Не вдалося видалити старі конфліктні файли.</translation>
     </message>
     <message>
-        <location line="+157"/>
+        <location line="+194"/>
         <source>Unable to resolve mod IDs:
 </source>
         <translation>Не вдалося вирішити конфлікт із ID у модів:
@@ -4306,7 +4353,7 @@ Are you sure?</source>
         <translation>Завантаження моду з Flame</translation>
     </message>
     <message>
-        <location line="-298"/>
+        <location line="-335"/>
         <source>Failed to get local metadata index for %1</source>
         <translation>Не вдалося отримати локальний індекс метаданих для %1</translation>
     </message>
@@ -4317,14 +4364,14 @@ Are you sure?</source>
     </message>
     <message>
         <location line="-125"/>
-        <location line="+211"/>
+        <location line="+236"/>
         <source>Could not understand pack manifest:
 </source>
         <translation>Не вдалося зрозуміти маніфест пакета:
 </translation>
     </message>
     <message>
-        <location line="+280"/>
+        <location line="+292"/>
         <source>Copying Blocked Mods...</source>
         <translation>Копіювання заблокованих модів...</translation>
     </message>
@@ -4339,7 +4386,7 @@ Are you sure?</source>
         <translation>%1 з %2 завершено</translation>
     </message>
     <message>
-        <location line="-354"/>
+        <location line="-391"/>
         <source>No index file.</source>
         <translation>Немає файлу індекса.</translation>
     </message>
@@ -4349,19 +4396,19 @@ Are you sure?</source>
         <translation>Не вдалося знайти версію для завантажувача %1</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+72"/>
         <source>Could not rename the overrides folder:
 </source>
         <translation>Не вдалося перейменувати теку перевизначення:
 </translation>
     </message>
     <message>
-        <location line="-218"/>
+        <location line="-249"/>
         <source> (version %1)</source>
         <translation> (версія %1)</translation>
     </message>
     <message>
-        <location line="+501"/>
+        <location line="+538"/>
         <source>Copying Blocked Mods (%1 out of %2 are done)</source>
         <translation>Копіювання заблокованих модів (%1 з %2 виконано)</translation>
     </message>
@@ -4374,7 +4421,7 @@ Are you sure?</source>
 <context>
     <name>FlameManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+491"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+506"/>
         <source>CurseForge pack</source>
         <translation>Збірка CurseForge</translation>
     </message>
@@ -4384,12 +4431,12 @@ Are you sure?</source>
         <translation>Виберіть файл оновлення</translation>
     </message>
     <message>
-        <location line="-57"/>
+        <location line="-62"/>
         <source>%1 (Current)</source>
         <translation>%1 (Дійсна)</translation>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-42"/>
         <source>&lt;h1&gt;Hey there!&lt;/h1&gt;&lt;h4&gt;It seems like your Pack ID is null. This is because of a bug in older versions of the launcher.&lt;br/&gt;Unfortunately, we can&apos;t do the proper API requests without this information.&lt;br/&gt;&lt;br/&gt;So, in order for this feature to work, you will need to re-download the modpack from the built-in downloader.&lt;br/&gt;&lt;br/&gt;Don&apos;t worry though, it will ask you to update this instance instead, so you&apos;ll not lose this instance!&lt;/h4&gt;</source>
         <translation>&lt;h1&gt;Привіт!&lt;/h1&gt;&lt;h4&gt;Схоже, що ID вашої збірки пустий. Це сталося через помилку в старіших версіях лаунчера.&lt;br/&gt;На жаль, ми не можемо зробити правильні запити до API без цієї інформації.&lt;br/&gt;&lt;br/&gt;Тож, щоби ця функція працювала правильно, треба перезавантажити збірку з вбудованого завантажувача.&lt;br/&gt;&lt;br/&gt;Але не хвилюйтеся, вас попросять оновити цю збірку, тому ви не втратите її!!&lt;/h4&gt;</translation>
     </message>
@@ -4887,11 +4934,12 @@ Are you sure?</source>
 <context>
     <name>InstallLoaderDialog</name>
     <message>
+        <location filename="../launcher/ui/dialogs/InstallLoaderDialog.cpp" line="+109"/>
         <source>OK</source>
-        <translation type="vanished">ОК</translation>
+        <translation>ОК</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/InstallLoaderDialog.cpp" line="+140"/>
+        <location line="+31"/>
         <source>Forge</source>
         <translation>Forge</translation>
     </message>
@@ -4911,12 +4959,11 @@ Are you sure?</source>
         <translation>Скасувати</translation>
     </message>
     <message>
-        <location line="-1"/>
         <source>Ok</source>
-        <translation>Гаразд</translation>
+        <translation type="vanished">Гаразд</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+32"/>
         <source>Fabric</source>
         <translation>Fabric</translation>
     </message>
@@ -4952,12 +4999,12 @@ Are you sure?</source>
         <translation>Копіювання збірки %1</translation>
     </message>
     <message>
-        <location line="+146"/>
+        <location line="+147"/>
         <source>Instance folder copy has been aborted.</source>
         <translation>Копіювання теки збірки було перервано.</translation>
     </message>
     <message>
-        <location line="-42"/>
+        <location line="-43"/>
         <source>Instance folder copy failed.</source>
         <translation>Не вдалося скопіювати теку збірки.</translation>
     </message>
@@ -5018,7 +5065,7 @@ Are you sure?</source>
 <context>
     <name>InstanceHealthCheckDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+61"/>
+        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+90"/>
         <source>No Java selected</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5052,7 +5099,12 @@ Switch Java in the instance&apos;s Java settings, or turn off the compatibility 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+175"/>
+        <source>Checking &lt;b&gt;%1&lt;/b&gt;…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+38"/>
         <source>Broken mod files (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5065,44 +5117,163 @@ Delete or re-download them (a fresh download of the same version is usually enou
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-201"/>
         <source>Version information not loaded yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>The launcher could not read this instance&apos;s version list, so the loader check was skipped.
-Open the instance, go to the Version page and let it load once (or press Reload) before launching.</source>
-        <translation type="unfinished"></translation>
+        <location line="-67"/>
+        <source>Error</source>
+        <translation type="unfinished">Помилка</translation>
     </message>
     <message>
-        <location line="+13"/>
-        <source>%1 (loader component)</source>
-        <translation type="unfinished"></translation>
+        <location line="+2"/>
+        <source>Warning</source>
+        <translation type="unfinished">Попередження</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>Check instance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+15"/>
-        <source>Close</source>
-        <translation type="unfinished">Закрити</translation>
-    </message>
-    <message>
-        <location line="+23"/>
-        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, no broken mod files, and the loader version checks out. Nothing stood in the way of launching.</source>
-        <translation type="unfinished"></translation>
+        <location line="+2"/>
+        <source>Info</source>
+        <translation type="unfinished">Інформація</translation>
     </message>
     <message numerus="yes">
-        <location line="+5"/>
-        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting. The details are below each entry.</source>
+        <location line="+9"/>
+        <source>
+… and %n more</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <location line="+55"/>
+        <source>The launcher could not read this instance&apos;s version list, so the loader check was skipped.
+Open the instance, go to the Version page and let it load once (or press Reload) before launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>%1 (loader component)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Only %1 MiB are free on the drive this instance is stored on.
+Free up some space, or the game can fail while saving worlds or downloading files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Low disk space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Too much memory allocated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance is set to use up to %1 MiB, but the computer only has %2 MiB.
+Lower the maximum memory in the instance&apos;s settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>A lot of memory allocated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance may use up to %1 MiB of the computer&apos;s %2 MiB.
+That leaves little for the system and can make the game stutter; around half of the total is usually plenty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+39"/>
+        <source>Check instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
+        <source>Check Again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Open Mods Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Close</source>
+        <translation type="unfinished">Закрити</translation>
+    </message>
+    <message>
+        <location line="+128"/>
+        <source>Mods that may not fit this game version (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These mods are not marked as compatible with this instance&apos;s Minecraft version:
+%1
+
+They may still work, but if the game crashes, update or remove them first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, the mods have no broken files or conflicts, and the loader version checks out. Nothing stood in the way of launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+8"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location line="+1"/>
+        <source>, and %n warning(s) worth a look</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>. The details are below each entry.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+2"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; should start, but has %n warning(s) worth a look. The details are below each entry.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Instance check for &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>No problems found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5186,12 +5357,12 @@ Open the instance, go to the Version page and let it load once (or press Reload)
 <context>
     <name>InstanceStaging</name>
     <message>
-        <location filename="../launcher/InstanceList.cpp" line="+784"/>
+        <location filename="../launcher/InstanceList.cpp" line="+782"/>
         <source>Failed to commit instance, even after multiple retries. It is being blocked by something.</source>
         <translation>Не вдалося створити збірку навіть після декількох спроб. Щось заважає.</translation>
     </message>
     <message>
-        <location line="-22"/>
+        <location line="-20"/>
         <source>Could not create staging folder</source>
         <translation>Не вдалося створити проміжну теку</translation>
     </message>
@@ -5419,7 +5590,7 @@ Open the instance, go to the Version page and let it load once (or press Reload)
 <context>
     <name>JavaListLoadTask</name>
     <message>
-        <location filename="../launcher/java/JavaInstallList.cpp" line="+158"/>
+        <location filename="../launcher/java/JavaInstallList.cpp" line="+159"/>
         <source>Detecting Java installations...</source>
         <translation>Пошук встановлених Java...</translation>
     </message>
@@ -5487,42 +5658,42 @@ Are you sure?</source>
         <translation>&amp;Тестові налаштування</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="+278"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="+279"/>
         <source>Confirm Selection</source>
         <translation>Підтвердіть Вибір</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+230"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+164"/>
         <source>(-Xms)</source>
         <translation>(-Xms)</translation>
     </message>
     <message>
-        <location line="-45"/>
+        <location line="+49"/>
         <source>(-Xmx)</source>
         <translation>(-Xmx)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-71"/>
         <source>The amount of memory Minecraft is started with.</source>
         <translation>Обсяг пам&apos;яті, з яким запускається програма Minecraft.</translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="-18"/>
         <source>M&amp;inimum Memory Usage:</source>
         <translation>М&amp;інімальне використання пам&apos;яті:</translation>
     </message>
     <message>
-        <location line="-137"/>
+        <location line="-14"/>
         <source>Memor&amp;y</source>
         <translation>&amp;Пам&apos;ять</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+81"/>
         <source>The maximum amount of memory Minecraft is allowed to use.</source>
         <translation>Максимальний обсяг пам&apos;яті, дозволений для використання Minecraft.</translation>
     </message>
     <message>
-        <location line="-115"/>
+        <location line="-143"/>
         <source>Auto-download &amp;Mojang Java</source>
         <translation>Автозавантаження &amp;Mojang Java</translation>
     </message>
@@ -5532,9 +5703,14 @@ Are you sure?</source>
         <translation>Якщо ввімкнено, лаунчер не пропонуватиме вибрати версію Java, якщо її не буде знайдено під час запуску.</translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+144"/>
         <source>&amp;PermGen Size:</source>
         <translation>Розмір &amp;PermGen:</translation>
+    </message>
+    <message>
+        <location line="+51"/>
+        <source>Warn when there is not enough free memory</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="-49"/>
@@ -5542,12 +5718,12 @@ Are you sure?</source>
         <translation>Знайти виконуваний файл Java</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+63"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+20"/>
         <source>Java Argumen&amp;ts</source>
         <translation>Аргум&amp;енти Java</translation>
     </message>
     <message>
-        <location line="-148"/>
+        <location line="-53"/>
         <source>The amount of memory available to store loaded Java classes.</source>
         <translation>Обсяг пам&apos;яті, доступний для зберігання завантажених класів Java.</translation>
     </message>
@@ -5556,17 +5732,17 @@ Are you sure?</source>
         <translation type="vanished">Попереджати, коли недостатньо пам&apos;яті</translation>
     </message>
     <message>
-        <location line="+135"/>
+        <location line="+40"/>
         <source>Memory Notice</source>
         <translation>Повідомлення про Пам&apos;ять</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-107"/>
         <source>Ma&amp;ximum Memory Usage:</source>
         <translation>Ма&amp;ксимальне використання пам&apos;яті:</translation>
     </message>
     <message>
-        <location line="-192"/>
+        <location line="-128"/>
         <source>Automatically downloads and selects the Java build recommended by Mojang.</source>
         <translation>Автоматично завантажує та вибирає збірку Java, котру рекомендує Mojang.</translation>
     </message>
@@ -5606,12 +5782,12 @@ Are you sure?</source>
         <translation>&amp;Автовиявлення версії Java</translation>
     </message>
     <message>
-        <location line="+162"/>
+        <location line="+302"/>
         <source>(-XX:PermSize)</source>
         <translation>(-XX:PermSize)</translation>
     </message>
     <message>
-        <location line="-115"/>
+        <location line="-255"/>
         <source>Open Java &amp;Downloader</source>
         <translation>Відкрити &amp;завантажувач Java</translation>
     </message>
@@ -5806,12 +5982,11 @@ You can change the Java version in the settings later.
         <translation>Немає вашої мови? Помітили помилки?&lt;br/&gt;&lt;a href=&quot;%1&quot;&gt;Допоможіть нам із перекладом!&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+3"/>
         <source>Use system locales</source>
-        <translation>Використовувати системні мовні налаштування</translation>
+        <translation type="vanished">Використовувати системні мовні налаштування</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+16"/>
         <source>Language picked automatically from your region (%1). Not right? Choose another one above.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5821,8 +5996,9 @@ You can change the Java version in the settings later.
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="-22"/>
         <source>Use system regional standards</source>
-        <translation type="vanished">Використати регіональні стандарти системи</translation>
+        <translation>Використати регіональні стандарти системи</translation>
     </message>
 </context>
 <context>
@@ -6533,19 +6709,20 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>Команда обгортки &quot;%1&quot; не знайдена.</translation>
     </message>
     <message>
-        <location line="+27"/>
         <source>Could not launch Minecraft!</source>
         <extracomment>Error message displayed if instace can&apos;t start</extracomment>
-        <translation>Не вдалося запустити Minecraft!</translation>
+        <translation type="vanished">Не вдалося запустити Minecraft!</translation>
     </message>
     <message>
-        <location line="-130"/>
+        <location line="-103"/>
         <source>Legacy launcher library could not be found. Please check your installation.</source>
         <translation>Не вдалося знайти бібліотеку застарілого лаунчера. Будь ласка, перевірте вашу інсталяцію.</translation>
     </message>
     <message>
+        <location line="+130"/>
         <source>Could not launch Minecraft: %1</source>
-        <translation type="vanished">З&apos;являється повідомлення про помилку, якщо Instace не може запустити</translation>
+        <extracomment>Error message displayed if instace can&apos;t start</extracomment>
+        <translation>З&apos;являється повідомлення про помилку, якщо Instace не може запустити</translation>
     </message>
 </context>
 <context>
@@ -6906,13 +7083,13 @@ You&apos;ll have to correct this problem manually.</source>
         <translation>Процес зазнав краху з кодом %1.</translation>
     </message>
     <message>
-        <location line="+14"/>
         <source>The process failed to start.</source>
-        <translation>Не вдалося запустити процес.</translation>
+        <translation type="vanished">Не вдалося запустити процес.</translation>
     </message>
     <message>
+        <location line="+14"/>
         <source>The process failed to start: %1</source>
-        <translation type="vanished">Виникла помилка під час запуску процесу: %1</translation>
+        <translation>Виникла помилка під час запуску процесу: %1</translation>
     </message>
 </context>
 <context>
@@ -7015,7 +7192,7 @@ You&apos;ll have to correct this problem manually.</source>
 <context>
     <name>MSADeviceCodeStep</name>
     <message>
-        <location filename="../launcher/minecraft/auth/steps/MSADeviceCodeStep.cpp" line="+133"/>
+        <location filename="../launcher/minecraft/auth/steps/MSADeviceCodeStep.cpp" line="+131"/>
         <source>Device authorization failed: required fields missing</source>
         <translation>Не вдалося авторизувати пристрій: відсутні обов&apos;язкові поля</translation>
     </message>
@@ -7026,21 +7203,21 @@ You&apos;ll have to correct this problem manually.</source>
     </message>
     <message>
         <location line="-38"/>
+        <location line="+8"/>
         <source>Device authorization failed: %1</source>
         <translation>Не вдалося авторизувати пристрій: %1</translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="-71"/>
         <source>Logging in with Microsoft account(device code).</source>
         <translation>Увійдіть за допомогою облікового запису Microsoft (кодом пристрою).</translation>
     </message>
     <message>
-        <location line="+72"/>
         <source>Failed to retrieve device authorization</source>
-        <translation>Не вдалося отримати авторизацію пристрою</translation>
+        <translation type="vanished">Не вдалося отримати авторизацію пристрою</translation>
     </message>
     <message>
-        <location line="+137"/>
+        <location line="+207"/>
         <source>Device Access failed: %1</source>
         <translation>Не вдалося отримати доступ до пристрою: %1</translation>
     </message>
@@ -7141,7 +7318,7 @@ You&apos;ll have to correct this problem manually.</source>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+298"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+300"/>
         <source>Check for new updates for %1.</source>
         <translation>Перевірити наявність оновлень для %1.</translation>
     </message>
@@ -7150,22 +7327,22 @@ You&apos;ll have to correct this problem manually.</source>
         <translation type="vanished">Допомога</translation>
     </message>
     <message>
-        <location line="+542"/>
+        <location line="+567"/>
         <source>Java</source>
         <translation>Java</translation>
     </message>
     <message>
-        <location line="-188"/>
+        <location line="-213"/>
         <source>Logs</source>
         <translation>Звіти</translation>
     </message>
     <message>
-        <location line="+177"/>
+        <location line="+202"/>
         <source>I&amp;con Theme</source>
         <translation>&amp;Тема іконок</translation>
     </message>
     <message>
-        <location line="-662"/>
+        <location line="-687"/>
         <source>&amp;Edit</source>
         <translation>&amp;Редагувати</translation>
     </message>
@@ -7174,12 +7351,12 @@ You&apos;ll have to correct this problem manually.</source>
         <translation type="vanished">Панель новин</translation>
     </message>
     <message>
-        <location line="-25"/>
+        <location line="-26"/>
         <source>&amp;File</source>
         <translation>&amp;Файл</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+76"/>
         <source>&amp;Help</source>
         <translation>&amp;Довідка</translation>
     </message>
@@ -7274,17 +7451,22 @@ You&apos;ll have to correct this problem manually.</source>
         <translation>Перемикати вигляд лаунчера між світлою, темною та іншими темами.</translation>
     </message>
     <message>
+        <location line="+11"/>
+        <source>&amp;Pin Instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Keep the selected instance at the top of its group.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+8"/>
         <source>Chec&amp;k Instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Look for missing Java, broken mod files or a wrong loader version before launching.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
+        <location line="+11"/>
         <source>Copy &amp;Diagnostics</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7294,7 +7476,7 @@ You&apos;ll have to correct this problem manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+111"/>
+        <location line="+122"/>
         <source>More</source>
         <translation>Ще</translation>
     </message>
@@ -7318,12 +7500,12 @@ You&apos;ll have to correct this problem manually.</source>
         <translation type="vanished">&amp;Няв</translation>
     </message>
     <message>
-        <location line="-678"/>
+        <location line="-703"/>
         <source>&amp;View</source>
         <translation>&amp;Вид</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1783"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1842"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -7334,40 +7516,40 @@ Are you sure?</source>
 Продовжити?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+656"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+681"/>
         <source>Open the icon theme folder in a file browser.</source>
         <translation>Відкрити теку з темами іконок у переглядачеві файлів.</translation>
     </message>
     <message>
-        <location line="-343"/>
+        <location line="-368"/>
         <source>Copy the selected instance.</source>
         <translation>Копіювати обрану збірку.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-727"/>
-        <location line="+140"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-751"/>
+        <location line="+143"/>
         <location line="+106"/>
         <source>Abort</source>
         <translation>Перервати</translation>
     </message>
     <message>
-        <location line="-258"/>
-        <location line="+126"/>
+        <location line="-261"/>
+        <location line="+129"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
         <location line="+37"/>
-        <location line="+403"/>
+        <location line="+424"/>
         <source>Error</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-454"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-456"/>
         <source>Main Toolbar</source>
         <translation>Головна панель інструментів</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-439"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-460"/>
         <source>Invalid import link: URL must be http(s).</source>
         <translation>Недійсне посилання для імпорту: URL-адреса має бути http(s).</translation>
     </message>
@@ -7377,7 +7559,7 @@ Are you sure?</source>
         <translation>Завантаження збірки</translation>
     </message>
     <message>
-        <location line="+318"/>
+        <location line="+339"/>
         <source>Check instance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7469,12 +7651,12 @@ Are you sure?</source>
         <translation>Екземпляр вже запущено.</translation>
     </message>
     <message>
-        <location line="+119"/>
+        <location line="+120"/>
         <source>Your instance folder contains &apos;!&apos; and this is known to cause Java problems!</source>
         <translation>Ваша тека збірки містить символ &apos;!&apos;, і відомо, що це спричиняє проблеми з Java!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+390"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+392"/>
         <source>&amp;Change Group...</source>
         <translation>Змінити &amp;групу...</translation>
     </message>
@@ -7499,7 +7681,7 @@ Are you sure?</source>
         <translation>Додати з&amp;бірку...</translation>
     </message>
     <message>
-        <location line="+431"/>
+        <location line="+456"/>
         <source>&amp;Matrix Space</source>
         <translation>Простір &amp;Matrix</translation>
     </message>
@@ -7508,27 +7690,27 @@ Are you sure?</source>
         <translation type="vanished">Більше новин...</translation>
     </message>
     <message>
-        <location line="-71"/>
+        <location line="-96"/>
         <source>Open the instance icons folder in a file browser.</source>
         <translation>Відкрити теку значків збірок в файловому менеджері.</translation>
     </message>
     <message>
-        <location line="+133"/>
+        <location line="+158"/>
         <source>Install a %1 symlink to /usr/local/bin</source>
         <translation>Встановити символічне посилання %1 до /usr/local/bin</translation>
     </message>
     <message>
-        <location line="-687"/>
+        <location line="-714"/>
         <source>Instance Toolbar</source>
         <translation>Панель інструментів збірки</translation>
     </message>
     <message>
-        <location line="+493"/>
+        <location line="+495"/>
         <source>Close &amp;Window</source>
         <translation>Закрити &amp;вікно</translation>
     </message>
     <message numerus="yes">
-        <location filename="../launcher/ui/MainWindow.cpp" line="-259"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-260"/>
         <source> and its %n registered shortcut(s)</source>
         <translation>
             <numerusform> та його %n зареєстрованого ярлика</numerusform>
@@ -7537,17 +7719,17 @@ Are you sure?</source>
         </translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+113"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+127"/>
         <source>Open the bug tracker to report a bug with %1.</source>
         <translation>Відкрити засіб відстеження помилок, щоби повідомити про помилку в %1.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-729"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-753"/>
         <source>Task aborted</source>
         <translation>Процес перервано</translation>
     </message>
     <message>
-        <location line="+218"/>
+        <location line="+221"/>
         <source>Do you want to download and import a modpack from:
 %1
 
@@ -7560,17 +7742,17 @@ URL:
 %2</translation>
     </message>
     <message>
-        <location line="+325"/>
+        <location line="+330"/>
         <source>This instance is not editable. It may be broken, invalid, or too old. Check logs for details.</source>
         <translation>Цю збірку не можна змінювати. Вона може бути несправною, недійсною або занадто старою. Перевірте звіти для докладнішої інформації.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+70"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+81"/>
         <source>View current and previous launcher logs</source>
         <translation>Переглянути поточні та попередні звіти</translation>
     </message>
     <message>
-        <location line="-136"/>
+        <location line="-161"/>
         <source>&amp;Skins</source>
         <translation>&amp;Скіни</translation>
     </message>
@@ -7618,7 +7800,7 @@ URL:
         <translation>Видалити групу</translation>
     </message>
     <message>
-        <location line="+262"/>
+        <location line="+278"/>
         <source>Failed to add %1 to PATH</source>
         <translation>Не вдалося додати %1 до PATH</translation>
     </message>
@@ -7663,7 +7845,7 @@ URL:
         <translation>Вибрана збірка наразі працює та її не можна видалити. Будь ласка, зупиніть збірку перед спробою її видалення.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+459"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+484"/>
         <source>Open the Java folder in a file browser. Only available if the built-in Java downloader is used.</source>
         <translation>Відкрийте теку Java у переглядачеві файлів. Доступно лише при використанні вбудованого завантажувача Java.</translation>
     </message>
@@ -7672,7 +7854,7 @@ URL:
         <translation type="vanished">Немає новин.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-718"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-742"/>
         <source>The task has been aborted by the user.</source>
         <translation>Процес було перервано користувачем.</translation>
     </message>
@@ -7682,7 +7864,7 @@ URL:
         <translation>Відкрийте одну із тек, спільно використовуваних збірками.</translation>
     </message>
     <message>
-        <location line="-396"/>
+        <location line="-421"/>
         <source>Rename</source>
         <translation>Перейменувати</translation>
     </message>
@@ -7696,17 +7878,17 @@ URL:
         <translation type="vanished">Prism Launcher (zip)</translation>
     </message>
     <message>
-        <location line="+69"/>
+        <location line="+94"/>
         <source>Open %1 subreddit.</source>
         <translation>Відкрити %1 на Reddit.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+133"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+136"/>
         <source>The modpack, mod, or resource %1 is blocked for third-parties! Please download it manually.</source>
         <translation>Збірка, мод, чи ресурс %1 заблоковано для третіх-сторін! Будь ласка завантажте її вручну.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-243"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-268"/>
         <source>Cop&amp;y...</source>
         <translation>Копію&amp;вати...</translation>
     </message>
@@ -7720,7 +7902,7 @@ URL:
         <translation type="vanished">Керувати &amp;скінами...</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+142"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+147"/>
         <source>No instance available to add the resource to.
 Please create a new instance before attempting to install this resource again.</source>
         <translation>Немає доступної збірки для додавання ресурсу.
@@ -7732,7 +7914,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Змінити налаштування, моди і версію збірки.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+734"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+751"/>
         <source>This is a problem: &lt;br/&gt; - The launcher will likely be deleted without warning by the operating system &lt;br/&gt; - close the launcher now and extract it to a real location, not a temporary folder</source>
         <translation>Це проблема: &lt;br/&gt; - лаунчер, ймовірно, буде видалено операційною системою без попередження. &lt;br/&gt; - закрийте лаунчер зараз і розпакуйте його в справжнє місце, а не в тимчасову теку</translation>
     </message>
@@ -7741,12 +7923,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="vanished">Пакети котиків</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+257"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+282"/>
         <source>Open %1 Discord guild.</source>
         <translation>Відкрити %1 Discord-сервер.</translation>
     </message>
     <message>
-        <location line="-243"/>
+        <location line="-268"/>
         <source>Open the selected instance&apos;s root folder in a file browser.</source>
         <translation>Відкрити кореневу теку обраної збірки в файловому менеджері.</translation>
     </message>
@@ -7761,7 +7943,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Закріпити панелі інструментів</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-279"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-280"/>
         <source>Confirm Deletion</source>
         <translation>Підтвердити видалення</translation>
     </message>
@@ -7771,27 +7953,27 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Е&amp;кспорт...</translation>
     </message>
     <message>
-        <location line="+299"/>
+        <location line="+324"/>
         <source>Get help with %1 or Minecraft.</source>
         <translation>Отримати допомогу з %1 або Minecraft.</translation>
     </message>
     <message>
-        <location line="-188"/>
+        <location line="-213"/>
         <source>Open the launcher&apos;s root folder in a file browser.</source>
         <translation>Відкрити кореневу теку лаунчера у переглядачеві файлів.</translation>
     </message>
     <message>
-        <location line="+82"/>
+        <location line="+96"/>
         <source>Report a Bug or Suggest a Feature</source>
         <translation>Повідомити про помилку або запропонувати функцію</translation>
     </message>
     <message>
-        <location line="-348"/>
+        <location line="-362"/>
         <source>&amp;Manage Accounts...</source>
         <translation>&amp;Керувати обліковими записами...</translation>
     </message>
     <message>
-        <location line="+373"/>
+        <location line="+398"/>
         <source>Open %1 Matrix space.</source>
         <translation>Відкрити %1 простір Matrix.</translation>
     </message>
@@ -7800,27 +7982,27 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="vanished">Відкрийте вікі %1</translation>
     </message>
     <message>
-        <location line="-132"/>
+        <location line="-157"/>
         <source>Close the current window</source>
         <translation>Закрити поточне вікно</translation>
     </message>
     <message>
-        <location line="+232"/>
+        <location line="+257"/>
         <source>&amp;Widget Themes</source>
         <translation>Теми &amp;віджетів</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-298"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-314"/>
         <source>Cannot set empty name.</source>
         <translation>Неможливо задати порожнє ім&apos;я.</translation>
     </message>
     <message>
-        <location line="-436"/>
+        <location line="-444"/>
         <source>Warnings</source>
         <translation>Попередження</translation>
     </message>
     <message>
-        <location line="-872"/>
+        <location line="-905"/>
         <source>Show PollyMC</source>
         <translation>Показати PollyMC</translation>
     </message>
@@ -7830,17 +8012,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Вийти</translation>
     </message>
     <message>
-        <location line="+413"/>
-        <source>The star reminder will appear after the Settings dialog closes.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+17"/>
-        <source>The main window must be visible to show the star reminder.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+104"/>
+        <location line="+563"/>
         <source>Enjoying PollyMC-Continued?</source>
         <translation>Подобається PollyMC-Continued?</translation>
     </message>
@@ -7850,12 +8022,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Дайте проєкту зірку на GitHub!</translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="+1"/>
         <source>Star on GitHub</source>
         <translation>Поставити зірку на GitHub</translation>
     </message>
     <message>
-        <location line="+881"/>
+        <location line="+892"/>
         <source>Instance not editable</source>
         <translation>Збірка не підлягає редагуванню</translation>
     </message>
@@ -7865,7 +8037,33 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Не вдалося скасувати видалення збірки</translation>
     </message>
     <message>
-        <location line="-11"/>
+        <location line="-1067"/>
+        <location line="+150"/>
+        <source>Update on your bug report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-149"/>
+        <source>&quot;%1&quot;: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Updates on your bug reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 of your reports have news.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+147"/>
+        <source>&quot;Sample report&quot;: Seen - the team is looking into it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+905"/>
         <source>Cannot rename group</source>
         <translation>Не вдається перейменувати групу</translation>
     </message>
@@ -7875,33 +8073,33 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Пр&amp;о %1</translation>
     </message>
     <message>
-        <location line="-528"/>
+        <location line="-553"/>
         <source>&amp;Accounts</source>
         <translation>&amp;Облікові записи</translation>
     </message>
     <message>
-        <location line="+598"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-494"/>
+        <location line="+623"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
         <source>Accounts</source>
         <translation>Облікові записи</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+734"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 було успішно додано до вашого PATH. Тепер ви можете запустити його, виконавши `%2`.</translation>
     </message>
     <message>
-        <location line="+329"/>
+        <location line="+330"/>
         <source>You have now two options: &lt;br/&gt; - change the instance folder in the settings &lt;br/&gt; - move this installation of %1 to a different folder</source>
         <translation>У вас є два варіанти: &lt;br/&gt; - змінити теку збірки в налаштуваннях &lt;br/&gt; - перемістити цю інсталяцію %1 до іншої теки</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-520"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-545"/>
         <source>Add a new instance.</source>
         <translation>Додати нову збірку.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-284"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-285"/>
         <source>Cannot Delete Running Instance</source>
         <translation>Не Можна Видалити Запущену Збірку</translation>
     </message>
@@ -7910,7 +8108,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="vanished">Відкрити блог розробки, щоб прочитати більше новин про %1.</translation>
     </message>
     <message>
-        <location line="-1471"/>
+        <location line="-1527"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
@@ -7924,7 +8122,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>&amp;Збірки</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+617"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+649"/>
         <source>Ctrl+%1</source>
         <translation>Ctrl+%1</translation>
     </message>
@@ -7944,7 +8142,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>&amp;Тека</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+354"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+357"/>
         <source>Install modpack</source>
         <translation>Встановити збірку модів</translation>
     </message>
@@ -7964,22 +8162,22 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Облікових записів не додано!</translation>
     </message>
     <message>
-        <location line="+219"/>
+        <location line="+244"/>
         <source>Install to &amp;PATH</source>
         <translation>Встановити в &amp;PATH</translation>
     </message>
     <message>
-        <location line="-327"/>
+        <location line="-352"/>
         <source>&amp;Edit...</source>
         <translation>&amp;Змінити...</translation>
     </message>
     <message>
-        <location line="-384"/>
+        <location line="-386"/>
         <source>What&apos;s New Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+188"/>
+        <location line="+190"/>
         <source>Status Bar</source>
         <translation>Панель статусу</translation>
     </message>
@@ -8009,7 +8207,24 @@ Please create a new instance before attempting to install this resource again.</
         <translation>PollyMC-Continued (zip)</translation>
     </message>
     <message>
-        <location line="+229"/>
+        <location line="+177"/>
+        <source>Look for missing Java, broken or conflicting mods, a wrong loader version or too little memory/disk space before launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+30"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-820"/>
+        <location line="+136"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>See what the team answered to the bug reports you sent from this launcher.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+44"/>
         <source>View information about %1.</source>
         <translation>Переглянути інформацію про %1.</translation>
     </message>
@@ -8019,12 +8234,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Відкрити теку тем віджетів у переглядачеві файлів.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+184"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
         <source>Group name</source>
         <translation>Назва групи</translation>
     </message>
     <message>
-        <location line="+340"/>
+        <location line="+356"/>
         <source>Deleting</source>
         <translation>Видалення</translation>
     </message>
@@ -8034,24 +8249,24 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Переглянути звіти</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-547"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-568"/>
         <source>Invalid import link: missing &apos;url&apos; parameter.</source>
         <translation>Недійсне посилання для імпорту: відсутній параметр «url».</translation>
     </message>
     <message>
-        <location line="-449"/>
+        <location line="-452"/>
         <source>&amp;Rename group</source>
         <translation>&amp;Перейменувати групу</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-155"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-180"/>
         <source>Launcher &amp;Root</source>
         <translation>&amp;Коренева тека лаунчера</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-403"/>
-        <location line="+88"/>
-        <location line="+1552"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
+        <location line="+125"/>
+        <location line="+1572"/>
         <source>No instance selected</source>
         <translation>Не обрана збірка</translation>
     </message>
@@ -8061,12 +8276,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Змінити піктограму</translation>
     </message>
     <message>
-        <location line="+268"/>
+        <location line="+293"/>
         <source>&amp;Discord Guild</source>
         <translation>&amp;Discord-сервер</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-333"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-334"/>
         <source>Metadata cache clear Failed!
 To clear the metadata cache manually, press Folders -&gt; View Launcher Root Folder, and after closing the launcher delete the folder named &quot;meta&quot;
 </source>
@@ -8080,42 +8295,42 @@ To clear the metadata cache manually, press Folders -&gt; View Launcher Root Fol
         <translation>&amp;Очистити кеш метаданих</translation>
     </message>
     <message>
-        <location line="-562"/>
+        <location line="-587"/>
         <source>F&amp;olders</source>
         <translation>&amp;Теки</translation>
     </message>
     <message>
-        <location line="+596"/>
+        <location line="+621"/>
         <source>Folders</source>
         <translation>Теки</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+366"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+367"/>
         <source>Your instance folder contains &apos;Rar$&apos; - that means you haven&apos;t extracted the launcher archive!</source>
         <translation>Тека вашого екземпляра містить «Rar$» — це означає, що ви не розпакували архів лаунчера!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-166"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-191"/>
         <source>&amp;Central Mods</source>
         <translation>&amp;Центральні модифікації</translation>
     </message>
     <message>
-        <location line="+107"/>
+        <location line="+132"/>
         <source>Sub&amp;reddit</source>
         <translation>&amp;Сабреддит</translation>
     </message>
     <message>
-        <location line="-251"/>
+        <location line="-276"/>
         <source>Delete the selected instance.</source>
         <translation>Видалити вибрану збірку.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1274"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Видалити групу</translation>
     </message>
     <message>
-        <location line="+703"/>
+        <location line="+711"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>Деякі збірки та ярлики не вдалося відновити.
@@ -8131,7 +8346,7 @@ Please check your trashbin to manually restore them.</source>
         <translation type="vanished">Це пухнастеньке кошеня :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-717"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-725"/>
         <source>&amp;Create instance</source>
         <translation>Створити &amp;збірку</translation>
     </message>
@@ -8156,43 +8371,43 @@ Please check your trashbin to manually restore them.</source>
         <translation>CurseForge (zip)</translation>
     </message>
     <message>
-        <location line="+221"/>
+        <location line="+246"/>
         <source>Clear cached metadata</source>
         <translation>Очистити кешовані метадані</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-384"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-416"/>
         <source>Total playtime: 0s</source>
         <translation>Загальний час гри: 0 с</translation>
     </message>
     <message>
-        <location line="+1704"/>
+        <location line="+1761"/>
         <source>Total playtime: %1</source>
         <translation>Загальний час гри: %1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-315"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-340"/>
         <source>Change the selected instance&apos;s icon.</source>
         <translation>Змінити піктограму обраної збірки.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-376"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-377"/>
         <source>Successfully added %1 to PATH</source>
         <translation>Успішно додано %1 до PATH</translation>
     </message>
     <message>
-        <location line="-270"/>
+        <location line="-286"/>
         <location line="+22"/>
         <source>Enter a new group name.</source>
         <translation>Введіть нову назву групи.</translation>
     </message>
     <message>
-        <location line="+253"/>
+        <location line="+269"/>
         <source>An error occurred while trying to add %1 to PATH</source>
         <translation>Виникла помилка при спробі додати %1 до PATH</translation>
     </message>
     <message>
-        <location line="-263"/>
+        <location line="-279"/>
         <source>Are you sure you want to delete the group &apos;%1&apos;?</source>
         <translation>Ви дійсно хочете видалити групу «%1»?</translation>
     </message>
@@ -8219,27 +8434,27 @@ Please check your trashbin to manually restore them.</source>
 <context>
     <name>ManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-247"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-255"/>
         <source>URL:</source>
         <translation>URL:</translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+198"/>
         <source>The instance updated to pack version %1 successfully.</source>
         <translation>Екземпляр успішно оновлено до версії пакета %1.</translation>
     </message>
     <message>
-        <location line="-119"/>
+        <location line="-126"/>
         <source>Abort</source>
         <translation>Перервати</translation>
     </message>
     <message>
-        <location line="-12"/>
+        <location line="-13"/>
         <source>Error</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+8"/>
         <source>Task aborted</source>
         <translation>Процес перервано</translation>
     </message>
@@ -8249,12 +8464,12 @@ Please check your trashbin to manually restore them.</source>
         <translation>Інформація про джерело:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+123"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+130"/>
         <source>Update Successful</source>
         <translation>Оновлення успішне</translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-101"/>
         <source>Cannot update!</source>
         <translation>Неможливо оновити!</translation>
     </message>
@@ -8269,7 +8484,7 @@ Please check your trashbin to manually restore them.</source>
         <translation>Процес було перервано користувачем.</translation>
     </message>
     <message>
-        <location line="+130"/>
+        <location line="+137"/>
         <source>The instance failed to update to pack version %1. Please check launcher logs for more information.</source>
         <translation>Екземпляр не зміг оновитися до версії пакета %1. Будь ласка, перевірте звіти запуску для докладнішої інформації.</translation>
     </message>
@@ -8289,17 +8504,17 @@ Please check your trashbin to manually restore them.</source>
         <translation>Список змін</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-133"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-141"/>
         <source>Warnings</source>
         <translation>Попередження</translation>
     </message>
     <message>
-        <location line="+132"/>
+        <location line="+140"/>
         <source>Update Failed</source>
         <translation>Оновлення не вдалося</translation>
     </message>
     <message>
-        <location line="-189"/>
+        <location line="-197"/>
         <source>This is a local modpack.
 This can be updated either using a file in %1 format or an URL.
 Do not use a different format than the one mentioned as it may break the instance.
@@ -8312,13 +8527,13 @@ Make sure you also trust the URL.
 </translation>
     </message>
     <message>
-        <location line="+84"/>
+        <location line="+85"/>
         <source>Failed to search for available versions.</source>
         <translation>Не вдалося знайти доступні версії.</translation>
     </message>
     <message>
-        <location line="-89"/>
-        <location line="+78"/>
+        <location line="-90"/>
+        <location line="+79"/>
         <source>Update Pack</source>
         <translation>Оновити збірку</translation>
     </message>
@@ -8328,7 +8543,7 @@ Make sure you also trust the URL.
         <translation>Для цієї версії немає списку змін!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-63"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-64"/>
         <source>Website: &lt;a href=%1&gt;%2&lt;/a&gt;    |    Pack ID: %3    |    Version ID: %4</source>
         <translation>Веб-сайт: &lt;a href=%1&gt;%2&lt;/a&gt;    |    ID збірки: %3    |    ІD версії: %4</translation>
     </message>
@@ -8353,7 +8568,7 @@ Make sure you also trust the URL.
         <translation>Оновити до версії:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+77"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+78"/>
         <source>Failed to request changelog data for this modpack.</source>
         <translation>Не вдалось отримати список змін для цієї збірки.</translation>
     </message>
@@ -8361,7 +8576,7 @@ Make sure you also trust the URL.
 <context>
     <name>Meta::BaseEntityLoadTask</name>
     <message>
-        <location filename="../launcher/meta/BaseEntity.cpp" line="+122"/>
+        <location filename="../launcher/meta/BaseEntity.cpp" line="+124"/>
         <source>Loading local file</source>
         <translation>Завантаження локального файлу</translation>
     </message>
@@ -8409,7 +8624,7 @@ Make sure you also trust the URL.
 <context>
     <name>MinecraftInstance</name>
     <message>
-        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1030"/>
+        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1042"/>
         <source>&lt;ACCESS TOKEN&gt;</source>
         <translation>&lt;КЛЮЧ ДОСТУПУ&gt;</translation>
     </message>
@@ -8419,12 +8634,12 @@ Make sure you also trust the URL.
         <translation>, остання сесія була запущена %1, і тривала %2</translation>
     </message>
     <message>
-        <location line="-765"/>
+        <location line="-773"/>
         <source>Profilers</source>
         <translation>Профайлери</translation>
     </message>
     <message>
-        <location line="+749"/>
+        <location line="+757"/>
         <source>broken</source>
         <translation>пошкоджено</translation>
     </message>
@@ -8434,12 +8649,12 @@ Make sure you also trust the URL.
         <translation>; всього зіграно %1</translation>
     </message>
     <message>
-        <location line="-783"/>
+        <location line="-791"/>
         <source>Launch &amp;Offline</source>
         <translation>Запустити &amp;офлайн</translation>
     </message>
     <message>
-        <location line="+723"/>
+        <location line="+731"/>
         <source>&lt;PROFILE ID&gt;</source>
         <translation>&lt;ID ПРОФІЛЮ&gt;</translation>
     </message>
@@ -8449,7 +8664,7 @@ Make sure you also trust the URL.
         <translation>&lt;ID СЕСІЇ&gt;</translation>
     </message>
     <message>
-        <location line="-720"/>
+        <location line="-728"/>
         <source>&amp;Launch</source>
         <translation>За&amp;пустити</translation>
     </message>
@@ -8459,22 +8674,22 @@ Make sure you also trust the URL.
         <translation>&amp;Без профайлера</translation>
     </message>
     <message>
-        <location line="+750"/>
+        <location line="+758"/>
         <source>Minecraft %1</source>
         <translation>Minecraft %1</translation>
     </message>
     <message>
-        <location line="-770"/>
+        <location line="-778"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location line="+787"/>
+        <location line="+795"/>
         <source>, has crashed.</source>
         <translation>, зазнав краху.</translation>
     </message>
     <message>
-        <location line="-785"/>
+        <location line="-793"/>
         <source>Ctrl+Alt+O</source>
         <translation>Ctrl+Alt+O</translation>
     </message>
@@ -8599,7 +8814,7 @@ Make sure you also trust the URL.
         <translation>&amp;Розмір Вікна:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+344"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+340"/>
         <source>Select Global Data Packs Folder</source>
         <translation>Вибрати загальну теку для пакетів даних</translation>
     </message>
@@ -8681,7 +8896,7 @@ It is most likely you will need to change the path - please refer to the mod&apo
         <translation>&amp;Відкрити загальні налаштування</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-497"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-493"/>
         <source>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: The maximized option is not fully supported on this Minecraft version.&lt;/span&gt;</source>
         <translation>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Попередження&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Опція &quot;повноекранний режим&quot; не повністю підтримується в цій версії Minecraft.&lt;/span&gt;</translation>
     </message>
@@ -8893,6 +9108,59 @@ It is most likely you will need to change the path - please refer to the mod&apo
     </message>
 </context>
 <context>
+    <name>ModConflictChecker</name>
+    <message>
+        <location filename="../launcher/minecraft/mod/ModConflictChecker.cpp" line="+88"/>
+        <source>unknown version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Duplicate mod: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These files all provide the mod id &quot;%1&quot;, and the game will not start with more than one of them:
+%2
+Keep only one (usually the newest) and delete or disable the others.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>%1 conflicts with %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 (%2) says it is incompatible with %3 (%4), and both are enabled.
+Disable or remove one of them.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
+        <source>Disabled dependency: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 needs the mod &quot;%2&quot;, which is installed (%3) but disabled.
+Enable it to avoid a crash on startup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Possibly missing dependency: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 needs a mod with the id &quot;%2&quot;, but none was found in the mods folder.
+If the game starts fine it is probably bundled inside another mod; otherwise download it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ModFilterWidget</name>
     <message>
         <location filename="../launcher/ui/widgets/ModFilterWidget.ui" line="+284"/>
@@ -9033,7 +9301,7 @@ It is most likely you will need to change the path - please refer to the mod&apo
 <context>
     <name>ModFolderModel</name>
     <message>
-        <location filename="../launcher/minecraft/mod/ModFolderModel.cpp" line="+100"/>
+        <location filename="../launcher/minecraft/mod/ModFolderModel.cpp" line="+101"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
@@ -9058,27 +9326,27 @@ It is most likely you will need to change the path - please refer to the mod&apo
         <translation>Зображення</translation>
     </message>
     <message>
-        <location line="+388"/>
+        <location line="+411"/>
         <source>Only Disable Selected</source>
         <translation>Вимкнути тільки вибрані</translation>
     </message>
     <message>
-        <location line="-387"/>
+        <location line="-410"/>
         <source>Required By</source>
         <translation>Потрібен для</translation>
     </message>
     <message>
-        <location line="+378"/>
+        <location line="+401"/>
         <source>Confirm enable</source>
         <translation>Підтвердити ввімкнення</translation>
     </message>
     <message>
-        <location line="-378"/>
+        <location line="-401"/>
         <source>Minecraft Versions</source>
         <translation>Minecraft</translation>
     </message>
     <message>
-        <location line="+370"/>
+        <location line="+393"/>
         <source>Confirm toggle</source>
         <translation>Підтвердити перемикання</translation>
     </message>
@@ -9087,7 +9355,7 @@ It is most likely you will need to change the path - please refer to the mod&apo
         <translation type="vanished">Назва Файлу</translation>
     </message>
     <message>
-        <location line="-246"/>
+        <location line="-269"/>
         <source>Is the mod enabled?</source>
         <translation>Мод увімкнено?</translation>
     </message>
@@ -9107,7 +9375,7 @@ It is most likely you will need to change the path - please refer to the mod&apo
         <translation>Версія моду.</translation>
     </message>
     <message numerus="yes">
-        <location line="+245"/>
+        <location line="+268"/>
         <source>%n mod(s) will be disabled
 </source>
         <translation>
@@ -9120,7 +9388,7 @@ It is most likely you will need to change the path - please refer to the mod&apo
         </translation>
     </message>
     <message>
-        <location line="-229"/>
+        <location line="-252"/>
         <source>For each mod, the number of other mods which depend on it.</source>
         <translation>Для кожного мода — кількість інших модів, які від нього залежать.</translation>
     </message>
@@ -9130,12 +9398,12 @@ It is most likely you will need to change the path - please refer to the mod&apo
         <translation>Увімкнути</translation>
     </message>
     <message>
-        <location line="+376"/>
+        <location line="+399"/>
         <source>Only Toggle Selected</source>
         <translation>Перемкнути лише вибране</translation>
     </message>
     <message>
-        <location line="-346"/>
+        <location line="-369"/>
         <source>Folder</source>
         <translation>Тека</translation>
     </message>
@@ -9150,7 +9418,7 @@ It is most likely you will need to change the path - please refer to the mod&apo
         <translation>Завантажувач модів.</translation>
     </message>
     <message>
-        <location line="+250"/>
+        <location line="+273"/>
         <source>Would you like to disable them as well?
 Ignoring them may break the game.</source>
         <translation>Чи бажаєте Ви також вимкнути їх? 
@@ -9175,7 +9443,7 @@ Ignoring them may break the game.</source>
         </translation>
     </message>
     <message>
-        <location line="-386"/>
+        <location line="-409"/>
         <source>Last Modified</source>
         <translation>Востаннє змінено</translation>
     </message>
@@ -9195,7 +9463,7 @@ Ignoring them may break the game.</source>
         <translation>Дата і час останньої зміни (або додавання) цього моду.</translation>
     </message>
     <message numerus="yes">
-        <location line="+249"/>
+        <location line="+272"/>
         <source>The enabled mod(s) require %n mod(s).
 </source>
         <translation>
@@ -9215,12 +9483,12 @@ Ignoring them may break the game.</source>
 Їх ігнорування може зламати гру.</translation>
     </message>
     <message>
-        <location line="-381"/>
+        <location line="-404"/>
         <source>Provider</source>
         <translation>Джерело</translation>
     </message>
     <message>
-        <location line="+382"/>
+        <location line="+405"/>
         <source>Only Enable Selected</source>
         <translation>Увімкнути лише вибрані</translation>
     </message>
@@ -9235,7 +9503,7 @@ Ignoring them may break the game.</source>
         <translation>Вимкнути необхідне</translation>
     </message>
     <message>
-        <location line="-250"/>
+        <location line="-273"/>
         <source>The supported minecraft versions.</source>
         <translation>Підтримані версії майнкрафту.</translation>
     </message>
@@ -9255,14 +9523,14 @@ Ignoring them may break the game.</source>
         <translation>Тип релізу</translation>
     </message>
     <message>
-        <location line="+371"/>
+        <location line="+394"/>
         <source>Toggling these mod(s) will cause changes to other mods.
 </source>
         <translation>Перемикання цього моду(-ів) може змінити інші моди.
 </translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="-260"/>
         <source>On what environment the mod is running.</source>
         <translation>У якому середовищі мод працює.</translation>
     </message>
@@ -9276,7 +9544,7 @@ Ignoring them may break the game.</source>
         <translation>Тип релізу.</translation>
     </message>
     <message>
-        <location line="+234"/>
+        <location line="+257"/>
         <source>Do you want to automatically apply these related changes?
 Ignoring them may break the game.</source>
         <translation>Бажаєте автоматично застосувати ці пов&apos;язані зміни?
@@ -9310,33 +9578,34 @@ Ignoring them may break the game.</source>
     </message>
     <message>
         <location filename="../launcher/ui/pages/instance/ModFolderPage.cpp" line="+190"/>
-        <location line="+90"/>
+        <location line="+104"/>
         <source>Download stopped by user.</source>
         <translation>Завантаження припинене користувачем.</translation>
     </message>
     <message>
-        <location line="-70"/>
-        <location line="+86"/>
+        <location line="-83"/>
+        <location line="+99"/>
         <source>Abort</source>
         <translation>Відмінити</translation>
     </message>
     <message>
-        <location line="-110"/>
-        <location line="+45"/>
-        <location line="+45"/>
-        <location line="+60"/>
+        <location line="-124"/>
+        <location line="+46"/>
+        <location line="+58"/>
+        <location line="+61"/>
+        <location line="+101"/>
         <source>Error</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location line="-191"/>
+        <location line="-306"/>
         <source>The mods you are trying to delete are required by %1 mods.
 Do you want to disable them?</source>
         <translation>Моди які ви пробуєте видалити потрібні %1 mods.
 Ви хочете їх вимкнути?</translation>
     </message>
     <message>
-        <location line="-59"/>
+        <location line="-60"/>
         <source>Check for Updates</source>
         <translation>Перевірити наявність оновлень</translation>
     </message>
@@ -9346,48 +9615,50 @@ Do you want to disable them?</source>
         <translation>Підтвердити видалення</translation>
     </message>
     <message>
-        <location line="+133"/>
+        <location line="+143"/>
         <source>All mods are up-to-date! :)</source>
         <translation>Всі моди оновлені! :)</translation>
     </message>
     <message>
-        <location line="-28"/>
+        <location line="-37"/>
         <source>Confirm Update</source>
         <translation>Підтвердити оновлення</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+34"/>
         <source>&apos;%1&apos; is up-to-date! :)</source>
         <translation>&apos;%1&apos; актуальної версії! :)</translation>
     </message>
     <message>
-        <location line="-159"/>
+        <location line="-169"/>
         <source>Change a mod&apos;s version.</source>
         <translation>Змінити версію моду.</translation>
     </message>
     <message>
+        <location line="+334"/>
         <source>You need to install a compatible mod loader before installing mods. Would you like to do so?</source>
-        <translation type="vanished">Перед встановленням модів потрібно встановити сумісний завантажувач модів. Бажаєте це зробити?</translation>
+        <translation>Перед встановленням модів потрібно встановити сумісний завантажувач модів. Бажаєте це зробити?</translation>
     </message>
     <message>
+        <location line="-1"/>
         <source>Missing Mod Loader</source>
-        <translation type="vanished">Відсутній завантажувач модів</translation>
+        <translation>Відсутній завантажувач модів</translation>
     </message>
     <message>
-        <location line="+88"/>
-        <location line="+67"/>
-        <location line="+23"/>
+        <location line="-245"/>
+        <location line="+77"/>
+        <location line="+27"/>
         <source>Aborted</source>
         <translation>Перервано</translation>
     </message>
     <message>
-        <location line="-84"/>
-        <location line="+90"/>
+        <location line="-98"/>
+        <location line="+104"/>
         <source>Warnings</source>
         <translation>Попередження</translation>
     </message>
     <message>
-        <location line="-49"/>
+        <location line="-62"/>
         <source>Updating mods while the game is running may cause mod duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -9396,24 +9667,38 @@ Are you sure you want to do this?</source>
 Ви впевнені, що хочете це зробити?</translation>
     </message>
     <message>
-        <location line="+74"/>
+        <location line="+20"/>
+        <source>There are no mods to check for updates.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+23"/>
+        <source>No updates were found, but %n mod(s) could not be checked.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+45"/>
         <source>You are about to remove the metadata for %1 mods.
 Are you sure?</source>
         <translation>Ви збираєтесь видалити метадані %1 модів.
 Ви впевнені?</translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="-252"/>
         <source>Download mods from online mod platforms</source>
         <translation>Завантажити моди з онлайн-платформ</translation>
     </message>
     <message>
-        <location line="+192"/>
+        <location line="+202"/>
         <source>All selected mods are up-to-date! :)</source>
         <translation>Усі обрані моди оновлені до найновішої версії! :)</translation>
     </message>
     <message>
-        <location line="-193"/>
+        <location line="-203"/>
         <location line="+111"/>
         <source>Download Mods</source>
         <translation>Завантажити моди</translation>
@@ -9424,49 +9709,51 @@ Are you sure?</source>
         <translation>Експортувати метадані мода у текст.</translation>
     </message>
     <message>
-        <location line="+202"/>
+        <location line="+217"/>
         <source>Confirm Removal</source>
         <translation>Підтвердити видалення</translation>
     </message>
     <message>
-        <location line="-79"/>
-        <location line="+105"/>
+        <location line="-93"/>
+        <location line="+119"/>
         <source>Mod updates are unavailable when metadata is disabled!</source>
         <translation>Оновлення модифікацій не є доступним, якщо вимкнено метадані!</translation>
     </message>
     <message>
-        <location line="-256"/>
+        <location line="-271"/>
         <source>Try to check or update all selected mods (all mods if none are selected)</source>
         <translation>Спробувати знайти оновлення для обраних модів (для всіх модів якщо обраних немає)</translation>
     </message>
     <message>
+        <location line="+372"/>
         <source>No mod loader was installed. Please try again.</source>
-        <translation type="vanished">Завантажувач модів не встановлено. Спробуйте ще раз.</translation>
+        <translation>Завантажувач модів не встановлено. Спробуйте ще раз.</translation>
     </message>
     <message>
-        <location line="+189"/>
+        <location line="-194"/>
+        <location line="+25"/>
         <source>Update checker</source>
         <translation>Перевірка оновлень</translation>
     </message>
     <message>
-        <location line="-12"/>
+        <location line="-16"/>
         <source>The mod updater was aborted!</source>
         <translation>Оновлювання моду було скасовано!</translation>
     </message>
     <message>
-        <location line="-125"/>
+        <location line="-135"/>
         <source>If you remove mods while the game is running it may crash your game.
 Are you sure you want to do this?</source>
         <translation>Видалення модифікацій запущеної гри може призвести до її аварійного завершення.
 Ви дійсно хочете це зробити?</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
         <source>Confirm Disable</source>
         <translation>Підтвердити вимкнення</translation>
     </message>
     <message>
-        <location line="-38"/>
+        <location line="-39"/>
         <source>View the homepages of all selected mods.</source>
         <translation>Переглянути головні сторінки всіх вибраних модів.</translation>
     </message>
@@ -9510,7 +9797,7 @@ Are you sure you want to do this?</source>
 <context>
     <name>Modrinth::ModpackListModel</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/modrinth/ModrinthModel.cpp" line="+324"/>
+        <location filename="../launcher/ui/pages/modplatform/modrinth/ModrinthModel.cpp" line="+329"/>
         <location line="+3"/>
         <source>Error</source>
         <translation>Помилка</translation>
@@ -9537,32 +9824,32 @@ Please update %1!</source>
         <translation>Підготовка ресурсів для Modrinth...</translation>
     </message>
     <message>
-        <location line="+67"/>
+        <location line="+68"/>
         <source>Parsing the API response from Modrinth...</source>
         <translation>Обробка відповіді від API Modrinth...</translation>
     </message>
     <message>
-        <location line="+106"/>
+        <location line="+109"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version.</source>
         <translation>Не знайдено дійсної версії для цього ресурсу. Ймовірно, вона недоступна для поточної версії гри.</translation>
     </message>
     <message>
-        <location line="-137"/>
+        <location line="-140"/>
         <source>Waiting for the API response from Modrinth...</source>
         <translation>Очікуємо на відповідь від API Modrinth...</translation>
     </message>
     <message>
-        <location line="+98"/>
+        <location line="+99"/>
         <source>Unknown</source>
         <translation>Невідомо</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+38"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version / mod loader.</source>
         <translation>Не знайдено дійсної версії для цього ресурсу. Ймовірно, вона недоступна для поточної версії гри чи надавача модів.</translation>
     </message>
     <message>
-        <location line="-38"/>
+        <location line="-40"/>
         <source>Not installed</source>
         <translation>Не встановлено</translation>
     </message>
@@ -9570,17 +9857,17 @@ Please update %1!</source>
 <context>
     <name>ModrinthCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+292"/>
+        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+328"/>
         <source>Downloading mods...</source>
         <translation>Завантаження модів...</translation>
     </message>
     <message>
-        <location line="-61"/>
+        <location line="-71"/>
         <source>Mod Download Modrinth</source>
         <translation>Завантаження моду з Modrinth</translation>
     </message>
     <message>
-        <location line="+172"/>
+        <location line="+182"/>
         <source>Download URL for %1 is not a correctly formatted URL</source>
         <translation>URL-адреса завантаження для %1 має неправильний формат URL-адреси</translation>
     </message>
@@ -9589,7 +9876,7 @@ Please update %1!</source>
         <translation type="vanished">Видаляємо старі конфліктні файли.</translation>
     </message>
     <message>
-        <location line="-209"/>
+        <location line="-235"/>
         <source>Could not rename the client overrides folder:
 </source>
         <translation>Не вдалося перейменувати теку перевизначень клієнта:
@@ -9600,47 +9887,47 @@ Please update %1!</source>
         <translation type="vanished">Не вдалося видалити старі конфліктні файли.</translation>
     </message>
     <message>
-        <location line="-57"/>
+        <location line="-58"/>
         <source>We couldn&apos;t find a suitable index file for the older version. This may cause some of the files to be duplicated. Do you want to continue?</source>
         <translation>Ми не знайшли відповідний файл індексу для старої версії. Це може призвести до клонування деяких файлів. Ви хочете продовжити?</translation>
     </message>
     <message>
-        <location line="+120"/>
+        <location line="+137"/>
         <source>The file &apos;%1&apos; is missing a download link. This is invalid in the pack format.</source>
         <translation>У файлі &apos;%1&apos; відсутнє посилання для завантаження. Це неприпустимо у форматі пакунка.</translation>
     </message>
     <message>
-        <location line="+30"/>
+        <location line="+40"/>
         <location line="+24"/>
         <source>%1 out of %2 complete</source>
         <translation>%1 з %2 завершено</translation>
     </message>
     <message>
-        <location line="-175"/>
+        <location line="-202"/>
         <source>No index file.</source>
         <translation>Немає файлу індекса.</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+46"/>
         <source>Could not rename the overrides folder:
 </source>
         <translation>Не вдалося перейменувати теку перевизначення:
 </translation>
     </message>
     <message>
-        <location line="+282"/>
+        <location line="+310"/>
         <source>Could not understand pack index:
 </source>
         <translation>Не вдалося зрозуміти індекс збірки:
 </translation>
     </message>
     <message>
-        <location line="-397"/>
+        <location line="-427"/>
         <source> (version %1)</source>
         <translation> (версія %1)</translation>
     </message>
     <message>
-        <location line="+177"/>
+        <location line="+195"/>
         <source>One of the files has a path that leads to an arbitrary location (%1). This is a security risk and isn&apos;t allowed.</source>
         <translation>Один з файлів має шлях, який веде до довільного місця (%1). Це загрожує безпеці і є неприпустимим.</translation>
     </message>
@@ -9648,7 +9935,7 @@ Please update %1!</source>
 <context>
     <name>ModrinthManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+62"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+69"/>
         <source>Fetching changelogs...</source>
         <translation>Отримання списку змін...</translation>
     </message>
@@ -9658,12 +9945,12 @@ Please update %1!</source>
         <translation>Виберіть файл оновлення</translation>
     </message>
     <message>
-        <location line="-81"/>
+        <location line="-86"/>
         <source>%1 (Current)</source>
         <translation>%1 (Дійсна)</translation>
     </message>
     <message>
-        <location line="+81"/>
+        <location line="+86"/>
         <source>Modrinth pack</source>
         <translation>Збірка Modrinth</translation>
     </message>
@@ -9813,6 +10100,51 @@ Please update %1!</source>
     </message>
 </context>
 <context>
+    <name>MyReportsDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+151"/>
+        <location line="+4"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Bug reports and suggestions you sent from this launcher, and what the team answered.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>No reports yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>When you send a bug report or suggestion from this launcher, it shows up here, and you will be told when the team answers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <location line="+25"/>
+        <source>Check for updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-24"/>
+        <source>Close</source>
+        <translation type="unfinished">Закрити</translation>
+    </message>
+    <message>
+        <location line="+25"/>
+        <source>Last checked: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>Checking…</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Net::NetRequest</name>
     <message>
         <location filename="../launcher/net/NetRequest.cpp" line="+159"/>
@@ -9891,7 +10223,7 @@ Please update %1!</source>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+145"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10056,12 +10388,12 @@ Please update %1!</source>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/NewInstanceDialog.ui" line="+17"/>
-        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="+78"/>
+        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="+79"/>
         <source>New Instance</source>
         <translation>Нова збірка</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="-112"/>
+        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="-113"/>
         <source>No group</source>
         <translation>Без групи</translation>
     </message>
@@ -10200,13 +10532,13 @@ Please update %1!</source>
         <translation>&amp;Знайти</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+483"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+486"/>
         <source>Clear</source>
         <translation>Очистити</translation>
     </message>
     <message>
-        <location line="-222"/>
-        <location line="+135"/>
+        <location line="-225"/>
+        <location line="+138"/>
         <location line="+41"/>
         <source>Error</source>
         <translation>Помилка</translation>
@@ -10217,7 +10549,7 @@ Please update %1!</source>
         <translation>Очистити звіт</translation>
     </message>
     <message>
-        <location line="-299"/>
+        <location line="-302"/>
         <source>Current logs</source>
         <translation>Поточні журнали</translation>
     </message>
@@ -10227,7 +10559,7 @@ Please update %1!</source>
         <translation>Перенесення рядків</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+224"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+227"/>
         <source>Are you sure you want to delete all log files?</source>
         <translation>Ви дійсно хочете видалити усі файли звітів?</translation>
     </message>
@@ -10253,8 +10585,8 @@ Please update %1!</source>
         <translation>Прокрутити до самого низу</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="-240"/>
-        <location line="+218"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="-243"/>
+        <location line="+221"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Неможливо відобразити цей звіт, оскільки його довжина перевищила %1 рядків.</translation>
     </message>
@@ -10291,7 +10623,7 @@ Please update %1!</source>
         <translation>Підтвердити видалення</translation>
     </message>
     <message>
-        <location line="-112"/>
+        <location line="-115"/>
         <source>The file (%1) is too big. You may want to open it in a viewer optimized for large files.</source>
         <translation>Файл (%1) занадто великий. Ви можете відкрити його в оптимізованім для перегляду великих файлів застосункові.</translation>
     </message>
@@ -10301,7 +10633,7 @@ Please update %1!</source>
         <translation>Скопіювати ввесь звіт до буферу обміну</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+127"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+130"/>
         <source>Unable to delete %1: %2</source>
         <translation>Неможливо видалити %1: %2</translation>
     </message>
@@ -10360,7 +10692,7 @@ Are you sure?</source>
 %1</translation>
     </message>
     <message>
-        <location line="-151"/>
+        <location line="-154"/>
         <source>Unable to open %1 for reading: %2</source>
         <translation>Неможливо відкрити %1 для читання: %2</translation>
     </message>
@@ -10508,19 +10840,19 @@ Are you sure?</source>
         <translation type="vanished">Виправити пізніше.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+383"/>
-        <location line="+42"/>
+        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+388"/>
+        <location line="+44"/>
         <source>Search settings…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-41"/>
-        <location line="+42"/>
+        <location line="-43"/>
+        <location line="+44"/>
         <source>Search all settings (Ctrl+F). Several words narrow the results down.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+296"/>
+        <location line="+297"/>
         <source>No settings match &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10800,7 +11132,7 @@ StdErr: %2</translation>
 <context>
     <name>PollyMCUpdaterApp</name>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="+99"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="+100"/>
         <source>Use a custom path as application root (use &apos;.&apos; for current directory).</source>
         <translation type="unfinished">Використовувати власний шлях як кореневий каталог застосунку (використовуйте &apos;.&apos; для поточної теки).</translation>
     </message>
@@ -11152,20 +11484,26 @@ Updater log: %7</source>
         <translation type="unfinished">Не вдалося витягти %1 до %2</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+23"/>
+        <source>Failed to launch child process to read version, using the built-in version instead.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+4"/>
+        <source>Child launcher process did not finish in time, using the built-in version instead.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Failed to Check Version</source>
-        <translation type="unfinished">Не вдалося перевірити версію</translation>
+        <translation type="obsolete">Не вдалося перевірити версію</translation>
     </message>
     <message>
-        <location line="-4"/>
         <source>Failed to launch child process to read version.</source>
-        <translation type="unfinished">Не вдалося запустити дочірній процес для читання версії.</translation>
+        <translation type="obsolete">Не вдалося запустити дочірній процес для читання версії.</translation>
     </message>
     <message>
-        <location line="+4"/>
         <source>Child launcher process failed.</source>
-        <translation type="unfinished">Процес запуску дочірнього процесу не вдався.</translation>
+        <translation type="obsolete">Процес запуску дочірнього процесу не вдався.</translation>
     </message>
 </context>
 <context>
@@ -11887,7 +12225,7 @@ Proceed with truncation?</source>
         <translation type="vanished">Нерозпізнаний</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1173"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
         <source>%1 (in use)</source>
         <translation>%1 (використовується)</translation>
     </message>
@@ -11958,6 +12296,18 @@ Proceed with truncation?</source>
         <location filename="../launcher/InstanceDirUpdate.cpp" line="+65"/>
         <source>New instance root (%1) already exists. &lt;br /&gt;Only the metadata will be renamed.</source>
         <translation>Новий кореневий каталог збірки (%1) вже існує. &lt;br /&gt;Буде перейменовано лише метадані.</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Cannot rename instance folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The instance folder cannot be renamed while the instance is running.
+
+Only the instance name will be changed. The folder will keep its current name.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../launcher/net/PasteUpload.cpp" line="+178"/>
@@ -12074,7 +12424,7 @@ Proceed with truncation?</source>
         <translation>З особливою подякою</translation>
     </message>
     <message numerus="yes">
-        <location filename="../launcher/InstanceDirUpdate.cpp" line="+48"/>
+        <location filename="../launcher/InstanceDirUpdate.cpp" line="+49"/>
         <source>The following instance(s) might reference files in this instance:
 
 %1
@@ -12155,7 +12505,7 @@ Do you wish to proceed?</source>
         <translation>Упорядкувати за Слушністю</translation>
     </message>
     <message>
-        <location filename="../launcher/meta/BaseEntity.cpp" line="+34"/>
+        <location filename="../launcher/meta/BaseEntity.cpp" line="+36"/>
         <source>Download of meta file %1</source>
         <translation>Завантаження мета-файлу %1</translation>
     </message>
@@ -12180,8 +12530,8 @@ Do you wish to proceed?</source>
         <translation>Перейменувати теку збірки</translation>
     </message>
     <message>
-        <location line="-9"/>
-        <location line="+33"/>
+        <location line="-16"/>
+        <location line="+40"/>
         <source>Cannot rename instance</source>
         <translation>Неможливо перейменувати збірку</translation>
     </message>
@@ -12299,7 +12649,7 @@ New name: %2</source>
         <translation>Неможливо обробити файл версії %1: %2 в рядку %3 стовпець %4.</translation>
     </message>
     <message>
-        <location filename="../launcher/modplatform/ModIndex.h" line="+143"/>
+        <location filename="../launcher/modplatform/ModIndex.h" line="+145"/>
         <source> for %1</source>
         <translation> для %1</translation>
     </message>
@@ -12808,7 +13158,7 @@ New name: %2</source>
         <translation type="vanished">Rory ID 11 (намалював Ashtaka)</translation>
     </message>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1040"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1049"/>
         <source>An auto-updater for PollyMC-Continued</source>
         <translation>Автооновлювач для PollyMC-Continued</translation>
     </message>
@@ -12852,16 +13202,146 @@ New name: %2</source>
         <source>Send this error to the PollyMC developers</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../launcher/BugReportTracker.cpp" line="+164"/>
+        <source>Waiting for a dev to check it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Seen - the team is looking into it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The team needs more information - please reach out on Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Fixed - it will be in the next update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-193"/>
+        <source>Fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Fixed in version %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+2"/>
+        <source>Won&apos;t be fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Duplicate of another report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+4"/>
+        <source>Not a bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+1"/>
+        <source>Updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Crash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Suggestion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Other</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-13"/>
+        <source>Waiting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>In review</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Needs info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Duplicate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>NEW</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Sent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>(no title)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>%1  ·  ID %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <location line="+8"/>
+        <source>Copy ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-7"/>
+        <source>Give this ID to the team if you contact them about this report.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Copied!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Resource</name>
     <message>
-        <location filename="../launcher/minecraft/mod/Resource.cpp" line="+112"/>
+        <location filename="../launcher/minecraft/mod/Resource.cpp" line="+114"/>
         <source>Not marked as compatible with the instance&apos;s game version.</source>
         <translation>Не позначено як сумісне з версією гри екземпляра.</translation>
     </message>
     <message>
-        <location line="-49"/>
+        <location line="-50"/>
         <source>Unknown</source>
         <translation>Невідомо</translation>
     </message>
@@ -12869,7 +13349,7 @@ New name: %2</source>
 <context>
     <name>ResourceDownload::DataPackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+181"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+196"/>
         <source>data packs</source>
         <extracomment>String that gets appended to the data pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>пакети даних</translation>
@@ -12893,7 +13373,7 @@ New name: %2</source>
 <context>
     <name>ResourceDownload::ModDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-69"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-81"/>
         <source>mods</source>
         <extracomment>String that gets appended to the mod download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>модів</translation>
@@ -12917,7 +13397,7 @@ New name: %2</source>
 <context>
     <name>ResourceDownload::ResourceDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="+189"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="+193"/>
         <source>Abort</source>
         <translation>Перервати</translation>
     </message>
@@ -12927,17 +13407,17 @@ New name: %2</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location line="-96"/>
+        <location line="-98"/>
         <source>Ctrl+Return</source>
         <translation>Ctrl+Return</translation>
     </message>
     <message>
-        <location line="+332"/>
+        <location line="+379"/>
         <source>Change %1 version</source>
         <translation>Змінити версію %1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-48"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-51"/>
         <source>Download %1</source>
         <translation>Завантаження %1</translation>
     </message>
@@ -12950,24 +13430,24 @@ New name: %2</source>
         <translation type="vanished">пакети шейдерів</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="-306"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="-352"/>
         <source>You have %1 selected resources.
 Are you sure you want to close this dialog?</source>
         <translation>Ви маєте %1 виділених ресурсів.
 Ви впевнені що хочете закрити це вікно?</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+52"/>
         <source>Opens a new popup to review your selected %1 and confirm your selection. Shortcut: Ctrl+Return</source>
         <translation>Відкриває нове вікно для перевірки обраних вами %1 та підтвердження вашого вибору. Скорочення: Ctrl+Enter</translation>
     </message>
     <message>
-        <location line="-78"/>
+        <location line="-80"/>
         <source>Review and confirm</source>
         <translation>Перевiрити та пiдтвердити</translation>
     </message>
     <message>
-        <location line="+113"/>
+        <location line="+115"/>
         <source>Checking for dependencies...</source>
         <translation>Перевірка залежностей....</translation>
     </message>
@@ -12996,7 +13476,7 @@ Are you sure you want to close this dialog?</source>
         <translation type="vanished">пакети текстур</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="-64"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="-65"/>
         <source>Confirmation Needed</source>
         <translation>Потрібне Підтвердження</translation>
     </message>
@@ -13004,35 +13484,35 @@ Are you sure you want to close this dialog?</source>
 <context>
     <name>ResourceDownload::ResourceModel</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourceModel.cpp" line="+221"/>
-        <location line="+20"/>
-        <location line="+180"/>
-        <location line="+4"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourceModel.cpp" line="+239"/>
+        <location line="+24"/>
+        <location line="+190"/>
+        <location line="+7"/>
         <source>Error</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location line="-179"/>
+        <location line="-191"/>
         <source>The request was aborted for an unknown reason</source>
         <translation>Запит було скасовано з невідомої причини</translation>
     </message>
     <message>
-        <location line="+175"/>
+        <location line="+184"/>
         <source>A network error occurred. Could not load mods.</source>
         <translation>Виникла помилка в мережі. Не вдалося завантажити моди.</translation>
     </message>
     <message>
-        <location line="-180"/>
+        <location line="-190"/>
         <source>A network error occurred. Could not load project info: %1</source>
         <translation>Виникла помилка мережі. Не вдалося завантажити інформацію про проєкт: %1</translation>
     </message>
     <message>
-        <location line="-19"/>
+        <location line="-23"/>
         <source>A network error occurred. Could not load project versions: %1</source>
         <translation>Виникла помилка мережі. Не вдалося завантажити версії проєкту: %1</translation>
     </message>
     <message>
-        <location line="+204"/>
+        <location line="+221"/>
         <source>API version too old!
 Please update %1!</source>
         <translation>Версія API застаріла!
@@ -13042,7 +13522,7 @@ Please update %1!</source>
 <context>
     <name>ResourceDownload::ResourcePackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+68"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+74"/>
         <source>resource packs</source>
         <extracomment>String that gets appended to the resource pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>пакети ресурсів</translation>
@@ -13066,18 +13546,18 @@ Please update %1!</source>
 <context>
     <name>ResourceDownload::ResourcePage</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+219"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+233"/>
         <source> by </source>
         <translation> від </translation>
     </message>
     <message>
-        <location line="+86"/>
+        <location line="+92"/>
         <source> [installed]</source>
         <comment>Mod version select</comment>
         <translation> [встановлено]</translation>
     </message>
     <message>
-        <location line="+234"/>
+        <location line="+248"/>
         <source>Reinstall</source>
         <translation>Перевстановити</translation>
     </message>
@@ -13087,7 +13567,7 @@ Please update %1!</source>
         <translation>Ctrl+Return</translation>
     </message>
     <message>
-        <location line="-227"/>
+        <location line="-241"/>
         <source>Cannot select invalid version :(</source>
         <translation>Не вдається вибрати недійсну версію :(</translation>
     </message>
@@ -13097,47 +13577,47 @@ Please update %1!</source>
         <translation>Не знайдено потрібної версії.</translation>
     </message>
     <message>
-        <location line="-83"/>
+        <location line="-89"/>
         <source>Donate information: </source>
         <translation>Пожертва: </translation>
     </message>
     <message>
-        <location line="+335"/>
+        <location line="+355"/>
         <source>The resource was not found</source>
         <translation>Ресурс не знайдено</translation>
     </message>
     <message>
-        <location line="-316"/>
+        <location line="-335"/>
         <source>Wiki: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Вікі: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+183"/>
+        <location line="+198"/>
         <source>No versions available</source>
         <translation>Немає доступних версій</translation>
     </message>
     <message>
-        <location line="-179"/>
+        <location line="-192"/>
         <source>Discord: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Дискорд: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="-6"/>
+        <location line="-9"/>
         <source>Issues: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Проблеми: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+300"/>
+        <location line="+320"/>
         <source>Cancel</source>
         <translation>Скасувати</translation>
     </message>
     <message>
-        <location line="-209"/>
+        <location line="-222"/>
         <source>Loading versions...</source>
         <translation>Завантаження версій...</translation>
     </message>
     <message>
-        <location line="-87"/>
+        <location line="-92"/>
         <source>Source code: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Вихідний код: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
@@ -13146,24 +13626,24 @@ Please update %1!</source>
         <translation type="vanished"> [встановлено]</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.h" line="+47"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.h" line="+46"/>
         <source>resources</source>
         <extracomment>The plural version of &apos;resource&apos;</extracomment>
         <translation>ресурси</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+23"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+25"/>
         <source>No version available for the selected pack</source>
         <translation>Немає доступної версії для обраного пакета</translation>
     </message>
     <message>
-        <location line="-159"/>
-        <location line="+161"/>
+        <location line="-176"/>
+        <location line="+178"/>
         <source>Select %1 for download</source>
         <translation>Вибрати %1 для завантаження</translation>
     </message>
     <message>
-        <location line="+157"/>
+        <location line="+169"/>
         <source>No versions for &apos;%1&apos; are available.
 The author likely blocked third-party launchers.</source>
         <translation>Немає доступних версій для &apos;%1&apos;.
@@ -13176,13 +13656,13 @@ The author likely blocked third-party launchers.</source>
         <translation>ресурс</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="-319"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="-348"/>
         <source>Search for %1...</source>
         <extracomment>String in the search bar of the mod downloading dialog</extracomment>
         <translation>Пошук %1...</translation>
     </message>
     <message>
-        <location line="+111"/>
+        <location line="+124"/>
         <source>&lt;b&gt;This project has been archived. It will not receive any further updates unless the author decides to unarchive the project.&lt;/b&gt;</source>
         <translation>&lt;b&gt;Цей проєкт було заархівовано. Він не буде отримувати оновлення допоки автор не вирішить розархівувати проєкт.&lt;/b&gt;</translation>
     </message>
@@ -13192,7 +13672,7 @@ The author likely blocked third-party launchers.</source>
         <translation>Зовнішні покликання:</translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+39"/>
         <source>Deselect %1 for download</source>
         <translation>Прибрати %1 для завантаження</translation>
     </message>
@@ -13200,7 +13680,7 @@ The author likely blocked third-party launchers.</source>
 <context>
     <name>ResourceDownload::ShaderPackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+34"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+40"/>
         <source>shader packs</source>
         <extracomment>String that gets appended to the shader pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>пакети шейдерів</translation>
@@ -13224,7 +13704,7 @@ The author likely blocked third-party launchers.</source>
 <context>
     <name>ResourceDownload::TexturePackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-17"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-20"/>
         <source>texture packs</source>
         <extracomment>String that gets appended to the texture pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>пакети текстур</translation>
@@ -13248,12 +13728,12 @@ The author likely blocked third-party launchers.</source>
 <context>
     <name>ResourceDownloadTask</name>
     <message>
-        <location filename="../launcher/ResourceDownloadTask.cpp" line="+99"/>
+        <location filename="../launcher/ResourceDownloadTask.cpp" line="+131"/>
         <source>Failed to rename shader config from &apos;%1&apos; to &apos;%2&apos;</source>
         <translation>Невдалося перейменувати конфіг шейдера з &apos;%1&apos; на &apos;%2&apos;</translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="-57"/>
         <source>Resource download</source>
         <translation>Завантаження ресурсів</translation>
     </message>
@@ -13268,7 +13748,7 @@ The author likely blocked third-party launchers.</source>
 <context>
     <name>ResourceFolderModel</name>
     <message>
-        <location filename="../launcher/minecraft/mod/ResourceFolderModel.h" line="+244"/>
+        <location filename="../launcher/minecraft/mod/ResourceFolderModel.h" line="+252"/>
         <source>Name</source>
         <translation>Назва</translation>
     </message>
@@ -13278,7 +13758,7 @@ The author likely blocked third-party launchers.</source>
         <translation>Розмір</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/mod/ResourceFolderModel.cpp" line="+271"/>
+        <location filename="../launcher/minecraft/mod/ResourceFolderModel.cpp" line="+296"/>
         <source>Confirm toggle</source>
         <translation>Підтвердити перемикання</translation>
     </message>
@@ -13287,7 +13767,7 @@ The author likely blocked third-party launchers.</source>
         <translation type="vanished">Назва Файлу</translation>
     </message>
     <message>
-        <location line="+443"/>
+        <location line="+450"/>
         <source>Override Columns Visibility</source>
         <translation>Змінити видимість стовпців</translation>
     </message>
@@ -13351,14 +13831,14 @@ Canonical Path: %1</source>
         <translation>Джерело ресурсу.</translation>
     </message>
     <message>
-        <location line="-349"/>
+        <location line="-356"/>
         <source>If you enable/disable this resource while the game is running it may crash your game.
 Are you sure you want to do this?</source>
         <translation>Якщо ви ввімкнете/вимкнете цей ресурс під час гри, це може призвести до аварійного завершення гри.
 Ви впевнені, що хочете це зробити?</translation>
     </message>
     <message>
-        <location line="+286"/>
+        <location line="+293"/>
         <source>
 Warning: This resource is hard linked elsewhere. Editing it will also change the original.</source>
         <translation>
@@ -13446,55 +13926,55 @@ Warning: This resource is hard linked elsewhere. Editing it will also change the
 <context>
     <name>ResourcePackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="+103"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="+104"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>Завантаження припинене користувачем.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Відмінити</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location line="-189"/>
+        <location line="-198"/>
         <source>Download Packs</source>
         <translation>Завантажити пакети</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="+99"/>
         <source>Confirm Update</source>
         <translation>Підтвердити Оновлення</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+27"/>
         <source>&apos;%1&apos; is up-to-date! :)</source>
         <translation>&apos;%1&apos; оновлено! :)</translation>
     </message>
     <message>
-        <location line="-99"/>
+        <location line="-105"/>
         <source>Change a mod&apos;s version.</source>
         <translation>Змінити версію моду.</translation>
     </message>
     <message>
-        <location line="+34"/>
-        <location line="+61"/>
+        <location line="+35"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Перервано</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Попередження</translation>
     </message>
@@ -13504,25 +13984,25 @@ Warning: This resource is hard linked elsewhere. Editing it will also change the
         <translation>Оновлення пакета ресурсів було перервано!</translation>
     </message>
     <message>
-        <location line="-109"/>
+        <location line="-115"/>
         <source>Try to check or update all selected resource packs (all resource packs if none are selected)</source>
         <translation>Спробуйте перевірити або оновити всі вибрані пакети ресурсів (або усі пакети ресурсів, якщо нічого не вибрано)</translation>
     </message>
     <message>
-        <location line="+116"/>
+        <location line="+122"/>
         <source>All resource packs are up-to-date! :)</source>
         <translation>Усі пакети ресурсів оновлено! :)</translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+48"/>
         <source>You are about to remove the metadata for %1 resource packs.
 Are you sure?</source>
         <translation>Ви збираєтеся видалити метадані для %1 пакетів ресурсів.
 Ви впевнені?</translation>
     </message>
     <message>
-        <location line="-80"/>
-        <location line="+99"/>
+        <location line="-83"/>
+        <location line="+104"/>
         <source>Resource pack updates are unavailable when metadata is disabled!</source>
         <translation>Оновлення пакетів ресурсів недоступні, коли метадані вимкнено!</translation>
     </message>
@@ -13532,17 +14012,17 @@ Are you sure?</source>
         <translation>Пакети ресурсів</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="-20"/>
+        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="-22"/>
         <source>Confirm Removal</source>
         <translation>Підтвердити видалення</translation>
     </message>
     <message>
-        <location line="-168"/>
+        <location line="-175"/>
         <source>Download resource packs from online mod platforms</source>
         <translation>Завантажити пакети ресурсів з онлайн-платформ модів</translation>
     </message>
     <message>
-        <location line="+127"/>
+        <location line="+133"/>
         <source>Update checker</source>
         <translation>Перевірка оновлень</translation>
     </message>
@@ -13552,7 +14032,7 @@ Are you sure?</source>
         <translation>Усі вибрані пакети ресурсів оновлено! :)</translation>
     </message>
     <message>
-        <location line="-29"/>
+        <location line="-31"/>
         <source>Updating resource packs while the game is running may cause pack duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -13577,48 +14057,48 @@ Are you sure you want to do this?</source>
 <context>
     <name>ResourceUpdateDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+183"/>
+        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+186"/>
         <source>Failed to check for updates</source>
         <translation>Не вдалося перевірити наявність оновлень</translation>
     </message>
     <message>
         <location line="-57"/>
         <location line="+98"/>
-        <location line="+160"/>
+        <location line="+169"/>
         <source>Abort</source>
         <translation>Перервати</translation>
     </message>
     <message>
-        <location line="-269"/>
+        <location line="-278"/>
         <location line="+95"/>
-        <location line="+146"/>
-        <location line="+16"/>
-        <location line="+56"/>
+        <location line="+153"/>
+        <location line="+17"/>
+        <location line="+58"/>
         <source>Error</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location line="-347"/>
+        <location line="-358"/>
         <source>Metadata generation failed</source>
         <translation>Не вдалося створити метадані</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+104"/>
         <source>Could not check or get the following resources for updates:&lt;br&gt;Do you wish to proceed without those resources?</source>
         <translation>Не вдалося перевірити або отримати наступні ресурси для оновлень:&lt;br&gt;Бажаєте продовжити без цих ресурсів?</translation>
     </message>
     <message>
-        <location line="-140"/>
+        <location line="-141"/>
         <source>Confirm resources to update</source>
         <translation>Підтвердити оновлення ресурсів</translation>
     </message>
     <message>
-        <location line="+129"/>
+        <location line="+128"/>
         <source>Mod name: %1</source>
         <translation>Назва моду: %1</translation>
     </message>
     <message>
-        <location line="+296"/>
+        <location line="+311"/>
         <source>New Version Type: %1</source>
         <translation>Тип нової версії: %1</translation>
     </message>
@@ -13633,7 +14113,7 @@ Are you sure you want to do this?</source>
         <translation>Нова версія: %1</translation>
     </message>
     <message>
-        <location line="-239"/>
+        <location line="-252"/>
         <source>Checking for dependencies...</source>
         <translation>Перевірка залежностей...</translation>
     </message>
@@ -13644,32 +14124,32 @@ Are you sure you want to do this?</source>
         <translation>Попередження</translation>
     </message>
     <message>
-        <location line="-137"/>
+        <location line="-138"/>
         <source>Could not generate metadata for the following resources:&lt;br&gt;Do you wish to proceed without those resources?</source>
         <translation>Не вдалося створити метадані для таких ресурсів:&lt;br&gt;Бажаєте продовжити без цих ресурсів?</translation>
     </message>
     <message>
-        <location line="+356"/>
+        <location line="+367"/>
         <source>Couldn&apos;t find a valid version on the selected mod provider(s)</source>
         <translation>Не вдалося знайти дійсну версію у вибраних постачальників мода(ів)</translation>
     </message>
     <message>
-        <location line="-383"/>
+        <location line="-394"/>
         <source>You&apos;re about to update the following resources:</source>
         <translation>Ви збираєтеся оновити такі ресурси:</translation>
     </message>
     <message>
-        <location line="+405"/>
+        <location line="+419"/>
         <source>Old version: %1</source>
         <translation>Стара версія: %1</translation>
     </message>
     <message>
-        <location line="-285"/>
+        <location line="-300"/>
         <source>Reason: %1</source>
         <translation>Причина: %1</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Possible solution: Getting the latest version manually:&lt;br&gt;%1&lt;br&gt;</source>
         <extracomment>%1 is the link to download it manually</extracomment>
         <translation>Можливе рішення: отримати останню версію вручну:&lt;br&gt;%1&lt;br&gt;</translation>
@@ -13680,12 +14160,12 @@ Are you sure you want to do this?</source>
         <translation>Перевірка оновлень</translation>
     </message>
     <message>
-        <location line="+186"/>
+        <location line="+191"/>
         <source>Looking for metadata</source>
         <translation>Пошук метаданих</translation>
     </message>
     <message>
-        <location line="+198"/>
+        <location line="+207"/>
         <source>Required by:</source>
         <translation>Потрібно для:</translation>
     </message>
@@ -13695,12 +14175,12 @@ Are you sure you want to do this?</source>
         <translation>Потрібно для: %1</translation>
     </message>
     <message>
-        <location line="-150"/>
+        <location line="-158"/>
         <source>The resource &apos;%1&apos; does not have a metadata yet. We need to generate it in order to track relevant information on how to update this mod. To do this, please select a mod provider which we can use to check for updates for this mod.</source>
         <translation>Для ресурсу &apos;%1&apos; ще немає метаданих. Нам потрібно їх створити, щоби відстежувати інформацію про те, як оновити цей мод. Для цього, будь ласка, виберіть постачальника мода, якого ми можемо використовувати для перевірки оновлень цього мода.</translation>
     </message>
     <message>
-        <location line="-248"/>
+        <location line="-254"/>
         <source>Mod name: %1&lt;br&gt;File name: %2&lt;br&gt;Reason: %3&lt;br&gt;&lt;br&gt;</source>
         <translation>Назва моду: %1&lt;br&gt;Ім&apos;я файлу: %2&lt;br&gt;Причина: %3&lt;br&gt;&lt;br&gt;</translation>
     </message>
@@ -13710,17 +14190,26 @@ Are you sure you want to do this?</source>
         <translation>Оновлюватимуться лише позначені ресурси!</translation>
     </message>
     <message>
-        <location line="+71"/>
+        <location line="+72"/>
         <source>Checking for updates...</source>
         <translation>Перевірка оновлень...</translation>
     </message>
+    <message numerus="yes">
+        <location line="+145"/>
+        <source>%n update(s) found. You&apos;re about to update the following resources:</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location line="+258"/>
+        <location line="+122"/>
         <source>Generating metadata...</source>
         <translation>Створення метаданих...</translation>
     </message>
     <message>
-        <location line="+106"/>
+        <location line="+110"/>
         <source>Changelog of the latest version</source>
         <translation>Список змін останньої версії</translation>
     </message>
@@ -13730,7 +14219,7 @@ Are you sure you want to do this?</source>
         <translation>Постачальник: %1</translation>
     </message>
     <message>
-        <location line="-211"/>
+        <location line="-223"/>
         <source>Not installed</source>
         <translation>Не встановлено</translation>
     </message>
@@ -13806,7 +14295,7 @@ Are you sure you want to do this?</source>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+394"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
         <source>Abort</source>
         <translation>Перервати</translation>
     </message>
@@ -13850,7 +14339,7 @@ Are you sure you want to do this?</source>
         <translation>Вивантаження</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-77"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-79"/>
         <source>You are about to upload the selected screenshot to %1.
 You should double-check for personal information.
 
@@ -13861,7 +14350,7 @@ Are you sure?</source>
 Ви впевнені?</translation>
     </message>
     <message>
-        <location line="+144"/>
+        <location line="+147"/>
         <source>Confirm Deletion</source>
         <translation>Підтвердити Видалення</translation>
     </message>
@@ -13894,12 +14383,12 @@ Are you sure?</source>
         <translation>Копіювати зображення</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-204"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-214"/>
         <source>Context menu</source>
         <translation>Контекстне меню</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+68"/>
         <source>You are about to upload %1 screenshots to %2.
 You should double-check for personal information.
 
@@ -13915,7 +14404,7 @@ Are you sure?</source>
         <translation>Знімки екрана</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+82"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+84"/>
         <source>Unknown error</source>
         <translation>Невідома помилка</translation>
     </message>
@@ -14184,27 +14673,27 @@ Are you sure?</source>
 <context>
     <name>ShaderPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ShaderPackPage.cpp" line="+100"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/ShaderPackPage.cpp" line="+101"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>Завантаження припинене користувачем.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Скасувати</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location line="-160"/>
+        <location line="-169"/>
         <source>Change a shader pack&apos;s version.</source>
         <translation>Змінити версію пакета шейдерів.</translation>
     </message>
@@ -14214,7 +14703,7 @@ Are you sure?</source>
         <translation>Завантажити пакети</translation>
     </message>
     <message>
-        <location line="+88"/>
+        <location line="+92"/>
         <source>Updating shader packs while the game is running may pack duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -14234,12 +14723,12 @@ Are you sure you want to do this?</source>
     </message>
     <message>
         <location line="-5"/>
-        <location line="+99"/>
+        <location line="+104"/>
         <source>Shader pack updates are unavailable when metadata is disabled!</source>
         <translation>Оновлення пакетів шейдерів недоступні, якщо метадані вимкнено!</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="-69"/>
         <source>All shader packs are up-to-date! :)</source>
         <translation>Усі пакети шейдерів тепер найновішої версії! :)</translation>
     </message>
@@ -14254,25 +14743,25 @@ Are you sure you want to do this?</source>
         <translation>Оновлення пакета шейдерів перервано!</translation>
     </message>
     <message>
-        <location line="-61"/>
-        <location line="+61"/>
+        <location line="-66"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Перервано</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Попередження</translation>
     </message>
     <message>
-        <location line="-136"/>
+        <location line="-142"/>
         <source>Download shader packs from online mod platforms</source>
         <translation>Завантажити пакети шейдерів з онлайн-платформ для модів</translation>
     </message>
     <message>
-        <location line="+161"/>
+        <location line="+168"/>
         <source>You are about to remove the metadata for %1 shader packs.
 Are you sure?</source>
         <translation>Ви збираєтеся видалити метадані для %1 пакетів шейдерів.
@@ -14284,17 +14773,17 @@ Are you sure?</source>
         <translation>Підтвердити видалення</translation>
     </message>
     <message>
-        <location line="-44"/>
+        <location line="-45"/>
         <source>All selected shader packs are up-to-date! :)</source>
         <translation>Усі вибрані пакети шейдерів тепер найновішої версії! :)</translation>
     </message>
     <message>
-        <location line="-110"/>
+        <location line="-116"/>
         <source>Try to check or update all selected shader packs (all shader packs if none are selected)</source>
         <translation>Спробуйте перевірити чи оновити всі вибрані пакети шейдерів (або усі пакети шейдерів, якщо нічого не вибрано)</translation>
     </message>
     <message>
-        <location line="+113"/>
+        <location line="+119"/>
         <source>Update checker</source>
         <translation>Перевірка оновлень</translation>
     </message>
@@ -14865,7 +15354,7 @@ Are you sure?</source>
 <context>
     <name>Task</name>
     <message>
-        <location filename="../launcher/tasks/Task.cpp" line="+134"/>
+        <location filename="../launcher/tasks/Task.cpp" line="+141"/>
         <source>Aborted</source>
         <translation>Перервано</translation>
     </message>
@@ -15117,58 +15606,58 @@ inheritsFrom відсутній</translation>
 <context>
     <name>TexturePackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="+108"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="+109"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>Завантаження припинене користувачем.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Скасувати</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location line="-99"/>
-        <location line="+99"/>
+        <location line="-104"/>
+        <location line="+104"/>
         <source>Texture pack updates are unavailable when metadata is disabled!</source>
         <translation>Оновлення пакетів текстур недоступні, коли метадані вимкнено!</translation>
     </message>
     <message>
-        <location line="-190"/>
+        <location line="-199"/>
         <source>Download Packs</source>
         <translation>Завантажити пакети</translation>
     </message>
     <message>
-        <location line="+96"/>
+        <location line="+100"/>
         <source>Confirm Update</source>
         <translation>Підтвердити Оновлення</translation>
     </message>
     <message>
-        <location line="-89"/>
+        <location line="-93"/>
         <source>Try to check or update all selected texture packs (all texture packs if none are selected)</source>
         <translation>Спробуйте перевірити чи оновити всі вибрані пакети текстур (або усі пакети текстур, якщо нічого не вибрано)</translation>
     </message>
     <message>
-        <location line="+119"/>
+        <location line="+125"/>
         <source>All selected texture packs are up-to-date! :)</source>
         <translation>Усі вибрані пакети текстур тепер найновішої версії! :)</translation>
     </message>
     <message>
-        <location line="-105"/>
+        <location line="-111"/>
         <source>Change a texture pack&apos;s version.</source>
         <translation>Змінити версію пакета текстур.</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+109"/>
         <source>All texture packs are up-to-date! :)</source>
         <translation>Усі пакети текстур тепер найновішої версії! :)</translation>
     </message>
@@ -15178,32 +15667,32 @@ inheritsFrom відсутній</translation>
         <translation>&apos;%1&apos; тепер найновішої версії! :)</translation>
     </message>
     <message>
-        <location line="-96"/>
+        <location line="-102"/>
         <source>View the homepages of all selected texture packs.</source>
         <translation>Переглянути домашні сторінки всіх вибраних пакетів текстур.</translation>
     </message>
     <message>
-        <location line="+31"/>
-        <location line="+61"/>
+        <location line="+32"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Перервано</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Попередження</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>You are about to remove the metadata for %1 texture packs.
 Are you sure?</source>
         <translation>Ви збираєтеся видалити метадані для %1 пакетів текстур.
 Ви впевнені?</translation>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-77"/>
         <source>Updating texture packs while the game is running may cause pack duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -15212,17 +15701,17 @@ Are you sure you want to do this?</source>
 Ви впевнені, що хочете це зробити?</translation>
     </message>
     <message>
-        <location line="-96"/>
+        <location line="-100"/>
         <source>Download texture packs from online mod platforms</source>
         <translation>Завантажити пакети текстур з онлайн-платформ для модів</translation>
     </message>
     <message>
-        <location line="+116"/>
+        <location line="+122"/>
         <source>The texture pack updater was aborted!</source>
         <translation>Оновлення пакета текстур перервано!</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+54"/>
         <source>Confirm Removal</source>
         <translation>Підтвердити видалення</translation>
     </message>
@@ -15232,7 +15721,7 @@ Are you sure you want to do this?</source>
         <translation>Пакети текстур</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="-41"/>
+        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="-42"/>
         <source>Update checker</source>
         <translation>Перевірка оновлень</translation>
     </message>
@@ -15290,6 +15779,29 @@ Are you sure you want to do this?</source>
         <location line="+12"/>
         <source>Completeness is the percentage of fully translated strings, not counting automatically guessed ones.</source>
         <translation>Повнота - це відсоток повністю перекладених рядків, не враховуючи автоматично вгаданих.</translation>
+    </message>
+</context>
+<context>
+    <name>UntrustedModsDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/UntrustedModsDialog.ui" line="+14"/>
+        <source>Easy There!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The modpack you are installing includes mods which are not hosted on Modrinth or CurseForge:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Malicious mods are often distributed through links sent on platforms such as Discord.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;We strongly recommend only importing modpacks from trusted sources.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>I trust this modpack and wish to proceed regardless</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -15857,11 +16369,12 @@ Please add a Microsoft account.</source>
 <context>
     <name>VersionSelectDialog</name>
     <message>
+        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+74"/>
         <source>OK</source>
-        <translation type="vanished">ОК</translation>
+        <translation>ОК</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+104"/>
+        <location line="+30"/>
         <source>Reloads the version list.</source>
         <translation>Перезавантажує список версій.</translation>
     </message>
@@ -15871,12 +16384,11 @@ Please add a Microsoft account.</source>
         <translation>Виберіть версію</translation>
     </message>
     <message>
-        <location line="-29"/>
         <source>Ok</source>
-        <translation>Гаразд</translation>
+        <translation type="vanished">Гаразд</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-28"/>
         <source>Cancel</source>
         <translation>Скасувати</translation>
     </message>
@@ -16016,7 +16528,7 @@ Please add a Microsoft account.</source>
 <context>
     <name>WorldList</name>
     <message>
-        <location filename="../launcher/minecraft/WorldList.cpp" line="+272"/>
+        <location filename="../launcher/minecraft/WorldList.cpp" line="+273"/>
         <source>Info</source>
         <extracomment>special warnings?</extracomment>
         <translation>Інформація</translation>
@@ -16276,7 +16788,7 @@ Are you sure?</source>
 <context>
     <name>XboxAuthorizationStep</name>
     <message>
-        <location filename="../launcher/minecraft/auth/steps/XboxAuthorizationStep.cpp" line="+167"/>
+        <location filename="../launcher/minecraft/auth/steps/XboxAuthorizationStep.cpp" line="+163"/>
         <source>XSTS authentication ended with unrecognized error(s):
 
 %1</source>
@@ -16300,17 +16812,16 @@ Are you sure?</source>
         <translation>Цей обліковий запис Microsoft не має Xbox Live профіль. Спочатку придбайте гру на %1.</translation>
     </message>
     <message>
-        <location line="-53"/>
         <source>Failed to get authorization for %1 services. Error %2.</source>
-        <translation>Не вдалося отримати авторизацію для служб %1. Помилка %2.</translation>
+        <translation type="vanished">Не вдалося отримати авторизацію для служб %1. Помилка %2.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-49"/>
         <source>Unknown STS error for %1 services: %2</source>
         <translation>Невідома помилка STS для сервісів %1: %2</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+43"/>
         <source>XErr element is missing from %1 authorization error response.</source>
         <translation>Елемент XErr відсутній у відповіді про помилку авторизації від %1.</translation>
     </message>
@@ -16354,12 +16865,12 @@ Please set up your account according to %1.</source>
         <translation>Цей обліковий запис Microsoft було заблоковано сервісом Xbox за порушення одного чи кількох Стандартів спільноти Xbox. Він не може бути використаний.</translation>
     </message>
     <message>
-        <location line="-129"/>
+        <location line="-125"/>
         <source>Getting authorization to access %1 services.</source>
         <translation>Отримання дозволу на доступ до сервісів %1.</translation>
     </message>
     <message>
-        <location line="+64"/>
+        <location line="+60"/>
         <source>Could not parse authorization response for access to %1 services.</source>
         <translation>Не вдалося розібрати відповідь на авторизацію для доступу до сервісів %1.</translation>
     </message>

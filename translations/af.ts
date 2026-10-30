@@ -142,7 +142,7 @@
 <context>
     <name>ATLauncher::PackInstallTask</name>
     <message>
-        <location filename="../launcher/modplatform/atlauncher/ATLPackInstallTask.cpp" line="+123"/>
+        <location filename="../launcher/modplatform/atlauncher/ATLPackInstallTask.cpp" line="+134"/>
         <source>Could not understand pack manifest:
 </source>
         <translation>Kon nie die pakmanifest verstaan nie:
@@ -158,12 +158,12 @@
         <translation type="vanished">Kon nie die plaaslike metadata-indeks vir &apos;%1&apos; v%2 kry nie</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+42"/>
         <source>Deleting existing files...</source>
         <translation>Verwyder bestaande lêers...</translation>
     </message>
     <message>
-        <location line="+147"/>
+        <location line="+151"/>
         <source>Unknown mod type: %1</source>
         <translation>Onbekende mod-tipe: %1</translation>
     </message>
@@ -180,32 +180,32 @@
         <translation type="vanished">Geen laaier-weergawe is vir die modpakkie gestel nie!</translation>
     </message>
     <message>
-        <location line="-178"/>
+        <location line="-182"/>
         <source>Could not get local metadata index for &apos;%1&apos; v%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+194"/>
         <source>Could not get local metadata index for %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+34"/>
         <source>Could not find a version for the %1 loader</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>No loader version set for modpack.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+130"/>
+        <location line="+132"/>
         <source>Unknown or unsupported download type: %1</source>
         <translation>Onbekende of onondersteunde aflaai-tipe: %1</translation>
     </message>
     <message>
-        <location line="+114"/>
+        <location line="+115"/>
         <source>Downloading configs...</source>
         <translation>Laai konfigurasies af...</translation>
     </message>
@@ -235,13 +235,13 @@
         <translation>Mod-aflaai</translation>
     </message>
     <message>
-        <location line="+25"/>
-        <location line="+130"/>
+        <location line="+27"/>
+        <location line="+133"/>
         <source>Unknown download type: %1</source>
         <translation>Onbekende aflaai-tipe: %1</translation>
     </message>
     <message>
-        <location line="-50"/>
+        <location line="-52"/>
         <source>Blocked mods found</source>
         <translation>Geblokkeerde mods gevind</translation>
     </message>
@@ -251,7 +251,7 @@
         <translation>Die volgende lêers is nie beskikbaar vir aflaai in derdeparty-laaiers nie.&lt;br/&gt;Jy sal dit handmatig moet aflaai en by die instansie voeg.</translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+58"/>
         <source>%1 out of %2 complete</source>
         <translation>%1 van %2 voltooi</translation>
     </message>
@@ -266,7 +266,7 @@
         <translation>Onttrek mods...</translation>
     </message>
     <message>
-        <location line="+72"/>
+        <location line="+81"/>
         <source>Installing modpack</source>
         <translation>Installeer modpakkie</translation>
     </message>
@@ -276,7 +276,7 @@
         <translation>Kon nie die biblioteke-komponent skep nie</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+30"/>
         <source>Unknown loader type: </source>
         <translation>Onbekende laaier-tipe: </translation>
     </message>
@@ -728,7 +728,7 @@ Jy kan ’n Microsoft-, vanlyn- of Yggdrasil-(authlib-injector) rekening byvoeg 
         <translation type="vanished">Opdatering het geslaag</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1306"/>
+        <location filename="../launcher/Application.cpp" line="+1319"/>
         <source>Incompatible system configuration</source>
         <translation>Onversoenbare stelsel-konfigurasie</translation>
     </message>
@@ -768,12 +768,12 @@ Bestudeer die Prism Launcher opdateerder-log by:
 vir besonderhede oor die laaste opdaterings-poging.</translation>
     </message>
     <message>
-        <location line="-1700"/>
+        <location line="-1703"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Kan nie hierdie log vertoon nie, aangesien die loglengte %1 reëls oorskry het.</translation>
     </message>
     <message>
-        <location line="+1522"/>
+        <location line="+1525"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Dit lyk asos jy al %1 op %2 gebruik het. Wil jy jou data migreer na die nuwe ligging van %3?</translation>
     </message>
@@ -841,7 +841,7 @@ Kyk na die PollyMC-Continued-opdateringslogboek by:
 vir besonderhede.</translation>
     </message>
     <message>
-        <location line="-1820"/>
+        <location line="-1823"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -877,12 +877,12 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+531"/>
+        <location line="+526"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+28"/>
         <source>Loading instances…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1031,7 +1031,7 @@ Kopieer hulle na hierdie draagbare vouer? Jou rekeninge, instellings en instansi
         <translation type="vanished">Opdatering aan die gang</translation>
     </message>
     <message>
-        <location line="-1419"/>
+        <location line="-1427"/>
         <source>Settings</source>
         <translation>instellings</translation>
     </message>
@@ -1062,7 +1062,7 @@ vir besonderhede in die laaste opdaterings poging
 Om hierdie slot te verwyder en voort te gaan, kies &quot;Ignoreer&quot; hieronder.</translation>
     </message>
     <message>
-        <location line="+1263"/>
+        <location line="+1271"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>Ou data van %1 was gevind, maar jy het wel data vir %2. Ongelukking sal jy jouself moet migreer. Wil jy herinner word aan die hangende datamigrasie die volgende ker as jy %2 begin?</translation>
     </message>
@@ -1702,8 +1702,8 @@ Om hierdie slot te verwyder en voort te gaan, kies &quot;Ignoreer&quot; hieronde
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+154"/>
+        <location line="+411"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1712,12 +1712,27 @@ Om hierdie slot te verwyder en voort te gaan, kies &quot;Ignoreer&quot; hieronde
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-477"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+14"/>
+        <source>My Reports (%1 new)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>See what the team answered to the reports you sent from this launcher.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1958,7 +1973,7 @@ Send it again anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+17"/>
         <source>Thank you! Your report is on its way to the PollyMC team, and we read every one.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1977,6 +1992,14 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+5"/>
+        <source>
+
+Your report ID: %1
+This launcher will tell you when the team has an update. You can also check any time with &quot;My Reports&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+6"/>
         <source>Report sent</source>
         <translation type="unfinished"></translation>
@@ -1984,6 +2007,11 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
     <message>
         <location line="+2"/>
         <source>Join our Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>View My Reports</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2868,56 +2896,56 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
         <translation>Verander ’n data-pak se weergawe.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+29"/>
         <source>Download Data Packs</source>
         <translation>Laai Data-pakke af</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
-        <location line="+19"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
+        <location line="+21"/>
         <source>Error</source>
         <translation>Fout (·•᷄∩•᷅ )</translation>
     </message>
     <message>
-        <location line="-153"/>
-        <location line="+61"/>
+        <location line="-163"/>
+        <location line="+66"/>
         <location line="+23"/>
-        <location line="+73"/>
+        <location line="+78"/>
         <source>Aborted</source>
         <translation>Afgebreek</translation>
     </message>
     <message>
-        <location line="-157"/>
-        <location line="+84"/>
-        <location line="+73"/>
+        <location line="-167"/>
+        <location line="+89"/>
+        <location line="+78"/>
         <source>Download stopped by user.</source>
         <translation>Aflaai gestaak deur gebruiker.</translation>
     </message>
     <message>
-        <location line="-151"/>
-        <location line="+84"/>
-        <location line="+73"/>
+        <location line="-161"/>
+        <location line="+89"/>
+        <location line="+78"/>
         <source>Warnings</source>
         <translation>Waarskuwings</translation>
     </message>
     <message>
-        <location line="-143"/>
-        <location line="+80"/>
-        <location line="+73"/>
+        <location line="-152"/>
+        <location line="+84"/>
+        <location line="+79"/>
         <source>Abort</source>
         <translation>Staak</translation>
     </message>
     <message>
-        <location line="-138"/>
-        <location line="+99"/>
+        <location line="-146"/>
+        <location line="+104"/>
         <source>Data pack updates are unavailable when metadata is disabled!</source>
         <translation>Data-pakopdaterings is onbeskikbaar wanneer metadata gedeaktiveer is!</translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-99"/>
         <source>Confirm Update</source>
         <translation>Bevestig Opdatering</translation>
     </message>
@@ -2931,7 +2959,7 @@ Die ou lêers word dalk nie uitgevee nie omdat hulle in gebruik is.
 Is jy seker jy wil dit doen?</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+22"/>
         <source>The data pack updater was aborted!</source>
         <translation>Die data-pakopdaterer is gestaak!</translation>
     </message>
@@ -2956,7 +2984,7 @@ Is jy seker jy wil dit doen?</translation>
         <translation>Opdateringsnagaaner</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+42"/>
         <source>Confirm Removal</source>
         <translation>Bevestig Verwydering</translation>
     </message>
@@ -2983,6 +3011,16 @@ Is jy seker?</translation>
     <message>
         <location line="+1"/>
         <source>Display the reminder immediately, ignoring its normal schedule and dismissed state.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show bug report update notification now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Display a sample &quot;your report has news&quot; notification in the window you are in, to test notifications without waiting for the team.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3218,7 +3256,7 @@ Is jy seker?</translation>
 <context>
     <name>EnsureAvailableMemory</name>
     <message>
-        <location filename="../launcher/minecraft/launch/EnsureAvailableMemory.cpp" line="+46"/>
+        <location filename="../launcher/minecraft/launch/EnsureAvailableMemory.cpp" line="+91"/>
         <source>Not enough RAM</source>
         <translation>Nie genoeg RAM nie</translation>
     </message>
@@ -3238,12 +3276,40 @@ Totale stelsel-RAM: %2 MiB
 Tog voortgaan? Dit kan ernstige verlangsamings of krappings veroorsaak.</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="-4"/>
         <source>Not enough RAM available to launch this instance</source>
         <translation>Nie genoeg RAM beskikbaar om hierdie instansie te lanseer nie</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="-52"/>
+        <source>The system is under increased memory pressure.
+This may lead to lag or slowdowns.
+If possible, close other applications before continuing.
+
+Launch anyway?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Your system is under critical memory pressure.
+This may lead to severe slowdowns, crashes or system instability.
+It is recommended to close other applications or restart your system.
+
+Launch anyway?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>High memory pressure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>The system is under high memory pressure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+56"/>
         <source>Note: only %1 MiB RAM is currently free, but this instance requests %2 MiB. Other running programs may cause slowdowns; consider closing some before playing.</source>
         <translation>Let wel: slegs %1 MiB RAM is tans vry, maar hierdie instansie versoek %2 MiB. Ander lopende programme kan verlangsamings veroorsaak; oorweeg om sommige toe te maak voordat jy speel.</translation>
     </message>
@@ -3281,9 +3347,14 @@ Tog voortgaan? Dit kan ernstige verlangsamings of krappings veroorsaak.</transla
 <context>
     <name>EnsureOfflineLibraries</name>
     <message>
-        <location filename="../launcher/minecraft/launch/EnsureOfflineLibraries.cpp" line="+33"/>
         <source>This instance cannot be launched because some libraries are missing or have not been downloaded yet. Please try again in online mode with a working Internet connection</source>
-        <translation>Hierdie instansie kan nie gelanseer word nie omdat sommige biblioteke ontbreek of nog nie afgelaai is nie. Probeer asseblief weer in aanlynmodus met ’n werkende internetverbinding</translation>
+        <translation type="vanished">Hierdie instansie kan nie gelanseer word nie omdat sommige biblioteke ontbreek of nog nie afgelaai is nie. Probeer asseblief weer in aanlynmodus met ’n werkende internetverbinding</translation>
+    </message>
+    <message>
+        <location filename="../launcher/minecraft/launch/EnsureOfflineLibraries.cpp" line="+49"/>
+        <source>
+This instance cannot be launched because some libraries are missing or have not been downloaded yet. Please try again in online mode with a working Internet connection</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4135,12 +4206,12 @@ Is jy seker jy wil dit doen?</translation>
 <context>
     <name>FlameCheckUpdate</name>
     <message>
-        <location filename="../launcher/modplatform/flame/FlameCheckUpdate.cpp" line="+40"/>
+        <location filename="../launcher/modplatform/flame/FlameCheckUpdate.cpp" line="+38"/>
         <source>Preparing resources for CurseForge...</source>
         <translation>Berei hulpbronne vir CurseForge voor...</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+54"/>
         <source>Parsing the API response from CurseForge for &apos;%1&apos;...</source>
         <translation>Ontleed die API-reaksie van CurseForge vir &apos;%1&apos;...</translation>
     </message>
@@ -4155,7 +4226,7 @@ Is jy seker jy wil dit doen?</translation>
         <translation>Geen geldige weergawe vir hierdie hulpbron gevind nie. Dit is waarskynlik onbeskikbaar vir die huidige spelweergawe.</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Not installed</source>
         <translation>Nie geïnstalleer nie</translation>
     </message>
@@ -4165,7 +4236,7 @@ Is jy seker jy wil dit doen?</translation>
         <translation>Onbekend</translation>
     </message>
     <message>
-        <location line="+58"/>
+        <location line="+62"/>
         <source>Parsing API response from CurseForge for &apos;%1&apos;...</source>
         <translation>Ontleed API-reaksie van CurseForge vir &apos;%1&apos;...</translation>
     </message>
@@ -4178,7 +4249,7 @@ Is jy seker jy wil dit doen?</translation>
 <context>
     <name>FlameCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+598"/>
+        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+636"/>
         <source>Downloading mods...</source>
         <translation>Laai tans mod&apos;s af...</translation>
     </message>
@@ -4188,7 +4259,7 @@ Is jy seker jy wil dit doen?</translation>
         <translation>Die volgende vouers is nie beskikbaar vir aflaaing in derdeparty lanseerders nie.&lt;br/&gt;Jy sal hulle moet self aflaai en by die instansie invoeg.</translation>
     </message>
     <message>
-        <location line="-238"/>
+        <location line="-275"/>
         <source>No loader version set for modpack!</source>
         <translation>Geen laaier weergawe gestel vir modpak!</translation>
     </message>
@@ -4199,14 +4270,14 @@ Is jy seker jy wil dit doen?</translation>
     </message>
     <message>
         <location line="-149"/>
-        <location line="+211"/>
+        <location line="+236"/>
         <source>Could not understand pack manifest:
 </source>
         <translation>Kon nie pakmanifes verstaan nie:
 </translation>
     </message>
     <message>
-        <location line="-206"/>
+        <location line="-231"/>
         <source> (version %1)</source>
         <translation> (weergawe %1)</translation>
     </message>
@@ -4221,7 +4292,12 @@ Is jy seker jy wil dit doen?</translation>
         <translation>Ons kon nie &apos;n geskikte indekslêer vir die ouer weergawe vind nie. Dit kan veroorsaak dat sommige van die lêers gedupliseer word. Wil jy voortgaan?</translation>
     </message>
     <message>
-        <location line="+98"/>
+        <location line="+119"/>
+        <source>The overrides has a path that leads to an arbitrary location (%1). This is a security risk and isn&apos;t allowed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
         <source>Could not rename the overrides folder:
 </source>
         <translation>Kon nie die oorskrywingsgids hernoem nie:
@@ -4233,7 +4309,7 @@ Is jy seker jy wil dit doen?</translation>
         <translation>Die gespesifiseerde oorskrywingsgids (%1) ontbreek. Miskien is die modpakkie al voorheen gebruik?</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+35"/>
         <source>Unknown mod loader in manifest: %1</source>
         <translation>Onbekende mod-laaier in manifest: %1</translation>
     </message>
@@ -4280,7 +4356,7 @@ Is jy seker jy wil dit doen?</translation>
         <translation>Kopieer Geblokkeerde Mods (%1 van %2 is klaar)</translation>
     </message>
     <message>
-        <location line="-324"/>
+        <location line="-361"/>
         <source>Failed to find version for %1 loader</source>
         <translation>Kon nie weergawe vir %1 loader vind nie</translation>
     </message>
@@ -4288,17 +4364,17 @@ Is jy seker jy wil dit doen?</translation>
 <context>
     <name>FlameManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+394"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+402"/>
         <source>&lt;h1&gt;Hey there!&lt;/h1&gt;&lt;h4&gt;It seems like your Pack ID is null. This is because of a bug in older versions of the launcher.&lt;br/&gt;Unfortunately, we can&apos;t do the proper API requests without this information.&lt;br/&gt;&lt;br/&gt;So, in order for this feature to work, you will need to re-download the modpack from the built-in downloader.&lt;br/&gt;&lt;br/&gt;Don&apos;t worry though, it will ask you to update this instance instead, so you&apos;ll not lose this instance!&lt;/h4&gt;</source>
         <translation>&lt;h1&gt;Haai daar!&lt;/h1&gt;&lt;h4&gt;Dit blyk dat jou pak-ID nul is. Dit is as gevolg van ’n fout in ouer weergawes van die laaier.&lt;br/&gt;Ongelukkig kan ons nie die behoorlike API-versoeke doen sonder hierdie inligting nie.&lt;br/&gt;&lt;br/&gt;Dus, sodat hierdie funksie kan werk, sal jy die modpakkie weer van die ingeboude aflaaier moet aflaai.&lt;br/&gt;&lt;br/&gt;Moenie bekommer nie, dit sal jou vra om hierdie instansie eerder op te dateer, sodat jy nie hierdie instansie sal verloor nie!&lt;/h4&gt;</translation>
     </message>
     <message>
-        <location line="+40"/>
+        <location line="+42"/>
         <source>%1 (Current)</source>
         <translation>%1 (Huidig)</translation>
     </message>
     <message>
-        <location line="+57"/>
+        <location line="+62"/>
         <source>Choose update file</source>
         <translation>Kies opdateringslêer</translation>
     </message>
@@ -4765,13 +4841,13 @@ Is jy seker jy wil dit doen?</translation>
 <context>
     <name>InstallLoaderDialog</name>
     <message>
+        <location filename="../launcher/ui/dialogs/InstallLoaderDialog.cpp" line="+109"/>
         <source>OK</source>
-        <translation type="vanished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/InstallLoaderDialog.cpp" line="+109"/>
         <source>Ok</source>
-        <translation>OK</translation>
+        <translation type="vanished">OK</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -4835,7 +4911,7 @@ Is jy seker jy wil dit doen?</translation>
         <translation>Instansiegids-kopie het misluk.</translation>
     </message>
     <message>
-        <location line="+42"/>
+        <location line="+43"/>
         <source>Instance folder copy has been aborted.</source>
         <translation>Instansiegids-kopie is gestaak.</translation>
     </message>
@@ -4896,7 +4972,7 @@ Is jy seker jy wil dit doen?</translation>
 <context>
     <name>InstanceHealthCheckDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+61"/>
+        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+90"/>
         <source>No Java selected</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4930,7 +5006,12 @@ Switch Java in the instance&apos;s Java settings, or turn off the compatibility 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+175"/>
+        <source>Checking &lt;b&gt;%1&lt;/b&gt;…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+38"/>
         <source>Broken mod files (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4943,43 +5024,159 @@ Delete or re-download them (a fresh download of the same version is usually enou
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-201"/>
         <source>Version information not loaded yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-67"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Warning</source>
+        <translation type="unfinished">Waarskuwing</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Info</source>
+        <translation type="unfinished">Inligting</translation>
+    </message>
+    <message numerus="yes">
+        <location line="+9"/>
+        <source>
+… and %n more</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+55"/>
         <source>The launcher could not read this instance&apos;s version list, so the loader check was skipped.
 Open the instance, go to the Version page and let it load once (or press Reload) before launching.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>%1 (loader component)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+17"/>
+        <source>Only %1 MiB are free on the drive this instance is stored on.
+Free up some space, or the game can fail while saving worlds or downloading files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Low disk space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Too much memory allocated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance is set to use up to %1 MiB, but the computer only has %2 MiB.
+Lower the maximum memory in the instance&apos;s settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>A lot of memory allocated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance may use up to %1 MiB of the computer&apos;s %2 MiB.
+That leaves little for the system and can make the game stutter; around half of the total is usually plenty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+39"/>
         <source>Check instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+21"/>
+        <source>Check Again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Open Mods Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Close</source>
         <translation type="unfinished">Maak toe</translation>
     </message>
     <message>
-        <location line="+23"/>
-        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, no broken mod files, and the loader version checks out. Nothing stood in the way of launching.</source>
+        <location line="+128"/>
+        <source>Mods that may not fit this game version (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These mods are not marked as compatible with this instance&apos;s Minecraft version:
+%1
+
+They may still work, but if the game crashes, update or remove them first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, the mods have no broken files or conflicts, and the loader version checks out. Nothing stood in the way of launching.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location line="+5"/>
-        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting. The details are below each entry.</source>
+        <location line="+8"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message numerus="yes">
+        <location line="+1"/>
+        <source>, and %n warning(s) worth a look</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>. The details are below each entry.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+2"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; should start, but has %n warning(s) worth a look. The details are below each entry.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Instance check for &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>No problems found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5068,7 +5265,7 @@ Open the instance, go to the Version page and let it load once (or press Reload)
         <translation>Kon nie ’n tydelike gids skep nie</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+20"/>
         <source>Failed to commit instance, even after multiple retries. It is being blocked by something.</source>
         <translation>Kon nie die instansie voltooi nie, selfs ná verskeie pogings. Dit word deur iets geblokkeer.</translation>
     </message>
@@ -5284,7 +5481,7 @@ Open the instance, go to the Version page and let it load once (or press Reload)
 <context>
     <name>JavaListLoadTask</name>
     <message>
-        <location filename="../launcher/java/JavaInstallList.cpp" line="+158"/>
+        <location filename="../launcher/java/JavaInstallList.cpp" line="+159"/>
         <source>Detecting Java installations...</source>
         <translation>Bespeur Java-installasies...</translation>
     </message>
@@ -5417,17 +5614,17 @@ Is jy seker?</translation>
         <translation>Gehe&amp;ue</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+152"/>
         <source>(-XX:PermSize)</source>
         <translation>(-XX:PermSize)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-22"/>
         <source>The amount of memory available to store loaded Java classes.</source>
         <translation>Die hoeveelheid geheue beskikbaar om gelaaide Java-klasse te stoor.</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="-49"/>
         <source>The maximum amount of memory Minecraft is allowed to use.</source>
         <translation>Die maksimum hoeveelheid geheue wat Minecraft mag gebruik.</translation>
     </message>
@@ -5437,32 +5634,37 @@ Is jy seker?</translation>
         <translation>(-Xmx)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-71"/>
         <source>The amount of memory Minecraft is started with.</source>
         <translation>Die hoeveelheid geheue waarmee Minecraft begin word.</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+80"/>
         <source>&amp;PermGen Size:</source>
         <translation>&amp;PermGen-grootte:</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="-58"/>
         <source>(-Xms)</source>
         <translation>(-Xms)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+9"/>
         <source>Ma&amp;ximum Memory Usage:</source>
         <translation>Ma&amp;ksimum Geheuegebruik:</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="-49"/>
         <source>M&amp;inimum Memory Usage:</source>
         <translation>M&amp;inimum Geheuegebruik:</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+149"/>
+        <source>Warn when there is not enough free memory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Memory Notice</source>
         <translation>Geheuekennisgewing</translation>
     </message>
@@ -5472,7 +5674,7 @@ Is jy seker?</translation>
         <translation>Java-argumen&amp;te</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="+229"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="+230"/>
         <source>Find Java executable</source>
         <translation>Vind Java-uitvoerbare lêer</translation>
     </message>
@@ -5663,9 +5865,13 @@ Jy kan die Java-weergawe later in die instellings verander.
         <translation>Sien jy nie jou taal of is die gehalte swak?&lt;br/&gt;&lt;a href=&quot;%1&quot;&gt;Help ons met vertalings!&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+3"/>
         <source>Use system locales</source>
-        <translation>Gebruik stelsel-lokale</translation>
+        <translation type="vanished">Gebruik stelsel-lokale</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Use system regional standards</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+13"/>
@@ -6358,9 +6564,14 @@ Dit word aanbeveel om %1 toegang daartoe via Flatseal te gee.</translation>
     </message>
     <message>
         <location line="+27"/>
+        <source>Could not launch Minecraft: %1</source>
+        <extracomment>Error message displayed if instace can&apos;t start</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Could not launch Minecraft!</source>
         <extracomment>Error message displayed if instace can&apos;t start</extracomment>
-        <translation>Kon nie Minecraft lanseer nie!</translation>
+        <translation type="vanished">Kon nie Minecraft lanseer nie!</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -6728,8 +6939,12 @@ Rede:
     </message>
     <message>
         <location line="+9"/>
+        <source>The process failed to start: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>The process failed to start.</source>
-        <translation>Die proses kon nie begin nie.</translation>
+        <translation type="vanished">Die proses kon nie begin nie.</translation>
     </message>
 </context>
 <context>
@@ -6829,17 +7044,17 @@ Rede:
         <translation>Meld aan met Microsoft-rekening (toestelkode).</translation>
     </message>
     <message>
-        <location line="+65"/>
+        <location line="+63"/>
+        <location line="+8"/>
         <source>Device authorization failed: %1</source>
         <translation>Toestelmagtiging misluk: %1</translation>
     </message>
     <message>
-        <location line="+7"/>
         <source>Failed to retrieve device authorization</source>
-        <translation>Kon nie toestelmagtiging ophaal nie</translation>
+        <translation type="vanished">Kon nie toestelmagtiging ophaal nie</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+5"/>
         <source>Device authorization failed: required fields missing</source>
         <translation>Toestelmagtiging misluk: vereiste velde ontbreek</translation>
     </message>
@@ -6950,7 +7165,7 @@ Rede:
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+176"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+178"/>
         <source>Show PollyMC</source>
         <translation>Wys PollyMC</translation>
     </message>
@@ -6960,34 +7175,24 @@ Rede:
         <translation>Sluit af</translation>
     </message>
     <message>
-        <location line="+120"/>
+        <location line="+121"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
     <message>
         <location line="+96"/>
-        <location line="+88"/>
-        <location line="+1552"/>
+        <location line="+125"/>
+        <location line="+1572"/>
         <source>No instance selected</source>
         <translation>Geen instansie gekies nie</translation>
     </message>
     <message>
-        <location line="-1639"/>
+        <location line="-1696"/>
         <source>Total playtime: 0s</source>
         <translation>Totale speeltyd: 0s</translation>
     </message>
     <message>
-        <location line="+196"/>
-        <source>The star reminder will appear after the Settings dialog closes.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+17"/>
-        <source>The main window must be visible to show the star reminder.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+104"/>
+        <location line="+345"/>
         <source>Enjoying PollyMC-Continued?</source>
         <translation>Geniet jy PollyMC-Continued?</translation>
     </message>
@@ -6997,12 +7202,12 @@ Rede:
         <translation>Gee die projek ’n ster op GitHub!</translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="+1"/>
         <source>Star on GitHub</source>
         <translation>Ster op GitHub</translation>
     </message>
     <message>
-        <location line="+66"/>
+        <location line="+69"/>
         <source>&amp;Create instance</source>
         <translation>&amp;Skep instansie</translation>
     </message>
@@ -7030,18 +7235,44 @@ Rede:
         <translation type="vanished">Geen nuus beskikbaar nie.</translation>
     </message>
     <message>
+        <location line="-479"/>
+        <location line="+150"/>
+        <source>Update on your bug report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-149"/>
+        <source>&quot;%1&quot;: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Updates on your bug reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 of your reports have news.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+147"/>
+        <source>&quot;Sample report&quot;: Seen - the team is looking into it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+457"/>
         <location line="+129"/>
-        <location line="+126"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
         <location line="+37"/>
-        <location line="+403"/>
+        <location line="+424"/>
         <source>Error</source>
         <translation>Fout (·•᷄∩•᷅ )</translation>
     </message>
     <message>
-        <location line="-652"/>
+        <location line="-676"/>
         <source>Warnings</source>
         <translation>Waarskuwings</translation>
     </message>
@@ -7057,7 +7288,7 @@ Rede:
     </message>
     <message>
         <location line="+4"/>
-        <location line="+140"/>
+        <location line="+143"/>
         <location line="+106"/>
         <source>Abort</source>
         <translation>Staak</translation>
@@ -7103,7 +7334,7 @@ aflaai en invoer?</translation>
         <translation>Modpakkie-aflaai</translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+40"/>
         <source>No instance!</source>
         <translation>Geen instansie!</translation>
     </message>
@@ -7178,7 +7409,7 @@ Kyk asseblief na jou vullisblik om hulle handmatig te herstel.</translation>
         <translation>Hierdie instansie is nie redigeerbaar nie. Dit mag stukkend, ongeldig of te oud wees. Kyk na logboeke vir besonderhede.</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+30"/>
         <source>Check instance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7338,7 +7569,7 @@ Is jy seker?</translation>
         <translation>Instansie hardloop al.</translation>
     </message>
     <message>
-        <location line="+107"/>
+        <location line="+108"/>
         <source>Rename Instance</source>
         <translation>Hernoem Instansie</translation>
     </message>
@@ -7387,12 +7618,12 @@ Is jy seker?</translation>
         <translation>Instansienutsbalk</translation>
     </message>
     <message>
-        <location line="+52"/>
+        <location line="+53"/>
         <source>&amp;File</source>
         <translation>&amp;Lêer</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>&amp;Edit</source>
         <translation>&amp;Wysig</translation>
     </message>
@@ -7469,12 +7700,12 @@ Is jy seker?</translation>
         <translation type="vanished">&amp;Dateer op...</translation>
     </message>
     <message>
-        <location line="-224"/>
+        <location line="-226"/>
         <source>What&apos;s New Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+232"/>
+        <location line="+234"/>
         <source>Check for update</source>
         <translation>Kontroleer vir bywerkings</translation>
     </message>
@@ -7819,13 +8050,23 @@ Is jy seker?</translation>
         <translation>Skakel die launcher se voorkoms tussen ligte, donker en ander temas.</translation>
     </message>
     <message>
+        <location line="+11"/>
+        <source>&amp;Pin Instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Keep the selected instance at the top of its group.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+8"/>
         <source>Chec&amp;k Instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Look for missing Java, broken mod files or a wrong loader version before launching.</source>
+        <source>Look for missing Java, broken or conflicting mods, a wrong loader version or too little memory/disk space before launching.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7847,6 +8088,18 @@ Is jy seker?</translation>
         <location line="+3"/>
         <source>Open the bug tracker to report a bug with %1.</source>
         <translation>Maak die foutopsporingsinstrument oop om ’n fout met %1 te rapporteer.</translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1672"/>
+        <location line="+136"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>See what the team answered to the bug reports you sent from this launcher.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+8"/>
@@ -7944,7 +8197,7 @@ Is jy seker?</translation>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1109"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+402"/>
         <source>Accounts</source>
         <translation>Rekeninge</translation>
     </message>
@@ -8005,18 +8258,18 @@ Is jy seker?</translation>
 <context>
     <name>ManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-344"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-359"/>
         <source>URL:</source>
         <translation>URL:</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+78"/>
+        <location line="+79"/>
         <source>Update Pack</source>
         <translation>Dateer Pak op</translation>
     </message>
     <message>
-        <location line="-73"/>
+        <location line="-74"/>
         <source>This is a local modpack.
 This can be updated either using a file in %1 format or an URL.
 Do not use a different format than the one mentioned as it may break the instance.
@@ -8044,7 +8297,7 @@ Maak seker jy vertrou ook die URL.
         <translation>Waarskuwings</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Task aborted</source>
         <translation>Taak gestaak</translation>
     </message>
@@ -8074,7 +8327,7 @@ Maak seker jy vertrou ook die URL.
         <translation>Kan nie opdateer nie!</translation>
     </message>
     <message>
-        <location line="+94"/>
+        <location line="+101"/>
         <source>Update Successful</source>
         <translation>Opdatering Geslaag</translation>
     </message>
@@ -8147,7 +8400,7 @@ Maak seker jy vertrou ook die URL.
 <context>
     <name>Meta::BaseEntityLoadTask</name>
     <message>
-        <location filename="../launcher/meta/BaseEntity.cpp" line="+122"/>
+        <location filename="../launcher/meta/BaseEntity.cpp" line="+124"/>
         <source>Loading local file</source>
         <translation>Laai plaaslike lêer</translation>
     </message>
@@ -8187,7 +8440,7 @@ Maak seker jy vertrou ook die URL.
 <context>
     <name>MinecraftInstance</name>
     <message>
-        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+307"/>
+        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+311"/>
         <source>&amp;Launch</source>
         <translation>&amp;Lanseer</translation>
     </message>
@@ -8222,7 +8475,7 @@ Maak seker jy vertrou ook die URL.
         <translation>&amp;Geen Profileerder</translation>
     </message>
     <message>
-        <location line="+697"/>
+        <location line="+705"/>
         <source>&lt;SESSION ID&gt;</source>
         <translation>&lt;SESSIE-ID&gt;</translation>
     </message>
@@ -8665,9 +8918,62 @@ Dit is hoogs waarskynlik dat jy die pad sal moet verander - verwys asseblief na 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+344"/>
+        <location line="+340"/>
         <source>Select Global Data Packs Folder</source>
         <translation>Kies Globale Data-pakke-gids</translation>
+    </message>
+</context>
+<context>
+    <name>ModConflictChecker</name>
+    <message>
+        <location filename="../launcher/minecraft/mod/ModConflictChecker.cpp" line="+88"/>
+        <source>unknown version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Duplicate mod: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These files all provide the mod id &quot;%1&quot;, and the game will not start with more than one of them:
+%2
+Keep only one (usually the newest) and delete or disable the others.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>%1 conflicts with %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 (%2) says it is incompatible with %3 (%4), and both are enabled.
+Disable or remove one of them.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
+        <source>Disabled dependency: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 needs the mod &quot;%2&quot;, which is installed (%3) but disabled.
+Enable it to avoid a crash on startup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Possibly missing dependency: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 needs a mod with the id &quot;%2&quot;, but none was found in the mods folder.
+If the game starts fine it is probably bundled inside another mod; otherwise download it.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -8811,7 +9117,7 @@ Dit is hoogs waarskynlik dat jy die pad sal moet verander - verwys asseblief na 
 <context>
     <name>ModFolderModel</name>
     <message>
-        <location filename="../launcher/minecraft/mod/ModFolderModel.cpp" line="+68"/>
+        <location filename="../launcher/minecraft/mod/ModFolderModel.cpp" line="+69"/>
         <source>Enable</source>
         <translation>Aktiveer</translation>
     </message>
@@ -8946,7 +9252,7 @@ Dit is hoogs waarskynlik dat jy die pad sal moet verander - verwys asseblief na 
         <translation>Vir elke mod, die aantal ander mods waarvan dit afhang.</translation>
     </message>
     <message>
-        <location line="+224"/>
+        <location line="+247"/>
         <source>Confirm toggle</source>
         <translation>Bevestig wisseling</translation>
     </message>
@@ -9106,7 +9412,7 @@ Are you sure you want to do this?</source>
 Is jy seker jy wil dit doen?</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
         <source>Confirm Disable</source>
         <translation>Bevestig Deaktivering</translation>
     </message>
@@ -9118,46 +9424,47 @@ Do you want to disable them?</source>
 Wil jy hulle deaktiveer?</translation>
     </message>
     <message>
-        <location line="+41"/>
-        <location line="+45"/>
-        <location line="+45"/>
-        <location line="+60"/>
+        <location line="+40"/>
+        <location line="+46"/>
+        <location line="+58"/>
+        <location line="+61"/>
+        <location line="+101"/>
         <source>Error</source>
         <translation>Fout (·•᷄∩•᷅ )</translation>
     </message>
     <message>
-        <location line="-146"/>
-        <location line="+67"/>
-        <location line="+23"/>
+        <location line="-262"/>
+        <location line="+77"/>
+        <location line="+27"/>
         <source>Aborted</source>
         <translation>Afgebreek</translation>
     </message>
     <message>
-        <location line="-90"/>
-        <location line="+90"/>
+        <location line="-104"/>
+        <location line="+104"/>
         <source>Download stopped by user.</source>
         <translation>Aflaai gestaak deur gebruiker.</translation>
     </message>
     <message>
-        <location line="-84"/>
-        <location line="+90"/>
+        <location line="-98"/>
+        <location line="+104"/>
         <source>Warnings</source>
         <translation>Waarskuwings</translation>
     </message>
     <message>
-        <location line="-76"/>
-        <location line="+86"/>
+        <location line="-89"/>
+        <location line="+99"/>
         <source>Abort</source>
         <translation>Staak</translation>
     </message>
     <message>
-        <location line="-65"/>
-        <location line="+105"/>
+        <location line="-78"/>
+        <location line="+119"/>
         <source>Mod updates are unavailable when metadata is disabled!</source>
         <translation>Mod-opdaterings is onbeskikbaar wanneer metadata gedeaktiveer is!</translation>
     </message>
     <message>
-        <location line="-100"/>
+        <location line="-114"/>
         <source>Confirm Update</source>
         <translation>Bevestig Opdatering</translation>
     </message>
@@ -9172,6 +9479,11 @@ Is jy seker jy wil dit doen?</translation>
     </message>
     <message>
         <location line="+20"/>
+        <source>There are no mods to check for updates.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
         <source>The mod updater was aborted!</source>
         <translation>Die mod-opdaterer is gestaak!</translation>
     </message>
@@ -9191,12 +9503,36 @@ Is jy seker jy wil dit doen?</translation>
         <translation>Alle gekose mods is op datum! :)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+159"/>
+        <source>Missing Mod Loader</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>You need to install a compatible mod loader before installing mods. Would you like to do so?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>No mod loader was installed. Please try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-194"/>
+        <location line="+25"/>
         <source>Update checker</source>
         <translation>Opdateringsnagaaner</translation>
     </message>
+    <message numerus="yes">
+        <location line="-2"/>
+        <source>No updates were found, but %n mod(s) could not be checked.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location line="+41"/>
+        <location line="+44"/>
         <source>Confirm Removal</source>
         <translation>Bevestig Verwydering</translation>
     </message>
@@ -9252,7 +9588,7 @@ Is jy seker?</translation>
 <context>
     <name>Modrinth::ModpackListModel</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/modrinth/ModrinthModel.cpp" line="+324"/>
+        <location filename="../launcher/ui/pages/modplatform/modrinth/ModrinthModel.cpp" line="+329"/>
         <location line="+3"/>
         <source>Error</source>
         <translation>Fout (·•᷄∩•᷅ )</translation>
@@ -9279,7 +9615,7 @@ Dateer %1 asseblief op!</translation>
         <translation>Berei hulpbronne vir Modrinth voor...</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+37"/>
         <source>Waiting for the API response from Modrinth...</source>
         <translation>Wag vir die API-reaksie van Modrinth...</translation>
     </message>
@@ -9289,7 +9625,7 @@ Dateer %1 asseblief op!</translation>
         <translation>Ontleed die API-reaksie van Modrinth...</translation>
     </message>
     <message>
-        <location line="+65"/>
+        <location line="+66"/>
         <source>Not installed</source>
         <translation>Nie geïnstalleer nie</translation>
     </message>
@@ -9299,7 +9635,7 @@ Dateer %1 asseblief op!</translation>
         <translation>Onbekend</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+38"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version / mod loader.</source>
         <translation>Geen geldige weergawe vir hierdie hulpbron gevind nie. Dit is waarskynlik onbeskikbaar vir die huidige spelweergawe / mod-laaier.</translation>
     </message>
@@ -9312,12 +9648,12 @@ Dateer %1 asseblief op!</translation>
 <context>
     <name>ModrinthCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+66"/>
+        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+74"/>
         <source> (version %1)</source>
         <translation> (weergawe %1)</translation>
     </message>
     <message>
-        <location line="+70"/>
+        <location line="+71"/>
         <source>No index file.</source>
         <translation>Geen indekslêer nie.</translation>
     </message>
@@ -9327,7 +9663,7 @@ Dateer %1 asseblief op!</translation>
         <translation>Ons kon nie &apos;n geskikte indekslêer vir die ouer weergawe vind nie. Dit kan veroorsaak dat sommige van die lêers gedupliseer word. Wil jy voortgaan?</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>Could not rename the overrides folder:
 </source>
         <translation>Kon nie die oorskrywingsgids hernoem nie:
@@ -9341,7 +9677,7 @@ Dateer %1 asseblief op!</translation>
 </translation>
     </message>
     <message>
-        <location line="+37"/>
+        <location line="+53"/>
         <source>Mod Download Modrinth</source>
         <translation>Mod-aflaai Modrinth</translation>
     </message>
@@ -9356,7 +9692,7 @@ Dateer %1 asseblief op!</translation>
         <translation>Die lêer &apos;%1&apos; het nie &apos;n aflaaiskakel nie. Dit is ongeldig in die pakformaat.</translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+45"/>
         <source>Downloading mods...</source>
         <translation>Laai tans mod&apos;s af...</translation>
     </message>
@@ -9366,14 +9702,14 @@ Dateer %1 asseblief op!</translation>
         <translation>Die aflaai-URL vir %1 is nie ’n korrek geformateerde URL nie</translation>
     </message>
     <message>
-        <location line="+60"/>
+        <location line="+62"/>
         <source>Could not understand pack index:
 </source>
         <translation>Kon nie die pakindeks verstaan nie:
 </translation>
     </message>
     <message>
-        <location line="-176"/>
+        <location line="-178"/>
         <location line="+24"/>
         <source>%1 out of %2 complete</source>
         <translation>%1 uit %2 is klaar</translation>
@@ -9382,12 +9718,12 @@ Dateer %1 asseblief op!</translation>
 <context>
     <name>ModrinthManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-55"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-60"/>
         <source>%1 (Current)</source>
         <translation>%1 (Huidig)</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+19"/>
         <source>Fetching changelogs...</source>
         <translation>Haal wysigingslogboeke op...</translation>
     </message>
@@ -9547,6 +9883,51 @@ Dateer %1 asseblief op!</translation>
     </message>
 </context>
 <context>
+    <name>MyReportsDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+151"/>
+        <location line="+4"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Bug reports and suggestions you sent from this launcher, and what the team answered.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>No reports yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>When you send a bug report or suggestion from this launcher, it shows up here, and you will be told when the team answers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <location line="+25"/>
+        <source>Check for updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-24"/>
+        <source>Close</source>
+        <translation type="unfinished">Maak toe</translation>
+    </message>
+    <message>
+        <location line="+25"/>
+        <source>Last checked: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>Checking…</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Net::NetRequest</name>
     <message>
         <location filename="../launcher/net/NetRequest.cpp" line="+73"/>
@@ -9610,7 +9991,7 @@ Dateer %1 asseblief op!</translation>
         <translation type="vanished">Kon nie al die take in die NetJob staak nie!</translation>
     </message>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+145"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9781,7 +10162,7 @@ Dateer %1 asseblief op!</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/NewInstanceDialog.ui" line="+17"/>
-        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="+78"/>
+        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="+79"/>
         <source>New Instance</source>
         <translation>Nuwe Instansie</translation>
     </message>
@@ -9911,13 +10292,13 @@ Dateer %1 asseblief op!</translation>
     </message>
     <message>
         <location line="+76"/>
-        <location line="+135"/>
+        <location line="+138"/>
         <location line="+41"/>
         <source>Error</source>
         <translation>Fout (·•᷄∩•᷅ )</translation>
     </message>
     <message>
-        <location line="-176"/>
+        <location line="-179"/>
         <source>Unable to open %1 for reading: %2</source>
         <translation>Kon nie %1 oopmaak om te lees nie: %2</translation>
     </message>
@@ -9927,7 +10308,7 @@ Dateer %1 asseblief op!</translation>
         <translation>Die lêer (%1) is te groot. Jy wil dit dalk in ’n kyker oopmaak wat vir groot lêers geoptimaliseer is.</translation>
     </message>
     <message>
-        <location line="+60"/>
+        <location line="+63"/>
         <source>The file (%1) encountered an error when reading: %2.</source>
         <translation>Die lêer (%1) het ’n fout ervaar toe dit gelees word: %2.</translation>
     </message>
@@ -9992,8 +10373,8 @@ Is jy seker?</translation>
         <translation>Maak die log skoon</translation>
     </message>
     <message>
-        <location line="-395"/>
-        <location line="+218"/>
+        <location line="-398"/>
+        <location line="+221"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Kan nie hierdie log vertoon nie, aangesien die loglengte %1 reëls oorskry het.</translation>
     </message>
@@ -10219,19 +10600,19 @@ Is jy seker?</translation>
         <translation type="vanished">Sal later regmaak.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+383"/>
-        <location line="+42"/>
+        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+388"/>
+        <location line="+44"/>
         <source>Search settings…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-41"/>
-        <location line="+42"/>
+        <location line="-43"/>
+        <location line="+44"/>
         <source>Search all settings (Ctrl+F). Several words narrow the results down.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+296"/>
+        <location line="+297"/>
         <source>No settings match &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10511,7 +10892,7 @@ StdErr: %2</translation>
 <context>
     <name>PollyMCUpdaterApp</name>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="+99"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="+100"/>
         <source>Use a custom path as application root (use &apos;.&apos; for current directory).</source>
         <translation type="unfinished">Gebruik &apos;n aangepaste pad as toepassingshoofgids (gebruik &apos;.&apos; vir die huidige gids).</translation>
     </message>
@@ -10863,20 +11244,26 @@ Updater log: %7</source>
         <translation type="unfinished">Kon nie %1 na %2 onttrek nie</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+23"/>
+        <source>Failed to launch child process to read version, using the built-in version instead.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+4"/>
+        <source>Child launcher process did not finish in time, using the built-in version instead.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Failed to Check Version</source>
-        <translation type="unfinished">Kon nie die Weergawe Kontroleer nie</translation>
+        <translation type="obsolete">Kon nie die Weergawe Kontroleer nie</translation>
     </message>
     <message>
-        <location line="-4"/>
         <source>Failed to launch child process to read version.</source>
-        <translation type="unfinished">Kon nie die kindproses lanseer om die weergawe te lees nie.</translation>
+        <translation type="obsolete">Kon nie die kindproses lanseer om die weergawe te lees nie.</translation>
     </message>
     <message>
-        <location line="+4"/>
         <source>Child launcher process failed.</source>
-        <translation type="unfinished">Kindlaaierproses misluk.</translation>
+        <translation type="obsolete">Kindlaaierproses misluk.</translation>
     </message>
 </context>
 <context>
@@ -11642,17 +12029,29 @@ Kies jou naam versigtig:</translation>
     </message>
     <message>
         <location filename="../launcher/InstanceDirUpdate.cpp" line="+64"/>
-        <location line="+33"/>
+        <location line="+40"/>
         <source>Cannot rename instance</source>
         <translation>Kan nie die instansie hernoem nie</translation>
     </message>
     <message>
-        <location line="-32"/>
+        <location line="-39"/>
         <source>New instance root (%1) already exists. &lt;br /&gt;Only the metadata will be renamed.</source>
         <translation>Nuwe instansiehoofgids (%1) bestaan al. &lt;br /&gt;Slegs die metadata sal hernoem word.</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+5"/>
+        <source>Cannot rename instance folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The instance folder cannot be renamed while the instance is running.
+
+Only the instance name will be changed. The folder will keep its current name.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>&amp;Remember my choice</source>
         <translation>&amp;Onthou my keuse</translation>
     </message>
@@ -11827,7 +12226,7 @@ Hierdie boodskap sal vertoon word totdat jy dit uit die JVM-argumente verwyder.<
         <translation>Die Java-nagaanbiblioteek kon nie gevind word nie. Kyk asseblief na jou installasie.</translation>
     </message>
     <message>
-        <location filename="../launcher/meta/BaseEntity.cpp" line="+34"/>
+        <location filename="../launcher/meta/BaseEntity.cpp" line="+36"/>
         <source>Download of meta file %1</source>
         <translation>Aflaai van meta-lêer %1</translation>
     </message>
@@ -12139,7 +12538,7 @@ Hierdie boodskap sal vertoon word totdat jy dit uit die JVM-argumente verwyder.<
         <translation>ms</translation>
     </message>
     <message>
-        <location filename="../launcher/modplatform/ModIndex.h" line="+143"/>
+        <location filename="../launcher/modplatform/ModIndex.h" line="+145"/>
         <source> for %1</source>
         <translation> vir %1</translation>
     </message>
@@ -12352,7 +12751,7 @@ Voortgaan met afkapping?</translation>
         <translation>Ongroeper</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-837"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-870"/>
         <source>%1 (in use)</source>
         <translation>%1 (in gebruik)</translation>
     </message>
@@ -12442,7 +12841,7 @@ Voortgaan met afkapping?</translation>
         <translation>Java-toets geslaag!&lt;br /&gt;Platform gerapporteer: %1&lt;br /&gt;Java-weergawe gerapporteer: %2&lt;br /&gt;</translation>
     </message>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1040"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1049"/>
         <source>An auto-updater for PollyMC-Continued</source>
         <translation> ’n outo-opdaterer vir PollyMC-Continued</translation>
     </message>
@@ -12486,16 +12885,146 @@ Voortgaan met afkapping?</translation>
         <source>Send this error to the PollyMC developers</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../launcher/BugReportTracker.cpp" line="+164"/>
+        <source>Waiting for a dev to check it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Seen - the team is looking into it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The team needs more information - please reach out on Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Fixed - it will be in the next update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-193"/>
+        <source>Fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Fixed in version %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+2"/>
+        <source>Won&apos;t be fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Duplicate of another report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+4"/>
+        <source>Not a bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+1"/>
+        <source>Updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Crash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Suggestion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Other</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-13"/>
+        <source>Waiting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>In review</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Needs info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Duplicate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>NEW</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Sent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>(no title)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>%1  ·  ID %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <location line="+8"/>
+        <source>Copy ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-7"/>
+        <source>Give this ID to the team if you contact them about this report.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Copied!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Resource</name>
     <message>
-        <location filename="../launcher/minecraft/mod/Resource.cpp" line="+63"/>
+        <location filename="../launcher/minecraft/mod/Resource.cpp" line="+64"/>
         <source>Unknown</source>
         <translation>Onbekend</translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="+50"/>
         <source>Not marked as compatible with the instance&apos;s game version.</source>
         <translation>Nie as versoenbaar met die instansie se spelweergawe gemerk nie.</translation>
     </message>
@@ -12503,7 +13032,7 @@ Voortgaan met afkapping?</translation>
 <context>
     <name>ResourceDownload::DataPackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+181"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+196"/>
         <source>data packs</source>
         <extracomment>String that gets appended to the data pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>data-pakke</translation>
@@ -12527,7 +13056,7 @@ Voortgaan met afkapping?</translation>
 <context>
     <name>ResourceDownload::ModDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-69"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-81"/>
         <source>mods</source>
         <extracomment>String that gets appended to the mod download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>mods</translation>
@@ -12551,7 +13080,7 @@ Voortgaan met afkapping?</translation>
 <context>
     <name>ResourceDownload::ResourceDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="+77"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="+79"/>
         <source>Review and confirm</source>
         <translation>Hersien en bevestig</translation>
     </message>
@@ -12561,7 +13090,7 @@ Voortgaan met afkapping?</translation>
         <translation>Ctrl+Enter</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>Confirmation Needed</source>
         <translation>Bevestiging Nodig</translation>
     </message>
@@ -12573,7 +13102,7 @@ Are you sure you want to close this dialog?</source>
 Is jy seker jy wil hierdie dialoog toemaak?</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+52"/>
         <source>Opens a new popup to review your selected %1 and confirm your selection. Shortcut: Ctrl+Return</source>
         <translation>Maak ’n nuwe opspringvenster oop om jou gekose %1 te hersien en jou keuse te bevestig. Kortpad: Ctrl+Enter</translation>
     </message>
@@ -12603,12 +13132,12 @@ Is jy seker jy wil hierdie dialoog toemaak?</translation>
         <translation>Kyk vir afhanklikhede...</translation>
     </message>
     <message>
-        <location line="+220"/>
+        <location line="+265"/>
         <source>Change %1 version</source>
         <translation>Verander %1-weergawe</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-50"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-53"/>
         <source>resources</source>
         <extracomment>String that gets appended to the download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>hulpbronne</translation>
@@ -12622,35 +13151,35 @@ Is jy seker jy wil hierdie dialoog toemaak?</translation>
 <context>
     <name>ResourceDownload::ResourceModel</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourceModel.cpp" line="+221"/>
-        <location line="+20"/>
-        <location line="+180"/>
-        <location line="+4"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourceModel.cpp" line="+239"/>
+        <location line="+24"/>
+        <location line="+190"/>
+        <location line="+7"/>
         <source>Error</source>
         <translation>Fout (·•᷄∩•᷅ )</translation>
     </message>
     <message>
-        <location line="-203"/>
+        <location line="-220"/>
         <source>A network error occurred. Could not load project versions: %1</source>
         <translation>&apos;n Netwerkfout het voorgekom. Kon nie projekweergawes laai nie: %1</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+23"/>
         <source>A network error occurred. Could not load project info: %1</source>
         <translation>&apos;n Netwerkfout het voorgekom. Kon nie projekinligting laai nie: %1</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>The request was aborted for an unknown reason</source>
         <translation>Die versoek is om ’n onbekende rede gestaak</translation>
     </message>
     <message>
-        <location line="+175"/>
+        <location line="+184"/>
         <source>A network error occurred. Could not load mods.</source>
         <translation>&apos;n Netwerkfout het voorgekom. Kon nie mods laai nie.</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+8"/>
         <source>API version too old!
 Please update %1!</source>
         <translation>API-weergawe te oud!
@@ -12660,7 +13189,7 @@ Dateer %1 asseblief op!</translation>
 <context>
     <name>ResourceDownload::ResourcePackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+66"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+72"/>
         <source>resource packs</source>
         <extracomment>String that gets appended to the resource pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>hulpbronpakkette</translation>
@@ -12684,19 +13213,19 @@ Dateer %1 asseblief op!</translation>
 <context>
     <name>ResourceDownload::ResourcePage</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+113"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+114"/>
         <source>Search for %1...</source>
         <extracomment>String in the search bar of the mod downloading dialog</extracomment>
         <translation>Soek vir %1...</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+161"/>
+        <location line="+178"/>
         <source>Select %1 for download</source>
         <translation>Kies %1 vir aflaai</translation>
     </message>
     <message>
-        <location line="-56"/>
+        <location line="-60"/>
         <source> by </source>
         <translation> deur </translation>
     </message>
@@ -12721,22 +13250,22 @@ Dateer %1 asseblief op!</translation>
         <translation>Kwessies: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Wiki: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Wiki: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Source code: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Bronkode: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+3"/>
         <source>Discord: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Discord: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+22"/>
         <source>No version available for the selected pack</source>
         <translation>Geen weergawe beskikbaar vir die gekose pak nie</translation>
     </message>
@@ -12746,7 +13275,7 @@ Dateer %1 asseblief op!</translation>
         <translation>Ontkies %1 vir aflaai</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source> [installed]</source>
         <comment>Mod version select</comment>
         <translation> [geïnstalleer]</translation>
@@ -12762,12 +13291,12 @@ Dateer %1 asseblief op!</translation>
         <translation>Kan nie ’n ongeldige weergawe kies nie :(</translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+25"/>
         <source>Loading versions...</source>
         <translation>Laai weergawes...</translation>
     </message>
     <message>
-        <location line="+94"/>
+        <location line="+103"/>
         <source>No versions available</source>
         <translation>Geen weergawes beskikbaar nie</translation>
     </message>
@@ -12779,7 +13308,7 @@ The author likely blocked third-party launchers.</source>
 Die outeur het waarskynlik derdeparty-laaiers geblokkeer.</translation>
     </message>
     <message>
-        <location line="+107"/>
+        <location line="+111"/>
         <source>Reinstall</source>
         <translation>Herinstalleer</translation>
     </message>
@@ -12799,7 +13328,7 @@ Die outeur het waarskynlik derdeparty-laaiers geblokkeer.</translation>
         <translation>Die hulpbron is nie gevind nie</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.h" line="+47"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.h" line="+46"/>
         <source>resources</source>
         <extracomment>The plural version of &apos;resource&apos;</extracomment>
         <translation>hulpbronne</translation>
@@ -12814,7 +13343,7 @@ Die outeur het waarskynlik derdeparty-laaiers geblokkeer.</translation>
 <context>
     <name>ResourceDownload::ShaderPackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+34"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+40"/>
         <source>shader packs</source>
         <extracomment>String that gets appended to the shader pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>skadu-pakkette</translation>
@@ -12838,7 +13367,7 @@ Die outeur het waarskynlik derdeparty-laaiers geblokkeer.</translation>
 <context>
     <name>ResourceDownload::TexturePackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-17"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-20"/>
         <source>texture packs</source>
         <extracomment>String that gets appended to the texture pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>tekstuurpakkette</translation>
@@ -12862,7 +13391,7 @@ Die outeur het waarskynlik derdeparty-laaiers geblokkeer.</translation>
 <context>
     <name>ResourceDownloadTask</name>
     <message>
-        <location filename="../launcher/ResourceDownloadTask.cpp" line="+45"/>
+        <location filename="../launcher/ResourceDownloadTask.cpp" line="+74"/>
         <source>Resource download</source>
         <translation>Hulpbron-aflaai</translation>
     </message>
@@ -12874,7 +13403,7 @@ Die outeur het waarskynlik derdeparty-laaiers geblokkeer.</translation>
 %1</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+56"/>
         <source>Failed to rename shader config from &apos;%1&apos; to &apos;%2&apos;</source>
         <translation>Kon nie die skadu-konfigurasie van &apos;%1&apos; na &apos;%2&apos; hernoem nie</translation>
     </message>
@@ -12882,7 +13411,7 @@ Die outeur het waarskynlik derdeparty-laaiers geblokkeer.</translation>
 <context>
     <name>ResourceFolderModel</name>
     <message>
-        <location filename="../launcher/minecraft/mod/ResourceFolderModel.cpp" line="+271"/>
+        <location filename="../launcher/minecraft/mod/ResourceFolderModel.cpp" line="+296"/>
         <source>Confirm toggle</source>
         <translation>Bevestig wisseling</translation>
     </message>
@@ -12894,7 +13423,7 @@ Are you sure you want to do this?</source>
 Is jy seker jy wil dit doen?</translation>
     </message>
     <message>
-        <location line="+280"/>
+        <location line="+287"/>
         <source>
 Warning: This resource is symbolically linked from elsewhere. Editing it will also change the original.
 Canonical Path: %1</source>
@@ -12946,7 +13475,7 @@ Waarskuwing: Hierdie hulpbron is elders hard geskakel. Die redigering daarvan sa
         <translation>Wys / Versteek Kolomme</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/mod/ResourceFolderModel.h" line="+244"/>
+        <location filename="../launcher/minecraft/mod/ResourceFolderModel.h" line="+252"/>
         <source>Enable</source>
         <translation>Aktiveer</translation>
     </message>
@@ -13064,46 +13593,46 @@ Waarskuwing: Hierdie hulpbron is elders hard geskakel. Die redigering daarvan sa
         <translation>Verander ’n mod se weergawe.</translation>
     </message>
     <message>
-        <location line="+30"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="+31"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Fout (·•᷄∩•᷅ )</translation>
     </message>
     <message>
-        <location line="-134"/>
-        <location line="+61"/>
+        <location line="-142"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Afgebreek</translation>
     </message>
     <message>
-        <location line="-84"/>
-        <location line="+84"/>
+        <location line="-89"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>Aflaai gestaak deur gebruiker.</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Waarskuwings</translation>
     </message>
     <message>
-        <location line="-70"/>
-        <location line="+80"/>
+        <location line="-74"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Staak</translation>
     </message>
     <message>
-        <location line="-65"/>
-        <location line="+99"/>
+        <location line="-67"/>
+        <location line="+104"/>
         <source>Resource pack updates are unavailable when metadata is disabled!</source>
         <translation>Hulpbronpak-opdaterings is onbeskikbaar wanneer metadata gedeaktiveer is!</translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-99"/>
         <source>Confirm Update</source>
         <translation>Bevestig Opdatering</translation>
     </message>
@@ -13117,7 +13646,7 @@ Die ou lêers word dalk nie uitgevee nie omdat hulle in gebruik is.
 Is jy seker jy wil dit doen?</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+22"/>
         <source>The resource pack updater was aborted!</source>
         <translation>Die hulpbronpak-opdaterer is gestaak!</translation>
     </message>
@@ -13142,7 +13671,7 @@ Is jy seker jy wil dit doen?</translation>
         <translation>Opdateringsnagaaner</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+42"/>
         <source>Confirm Removal</source>
         <translation>Bevestig Verwydering</translation>
     </message>
@@ -13175,7 +13704,7 @@ Is jy seker?</translation>
 <context>
     <name>ResourceUpdateDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+44"/>
+        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+46"/>
         <source>Confirm resources to update</source>
         <translation>Bevestig hulpbronne om op te dateer</translation>
     </message>
@@ -13210,16 +13739,16 @@ Is jy seker?</translation>
         <translation>Kyk vir opdaterings</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+21"/>
         <location line="+95"/>
-        <location line="+146"/>
-        <location line="+16"/>
-        <location line="+56"/>
+        <location line="+153"/>
+        <location line="+17"/>
+        <location line="+58"/>
         <source>Error</source>
         <translation>Fout (·•᷄∩•᷅ )</translation>
     </message>
     <message>
-        <location line="-308"/>
+        <location line="-318"/>
         <location line="+99"/>
         <source>Warnings</source>
         <translation>Waarskuwings</translation>
@@ -13227,17 +13756,17 @@ Is jy seker?</translation>
     <message>
         <location line="-93"/>
         <location line="+98"/>
-        <location line="+160"/>
+        <location line="+169"/>
         <source>Abort</source>
         <translation>Staak</translation>
     </message>
     <message>
-        <location line="-257"/>
+        <location line="-266"/>
         <source>Checking for updates...</source>
         <translation>Kyk vir opdaterings...</translation>
     </message>
     <message>
-        <location line="+46"/>
+        <location line="+44"/>
         <source>Mod name: %1</source>
         <translation>Modnaam: %1</translation>
     </message>
@@ -13247,13 +13776,13 @@ Is jy seker?</translation>
         <translation>Rede: %1</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Possible solution: Getting the latest version manually:&lt;br&gt;%1&lt;br&gt;</source>
         <extracomment>%1 is the link to download it manually</extracomment>
         <translation>Moontlike oplossing: Kry die nuutste weergawe handmatig:&lt;br&gt;%1&lt;br&gt;</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>Failed to check for updates</source>
         <translation>Kon nie vir opdaterings nagaan nie</translation>
     </message>
@@ -13268,32 +13797,40 @@ Is jy seker?</translation>
         <translation>Kyk vir afhanklikhede...</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+21"/>
         <source>Not installed</source>
         <translation>Nie geïnstalleer nie</translation>
     </message>
+    <message numerus="yes">
+        <location line="+26"/>
+        <source>%n update(s) found. You&apos;re about to update the following resources:</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location line="+36"/>
+        <location line="+13"/>
         <source>Looking for metadata</source>
         <translation>Soek vir metadata</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+46"/>
         <source>The resource &apos;%1&apos; does not have a metadata yet. We need to generate it in order to track relevant information on how to update this mod. To do this, please select a mod provider which we can use to check for updates for this mod.</source>
         <translation>Die hulpbron &apos;%1&apos; het nog nie metadata nie. Ons moet dit genereer om relevante inligting oor hoe om hierdie mod op te dateer, te volg. Kies asseblief &apos;n mod-verskaffer wat ons kan gebruik om vir opdaterings vir hierdie mod na te gaan.</translation>
     </message>
     <message>
-        <location line="+59"/>
+        <location line="+63"/>
         <source>Generating metadata...</source>
         <translation>Genereer metadata...</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+54"/>
         <source>Couldn&apos;t find a valid version on the selected mod provider(s)</source>
         <translation>Kon nie ’n geldige weergawe op die gekose mod-verskaffer(s) vind nie</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+14"/>
         <source>Mod was disabled as it may be already installed.</source>
         <translation>Mod is gedeaktiveer aangesien dit dalk al geïnstalleer is.</translation>
     </message>
@@ -13404,12 +13941,12 @@ Is jy seker?</translation>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+312"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+316"/>
         <source>Context menu</source>
         <translation>Kontekslys</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+68"/>
         <source>You are about to upload %1 screenshots to %2.
 You should double-check for personal information.
 
@@ -13431,7 +13968,7 @@ Jy behoort dubbel na persoonlike inligting te kyk.
 Is jy seker?</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+18"/>
         <source>Abort</source>
         <translation>Staak</translation>
     </message>
@@ -13487,7 +14024,7 @@ Dit mag permanent wees en hulle sal uit die gids verdwyn.
 Is jy seker?</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>You are about to delete the selected screenshot.
 This may be permanent and it will be gone from the folder.
 
@@ -13802,46 +14339,46 @@ Is jy seker?</translation>
         <translation>Verander ’n skadu-pak se weergawe.</translation>
     </message>
     <message>
-        <location line="+22"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="+23"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Fout (·•᷄∩•᷅ )</translation>
     </message>
     <message>
-        <location line="-134"/>
-        <location line="+61"/>
+        <location line="-142"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Afgebreek</translation>
     </message>
     <message>
-        <location line="-84"/>
-        <location line="+84"/>
+        <location line="-89"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>Aflaai gestaak deur gebruiker.</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Waarskuwings</translation>
     </message>
     <message>
-        <location line="-70"/>
-        <location line="+80"/>
+        <location line="-74"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Staak</translation>
     </message>
     <message>
-        <location line="-65"/>
-        <location line="+99"/>
+        <location line="-67"/>
+        <location line="+104"/>
         <source>Shader pack updates are unavailable when metadata is disabled!</source>
         <translation>Skadu-pakopdaterings is onbeskikbaar wanneer metadata gedeaktiveer is!</translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-99"/>
         <source>Confirm Update</source>
         <translation>Bevestig Opdatering</translation>
     </message>
@@ -13855,7 +14392,7 @@ Die ou lêers word dalk nie uitgevee nie omdat hulle in gebruik is.
 Is jy seker jy wil dit doen?</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+22"/>
         <source>The shader pack updater was aborted!</source>
         <translation>Die skadu-pak-opdaterer is gestaak!</translation>
     </message>
@@ -13880,7 +14417,7 @@ Is jy seker jy wil dit doen?</translation>
         <translation>Opdateringsnagaaner</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+42"/>
         <source>Confirm Removal</source>
         <translation>Bevestig Verwydering</translation>
     </message>
@@ -14463,7 +15000,7 @@ Is jy seker?</translation>
 <context>
     <name>Task</name>
     <message>
-        <location filename="../launcher/tasks/Task.cpp" line="+134"/>
+        <location filename="../launcher/tasks/Task.cpp" line="+141"/>
         <source>Aborted</source>
         <translation>Afgebreek</translation>
     </message>
@@ -14732,46 +15269,46 @@ inheritsFrom ontbreek</translation>
         <translation>Bekyk die tuisblaaie van al die gekose tekstuurpakkette.</translation>
     </message>
     <message>
-        <location line="+27"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="+28"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Fout (·•᷄∩•᷅ )</translation>
     </message>
     <message>
-        <location line="-134"/>
-        <location line="+61"/>
+        <location line="-142"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Afgebreek</translation>
     </message>
     <message>
-        <location line="-84"/>
-        <location line="+84"/>
+        <location line="-89"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>Aflaai gestaak deur gebruiker.</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Waarskuwings</translation>
     </message>
     <message>
-        <location line="-70"/>
-        <location line="+80"/>
+        <location line="-74"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Staak</translation>
     </message>
     <message>
-        <location line="-65"/>
-        <location line="+99"/>
+        <location line="-67"/>
+        <location line="+104"/>
         <source>Texture pack updates are unavailable when metadata is disabled!</source>
         <translation>Tekstuurpak-opdaterings is onbeskikbaar wanneer metadata gedeaktiveer is!</translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-99"/>
         <source>Confirm Update</source>
         <translation>Bevestig Opdatering</translation>
     </message>
@@ -14785,7 +15322,7 @@ Die ou lêers word dalk nie uitgevee nie omdat hulle in gebruik is.
 Is jy seker jy wil dit doen?</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+22"/>
         <source>The texture pack updater was aborted!</source>
         <translation>Die tekstuurpak-opdaterer is gestaak!</translation>
     </message>
@@ -14810,7 +15347,7 @@ Is jy seker jy wil dit doen?</translation>
         <translation>Opdateringsnagaaner</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+42"/>
         <source>Confirm Removal</source>
         <translation>Bevestig Verwydering</translation>
     </message>
@@ -14880,6 +15417,29 @@ Is jy seker?</translation>
         <location line="+3"/>
         <source>Completeness is the percentage of fully translated strings, not counting automatically guessed ones.</source>
         <translation>Volledigheid is die persentasie van volledig vertaalde stringe, sonder om outomaties geraaidees te tel.</translation>
+    </message>
+</context>
+<context>
+    <name>UntrustedModsDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/UntrustedModsDialog.ui" line="+14"/>
+        <source>Easy There!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The modpack you are installing includes mods which are not hosted on Modrinth or CurseForge:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Malicious mods are often distributed through links sent on platforms such as Discord.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;We strongly recommend only importing modpacks from trusted sources.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>I trust this modpack and wish to proceed regardless</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -15441,13 +16001,13 @@ Is jy seker?</translation>
 <context>
     <name>VersionSelectDialog</name>
     <message>
+        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+74"/>
         <source>OK</source>
-        <translation type="vanished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+74"/>
         <source>Ok</source>
-        <translation>OK</translation>
+        <translation type="vanished">OK</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -15600,7 +16160,7 @@ Is jy seker?</translation>
 <context>
     <name>WorldList</name>
     <message>
-        <location filename="../launcher/minecraft/WorldList.cpp" line="+202"/>
+        <location filename="../launcher/minecraft/WorldList.cpp" line="+203"/>
         <source>This world is symbolically linked from elsewhere.</source>
         <translation>Hierdie wêreld word van elders simbolies geskakel.</translation>
     </message>
@@ -15865,17 +16425,16 @@ Wil jy voortgaan?</translation>
         <translation>Kry magtiging om toegang tot %1-dienste te verkry.</translation>
     </message>
     <message>
-        <location line="+48"/>
         <source>Failed to get authorization for %1 services. Error %2.</source>
-        <translation>Kon nie magtiging vir %1-dienste kry nie. Fout %2.</translation>
+        <translation type="vanished">Kon nie magtiging vir %1-dienste kry nie. Fout %2.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+48"/>
         <source>Unknown STS error for %1 services: %2</source>
         <translation>Onbekende STS-fout vir %1-dienste: %2</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+4"/>
         <source>Failed to get authorization for %1 services: %2</source>
         <translation>Kon nie magtiging vir %1-dienste kry nie: %2</translation>
     </message>
