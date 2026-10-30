@@ -308,6 +308,11 @@ QStringList Mod::breaks() const
     return details().breaks;
 }
 
+QStringList Mod::bundledModIds() const
+{
+    return details().bundledModIds;
+}
+
 int Mod::requiredByCount() const
 {
     return m_requiredByCount;

@@ -144,6 +144,14 @@ QList<ModConflictChecker::Conflict> ModConflictChecker::check(const QList<Mod*>&
 
     // ---- 3. required dependencies that are disabled or absent ----
     {
+        // ids shipped inside an enabled jar (NeoForge Jar-in-Jar): these are present at runtime even though
+        // there is no file for them in the mods folder
+        QSet<QString> bundledIds;
+        for (const Mod* mod : enabled) {
+            for (const QString& id : mod->bundledModIds())
+                bundledIds.insert(id);
+        }
+
         QHash<QString, QList<Mod*>> requiredBy;  // dependency id -> enabled mods that need it
         for (Mod* mod : enabled) {
             QSet<QString> seen;
@@ -151,7 +159,7 @@ QList<ModConflictChecker::Conflict> ModConflictChecker::check(const QList<Mod*>&
                 if (dep.isEmpty() || dep == mod->mod_id() || ignoredDependencyIds().contains(dep) || seen.contains(dep))
                     continue;
                 seen.insert(dep);
-                if (!enabledById.contains(dep))
+                if (!enabledById.contains(dep) && !bundledIds.contains(dep))
                     requiredBy[dep].append(mod);
             }
         }
@@ -174,9 +182,9 @@ QList<ModConflictChecker::Conflict> ModConflictChecker::check(const QList<Mod*>&
                                    needing });
             } else {
                 conflicts.append({ Kind::MissingDependency, Severity::Warning, tr("Possibly missing dependency: %1").arg(id),
-                                   tr("%1 needs a mod with the id \"%2\", but none was found in the mods folder.\n"
-                                      "If the game starts fine it is probably bundled inside another mod; "
-                                      "otherwise download it.")
+                                   tr("%1 needs a mod with the id \"%2\", but it was not found in the mods folder "
+                                      "or bundled inside any of the installed mods.\n"
+                                      "Download it, unless the game already starts fine.")
                                        .arg(needed, id),
                                    needing });
             }

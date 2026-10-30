@@ -145,6 +145,11 @@ struct ModDetails {
      * conflict than report one that does not exist. */
     QStringList breaks = {};
 
+    /* IDs of mods that are shipped inside this jar rather than as separate files: the NeoForge Jar-in-Jar
+     * entries under META-INF/jarjar/ (searched recursively) and any extra [[mods]] entries of the jar itself.
+     * A dependency on one of these is already satisfied by this jar. */
+    QStringList bundledModIds = {};
+
     ModDetails() = default;
 
     /** Metadata should be handled manually to properly set the mod status. */
@@ -161,6 +166,7 @@ struct ModDetails {
         , icon_file(other.icon_file)
         , dependencies(other.dependencies)
         , breaks(other.breaks)
+        , bundledModIds(other.bundledModIds)
     {}
 
     ModDetails& operator=(const ModDetails& other) = default;

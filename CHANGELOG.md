@@ -1,5 +1,14 @@
 # Changelog
 
+## v10.0.1
+
+**Fixes a false alarm in "Check instance" for modpacks that bundle their libraries.**
+
+**Fixed:**
+
+- **Mod conflict false alarms with bundled libraries** — Many modpacks, including All the Mods 10: To the Sky, ship libraries inside other mods (NeoForge's "Jar-in-Jar"). "Check instance" no longer reports those libraries as possibly missing when another installed mod already includes them. Real missing dependencies are still reported.
+- **Mods that only contain other mods** — Library-style mods that carry their mods inside themselves (such as Kotlin for Forge) are now recognized and counted as installed, instead of being skipped.
+
 ## v10.0.0
 
 **This update brings the launcher's own new features together with a big core update.** New in the launcher itself: pinning instances, mod conflict detection, a smarter "Check instance" and the new "My Reports" page for your bug reports. Under the hood, the launcher's core has been brought up to date with Prism Launcher 11.1.1 (we were on 11.0.0 before), pulling in five upstream releases' worth of fixes and improvements. Offline accounts, offline skins and everything else you're used to work exactly as before, and your instances, accounts and settings carry over untouched.

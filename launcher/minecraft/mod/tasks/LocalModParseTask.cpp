@@ -9,6 +9,7 @@
 #include <QJsonValue>
 #include <QRegularExpression>
 #include <QString>
+#include <QTemporaryFile>
 
 #include "FileSystem.h"
 #include "Json.h"
@@ -615,6 +616,75 @@ ModDetails ReadNilModInfo(QByteArray contents, QString fname)
     return details;
 }
 
+namespace {
+// Every modId declared in a (neoforge.)mods.toml, in file order. A jar can declare several [[mods]].
+QStringList ReadAllTOMLModIds(const QByteArray& contents)
+{
+    QStringList ids;
+    toml::table tomlData;
+#if TOML_EXCEPTIONS
+    try {
+        tomlData = toml::parse(contents.toStdString());
+    } catch ([[maybe_unused]] const toml::parse_error& err) {
+        return ids;
+    }
+#else
+    toml::parse_result result = toml::parse(contents.toStdString());
+    if (!result) {
+        return ids;
+    }
+    tomlData = result.table();
+#endif
+    if (auto modsArr = tomlData["mods"].as_array()) {
+        for (auto& entry : *modsArr) {
+            if (auto table = entry.as_table()) {
+                if (auto modId = (*table)["modId"].as_string()) {
+                    ids.append(QString::fromStdString(modId->get()));
+                }
+            }
+        }
+    }
+    return ids;
+}
+
+constexpr int kMaxJarJarDepth = 4;
+
+// Collects the mod ids of everything shipped through Jar-in-Jar inside the jar at jarPath.
+// The nested entries are real jars with their own mods.toml (and possibly their own jarjar folder, e.g.
+// Kotlin for Forge), so each one is copied to a temporary file and read the same way. Maven coordinates in
+// META-INF/jarjar/metadata.json are not mod ids, which is why that file is not used.
+void CollectJarJarModIds(const QString& jarPath, int depth, QStringList& out)
+{
+    if (depth > kMaxJarJarDepth) {
+        return;
+    }
+    MMCZip::ArchiveReader zip(jarPath);
+    zip.parse([&out, depth](MMCZip::ArchiveReader::File* file, bool& stop) {
+        Q_UNUSED(stop);
+        const auto filePath = file->filename();
+        if (filePath == "META-INF/mods.toml" || filePath == "META-INF/neoforge.mods.toml") {
+            if (depth > 0) {  // depth 0 is the jar being parsed, its own ids are handled by the caller
+                out.append(ReadAllTOMLModIds(file->readAll()));
+                return true;
+            }
+        } else if (filePath.startsWith("META-INF/jarjar/") && filePath.endsWith(".jar", Qt::CaseInsensitive)) {
+            const auto data = file->readAll();
+            if (!data.isEmpty()) {
+                QTemporaryFile tmp(QDir::temp().filePath("pollymc-jarjar-XXXXXX.jar"));
+                if (tmp.open()) {
+                    tmp.write(data);
+                    tmp.flush();
+                    CollectJarJarModIds(tmp.fileName(), depth + 1, out);
+                }
+            }
+            return true;
+        }
+        file->skip();
+        return true;
+    });
+}
+}  // namespace
+
 bool process(Mod& mod, ProcessingLevel level)
 {
     switch (mod.type()) {
@@ -630,25 +700,33 @@ bool process(Mod& mod, ProcessingLevel level)
     }
 }
 
-bool processZIP(Mod& mod, [[maybe_unused]] ProcessingLevel level)
+bool processZIP(Mod& mod, ProcessingLevel level)
 {
     ModDetails details;
 
     MMCZip::ArchiveReader zip(mod.fileinfo().filePath());
 
     bool baseForgePopulated = false;
+    bool hasModsToml = false;
+    QStringList extraModIds = {};
     bool isNilMod = false;
     bool isValid = false;
     QString manifestVersion = {};
     QByteArray nilData = {};
     QString nilFilePath = {};
 
-    if (!zip.parse([&details, &baseForgePopulated, &manifestVersion, &isValid, &nilData, &isNilMod, &nilFilePath](
+    if (!zip.parse([&details, &baseForgePopulated, &hasModsToml, &extraModIds, &manifestVersion, &isValid, &nilData, &isNilMod, &nilFilePath](
                        MMCZip::ArchiveReader::File* file, bool& stop) {
             auto filePath = file->filename();
 
             if (filePath == "META-INF/mods.toml" || filePath == "META-INF/neoforge.mods.toml") {
-                details = ReadMCModTOML(file->readAll());
+                const auto tomlContents = file->readAll();
+                details = ReadMCModTOML(tomlContents);
+                hasModsToml = true;
+                extraModIds = ReadAllTOMLModIds(tomlContents);
+                if (!extraModIds.isEmpty()) {
+                    extraModIds.removeFirst();  // the first one is mod_id itself
+                }
                 isValid = true;
                 if (details.version == "${file.jarVersion}" && !manifestVersion.isEmpty()) {
                     details.version = manifestVersion;
@@ -726,6 +804,32 @@ bool processZIP(Mod& mod, [[maybe_unused]] ProcessingLevel level)
     if (isNilMod) {
         details = ReadNilModInfo(nilData, nilFilePath);
         isValid = true;
+    }
+    if (isValid && hasModsToml) {
+        details.bundledModIds = extraModIds;
+        // The first pass stops as soon as it has the metadata, so the Jar-in-Jar entries are read in a second
+        // pass. Skipped for the quick validity check, which only needs to know that this is a mod.
+        if (level == ProcessingLevel::Full) {
+            CollectJarJarModIds(mod.fileinfo().filePath(), 0, details.bundledModIds);
+        }
+        details.bundledModIds.removeDuplicates();
+        details.bundledModIds.removeAll(details.mod_id);
+    }
+    if (!isValid && !isNilMod && level == ProcessingLevel::Full) {
+        // A library-style jar can have no mods.toml of its own and only carry mods through Jar-in-Jar
+        // (Kotlin for Forge is built like this). Use the first nested mod id so that jar is not dropped
+        // and the ids it ships still count as installed.
+        QStringList nested;
+        CollectJarJarModIds(mod.fileinfo().filePath(), 0, nested);
+        nested.removeDuplicates();
+        if (!nested.isEmpty()) {
+            details.mod_id = nested.first();
+            details.name = mod.fileinfo().completeBaseName();
+            details.bundledModIds = nested;
+            details.bundledModIds.removeAll(details.mod_id);
+            mod.setDetails(details);
+            return true;
+        }
     }
     if (isValid) {
         mod.setDetails(details);

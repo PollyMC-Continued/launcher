@@ -6,7 +6,6 @@ resources/CMakeFiles
 *~
 *.swp
 html/
-*.txt
 *.patch
 
 # Project Files

@@ -72,6 +72,7 @@ class Mod : public Resource {
     auto releaseType() const -> QString;
     QStringList dependencies() const;
     QStringList breaks() const;
+    QStringList bundledModIds() const;
 
     int requiredByCount() const;
     int requiresCount() const;
