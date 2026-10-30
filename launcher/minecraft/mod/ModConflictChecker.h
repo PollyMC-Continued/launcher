@@ -30,7 +30,9 @@ class Mod;
  *   - an enabled mod that declares itself incompatible with another enabled mod
  *     (from the jar's own metadata and from the Modrinth/CurseForge dependency list),
  *   - an enabled mod whose required dependency is disabled or not present (ids bundled through
- *     NeoForge Jar-in-Jar inside an enabled mod count as present).
+ *     NeoForge Jar-in-Jar inside an enabled mod count as present),
+ *   - an enabled mod whose required dependency is present, but in a version outside the
+ *     declared range ("requires buildinggadgets2 [1.3.8,1.4)" with 21.1.1 installed).
  *
  * Pure logic, no I/O: it only reads what the mod list already parsed. Disabled mods never cause conflicts.
  */
@@ -38,7 +40,7 @@ class ModConflictChecker {
     Q_DECLARE_TR_FUNCTIONS(ModConflictChecker)
 
    public:
-    enum class Kind { DuplicateId, Incompatible, DisabledDependency, MissingDependency };
+    enum class Kind { DuplicateId, Incompatible, DisabledDependency, MissingDependency, DependencyVersion };
     enum class Severity { Warning, Error };
 
     struct Conflict {

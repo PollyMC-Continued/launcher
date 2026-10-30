@@ -279,7 +279,15 @@ ModDetails ReadMCModTOML(QByteArray contents)
                 continue;
             }
             if (isNeoForgeDep(dep_table) || isForgeDep(dep_table)) {
-                details.dependencies.append(QString::fromStdString(modId->get()));
+                const QString id = QString::fromStdString(modId->get());
+                details.dependencies.append(id);
+                // remember the version range too: "requires foo" and "requires foo [1.3.8,1.4)"
+                // are very different things, and the game enforces the latter
+                if (auto rangeDatum = (*dep_table)["versionRange"].as_string()) {
+                    const QString range = QString::fromStdString(rangeDatum->get()).trimmed();
+                    if (!range.isEmpty())
+                        details.dependencyRanges.insert(id, range);
+                }
             } else if (auto type = (*dep_table)["type"].as_string(); type && type->get() == "incompatible") {
                 QString range;
                 if (auto rangeDatum = (*dep_table)["versionRange"].as_string()) {
@@ -403,6 +411,13 @@ ModDetails ReadFabricModInfo(QByteArray contents)
                 for (auto key : obj.keys()) {
                     if (key != "fabricloader" && key != "minecraft" && key != "java" && !key.startsWith("fabric-")) {
                         details.dependencies.append(key);
+                        // a single string is a version predicate like ">=1.3 <1.4"; arrays are
+                        // alternatives, which we leave alone (any of them may hold)
+                        if (obj.value(key).isString()) {
+                            const QString predicate = obj.value(key).toString().trimmed();
+                            if (!predicate.isEmpty())
+                                details.dependencyRanges.insert(key, predicate);
+                        }
                     }
                 }
             }

@@ -303,6 +303,11 @@ QStringList Mod::dependencies() const
     return details().dependencies;
 }
 
+QHash<QString, QString> Mod::dependencyRanges() const
+{
+    return details().dependencyRanges;
+}
+
 QStringList Mod::breaks() const
 {
     return details().breaks;

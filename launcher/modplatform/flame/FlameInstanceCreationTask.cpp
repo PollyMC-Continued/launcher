@@ -48,6 +48,9 @@
 #include "InstanceList.h"
 #include "Json.h"
 
+#include <QMap>
+#include <QSet>
+
 #include "minecraft/MinecraftInstance.h"
 #include "minecraft/PackProfile.h"
 
@@ -144,6 +147,13 @@ bool FlameCreationTask::updateInstance()
 
         auto& files = m_pack.files;
 
+        // Files whose id did not change are assumed to still be on disk. That assumption can
+        // be wrong: nothing stops the user (or the launcher's own mod updater, which renames
+        // the file) from having replaced or removed them since. Collect them here; once the
+        // API tells us their file names, we check the disk and put anything missing back on
+        // the download list.
+        QMap<int, Flame::File> assumedStillPresent;
+
         // Remove repeated files, we don't need to download them!
         auto files_iterator = files.begin();
         while (files_iterator != files.end()) {
@@ -154,6 +164,8 @@ bool FlameCreationTask::updateInstance()
                 // We found a match, but is it a different version?
                 if (old_file->fileId == file->fileId) {
                     qDebug() << "Removed file at" << file->targetFolder << "with id" << file->fileId << "from list of downloads";
+
+                    assumedStillPresent.insert(file.key(), *file);
 
                     old_files.remove(file.key());
                     files_iterator = files.erase(files_iterator);
@@ -183,11 +195,19 @@ bool FlameCreationTask::updateInstance()
             fileIds.append(QString::number(file.fileId));
         }
 
+        // The files we kept also need a name lookup, so we can verify they are still on disk.
+        QSet<int> keptFileIds;
+        for (auto it = assumedStillPresent.constBegin(); it != assumedStillPresent.constEnd(); ++it) {
+            fileIds.append(QString::number(it.key()));
+            keptFileIds.insert(it.key());
+        }
+
         auto [job, raw_response] = api.getFiles(fileIds);
 
         QEventLoop loop;
 
-        connect(job.get(), &Task::succeeded, this, [this, raw_response, fileIds, old_inst_dir, &old_files, old_minecraft_dir] {
+        connect(job.get(), &Task::succeeded, this, [this, raw_response, fileIds, old_inst_dir, &old_files, old_minecraft_dir, keptFileIds,
+                                                    &assumedStillPresent] {
             // Parse the API response
             QJsonParseError parse_error{};
             auto doc = QJsonDocument::fromJson(*raw_response, &parse_error);
@@ -206,11 +226,19 @@ bool FlameCreationTask::updateInstance()
 
                 for (auto entry : entries) {
                     auto entry_obj = Json::requireObject(entry);
+                    auto id = Json::requireInteger(entry_obj, "id");
+                    if (keptFileIds.contains(id)) {
+                        // A file we are keeping, not one to delete: remember its name for the
+                        // disk check after this job, and do NOT add it to the deletion list.
+                        auto kept = assumedStillPresent.find(id);
+                        if (kept != assumedStillPresent.end())
+                            kept.value().version = FlameMod::loadIndexedPackVersion(entry_obj);
+                        continue;
+                    }
 
                     Flame::File file;
                     // We don't care about blocked mods, we just need local data to delete the file
                     file.version = FlameMod::loadIndexedPackVersion(entry_obj);
-                    auto id = Json::requireInteger(entry_obj, "id");
                     old_files.insert(id, file);
                 }
             } catch (Json::JsonException& e) {
@@ -235,6 +263,28 @@ bool FlameCreationTask::updateInstance()
         loop.exec();
 
         m_processUpdateFileInfoJob = nullptr;
+
+        // The old manifest only proves these files were on disk when the pack was installed;
+        // verify that before trusting it (see the comment on assumedStillPresent). Files the
+        // API did not give us a name for are left alone: better optimistic than broken.
+        QStringList filesToRestore;
+        for (auto it = assumedStillPresent.constBegin(); it != assumedStillPresent.constEnd(); ++it) {
+            const Flame::File& file = it.value();
+            if (file.version.fileName.isEmpty() || file.targetFolder.isEmpty())
+                continue;
+
+            const QString relative_path(FS::PathCombine(file.targetFolder, file.version.fileName));
+            if (packFileExists(old_minecraft_dir, relative_path))
+                continue;
+
+            m_pack.files.insert(it.key(), file);
+            filesToRestore << relative_path;
+        }
+        if (!filesToRestore.isEmpty()) {
+            logWarning(tr("These files were part of the pack before, but are no longer on disk (perhaps they were "
+                          "updated or removed individually), so they will be downloaded again:\n%1")
+                           .arg(filesToRestore.join('\n')));
+        }
     } else {
         // We don't have an old index file, so we may duplicate stuff!
         auto dialog = CustomMessageBox::selectable(m_parent, tr("No index file."),

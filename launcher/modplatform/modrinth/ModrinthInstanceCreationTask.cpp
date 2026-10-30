@@ -95,6 +95,13 @@ bool ModrinthCreationTask::updateInstance()
         std::vector<File> oldFiles;
         parseManifest(oldIndexPath, oldFiles, false, false);
 
+        // Files the previous pack version already had are assumed to still be on disk. That
+        // assumption is the weak point of the whole update: nothing stops the user (or the
+        // launcher's own mod updater, which renames the file) from having replaced or removed
+        // them since. Collect them here and check the disk below, so anything missing goes
+        // back on the download list instead of silently staying missing or stale.
+        std::vector<File> assumedStillPresent;
+
         // Let's remove all duplicated, identical resources!
         auto filesIterator = m_files.begin();
     begin:
@@ -107,6 +114,7 @@ bool ModrinthCreationTask::updateInstance()
 
                 if (oldFile.hash == file.hash) {
                     qDebug() << "Removed file at" << file.path << "from list of downloads";
+                    assumedStillPresent.push_back(file);
                     filesIterator = m_files.erase(filesIterator);
                     oldFilesIterator = oldFiles.erase(oldFilesIterator);
                     goto begin;  // Sorry :c
@@ -119,6 +127,21 @@ bool ModrinthCreationTask::updateInstance()
         }
 
         QDir oldMinecraftDir(inst->gameRoot());
+
+        // The old index only proves the file was there when the pack was installed; verify
+        // that before trusting it (see the comment on assumedStillPresent).
+        QStringList filesToRestore;
+        for (const auto& file : assumedStillPresent) {
+            if (packFileExists(oldMinecraftDir, file.path))
+                continue;
+            m_files.push_back(file);
+            filesToRestore << file.path;
+        }
+        if (!filesToRestore.isEmpty()) {
+            logWarning(tr("These files were part of the pack before, but are no longer on disk (perhaps they were "
+                          "updated or removed individually), so they will be downloaded again:\n%1")
+                           .arg(filesToRestore.join('\n')));
+        }
 
         // Some files were removed from the old version, and some will be downloaded in an updated version,
         // so we're fine removing them!

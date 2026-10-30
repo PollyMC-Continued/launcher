@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QDir>
+
 #include "BaseVersion.h"
 #include "InstanceTask.h"
 #include "minecraft/MinecraftInstance.h"
@@ -35,6 +37,10 @@ class InstanceCreationTask : public InstanceTask {
     virtual std::unique_ptr<MinecraftInstance> createInstance() { return nullptr; }
 
     QString getError() const { return m_error_message; }
+
+    /** True when a pack-managed file is on disk, enabled or disabled: the user may have
+     *  disabled a mod on purpose, and optional pack files are stored with a ".disabled" suffix. */
+    static bool packFileExists(const QDir& gameDir, const QString& relativePath);
 
    protected:
     void setError(const QString& message) { m_error_message = message; };

@@ -1144,12 +1144,54 @@ bool overrideFolder(QString overwritten_path, QString override_path)
     std::error_code err;
     fs::copy_options opt = copy_opts::recursive | copy_opts::overwrite_existing;
 
-    // FIXME: hello traveller! Apparently std::copy does NOT overwrite existing files on GNU libstdc++ on Windows?
-    fs::copy(StringUtils::toStdString(override_path), StringUtils::toStdString(overwritten_path), opt, err);
+    // FIXME: hello traveller! Apparently std::copy does NOT overwrite existing files on GNU
+    // libstdc++ on Windows? When that happens the copy "succeeds" while the old file quietly
+    // stays in place - an updated instance then keeps stale configs and old jars, with no
+    // error anywhere. So instead of relying on overwrite_existing, remove every destination
+    // file first: a file that cannot be replaced now makes the whole operation fail loudly
+    // instead of silently leaving the previous version behind.
+    const fs::path src = StringUtils::toStdString(override_path);
+    const fs::path dst = StringUtils::toStdString(overwritten_path);
+    {
+        std::error_code walk_err;
+        auto it = fs::recursive_directory_iterator(src, fs::directory_options::skip_permission_denied, walk_err);
+        const auto end = fs::recursive_directory_iterator();
+        for (; !walk_err && it != end; it.increment(walk_err)) {
+            std::error_code type_err;
+            if (!it->is_regular_file(type_err) || type_err)
+                continue;
+            std::error_code rel_err;
+            const auto relative = fs::relative(it->path(), src, rel_err);
+            if (rel_err)
+                continue;
+            const fs::path destination = dst / relative;
+            std::error_code exists_err;
+            if (fs::exists(destination, exists_err) && !exists_err) {
+                std::error_code remove_err;
+                fs::remove(destination, remove_err);
+                if (remove_err) {
+                    qCritical() << QString("Failed to remove %1 before updating it")
+                                       .arg(QString::fromStdString(destination.string()));
+                    qCritical() << "Reason:" << QString::fromStdString(remove_err.message());
+                    err = remove_err;
+                    break;
+                }
+            }
+        }
+        if (walk_err) {
+            qCritical() << QString("Failed to walk %1 while preparing the update").arg(override_path);
+            qCritical() << "Reason:" << QString::fromStdString(walk_err.message());
+            err = walk_err;
+        }
+    }
 
-    if (err) {
-        qCritical() << QString("Failed to apply override from %1 to %2").arg(override_path, overwritten_path);
-        qCritical() << "Reason:" << QString::fromStdString(err.message());
+    if (!err) {
+        fs::copy(src, dst, opt, err);
+
+        if (err) {
+            qCritical() << QString("Failed to apply override from %1 to %2").arg(override_path, overwritten_path);
+            qCritical() << "Reason:" << QString::fromStdString(err.message());
+        }
     }
 
     return err.value() == 0;

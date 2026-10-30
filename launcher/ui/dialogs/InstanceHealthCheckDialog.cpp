@@ -19,12 +19,18 @@
 
 #include <QClipboard>
 #include <QDir>
+#include <QFile>
 #include <QFileInfo>
 #include <QHBoxLayout>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonParseError>
 #include <QLabel>
 #include <QListWidget>
 #include <QProgressBar>
 #include <QPushButton>
+#include <QSet>
 #include <QStorageInfo>
 #include <QTimer>
 #include <QVBoxLayout>
@@ -35,6 +41,7 @@
 #include "DesktopServices.h"
 #include "FileSystem.h"
 #include "HardwareInfo.h"
+#include "InstanceCreationTask.h"
 #include "MMCZip.h"
 #include "java/JavaVersion.h"
 #include "minecraft/MinecraftInstance.h"
@@ -219,6 +226,87 @@ QStringList scanBrokenJars(const QString& modsPath)
     }
     return broken;
 }
+
+// ---- Pack files: a managed instance should still contain what its pack index says ----
+// Compares the mods folder against the pack's own file list: files of the pack that are gone,
+// and jars the pack does not know about (added by hand, or left behind by a pack update).
+// CurseForge manifests do not carry file names, so those cannot be checked offline (yet).
+void checkManagedPackFiles(MinecraftInstance* instance, QList<Issue>& issues)
+{
+    if (!instance->isManagedPack() || instance->getManagedPackType() != QLatin1String("modrinth"))
+        return;
+
+    const QString indexPath = FS::PathCombine(FS::PathCombine(instance->instanceRoot(), "mrpack"), "modrinth.index.json");
+    QFileInfo indexInfo(indexPath);
+    if (!indexInfo.exists() || indexInfo.size() == 0)
+        return;  // no index to compare against (e.g. copied instance)
+
+    QFile indexFile(indexPath);
+    if (!indexFile.open(QFile::ReadOnly))
+        return;
+
+    QJsonParseError jsonError{};
+    const auto doc = QJsonDocument::fromJson(indexFile.readAll(), &jsonError);
+    if (jsonError.error != QJsonParseError::NoError || !doc.isObject())
+        return;
+
+    const QDir gameDir(instance->gameRoot());
+    const QString packLabel =
+        QStringLiteral("%1 %2").arg(instance->getManagedPackName(), instance->getManagedPackVersionName()).trimmed();
+
+    QStringList missing;
+    QSet<QString> packModFiles;
+    const auto files = doc.object().value(QStringLiteral("files")).toArray();
+    for (const auto& fileValue : files) {
+        const auto file = fileValue.toObject();
+        QString path = file.value(QStringLiteral("path")).toString().replace(QLatin1Char('\\'), QLatin1Char('/'));
+        if (path.isEmpty())
+            continue;
+        // files the pack explicitly does not want on the client
+        if (file.value(QStringLiteral("env")).toObject().value(QStringLiteral("client")).toString() ==
+            QLatin1String("unsupported"))
+            continue;
+
+        if (path.startsWith(QStringLiteral("mods/")))
+            packModFiles.insert(path);
+
+        if (!InstanceCreationTask::packFileExists(gameDir, path))
+            missing << path;
+    }
+
+    if (!missing.isEmpty()) {
+        std::sort(missing.begin(), missing.end());
+        issues.append({ ProblemSeverity::Warning,
+                        InstanceHealthCheckDialog::tr("Pack files missing (%1)").arg(missing.size()),
+                        InstanceHealthCheckDialog::tr("These files belong to %1, but they are not in the instance anymore:\n%2\n\n"
+                                                      "Running Update Pack downloads them again. If you removed any of them on purpose, "
+                                                      "disable them instead of deleting, so the launcher can tell the difference.")
+                            .arg(packLabel, listNames(missing)) });
+    }
+
+    // jars in the mods folder that no pack version ever listed: user-added, or leftovers from
+    // an update where the pack replaced a mod under a different file name
+    QStringList orphans;
+    const QDir modsDir(FS::PathCombine(instance->gameRoot(), "mods"));
+    const auto jars = modsDir.entryInfoList({ QStringLiteral("*.jar") }, QDir::Files, QDir::Name);
+    for (const QFileInfo& jar : jars) {
+        QString relative = QStringLiteral("mods/") + jar.fileName();
+        if (relative.endsWith(QLatin1String(".disabled")))
+            relative.chop(9);
+        if (!packModFiles.contains(relative))
+            orphans << jar.fileName();
+    }
+    if (!orphans.isEmpty()) {
+        issues.append({ ProblemSeverity::Warning,
+                        InstanceHealthCheckDialog::tr("Mods that are not part of %1 (%2)").arg(packLabel, orphans.size()),
+                        InstanceHealthCheckDialog::tr("These jars in the mods folder are not in the pack's file list. They were either "
+                                                      "added outside the pack, or left behind when the pack updated a mod to a different "
+                                                      "file name:\n%1\n\n"
+                                                      "If the game complains about duplicate or incompatible mods, remove or disable the "
+                                                      "ones you did not add yourself.")
+                            .arg(listNames(orphans)) });
+    }
+}
 }  // namespace
 
 InstanceHealthCheckDialog::InstanceHealthCheckDialog(MinecraftInstance* instance, QWidget* parent) : QDialog(parent), m_instance(instance)
@@ -325,6 +413,7 @@ void InstanceHealthCheckDialog::runQuickChecks()
     checkComponents(m_instance, m_issues);
     checkMemory(m_instance, m_issues);
     checkDiskSpace(m_instance, m_issues);
+    checkManagedPackFiles(m_instance, m_issues);
 }
 
 void InstanceHealthCheckDialog::onJarScanFinished()

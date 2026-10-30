@@ -38,6 +38,7 @@
 
 #include <QDateTime>
 #include <QFileInfo>
+#include <QHash>
 #include <QImage>
 #include <QList>
 #include <QMutex>
@@ -71,6 +72,7 @@ class Mod : public Resource {
     auto mcVersions() const -> QString;
     auto releaseType() const -> QString;
     QStringList dependencies() const;
+    QHash<QString, QString> dependencyRanges() const;
     QStringList breaks() const;
     QStringList bundledModIds() const;
 

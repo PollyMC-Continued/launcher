@@ -1,8 +1,11 @@
 #include "InstanceCreationTask.h"
 
 #include <QDebug>
+#include <QDir>
 #include <QFile>
+#include <QFileInfo>
 
+#include "FileSystem.h"
 #include "InstanceTask.h"
 #include "minecraft/MinecraftLoadAndCheck.h"
 #include "tasks/SequentialTask.h"
@@ -133,4 +136,19 @@ void InstanceCreationTask::scheduleToDelete(QWidget* parent, QDir dir, QString p
             m_filesToRemove.append(dir.absoluteFilePath(path + ".disabled"));
         }
     }
+}
+
+bool InstanceCreationTask::packFileExists(const QDir& gameDir, const QString& relativePath)
+{
+    if (relativePath.isEmpty())
+        return false;
+    const QString base = gameDir.absolutePath();
+    if (QFileInfo::exists(FS::PathCombine(base, relativePath)))
+        return true;
+    if (relativePath.endsWith(".disabled")) {
+        // optional pack file that the user enabled: it is on disk without the suffix
+        return QFileInfo::exists(FS::PathCombine(base, relativePath.chopped(9)));
+    }
+    // required pack file that the user disabled: still on disk, just not active
+    return QFileInfo::exists(FS::PathCombine(base, relativePath + ".disabled"));
 }
