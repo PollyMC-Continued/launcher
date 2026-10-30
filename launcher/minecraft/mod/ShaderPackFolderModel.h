@@ -11,6 +11,7 @@ class ShaderPackFolderModel : public ResourceFolderModel {
     explicit ShaderPackFolderModel(const QDir& dir, BaseInstance* instance, bool is_indexed, bool create_dir, QObject* parent = nullptr)
         : ResourceFolderModel(dir, instance, is_indexed, create_dir, parent)
     {}
+    ~ShaderPackFolderModel() override { stopBackgroundWork(); }
 
     virtual QString id() const override { return "shaderpacks"; }
 

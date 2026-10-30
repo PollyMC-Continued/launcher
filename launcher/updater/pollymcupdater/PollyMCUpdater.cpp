@@ -39,6 +39,7 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QProcess>
+#include <QProcessEnvironment>
 #include <QProgressDialog>
 #include <memory>
 
@@ -1127,13 +1128,24 @@ bool PollyMCUpdaterApp::loadPollyMCVersionFromExe(const QString& exe_path)
     QProcess proc = QProcess();
     proc.setProcessChannelMode(QProcess::MergedChannels);
     proc.setReadChannel(QProcess::StandardOutput);
+
+    // The child only has to print its version: never let it show a splash screen, and give it
+    // plenty of time - cold starts (antivirus scans, slow disks, Wine/Winlator) can take far
+    // longer than a few seconds.
+    auto env = QProcessEnvironment::systemEnvironment();
+    env.insert("POLLYMC_NO_SPLASH", "1");
+    proc.setProcessEnvironment(env);
+
     proc.start(exe_path, { "--version" });
-    if (!proc.waitForStarted(5000)) {
-        showFatalErrorMessage(tr("Failed to Check Version"), tr("Failed to launch child process to read version."));
+    if (!proc.waitForStarted(15000)) {
+        // Not fatal: the caller falls back to the version this updater was built with.
+        logUpdate(tr("Failed to launch child process to read version, using the built-in version instead."));
         return false;
-    }  // wait 5 seconds to start
-    if (!proc.waitForFinished(5000)) {
-        showFatalErrorMessage(tr("Failed to Check Version"), tr("Child launcher process failed."));
+    }
+    if (!proc.waitForFinished(30000)) {
+        logUpdate(tr("Child launcher process did not finish in time, using the built-in version instead."));
+        proc.kill();
+        proc.waitForFinished(2000);
         return false;
     }
     auto out = proc.readAllStandardOutput();
@@ -1218,8 +1230,6 @@ void PollyMCUpdaterApp::downloadReleasePage(const QString& api_url, int page)
     m_current_task.reset(download);
     connect(download.get(), &Net::Download::finished, this, [this]() {
         qDebug() << "Download" << m_current_task->getUid().toString() << "finished";
-        m_current_task.reset();
-        m_current_url = "";
     });
 
     QCoreApplication::processEvents();

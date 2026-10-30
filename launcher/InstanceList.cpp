@@ -609,7 +609,7 @@ BaseInstance* InstanceList::getInstanceById(QString instId) const
     if (instId.isEmpty())
         return nullptr;
     for (auto& inst : m_instances) {
-        if (inst->id() == instId) {
+        if (inst->id() == instId || inst->uuid() == instId) {
             return inst.get();
         }
     }
@@ -921,23 +921,23 @@ class InstanceStaging : public Task {
         connect(child, &Task::progress, this, &InstanceStaging::setProgress);
         connect(child, &Task::stepProgress, this, &InstanceStaging::propagateStepProgress);
         connect(&m_backoffTimer, &QTimer::timeout, this, &InstanceStaging::childSucceeded);
-        m_backoffTimer.setSingleShot(true);
     }
 
-    virtual ~InstanceStaging() {}
+    ~InstanceStaging() override = default;
 
     // FIXME/TODO: add ability to abort during instance commit retries
     bool abort() override
     {
-        if (!canAbort())
+        if (!canAbort()) {
             return false;
+        }
 
         return m_child->abort();
     }
     bool canAbort() const override { return (m_child && m_child->canAbort()); }
 
    protected:
-    virtual void executeTask() override
+    void executeTask() override
     {
         if (m_stagingPath.isNull()) {
             emitFailed(tr("Could not create staging folder"));
@@ -951,10 +951,8 @@ class InstanceStaging : public Task {
    private slots:
     void childSucceeded()
     {
-        if (!isRunning())
-            return;
         unsigned sleepTime = backoff();
-        if (m_parent->commitStagedInstance(m_stagingPath, *m_child.get(), m_child->group(), *m_child.get())) {
+        if (m_parent->commitStagedInstance(m_stagingPath, *m_child, m_child->group(), *m_child)) {
             m_backoffTimer.stop();
             emitSucceeded();
             return;

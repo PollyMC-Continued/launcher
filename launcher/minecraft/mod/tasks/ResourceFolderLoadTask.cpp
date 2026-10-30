@@ -70,6 +70,8 @@ void ResourceFolderLoadTask::executeTask()
     // Read JAR files that don't have metadata
     m_resource_dir.refresh();
     for (auto entry : m_resource_dir.entryInfoList()) {
+        if (m_aborted)
+            break;
         auto filePath = entry.absoluteFilePath();
         if (auto app = APPLICATION_DYN; app && app->checkQSavePath(filePath)) {
             continue;

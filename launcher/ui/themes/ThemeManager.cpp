@@ -25,7 +25,9 @@
 #include <QIcon>
 #include <QStyle>
 #include <QStyleFactory>
+#include <QPointer>
 #include <QStyleHints>
+#include <QTimer>
 #include "Exception.h"
 #include "ui/themes/BrightTheme.h"
 #include "ui/themes/CustomTheme.h"
@@ -294,6 +296,17 @@ void ThemeManager::applyCurrentlySelectedTheme(bool initial)
     themeDebugLog() << "<> Application theme set.";
 }
 
+void ThemeManager::applyCurrentlySelectedThemeLater()
+{
+    if (m_applyPending)
+        return;
+    m_applyPending = true;
+    QTimer::singleShot(0, qApp, [this]() {
+        m_applyPending = false;
+        applyCurrentlySelectedTheme();
+    });
+}
+
 QPalette ThemeManager::paletteFor(const QString& mode)
 {
     // Dark branch first: "System" on a dark OS must not fall through
@@ -349,7 +362,7 @@ QPalette ThemeManager::paletteFor(const QString& mode)
 void ThemeManager::applyAppearanceMode(const QString& mode)
 {
     APPLICATION->settings()->set("AppearanceMode", mode);
-    applyCurrentlySelectedTheme();
+    applyCurrentlySelectedThemeLater();
 }
 
 void ThemeManager::refresh()

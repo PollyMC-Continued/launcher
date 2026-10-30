@@ -18,31 +18,67 @@
 #pragma once
 
 #include <QDialog>
+#include <QElapsedTimer>
+#include <QFutureWatcher>
+#include <QList>
+#include <QStringList>
 
 #include "ProblemProvider.h"
 
-class InstanceWindow;
 class QLabel;
 class QListWidget;
+class QProgressBar;
 class QPushButton;
+class QTimer;
 class MinecraftInstance;
 
 /*
  * "Check instance" - looks for the things that most often stop a launch before you launch:
- * missing Java, corrupt mod jars and a broken/mismatched loader version.
- * The checks are quick and run synchronously when the dialog opens.
+ * missing Java, corrupt mod jars, mods that conflict with each other, a broken/mismatched loader version,
+ * too little disk space and a memory setting the computer cannot satisfy.
+ *
+ * The quick checks run when the dialog opens; scanning the mod jars and the mod list can take a moment on
+ * big modpacks, so those run in the background and the result list fills in when they are done.
  */
 class InstanceHealthCheckDialog : public QDialog {
     Q_OBJECT
 
    public:
+    struct Issue {
+        ProblemSeverity severity = ProblemSeverity::None;
+        QString title;
+        QString detail;
+    };
+
     explicit InstanceHealthCheckDialog(MinecraftInstance* instance, QWidget* parent = nullptr);
 
+   private slots:
+    void startChecks();
+    void onJarScanFinished();
+    void pollModList();
+
    private:
-    void runChecks();
+    void runQuickChecks();
+    void runModListChecks();
+    void finishIfDone();
+    void showResults();
+    QString reportText() const;
 
     MinecraftInstance* m_instance;
+    QList<Issue> m_issues;
+
     QLabel* m_summaryLabel = nullptr;
+    QProgressBar* m_busyBar = nullptr;
     QListWidget* m_issuesList = nullptr;
+    QPushButton* m_rerunButton = nullptr;
+    QPushButton* m_modsFolderButton = nullptr;
+    QPushButton* m_copyButton = nullptr;
     QPushButton* m_closeButton = nullptr;
+
+    QFutureWatcher<QStringList>* m_jarWatcher = nullptr;
+    QTimer* m_pollTimer = nullptr;
+    QElapsedTimer m_waited;
+    bool m_jarsDone = false;
+    bool m_modListDone = false;
+    bool m_modListUpdated = false;
 };

@@ -43,7 +43,7 @@
 void ITheme::apply(bool)
 {
     APPLICATION->setStyleSheet(QString());
-    QApplication::setStyle(new HintOverrideProxyStyle(QStyleFactory::create(qtTheme())));
+    HintOverrideProxyStyle::installFor(qtTheme());
     QApplication::setPalette(colorScheme());
     APPLICATION->setStyleSheet(appStyleSheet());
     QDir::setSearchPaths("theme", searchPaths());

@@ -133,6 +133,8 @@ set(NET_SOURCES
     net/NetUtils.h
     net/BugReportUpload.cpp
     net/BugReportUpload.h
+    BugReportTracker.cpp
+    BugReportTracker.h
     net/PasteUpload.cpp
     net/PasteUpload.h
     net/Sink.h
@@ -330,6 +332,8 @@ set(MINECRAFT_SOURCES
     minecraft/mod/MetadataHandler.h
     minecraft/mod/Mod.h
     minecraft/mod/Mod.cpp
+    minecraft/mod/ModConflictChecker.h
+    minecraft/mod/ModConflictChecker.cpp
     minecraft/mod/ModDetails.h
     minecraft/mod/ModFolderModel.h
     minecraft/mod/ModFolderModel.cpp
@@ -1092,6 +1096,8 @@ SET(LAUNCHER_SOURCES
     ui/dialogs/AuthlibInjectorLoginDialog.h
     ui/dialogs/BugReportDialog.cpp
     ui/dialogs/BugReportDialog.h
+    ui/dialogs/MyReportsDialog.cpp
+    ui/dialogs/MyReportsDialog.h
     ui/dialogs/NetworkJobFailedDialog.cpp
     ui/dialogs/NetworkJobFailedDialog.h
     ui/dialogs/NewComponentDialog.cpp
@@ -1128,6 +1134,8 @@ SET(LAUNCHER_SOURCES
     ui/dialogs/CommandRegistry.h
     ui/dialogs/ChooseOfflineNameDialog.cpp
     ui/dialogs/ChooseOfflineNameDialog.h
+    ui/dialogs/UntrustedModsDialog.cpp
+    ui/dialogs/UntrustedModsDialog.h
 
     ui/dialogs/skins/SkinManageDialog.cpp
     ui/dialogs/skins/SkinManageDialog.h
@@ -1164,6 +1172,8 @@ SET(LAUNCHER_SOURCES
     ui/widgets/InfoFrame.h
     ui/widgets/SplashScreen.cpp
     ui/widgets/SplashScreen.h
+    ui/widgets/ToastCenter.cpp
+    ui/widgets/ToastCenter.h
     ui/widgets/ToastNotification.cpp
     ui/widgets/ToastNotification.h
     voice/VoiceIntentMatcher.cpp
@@ -1316,6 +1326,7 @@ qt_wrap_ui(LAUNCHER_UI
     ui/dialogs/skins/SkinBrowserDialog.ui
     ui/dialogs/ChooseOfflineNameDialog.ui
     bot/BotScriptEditor.ui
+    ui/dialogs/UntrustedModsDialog.ui
 )
 
 qt_wrap_ui(PRISM_UPDATE_UI
@@ -1633,8 +1644,10 @@ if (CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "MSVC")
     target_compile_options(Launcher_logic PRIVATE /wd4100) # C4100 - unused parameter
     target_compile_options(${Launcher_Name} PRIVATE /wd4100) # C4100 - unused parameter
 else()
-    target_compile_options(Launcher_logic PRIVATE -Wno-unused-parameter -Wno-missing-field-initializers)
-    target_compile_options(${Launcher_Name} PRIVATE -Wno-unused-parameter -Wno-missing-field-initializers)
+    # sfinae-incomplete is a new GCC warning and triggers in Qt headers
+    # no-unknown-warning-option so that compilers that don't have sfinae-incomplete don't error
+    target_compile_options(Launcher_logic PRIVATE -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-warning-option -Wno-sfinae-incomplete)
+    target_compile_options(${Launcher_Name} PRIVATE -Wno-unused-parameter -Wno-missing-field-initializers -Wno-unknown-warning-option -Wno-sfinae-incomplete)
 endif()
 
 #### The bundle mess! ####

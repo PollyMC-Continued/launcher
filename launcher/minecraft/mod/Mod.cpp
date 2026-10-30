@@ -303,6 +303,11 @@ QStringList Mod::dependencies() const
     return details().dependencies;
 }
 
+QStringList Mod::breaks() const
+{
+    return details().breaks;
+}
+
 int Mod::requiredByCount() const
 {
     return m_requiredByCount;

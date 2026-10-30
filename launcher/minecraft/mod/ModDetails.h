@@ -140,6 +140,11 @@ struct ModDetails {
 
     QStringList dependencies = {};
 
+    /* IDs of mods this mod declares itself incompatible with, for every version of them.
+     * Version-restricted declarations ("breaks < 1.2") are left out on purpose: we'd rather miss a
+     * conflict than report one that does not exist. */
+    QStringList breaks = {};
+
     ModDetails() = default;
 
     /** Metadata should be handled manually to properly set the mod status. */
@@ -155,6 +160,7 @@ struct ModDetails {
         , licenses(other.licenses)
         , icon_file(other.icon_file)
         , dependencies(other.dependencies)
+        , breaks(other.breaks)
     {}
 
     ModDetails& operator=(const ModDetails& other) = default;
