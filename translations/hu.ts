@@ -142,7 +142,7 @@
 <context>
     <name>ATLauncher::PackInstallTask</name>
     <message>
-        <location filename="../launcher/modplatform/atlauncher/ATLPackInstallTask.cpp" line="+123"/>
+        <location filename="../launcher/modplatform/atlauncher/ATLPackInstallTask.cpp" line="+134"/>
         <source>Could not understand pack manifest:
 </source>
         <translation>Nem sikerült értelmezni a csomagleírót:
@@ -158,12 +158,12 @@
         <translation type="vanished">Nem sikerült lekérni a helyi metaadat-indexet a következőhöz: „%1” v%2</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+42"/>
         <source>Deleting existing files...</source>
         <translation>Meglévő fájlok törlése…</translation>
     </message>
     <message>
-        <location line="+147"/>
+        <location line="+151"/>
         <source>Unknown mod type: %1</source>
         <translation>Ismeretlen modtípus: %1</translation>
     </message>
@@ -180,32 +180,32 @@
         <translation type="vanished">Nincs beállítva verzió a modpackhoz!</translation>
     </message>
     <message>
-        <location line="-178"/>
+        <location line="-182"/>
         <source>Could not get local metadata index for &apos;%1&apos; v%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+194"/>
         <source>Could not get local metadata index for %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+34"/>
         <source>Could not find a version for the %1 loader</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>No loader version set for modpack.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+130"/>
+        <location line="+132"/>
         <source>Unknown or unsupported download type: %1</source>
         <translation>Nem ismert vagy nem támogatott letöltési típus: %1</translation>
     </message>
     <message>
-        <location line="+114"/>
+        <location line="+115"/>
         <source>Downloading configs...</source>
         <translation>Beállítások letöltése…</translation>
     </message>
@@ -235,13 +235,13 @@
         <translation>Mod letöltés</translation>
     </message>
     <message>
-        <location line="+25"/>
-        <location line="+130"/>
+        <location line="+27"/>
+        <location line="+133"/>
         <source>Unknown download type: %1</source>
         <translation>Ismeretlen letöltési típus: %1</translation>
     </message>
     <message>
-        <location line="-50"/>
+        <location line="-52"/>
         <source>Blocked mods found</source>
         <translation>Letiltott modok találhatók</translation>
     </message>
@@ -251,7 +251,7 @@
         <translation>A következő fájlok nem letölthetőek harmadik féltől származó indítókból.&lt;br/&gt;Manuálisan le kell töltened őket, és hozzá kell adnod őket az instance-hoz.</translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+58"/>
         <source>%1 out of %2 complete</source>
         <translation>%1/%2 kész</translation>
     </message>
@@ -266,7 +266,7 @@
         <translation>Modok kicsomagolása…</translation>
     </message>
     <message>
-        <location line="+72"/>
+        <location line="+81"/>
         <source>Installing modpack</source>
         <translation>Modcsomag telepítése</translation>
     </message>
@@ -276,7 +276,7 @@
         <translation>Nem sikerült létrehozni a könyvtárak összetevőt</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+30"/>
         <source>Unknown loader type: </source>
         <translation>Ismeretlen betöltőtípus: </translation>
     </message>
@@ -728,7 +728,7 @@ Hozzáadhatsz Microsoft, offline vagy Yggdrasil (authlib-injector) fiókot a kez
         <translation type="vanished">Sikeres Frissítés</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1306"/>
+        <location filename="../launcher/Application.cpp" line="+1319"/>
         <source>Incompatible system configuration</source>
         <translation>Nem kompatibilis rendszerkonfiguráció</translation>
     </message>
@@ -768,12 +768,12 @@ Tekintsd meg a Prism Launcher frissítési naplóját itt:&#xa0;
 hogy részletes leírást kapj az utolsó frissítési próbálkozásról.</translation>
     </message>
     <message>
-        <location line="-1700"/>
+        <location line="-1703"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Nem lehet megjeleníteni ezt a naplót, mivel a hossza meghaladta a(z) %1 sort.</translation>
     </message>
     <message>
-        <location line="+1522"/>
+        <location line="+1525"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Úgy tűnik, korábban használtad a(z) %1-et %2-n. Szeretnéd áttelepíteni az adataidat a(z) %3 új helyére?</translation>
     </message>
@@ -841,7 +841,7 @@ A PollyMC-Continued frissítő naplóját itt nézheted meg:
 részletekért.</translation>
     </message>
     <message>
-        <location line="-1820"/>
+        <location line="-1823"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -877,12 +877,12 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+531"/>
+        <location line="+526"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+28"/>
         <source>Loading instances…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1029,7 +1029,7 @@ Másoljam őket ebbe a hordozható mappába? Fiókjaid, beállításaid és pél
         <translation type="vanished">Frissítés folyamatban</translation>
     </message>
     <message>
-        <location line="-1419"/>
+        <location line="-1427"/>
         <source>Settings</source>
         <translation>Beállítások</translation>
     </message>
@@ -1060,7 +1060,7 @@ a legutóbbi frissítési kísérlet részleteiért.
 A zárolás törléséhez és a folytatáshoz válaszd az alábbi „Figyelmen kívül hagyás” lehetőséget.</translation>
     </message>
     <message>
-        <location line="+1263"/>
+        <location line="+1271"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>Régi adatok találhatók a(z) %1 példányból, de már vannak adatok a(z) %2 példányhoz. Sajnos neked kell migrálnod. Szeretnél emlékeztetőt kapni a függőben lévő adatmigrációról, amikor legközelebb elindítod a(z) %2 példányt?</translation>
     </message>
@@ -1700,8 +1700,8 @@ A zárolás törléséhez és a folytatáshoz válaszd az alábbi „Figyelmen k
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+154"/>
+        <location line="+411"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1710,12 +1710,27 @@ A zárolás törléséhez és a folytatáshoz válaszd az alábbi „Figyelmen k
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-477"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+14"/>
+        <source>My Reports (%1 new)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>See what the team answered to the reports you sent from this launcher.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1956,7 +1971,7 @@ Send it again anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+17"/>
         <source>Thank you! Your report is on its way to the PollyMC team, and we read every one.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1975,6 +1990,14 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+5"/>
+        <source>
+
+Your report ID: %1
+This launcher will tell you when the team has an update. You can also check any time with &quot;My Reports&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+6"/>
         <source>Report sent</source>
         <translation type="unfinished"></translation>
@@ -1982,6 +2005,11 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
     <message>
         <location line="+2"/>
         <source>Join our Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>View My Reports</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2873,30 +2901,30 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
 <context>
     <name>DataPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/DataPackPage.cpp" line="+86"/>
-        <location line="+84"/>
-        <location line="+73"/>
+        <location filename="../launcher/ui/pages/instance/DataPackPage.cpp" line="+87"/>
+        <location line="+89"/>
+        <location line="+78"/>
         <source>Download stopped by user.</source>
         <translation>A letöltést a felhasználó megszakította.</translation>
     </message>
     <message>
-        <location line="-137"/>
-        <location line="+80"/>
-        <location line="+73"/>
+        <location line="-146"/>
+        <location line="+84"/>
+        <location line="+79"/>
         <source>Abort</source>
         <translation>Megszakítás</translation>
     </message>
     <message>
-        <location line="-177"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
-        <location line="+19"/>
+        <location line="-188"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
+        <location line="+21"/>
         <source>Error</source>
         <translation>Hiba</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-219"/>
         <source>Download Packs</source>
         <translation>Csomagok letöltése</translation>
     </message>
@@ -2906,7 +2934,7 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
         <translation>Adatcsomag verziójának módosítása.</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+79"/>
         <source>Updating data packs while the game is running may cause pack duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -2920,65 +2948,65 @@ Biztosan ezt akarod csinálni?</translation>
         <translation>Frissítés megerősítése</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+78"/>
         <source>You are about to remove the metadata for %1 data packs.
 Are you sure?</source>
         <translation>%1 adatcsomag metaadatainak eltávolítására készülsz.
 Biztos vagy ebben?</translation>
     </message>
     <message>
-        <location line="-50"/>
+        <location line="-51"/>
         <source>&apos;%1&apos; is up-to-date! :)</source>
         <translation>A(z) „%1” naprakész! :)</translation>
     </message>
     <message>
-        <location line="-119"/>
+        <location line="-125"/>
         <source>Download data packs from online mod platforms</source>
         <translation>Adatcsomagok letöltése online mod platformokról</translation>
     </message>
     <message>
-        <location line="+122"/>
+        <location line="+128"/>
         <source>All data packs are up-to-date! :)</source>
         <translation>Minden adatcsomag naprakész! :)</translation>
     </message>
     <message>
-        <location line="-68"/>
-        <location line="+61"/>
+        <location line="-73"/>
+        <location line="+66"/>
         <location line="+23"/>
-        <location line="+73"/>
+        <location line="+78"/>
         <source>Aborted</source>
         <translation>Megszakítva</translation>
     </message>
     <message>
-        <location line="-151"/>
-        <location line="+84"/>
-        <location line="+73"/>
+        <location line="-161"/>
+        <location line="+89"/>
+        <location line="+78"/>
         <source>Warnings</source>
         <translation>Figyelmeztetések</translation>
     </message>
     <message>
-        <location line="-128"/>
-        <location line="+99"/>
+        <location line="-135"/>
+        <location line="+104"/>
         <source>Data pack updates are unavailable when metadata is disabled!</source>
         <translation>Az adatcsomag-frissítések nem érhetők el, ha a metaadatok le vannak tiltva!</translation>
     </message>
     <message>
-        <location line="-73"/>
+        <location line="-76"/>
         <source>The data pack updater was aborted!</source>
         <translation>Az adatcsomag frissítő megszakítva!</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+54"/>
         <source>Confirm Removal</source>
         <translation>Eltávolítás megerősítése</translation>
     </message>
     <message>
-        <location line="-162"/>
+        <location line="-169"/>
         <source>Try to check or update all selected data packs (all data packs if none are selected)</source>
         <translation>Próbáld meg ellenőrizni vagy frissíteni az összes kiválasztott adatcsomagot (az összes adatcsomagot, ha egyik sincs kiválasztva)</translation>
     </message>
     <message>
-        <location line="+118"/>
+        <location line="+124"/>
         <source>All selected data packs are up-to-date! :)</source>
         <translation>Minden kiválasztott adatcsomag naprakész! :)</translation>
     </message>
@@ -2988,7 +3016,7 @@ Biztos vagy ebben?</translation>
         <translation>Frissítés-ellenőrző</translation>
     </message>
     <message>
-        <location line="-79"/>
+        <location line="-84"/>
         <source>Download Data Packs</source>
         <translation>Adatcsomagok letöltése</translation>
     </message>
@@ -3019,6 +3047,16 @@ Biztos vagy ebben?</translation>
     <message>
         <location line="+1"/>
         <source>Display the reminder immediately, ignoring its normal schedule and dismissed state.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show bug report update notification now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Display a sample &quot;your report has news&quot; notification in the window you are in, to test notifications without waiting for the team.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3258,19 +3296,20 @@ Biztos vagy ebben?</translation>
         <translation type="vanished">Kevés szabad memória</translation>
     </message>
     <message>
+        <location filename="../launcher/minecraft/launch/EnsureAvailableMemory.cpp" line="+43"/>
         <source>Your system is under critical memory pressure.
 This may lead to severe slowdowns, crashes or system instability.
 It is recommended to close other applications or restart your system.
 
 Launch anyway?</source>
-        <translation type="vanished">A rendszer kritikus memóriahasználat alatt áll.
+        <translation>A rendszer kritikus memóriahasználat alatt áll.
 Ez súlyos lassulásokhoz, összeomláshoz vagy rendszer-instabilitáshoz vezethet.
 Ajánlott más alkalmazásokat bezárni vagy újraindítani a rendszert.
 
 Mindenképp elindítod?</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/launch/EnsureAvailableMemory.cpp" line="+46"/>
+        <location line="+48"/>
         <source>Not enough RAM</source>
         <translation>Nem elegendő RAM</translation>
     </message>
@@ -3290,34 +3329,37 @@ Rendszer teljes RAM-ja: %2 MiB
 Folytatod így? Ez súlyos lassuláshoz vagy összeomláshoz vezethet.</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="-4"/>
         <source>Not enough RAM available to launch this instance</source>
         <translation>Nincs elegendő RAM a példány elindításához</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+29"/>
         <source>Note: only %1 MiB RAM is currently free, but this instance requests %2 MiB. Other running programs may cause slowdowns; consider closing some before playing.</source>
         <translation>Megjegyzés: jelenleg csak %1 MiB RAM szabad, de ez az instance %2 MiB-ot kér. Más futó programok lassulást okozhatnak; fontold meg néhány bezárását a játék előtt.</translation>
     </message>
     <message>
+        <location line="-64"/>
         <source>High memory pressure</source>
-        <translation type="vanished">Magas memóriahasználat</translation>
+        <translation>Magas memóriahasználat</translation>
     </message>
     <message>
+        <location line="-17"/>
         <source>The system is under increased memory pressure.
 This may lead to lag or slowdowns.
 If possible, close other applications before continuing.
 
 Launch anyway?</source>
-        <translation type="vanished">A rendszer fokozott memóriahasználat alatt áll.
+        <translation>A rendszer fokozott memóriahasználat alatt áll.
 Ez akadozáshoz vagy lassuláshoz vezethet.
 Ha lehetséges, zárj be más alkalmazásokat a folytatás előtt.
 
 Mindenképp elindítod?</translation>
     </message>
     <message>
+        <location line="+25"/>
         <source>The system is under high memory pressure</source>
-        <translation type="vanished">A rendszer magas memóriahasználat alatt áll</translation>
+        <translation>A rendszer magas memóriahasználat alatt áll</translation>
     </message>
     <message>
         <source>There might not be enough free RAM to launch this instance with the current memory settings.
@@ -3367,15 +3409,15 @@ Mindenképp elindítod? Ez lassulást okozhat a játékban és a rendszerben.</t
 <context>
     <name>EnsureOfflineLibraries</name>
     <message>
+        <location filename="../launcher/minecraft/launch/EnsureOfflineLibraries.cpp" line="+49"/>
         <source>
 This instance cannot be launched because some libraries are missing or have not been downloaded yet. Please try again in online mode with a working Internet connection</source>
-        <translation type="vanished">
+        <translation>
 Ez a példány nem indítható el, mert néhány könyvtár hiányzik, vagy még nem töltődött le. Próbáld újra online módban, megfelelő internetkapcsolattal</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/launch/EnsureOfflineLibraries.cpp" line="+33"/>
         <source>This instance cannot be launched because some libraries are missing or have not been downloaded yet. Please try again in online mode with a working Internet connection</source>
-        <translation>Ez az instance nem indítható, mert egyes könyvtárak hiányoznak vagy még letöltésre kerültek. Kérlek, próbáld újra online módban, működő internetkapcsolattal</translation>
+        <translation type="vanished">Ez az instance nem indítható, mert egyes könyvtárak hiányoznak vagy még letöltésre kerültek. Kérlek, próbáld újra online módban, működő internetkapcsolattal</translation>
     </message>
 </context>
 <context>
@@ -4231,42 +4273,42 @@ Biztos vagy ebben?</translation>
 <context>
     <name>FlameCheckUpdate</name>
     <message>
-        <location filename="../launcher/modplatform/flame/FlameCheckUpdate.cpp" line="+177"/>
+        <location filename="../launcher/modplatform/flame/FlameCheckUpdate.cpp" line="+182"/>
         <source>Parsing API response from CurseForge for &apos;%1&apos;...</source>
         <translation>API-válasz elemzése a CurseForge-tól a következőhöz: „%1”…</translation>
     </message>
     <message>
-        <location line="-85"/>
+        <location line="-90"/>
         <source>Parsing the API response from CurseForge for &apos;%1&apos;...</source>
         <translation>API-válasz elemzése a CurseForge-tól a következőhöz: „%1”…</translation>
     </message>
     <message>
-        <location line="-52"/>
+        <location line="-54"/>
         <source>Preparing resources for CurseForge...</source>
         <translation>Modok előkészítése a CurseForge számára…</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+63"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version.</source>
         <translation>Nem található érvényes verzió ehhez az erőforráshoz. Valószínűleg nem érhető el a jelenlegi játékverzióhoz.</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+19"/>
         <source>Unknown</source>
         <translation>Ismeretlen</translation>
     </message>
     <message>
-        <location line="-21"/>
+        <location line="-22"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version / mod loader.</source>
         <translation>Nem található érvényes verzió ehhez az erőforráshoz. Valószínűleg nem érhető el a jelenlegi játékverzióhoz / modbetöltőhöz.</translation>
     </message>
     <message>
-        <location line="+83"/>
+        <location line="+88"/>
         <source>Resource has a new update available, but is not downloadable using CurseForge.</source>
         <translation>Az erőforráshoz elérhető egy új frissítés, de nem tölthető le a CurseForge segítségével.</translation>
     </message>
     <message>
-        <location line="-64"/>
+        <location line="-68"/>
         <source>Not installed</source>
         <translation>Nincs telepítve</translation>
     </message>
@@ -4274,7 +4316,7 @@ Biztos vagy ebben?</translation>
 <context>
     <name>FlameCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+598"/>
+        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+636"/>
         <source>Downloading mods...</source>
         <translation>Modok letöltése…</translation>
     </message>
@@ -4284,17 +4326,22 @@ Biztos vagy ebben?</translation>
         <translation>A következő fájlok nem tölthetők le a harmadik féltől származó launcherekből.&lt;br/&gt;Kézzel kell letöltened őket, és hozzáadnod a példányhoz.</translation>
     </message>
     <message>
-        <location line="-197"/>
+        <location line="-218"/>
+        <source>The overrides has a path that leads to an arbitrary location (%1). This is a security risk and isn&apos;t allowed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
         <source>The specified overrides folder (%1) is missing. Maybe the modpack was already used before?</source>
         <translation>Hiányzik a megadott felülbírálási mappa (%1). Talán a modcsomagot már korábban használták?</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+35"/>
         <source>Unknown mod loader in manifest: %1</source>
         <translation>Ismeretlen modbetöltő a csomagleíróban: %1</translation>
     </message>
     <message>
-        <location line="-70"/>
+        <location line="-107"/>
         <source>No loader version set for modpack!</source>
         <translation>Nincs modbetöltő verzió beállítva a modcsomaghoz!</translation>
     </message>
@@ -4307,7 +4354,7 @@ Biztos vagy ebben?</translation>
         <translation type="vanished">Nem sikerült eltávolítani a régi ütköző fájlokat.</translation>
     </message>
     <message>
-        <location line="+157"/>
+        <location line="+194"/>
         <source>Unable to resolve mod IDs:
 </source>
         <translation>Nem sikerült feloldani a mod azonosítókat:
@@ -4324,7 +4371,7 @@ Biztos vagy ebben?</translation>
         <translation>Mod Letöltés Flame</translation>
     </message>
     <message>
-        <location line="-298"/>
+        <location line="-335"/>
         <source>Failed to get local metadata index for %1</source>
         <translation>Nem sikerült lekérni a helyi metaadatindexet a következőhöz: %1</translation>
     </message>
@@ -4335,14 +4382,14 @@ Biztos vagy ebben?</translation>
     </message>
     <message>
         <location line="-125"/>
-        <location line="+211"/>
+        <location line="+236"/>
         <source>Could not understand pack manifest:
 </source>
         <translation>Nem sikerült értelmezni a csomagleírót:
 </translation>
     </message>
     <message>
-        <location line="+280"/>
+        <location line="+292"/>
         <source>Copying Blocked Mods...</source>
         <translation>Blokkolt modok másolása…</translation>
     </message>
@@ -4357,7 +4404,7 @@ Biztos vagy ebben?</translation>
         <translation>%1/%2 kész</translation>
     </message>
     <message>
-        <location line="-354"/>
+        <location line="-391"/>
         <source>No index file.</source>
         <translation>Nincs indexfájl.</translation>
     </message>
@@ -4367,19 +4414,19 @@ Biztos vagy ebben?</translation>
         <translation>Nem sikerült megtalálni a(z) %1 betöltő verzióját</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+72"/>
         <source>Could not rename the overrides folder:
 </source>
         <translation>Nem sikerült átnevezni a felülírási mappát:
 </translation>
     </message>
     <message>
-        <location line="-218"/>
+        <location line="-249"/>
         <source> (version %1)</source>
         <translation> (verzió: %1)</translation>
     </message>
     <message>
-        <location line="+501"/>
+        <location line="+538"/>
         <source>Copying Blocked Mods (%1 out of %2 are done)</source>
         <translation>Blokkolt modok másolása (%2/%1 kész)</translation>
     </message>
@@ -4392,7 +4439,7 @@ Biztos vagy ebben?</translation>
 <context>
     <name>FlameManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+491"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+506"/>
         <source>CurseForge pack</source>
         <translation>CurseForge csomag</translation>
     </message>
@@ -4402,12 +4449,12 @@ Biztos vagy ebben?</translation>
         <translation>Válaszd ki a frissítési fájlt</translation>
     </message>
     <message>
-        <location line="-57"/>
+        <location line="-62"/>
         <source>%1 (Current)</source>
         <translation>%1 (jelenlegi)</translation>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-42"/>
         <source>&lt;h1&gt;Hey there!&lt;/h1&gt;&lt;h4&gt;It seems like your Pack ID is null. This is because of a bug in older versions of the launcher.&lt;br/&gt;Unfortunately, we can&apos;t do the proper API requests without this information.&lt;br/&gt;&lt;br/&gt;So, in order for this feature to work, you will need to re-download the modpack from the built-in downloader.&lt;br/&gt;&lt;br/&gt;Don&apos;t worry though, it will ask you to update this instance instead, so you&apos;ll not lose this instance!&lt;/h4&gt;</source>
         <translation>&lt;h1&gt;Szia!&lt;/h1&gt;&lt;h4&gt;Úgy tűnik, a csomagazonosítója null. Ennek oka a launcher régebbi verzióiban található hiba.&lt;br/&gt;Sajnos ezen információk nélkül nem tudjuk végrehajtani a megfelelő API-kéréseket.&lt;br/&gt;&lt;br/&gt;Tehát ahhoz, hogy ez a funkció működjön, újra le kell töltened a modcsomagot a beépített letöltőből.&lt;br/&gt;&lt;br/&gt;Ne aggódj, a rendszer kérni fogja, hogy frissítsd ezt a példányt, így nem veszíted el a példány adatait!&lt;/h4&gt;</translation>
     </message>
@@ -4905,11 +4952,12 @@ Biztos vagy ebben?</translation>
 <context>
     <name>InstallLoaderDialog</name>
     <message>
+        <location filename="../launcher/ui/dialogs/InstallLoaderDialog.cpp" line="+109"/>
         <source>OK</source>
-        <translation type="vanished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/InstallLoaderDialog.cpp" line="+140"/>
+        <location line="+31"/>
         <source>Forge</source>
         <translation>Forge</translation>
     </message>
@@ -4929,12 +4977,11 @@ Biztos vagy ebben?</translation>
         <translation>Mégse</translation>
     </message>
     <message>
-        <location line="-1"/>
         <source>Ok</source>
-        <translation>Rendben</translation>
+        <translation type="vanished">Rendben</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+32"/>
         <source>Fabric</source>
         <translation>Fabric</translation>
     </message>
@@ -4981,12 +5028,12 @@ Biztos vagy ebben?</translation>
         <translation>%1 példány másolása</translation>
     </message>
     <message>
-        <location line="+146"/>
+        <location line="+147"/>
         <source>Instance folder copy has been aborted.</source>
         <translation>A példánymappa másolása megszakadt.</translation>
     </message>
     <message>
-        <location line="-42"/>
+        <location line="-43"/>
         <source>Instance folder copy failed.</source>
         <translation>A példánymappa másolása sikertelen.</translation>
     </message>
@@ -5047,7 +5094,7 @@ Biztos vagy ebben?</translation>
 <context>
     <name>InstanceHealthCheckDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+61"/>
+        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+90"/>
         <source>No Java selected</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5081,7 +5128,12 @@ Switch Java in the instance&apos;s Java settings, or turn off the compatibility 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+175"/>
+        <source>Checking &lt;b&gt;%1&lt;/b&gt;…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+38"/>
         <source>Broken mod files (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5094,42 +5146,155 @@ Delete or re-download them (a fresh download of the same version is usually enou
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-201"/>
         <source>Version information not loaded yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-67"/>
+        <source>Error</source>
+        <translation type="unfinished">Hiba</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Warning</source>
+        <translation type="unfinished">Figyelem</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Info</source>
+        <translation type="unfinished">Információ</translation>
+    </message>
+    <message numerus="yes">
+        <location line="+9"/>
+        <source>
+… and %n more</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+55"/>
         <source>The launcher could not read this instance&apos;s version list, so the loader check was skipped.
 Open the instance, go to the Version page and let it load once (or press Reload) before launching.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>%1 (loader component)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+17"/>
+        <source>Only %1 MiB are free on the drive this instance is stored on.
+Free up some space, or the game can fail while saving worlds or downloading files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Low disk space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Too much memory allocated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance is set to use up to %1 MiB, but the computer only has %2 MiB.
+Lower the maximum memory in the instance&apos;s settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>A lot of memory allocated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance may use up to %1 MiB of the computer&apos;s %2 MiB.
+That leaves little for the system and can make the game stutter; around half of the total is usually plenty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+39"/>
         <source>Check instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+21"/>
+        <source>Check Again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Open Mods Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Close</source>
         <translation type="unfinished">Bezárás</translation>
     </message>
     <message>
-        <location line="+23"/>
-        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, no broken mod files, and the loader version checks out. Nothing stood in the way of launching.</source>
+        <location line="+128"/>
+        <source>Mods that may not fit this game version (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These mods are not marked as compatible with this instance&apos;s Minecraft version:
+%1
+
+They may still work, but if the game crashes, update or remove them first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, the mods have no broken files or conflicts, and the loader version checks out. Nothing stood in the way of launching.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location line="+5"/>
-        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting. The details are below each entry.</source>
+        <location line="+8"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message numerus="yes">
+        <location line="+1"/>
+        <source>, and %n warning(s) worth a look</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>. The details are below each entry.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+2"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; should start, but has %n warning(s) worth a look. The details are below each entry.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Instance check for &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>No problems found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5213,12 +5378,12 @@ Open the instance, go to the Version page and let it load once (or press Reload)
 <context>
     <name>InstanceStaging</name>
     <message>
-        <location filename="../launcher/InstanceList.cpp" line="+784"/>
+        <location filename="../launcher/InstanceList.cpp" line="+782"/>
         <source>Failed to commit instance, even after multiple retries. It is being blocked by something.</source>
         <translation>A példány véglegesítése még többszöri újrapróbálkozás után sem sikerült. Valami blokkolja.</translation>
     </message>
     <message>
-        <location line="-22"/>
+        <location line="-20"/>
         <source>Could not create staging folder</source>
         <translation>Nem sikerült létrehozni az átmeneti mappát</translation>
     </message>
@@ -5454,7 +5619,7 @@ Open the instance, go to the Version page and let it load once (or press Reload)
 <context>
     <name>JavaListLoadTask</name>
     <message>
-        <location filename="../launcher/java/JavaInstallList.cpp" line="+158"/>
+        <location filename="../launcher/java/JavaInstallList.cpp" line="+159"/>
         <source>Detecting Java installations...</source>
         <translation>Java-telepítések észlelése…</translation>
     </message>
@@ -5522,42 +5687,42 @@ Biztos vagy ebben?</translation>
         <translation>B&amp;eállítások tesztelése</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="+278"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="+279"/>
         <source>Confirm Selection</source>
         <translation>Választás megerősítése</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+230"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+164"/>
         <source>(-Xms)</source>
         <translation>(-Xms)</translation>
     </message>
     <message>
-        <location line="-45"/>
+        <location line="+49"/>
         <source>(-Xmx)</source>
         <translation>(-Xmx)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-71"/>
         <source>The amount of memory Minecraft is started with.</source>
         <translation>A memóriamennyiség amivel a Minecraft elindul.</translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="-18"/>
         <source>M&amp;inimum Memory Usage:</source>
         <translation>M&amp;inimális memóriahasználat:</translation>
     </message>
     <message>
-        <location line="-137"/>
+        <location line="-14"/>
         <source>Memor&amp;y</source>
         <translation>Memór&amp;ia</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+81"/>
         <source>The maximum amount of memory Minecraft is allowed to use.</source>
         <translation>A Minecraft által felhasználható maximális memóriamennyiség.</translation>
     </message>
     <message>
-        <location line="-115"/>
+        <location line="-143"/>
         <source>Auto-download &amp;Mojang Java</source>
         <translation>&amp;Mojang Java automatikus letöltése</translation>
     </message>
@@ -5567,9 +5732,14 @@ Biztos vagy ebben?</translation>
         <translation>Ha engedélyezve van, a launcher nem kéri a Java-verzió kiválasztását, ha az indításkor nem található.</translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+144"/>
         <source>&amp;PermGen Size:</source>
         <translation>&amp;PermGen mérete:</translation>
+    </message>
+    <message>
+        <location line="+51"/>
+        <source>Warn when there is not enough free memory</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="-49"/>
@@ -5577,12 +5747,12 @@ Biztos vagy ebben?</translation>
         <translation>Java futtatható fájl keresése</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+63"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+20"/>
         <source>Java Argumen&amp;ts</source>
         <translation>Java argumen&amp;tumok</translation>
     </message>
     <message>
-        <location line="-148"/>
+        <location line="-53"/>
         <source>The amount of memory available to store loaded Java classes.</source>
         <translation>A memóriamennyiség elérhető, a betöltött Java osztályok tárolására.</translation>
     </message>
@@ -5591,17 +5761,17 @@ Biztos vagy ebben?</translation>
         <translation type="vanished">Figyelmeztetés, ha nincs elegendő memória</translation>
     </message>
     <message>
-        <location line="+135"/>
+        <location line="+40"/>
         <source>Memory Notice</source>
         <translation>Memória figyelmeztetés</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-107"/>
         <source>Ma&amp;ximum Memory Usage:</source>
         <translation>Ma&amp;ximális memóriahasználat:</translation>
     </message>
     <message>
-        <location line="-192"/>
+        <location line="-128"/>
         <source>Automatically downloads and selects the Java build recommended by Mojang.</source>
         <translation>Automatikusan letölti és kiválasztja a Mojang által ajánlott Java buildet.</translation>
     </message>
@@ -5641,12 +5811,12 @@ Biztos vagy ebben?</translation>
         <translation>Java-verzió automatikus &amp;felismerése</translation>
     </message>
     <message>
-        <location line="+162"/>
+        <location line="+302"/>
         <source>(-XX:PermSize)</source>
         <translation>(-XX:PermSize)</translation>
     </message>
     <message>
-        <location line="-115"/>
+        <location line="-255"/>
         <source>Open Java &amp;Downloader</source>
         <translation>Java &amp;letöltő megnyitása</translation>
     </message>
@@ -5841,12 +6011,11 @@ A Java-verziót a beállításokban később is megváltoztathatod.
         <translation>Nem látod a saját nyelvedet vagy gyenge minőségű a fordítás?&lt;br/&gt;&lt;a href=&quot;%1&quot;&gt;Segíts nekünk fordítani!&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+3"/>
         <source>Use system locales</source>
-        <translation>Rendszer nyelvi beállítások használata</translation>
+        <translation type="vanished">Rendszer nyelvi beállítások használata</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+16"/>
         <source>Language picked automatically from your region (%1). Not right? Choose another one above.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5856,8 +6025,9 @@ A Java-verziót a beállításokban később is megváltoztathatod.
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="-22"/>
         <source>Use system regional standards</source>
-        <translation type="vanished">Rendszer területi beállításainak használata</translation>
+        <translation>Rendszer területi beállításainak használata</translation>
     </message>
 </context>
 <context>
@@ -6568,19 +6738,20 @@ A %1 hozzáférésének biztosítása a Flatseal-en keresztül ajánlott.</trans
         <translation>A „%1” wrapper parancs nem található.</translation>
     </message>
     <message>
-        <location line="+27"/>
         <source>Could not launch Minecraft!</source>
         <extracomment>Error message displayed if instace can&apos;t start</extracomment>
-        <translation>Nem sikerült elindítani a Minecraftot!</translation>
+        <translation type="vanished">Nem sikerült elindítani a Minecraftot!</translation>
     </message>
     <message>
-        <location line="-130"/>
+        <location line="-103"/>
         <source>Legacy launcher library could not be found. Please check your installation.</source>
         <translation>Nem található legacy launcher könyvtár, ellenőrizd a telepítést.</translation>
     </message>
     <message>
+        <location line="+130"/>
         <source>Could not launch Minecraft: %1</source>
-        <translation type="vanished">A Minecraft nem indítható el: %1</translation>
+        <extracomment>Error message displayed if instace can&apos;t start</extracomment>
+        <translation>A Minecraft nem indítható el: %1</translation>
     </message>
 </context>
 <context>
@@ -6941,13 +7112,13 @@ Ezt a problémát kézzel kell javítanod.</translation>
         <translation>Folyamat összeomlott %1 kilépési kóddal.</translation>
     </message>
     <message>
-        <location line="+14"/>
         <source>The process failed to start.</source>
-        <translation>A folyamat nem indult el.</translation>
+        <translation type="vanished">A folyamat nem indult el.</translation>
     </message>
     <message>
+        <location line="+14"/>
         <source>The process failed to start: %1</source>
-        <translation type="vanished">A folyamat nem indult el: %1</translation>
+        <translation>A folyamat nem indult el: %1</translation>
     </message>
 </context>
 <context>
@@ -7050,7 +7221,7 @@ Ezt a problémát kézzel kell javítanod.</translation>
 <context>
     <name>MSADeviceCodeStep</name>
     <message>
-        <location filename="../launcher/minecraft/auth/steps/MSADeviceCodeStep.cpp" line="+133"/>
+        <location filename="../launcher/minecraft/auth/steps/MSADeviceCodeStep.cpp" line="+131"/>
         <source>Device authorization failed: required fields missing</source>
         <translation>Eszköz hitelesítése nem sikerült: hiányoznak a kötelező mezők</translation>
     </message>
@@ -7061,21 +7232,21 @@ Ezt a problémát kézzel kell javítanod.</translation>
     </message>
     <message>
         <location line="-38"/>
+        <location line="+8"/>
         <source>Device authorization failed: %1</source>
         <translation>Eszköz hitelesítése nem sikerült: %1</translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="-71"/>
         <source>Logging in with Microsoft account(device code).</source>
         <translation>Bejelentkezés Microsoft fiókkal (eszközkód).</translation>
     </message>
     <message>
-        <location line="+72"/>
         <source>Failed to retrieve device authorization</source>
-        <translation>Nem sikerült lekérni az eszköz hitelesítését</translation>
+        <translation type="vanished">Nem sikerült lekérni az eszköz hitelesítését</translation>
     </message>
     <message>
-        <location line="+137"/>
+        <location line="+207"/>
         <source>Device Access failed: %1</source>
         <translation>Eszköz elérése sikertelen: %1</translation>
     </message>
@@ -7176,7 +7347,7 @@ Ezt a problémát kézzel kell javítanod.</translation>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+298"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+300"/>
         <source>Check for new updates for %1.</source>
         <translation>Frissítések keresése a következőhöz: %1.</translation>
     </message>
@@ -7185,22 +7356,22 @@ Ezt a problémát kézzel kell javítanod.</translation>
         <translation type="vanished">Súgó</translation>
     </message>
     <message>
-        <location line="+542"/>
+        <location line="+567"/>
         <source>Java</source>
         <translation>Java</translation>
     </message>
     <message>
-        <location line="-188"/>
+        <location line="-213"/>
         <source>Logs</source>
         <translation>Naplók</translation>
     </message>
     <message>
-        <location line="+177"/>
+        <location line="+202"/>
         <source>I&amp;con Theme</source>
         <translation>&amp;Ikon téma</translation>
     </message>
     <message>
-        <location line="-662"/>
+        <location line="-687"/>
         <source>&amp;Edit</source>
         <translation>Sz&amp;erkesztés</translation>
     </message>
@@ -7209,12 +7380,12 @@ Ezt a problémát kézzel kell javítanod.</translation>
         <translation type="vanished">Hírek eszköztár</translation>
     </message>
     <message>
-        <location line="-25"/>
+        <location line="-26"/>
         <source>&amp;File</source>
         <translation>&amp;Fájl</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+76"/>
         <source>&amp;Help</source>
         <translation>&amp;Súgó</translation>
     </message>
@@ -7309,17 +7480,22 @@ Ezt a problémát kézzel kell javítanod.</translation>
         <translation>Az indító megjelenésének váltása világos, sötét és egyéb témák között.</translation>
     </message>
     <message>
+        <location line="+11"/>
+        <source>&amp;Pin Instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Keep the selected instance at the top of its group.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+8"/>
         <source>Chec&amp;k Instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Look for missing Java, broken mod files or a wrong loader version before launching.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
+        <location line="+11"/>
         <source>Copy &amp;Diagnostics</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7329,7 +7505,7 @@ Ezt a problémát kézzel kell javítanod.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+111"/>
+        <location line="+122"/>
         <source>More</source>
         <translation>Továbbiak</translation>
     </message>
@@ -7353,12 +7529,12 @@ Ezt a problémát kézzel kell javítanod.</translation>
         <translation type="vanished">&amp;Miáúú</translation>
     </message>
     <message>
-        <location line="-678"/>
+        <location line="-703"/>
         <source>&amp;View</source>
         <translation>&amp;Nézet</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1783"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1842"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -7369,40 +7545,40 @@ Ez végleges lehet, és teljesen törli a példányt.
 Biztos vagy ebben?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+656"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+681"/>
         <source>Open the icon theme folder in a file browser.</source>
         <translation>Ikon téma mappájának megnyitása a fájlkezelőben.</translation>
     </message>
     <message>
-        <location line="-343"/>
+        <location line="-368"/>
         <source>Copy the selected instance.</source>
         <translation>A kiválasztott példány másolása.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-727"/>
-        <location line="+140"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-751"/>
+        <location line="+143"/>
         <location line="+106"/>
         <source>Abort</source>
         <translation>Megszakítás</translation>
     </message>
     <message>
-        <location line="-258"/>
-        <location line="+126"/>
+        <location line="-261"/>
+        <location line="+129"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
         <location line="+37"/>
-        <location line="+403"/>
+        <location line="+424"/>
         <source>Error</source>
         <translation>Hiba</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-454"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-456"/>
         <source>Main Toolbar</source>
         <translation>Fő eszköztár</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-439"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-460"/>
         <source>Invalid import link: URL must be http(s).</source>
         <translation>Érvénytelen import link: az URL-nek http(s) formátumúnak kell lennie.</translation>
     </message>
@@ -7412,7 +7588,7 @@ Biztos vagy ebben?</translation>
         <translation>Modcsomag letöltése</translation>
     </message>
     <message>
-        <location line="+318"/>
+        <location line="+339"/>
         <source>Check instance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7504,12 +7680,12 @@ Biztos vagy ebben?</translation>
         <translation>A példány már fut.</translation>
     </message>
     <message>
-        <location line="+119"/>
+        <location line="+120"/>
         <source>Your instance folder contains &apos;!&apos; and this is known to cause Java problems!</source>
         <translation>A példánymappád a következőt tartalmazza: „!” és ez köztudottan Java problémákat okoz!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+390"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+392"/>
         <source>&amp;Change Group...</source>
         <translation>&amp;Csoportváltás…</translation>
     </message>
@@ -7534,7 +7710,7 @@ Biztos vagy ebben?</translation>
         <translation>Példány &amp;hozzáadása…</translation>
     </message>
     <message>
-        <location line="+431"/>
+        <location line="+456"/>
         <source>&amp;Matrix Space</source>
         <translation>&amp;Matrix Space</translation>
     </message>
@@ -7543,44 +7719,44 @@ Biztos vagy ebben?</translation>
         <translation type="vanished">További hírek…</translation>
     </message>
     <message>
-        <location line="-71"/>
+        <location line="-96"/>
         <source>Open the instance icons folder in a file browser.</source>
         <translation>Példányikonok mappájának megnyitása a fájlkezelőben.</translation>
     </message>
     <message>
-        <location line="+133"/>
+        <location line="+158"/>
         <source>Install a %1 symlink to /usr/local/bin</source>
         <translation>Egy %1 szimbolikus hivatkozás telepítése a /usr/local/bin mappába</translation>
     </message>
     <message>
-        <location line="-687"/>
+        <location line="-714"/>
         <source>Instance Toolbar</source>
         <translation>Példány eszköztár</translation>
     </message>
     <message>
-        <location line="+493"/>
+        <location line="+495"/>
         <source>Close &amp;Window</source>
         <translation>&amp;Ablak bezárása</translation>
     </message>
     <message numerus="yes">
-        <location filename="../launcher/ui/MainWindow.cpp" line="-259"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-260"/>
         <source> and its %n registered shortcut(s)</source>
         <translation>
             <numerusform> és annak %n regisztrált parancsikonja</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+113"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+127"/>
         <source>Open the bug tracker to report a bug with %1.</source>
         <translation>A hibakövető megnyitása a %1 hibájának bejelentéséhez.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-729"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-753"/>
         <source>Task aborted</source>
         <translation>Feladat megszakítva</translation>
     </message>
     <message>
-        <location line="+218"/>
+        <location line="+221"/>
         <source>Do you want to download and import a modpack from:
 %1
 
@@ -7593,17 +7769,17 @@ URL:
 %2</translation>
     </message>
     <message>
-        <location line="+325"/>
+        <location line="+330"/>
         <source>This instance is not editable. It may be broken, invalid, or too old. Check logs for details.</source>
         <translation>Ez a példány nem szerkeszthető. Lehet, hogy sérült, érvénytelen vagy túl régi. A részletekért ellenőrizd a naplókat.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+70"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+81"/>
         <source>View current and previous launcher logs</source>
         <translation>Jelenlegi és korábbi launcher naplók megtekintése</translation>
     </message>
     <message>
-        <location line="-136"/>
+        <location line="-161"/>
         <source>&amp;Skins</source>
         <translation>&amp;Skinek</translation>
     </message>
@@ -7651,7 +7827,7 @@ URL:
         <translation>Csoport törlése</translation>
     </message>
     <message>
-        <location line="+262"/>
+        <location line="+278"/>
         <source>Failed to add %1 to PATH</source>
         <translation>%1 hozzáadása a PATH környezeti változóhoz nem sikerült</translation>
     </message>
@@ -7696,7 +7872,7 @@ URL:
         <translation>A kiválasztott példány jelenleg fut, és nem törölhető. Állítsd le a példányt, mielőtt megpróbálnád törölni.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+459"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+484"/>
         <source>Open the Java folder in a file browser. Only available if the built-in Java downloader is used.</source>
         <translation>Java mappájának megnyitása a fájlkezelőben. Csak a beépített Java letöltő használata esetén érhető el.</translation>
     </message>
@@ -7705,7 +7881,7 @@ URL:
         <translation type="vanished">Nincs hír.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-718"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-742"/>
         <source>The task has been aborted by the user.</source>
         <translation>A feladatot a felhasználó megszakította.</translation>
     </message>
@@ -7715,7 +7891,7 @@ URL:
         <translation>A példányok közötti egyik megosztott mappának megnyitása.</translation>
     </message>
     <message>
-        <location line="-396"/>
+        <location line="-421"/>
         <source>Rename</source>
         <translation>Átnevezés</translation>
     </message>
@@ -7729,17 +7905,17 @@ URL:
         <translation type="vanished">Prism Launcher (zip)</translation>
     </message>
     <message>
-        <location line="+69"/>
+        <location line="+94"/>
         <source>Open %1 subreddit.</source>
         <translation>A %1 subreddit oldalának megnyitása.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+133"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+136"/>
         <source>The modpack, mod, or resource %1 is blocked for third-parties! Please download it manually.</source>
         <translation>A(z) %1 modcsomag, mod vagy erőforrás le van tiltva harmadik felek számára, töltsd le manuálisan.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-243"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-268"/>
         <source>Cop&amp;y...</source>
         <translation>&amp;Másolás…</translation>
     </message>
@@ -7753,7 +7929,7 @@ URL:
         <translation type="vanished">&amp;Skinek kezelése…</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+142"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+147"/>
         <source>No instance available to add the resource to.
 Please create a new instance before attempting to install this resource again.</source>
         <translation>Nincs elérhető példány az erőforrás hozzáadásához.
@@ -7765,7 +7941,7 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>Módosítd a példány beállításait, modjait és verzióit.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+734"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+751"/>
         <source>This is a problem: &lt;br/&gt; - The launcher will likely be deleted without warning by the operating system &lt;br/&gt; - close the launcher now and extract it to a real location, not a temporary folder</source>
         <translation>Ez egy probléma: &lt;br/&gt; - A launcher valószínűleg figyelmeztetés nélkül törölve lesz az operációs rendszer által &lt;br/&gt; - zárd be a launchert, és csomagold ki egy valós helyre, ne egy ideiglenes mappába</translation>
     </message>
@@ -7774,12 +7950,12 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation type="vanished">Cica csomagok</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+257"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+282"/>
         <source>Open %1 Discord guild.</source>
         <translation>Nyisd meg a %1 Discord szerverét.</translation>
     </message>
     <message>
-        <location line="-243"/>
+        <location line="-268"/>
         <source>Open the selected instance&apos;s root folder in a file browser.</source>
         <translation>A kiválasztott példány gyökérmappájának megnyitása a fájlkezelőben.</translation>
     </message>
@@ -7794,7 +7970,7 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>Eszköztárak zárolása</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-279"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-280"/>
         <source>Confirm Deletion</source>
         <translation>Törlés megerősítése</translation>
     </message>
@@ -7804,27 +7980,27 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>&amp;Exportálás…</translation>
     </message>
     <message>
-        <location line="+299"/>
+        <location line="+324"/>
         <source>Get help with %1 or Minecraft.</source>
         <translation>Segítség kérése a %1 vagy a Minecraft használatához.</translation>
     </message>
     <message>
-        <location line="-188"/>
+        <location line="-213"/>
         <source>Open the launcher&apos;s root folder in a file browser.</source>
         <translation>Launcher gyökérmappájának megnyitása a fájlkezelőben.</translation>
     </message>
     <message>
-        <location line="+82"/>
+        <location line="+96"/>
         <source>Report a Bug or Suggest a Feature</source>
         <translation>Hiba bejelentése vagy funkciójavaslat</translation>
     </message>
     <message>
-        <location line="-348"/>
+        <location line="-362"/>
         <source>&amp;Manage Accounts...</source>
         <translation>&amp;Fiókok kezelése…</translation>
     </message>
     <message>
-        <location line="+373"/>
+        <location line="+398"/>
         <source>Open %1 Matrix space.</source>
         <translation>A %1 Matrix space oldalának megnyitása.</translation>
     </message>
@@ -7833,27 +8009,27 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation type="vanished">A %1 wiki megnyitása</translation>
     </message>
     <message>
-        <location line="-132"/>
+        <location line="-157"/>
         <source>Close the current window</source>
         <translation>Aktuális ablak bezárása</translation>
     </message>
     <message>
-        <location line="+232"/>
+        <location line="+257"/>
         <source>&amp;Widget Themes</source>
         <translation>&amp;Widget témák</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-298"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-314"/>
         <source>Cannot set empty name.</source>
         <translation>A név nem lehet üres.</translation>
     </message>
     <message>
-        <location line="-436"/>
+        <location line="-444"/>
         <source>Warnings</source>
         <translation>Figyelmeztetések</translation>
     </message>
     <message>
-        <location line="-872"/>
+        <location line="-905"/>
         <source>Show PollyMC</source>
         <translation>PollyMC megjelenítése</translation>
     </message>
@@ -7863,17 +8039,7 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>Kilépés</translation>
     </message>
     <message>
-        <location line="+413"/>
-        <source>The star reminder will appear after the Settings dialog closes.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+17"/>
-        <source>The main window must be visible to show the star reminder.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+104"/>
+        <location line="+563"/>
         <source>Enjoying PollyMC-Continued?</source>
         <translation>Tetszik a PollyMC-Continued?</translation>
     </message>
@@ -7883,12 +8049,12 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>Adj egy csillagot a projektnek a GitHubon!</translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="+1"/>
         <source>Star on GitHub</source>
         <translation>Csillag a GitHubon</translation>
     </message>
     <message>
-        <location line="+881"/>
+        <location line="+892"/>
         <source>Instance not editable</source>
         <translation>A példány nem szerkeszthető</translation>
     </message>
@@ -7898,7 +8064,33 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>Nem sikerült visszavonni a törlést</translation>
     </message>
     <message>
-        <location line="-11"/>
+        <location line="-1067"/>
+        <location line="+150"/>
+        <source>Update on your bug report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-149"/>
+        <source>&quot;%1&quot;: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Updates on your bug reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 of your reports have news.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+147"/>
+        <source>&quot;Sample report&quot;: Seen - the team is looking into it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+905"/>
         <source>Cannot rename group</source>
         <translation>Nem lehet átnevezni a csoportot</translation>
     </message>
@@ -7908,33 +8100,33 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>%1 &amp;névjegye</translation>
     </message>
     <message>
-        <location line="-528"/>
+        <location line="-553"/>
         <source>&amp;Accounts</source>
         <translation>&amp;Fiókok</translation>
     </message>
     <message>
-        <location line="+598"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-494"/>
+        <location line="+623"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
         <source>Accounts</source>
         <translation>Fiókok</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+734"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 sikeresen hozzáadva a PATH környezeti változóhoz. Most elindíthatod a(z) „%2” futtatásával.</translation>
     </message>
     <message>
-        <location line="+329"/>
+        <location line="+330"/>
         <source>You have now two options: &lt;br/&gt; - change the instance folder in the settings &lt;br/&gt; - move this installation of %1 to a different folder</source>
         <translation>Most két lehetőséged van: 1&lt;br/&gt; - módosítod a példány mappáját a beállításokban &lt;br/&gt; - áthelyezed a(z) %1 telepítését egy másik mappába</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-520"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-545"/>
         <source>Add a new instance.</source>
         <translation>Új példány hozzáadása.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-284"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-285"/>
         <source>Cannot Delete Running Instance</source>
         <translation>Nem lehet törölni a futó példányt</translation>
     </message>
@@ -7943,7 +8135,7 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation type="vanished">A %1 fejlesztési blog megnyitása további hírekért.</translation>
     </message>
     <message>
-        <location line="-1471"/>
+        <location line="-1527"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
@@ -7957,7 +8149,7 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>&amp;Példányok</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+617"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+649"/>
         <source>Ctrl+%1</source>
         <translation>Ctrl+%1</translation>
     </message>
@@ -7977,7 +8169,7 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>&amp;Mappa</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+354"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+357"/>
         <source>Install modpack</source>
         <translation>Modcsomag telepítése</translation>
     </message>
@@ -7997,22 +8189,22 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>Nincsenek fiókok hozzáadva!</translation>
     </message>
     <message>
-        <location line="+219"/>
+        <location line="+244"/>
         <source>Install to &amp;PATH</source>
         <translation>Telepítés ide: &amp;PATH</translation>
     </message>
     <message>
-        <location line="-327"/>
+        <location line="-352"/>
         <source>&amp;Edit...</source>
         <translation>&amp;Szerkesztés…</translation>
     </message>
     <message>
-        <location line="-384"/>
+        <location line="-386"/>
         <source>What&apos;s New Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+188"/>
+        <location line="+190"/>
         <source>Status Bar</source>
         <translation>Állapotsor</translation>
     </message>
@@ -8042,7 +8234,24 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>PollyMC-Continued (zip)</translation>
     </message>
     <message>
-        <location line="+229"/>
+        <location line="+177"/>
+        <source>Look for missing Java, broken or conflicting mods, a wrong loader version or too little memory/disk space before launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+30"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-820"/>
+        <location line="+136"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>See what the team answered to the bug reports you sent from this launcher.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+44"/>
         <source>View information about %1.</source>
         <translation>A %1 névjegyének megtekintése.</translation>
     </message>
@@ -8052,12 +8261,12 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>Widget témák mappájának megnyitása a fájlkezelőben.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+184"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
         <source>Group name</source>
         <translation>Csoport név</translation>
     </message>
     <message>
-        <location line="+340"/>
+        <location line="+356"/>
         <source>Deleting</source>
         <translation>Törlés</translation>
     </message>
@@ -8067,24 +8276,24 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>Naplók megtekintése</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-547"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-568"/>
         <source>Invalid import link: missing &apos;url&apos; parameter.</source>
         <translation>Érvénytelen import link: hiányzik az &apos;url&apos; paraméter.</translation>
     </message>
     <message>
-        <location line="-449"/>
+        <location line="-452"/>
         <source>&amp;Rename group</source>
         <translation>&amp;Csoport átnevezése</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-155"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-180"/>
         <source>Launcher &amp;Root</source>
         <translation>&amp;Launcher gyökér</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-403"/>
-        <location line="+88"/>
-        <location line="+1552"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
+        <location line="+125"/>
+        <location line="+1572"/>
         <source>No instance selected</source>
         <translation>Nincs példány kiválasztva</translation>
     </message>
@@ -8094,12 +8303,12 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>Ikon megváltoztatása</translation>
     </message>
     <message>
-        <location line="+268"/>
+        <location line="+293"/>
         <source>&amp;Discord Guild</source>
         <translation>&amp;Discord szerver</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-333"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-334"/>
         <source>Metadata cache clear Failed!
 To clear the metadata cache manually, press Folders -&gt; View Launcher Root Folder, and after closing the launcher delete the folder named &quot;meta&quot;
 </source>
@@ -8113,42 +8322,42 @@ A metaadat gyorsítótár manuális törléséhez nyomd meg a Mappák -&gt; Laun
         <translation>&amp;Metaadat-gyorsítótár törlése</translation>
     </message>
     <message>
-        <location line="-562"/>
+        <location line="-587"/>
         <source>F&amp;olders</source>
         <translation>&amp;Mappák</translation>
     </message>
     <message>
-        <location line="+596"/>
+        <location line="+621"/>
         <source>Folders</source>
         <translation>Mappák</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+366"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+367"/>
         <source>Your instance folder contains &apos;Rar$&apos; - that means you haven&apos;t extracted the launcher archive!</source>
         <translation>A példány mappában „Rar$” szerepel - ez azt jelenti, hogy nem csomagoltad ki a launcher archívumot!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-166"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-191"/>
         <source>&amp;Central Mods</source>
         <translation>&amp;Központi modok</translation>
     </message>
     <message>
-        <location line="+107"/>
+        <location line="+132"/>
         <source>Sub&amp;reddit</source>
         <translation>Sub&amp;reddit</translation>
     </message>
     <message>
-        <location line="-251"/>
+        <location line="-276"/>
         <source>Delete the selected instance.</source>
         <translation>A kiválasztott példány törlése.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1274"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Csoport törlése</translation>
     </message>
     <message>
-        <location line="+703"/>
+        <location line="+711"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>Egyes példányok és parancsikonok nem voltak visszaállíthatók.
@@ -8164,7 +8373,7 @@ Ellenőrizd a lomtárat, hogy manuálisan visszaállíthasd őket.</translation>
         <translation type="vanished">Ez egy bolyhos cica :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-717"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-725"/>
         <source>&amp;Create instance</source>
         <translation>&amp;Példány létrehozása</translation>
     </message>
@@ -8189,43 +8398,43 @@ Ellenőrizd a lomtárat, hogy manuálisan visszaállíthasd őket.</translation>
         <translation>CurseForge (zip)</translation>
     </message>
     <message>
-        <location line="+221"/>
+        <location line="+246"/>
         <source>Clear cached metadata</source>
         <translation>A gyorsítótárazott metaadatok törlése</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-384"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-416"/>
         <source>Total playtime: 0s</source>
         <translation>Teljes játékidő: 0 mp</translation>
     </message>
     <message>
-        <location line="+1704"/>
+        <location line="+1761"/>
         <source>Total playtime: %1</source>
         <translation>Teljes játékidő: %1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-315"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-340"/>
         <source>Change the selected instance&apos;s icon.</source>
         <translation>Kiválasztott példány ikonjának változtatása.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-376"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-377"/>
         <source>Successfully added %1 to PATH</source>
         <translation>%1 sikeresen hozzáadva ehhez: PATH</translation>
     </message>
     <message>
-        <location line="-270"/>
+        <location line="-286"/>
         <location line="+22"/>
         <source>Enter a new group name.</source>
         <translation>Adj meg egy új csoportnevet.</translation>
     </message>
     <message>
-        <location line="+253"/>
+        <location line="+269"/>
         <source>An error occurred while trying to add %1 to PATH</source>
         <translation>Hiba történt a %1 a PATH környezeti változóhoz történő hozzáadása közben</translation>
     </message>
     <message>
-        <location line="-263"/>
+        <location line="-279"/>
         <source>Are you sure you want to delete the group &apos;%1&apos;?</source>
         <translation>Biztosan törlöd a(z) „%1” csoportot?</translation>
     </message>
@@ -8252,27 +8461,27 @@ Ellenőrizd a lomtárat, hogy manuálisan visszaállíthasd őket.</translation>
 <context>
     <name>ManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-247"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-255"/>
         <source>URL:</source>
         <translation>URL:</translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+198"/>
         <source>The instance updated to pack version %1 successfully.</source>
         <translation>A példány sikeresen frissült a(z) %1 csomagverzióra.</translation>
     </message>
     <message>
-        <location line="-119"/>
+        <location line="-126"/>
         <source>Abort</source>
         <translation>Megszakítás</translation>
     </message>
     <message>
-        <location line="-12"/>
+        <location line="-13"/>
         <source>Error</source>
         <translation>Hiba</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+8"/>
         <source>Task aborted</source>
         <translation>Feladat megszakítva</translation>
     </message>
@@ -8282,12 +8491,12 @@ Ellenőrizd a lomtárat, hogy manuálisan visszaállíthasd őket.</translation>
         <translation>Szolgáltató adatai:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+123"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+130"/>
         <source>Update Successful</source>
         <translation>Sikeres frissítés</translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-101"/>
         <source>Cannot update!</source>
         <translation>Nem lehet frissíteni!</translation>
     </message>
@@ -8302,7 +8511,7 @@ Ellenőrizd a lomtárat, hogy manuálisan visszaállíthasd őket.</translation>
         <translation>A feladatot a felhasználó megszakította.</translation>
     </message>
     <message>
-        <location line="+130"/>
+        <location line="+137"/>
         <source>The instance failed to update to pack version %1. Please check launcher logs for more information.</source>
         <translation>A példányt nem sikerült frissíteni a csomag %1 verziójára. További információkért ellenőrizd a launcher naplóját.</translation>
     </message>
@@ -8322,17 +8531,17 @@ Ellenőrizd a lomtárat, hogy manuálisan visszaállíthasd őket.</translation>
         <translation>Változásnapló</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-133"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-141"/>
         <source>Warnings</source>
         <translation>Figyelmeztetések</translation>
     </message>
     <message>
-        <location line="+132"/>
+        <location line="+140"/>
         <source>Update Failed</source>
         <translation>Sikertelen frissítés</translation>
     </message>
     <message>
-        <location line="-189"/>
+        <location line="-197"/>
         <source>This is a local modpack.
 This can be updated either using a file in %1 format or an URL.
 Do not use a different format than the one mentioned as it may break the instance.
@@ -8345,13 +8554,13 @@ Győződj meg róla, hogy az URL megbízható.
 </translation>
     </message>
     <message>
-        <location line="+84"/>
+        <location line="+85"/>
         <source>Failed to search for available versions.</source>
         <translation>Nem sikerült az elérhető verziók keresése.</translation>
     </message>
     <message>
-        <location line="-89"/>
-        <location line="+78"/>
+        <location line="-90"/>
+        <location line="+79"/>
         <source>Update Pack</source>
         <translation>Csomag frissítése</translation>
     </message>
@@ -8361,7 +8570,7 @@ Győződj meg róla, hogy az URL megbízható.
         <translation>Ehhez a verzióhoz nem érhető el változásnapló!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-63"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-64"/>
         <source>Website: &lt;a href=%1&gt;%2&lt;/a&gt;    |    Pack ID: %3    |    Version ID: %4</source>
         <translation>Webhely: &lt;a href=%1&gt;%2&lt;/a&gt; | Csomagazonosító: %3 | Verzióazonosító: %4</translation>
     </message>
@@ -8386,7 +8595,7 @@ Győződj meg róla, hogy az URL megbízható.
         <translation>Frissítés erre a verzióra:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+77"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+78"/>
         <source>Failed to request changelog data for this modpack.</source>
         <translation>Nem sikerült lekérni a modcsomag változtatási naplójának adatait.</translation>
     </message>
@@ -8394,7 +8603,7 @@ Győződj meg róla, hogy az URL megbízható.
 <context>
     <name>Meta::BaseEntityLoadTask</name>
     <message>
-        <location filename="../launcher/meta/BaseEntity.cpp" line="+122"/>
+        <location filename="../launcher/meta/BaseEntity.cpp" line="+124"/>
         <source>Loading local file</source>
         <translation>Helyi fájl betöltése</translation>
     </message>
@@ -8442,7 +8651,7 @@ Győződj meg róla, hogy az URL megbízható.
 <context>
     <name>MinecraftInstance</name>
     <message>
-        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1030"/>
+        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1042"/>
         <source>&lt;ACCESS TOKEN&gt;</source>
         <translation>&lt;ACCESS TOKEN&gt;</translation>
     </message>
@@ -8452,12 +8661,12 @@ Győződj meg róla, hogy az URL megbízható.
         <translation>, utoljára játszva ekkor: %1, ennyit: %2</translation>
     </message>
     <message>
-        <location line="-765"/>
+        <location line="-773"/>
         <source>Profilers</source>
         <translation>Profilerek</translation>
     </message>
     <message>
-        <location line="+749"/>
+        <location line="+757"/>
         <source>broken</source>
         <translation>törött</translation>
     </message>
@@ -8467,12 +8676,12 @@ Győződj meg róla, hogy az URL megbízható.
         <translation>, játékidő a példányon: %1</translation>
     </message>
     <message>
-        <location line="-783"/>
+        <location line="-791"/>
         <source>Launch &amp;Offline</source>
         <translation>Indítás &amp;Offline</translation>
     </message>
     <message>
-        <location line="+723"/>
+        <location line="+731"/>
         <source>&lt;PROFILE ID&gt;</source>
         <translation>&lt;PROFILE ID&gt;</translation>
     </message>
@@ -8482,7 +8691,7 @@ Győződj meg róla, hogy az URL megbízható.
         <translation>&lt;SESSION ID&gt;</translation>
     </message>
     <message>
-        <location line="-720"/>
+        <location line="-728"/>
         <source>&amp;Launch</source>
         <translation>&amp;Indítás</translation>
     </message>
@@ -8492,22 +8701,22 @@ Győződj meg róla, hogy az URL megbízható.
         <translation>&amp;Ne legyen profiler</translation>
     </message>
     <message>
-        <location line="+750"/>
+        <location line="+758"/>
         <source>Minecraft %1</source>
         <translation>Minecraft %1</translation>
     </message>
     <message>
-        <location line="-770"/>
+        <location line="-778"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location line="+787"/>
+        <location line="+795"/>
         <source>, has crashed.</source>
         <translation>, összeomlott.</translation>
     </message>
     <message>
-        <location line="-785"/>
+        <location line="-793"/>
         <source>Ctrl+Alt+O</source>
         <translation>Ctrl+Alt+O</translation>
     </message>
@@ -8632,7 +8841,7 @@ Győződj meg róla, hogy az URL megbízható.
         <translation>&amp;Ablak mérete:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+344"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+340"/>
         <source>Select Global Data Packs Folder</source>
         <translation>Globális adatcsomagok mappa kiválasztása</translation>
     </message>
@@ -8714,7 +8923,7 @@ Valószínűleg meg kell változtatnod az elérési utat - lásd a mod weboldal�
         <translation>&amp;Globális beállítások megnyitása</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-497"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-493"/>
         <source>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: The maximized option is not fully supported on this Minecraft version.&lt;/span&gt;</source>
         <translation>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Figyelmeztetés&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: A maximalizált opció nem teljesen támogatott ebben a Minecraft verzióban.&lt;/span&gt;</translation>
     </message>
@@ -8930,6 +9139,59 @@ Valószínűleg meg kell változtatnod az elérési utat - lásd a mod weboldal�
     </message>
 </context>
 <context>
+    <name>ModConflictChecker</name>
+    <message>
+        <location filename="../launcher/minecraft/mod/ModConflictChecker.cpp" line="+88"/>
+        <source>unknown version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Duplicate mod: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These files all provide the mod id &quot;%1&quot;, and the game will not start with more than one of them:
+%2
+Keep only one (usually the newest) and delete or disable the others.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>%1 conflicts with %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 (%2) says it is incompatible with %3 (%4), and both are enabled.
+Disable or remove one of them.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
+        <source>Disabled dependency: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 needs the mod &quot;%2&quot;, which is installed (%3) but disabled.
+Enable it to avoid a crash on startup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Possibly missing dependency: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 needs a mod with the id &quot;%2&quot;, but none was found in the mods folder.
+If the game starts fine it is probably bundled inside another mod; otherwise download it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ModFilterWidget</name>
     <message>
         <location filename="../launcher/ui/widgets/ModFilterWidget.ui" line="+284"/>
@@ -9070,7 +9332,7 @@ Valószínűleg meg kell változtatnod az elérési utat - lásd a mod weboldal�
 <context>
     <name>ModFolderModel</name>
     <message>
-        <location filename="../launcher/minecraft/mod/ModFolderModel.cpp" line="+100"/>
+        <location filename="../launcher/minecraft/mod/ModFolderModel.cpp" line="+101"/>
         <source>File</source>
         <translation>Fájl</translation>
     </message>
@@ -9095,27 +9357,27 @@ Valószínűleg meg kell változtatnod az elérési utat - lásd a mod weboldal�
         <translation>Kép</translation>
     </message>
     <message>
-        <location line="+388"/>
+        <location line="+411"/>
         <source>Only Disable Selected</source>
         <translation>Csak a kijelöltek letiltása</translation>
     </message>
     <message>
-        <location line="-387"/>
+        <location line="-410"/>
         <source>Required By</source>
         <translation>Követelménye</translation>
     </message>
     <message>
-        <location line="+378"/>
+        <location line="+401"/>
         <source>Confirm enable</source>
         <translation>Engedélyezés megerősítése</translation>
     </message>
     <message>
-        <location line="-378"/>
+        <location line="-401"/>
         <source>Minecraft Versions</source>
         <translation>Minecraft verziók</translation>
     </message>
     <message>
-        <location line="+370"/>
+        <location line="+393"/>
         <source>Confirm toggle</source>
         <translation>Váltás megerősítése</translation>
     </message>
@@ -9124,7 +9386,7 @@ Valószínűleg meg kell változtatnod az elérési utat - lásd a mod weboldal�
         <translation type="vanished">Fájlnév</translation>
     </message>
     <message>
-        <location line="-246"/>
+        <location line="-269"/>
         <source>Is the mod enabled?</source>
         <translation>A mod engedélyezve van?</translation>
     </message>
@@ -9144,7 +9406,7 @@ Valószínűleg meg kell változtatnod az elérési utat - lásd a mod weboldal�
         <translation>A mod verziója.</translation>
     </message>
     <message numerus="yes">
-        <location line="+245"/>
+        <location line="+268"/>
         <source>%n mod(s) will be disabled
 </source>
         <translation>
@@ -9153,7 +9415,7 @@ Valószínűleg meg kell változtatnod az elérési utat - lásd a mod weboldal�
         </translation>
     </message>
     <message>
-        <location line="-229"/>
+        <location line="-252"/>
         <source>For each mod, the number of other mods which depend on it.</source>
         <translation>Minden mod esetében azoknak a modoknak a száma, amelyek attól függenek.</translation>
     </message>
@@ -9163,12 +9425,12 @@ Valószínűleg meg kell változtatnod az elérési utat - lásd a mod weboldal�
         <translation>Engedélyezés</translation>
     </message>
     <message>
-        <location line="+376"/>
+        <location line="+399"/>
         <source>Only Toggle Selected</source>
         <translation>Csak a kijelöltek kapcsolása</translation>
     </message>
     <message>
-        <location line="-346"/>
+        <location line="-369"/>
         <source>Folder</source>
         <translation>Mappa</translation>
     </message>
@@ -9183,7 +9445,7 @@ Valószínűleg meg kell változtatnod az elérési utat - lásd a mod weboldal�
         <translation>A modbetöltő.</translation>
     </message>
     <message>
-        <location line="+250"/>
+        <location line="+273"/>
         <source>Would you like to disable them as well?
 Ignoring them may break the game.</source>
         <translation>Szeretnéd ezeket is letiltani?
@@ -9204,7 +9466,7 @@ Ha figyelmen kívül hagyod őket, az megzavarhatja a játék működését.</tr
         </translation>
     </message>
     <message>
-        <location line="-386"/>
+        <location line="-409"/>
         <source>Last Modified</source>
         <translation>Utoljára módosítva</translation>
     </message>
@@ -9224,7 +9486,7 @@ Ha figyelmen kívül hagyod őket, az megzavarhatja a játék működését.</tr
         <translation>A mod legutóbbi módosításának (vagy hozzáadásának) dátuma és időpontja.</translation>
     </message>
     <message numerus="yes">
-        <location line="+249"/>
+        <location line="+272"/>
         <source>The enabled mod(s) require %n mod(s).
 </source>
         <translation>
@@ -9240,12 +9502,12 @@ Ignoring them may break the game.</source>
 Ha figyelmen kívül hagyod őket, az megzavarhatja a játék működését.</translation>
     </message>
     <message>
-        <location line="-381"/>
+        <location line="-404"/>
         <source>Provider</source>
         <translation>Szolgáltató</translation>
     </message>
     <message>
-        <location line="+382"/>
+        <location line="+405"/>
         <source>Only Enable Selected</source>
         <translation>Csak a kijelöltek engedélyezése</translation>
     </message>
@@ -9260,7 +9522,7 @@ Ha figyelmen kívül hagyod őket, az megzavarhatja a játék működését.</tr
         <translation>Követelt(ek) letiltása</translation>
     </message>
     <message>
-        <location line="-250"/>
+        <location line="-273"/>
         <source>The supported minecraft versions.</source>
         <translation>A támogatott minecraft verziók.</translation>
     </message>
@@ -9280,14 +9542,14 @@ Ha figyelmen kívül hagyod őket, az megzavarhatja a játék működését.</tr
         <translation>Kiadás típusa</translation>
     </message>
     <message>
-        <location line="+371"/>
+        <location line="+394"/>
         <source>Toggling these mod(s) will cause changes to other mods.
 </source>
         <translation>Ezeknek a modoknak a kapcsolása más modok változásait is maga után vonja.
 </translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="-260"/>
         <source>On what environment the mod is running.</source>
         <translation>Milyen környezetben fut a mod.</translation>
     </message>
@@ -9301,7 +9563,7 @@ Ha figyelmen kívül hagyod őket, az megzavarhatja a játék működését.</tr
         <translation>A kiadás típusa.</translation>
     </message>
     <message>
-        <location line="+234"/>
+        <location line="+257"/>
         <source>Do you want to automatically apply these related changes?
 Ignoring them may break the game.</source>
         <translation>Szeretnéd automatikusan alkalmazni ezeket a kapcsolódó változtatásokat?
@@ -9331,33 +9593,34 @@ Ha figyelmen kívül hagyod őket, az megzavarhatja a játék működését.</tr
     </message>
     <message>
         <location filename="../launcher/ui/pages/instance/ModFolderPage.cpp" line="+190"/>
-        <location line="+90"/>
+        <location line="+104"/>
         <source>Download stopped by user.</source>
         <translation>A letöltést a felhasználó megszakította.</translation>
     </message>
     <message>
-        <location line="-70"/>
-        <location line="+86"/>
+        <location line="-83"/>
+        <location line="+99"/>
         <source>Abort</source>
         <translation>Megszakítás</translation>
     </message>
     <message>
-        <location line="-110"/>
-        <location line="+45"/>
-        <location line="+45"/>
-        <location line="+60"/>
+        <location line="-124"/>
+        <location line="+46"/>
+        <location line="+58"/>
+        <location line="+61"/>
+        <location line="+101"/>
         <source>Error</source>
         <translation>Hiba</translation>
     </message>
     <message>
-        <location line="-191"/>
+        <location line="-306"/>
         <source>The mods you are trying to delete are required by %1 mods.
 Do you want to disable them?</source>
         <translation>A törölni kívánt modokat %1 mod követeli.
 Szeretnéd letiltani őket?</translation>
     </message>
     <message>
-        <location line="-59"/>
+        <location line="-60"/>
         <source>Check for Updates</source>
         <translation>Frissítések keresése</translation>
     </message>
@@ -9367,48 +9630,50 @@ Szeretnéd letiltani őket?</translation>
         <translation>Törlés megerősítése</translation>
     </message>
     <message>
-        <location line="+133"/>
+        <location line="+143"/>
         <source>All mods are up-to-date! :)</source>
         <translation>Minden mod naprakész! :)</translation>
     </message>
     <message>
-        <location line="-28"/>
+        <location line="-37"/>
         <source>Confirm Update</source>
         <translation>Frissítés megerősítése</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+34"/>
         <source>&apos;%1&apos; is up-to-date! :)</source>
         <translation>A(z) „%1” naprakész! :)</translation>
     </message>
     <message>
-        <location line="-159"/>
+        <location line="-169"/>
         <source>Change a mod&apos;s version.</source>
         <translation>Módosítsd a mod verzióját.</translation>
     </message>
     <message>
+        <location line="+334"/>
         <source>You need to install a compatible mod loader before installing mods. Would you like to do so?</source>
-        <translation type="vanished">A modok telepítése előtt kompatibilis modbetöltőt kell telepítened. Szeretnéd ezt megtenni?</translation>
+        <translation>A modok telepítése előtt kompatibilis modbetöltőt kell telepítened. Szeretnéd ezt megtenni?</translation>
     </message>
     <message>
+        <location line="-1"/>
         <source>Missing Mod Loader</source>
-        <translation type="vanished">Hiányzó modbetöltő</translation>
+        <translation>Hiányzó modbetöltő</translation>
     </message>
     <message>
-        <location line="+88"/>
-        <location line="+67"/>
-        <location line="+23"/>
+        <location line="-245"/>
+        <location line="+77"/>
+        <location line="+27"/>
         <source>Aborted</source>
         <translation>Megszakítva</translation>
     </message>
     <message>
-        <location line="-84"/>
-        <location line="+90"/>
+        <location line="-98"/>
+        <location line="+104"/>
         <source>Warnings</source>
         <translation>Figyelmeztetések</translation>
     </message>
     <message>
-        <location line="-49"/>
+        <location line="-62"/>
         <source>Updating mods while the game is running may cause mod duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -9417,24 +9682,36 @@ A régi fájlokat nem lehet törölni, mivel használatban vannak.
 Biztosan ezt akarod csinálni?</translation>
     </message>
     <message>
-        <location line="+74"/>
+        <location line="+20"/>
+        <source>There are no mods to check for updates.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+23"/>
+        <source>No updates were found, but %n mod(s) could not be checked.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+45"/>
         <source>You are about to remove the metadata for %1 mods.
 Are you sure?</source>
         <translation>%1 mod metaadatainak eltávolítására készülsz.
 Biztos vagy ebben?</translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="-252"/>
         <source>Download mods from online mod platforms</source>
         <translation>Modok letöltése online mod platformokról</translation>
     </message>
     <message>
-        <location line="+192"/>
+        <location line="+202"/>
         <source>All selected mods are up-to-date! :)</source>
         <translation>Minden kiválasztott mod naprakész! :)</translation>
     </message>
     <message>
-        <location line="-193"/>
+        <location line="-203"/>
         <location line="+111"/>
         <source>Download Mods</source>
         <translation>Modok letöltése</translation>
@@ -9445,49 +9722,51 @@ Biztos vagy ebben?</translation>
         <translation>Mod metaadatainak exportálása szövegbe.</translation>
     </message>
     <message>
-        <location line="+202"/>
+        <location line="+217"/>
         <source>Confirm Removal</source>
         <translation>Eltávolítás megerősítése</translation>
     </message>
     <message>
-        <location line="-79"/>
-        <location line="+105"/>
+        <location line="-93"/>
+        <location line="+119"/>
         <source>Mod updates are unavailable when metadata is disabled!</source>
         <translation>A mod frissítések nem elérhetők, ha a metaadat le van tiltva!</translation>
     </message>
     <message>
-        <location line="-256"/>
+        <location line="-271"/>
         <source>Try to check or update all selected mods (all mods if none are selected)</source>
         <translation>Próbáld meg ellenőrizni vagy frissíteni az összes kiválasztott modot (ha nincs kiválasztva semmi akkor az összes modot)</translation>
     </message>
     <message>
+        <location line="+372"/>
         <source>No mod loader was installed. Please try again.</source>
-        <translation type="vanished">Nem lettek modtöltők telepítve. Kérjük, próbáld újra.</translation>
+        <translation>Nem lettek modtöltők telepítve. Kérjük, próbáld újra.</translation>
     </message>
     <message>
-        <location line="+189"/>
+        <location line="-194"/>
+        <location line="+25"/>
         <source>Update checker</source>
         <translation>Frissítés-ellenőrző</translation>
     </message>
     <message>
-        <location line="-12"/>
+        <location line="-16"/>
         <source>The mod updater was aborted!</source>
         <translation>A mod frissítő megszakítva!</translation>
     </message>
     <message>
-        <location line="-125"/>
+        <location line="-135"/>
         <source>If you remove mods while the game is running it may crash your game.
 Are you sure you want to do this?</source>
         <translation>Ha a játék futása közben eltávolítja a modokat, akkor a játék összeomolhat.
 Biztosan ezt akarod csinálni?</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
         <source>Confirm Disable</source>
         <translation>Leállítás megerősítése</translation>
     </message>
     <message>
-        <location line="-38"/>
+        <location line="-39"/>
         <source>View the homepages of all selected mods.</source>
         <translation>Tekintsd meg az összes kiválasztott mod kezdőlapját.</translation>
     </message>
@@ -9531,7 +9810,7 @@ Biztosan ezt akarod csinálni?</translation>
 <context>
     <name>Modrinth::ModpackListModel</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/modrinth/ModrinthModel.cpp" line="+324"/>
+        <location filename="../launcher/ui/pages/modplatform/modrinth/ModrinthModel.cpp" line="+329"/>
         <location line="+3"/>
         <source>Error</source>
         <translation>Hiba</translation>
@@ -9558,32 +9837,32 @@ Frissítsd a következőt: %1!</translation>
         <translation>Források előkészítése Modrinth számára…</translation>
     </message>
     <message>
-        <location line="+67"/>
+        <location line="+68"/>
         <source>Parsing the API response from Modrinth...</source>
         <translation>Modrinth API-válaszának elemzése…</translation>
     </message>
     <message>
-        <location line="+106"/>
+        <location line="+109"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version.</source>
         <translation>Nem található érvényes verzió ehhez az erőforráshoz. Valószínűleg nem érhető el a jelenlegi játékverzióhoz.</translation>
     </message>
     <message>
-        <location line="-137"/>
+        <location line="-140"/>
         <source>Waiting for the API response from Modrinth...</source>
         <translation>Várakozás a Modrinth API-válaszára…</translation>
     </message>
     <message>
-        <location line="+98"/>
+        <location line="+99"/>
         <source>Unknown</source>
         <translation>Ismeretlen</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+38"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version / mod loader.</source>
         <translation>Nem található érvényes verzió ehhez az erőforráshoz. Valószínűleg nem érhető el a jelenlegi játékverzióhoz / modbetöltőhöz.</translation>
     </message>
     <message>
-        <location line="-38"/>
+        <location line="-40"/>
         <source>Not installed</source>
         <translation>Nincs telepítve</translation>
     </message>
@@ -9591,17 +9870,17 @@ Frissítsd a következőt: %1!</translation>
 <context>
     <name>ModrinthCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+292"/>
+        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+328"/>
         <source>Downloading mods...</source>
         <translation>Modok letöltése…</translation>
     </message>
     <message>
-        <location line="-61"/>
+        <location line="-71"/>
         <source>Mod Download Modrinth</source>
         <translation>Mod letöltése Modrinth</translation>
     </message>
     <message>
-        <location line="+172"/>
+        <location line="+182"/>
         <source>Download URL for %1 is not a correctly formatted URL</source>
         <translation>A(z) %1 letöltési URL-címe nem megfelelően formázott URL</translation>
     </message>
@@ -9610,7 +9889,7 @@ Frissítsd a következőt: %1!</translation>
         <translation type="vanished">Régi ütköző fájlok eltávolítása…</translation>
     </message>
     <message>
-        <location line="-209"/>
+        <location line="-235"/>
         <source>Could not rename the client overrides folder:
 </source>
         <translation>Nem sikerült átnevezni az ügyfél felülbírálása mappát:
@@ -9621,47 +9900,47 @@ Frissítsd a következőt: %1!</translation>
         <translation type="vanished">Nem sikerült eltávolítani a régi ütköző fájlokat.</translation>
     </message>
     <message>
-        <location line="-57"/>
+        <location line="-58"/>
         <source>We couldn&apos;t find a suitable index file for the older version. This may cause some of the files to be duplicated. Do you want to continue?</source>
         <translation>Nem találtunk megfelelő indexfájlt a régebbi verzióhoz. Ez egyes fájlok duplikációját okozhatja. Folytatod?</translation>
     </message>
     <message>
-        <location line="+120"/>
+        <location line="+137"/>
         <source>The file &apos;%1&apos; is missing a download link. This is invalid in the pack format.</source>
         <translation>A(z) „%1” fájlból hiányzik a letöltési link. Ez a csomag formátuma miatt érvénytelen.</translation>
     </message>
     <message>
-        <location line="+30"/>
+        <location line="+40"/>
         <location line="+24"/>
         <source>%1 out of %2 complete</source>
         <translation>%1/%2 kész</translation>
     </message>
     <message>
-        <location line="-175"/>
+        <location line="-202"/>
         <source>No index file.</source>
         <translation>Nincs indexfájl.</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+46"/>
         <source>Could not rename the overrides folder:
 </source>
         <translation>Nem sikerült átnevezni a felülírási mappát:
 </translation>
     </message>
     <message>
-        <location line="+282"/>
+        <location line="+310"/>
         <source>Could not understand pack index:
 </source>
         <translation>A csomagindex nem értelmezhető:
 </translation>
     </message>
     <message>
-        <location line="-397"/>
+        <location line="-427"/>
         <source> (version %1)</source>
         <translation> (verzió: %1)</translation>
     </message>
     <message>
-        <location line="+177"/>
+        <location line="+195"/>
         <source>One of the files has a path that leads to an arbitrary location (%1). This is a security risk and isn&apos;t allowed.</source>
         <translation>Az egyik fájl elérési útja tetszőleges helyre (%1) vezet. Ez biztonsági kockázatot jelent, és nem megengedett.</translation>
     </message>
@@ -9669,7 +9948,7 @@ Frissítsd a következőt: %1!</translation>
 <context>
     <name>ModrinthManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+62"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+69"/>
         <source>Fetching changelogs...</source>
         <translation>Változásnaplók lekérése…</translation>
     </message>
@@ -9679,12 +9958,12 @@ Frissítsd a következőt: %1!</translation>
         <translation>Válaszd ki a frissítési fájlt</translation>
     </message>
     <message>
-        <location line="-81"/>
+        <location line="-86"/>
         <source>%1 (Current)</source>
         <translation>%1 (jelenlegi)</translation>
     </message>
     <message>
-        <location line="+81"/>
+        <location line="+86"/>
         <source>Modrinth pack</source>
         <translation>Modrinth csomag</translation>
     </message>
@@ -9834,6 +10113,51 @@ Frissítsd a következőt: %1!</translation>
     </message>
 </context>
 <context>
+    <name>MyReportsDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+151"/>
+        <location line="+4"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Bug reports and suggestions you sent from this launcher, and what the team answered.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>No reports yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>When you send a bug report or suggestion from this launcher, it shows up here, and you will be told when the team answers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <location line="+25"/>
+        <source>Check for updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-24"/>
+        <source>Close</source>
+        <translation type="unfinished">Bezárás</translation>
+    </message>
+    <message>
+        <location line="+25"/>
+        <source>Last checked: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>Checking…</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Net::NetRequest</name>
     <message>
         <location filename="../launcher/net/NetRequest.cpp" line="+159"/>
@@ -9902,7 +10226,7 @@ Frissítsd a következőt: %1!</translation>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+145"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10067,12 +10391,12 @@ Frissítsd a következőt: %1!</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/NewInstanceDialog.ui" line="+17"/>
-        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="+78"/>
+        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="+79"/>
         <source>New Instance</source>
         <translation>Új példány</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="-112"/>
+        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="-113"/>
         <source>No group</source>
         <translation>Nincs csoport</translation>
     </message>
@@ -10211,13 +10535,13 @@ Frissítsd a következőt: %1!</translation>
         <translation>&amp;Keres</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+483"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+486"/>
         <source>Clear</source>
         <translation>Tisztítás</translation>
     </message>
     <message>
-        <location line="-222"/>
-        <location line="+135"/>
+        <location line="-225"/>
+        <location line="+138"/>
         <location line="+41"/>
         <source>Error</source>
         <translation>Hiba</translation>
@@ -10228,7 +10552,7 @@ Frissítsd a következőt: %1!</translation>
         <translation>A napló törlése</translation>
     </message>
     <message>
-        <location line="-299"/>
+        <location line="-302"/>
         <source>Current logs</source>
         <translation>Jelenlegi napló</translation>
     </message>
@@ -10238,7 +10562,7 @@ Frissítsd a következőt: %1!</translation>
         <translation>Sorok tördelése</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+224"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+227"/>
         <source>Are you sure you want to delete all log files?</source>
         <translation>Biztosan törlöd az összes naplófájlt?</translation>
     </message>
@@ -10264,8 +10588,8 @@ Frissítsd a következőt: %1!</translation>
         <translation>Görgetés teljesen az aljára</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="-240"/>
-        <location line="+218"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="-243"/>
+        <location line="+221"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Nem lehet megjeleníteni ezt a naplót, mivel a hossza meghaladta a(z) %1 sort.</translation>
     </message>
@@ -10302,7 +10626,7 @@ Frissítsd a következőt: %1!</translation>
         <translation>Törlés megerősítése</translation>
     </message>
     <message>
-        <location line="-112"/>
+        <location line="-115"/>
         <source>The file (%1) is too big. You may want to open it in a viewer optimized for large files.</source>
         <translation>A fájl (%1) túl nagy. Valószínűleg egy olyan nézelődőben akarod megnyitni ami optimalizálva van nagy fájlokhoz.</translation>
     </message>
@@ -10312,7 +10636,7 @@ Frissítsd a következőt: %1!</translation>
         <translation>A teljes napló másolása a vágólapra</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+127"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+130"/>
         <source>Unable to delete %1: %2</source>
         <translation>%1: %2 nem törölhető</translation>
     </message>
@@ -10371,7 +10695,7 @@ Biztos vagy ebben?</translation>
 %1</translation>
     </message>
     <message>
-        <location line="-151"/>
+        <location line="-154"/>
         <source>Unable to open %1 for reading: %2</source>
         <translation>Nem sikerült megnyitni a(z) %1-t a(z) %2 olvasásához</translation>
     </message>
@@ -10519,19 +10843,19 @@ Biztos vagy ebben?</translation>
         <translation type="vanished">Később javítom.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+383"/>
-        <location line="+42"/>
+        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+388"/>
+        <location line="+44"/>
         <source>Search settings…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-41"/>
-        <location line="+42"/>
+        <location line="-43"/>
+        <location line="+44"/>
         <source>Search all settings (Ctrl+F). Several words narrow the results down.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+296"/>
+        <location line="+297"/>
         <source>No settings match &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10811,7 +11135,7 @@ StdErr: %2</translation>
 <context>
     <name>PollyMCUpdaterApp</name>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="+99"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="+100"/>
         <source>Use a custom path as application root (use &apos;.&apos; for current directory).</source>
         <translation type="unfinished">Saját útvonal használata az alkalmazás gyökereként (a jelenlegi könyvtárhoz használj &apos;.&apos;-ot).</translation>
     </message>
@@ -11163,20 +11487,26 @@ Updater log: %7</source>
         <translation type="unfinished">Nem sikerült kicsomagolni ezt: %1 ebbe: %2</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+23"/>
+        <source>Failed to launch child process to read version, using the built-in version instead.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+4"/>
+        <source>Child launcher process did not finish in time, using the built-in version instead.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Failed to Check Version</source>
-        <translation type="unfinished">Nem sikerült ellenőrizni a verziót</translation>
+        <translation type="obsolete">Nem sikerült ellenőrizni a verziót</translation>
     </message>
     <message>
-        <location line="-4"/>
         <source>Failed to launch child process to read version.</source>
-        <translation type="unfinished">Nem sikerült elindítani a gyermekfolyamatot a verzió olvasásához.</translation>
+        <translation type="obsolete">Nem sikerült elindítani a gyermekfolyamatot a verzió olvasásához.</translation>
     </message>
     <message>
-        <location line="+4"/>
         <source>Child launcher process failed.</source>
-        <translation type="unfinished">A gyermek launcher folyamat meghiúsult.</translation>
+        <translation type="obsolete">A gyermek launcher folyamat meghiúsult.</translation>
     </message>
 </context>
 <context>
@@ -11898,7 +12228,7 @@ Folytatod a csonkolást?</translation>
         <translation>%1, ennek a komponensnek a függősége, problémákat jelentett</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1173"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
         <source>%1 (in use)</source>
         <translation>%1 (használatban)</translation>
     </message>
@@ -12021,10 +12351,11 @@ Folytatod a csonkolást?</translation>
         <translation>Asztali elemek</translation>
     </message>
     <message>
+        <location filename="../launcher/InstanceDirUpdate.cpp" line="+6"/>
         <source>The instance folder cannot be renamed while the instance is running.
 
 Only the instance name will be changed. The folder will keep its current name.</source>
-        <translation type="vanished">A példánymappa átnevezése a példány futása közben nem lehetséges.
+        <translation>A példánymappa átnevezése a példány futása közben nem lehetséges.
 
 Csak a példány neve fog megváltozni. A mappa meg fogja tartani a jelenlegi nevét.</translation>
     </message>
@@ -12093,7 +12424,7 @@ Csak a példány neve fog megváltozni. A mappa meg fogja tartani a jelenlegi ne
         <translation>Külön köszönet</translation>
     </message>
     <message numerus="yes">
-        <location filename="../launcher/InstanceDirUpdate.cpp" line="+48"/>
+        <location filename="../launcher/InstanceDirUpdate.cpp" line="+49"/>
         <source>The following instance(s) might reference files in this instance:
 
 %1
@@ -12160,7 +12491,7 @@ Szeretnéd folytatni?</numerusform>
         <translation>Relevancia szerinti rendezés</translation>
     </message>
     <message>
-        <location filename="../launcher/meta/BaseEntity.cpp" line="+34"/>
+        <location filename="../launcher/meta/BaseEntity.cpp" line="+36"/>
         <source>Download of meta file %1</source>
         <translation>A(z) %1 metaadat letöltése</translation>
     </message>
@@ -12185,8 +12516,8 @@ Szeretnéd folytatni?</numerusform>
         <translation>Példány mappájának átnevezése</translation>
     </message>
     <message>
-        <location line="-9"/>
-        <location line="+33"/>
+        <location line="-16"/>
+        <location line="+40"/>
         <source>Cannot rename instance</source>
         <translation>Nem lehet átnevezni a példányt</translation>
     </message>
@@ -12304,7 +12635,7 @@ Régi név: %1
         <translation>Nem sikerült feldolgozni a(z) %1: %2 verzió fájlt a %3. sor és %4. oszlopnál.</translation>
     </message>
     <message>
-        <location filename="../launcher/modplatform/ModIndex.h" line="+143"/>
+        <location filename="../launcher/modplatform/ModIndex.h" line="+145"/>
         <source> for %1</source>
         <translation> ehhez: %1</translation>
     </message>
@@ -12733,8 +13064,9 @@ Biztos vagy benne?</translation>
         <translation>Erőforrások a következőhöz: %1</translation>
     </message>
     <message>
+        <location filename="../launcher/InstanceDirUpdate.cpp" line="-49"/>
         <source>Cannot rename instance folder</source>
-        <translation type="vanished">A példánymappa átnevezése nem lehetséges</translation>
+        <translation>A példánymappa átnevezése nem lehetséges</translation>
     </message>
     <message>
         <location filename="../launcher/modplatform/flame/FlameAPI.cpp" line="+7"/>
@@ -12794,7 +13126,7 @@ Hibaüzenet: %3</translation>
         <translation>Hálózati hiba: %1</translation>
     </message>
     <message>
-        <location filename="../launcher/InstanceDirUpdate.cpp" line="-38"/>
+        <location filename="../launcher/InstanceDirUpdate.cpp" line="+11"/>
         <source>Would you also like to rename the instance folder?
 
 Old name: %1
@@ -12825,7 +13157,7 @@ Régi név: %1
         <translation type="vanished">Rory ID 11 (rajzolta: Ashtaka)</translation>
     </message>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1040"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1049"/>
         <source>An auto-updater for PollyMC-Continued</source>
         <translation>Automatikus frissítő a PollyMC-Continued-hez</translation>
     </message>
@@ -12869,16 +13201,146 @@ Régi név: %1
         <source>Send this error to the PollyMC developers</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../launcher/BugReportTracker.cpp" line="+164"/>
+        <source>Waiting for a dev to check it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Seen - the team is looking into it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The team needs more information - please reach out on Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Fixed - it will be in the next update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-193"/>
+        <source>Fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Fixed in version %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+2"/>
+        <source>Won&apos;t be fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Duplicate of another report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+4"/>
+        <source>Not a bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+1"/>
+        <source>Updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Crash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Suggestion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Other</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-13"/>
+        <source>Waiting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>In review</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Needs info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Duplicate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>NEW</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Sent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>(no title)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>%1  ·  ID %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <location line="+8"/>
+        <source>Copy ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-7"/>
+        <source>Give this ID to the team if you contact them about this report.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Copied!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Resource</name>
     <message>
-        <location filename="../launcher/minecraft/mod/Resource.cpp" line="+112"/>
+        <location filename="../launcher/minecraft/mod/Resource.cpp" line="+114"/>
         <source>Not marked as compatible with the instance&apos;s game version.</source>
         <translation>Nincs kompatibilisnek jelölve a példány játékverziójával.</translation>
     </message>
     <message>
-        <location line="-49"/>
+        <location line="-50"/>
         <source>Unknown</source>
         <translation>Ismeretlen</translation>
     </message>
@@ -12886,7 +13348,7 @@ Régi név: %1
 <context>
     <name>ResourceDownload::DataPackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+181"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+196"/>
         <source>data packs</source>
         <extracomment>String that gets appended to the data pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>adatcsomagok</translation>
@@ -12910,7 +13372,7 @@ Régi név: %1
 <context>
     <name>ResourceDownload::ModDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-69"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-81"/>
         <source>mods</source>
         <extracomment>String that gets appended to the mod download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>modok</translation>
@@ -12938,7 +13400,7 @@ Régi név: %1
         <translation type="vanished">modok</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="+189"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="+193"/>
         <source>Abort</source>
         <translation>Megszakítás</translation>
     </message>
@@ -12948,17 +13410,17 @@ Régi név: %1
         <translation>Hiba</translation>
     </message>
     <message>
-        <location line="-96"/>
+        <location line="-98"/>
         <source>Ctrl+Return</source>
         <translation>Ctrl+Return</translation>
     </message>
     <message>
-        <location line="+332"/>
+        <location line="+379"/>
         <source>Change %1 version</source>
         <translation>%1 verzió megváltoztatása</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-48"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-51"/>
         <source>Download %1</source>
         <translation>%1 letöltése</translation>
     </message>
@@ -12971,24 +13433,24 @@ Régi név: %1
         <translation type="vanished">shadercsomagok</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="-306"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="-352"/>
         <source>You have %1 selected resources.
 Are you sure you want to close this dialog?</source>
         <translation>%1 kiválasztott erőforrás van.
 Biztosan bezárod ezt a párbeszédpanelt?</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+52"/>
         <source>Opens a new popup to review your selected %1 and confirm your selection. Shortcut: Ctrl+Return</source>
         <translation>Megnyit egy előugró ablakot a kiválasztott %1 ellenőrzéséhez és a választás megerősítéséhez. Shortcut: Ctrl+Return</translation>
     </message>
     <message>
-        <location line="-78"/>
+        <location line="-80"/>
         <source>Review and confirm</source>
         <translation>Felülvizsgálat és megerősítés</translation>
     </message>
     <message>
-        <location line="+113"/>
+        <location line="+115"/>
         <source>Checking for dependencies...</source>
         <translation>Függőségek keresése…</translation>
     </message>
@@ -13017,7 +13479,7 @@ Biztosan bezárod ezt a párbeszédpanelt?</translation>
         <translation type="vanished">textúracsomagok</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="-64"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="-65"/>
         <source>Confirmation Needed</source>
         <translation>Megerősítés szükséges</translation>
     </message>
@@ -13025,35 +13487,35 @@ Biztosan bezárod ezt a párbeszédpanelt?</translation>
 <context>
     <name>ResourceDownload::ResourceModel</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourceModel.cpp" line="+221"/>
-        <location line="+20"/>
-        <location line="+180"/>
-        <location line="+4"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourceModel.cpp" line="+239"/>
+        <location line="+24"/>
+        <location line="+190"/>
+        <location line="+7"/>
         <source>Error</source>
         <translation>Hiba</translation>
     </message>
     <message>
-        <location line="-179"/>
+        <location line="-191"/>
         <source>The request was aborted for an unknown reason</source>
         <translation>A kérést ismeretlen okból megszakították</translation>
     </message>
     <message>
-        <location line="+175"/>
+        <location line="+184"/>
         <source>A network error occurred. Could not load mods.</source>
         <translation>Hálózati hiba történt. Nem sikerült betölteni a modokat.</translation>
     </message>
     <message>
-        <location line="-180"/>
+        <location line="-190"/>
         <source>A network error occurred. Could not load project info: %1</source>
         <translation>Hálózati hiba történt. Nem sikerült betölteni a projekt adatait: %1</translation>
     </message>
     <message>
-        <location line="-19"/>
+        <location line="-23"/>
         <source>A network error occurred. Could not load project versions: %1</source>
         <translation>Hálózati hiba történt. Nem sikerült betölteni a következő projektverziókat: %1</translation>
     </message>
     <message>
-        <location line="+204"/>
+        <location line="+221"/>
         <source>API version too old!
 Please update %1!</source>
         <translation>Az API verzió túl régi! 
@@ -13063,7 +13525,7 @@ Frissítsd a következőt: %1!</translation>
 <context>
     <name>ResourceDownload::ResourcePackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+68"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+74"/>
         <source>resource packs</source>
         <extracomment>String that gets appended to the resource pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>forráscsomagok</translation>
@@ -13087,18 +13549,18 @@ Frissítsd a következőt: %1!</translation>
 <context>
     <name>ResourceDownload::ResourcePage</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+219"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+233"/>
         <source> by </source>
         <translation> tőle: </translation>
     </message>
     <message>
-        <location line="+86"/>
+        <location line="+92"/>
         <source> [installed]</source>
         <comment>Mod version select</comment>
         <translation> [telepítve]</translation>
     </message>
     <message>
-        <location line="+234"/>
+        <location line="+248"/>
         <source>Reinstall</source>
         <translation>Újratelepítés</translation>
     </message>
@@ -13108,7 +13570,7 @@ Frissítsd a következőt: %1!</translation>
         <translation>Ctrl+Return</translation>
     </message>
     <message>
-        <location line="-227"/>
+        <location line="-241"/>
         <source>Cannot select invalid version :(</source>
         <translation>Nem lehet érvénytelen verziót kiválasztani :(</translation>
     </message>
@@ -13118,47 +13580,47 @@ Frissítsd a következőt: %1!</translation>
         <translation>Nem található érvényes verzió.</translation>
     </message>
     <message>
-        <location line="-83"/>
+        <location line="-89"/>
         <source>Donate information: </source>
         <translation>Támogatási információk: </translation>
     </message>
     <message>
-        <location line="+335"/>
+        <location line="+355"/>
         <source>The resource was not found</source>
         <translation>Az erőforrás nem található</translation>
     </message>
     <message>
-        <location line="-316"/>
+        <location line="-335"/>
         <source>Wiki: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Wiki: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+183"/>
+        <location line="+198"/>
         <source>No versions available</source>
         <translation>Nincsenek elérhető verziók</translation>
     </message>
     <message>
-        <location line="-179"/>
+        <location line="-192"/>
         <source>Discord: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Discord: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="-6"/>
+        <location line="-9"/>
         <source>Issues: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Problémák: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+300"/>
+        <location line="+320"/>
         <source>Cancel</source>
         <translation>Mégse</translation>
     </message>
     <message>
-        <location line="-209"/>
+        <location line="-222"/>
         <source>Loading versions...</source>
         <translation>Verziók betöltése…</translation>
     </message>
     <message>
-        <location line="-87"/>
+        <location line="-92"/>
         <source>Source code: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Forráskód: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
@@ -13167,24 +13629,24 @@ Frissítsd a következőt: %1!</translation>
         <translation type="vanished"> [telepítve]</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.h" line="+47"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.h" line="+46"/>
         <source>resources</source>
         <extracomment>The plural version of &apos;resource&apos;</extracomment>
         <translation>erőforrások</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+23"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+25"/>
         <source>No version available for the selected pack</source>
         <translation>Nincs elérhető verzió a kiválasztott csomaghoz</translation>
     </message>
     <message>
-        <location line="-159"/>
-        <location line="+161"/>
+        <location line="-176"/>
+        <location line="+178"/>
         <source>Select %1 for download</source>
         <translation>%1 hozzáadása a letöltési sorhoz</translation>
     </message>
     <message>
-        <location line="+157"/>
+        <location line="+169"/>
         <source>No versions for &apos;%1&apos; are available.
 The author likely blocked third-party launchers.</source>
         <translation>A(z) „%1” verziói nem állnak rendelkezésre.
@@ -13197,13 +13659,13 @@ A szerző valószínűleg blokkolta a harmadik féltől származó launchereket.
         <translation>erőforrás</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="-319"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="-348"/>
         <source>Search for %1...</source>
         <extracomment>String in the search bar of the mod downloading dialog</extracomment>
         <translation>%1 keresése…</translation>
     </message>
     <message>
-        <location line="+111"/>
+        <location line="+124"/>
         <source>&lt;b&gt;This project has been archived. It will not receive any further updates unless the author decides to unarchive the project.&lt;/b&gt;</source>
         <translation>&lt;b&gt;Ezt a projektet archiválták. Nem kap további frissítéseket, kivéve, ha a szerző úgy dönt, hogy megszünteti a projekt archiválását.&lt;/b&gt;</translation>
     </message>
@@ -13213,7 +13675,7 @@ A szerző valószínűleg blokkolta a harmadik féltől származó launchereket.
         <translation>Külső linkek:</translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+39"/>
         <source>Deselect %1 for download</source>
         <translation>%1 eltávolítása a letöltési sorból</translation>
     </message>
@@ -13221,7 +13683,7 @@ A szerző valószínűleg blokkolta a harmadik féltől származó launchereket.
 <context>
     <name>ResourceDownload::ShaderPackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+34"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+40"/>
         <source>shader packs</source>
         <extracomment>String that gets appended to the shader pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>shadercsomagok</translation>
@@ -13245,7 +13707,7 @@ A szerző valószínűleg blokkolta a harmadik féltől származó launchereket.
 <context>
     <name>ResourceDownload::TexturePackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-17"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-20"/>
         <source>texture packs</source>
         <extracomment>String that gets appended to the texture pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>textúracsomagok</translation>
@@ -13269,12 +13731,12 @@ A szerző valószínűleg blokkolta a harmadik féltől származó launchereket.
 <context>
     <name>ResourceDownloadTask</name>
     <message>
-        <location filename="../launcher/ResourceDownloadTask.cpp" line="+99"/>
+        <location filename="../launcher/ResourceDownloadTask.cpp" line="+131"/>
         <source>Failed to rename shader config from &apos;%1&apos; to &apos;%2&apos;</source>
         <translation>Nem sikerült átnevezni a shader konfigurációt: &apos;%1&apos; -&gt; &apos;%2&apos;</translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="-57"/>
         <source>Resource download</source>
         <translation>Erőforrás letöltése</translation>
     </message>
@@ -13289,7 +13751,7 @@ A szerző valószínűleg blokkolta a harmadik féltől származó launchereket.
 <context>
     <name>ResourceFolderModel</name>
     <message>
-        <location filename="../launcher/minecraft/mod/ResourceFolderModel.h" line="+244"/>
+        <location filename="../launcher/minecraft/mod/ResourceFolderModel.h" line="+252"/>
         <source>Name</source>
         <translation>Név</translation>
     </message>
@@ -13299,7 +13761,7 @@ A szerző valószínűleg blokkolta a harmadik féltől származó launchereket.
         <translation>Méret</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/mod/ResourceFolderModel.cpp" line="+271"/>
+        <location filename="../launcher/minecraft/mod/ResourceFolderModel.cpp" line="+296"/>
         <source>Confirm toggle</source>
         <translation>Váltás megerősítése</translation>
     </message>
@@ -13308,7 +13770,7 @@ A szerző valószínűleg blokkolta a harmadik féltől származó launchereket.
         <translation type="vanished">Fájlnév</translation>
     </message>
     <message>
-        <location line="+443"/>
+        <location line="+450"/>
         <source>Override Columns Visibility</source>
         <translation>Oszlopok láthatóságának felülbírálása</translation>
     </message>
@@ -13372,14 +13834,14 @@ Kanonikus elérési út: %1</translation>
         <translation>Az erőforrás szolgáltatója.</translation>
     </message>
     <message>
-        <location line="-349"/>
+        <location line="-356"/>
         <source>If you enable/disable this resource while the game is running it may crash your game.
 Are you sure you want to do this?</source>
         <translation>Ha engedélyezed/letiltod ezt az erőforrást, miközben a játék fut, a játék összeomolhat.
 Biztosan ezt akarod csinálni?</translation>
     </message>
     <message>
-        <location line="+286"/>
+        <location line="+293"/>
         <source>
 Warning: This resource is hard linked elsewhere. Editing it will also change the original.</source>
         <translation>
@@ -13467,55 +13929,55 @@ Figyelmeztetés: Ez az erőforrás hard linkelve van. A szerkesztéssel az erede
 <context>
     <name>ResourcePackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="+103"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="+104"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>A letöltést a felhasználó megszakította.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Megszakítás</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Hiba</translation>
     </message>
     <message>
-        <location line="-189"/>
+        <location line="-198"/>
         <source>Download Packs</source>
         <translation>Csomagok letöltése</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="+99"/>
         <source>Confirm Update</source>
         <translation>Frissítés megerősítése</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+27"/>
         <source>&apos;%1&apos; is up-to-date! :)</source>
         <translation>A(z) „%1” naprakész! :)</translation>
     </message>
     <message>
-        <location line="-99"/>
+        <location line="-105"/>
         <source>Change a mod&apos;s version.</source>
         <translation>Egy mod verziójának módosítása.</translation>
     </message>
     <message>
-        <location line="+34"/>
-        <location line="+61"/>
+        <location line="+35"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Megszakítva</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Figyelmeztetések</translation>
     </message>
@@ -13525,25 +13987,25 @@ Figyelmeztetés: Ez az erőforrás hard linkelve van. A szerkesztéssel az erede
         <translation>A forráscsomag frissítő megszakítva!</translation>
     </message>
     <message>
-        <location line="-109"/>
+        <location line="-115"/>
         <source>Try to check or update all selected resource packs (all resource packs if none are selected)</source>
         <translation>Próbáld meg ellenőrizni vagy frissíteni az összes kiválasztott forráscsomagot (ha nincs kiválasztva semmi, akkor az összes forráscsomagot)</translation>
     </message>
     <message>
-        <location line="+116"/>
+        <location line="+122"/>
         <source>All resource packs are up-to-date! :)</source>
         <translation>Minden forráscsomag naprakész! :)</translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+48"/>
         <source>You are about to remove the metadata for %1 resource packs.
 Are you sure?</source>
         <translation>%1 forráscsomag metaadatainak eltávolításra készülsz.
 Biztos vagy ebben?</translation>
     </message>
     <message>
-        <location line="-80"/>
-        <location line="+99"/>
+        <location line="-83"/>
+        <location line="+104"/>
         <source>Resource pack updates are unavailable when metadata is disabled!</source>
         <translation>A forráscsomag frissítései nem érhetők el, ha a metaadatok le vannak tiltva!</translation>
     </message>
@@ -13553,17 +14015,17 @@ Biztos vagy ebben?</translation>
         <translation>Forráscsomagok</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="-20"/>
+        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="-22"/>
         <source>Confirm Removal</source>
         <translation>Eltávolítás megerősítése</translation>
     </message>
     <message>
-        <location line="-168"/>
+        <location line="-175"/>
         <source>Download resource packs from online mod platforms</source>
         <translation>Forráscsomagok letöltése online mod platformokról</translation>
     </message>
     <message>
-        <location line="+127"/>
+        <location line="+133"/>
         <source>Update checker</source>
         <translation>Frissítés-ellenőrző</translation>
     </message>
@@ -13573,7 +14035,7 @@ Biztos vagy ebben?</translation>
         <translation>Minden kiválasztott forráscsomag naprakész! :)</translation>
     </message>
     <message>
-        <location line="-29"/>
+        <location line="-31"/>
         <source>Updating resource packs while the game is running may cause pack duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -13598,48 +14060,48 @@ Biztosan ezt akarod csinálni?</translation>
 <context>
     <name>ResourceUpdateDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+183"/>
+        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+186"/>
         <source>Failed to check for updates</source>
         <translation>Nem sikerült ellenőrizni a frissítéseket</translation>
     </message>
     <message>
         <location line="-57"/>
         <location line="+98"/>
-        <location line="+160"/>
+        <location line="+169"/>
         <source>Abort</source>
         <translation>Megszakítás</translation>
     </message>
     <message>
-        <location line="-269"/>
+        <location line="-278"/>
         <location line="+95"/>
-        <location line="+146"/>
-        <location line="+16"/>
-        <location line="+56"/>
+        <location line="+153"/>
+        <location line="+17"/>
+        <location line="+58"/>
         <source>Error</source>
         <translation>Hiba</translation>
     </message>
     <message>
-        <location line="-347"/>
+        <location line="-358"/>
         <source>Metadata generation failed</source>
         <translation>A metaadatok létrehozása sikertelen</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+104"/>
         <source>Could not check or get the following resources for updates:&lt;br&gt;Do you wish to proceed without those resources?</source>
         <translation>Nem sikerült ellenőrizni vagy lekérni a következő forrásokat a frissítésekhez:&lt;br&gt;Szeretnéd folytatni az erőforrások nélkül?</translation>
     </message>
     <message>
-        <location line="-140"/>
+        <location line="-141"/>
         <source>Confirm resources to update</source>
         <translation>Frissítendő erőforrások megerősítése</translation>
     </message>
     <message>
-        <location line="+129"/>
+        <location line="+128"/>
         <source>Mod name: %1</source>
         <translation>Mod neve: %1</translation>
     </message>
     <message>
-        <location line="+296"/>
+        <location line="+311"/>
         <source>New Version Type: %1</source>
         <translation>Új verzió típusa: %1</translation>
     </message>
@@ -13654,7 +14116,7 @@ Biztosan ezt akarod csinálni?</translation>
         <translation>Új verzió: %1</translation>
     </message>
     <message>
-        <location line="-239"/>
+        <location line="-252"/>
         <source>Checking for dependencies...</source>
         <translation>Függőségek keresése…</translation>
     </message>
@@ -13665,32 +14127,32 @@ Biztosan ezt akarod csinálni?</translation>
         <translation>Figyelmeztetések</translation>
     </message>
     <message>
-        <location line="-137"/>
+        <location line="-138"/>
         <source>Could not generate metadata for the following resources:&lt;br&gt;Do you wish to proceed without those resources?</source>
         <translation>Nem sikerült metaadatokat generálni a következő erőforrásokhoz:&lt;br&gt;Szeretnéd folytatni ezen erőforrások nélkül?</translation>
     </message>
     <message>
-        <location line="+356"/>
+        <location line="+367"/>
         <source>Couldn&apos;t find a valid version on the selected mod provider(s)</source>
         <translation>Nem található érvényes verzió a kiválasztott modszolgáltató(k)on</translation>
     </message>
     <message>
-        <location line="-383"/>
+        <location line="-394"/>
         <source>You&apos;re about to update the following resources:</source>
         <translation>A következő források frissítésére készülsz:</translation>
     </message>
     <message>
-        <location line="+405"/>
+        <location line="+419"/>
         <source>Old version: %1</source>
         <translation>Régi verzió: %1</translation>
     </message>
     <message>
-        <location line="-285"/>
+        <location line="-300"/>
         <source>Reason: %1</source>
         <translation>Ok: %1</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Possible solution: Getting the latest version manually:&lt;br&gt;%1&lt;br&gt;</source>
         <extracomment>%1 is the link to download it manually</extracomment>
         <translation>Lehetséges megoldás: A legújabb verzió kézi beszerzése:&lt;br&gt;%1&lt;br&gt;</translation>
@@ -13701,12 +14163,12 @@ Biztosan ezt akarod csinálni?</translation>
         <translation>Frissítések keresése</translation>
     </message>
     <message>
-        <location line="+186"/>
+        <location line="+191"/>
         <source>Looking for metadata</source>
         <translation>Metaadatok keresése</translation>
     </message>
     <message>
-        <location line="+198"/>
+        <location line="+207"/>
         <source>Required by:</source>
         <translation>Szükséges ehhez:</translation>
     </message>
@@ -13716,12 +14178,12 @@ Biztosan ezt akarod csinálni?</translation>
         <translation>Szükséges ehhez: %1</translation>
     </message>
     <message>
-        <location line="-150"/>
+        <location line="-158"/>
         <source>The resource &apos;%1&apos; does not have a metadata yet. We need to generate it in order to track relevant information on how to update this mod. To do this, please select a mod provider which we can use to check for updates for this mod.</source>
         <translation>A(z) „%1” erőforrás még nem rendelkezik metaadatokkal. Létre kell hoznunk, hogy nyomon követhessük a mod frissítésével kapcsolatos releváns információkat. Ehhez válassz egy mod-szolgáltatót, amellyel ellenőrizni tudjuk, vannak-e frissítések ehhez a modhoz.</translation>
     </message>
     <message>
-        <location line="-248"/>
+        <location line="-254"/>
         <source>Mod name: %1&lt;br&gt;File name: %2&lt;br&gt;Reason: %3&lt;br&gt;&lt;br&gt;</source>
         <translation>Mod név: %1&lt;br&gt;Fájlnév: %2&lt;br&gt;Ok: %3&lt;br&gt;&lt;br&gt;</translation>
     </message>
@@ -13731,17 +14193,24 @@ Biztosan ezt akarod csinálni?</translation>
         <translation>Csak a kipipált erőforrások frissülnek!</translation>
     </message>
     <message>
-        <location line="+71"/>
+        <location line="+72"/>
         <source>Checking for updates...</source>
         <translation>Frissítések keresése…</translation>
     </message>
+    <message numerus="yes">
+        <location line="+145"/>
+        <source>%n update(s) found. You&apos;re about to update the following resources:</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location line="+258"/>
+        <location line="+122"/>
         <source>Generating metadata...</source>
         <translation>Metaadatok generálása…</translation>
     </message>
     <message>
-        <location line="+106"/>
+        <location line="+110"/>
         <source>Changelog of the latest version</source>
         <translation>Változásnapló a legújabb verzióhoz</translation>
     </message>
@@ -13751,7 +14220,7 @@ Biztosan ezt akarod csinálni?</translation>
         <translation>Szolgáltató: %1</translation>
     </message>
     <message>
-        <location line="-211"/>
+        <location line="-223"/>
         <source>Not installed</source>
         <translation>Nincs telepítve</translation>
     </message>
@@ -13827,7 +14296,7 @@ Biztosan ezt akarod csinálni?</translation>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+394"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
         <source>Abort</source>
         <translation>Megszakítás</translation>
     </message>
@@ -13871,7 +14340,7 @@ Biztosan ezt akarod csinálni?</translation>
         <translation>Feltöltés</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-77"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-79"/>
         <source>You are about to upload the selected screenshot to %1.
 You should double-check for personal information.
 
@@ -13882,7 +14351,7 @@ Are you sure?</source>
 Biztos vagy benne?</translation>
     </message>
     <message>
-        <location line="+144"/>
+        <location line="+147"/>
         <source>Confirm Deletion</source>
         <translation>Törlés megerősítése</translation>
     </message>
@@ -13915,12 +14384,12 @@ Biztos vagy benne?</translation>
         <translation>Kép másolása</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-204"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-214"/>
         <source>Context menu</source>
         <translation>Helyi menü</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+68"/>
         <source>You are about to upload %1 screenshots to %2.
 You should double-check for personal information.
 
@@ -13936,7 +14405,7 @@ Biztos vagy benne?</translation>
         <translation>Képernyőképek</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+82"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+84"/>
         <source>Unknown error</source>
         <translation>Ismeretlen hiba</translation>
     </message>
@@ -14205,27 +14674,27 @@ Biztos vagy benne?</translation>
 <context>
     <name>ShaderPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ShaderPackPage.cpp" line="+100"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/ShaderPackPage.cpp" line="+101"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>A letöltést a felhasználó megszakította.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Megszakítás</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Hiba</translation>
     </message>
     <message>
-        <location line="-160"/>
+        <location line="-169"/>
         <source>Change a shader pack&apos;s version.</source>
         <translation>Egy shadercsomag verziójának módosítása.</translation>
     </message>
@@ -14235,7 +14704,7 @@ Biztos vagy benne?</translation>
         <translation>Csomagok letöltése</translation>
     </message>
     <message>
-        <location line="+88"/>
+        <location line="+92"/>
         <source>Updating shader packs while the game is running may pack duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -14255,12 +14724,12 @@ Biztosan ezt akarod csinálni?</translation>
     </message>
     <message>
         <location line="-5"/>
-        <location line="+99"/>
+        <location line="+104"/>
         <source>Shader pack updates are unavailable when metadata is disabled!</source>
         <translation>A shadercsomag frissítései nem érhetők el, ha a metaadatok le vannak tiltva!</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="-69"/>
         <source>All shader packs are up-to-date! :)</source>
         <translation>Minden shadercsomag naprakész! :)</translation>
     </message>
@@ -14275,25 +14744,25 @@ Biztosan ezt akarod csinálni?</translation>
         <translation>A shadercsomag frissítő megszakítva!</translation>
     </message>
     <message>
-        <location line="-61"/>
-        <location line="+61"/>
+        <location line="-66"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Megszakítva</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Figyelmeztetések</translation>
     </message>
     <message>
-        <location line="-136"/>
+        <location line="-142"/>
         <source>Download shader packs from online mod platforms</source>
         <translation>Shadercsomagok letöltése online mod platformokról</translation>
     </message>
     <message>
-        <location line="+161"/>
+        <location line="+168"/>
         <source>You are about to remove the metadata for %1 shader packs.
 Are you sure?</source>
         <translation>%1 shadercsomag metaadatainak eltávolítására készülsz.
@@ -14305,17 +14774,17 @@ Biztos vagy ebben?</translation>
         <translation>Eltávolítás megerősítése</translation>
     </message>
     <message>
-        <location line="-44"/>
+        <location line="-45"/>
         <source>All selected shader packs are up-to-date! :)</source>
         <translation>Minden kiválasztott shadercsomag naprakész! :)</translation>
     </message>
     <message>
-        <location line="-110"/>
+        <location line="-116"/>
         <source>Try to check or update all selected shader packs (all shader packs if none are selected)</source>
         <translation>Próbáld meg ellenőrizni vagy frissíteni az összes kiválasztott shadercsomagot (ha nincs kiválasztva semmi, akkor az összes shadercsomagot)</translation>
     </message>
     <message>
-        <location line="+113"/>
+        <location line="+119"/>
         <source>Update checker</source>
         <translation>Frissítés-ellenőrző</translation>
     </message>
@@ -14874,7 +15343,7 @@ ok: %2.</translation>
 <context>
     <name>Task</name>
     <message>
-        <location filename="../launcher/tasks/Task.cpp" line="+134"/>
+        <location filename="../launcher/tasks/Task.cpp" line="+141"/>
         <source>Aborted</source>
         <translation>Megszakítva</translation>
     </message>
@@ -15126,58 +15595,58 @@ inheritsFrom hiányzik</translation>
 <context>
     <name>TexturePackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="+108"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="+109"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>A letöltést a felhasználó megszakította.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Megszakítás</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Hiba</translation>
     </message>
     <message>
-        <location line="-99"/>
-        <location line="+99"/>
+        <location line="-104"/>
+        <location line="+104"/>
         <source>Texture pack updates are unavailable when metadata is disabled!</source>
         <translation>A textúracsomag-frissítések nem érhetők el, ha a metaadatok le vannak tiltva!</translation>
     </message>
     <message>
-        <location line="-190"/>
+        <location line="-199"/>
         <source>Download Packs</source>
         <translation>Csomagok letöltése</translation>
     </message>
     <message>
-        <location line="+96"/>
+        <location line="+100"/>
         <source>Confirm Update</source>
         <translation>Frissítés megerősítése</translation>
     </message>
     <message>
-        <location line="-89"/>
+        <location line="-93"/>
         <source>Try to check or update all selected texture packs (all texture packs if none are selected)</source>
         <translation>Próbáld meg ellenőrizni vagy frissíteni az összes kiválasztott textúracsomagot (ha nincs kiválasztva semmi, akkor az összes textúracsomagot)</translation>
     </message>
     <message>
-        <location line="+119"/>
+        <location line="+125"/>
         <source>All selected texture packs are up-to-date! :)</source>
         <translation>Minden kiválasztott textúracsomag naprakész! :)</translation>
     </message>
     <message>
-        <location line="-105"/>
+        <location line="-111"/>
         <source>Change a texture pack&apos;s version.</source>
         <translation>Egy textúracsomag verziójának módosítása.</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+109"/>
         <source>All texture packs are up-to-date! :)</source>
         <translation>Minden textúracsomag naprakész! :)</translation>
     </message>
@@ -15187,32 +15656,32 @@ inheritsFrom hiányzik</translation>
         <translation>A(z) „%1” naprakész! :)</translation>
     </message>
     <message>
-        <location line="-96"/>
+        <location line="-102"/>
         <source>View the homepages of all selected texture packs.</source>
         <translation>Az összes kiválasztott textúracsomag kezdőlapjának megtekintése.</translation>
     </message>
     <message>
-        <location line="+31"/>
-        <location line="+61"/>
+        <location line="+32"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Megszakítva</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Figyelmeztetések</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>You are about to remove the metadata for %1 texture packs.
 Are you sure?</source>
         <translation>%1 textúracsomag metaadatainak eltávolítására készülsz.
 Biztos vagy ebben?</translation>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-77"/>
         <source>Updating texture packs while the game is running may cause pack duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -15221,17 +15690,17 @@ A régi fájlokat nem lehet törölni, mivel használatban vannak.
 Biztosan ezt akarod csinálni?</translation>
     </message>
     <message>
-        <location line="-96"/>
+        <location line="-100"/>
         <source>Download texture packs from online mod platforms</source>
         <translation>Textúracsomagok letöltése online mod platformokról</translation>
     </message>
     <message>
-        <location line="+116"/>
+        <location line="+122"/>
         <source>The texture pack updater was aborted!</source>
         <translation>A textúracsomag-frissítő megszakítva!</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+54"/>
         <source>Confirm Removal</source>
         <translation>Eltávolítás megerősítése</translation>
     </message>
@@ -15241,7 +15710,7 @@ Biztosan ezt akarod csinálni?</translation>
         <translation>Textúracsomagok</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="-41"/>
+        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="-42"/>
         <source>Update checker</source>
         <translation>Frissítés-ellenőrző</translation>
     </message>
@@ -15299,6 +15768,29 @@ Biztosan ezt akarod csinálni?</translation>
         <location line="+12"/>
         <source>Completeness is the percentage of fully translated strings, not counting automatically guessed ones.</source>
         <translation>A teljesség a teljesen lefordított karakterláncok százalékos aránya, nem számítva az automatikusan kitaláltakat.</translation>
+    </message>
+</context>
+<context>
+    <name>UntrustedModsDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/UntrustedModsDialog.ui" line="+14"/>
+        <source>Easy There!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The modpack you are installing includes mods which are not hosted on Modrinth or CurseForge:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Malicious mods are often distributed through links sent on platforms such as Discord.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;We strongly recommend only importing modpacks from trusted sources.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>I trust this modpack and wish to proceed regardless</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -15866,11 +16358,12 @@ Adj hozzá egy Microsoft-fiókot.</translation>
 <context>
     <name>VersionSelectDialog</name>
     <message>
+        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+74"/>
         <source>OK</source>
-        <translation type="vanished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+104"/>
+        <location line="+30"/>
         <source>Reloads the version list.</source>
         <translation>Újratölti a verziólistát.</translation>
     </message>
@@ -15880,12 +16373,11 @@ Adj hozzá egy Microsoft-fiókot.</translation>
         <translation>Verzió kiválasztása</translation>
     </message>
     <message>
-        <location line="-29"/>
         <source>Ok</source>
-        <translation>Rendben</translation>
+        <translation type="vanished">Rendben</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-28"/>
         <source>Cancel</source>
         <translation>Mégse</translation>
     </message>
@@ -16025,7 +16517,7 @@ Adj hozzá egy Microsoft-fiókot.</translation>
 <context>
     <name>WorldList</name>
     <message>
-        <location filename="../launcher/minecraft/WorldList.cpp" line="+272"/>
+        <location filename="../launcher/minecraft/WorldList.cpp" line="+273"/>
         <source>Info</source>
         <extracomment>special warnings?</extracomment>
         <translation>Információ</translation>
@@ -16285,7 +16777,7 @@ Biztos vagy ebben?</translation>
 <context>
     <name>XboxAuthorizationStep</name>
     <message>
-        <location filename="../launcher/minecraft/auth/steps/XboxAuthorizationStep.cpp" line="+167"/>
+        <location filename="../launcher/minecraft/auth/steps/XboxAuthorizationStep.cpp" line="+163"/>
         <source>XSTS authentication ended with unrecognized error(s):
 
 %1</source>
@@ -16309,17 +16801,16 @@ Biztos vagy ebben?</translation>
         <translation>Ez a Microsoft-fiók nem rendelkezik Xbox Live-profillal. Először vásárold meg a játékot a(z) %1 oldalon.</translation>
     </message>
     <message>
-        <location line="-53"/>
         <source>Failed to get authorization for %1 services. Error %2.</source>
-        <translation>Nem sikerült engedélyt kapni a(z) %1 szolgáltatásokhoz. Hiba %2.</translation>
+        <translation type="vanished">Nem sikerült engedélyt kapni a(z) %1 szolgáltatásokhoz. Hiba %2.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-49"/>
         <source>Unknown STS error for %1 services: %2</source>
         <translation>Ismeretlen STS hiba a(z) %1 szolgáltatásokhoz: %2</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+43"/>
         <source>XErr element is missing from %1 authorization error response.</source>
         <translation>Az XErr elem hiányzik a(z) %1 engedélyezési hibaválaszból.</translation>
     </message>
@@ -16363,12 +16854,12 @@ Please set up your account according to %1.</source>
         <translation>Ezt a Microsoft-fiókot az Xbox egy vagy több közösségi szabvány megsértése miatt tiltotta le, ezért nem használható.</translation>
     </message>
     <message>
-        <location line="-129"/>
+        <location line="-125"/>
         <source>Getting authorization to access %1 services.</source>
         <translation>Engedély megszerzése a(z) %1 szolgáltatások eléréséhez.</translation>
     </message>
     <message>
-        <location line="+64"/>
+        <location line="+60"/>
         <source>Could not parse authorization response for access to %1 services.</source>
         <translation>Nem sikerült elemezni a(z) %1 szolgáltatásokhoz való hozzáférés engedélyezési válaszát.</translation>
     </message>

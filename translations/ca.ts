@@ -142,7 +142,7 @@
 <context>
     <name>ATLauncher::PackInstallTask</name>
     <message>
-        <location filename="../launcher/modplatform/atlauncher/ATLPackInstallTask.cpp" line="+123"/>
+        <location filename="../launcher/modplatform/atlauncher/ATLPackInstallTask.cpp" line="+134"/>
         <source>Could not understand pack manifest:
 </source>
         <translation type="unfinished"></translation>
@@ -157,12 +157,12 @@
         <translation type="obsolete">No s&apos;ha pogut obtenir l&apos;índex de les metadades locals per &apos;%1&apos; v%2</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+42"/>
         <source>Deleting existing files...</source>
         <translation type="unfinished">Eliminant fitxers existents...</translation>
     </message>
     <message>
-        <location line="+147"/>
+        <location line="+151"/>
         <source>Unknown mod type: %1</source>
         <translation type="unfinished">Tipus de mod desconegut: %1</translation>
     </message>
@@ -179,32 +179,32 @@
         <translation type="obsolete">No s&apos;ha seleccionat una versió per al carregador del paquet de mods!</translation>
     </message>
     <message>
-        <location line="-178"/>
+        <location line="-182"/>
         <source>Could not get local metadata index for &apos;%1&apos; v%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+194"/>
         <source>Could not get local metadata index for %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+34"/>
         <source>Could not find a version for the %1 loader</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>No loader version set for modpack.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+130"/>
+        <location line="+132"/>
         <source>Unknown or unsupported download type: %1</source>
         <translation type="unfinished">Tipus de baixada desconeguda o no admesa: %1</translation>
     </message>
     <message>
-        <location line="+114"/>
+        <location line="+115"/>
         <source>Downloading configs...</source>
         <translation type="unfinished">Baixant configuracions...</translation>
     </message>
@@ -234,13 +234,13 @@
         <translation type="unfinished">Descàrrega de mods</translation>
     </message>
     <message>
-        <location line="+25"/>
-        <location line="+130"/>
+        <location line="+27"/>
+        <location line="+133"/>
         <source>Unknown download type: %1</source>
         <translation type="unfinished">Tipus de baixada desconeguda: %1</translation>
     </message>
     <message>
-        <location line="-50"/>
+        <location line="-52"/>
         <source>Blocked mods found</source>
         <translation type="unfinished">S&apos;han trobat mods bloquejats</translation>
     </message>
@@ -250,7 +250,7 @@
         <translation type="unfinished">Els següents mods van ser bloquejats en llançadors de tercers. &lt;br/&gt; Haureu de descarregar-los manualment i afegir-los al modpack.</translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+58"/>
         <source>%1 out of %2 complete</source>
         <translation type="unfinished">%1 de %2 completat</translation>
     </message>
@@ -265,7 +265,7 @@
         <translation type="unfinished">Extraient els mods...</translation>
     </message>
     <message>
-        <location line="+72"/>
+        <location line="+81"/>
         <source>Installing modpack</source>
         <translation type="unfinished">Instal·lant el paquet de mods</translation>
     </message>
@@ -275,7 +275,7 @@
         <translation type="unfinished">Error al crear component de les llibreries</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+30"/>
         <source>Unknown loader type: </source>
         <translation type="unfinished">Tipus de carregador desconegut: </translation>
     </message>
@@ -722,7 +722,7 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation type="vanished">Actualitzat amb èxit</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1306"/>
+        <location filename="../launcher/Application.cpp" line="+1319"/>
         <source>Incompatible system configuration</source>
         <translation>Configuració del sistema no compatible</translation>
     </message>
@@ -762,12 +762,12 @@ Dona una ullada al registre d&apos;actualitzador de Prism Launcher a:·
 Per a obtenir més informació sobre l&apos;últim intent d&apos;actualització.</translation>
     </message>
     <message>
-        <location line="-1700"/>
+        <location line="-1703"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>No es pot mostrar aquest registre, ja que sobrepassa les %1 línies.</translation>
     </message>
     <message>
-        <location line="+1522"/>
+        <location line="+1525"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Sembla que ja has utilitzat %1 a %2 anteriorment. Vols migrar les dades a la nova ubicació %3?</translation>
     </message>
@@ -781,7 +781,7 @@ Per a obtenir més informació sobre l&apos;últim intent d&apos;actualització.
         <translation type="vanished">Actualització fallida</translation>
     </message>
     <message>
-        <location line="-1820"/>
+        <location line="-1823"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -817,12 +817,12 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+531"/>
+        <location line="+526"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+28"/>
         <source>Loading instances…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -969,7 +969,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">Actualització en curs</translation>
     </message>
     <message>
-        <location line="-1419"/>
+        <location line="-1427"/>
         <source>Settings</source>
         <translation>Opcions</translation>
     </message>
@@ -1000,7 +1000,7 @@ Per obtenir detalls sobre l&apos;últim intent d&apos;actualització.
 Per esborrar aquest bloqueig i procedir, selecciona &quot;Ignora&quot;.</translation>
     </message>
     <message>
-        <location line="+1263"/>
+        <location line="+1271"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>S&apos;ha trobat dades antigues del %1, però ja existeixen dades pel %2. Malauradament, l&apos;haureu de migrar pel vostre compte. Voldries ser recordat de la migració de les teves dades el pròxim cop que iniciïs %2?</translation>
     </message>
@@ -1640,8 +1640,8 @@ Per esborrar aquest bloqueig i procedir, selecciona &quot;Ignora&quot;.</transla
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+154"/>
+        <location line="+411"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1650,12 +1650,27 @@ Per esborrar aquest bloqueig i procedir, selecciona &quot;Ignora&quot;.</transla
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-477"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+14"/>
+        <source>My Reports (%1 new)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>See what the team answered to the reports you sent from this launcher.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1896,7 +1911,7 @@ Send it again anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+17"/>
         <source>Thank you! Your report is on its way to the PollyMC team, and we read every one.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1915,6 +1930,14 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+5"/>
+        <source>
+
+Your report ID: %1
+This launcher will tell you when the team has an update. You can also check any time with &quot;My Reports&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+6"/>
         <source>Report sent</source>
         <translation type="unfinished"></translation>
@@ -1922,6 +1945,11 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
     <message>
         <location line="+2"/>
         <source>Join our Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>View My Reports</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2802,30 +2830,30 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
 <context>
     <name>DataPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/DataPackPage.cpp" line="+86"/>
-        <location line="+84"/>
-        <location line="+73"/>
+        <location filename="../launcher/ui/pages/instance/DataPackPage.cpp" line="+87"/>
+        <location line="+89"/>
+        <location line="+78"/>
         <source>Download stopped by user.</source>
         <translation>Baixada aturada per l&apos;usuari.</translation>
     </message>
     <message>
-        <location line="-137"/>
-        <location line="+80"/>
-        <location line="+73"/>
+        <location line="-146"/>
+        <location line="+84"/>
+        <location line="+79"/>
         <source>Abort</source>
         <translation>Interrompre</translation>
     </message>
     <message>
-        <location line="-177"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
-        <location line="+19"/>
+        <location line="-188"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
+        <location line="+21"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-219"/>
         <source>Download Packs</source>
         <translation>Baixar paquets</translation>
     </message>
@@ -2835,7 +2863,7 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
         <translation>Canvia la versió d&apos;un paquet de dades.</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+79"/>
         <source>Updating data packs while the game is running may cause pack duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -2849,65 +2877,65 @@ Vols continuar de totes maneres?</translation>
         <translation>Confirmar actualització</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+78"/>
         <source>You are about to remove the metadata for %1 data packs.
 Are you sure?</source>
         <translation>Estàs a punt d&apos;esborrar les metadades de %1 paquets de dades.
 Vols continuar?</translation>
     </message>
     <message>
-        <location line="-50"/>
+        <location line="-51"/>
         <source>&apos;%1&apos; is up-to-date! :)</source>
         <translation>&apos;%1&apos; està actualitzat! :)</translation>
     </message>
     <message>
-        <location line="-119"/>
+        <location line="-125"/>
         <source>Download data packs from online mod platforms</source>
         <translation>Baixar paquets de dades de plataformes de mods</translation>
     </message>
     <message>
-        <location line="+122"/>
+        <location line="+128"/>
         <source>All data packs are up-to-date! :)</source>
         <translation>Tots els paquets de dades estan actualitzats! :)</translation>
     </message>
     <message>
-        <location line="-68"/>
-        <location line="+61"/>
+        <location line="-73"/>
+        <location line="+66"/>
         <location line="+23"/>
-        <location line="+73"/>
+        <location line="+78"/>
         <source>Aborted</source>
         <translation>Interromput</translation>
     </message>
     <message>
-        <location line="-151"/>
-        <location line="+84"/>
-        <location line="+73"/>
+        <location line="-161"/>
+        <location line="+89"/>
+        <location line="+78"/>
         <source>Warnings</source>
         <translation>Avisos</translation>
     </message>
     <message>
-        <location line="-128"/>
-        <location line="+99"/>
+        <location line="-135"/>
+        <location line="+104"/>
         <source>Data pack updates are unavailable when metadata is disabled!</source>
         <translation>Les actualitzacions dels paquets de dades no estan disponibles si les metadades estan desactivades!</translation>
     </message>
     <message>
-        <location line="-73"/>
+        <location line="-76"/>
         <source>The data pack updater was aborted!</source>
         <translation>S&apos;ha interromput l&apos;actualitzador dels paquets de dades!</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+54"/>
         <source>Confirm Removal</source>
         <translation>Confirmar Eliminació</translation>
     </message>
     <message>
-        <location line="-162"/>
+        <location line="-169"/>
         <source>Try to check or update all selected data packs (all data packs if none are selected)</source>
         <translation>Comprova o actualitza els paquets de dades seleccionats (tots si no s&apos;ha seleccionat cap)</translation>
     </message>
     <message>
-        <location line="+118"/>
+        <location line="+124"/>
         <source>All selected data packs are up-to-date! :)</source>
         <translation>Tots els paquets de dades seleccionats estan actualitzats! :)</translation>
     </message>
@@ -2917,7 +2945,7 @@ Vols continuar?</translation>
         <translation>Comprovador d&apos;actualitzacions</translation>
     </message>
     <message>
-        <location line="-79"/>
+        <location line="-84"/>
         <source>Download Data Packs</source>
         <translation>Baixar paquets de dades</translation>
     </message>
@@ -2937,6 +2965,16 @@ Vols continuar?</translation>
     <message>
         <location line="+1"/>
         <source>Display the reminder immediately, ignoring its normal schedule and dismissed state.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show bug report update notification now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Display a sample &quot;your report has news&quot; notification in the window you are in, to test notifications without waiting for the team.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3176,35 +3214,43 @@ Vols continuar?</translation>
         <translation type="vanished">Poca memòria lliure</translation>
     </message>
     <message>
+        <location filename="../launcher/minecraft/launch/EnsureAvailableMemory.cpp" line="+43"/>
         <source>Your system is under critical memory pressure.
 This may lead to severe slowdowns, crashes or system instability.
 It is recommended to close other applications or restart your system.
 
 Launch anyway?</source>
-        <translation type="vanished">El teu sistema està sota una pressió de memòria crítica.
+        <translation>El teu sistema està sota una pressió de memòria crítica.
 Això pot portae a retards greus, bloquejos o inestabilitat del sistema.
 Es recomana tancar altres aplicacions o reiniciar el sistema.
 
 Llançar igualment?</translation>
     </message>
     <message>
+        <location line="+10"/>
         <source>High memory pressure</source>
-        <translation type="vanished">Alta pressió de memòria</translation>
+        <translation>Alta pressió de memòria</translation>
     </message>
     <message>
+        <location line="-17"/>
         <source>The system is under increased memory pressure.
 This may lead to lag or slowdowns.
 If possible, close other applications before continuing.
 
 Launch anyway?</source>
-        <translation type="vanished">El sistema està sota una alta pressió de memòria.
+        <translation>El sistema està sota una alta pressió de memòria.
 Això pot causar ralentitzacions o lentitud.
 Si és possible, tanca altres aplicacions abans de continuar.
 
 Iniciar igualment?</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/launch/EnsureAvailableMemory.cpp" line="+46"/>
+        <location line="+25"/>
+        <source>The system is under high memory pressure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+30"/>
         <source>Not enough RAM</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3219,12 +3265,12 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="-4"/>
         <source>Not enough RAM available to launch this instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+29"/>
         <source>Note: only %1 MiB RAM is currently free, but this instance requests %2 MiB. Other running programs may cause slowdowns; consider closing some before playing.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3262,8 +3308,9 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
 <context>
     <name>EnsureOfflineLibraries</name>
     <message>
-        <location filename="../launcher/minecraft/launch/EnsureOfflineLibraries.cpp" line="+33"/>
-        <source>This instance cannot be launched because some libraries are missing or have not been downloaded yet. Please try again in online mode with a working Internet connection</source>
+        <location filename="../launcher/minecraft/launch/EnsureOfflineLibraries.cpp" line="+49"/>
+        <source>
+This instance cannot be launched because some libraries are missing or have not been downloaded yet. Please try again in online mode with a working Internet connection</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4115,42 +4162,42 @@ Estàs segur/a?</translation>
 <context>
     <name>FlameCheckUpdate</name>
     <message>
-        <location filename="../launcher/modplatform/flame/FlameCheckUpdate.cpp" line="+177"/>
+        <location filename="../launcher/modplatform/flame/FlameCheckUpdate.cpp" line="+182"/>
         <source>Parsing API response from CurseForge for &apos;%1&apos;...</source>
         <translation>Analitzant la resposta de l&apos;API de CurseForge per a &apos;%1&apos;...</translation>
     </message>
     <message>
-        <location line="-85"/>
+        <location line="-90"/>
         <source>Parsing the API response from CurseForge for &apos;%1&apos;...</source>
         <translation>Analitzant la resposta de l&apos;API de CurseForge per a &apos;%1&apos;...</translation>
     </message>
     <message>
-        <location line="-52"/>
+        <location line="-54"/>
         <source>Preparing resources for CurseForge...</source>
         <translation>Preparant recursos per a CurseForge...</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+63"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version.</source>
         <translation>No s&apos;ha trobat cap versió vàlida per a aquest recurs. Probablement no estigui disponible per a la versió actual del joc.</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+19"/>
         <source>Unknown</source>
         <translation>Desconegut</translation>
     </message>
     <message>
-        <location line="-21"/>
+        <location line="-22"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version / mod loader.</source>
         <translation>No s&apos;ha trobat cap versió vàlida per a aquest recurs. Probablement no estigui disponible per a la versió actual del joc / carregador de mods.</translation>
     </message>
     <message>
-        <location line="+83"/>
+        <location line="+88"/>
         <source>Resource has a new update available, but is not downloadable using CurseForge.</source>
         <translation>El recurs té una nova actualització disponible, però no es pot descarregar a través de CurseForge.</translation>
     </message>
     <message>
-        <location line="-64"/>
+        <location line="-68"/>
         <source>Not installed</source>
         <translation>No està instal·lat</translation>
     </message>
@@ -4158,7 +4205,7 @@ Estàs segur/a?</translation>
 <context>
     <name>FlameCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+598"/>
+        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+636"/>
         <source>Downloading mods...</source>
         <translation>Descarregant mods...</translation>
     </message>
@@ -4168,17 +4215,22 @@ Estàs segur/a?</translation>
         <translation>Els següents mods van ser bloquejats en llançadors de tercers. &lt;br/&gt; Haureu de descarregar-los manualment i afegir-los al modpack.</translation>
     </message>
     <message>
-        <location line="-197"/>
+        <location line="-218"/>
+        <source>The overrides has a path that leads to an arbitrary location (%1). This is a security risk and isn&apos;t allowed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
         <source>The specified overrides folder (%1) is missing. Maybe the modpack was already used before?</source>
         <translation>Falta la carpeta d&apos;anul·lacions especificada (%1). Potser el paquet de mods ja ha estat utilitzat anteriorment?</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+35"/>
         <source>Unknown mod loader in manifest: %1</source>
         <translation>Error desconegut mentre es carregava la instància %1</translation>
     </message>
     <message>
-        <location line="-70"/>
+        <location line="-107"/>
         <source>No loader version set for modpack!</source>
         <translation>No s&apos;ha seleccionat una versió per al carregador del paquet de mods!</translation>
     </message>
@@ -4191,7 +4243,7 @@ Estàs segur/a?</translation>
         <translation type="vanished">No s&apos;han pogut eliminar els arxius conflictius antics.</translation>
     </message>
     <message>
-        <location line="+157"/>
+        <location line="+194"/>
         <source>Unable to resolve mod IDs:
 </source>
         <translation>Impossible actualitzar les ID dels mods:
@@ -4208,7 +4260,7 @@ Estàs segur/a?</translation>
         <translation>Descarregar Mod Flame</translation>
     </message>
     <message>
-        <location line="-298"/>
+        <location line="-335"/>
         <source>Failed to get local metadata index for %1</source>
         <translation>No s&apos;ha pogut obtenir l&apos;índex local de les metadades per %1</translation>
     </message>
@@ -4219,14 +4271,14 @@ Estàs segur/a?</translation>
     </message>
     <message>
         <location line="-125"/>
-        <location line="+211"/>
+        <location line="+236"/>
         <source>Could not understand pack manifest:
 </source>
         <translation>No es va entendre el manifest del paquet:
 </translation>
     </message>
     <message>
-        <location line="+280"/>
+        <location line="+292"/>
         <source>Copying Blocked Mods...</source>
         <translation>Copiant mods bloquejats...</translation>
     </message>
@@ -4241,7 +4293,7 @@ Estàs segur/a?</translation>
         <translation>%1 de %2 completat</translation>
     </message>
     <message>
-        <location line="-354"/>
+        <location line="-391"/>
         <source>No index file.</source>
         <translation>No n&apos;hi ha fitxer d&apos;índex.</translation>
     </message>
@@ -4251,19 +4303,19 @@ Estàs segur/a?</translation>
         <translation>No s&apos;ha pogut trobar la versió del carregador %1</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+72"/>
         <source>Could not rename the overrides folder:
 </source>
         <translation>No hem pogut canviar el nom de la carpeta de substitucions:
 </translation>
     </message>
     <message>
-        <location line="-218"/>
+        <location line="-249"/>
         <source> (version %1)</source>
         <translation> (versió %1)</translation>
     </message>
     <message>
-        <location line="+501"/>
+        <location line="+538"/>
         <source>Copying Blocked Mods (%1 out of %2 are done)</source>
         <translation>Copiant mods bloquejats (%1 de %2 finalitzats)</translation>
     </message>
@@ -4276,7 +4328,7 @@ Estàs segur/a?</translation>
 <context>
     <name>FlameManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+491"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+506"/>
         <source>CurseForge pack</source>
         <translation>Pack de CurseForge</translation>
     </message>
@@ -4286,12 +4338,12 @@ Estàs segur/a?</translation>
         <translation>Escollir fitxer d&apos;actualització</translation>
     </message>
     <message>
-        <location line="-57"/>
+        <location line="-62"/>
         <source>%1 (Current)</source>
         <translation>%1 (Actual)</translation>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-42"/>
         <source>&lt;h1&gt;Hey there!&lt;/h1&gt;&lt;h4&gt;It seems like your Pack ID is null. This is because of a bug in older versions of the launcher.&lt;br/&gt;Unfortunately, we can&apos;t do the proper API requests without this information.&lt;br/&gt;&lt;br/&gt;So, in order for this feature to work, you will need to re-download the modpack from the built-in downloader.&lt;br/&gt;&lt;br/&gt;Don&apos;t worry though, it will ask you to update this instance instead, so you&apos;ll not lose this instance!&lt;/h4&gt;</source>
         <translation>&lt;h1&gt;Hola!&lt;/h1&gt;&lt;h4&gt;Sembla que l&apos;ID del paquet és null. Es tracta d&apos;un error de versions antigues del llançador.&lt;br/&gt;Desafortunadament, no podem fer crides a l&apos;API correctament sense aquesta informació.&lt;br/&gt;&lt;br/&gt;Per tant, perquè tot funcioni, hauràs de tornar a baixar el paquet de mods des del programa de baixades integrat.&lt;br/&gt;&lt;br/&gt;No et preocupis, no es crearà una instància nova, sinó que et demanarà actualitzar aquesta. No perdràs res!&lt;/h4&gt;</translation>
     </message>
@@ -4765,11 +4817,12 @@ Estàs segur/a?</translation>
 <context>
     <name>InstallLoaderDialog</name>
     <message>
+        <location filename="../launcher/ui/dialogs/InstallLoaderDialog.cpp" line="+109"/>
         <source>OK</source>
-        <translation type="vanished">D&apos;acord</translation>
+        <translation>D&apos;acord</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/InstallLoaderDialog.cpp" line="+140"/>
+        <location line="+31"/>
         <source>Forge</source>
         <translation>Forge</translation>
     </message>
@@ -4789,12 +4842,7 @@ Estàs segur/a?</translation>
         <translation>Cancel·lar</translation>
     </message>
     <message>
-        <location line="-1"/>
-        <source>Ok</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+33"/>
+        <location line="+32"/>
         <source>Fabric</source>
         <translation>Fabric</translation>
     </message>
@@ -4830,12 +4878,12 @@ Estàs segur/a?</translation>
         <translation>Copiant la instància %1</translation>
     </message>
     <message>
-        <location line="+146"/>
+        <location line="+147"/>
         <source>Instance folder copy has been aborted.</source>
         <translation>La còpia de l&apos;arxiu de la instància ha estat avortada.</translation>
     </message>
     <message>
-        <location line="-42"/>
+        <location line="-43"/>
         <source>Instance folder copy failed.</source>
         <translation>La còpia de la carpeta de la instància ha fallat.</translation>
     </message>
@@ -4896,7 +4944,7 @@ Estàs segur/a?</translation>
 <context>
     <name>InstanceHealthCheckDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+61"/>
+        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+90"/>
         <source>No Java selected</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4930,7 +4978,12 @@ Switch Java in the instance&apos;s Java settings, or turn off the compatibility 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+175"/>
+        <source>Checking &lt;b&gt;%1&lt;/b&gt;…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+38"/>
         <source>Broken mod files (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4943,43 +4996,159 @@ Delete or re-download them (a fresh download of the same version is usually enou
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-201"/>
         <source>Version information not loaded yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-67"/>
+        <source>Error</source>
+        <translation type="unfinished">Error</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Warning</source>
+        <translation type="unfinished">Advertència</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Info</source>
+        <translation type="unfinished">Informació</translation>
+    </message>
+    <message numerus="yes">
+        <location line="+9"/>
+        <source>
+… and %n more</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+55"/>
         <source>The launcher could not read this instance&apos;s version list, so the loader check was skipped.
 Open the instance, go to the Version page and let it load once (or press Reload) before launching.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>%1 (loader component)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+17"/>
+        <source>Only %1 MiB are free on the drive this instance is stored on.
+Free up some space, or the game can fail while saving worlds or downloading files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Low disk space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Too much memory allocated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance is set to use up to %1 MiB, but the computer only has %2 MiB.
+Lower the maximum memory in the instance&apos;s settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>A lot of memory allocated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance may use up to %1 MiB of the computer&apos;s %2 MiB.
+That leaves little for the system and can make the game stutter; around half of the total is usually plenty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+39"/>
         <source>Check instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+21"/>
+        <source>Check Again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Open Mods Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+23"/>
-        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, no broken mod files, and the loader version checks out. Nothing stood in the way of launching.</source>
+        <location line="+128"/>
+        <source>Mods that may not fit this game version (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These mods are not marked as compatible with this instance&apos;s Minecraft version:
+%1
+
+They may still work, but if the game crashes, update or remove them first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, the mods have no broken files or conflicts, and the loader version checks out. Nothing stood in the way of launching.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location line="+5"/>
-        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting. The details are below each entry.</source>
+        <location line="+8"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message numerus="yes">
+        <location line="+1"/>
+        <source>, and %n warning(s) worth a look</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>. The details are below each entry.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+2"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; should start, but has %n warning(s) worth a look. The details are below each entry.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Instance check for &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>No problems found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5063,12 +5232,12 @@ Open the instance, go to the Version page and let it load once (or press Reload)
 <context>
     <name>InstanceStaging</name>
     <message>
-        <location filename="../launcher/InstanceList.cpp" line="+784"/>
+        <location filename="../launcher/InstanceList.cpp" line="+782"/>
         <source>Failed to commit instance, even after multiple retries. It is being blocked by something.</source>
         <translation>Error al confirmar la instància, fins i tot després de diversos intents. Està sent bloquejat per alguna cosa.</translation>
     </message>
     <message>
-        <location line="-22"/>
+        <location line="-20"/>
         <source>Could not create staging folder</source>
         <translation>No s&apos;ha pogut crear la carpeta de muntatge</translation>
     </message>
@@ -5296,7 +5465,7 @@ Open the instance, go to the Version page and let it load once (or press Reload)
 <context>
     <name>JavaListLoadTask</name>
     <message>
-        <location filename="../launcher/java/JavaInstallList.cpp" line="+158"/>
+        <location filename="../launcher/java/JavaInstallList.cpp" line="+159"/>
         <source>Detecting Java installations...</source>
         <translation>Detectant instal·lacions de Java...</translation>
     </message>
@@ -5364,42 +5533,42 @@ Vols continuar?</translation>
         <translation>Provar c&amp;onfiguració</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="+278"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="+279"/>
         <source>Confirm Selection</source>
         <translation>Confirmar selecció</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+230"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+164"/>
         <source>(-Xms)</source>
         <translation>(-Xms)</translation>
     </message>
     <message>
-        <location line="-45"/>
+        <location line="+49"/>
         <source>(-Xmx)</source>
         <translation>(-Xmx)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-71"/>
         <source>The amount of memory Minecraft is started with.</source>
         <translation>La quantitat de memòria amb la qual Minecraft s&apos;inicia.</translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="-18"/>
         <source>M&amp;inimum Memory Usage:</source>
         <translation>Ús m&amp;ínim de memòria:</translation>
     </message>
     <message>
-        <location line="-137"/>
+        <location line="-14"/>
         <source>Memor&amp;y</source>
         <translation>Memòr&amp;ia</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+81"/>
         <source>The maximum amount of memory Minecraft is allowed to use.</source>
         <translation>La quantitat màxima de memòria permesa per a Minecraft.</translation>
     </message>
     <message>
-        <location line="-115"/>
+        <location line="-143"/>
         <source>Auto-download &amp;Mojang Java</source>
         <translation>Baixar automàticament Java de &amp;Mojang</translation>
     </message>
@@ -5409,7 +5578,7 @@ Vols continuar?</translation>
         <translation>Si s&apos;activa, el llançador no et farà escollir una versió de Java si no troba cap durant la inicialització.</translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+144"/>
         <source>&amp;PermGen Size:</source>
         <translation>&amp;PermGen:</translation>
     </message>
@@ -5419,27 +5588,32 @@ Vols continuar?</translation>
         <translation>Buscar l&apos;executable de Java</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+63"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+71"/>
         <source>Java Argumen&amp;ts</source>
         <translation>Argumen&amp;ts de Java</translation>
     </message>
     <message>
-        <location line="-148"/>
+        <location line="-53"/>
         <source>The amount of memory available to store loaded Java classes.</source>
         <translation>Quantitat de memòria disponible per emmagatzemar classes carregades de Java.</translation>
     </message>
     <message>
-        <location line="+135"/>
+        <location line="+33"/>
+        <source>Warn when there is not enough free memory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Memory Notice</source>
         <translation>Avís de memòria</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-107"/>
         <source>Ma&amp;ximum Memory Usage:</source>
         <translation>Ús mà&amp;xim de memòria:</translation>
     </message>
     <message>
-        <location line="-192"/>
+        <location line="-128"/>
         <source>Automatically downloads and selects the Java build recommended by Mojang.</source>
         <translation>Baixa i selecciona automàticament la versió de Java recomanada per Mojang.</translation>
     </message>
@@ -5479,12 +5653,12 @@ Vols continuar?</translation>
         <translation>Detectar &amp;automàticament la versió de Java</translation>
     </message>
     <message>
-        <location line="+162"/>
+        <location line="+302"/>
         <source>(-XX:PermSize)</source>
         <translation>(-XX:PermSize)</translation>
     </message>
     <message>
-        <location line="-115"/>
+        <location line="-255"/>
         <source>Open Java &amp;Downloader</source>
         <translation>Obre &amp;descarregador de Java</translation>
     </message>
@@ -5680,7 +5854,7 @@ Podràs canviar la versió de Java més tard a la configuració.
     </message>
     <message>
         <location line="+3"/>
-        <source>Use system locales</source>
+        <source>Use system regional standards</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6377,7 +6551,7 @@ Es recomana que li donis permisos a %1 a través de Flatseal.</translation>
     </message>
     <message>
         <location line="+27"/>
-        <source>Could not launch Minecraft!</source>
+        <source>Could not launch Minecraft: %1</source>
         <extracomment>Error message displayed if instace can&apos;t start</extracomment>
         <translation type="unfinished"></translation>
     </message>
@@ -6746,7 +6920,7 @@ Cal corregir aquest problema manualment.</translation>
     </message>
     <message>
         <location line="+14"/>
-        <source>The process failed to start.</source>
+        <source>The process failed to start: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6850,7 +7024,7 @@ Cal corregir aquest problema manualment.</translation>
 <context>
     <name>MSADeviceCodeStep</name>
     <message>
-        <location filename="../launcher/minecraft/auth/steps/MSADeviceCodeStep.cpp" line="+133"/>
+        <location filename="../launcher/minecraft/auth/steps/MSADeviceCodeStep.cpp" line="+131"/>
         <source>Device authorization failed: required fields missing</source>
         <translation>No s&apos;ha pogut autoritzar el dispositiu: falten camps obligatoris</translation>
     </message>
@@ -6861,21 +7035,17 @@ Cal corregir aquest problema manualment.</translation>
     </message>
     <message>
         <location line="-38"/>
+        <location line="+8"/>
         <source>Device authorization failed: %1</source>
         <translation>No s&apos;ha pogut autoritzar el dispositiu: %1</translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="-71"/>
         <source>Logging in with Microsoft account(device code).</source>
         <translation>Iniciant sessió amb el compte de Microsoft (codi de dispositiu).</translation>
     </message>
     <message>
-        <location line="+72"/>
-        <source>Failed to retrieve device authorization</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+137"/>
+        <location line="+207"/>
         <source>Device Access failed: %1</source>
         <translation>No s&apos;ha pogut accedir al dispositiu: %1</translation>
     </message>
@@ -6976,7 +7146,7 @@ Cal corregir aquest problema manualment.</translation>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+298"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+300"/>
         <source>Check for new updates for %1.</source>
         <translation>Buscar actualitzacions per a %1.</translation>
     </message>
@@ -6985,22 +7155,22 @@ Cal corregir aquest problema manualment.</translation>
         <translation type="vanished">Ajuda</translation>
     </message>
     <message>
-        <location line="+542"/>
+        <location line="+567"/>
         <source>Java</source>
         <translation>Java</translation>
     </message>
     <message>
-        <location line="-188"/>
+        <location line="-213"/>
         <source>Logs</source>
         <translation>Registres</translation>
     </message>
     <message>
-        <location line="+177"/>
+        <location line="+202"/>
         <source>I&amp;con Theme</source>
         <translation>Temes d&apos;i&amp;cones</translation>
     </message>
     <message>
-        <location line="-662"/>
+        <location line="-687"/>
         <source>&amp;Edit</source>
         <translation>&amp;Editar</translation>
     </message>
@@ -7009,12 +7179,12 @@ Cal corregir aquest problema manualment.</translation>
         <translation type="vanished">Barra de notícies</translation>
     </message>
     <message>
-        <location line="-25"/>
+        <location line="-26"/>
         <source>&amp;File</source>
         <translation>A&amp;rxiu</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+76"/>
         <source>&amp;Help</source>
         <translation>A&amp;juda</translation>
     </message>
@@ -7053,7 +7223,7 @@ Cal corregir aquest problema manualment.</translation>
         <translation>&amp;Vista</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1783"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1842"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -7064,45 +7234,45 @@ L&apos;acció pot ser permanent i esborrar la instància.
 Vols continuar?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+656"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+681"/>
         <source>Open the icon theme folder in a file browser.</source>
         <translation>Obre la carpeta de temes d&apos;icones.</translation>
     </message>
     <message>
-        <location line="-343"/>
+        <location line="-368"/>
         <source>Copy the selected instance.</source>
         <translation>Copiar la instància seleccionada.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-727"/>
-        <location line="+140"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-751"/>
+        <location line="+143"/>
         <location line="+106"/>
         <source>Abort</source>
         <translation>Cancel·lar</translation>
     </message>
     <message>
-        <location line="-258"/>
-        <location line="+126"/>
+        <location line="-261"/>
+        <location line="+129"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
         <location line="+37"/>
-        <location line="+403"/>
+        <location line="+424"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-454"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-456"/>
         <source>Main Toolbar</source>
         <translation>Barra d&apos;eines principal</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-409"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-430"/>
         <source>Modpack download</source>
         <translation>Descàrrega del paquet de mods</translation>
     </message>
     <message>
-        <location line="+318"/>
+        <location line="+339"/>
         <source>Check instance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7194,12 +7364,12 @@ Vols continuar?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+119"/>
+        <location line="+120"/>
         <source>Your instance folder contains &apos;!&apos; and this is known to cause Java problems!</source>
         <translation>El nom de la capeta de la instància conte un &apos;!&apos; i això és conegut de causar problemes amb el Java!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+390"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+392"/>
         <source>&amp;Change Group...</source>
         <translation>Canviar &amp;grup...</translation>
     </message>
@@ -7224,7 +7394,7 @@ Vols continuar?</translation>
         <translation>Afegir una &amp;instància...</translation>
     </message>
     <message>
-        <location line="+431"/>
+        <location line="+456"/>
         <source>&amp;Matrix Space</source>
         <translation>Espai &amp;Matrix</translation>
     </message>
@@ -7233,27 +7403,27 @@ Vols continuar?</translation>
         <translation type="vanished">Més notícies...</translation>
     </message>
     <message>
-        <location line="-71"/>
+        <location line="-96"/>
         <source>Open the instance icons folder in a file browser.</source>
         <translation>Obre la carpeta de les icones de les instàncies.</translation>
     </message>
     <message>
-        <location line="+133"/>
+        <location line="+158"/>
         <source>Install a %1 symlink to /usr/local/bin</source>
         <translation>Crear un enllaç simbòlic %1 a /usr/local/bin</translation>
     </message>
     <message>
-        <location line="-687"/>
+        <location line="-714"/>
         <source>Instance Toolbar</source>
         <translation>Barra de tasques de l&apos;Instància</translation>
     </message>
     <message>
-        <location line="+493"/>
+        <location line="+495"/>
         <source>Close &amp;Window</source>
         <translation>&amp;Tancar Finestra</translation>
     </message>
     <message numerus="yes">
-        <location filename="../launcher/ui/MainWindow.cpp" line="-259"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-260"/>
         <source> and its %n registered shortcut(s)</source>
         <translation>
             <numerusform> i el seu %n enllaç directe registrat</numerusform>
@@ -7261,27 +7431,27 @@ Vols continuar?</translation>
         </translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+113"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+127"/>
         <source>Open the bug tracker to report a bug with %1.</source>
         <translation>Obre el rastrejador d&apos;errors per reportar l&apos;error amb %1.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-729"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-753"/>
         <source>Task aborted</source>
         <translation>Tasca avortada</translation>
     </message>
     <message>
-        <location line="+543"/>
+        <location line="+551"/>
         <source>This instance is not editable. It may be broken, invalid, or too old. Check logs for details.</source>
         <translation>La instància no és editable. Pot estar corrupta, ser invàlida o massa vella. Revisa els registres per a més informació.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+70"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+81"/>
         <source>View current and previous launcher logs</source>
         <translation>Veure registres actuals i previs del llançador</translation>
     </message>
     <message>
-        <location line="-136"/>
+        <location line="-161"/>
         <source>&amp;Skins</source>
         <translation>&amp;Aspectes</translation>
     </message>
@@ -7325,7 +7495,7 @@ Vols continuar?</translation>
         <translation>Elimina el grup</translation>
     </message>
     <message>
-        <location line="+262"/>
+        <location line="+278"/>
         <source>Failed to add %1 to PATH</source>
         <translation>No s&apos;ha pogut afegir %1 a PATH</translation>
     </message>
@@ -7370,7 +7540,7 @@ Vols continuar?</translation>
         <translation>La instància escollida s&apos;està executant i no es pot esborrar. Si us plau, atura la instància abans d&apos;esborrar-la.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+459"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+484"/>
         <source>Open the Java folder in a file browser. Only available if the built-in Java downloader is used.</source>
         <translation>Obre la carpeta de Java. Només està disponible si s&apos;utilitza el descarregador de Java integrat.</translation>
     </message>
@@ -7379,7 +7549,7 @@ Vols continuar?</translation>
         <translation type="vanished">No s&apos;han trobat notícies.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-718"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-742"/>
         <source>The task has been aborted by the user.</source>
         <translation>La tasca va ser avortada per l&apos;usuari.</translation>
     </message>
@@ -7389,7 +7559,7 @@ Vols continuar?</translation>
         <translation>Obre una de les carpetes compartides entre instàncies.</translation>
     </message>
     <message>
-        <location line="-396"/>
+        <location line="-421"/>
         <source>Rename</source>
         <translation>Canvia el nom</translation>
     </message>
@@ -7403,17 +7573,17 @@ Vols continuar?</translation>
         <translation type="vanished">Prism Launcher (zip)</translation>
     </message>
     <message>
-        <location line="+69"/>
+        <location line="+94"/>
         <source>Open %1 subreddit.</source>
         <translation>Obre el subreddit de %1.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+133"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+136"/>
         <source>The modpack, mod, or resource %1 is blocked for third-parties! Please download it manually.</source>
         <translation>El paquet de mods, mod o recurs %1 està bloquejat a tercers! Si us plau, descarrega&apos;l manualment.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-243"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-268"/>
         <source>Cop&amp;y...</source>
         <translation>Cop&amp;iar...</translation>
     </message>
@@ -7423,7 +7593,7 @@ Vols continuar?</translation>
         <translation>Obre la carpeta d&apos;aspectes.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+142"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+147"/>
         <source>No instance available to add the resource to.
 Please create a new instance before attempting to install this resource again.</source>
         <translation>No hi ha cap instància on afegir el recurs.
@@ -7435,7 +7605,7 @@ Si us plau, crea una nova instància abans d&apos;instal·lar el recurs de nou.<
         <translation>Canvia la configuració, mods i versions de la instància.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+734"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+751"/>
         <source>This is a problem: &lt;br/&gt; - The launcher will likely be deleted without warning by the operating system &lt;br/&gt; - close the launcher now and extract it to a real location, not a temporary folder</source>
         <translation>Això és un problema: &lt;br/&gt; - El llançador probablement serà eliminat sense comunicar-ho al sistema operatiu &lt;br/&gt; - tanca el llançador ara i extreu-ho a una carpeta real, no una temporal</translation>
     </message>
@@ -7444,12 +7614,12 @@ Si us plau, crea una nova instància abans d&apos;instal·lar el recurs de nou.<
         <translation type="vanished">Paquets de gats</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+257"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+282"/>
         <source>Open %1 Discord guild.</source>
         <translation>Obrir el servidor de Discord de %1.</translation>
     </message>
     <message>
-        <location line="-243"/>
+        <location line="-268"/>
         <source>Open the selected instance&apos;s root folder in a file browser.</source>
         <translation>Obri la carpeta arrel de la instància en l&apos;administrador de fitxers.</translation>
     </message>
@@ -7464,7 +7634,7 @@ Si us plau, crea una nova instància abans d&apos;instal·lar el recurs de nou.<
         <translation>Bloquejar barres d&apos;eines</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-279"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-280"/>
         <source>Confirm Deletion</source>
         <translation>Confirmar eliminació</translation>
     </message>
@@ -7474,27 +7644,27 @@ Si us plau, crea una nova instància abans d&apos;instal·lar el recurs de nou.<
         <translation>E&amp;xportar...</translation>
     </message>
     <message>
-        <location line="+299"/>
+        <location line="+324"/>
         <source>Get help with %1 or Minecraft.</source>
         <translation>Aconseguir ajuda amb %1 o Minecraft.</translation>
     </message>
     <message>
-        <location line="-188"/>
+        <location line="-213"/>
         <source>Open the launcher&apos;s root folder in a file browser.</source>
         <translation>Obre la carpeta arrel del llançador.</translation>
     </message>
     <message>
-        <location line="+82"/>
+        <location line="+96"/>
         <source>Report a Bug or Suggest a Feature</source>
         <translation>Avisa d&apos;un error o fes un suggeriment</translation>
     </message>
     <message>
-        <location line="-348"/>
+        <location line="-362"/>
         <source>&amp;Manage Accounts...</source>
         <translation>&amp;Gestionar comptes...</translation>
     </message>
     <message>
-        <location line="+373"/>
+        <location line="+398"/>
         <source>Open %1 Matrix space.</source>
         <translation>Obre l&apos;espai de Matrix %1.</translation>
     </message>
@@ -7503,27 +7673,27 @@ Si us plau, crea una nova instància abans d&apos;instal·lar el recurs de nou.<
         <translation type="vanished">Obre la wiki de %1</translation>
     </message>
     <message>
-        <location line="-132"/>
+        <location line="-157"/>
         <source>Close the current window</source>
         <translation>Tanca la finestra actual</translation>
     </message>
     <message>
-        <location line="+232"/>
+        <location line="+257"/>
         <source>&amp;Widget Themes</source>
         <translation>Temes d&apos;&amp;enginys</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-298"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-314"/>
         <source>Cannot set empty name.</source>
         <translation>No es pot posar un nom buit.</translation>
     </message>
     <message>
-        <location line="-436"/>
+        <location line="-444"/>
         <source>Warnings</source>
         <translation>Avisos</translation>
     </message>
     <message>
-        <location line="-872"/>
+        <location line="-905"/>
         <source>Show PollyMC</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7533,17 +7703,7 @@ Si us plau, crea una nova instància abans d&apos;instal·lar el recurs de nou.<
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+413"/>
-        <source>The star reminder will appear after the Settings dialog closes.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+17"/>
-        <source>The main window must be visible to show the star reminder.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+104"/>
+        <location line="+563"/>
         <source>Enjoying PollyMC-Continued?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7553,12 +7713,12 @@ Si us plau, crea una nova instància abans d&apos;instal·lar el recurs de nou.<
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="+1"/>
         <source>Star on GitHub</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+533"/>
+        <location line="+539"/>
         <source>Invalid import link: missing &apos;url&apos; parameter.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7582,7 +7742,7 @@ URL:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+324"/>
+        <location line="+329"/>
         <source>Instance not editable</source>
         <translation>Instància no editable</translation>
     </message>
@@ -7592,7 +7752,33 @@ URL:
         <translation>No s&apos;ha pogut desfer l&apos;eliminació de la instància</translation>
     </message>
     <message>
-        <location line="-11"/>
+        <location line="-1067"/>
+        <location line="+150"/>
+        <source>Update on your bug report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-149"/>
+        <source>&quot;%1&quot;: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Updates on your bug reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 of your reports have news.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+147"/>
+        <source>&quot;Sample report&quot;: Seen - the team is looking into it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+905"/>
         <source>Cannot rename group</source>
         <translation>No s&apos;ha pogut canviar el nom del grup</translation>
     </message>
@@ -7602,33 +7788,33 @@ URL:
         <translation>&amp;Sobre %1</translation>
     </message>
     <message>
-        <location line="-528"/>
+        <location line="-553"/>
         <source>&amp;Accounts</source>
         <translation>&amp;Comptes</translation>
     </message>
     <message>
-        <location line="+598"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-494"/>
+        <location line="+623"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
         <source>Accounts</source>
         <translation>Comptes</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+734"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>S&apos;ha afegit %1 a PATH. El pots inicialitzar executant `%2`.</translation>
     </message>
     <message>
-        <location line="+329"/>
+        <location line="+330"/>
         <source>You have now two options: &lt;br/&gt; - change the instance folder in the settings &lt;br/&gt; - move this installation of %1 to a different folder</source>
         <translation>Tens dues opcions: &lt;br/&gt; - canviar la carpeta de la instància a les opcions &lt;br/&gt; - moure aquesta instal·lació de %1 a una carpeta diferent</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-520"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-545"/>
         <source>Add a new instance.</source>
         <translation>Afegir una nova instància.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-284"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-285"/>
         <source>Cannot Delete Running Instance</source>
         <translation>No es pot esborrar una instància en execució</translation>
     </message>
@@ -7637,7 +7823,7 @@ URL:
         <translation type="vanished">Obrir el blog de desenvolupament per llegir més notícies sobre %1.</translation>
     </message>
     <message>
-        <location line="-1471"/>
+        <location line="-1527"/>
         <source>Backspace</source>
         <translation>Retrocés</translation>
     </message>
@@ -7651,7 +7837,7 @@ URL:
         <translation>&amp;Instàncies</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+617"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+649"/>
         <source>Ctrl+%1</source>
         <translation>Ctrl+%1</translation>
     </message>
@@ -7686,22 +7872,22 @@ URL:
         <translation>No s&apos;ha afegit cap compte!</translation>
     </message>
     <message>
-        <location line="+219"/>
+        <location line="+244"/>
         <source>Install to &amp;PATH</source>
         <translation>Instal·lar a &amp;PATH</translation>
     </message>
     <message>
-        <location line="-327"/>
+        <location line="-352"/>
         <source>&amp;Edit...</source>
         <translation>&amp;Editar...</translation>
     </message>
     <message>
-        <location line="-384"/>
+        <location line="-386"/>
         <source>What&apos;s New Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+188"/>
+        <location line="+190"/>
         <source>Status Bar</source>
         <translation>Barra d&apos;estat</translation>
     </message>
@@ -7796,17 +7982,22 @@ URL:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+11"/>
+        <source>&amp;Pin Instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Keep the selected instance at the top of its group.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+8"/>
         <source>Chec&amp;k Instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Look for missing Java, broken mod files or a wrong loader version before launching.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
+        <location line="+11"/>
         <source>Copy &amp;Diagnostics</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7816,7 +8007,19 @@ URL:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+19"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-463"/>
+        <location line="+136"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>See what the team answered to the bug reports you sent from this launcher.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+44"/>
         <source>View information about %1.</source>
         <translation>Veure informació sobre %1.</translation>
     </message>
@@ -7846,12 +8049,12 @@ URL:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+538"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
         <source>Group name</source>
         <translation>Nom del grup</translation>
     </message>
     <message>
-        <location line="+340"/>
+        <location line="+356"/>
         <source>Deleting</source>
         <translation>Esborrant</translation>
     </message>
@@ -7861,19 +8064,19 @@ URL:
         <translation>Veure registres</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-996"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1020"/>
         <source>&amp;Rename group</source>
         <translation>&amp;Canviar nom de grup</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-155"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-180"/>
         <source>Launcher &amp;Root</source>
         <translation>&amp;Arrel del llançador</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-403"/>
-        <location line="+88"/>
-        <location line="+1552"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
+        <location line="+125"/>
+        <location line="+1572"/>
         <source>No instance selected</source>
         <translation>Cap instància seleccionada</translation>
     </message>
@@ -7883,12 +8086,12 @@ URL:
         <translation>Canviar icona</translation>
     </message>
     <message>
-        <location line="+268"/>
+        <location line="+293"/>
         <source>&amp;Discord Guild</source>
         <translation>Servidor de &amp;Discord</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-333"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-334"/>
         <source>Metadata cache clear Failed!
 To clear the metadata cache manually, press Folders -&gt; View Launcher Root Folder, and after closing the launcher delete the folder named &quot;meta&quot;
 </source>
@@ -7902,42 +8105,42 @@ Per fer-ho manualment, ves a Carpetes -&gt; Veure carpeta arrel del llançador, 
         <translation>&amp;Esborrar memòria cau de metadades</translation>
     </message>
     <message>
-        <location line="-562"/>
+        <location line="-587"/>
         <source>F&amp;olders</source>
         <translation>&amp;Carpetes</translation>
     </message>
     <message>
-        <location line="+596"/>
+        <location line="+621"/>
         <source>Folders</source>
         <translation>Carpetes</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+366"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+367"/>
         <source>Your instance folder contains &apos;Rar$&apos; - that means you haven&apos;t extracted the launcher archive!</source>
         <translation>La teva carpeta de la instància conté &apos;Rar$&apos; - això significa que no has extret el llançador encara!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-166"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-191"/>
         <source>&amp;Central Mods</source>
         <translation>Mods &amp;centrals</translation>
     </message>
     <message>
-        <location line="+107"/>
+        <location line="+132"/>
         <source>Sub&amp;reddit</source>
         <translation>Sub&amp;reddit</translation>
     </message>
     <message>
-        <location line="-251"/>
+        <location line="-276"/>
         <source>Delete the selected instance.</source>
         <translation>Eliminar la instància seleccionada.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1274"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Eliminar grup</translation>
     </message>
     <message>
-        <location line="+703"/>
+        <location line="+711"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>No s&apos;han pogut recuperar algunes instàncies i enllaços directes.
@@ -7953,7 +8156,7 @@ Si us plau, revisa la paperera de reciclatge per fer-ho manualment.</translation
         <translation type="vanished">És un gatet suau :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-717"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-725"/>
         <source>&amp;Create instance</source>
         <translation>&amp;Crear instància</translation>
     </message>
@@ -7978,43 +8181,48 @@ Si us plau, revisa la paperera de reciclatge per fer-ho manualment.</translation
         <translation>CurseForge (zip)</translation>
     </message>
     <message>
-        <location line="+221"/>
+        <location line="+155"/>
+        <source>Look for missing Java, broken or conflicting mods, a wrong loader version or too little memory/disk space before launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+91"/>
         <source>Clear cached metadata</source>
         <translation>Esborrar memòria cau de metadades</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-384"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-416"/>
         <source>Total playtime: 0s</source>
         <translation>Temps de joc total: 0s</translation>
     </message>
     <message>
-        <location line="+1704"/>
+        <location line="+1761"/>
         <source>Total playtime: %1</source>
         <translation>Temps de joc total: %1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-315"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-340"/>
         <source>Change the selected instance&apos;s icon.</source>
         <translation>Canviar la icona de la instància seleccionada.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-376"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-377"/>
         <source>Successfully added %1 to PATH</source>
         <translation>S&apos;ha afegit %1 a PATH</translation>
     </message>
     <message>
-        <location line="-270"/>
+        <location line="-286"/>
         <location line="+22"/>
         <source>Enter a new group name.</source>
         <translation>Introdueix el nom del nou grup.</translation>
     </message>
     <message>
-        <location line="+253"/>
+        <location line="+269"/>
         <source>An error occurred while trying to add %1 to PATH</source>
         <translation>Hi ha hagut un error en afegir %1 a PATH</translation>
     </message>
     <message>
-        <location line="-263"/>
+        <location line="-279"/>
         <source>Are you sure you want to delete the group &apos;%1&apos;?</source>
         <translation>De veritat vols esborrar el grup &apos;%1&apos;?</translation>
     </message>
@@ -8046,12 +8254,12 @@ Si us plau, revisa la paperera de reciclatge per fer-ho manualment.</translation
         <translation>S&apos;ha actualitzat la instància a la versió %1.</translation>
     </message>
     <message>
-        <location line="-119"/>
+        <location line="-126"/>
         <source>Abort</source>
         <translation>Cancel·lar</translation>
     </message>
     <message>
-        <location line="-71"/>
+        <location line="-72"/>
         <source>URL:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8070,7 +8278,7 @@ Make sure you also trust the URL.
         <translation>Error</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+8"/>
         <source>Task aborted</source>
         <translation>Tasca avortada</translation>
     </message>
@@ -8080,12 +8288,12 @@ Make sure you also trust the URL.
         <translation>Informació del proveïdor:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+123"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+130"/>
         <source>Update Successful</source>
         <translation>Actualització completada</translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-101"/>
         <source>Cannot update!</source>
         <translation>No es pot actualitzar!</translation>
     </message>
@@ -8100,7 +8308,7 @@ Make sure you also trust the URL.
         <translation>La tasca va ser avortada per l&apos;usuari.</translation>
     </message>
     <message>
-        <location line="+130"/>
+        <location line="+137"/>
         <source>The instance failed to update to pack version %1. Please check launcher logs for more information.</source>
         <translation>No s&apos;ha pogut actualitzar la instància a la versió %1. Si us plau, revisa els registres del llançador per a més detalls.</translation>
     </message>
@@ -8120,23 +8328,23 @@ Make sure you also trust the URL.
         <translation>Registre de canvis</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-133"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-141"/>
         <source>Warnings</source>
         <translation>Avisos</translation>
     </message>
     <message>
-        <location line="+132"/>
+        <location line="+140"/>
         <source>Update Failed</source>
         <translation>Actualització fallida</translation>
     </message>
     <message>
-        <location line="-105"/>
+        <location line="-112"/>
         <source>Failed to search for available versions.</source>
         <translation>No s&apos;ha pogut buscar les versions disponibles.</translation>
     </message>
     <message>
-        <location line="-89"/>
-        <location line="+78"/>
+        <location line="-90"/>
+        <location line="+79"/>
         <source>Update Pack</source>
         <translation>Actualitzar paquet</translation>
     </message>
@@ -8146,7 +8354,7 @@ Make sure you also trust the URL.
         <translation>Aquesta versió no té registre de canvis!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-63"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-64"/>
         <source>Website: &lt;a href=%1&gt;%2&lt;/a&gt;    |    Pack ID: %3    |    Version ID: %4</source>
         <translation>Pàgina web: &lt;a href=%1&gt;%2&lt;/a&gt;    |    Identificador del paquet: %3    |    Identificador de la versió: %4</translation>
     </message>
@@ -8171,7 +8379,7 @@ Make sure you also trust the URL.
         <translation>Actualitzar a la versió:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+77"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+78"/>
         <source>Failed to request changelog data for this modpack.</source>
         <translation>No s&apos;ha pogut reunir el registre de canvis per a aquest paquet de mods.</translation>
     </message>
@@ -8179,7 +8387,7 @@ Make sure you also trust the URL.
 <context>
     <name>Meta::BaseEntityLoadTask</name>
     <message>
-        <location filename="../launcher/meta/BaseEntity.cpp" line="+122"/>
+        <location filename="../launcher/meta/BaseEntity.cpp" line="+124"/>
         <source>Loading local file</source>
         <translation>Localitzant fitxer local</translation>
     </message>
@@ -8227,7 +8435,7 @@ Make sure you also trust the URL.
 <context>
     <name>MinecraftInstance</name>
     <message>
-        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1030"/>
+        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1042"/>
         <source>&lt;ACCESS TOKEN&gt;</source>
         <translation>&lt;CLAU D&apos;ACCÉS&gt;</translation>
     </message>
@@ -8237,12 +8445,12 @@ Make sure you also trust the URL.
         <translation>, jugat per darrer cop el %1 durant %2</translation>
     </message>
     <message>
-        <location line="-765"/>
+        <location line="-773"/>
         <source>Profilers</source>
         <translation>Perfiladors</translation>
     </message>
     <message>
-        <location line="+749"/>
+        <location line="+757"/>
         <source>broken</source>
         <translation>trencat</translation>
     </message>
@@ -8252,12 +8460,12 @@ Make sure you also trust the URL.
         <translation>, jugat en total durant %1</translation>
     </message>
     <message>
-        <location line="-783"/>
+        <location line="-791"/>
         <source>Launch &amp;Offline</source>
         <translation>Llança fora de &amp;línia</translation>
     </message>
     <message>
-        <location line="+723"/>
+        <location line="+731"/>
         <source>&lt;PROFILE ID&gt;</source>
         <translation>&lt;PROFILE ID&gt;</translation>
     </message>
@@ -8267,7 +8475,7 @@ Make sure you also trust the URL.
         <translation>&lt;SESSION ID&gt;</translation>
     </message>
     <message>
-        <location line="-720"/>
+        <location line="-728"/>
         <source>&amp;Launch</source>
         <translation>&amp;Llançar</translation>
     </message>
@@ -8277,22 +8485,22 @@ Make sure you also trust the URL.
         <translation>&amp;Sense analitzador</translation>
     </message>
     <message>
-        <location line="+750"/>
+        <location line="+758"/>
         <source>Minecraft %1</source>
         <translation>Minecraft %1</translation>
     </message>
     <message>
-        <location line="-770"/>
+        <location line="-778"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location line="+787"/>
+        <location line="+795"/>
         <source>, has crashed.</source>
         <translation>, ha fallat.</translation>
     </message>
     <message>
-        <location line="-785"/>
+        <location line="-793"/>
         <source>Ctrl+Alt+O</source>
         <translation>Ctrl+Alt+O</translation>
     </message>
@@ -8417,7 +8625,7 @@ Make sure you also trust the URL.
         <translation>Mida de la &amp;finestra:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+344"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+340"/>
         <source>Select Global Data Packs Folder</source>
         <translation>Escull la carpeta global de paquets de dades</translation>
     </message>
@@ -8499,7 +8707,7 @@ Probablement, hauràs de canviar la ruta. Si us plau, comprova-ho a la web del m
         <translation>Obrir configuració &amp;global</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-497"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-493"/>
         <source>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: The maximized option is not fully supported on this Minecraft version.&lt;/span&gt;</source>
         <translation>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Avís&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: L&apos;opció de maximització no és completament compatible amb aquesta versió de Minecraft.&lt;/span&gt;</translation>
     </message>
@@ -8711,6 +8919,59 @@ Probablement, hauràs de canviar la ruta. Si us plau, comprova-ho a la web del m
     </message>
 </context>
 <context>
+    <name>ModConflictChecker</name>
+    <message>
+        <location filename="../launcher/minecraft/mod/ModConflictChecker.cpp" line="+88"/>
+        <source>unknown version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Duplicate mod: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These files all provide the mod id &quot;%1&quot;, and the game will not start with more than one of them:
+%2
+Keep only one (usually the newest) and delete or disable the others.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>%1 conflicts with %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 (%2) says it is incompatible with %3 (%4), and both are enabled.
+Disable or remove one of them.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
+        <source>Disabled dependency: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 needs the mod &quot;%2&quot;, which is installed (%3) but disabled.
+Enable it to avoid a crash on startup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Possibly missing dependency: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 needs a mod with the id &quot;%2&quot;, but none was found in the mods folder.
+If the game starts fine it is probably bundled inside another mod; otherwise download it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ModFilterWidget</name>
     <message>
         <location filename="../launcher/ui/widgets/ModFilterWidget.ui" line="+284"/>
@@ -8851,7 +9112,7 @@ Probablement, hauràs de canviar la ruta. Si us plau, comprova-ho a la web del m
 <context>
     <name>ModFolderModel</name>
     <message>
-        <location filename="../launcher/minecraft/mod/ModFolderModel.cpp" line="+100"/>
+        <location filename="../launcher/minecraft/mod/ModFolderModel.cpp" line="+101"/>
         <source>File</source>
         <translation>Fitxer</translation>
     </message>
@@ -8886,7 +9147,7 @@ Probablement, hauràs de canviar la ruta. Si us plau, comprova-ho a la web del m
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+224"/>
+        <location line="+247"/>
         <source>Confirm toggle</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8971,7 +9232,7 @@ Ignoring them may break the game.</source>
         <translation>Desactivar només els seleccionats</translation>
     </message>
     <message>
-        <location line="-387"/>
+        <location line="-410"/>
         <source>Required By</source>
         <translation>Requerit per</translation>
     </message>
@@ -9045,7 +9306,7 @@ Ignoring them may break the game.</source>
         <translation>Proveïdor</translation>
     </message>
     <message>
-        <location line="+382"/>
+        <location line="+405"/>
         <source>Only Enable Selected</source>
         <translation>Activar només els seleccionats</translation>
     </message>
@@ -9060,7 +9321,7 @@ Ignoring them may break the game.</source>
         <translation>Desactivar els requerits</translation>
     </message>
     <message>
-        <location line="-250"/>
+        <location line="-273"/>
         <source>The supported minecraft versions.</source>
         <translation>Les versions compatibles de Minecraft.</translation>
     </message>
@@ -9090,7 +9351,7 @@ Ignoring them may break the game.</source>
         <translation>L&apos;estat del mod.</translation>
     </message>
     <message>
-        <location line="+244"/>
+        <location line="+267"/>
         <source>Confirm disable</source>
         <translation>Confirmar desactivació</translation>
     </message>
@@ -9104,33 +9365,34 @@ Ignoring them may break the game.</source>
     </message>
     <message>
         <location filename="../launcher/ui/pages/instance/ModFolderPage.cpp" line="+190"/>
-        <location line="+90"/>
+        <location line="+104"/>
         <source>Download stopped by user.</source>
         <translation>Baixada aturada per l&apos;usuari.</translation>
     </message>
     <message>
-        <location line="-70"/>
-        <location line="+86"/>
+        <location line="-83"/>
+        <location line="+99"/>
         <source>Abort</source>
         <translation>Cancel·lar</translation>
     </message>
     <message>
-        <location line="-110"/>
-        <location line="+45"/>
-        <location line="+45"/>
-        <location line="+60"/>
+        <location line="-124"/>
+        <location line="+46"/>
+        <location line="+58"/>
+        <location line="+61"/>
+        <location line="+101"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location line="-191"/>
+        <location line="-306"/>
         <source>The mods you are trying to delete are required by %1 mods.
 Do you want to disable them?</source>
         <translation>Els mods que estàs intentant esborrar són necessaris per a %1 mods.
 Els vols desactivar?</translation>
     </message>
     <message>
-        <location line="-59"/>
+        <location line="-60"/>
         <source>Check for Updates</source>
         <translation>Buscar actualitzacions</translation>
     </message>
@@ -9140,40 +9402,40 @@ Els vols desactivar?</translation>
         <translation>Confirmar Eliminació</translation>
     </message>
     <message>
-        <location line="+133"/>
+        <location line="+143"/>
         <source>All mods are up-to-date! :)</source>
         <translation>Tots els mods estan actualitzats! :)</translation>
     </message>
     <message>
-        <location line="-28"/>
+        <location line="-37"/>
         <source>Confirm Update</source>
         <translation>Confirmar actualització</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+34"/>
         <source>&apos;%1&apos; is up-to-date! :)</source>
         <translation>&apos;%1&apos; està actualitzat! :)</translation>
     </message>
     <message>
-        <location line="-159"/>
+        <location line="-169"/>
         <source>Change a mod&apos;s version.</source>
         <translation>Canvia la versió d&apos;un mod.</translation>
     </message>
     <message>
         <location line="+88"/>
-        <location line="+67"/>
-        <location line="+23"/>
+        <location line="+77"/>
+        <location line="+27"/>
         <source>Aborted</source>
         <translation>Avortat</translation>
     </message>
     <message>
-        <location line="-84"/>
-        <location line="+90"/>
+        <location line="-98"/>
+        <location line="+104"/>
         <source>Warnings</source>
         <translation>Avisos</translation>
     </message>
     <message>
-        <location line="-49"/>
+        <location line="-62"/>
         <source>Updating mods while the game is running may cause mod duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -9182,24 +9444,52 @@ Pot ser que els fitxers antics no s&apos;esborrin, perquè estan en ús.
 De veritat que vols continuar?</translation>
     </message>
     <message>
-        <location line="+74"/>
+        <location line="+20"/>
+        <source>There are no mods to check for updates.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+23"/>
+        <source>No updates were found, but %n mod(s) could not be checked.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+45"/>
         <source>You are about to remove the metadata for %1 mods.
 Are you sure?</source>
         <translation>Estàs a punt d&apos;esborrar les metadades de %1 mods.
 Vols continuar?</translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="+109"/>
+        <source>Missing Mod Loader</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>You need to install a compatible mod loader before installing mods. Would you like to do so?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>No mod loader was installed. Please try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-378"/>
         <source>Download mods from online mod platforms</source>
         <translation>Descarregar mods de plataformes de mods en línia</translation>
     </message>
     <message>
-        <location line="+192"/>
+        <location line="+202"/>
         <source>All selected mods are up-to-date! :)</source>
         <translation>Tots els mods escollits estan actualitzats! :)</translation>
     </message>
     <message>
-        <location line="-193"/>
+        <location line="-203"/>
         <location line="+111"/>
         <source>Download Mods</source>
         <translation>Descarregar mods</translation>
@@ -9210,45 +9500,46 @@ Vols continuar?</translation>
         <translation>Exporta les metadades del mod a text.</translation>
     </message>
     <message>
-        <location line="+202"/>
+        <location line="+217"/>
         <source>Confirm Removal</source>
         <translation>Confirmar Eliminació</translation>
     </message>
     <message>
-        <location line="-79"/>
-        <location line="+105"/>
+        <location line="-93"/>
+        <location line="+119"/>
         <source>Mod updates are unavailable when metadata is disabled!</source>
         <translation>L&apos;actualització de mods no estan disponibles si les metadades estan desactivades!</translation>
     </message>
     <message>
-        <location line="-256"/>
+        <location line="-271"/>
         <source>Try to check or update all selected mods (all mods if none are selected)</source>
         <translation>Buscar actualitzacions dels mods escollits (tots si no s&apos;ha escollit cap)</translation>
     </message>
     <message>
-        <location line="+189"/>
+        <location line="+178"/>
+        <location line="+25"/>
         <source>Update checker</source>
         <translation>Comprovador d&apos;actualitzacions</translation>
     </message>
     <message>
-        <location line="-12"/>
+        <location line="-16"/>
         <source>The mod updater was aborted!</source>
         <translation>L&apos;actualitzador de mods s&apos;ha aturat!</translation>
     </message>
     <message>
-        <location line="-125"/>
+        <location line="-135"/>
         <source>If you remove mods while the game is running it may crash your game.
 Are you sure you want to do this?</source>
         <translation>Esborrar mods mentre el joc s&apos;executa, pot provocar aturades inesperades.
 De veritat que vols continuar?</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
         <source>Confirm Disable</source>
         <translation>Confirmar la desactivació</translation>
     </message>
     <message>
-        <location line="-38"/>
+        <location line="-39"/>
         <source>View the homepages of all selected mods.</source>
         <translation>Veure la pàgina principal de tots els mods escollits.</translation>
     </message>
@@ -9292,7 +9583,7 @@ De veritat que vols continuar?</translation>
 <context>
     <name>Modrinth::ModpackListModel</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/modrinth/ModrinthModel.cpp" line="+324"/>
+        <location filename="../launcher/ui/pages/modplatform/modrinth/ModrinthModel.cpp" line="+329"/>
         <location line="+3"/>
         <source>Error</source>
         <translation>Error</translation>
@@ -9319,32 +9610,32 @@ Si us plau, actualitza %1!</translation>
         <translation>Preparant recursos per a Modrinth...</translation>
     </message>
     <message>
-        <location line="+67"/>
+        <location line="+68"/>
         <source>Parsing the API response from Modrinth...</source>
         <translation>Analitzant la resposta de l&apos;API de Modrinth...</translation>
     </message>
     <message>
-        <location line="+106"/>
+        <location line="+109"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version.</source>
         <translation>No s&apos;ha trobat cap versió vàlida per a aquest recurs. Probablement no estigui disponible per a la versió actual del joc.</translation>
     </message>
     <message>
-        <location line="-137"/>
+        <location line="-140"/>
         <source>Waiting for the API response from Modrinth...</source>
         <translation>Esperant la resposta de l&apos;API de Modrinth...</translation>
     </message>
     <message>
-        <location line="+98"/>
+        <location line="+99"/>
         <source>Unknown</source>
         <translation>Desconegut</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+38"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version / mod loader.</source>
         <translation>No s&apos;ha trobat cap versió vàlida per a aquest recurs. Probablement no estigui disponible per a la versió actual del joc / carregador de mods.</translation>
     </message>
     <message>
-        <location line="-38"/>
+        <location line="-40"/>
         <source>Not installed</source>
         <translation>No està instal·lat</translation>
     </message>
@@ -9352,17 +9643,17 @@ Si us plau, actualitza %1!</translation>
 <context>
     <name>ModrinthCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+292"/>
+        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+328"/>
         <source>Downloading mods...</source>
         <translation>Descarregant mods...</translation>
     </message>
     <message>
-        <location line="-61"/>
+        <location line="-71"/>
         <source>Mod Download Modrinth</source>
         <translation>Descarregar mod Modrinth</translation>
     </message>
     <message>
-        <location line="+172"/>
+        <location line="+182"/>
         <source>Download URL for %1 is not a correctly formatted URL</source>
         <translation>L&apos;enllaç de descàrrega de %1 no està en un format correcte</translation>
     </message>
@@ -9371,7 +9662,7 @@ Si us plau, actualitza %1!</translation>
         <translation type="vanished">Eliminant fitxers conflictius antics...</translation>
     </message>
     <message>
-        <location line="-209"/>
+        <location line="-235"/>
         <source>Could not rename the client overrides folder:
 </source>
         <translation>No s&apos;ha pogut canviar el nom de la carpeta de substitucions del client:
@@ -9382,47 +9673,47 @@ Si us plau, actualitza %1!</translation>
         <translation type="vanished">No s&apos;han pogut eliminar els arxius conflictius antics.</translation>
     </message>
     <message>
-        <location line="-57"/>
+        <location line="-58"/>
         <source>We couldn&apos;t find a suitable index file for the older version. This may cause some of the files to be duplicated. Do you want to continue?</source>
         <translation>No hem pogut trobar un fitxer d&apos;index apropiat per a la versió anterior. Això pot causar la duplicació d&apos;alguns fitxers. Vols continuar?</translation>
     </message>
     <message>
-        <location line="+120"/>
+        <location line="+137"/>
         <source>The file &apos;%1&apos; is missing a download link. This is invalid in the pack format.</source>
         <translation>Falta l&apos;enllaç de descàrrega del fitxer &apos;%1&apos;. Això és invàlid en el format del paquet.</translation>
     </message>
     <message>
-        <location line="+30"/>
+        <location line="+40"/>
         <location line="+24"/>
         <source>%1 out of %2 complete</source>
         <translation>%1 de %2 completat</translation>
     </message>
     <message>
-        <location line="-175"/>
+        <location line="-202"/>
         <source>No index file.</source>
         <translation>No n&apos;hi ha fitxer d&apos;índex.</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+46"/>
         <source>Could not rename the overrides folder:
 </source>
         <translation>No hem pogut canviar el nom de la carpeta de substitucions:
 </translation>
     </message>
     <message>
-        <location line="+282"/>
+        <location line="+310"/>
         <source>Could not understand pack index:
 </source>
         <translation>No s&apos;ha pogut processar l&apos;índex del paquet:
 </translation>
     </message>
     <message>
-        <location line="-397"/>
+        <location line="-427"/>
         <source> (version %1)</source>
         <translation> (versió %1)</translation>
     </message>
     <message>
-        <location line="+177"/>
+        <location line="+195"/>
         <source>One of the files has a path that leads to an arbitrary location (%1). This is a security risk and isn&apos;t allowed.</source>
         <translation>Un dels fitxers té una ruta que porta a una posició arbitrària (%1). Això és un problema de seguretat i no està permès.</translation>
     </message>
@@ -9430,7 +9721,7 @@ Si us plau, actualitza %1!</translation>
 <context>
     <name>ModrinthManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+62"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+69"/>
         <source>Fetching changelogs...</source>
         <translation>Obtenint registres de canvis...</translation>
     </message>
@@ -9440,12 +9731,12 @@ Si us plau, actualitza %1!</translation>
         <translation>Escollir fitxer d&apos;actualització</translation>
     </message>
     <message>
-        <location line="-81"/>
+        <location line="-86"/>
         <source>%1 (Current)</source>
         <translation>%1 (Actual)</translation>
     </message>
     <message>
-        <location line="+81"/>
+        <location line="+86"/>
         <source>Modrinth pack</source>
         <translation>Pack de Modrinth</translation>
     </message>
@@ -9595,6 +9886,51 @@ Si us plau, actualitza %1!</translation>
     </message>
 </context>
 <context>
+    <name>MyReportsDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+151"/>
+        <location line="+4"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Bug reports and suggestions you sent from this launcher, and what the team answered.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>No reports yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>When you send a bug report or suggestion from this launcher, it shows up here, and you will be told when the team answers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <location line="+25"/>
+        <source>Check for updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-24"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+25"/>
+        <source>Last checked: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>Checking…</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Net::NetRequest</name>
     <message>
         <location filename="../launcher/net/NetRequest.cpp" line="+159"/>
@@ -9653,7 +9989,7 @@ Si us plau, actualitza %1!</translation>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+145"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9802,12 +10138,12 @@ Si us plau, actualitza %1!</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/NewInstanceDialog.ui" line="+17"/>
-        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="+78"/>
+        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="+79"/>
         <source>New Instance</source>
         <translation>Nova instància</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="-112"/>
+        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="-113"/>
         <source>No group</source>
         <translation>Sense grup</translation>
     </message>
@@ -9946,24 +10282,24 @@ Si us plau, actualitza %1!</translation>
         <translation>&amp;Buscar</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+483"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+486"/>
         <source>Clear</source>
         <translation>Esborra</translation>
     </message>
     <message>
-        <location line="-222"/>
-        <location line="+135"/>
+        <location line="-225"/>
+        <location line="+138"/>
         <location line="+41"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location line="-252"/>
+        <location line="-255"/>
         <source>Current logs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+299"/>
+        <location line="+302"/>
         <source>Clear the log</source>
         <translation>Buida el registre</translation>
     </message>
@@ -9999,8 +10335,8 @@ Si us plau, actualitza %1!</translation>
         <translation>Llisca fins a baix del tot</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="-240"/>
-        <location line="+218"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="-243"/>
+        <location line="+221"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>No es pot mostrar aquest registre, ja que sobrepassa les %1 línies.</translation>
     </message>
@@ -10037,7 +10373,7 @@ Si us plau, actualitza %1!</translation>
         <translation>Confirmar eliminació</translation>
     </message>
     <message>
-        <location line="-112"/>
+        <location line="-115"/>
         <source>The file (%1) is too big. You may want to open it in a viewer optimized for large files.</source>
         <translation>L&apos;arxiu (%1) és massa gran. Hauries d&apos;obrir-lo en un visor optimitzat per a fitxers grans.</translation>
     </message>
@@ -10047,7 +10383,7 @@ Si us plau, actualitza %1!</translation>
         <translation>Copiar el registre complet al porta-retalls</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+127"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+130"/>
         <source>Unable to delete %1: %2</source>
         <translation>No s&apos;ha pogut eliminar %1: %2</translation>
     </message>
@@ -10106,7 +10442,7 @@ Vols continuar?</translation>
 %1</translation>
     </message>
     <message>
-        <location line="-151"/>
+        <location line="-154"/>
         <source>Unable to open %1 for reading: %2</source>
         <translation>No s&apos;ha pogut %1 per a llegir: %2</translation>
     </message>
@@ -10220,19 +10556,19 @@ Vols continuar?</translation>
         <translation type="obsolete">Ajuda</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+383"/>
-        <location line="+42"/>
+        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+388"/>
+        <location line="+44"/>
         <source>Search settings…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-41"/>
-        <location line="+42"/>
+        <location line="-43"/>
+        <location line="+44"/>
         <source>Search all settings (Ctrl+F). Several words narrow the results down.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+296"/>
+        <location line="+297"/>
         <source>No settings match &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10490,7 +10826,7 @@ StdErr: %2</translation>
 <context>
     <name>PollyMCUpdaterApp</name>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="+99"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="+100"/>
         <source>Use a custom path as application root (use &apos;.&apos; for current directory).</source>
         <translation type="unfinished">Utilitzar una ruta personalitzada com a l&apos;arrel de l&apos;aplicació (posa &apos;.&apos; per indicar la carpeta actual).</translation>
     </message>
@@ -10835,19 +11171,13 @@ Updater log: %7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
-        <location line="+4"/>
-        <source>Failed to Check Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-4"/>
-        <source>Failed to launch child process to read version.</source>
+        <location line="+23"/>
+        <source>Failed to launch child process to read version, using the built-in version instead.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+4"/>
-        <source>Child launcher process failed.</source>
+        <source>Child launcher process did not finish in time, using the built-in version instead.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -11399,7 +11729,7 @@ Elegeix un nom amb cura:</translation>
         <translation type="vanished">No reconegut</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1173"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
         <source>%1 (in use)</source>
         <translation>%1 (en ús)</translation>
     </message>
@@ -11584,7 +11914,7 @@ Proceed with truncation?</source>
         <translation>Ordena per rellevància</translation>
     </message>
     <message>
-        <location filename="../launcher/meta/BaseEntity.cpp" line="+34"/>
+        <location filename="../launcher/meta/BaseEntity.cpp" line="+36"/>
         <source>Download of meta file %1</source>
         <translation>Descàrrega de l&apos;arxiu meta %1</translation>
     </message>
@@ -12037,17 +12367,29 @@ Aquest missatge es mostrarà fins que ho elimineu dels arguments de la JVM.</tra
     </message>
     <message>
         <location filename="../launcher/InstanceDirUpdate.cpp" line="+64"/>
-        <location line="+33"/>
+        <location line="+40"/>
         <source>Cannot rename instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-32"/>
+        <location line="-39"/>
         <source>New instance root (%1) already exists. &lt;br /&gt;Only the metadata will be renamed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+5"/>
+        <source>Cannot rename instance folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The instance folder cannot be renamed while the instance is running.
+
+Only the instance name will be changed. The folder will keep its current name.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>&amp;Remember my choice</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12267,7 +12609,7 @@ Would you like to remove those existing saves as part of this update?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/modplatform/ModIndex.h" line="+143"/>
+        <location filename="../launcher/modplatform/ModIndex.h" line="+145"/>
         <source> for %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12282,7 +12624,7 @@ Would you like to remove those existing saves as part of this update?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1040"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1049"/>
         <source>An auto-updater for PollyMC-Continued</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12326,16 +12668,146 @@ Would you like to remove those existing saves as part of this update?</source>
         <source>Send this error to the PollyMC developers</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../launcher/BugReportTracker.cpp" line="+164"/>
+        <source>Waiting for a dev to check it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Seen - the team is looking into it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The team needs more information - please reach out on Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Fixed - it will be in the next update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-193"/>
+        <source>Fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Fixed in version %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+2"/>
+        <source>Won&apos;t be fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Duplicate of another report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+4"/>
+        <source>Not a bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+1"/>
+        <source>Updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Crash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Suggestion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Other</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-13"/>
+        <source>Waiting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>In review</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Needs info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Duplicate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>NEW</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Sent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>(no title)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>%1  ·  ID %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <location line="+8"/>
+        <source>Copy ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-7"/>
+        <source>Give this ID to the team if you contact them about this report.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Copied!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Resource</name>
     <message>
-        <location filename="../launcher/minecraft/mod/Resource.cpp" line="+63"/>
+        <location filename="../launcher/minecraft/mod/Resource.cpp" line="+64"/>
         <source>Unknown</source>
         <translation>Desconegut</translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="+50"/>
         <source>Not marked as compatible with the instance&apos;s game version.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12343,7 +12815,7 @@ Would you like to remove those existing saves as part of this update?</source>
 <context>
     <name>ResourceDownload::DataPackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+181"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+196"/>
         <source>data packs</source>
         <extracomment>String that gets appended to the data pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation type="unfinished"></translation>
@@ -12367,7 +12839,7 @@ Would you like to remove those existing saves as part of this update?</source>
 <context>
     <name>ResourceDownload::ModDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-69"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-81"/>
         <source>mods</source>
         <extracomment>String that gets appended to the mod download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation type="unfinished"></translation>
@@ -12391,7 +12863,7 @@ Would you like to remove those existing saves as part of this update?</source>
 <context>
     <name>ResourceDownload::ResourceDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="+189"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="+193"/>
         <source>Abort</source>
         <translation>Cancel·lar</translation>
     </message>
@@ -12401,7 +12873,7 @@ Would you like to remove those existing saves as part of this update?</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location line="-97"/>
+        <location line="-99"/>
         <source>Review and confirm</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12411,7 +12883,7 @@ Would you like to remove those existing saves as part of this update?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>Confirmation Needed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12422,7 +12894,7 @@ Are you sure you want to close this dialog?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+52"/>
         <source>Opens a new popup to review your selected %1 and confirm your selection. Shortcut: Ctrl+Return</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12432,12 +12904,12 @@ Are you sure you want to close this dialog?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+243"/>
+        <location line="+288"/>
         <source>Change %1 version</source>
         <translation>Canvia a la versió %1</translation>
     </message>
     <message>
-        <location line="-220"/>
+        <location line="-265"/>
         <source>Checking for dependencies...</source>
         <translation>Buscant dependències...</translation>
     </message>
@@ -12447,7 +12919,7 @@ Are you sure you want to close this dialog?</source>
         <translation>Avisos</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-50"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-53"/>
         <source>resources</source>
         <extracomment>String that gets appended to the download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation type="unfinished"></translation>
@@ -12461,35 +12933,35 @@ Are you sure you want to close this dialog?</source>
 <context>
     <name>ResourceDownload::ResourceModel</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourceModel.cpp" line="+221"/>
-        <location line="+20"/>
-        <location line="+180"/>
-        <location line="+4"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourceModel.cpp" line="+239"/>
+        <location line="+24"/>
+        <location line="+190"/>
+        <location line="+7"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location line="-203"/>
+        <location line="-220"/>
         <source>A network error occurred. Could not load project versions: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+23"/>
         <source>A network error occurred. Could not load project info: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>The request was aborted for an unknown reason</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+175"/>
+        <location line="+184"/>
         <source>A network error occurred. Could not load mods.</source>
         <translation>Hi ha hagut un error a la xarxa. No s&apos;han pogut carregar els mods.</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+8"/>
         <source>API version too old!
 Please update %1!</source>
         <translation>La versió de l&apos;API és molt vella!
@@ -12499,7 +12971,7 @@ Si us plau, actualitza %1!</translation>
 <context>
     <name>ResourceDownload::ResourcePackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+66"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+72"/>
         <source>resource packs</source>
         <extracomment>String that gets appended to the resource pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation type="unfinished"></translation>
@@ -12523,12 +12995,12 @@ Si us plau, actualitza %1!</translation>
 <context>
     <name>ResourceDownload::ResourcePage</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+219"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+233"/>
         <source> by </source>
         <translation> per </translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+58"/>
         <source>No version available for the selected pack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12538,7 +13010,7 @@ Si us plau, actualitza %1!</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source> [installed]</source>
         <comment>Mod version select</comment>
         <translation type="unfinished"></translation>
@@ -12554,44 +13026,44 @@ Si us plau, actualitza %1!</translation>
         <translation>No s&apos;han trobat versions vàlides.</translation>
     </message>
     <message>
-        <location line="-199"/>
+        <location line="-218"/>
         <source>Search for %1...</source>
         <extracomment>String in the search bar of the mod downloading dialog</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+161"/>
+        <location line="+178"/>
         <source>Select %1 for download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-46"/>
+        <location line="-50"/>
         <source>Donate information: </source>
         <translation>Donar informació: </translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+20"/>
         <source>Wiki: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Wiki: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+6"/>
         <source>Discord: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Discord: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+312"/>
+        <location line="+329"/>
         <source>The resource was not found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-318"/>
+        <location line="-338"/>
         <source>Issues: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Problemes: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+185"/>
+        <location line="+201"/>
         <source>No versions available</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12602,7 +13074,7 @@ The author likely blocked third-party launchers.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+107"/>
+        <location line="+111"/>
         <source>Reinstall</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12617,17 +13089,17 @@ The author likely blocked third-party launchers.</source>
         <translation>Cancel·lar</translation>
     </message>
     <message>
-        <location line="-209"/>
+        <location line="-222"/>
         <source>Loading versions...</source>
         <translation>Carregant versions...</translation>
     </message>
     <message>
-        <location line="-87"/>
+        <location line="-92"/>
         <source>Source code: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Codi font: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="-26"/>
+        <location line="-28"/>
         <source>&lt;b&gt;This project has been archived. It will not receive any further updates unless the author decides to unarchive the project.&lt;/b&gt;</source>
         <translation>&lt;b&gt;S&apos;ha arxivat aquest projecte. No rebrà cap actualització més mentre l&apos;autor no decideixi desarxivar-lo.&lt;/b&gt;</translation>
     </message>
@@ -12637,7 +13109,7 @@ The author likely blocked third-party launchers.</source>
         <translation>Enllaços externs:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.h" line="+47"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.h" line="+46"/>
         <source>resources</source>
         <extracomment>The plural version of &apos;resource&apos;</extracomment>
         <translation type="unfinished"></translation>
@@ -12652,7 +13124,7 @@ The author likely blocked third-party launchers.</source>
 <context>
     <name>ResourceDownload::ShaderPackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+34"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+40"/>
         <source>shader packs</source>
         <extracomment>String that gets appended to the shader pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation type="unfinished"></translation>
@@ -12676,7 +13148,7 @@ The author likely blocked third-party launchers.</source>
 <context>
     <name>ResourceDownload::TexturePackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-17"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-20"/>
         <source>texture packs</source>
         <extracomment>String that gets appended to the texture pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation type="unfinished"></translation>
@@ -12700,7 +13172,7 @@ The author likely blocked third-party launchers.</source>
 <context>
     <name>ResourceDownloadTask</name>
     <message>
-        <location filename="../launcher/ResourceDownloadTask.cpp" line="+45"/>
+        <location filename="../launcher/ResourceDownloadTask.cpp" line="+74"/>
         <source>Resource download</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12711,7 +13183,7 @@ The author likely blocked third-party launchers.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+56"/>
         <source>Failed to rename shader config from &apos;%1&apos; to &apos;%2&apos;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12719,7 +13191,7 @@ The author likely blocked third-party launchers.</source>
 <context>
     <name>ResourceFolderModel</name>
     <message>
-        <location filename="../launcher/minecraft/mod/ResourceFolderModel.h" line="+244"/>
+        <location filename="../launcher/minecraft/mod/ResourceFolderModel.h" line="+252"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
@@ -12748,7 +13220,7 @@ The author likely blocked third-party launchers.</source>
         <translation>Proveïdor</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/mod/ResourceFolderModel.cpp" line="+271"/>
+        <location filename="../launcher/minecraft/mod/ResourceFolderModel.cpp" line="+296"/>
         <source>Confirm toggle</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12759,7 +13231,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+280"/>
+        <location line="+287"/>
         <source>
 Warning: This resource is symbolically linked from elsewhere. Editing it will also change the original.
 Canonical Path: %1</source>
@@ -12888,27 +13360,27 @@ Precaució: Aquest recurs està enllaçat rígidament en una altra ubicació. Ca
 <context>
     <name>ResourcePackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="+103"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="+104"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>Baixada aturada per l&apos;usuari.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Cancel·lar</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location line="-189"/>
+        <location line="-198"/>
         <source>Download Packs</source>
         <translation>Baixar paquets</translation>
     </message>
@@ -12923,13 +13395,13 @@ Precaució: Aquest recurs està enllaçat rígidament en una altra ubicació. Ca
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+83"/>
-        <location line="+99"/>
+        <location line="+87"/>
+        <location line="+104"/>
         <source>Resource pack updates are unavailable when metadata is disabled!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-99"/>
         <source>Confirm Update</source>
         <translation>Confirmar actualització</translation>
     </message>
@@ -12941,7 +13413,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+22"/>
         <source>The resource pack updater was aborted!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12951,26 +13423,26 @@ Are you sure you want to do this?</source>
         <translation>&apos;%1&apos; està actualitzat! :)</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+51"/>
         <source>You are about to remove the metadata for %1 resource packs.
 Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-149"/>
+        <location line="-156"/>
         <source>Change a mod&apos;s version.</source>
         <translation>Canvia la versió d&apos;un mod.</translation>
     </message>
     <message>
-        <location line="+34"/>
-        <location line="+61"/>
+        <location line="+35"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Avortat</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Avisos</translation>
     </message>
@@ -12985,12 +13457,12 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>Confirm Removal</source>
         <translation>Confirmar Eliminació</translation>
     </message>
     <message>
-        <location line="-41"/>
+        <location line="-42"/>
         <source>Update checker</source>
         <translation>Comprovador d&apos;actualitzacions</translation>
     </message>
@@ -13016,38 +13488,38 @@ Are you sure?</source>
 <context>
     <name>ResourceUpdateDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+183"/>
+        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+186"/>
         <source>Failed to check for updates</source>
         <translation>No s&apos;ha pogut buscar actualitzacions</translation>
     </message>
     <message>
         <location line="-57"/>
         <location line="+98"/>
-        <location line="+160"/>
+        <location line="+169"/>
         <source>Abort</source>
         <translation>Cancel·lar</translation>
     </message>
     <message>
-        <location line="-269"/>
+        <location line="-278"/>
         <location line="+95"/>
-        <location line="+146"/>
-        <location line="+16"/>
-        <location line="+56"/>
+        <location line="+153"/>
+        <location line="+17"/>
+        <location line="+58"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location line="-347"/>
+        <location line="-358"/>
         <source>Metadata generation failed</source>
         <translation>No s&apos;han pogut crear les metadades</translation>
     </message>
     <message>
-        <location line="+92"/>
+        <location line="+91"/>
         <source>Mod name: %1</source>
         <translation>Nom del mod: %1</translation>
     </message>
     <message>
-        <location line="+296"/>
+        <location line="+311"/>
         <source>New Version Type: %1</source>
         <translation>Estat de la nova versió: %1</translation>
     </message>
@@ -13062,7 +13534,7 @@ Are you sure?</source>
         <translation>Nova versió: %1</translation>
     </message>
     <message>
-        <location line="-239"/>
+        <location line="-252"/>
         <source>Checking for dependencies...</source>
         <translation>Buscant dependències...</translation>
     </message>
@@ -13073,22 +13545,22 @@ Are you sure?</source>
         <translation>Avisos</translation>
     </message>
     <message>
-        <location line="+219"/>
+        <location line="+229"/>
         <source>Couldn&apos;t find a valid version on the selected mod provider(s)</source>
         <translation>No s&apos;ha trobat cap versió vàlida al(s) proveïdor(s) escollit(s)</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+25"/>
         <source>Old version: %1</source>
         <translation>Versió anterior: %1</translation>
     </message>
     <message>
-        <location line="-285"/>
+        <location line="-300"/>
         <source>Reason: %1</source>
         <translation>Raó: %1</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Possible solution: Getting the latest version manually:&lt;br&gt;%1&lt;br&gt;</source>
         <extracomment>%1 is the link to download it manually</extracomment>
         <translation>Possible solució: descarregar la darrera versió manualment:&lt;br&gt;%1&lt;br&gt;</translation>
@@ -13099,12 +13571,12 @@ Are you sure?</source>
         <translation>Buscant actualitzacions</translation>
     </message>
     <message>
-        <location line="+186"/>
+        <location line="+191"/>
         <source>Looking for metadata</source>
         <translation>Buscant metadades</translation>
     </message>
     <message>
-        <location line="+198"/>
+        <location line="+207"/>
         <source>Required by:</source>
         <translation>Requerit per:</translation>
     </message>
@@ -13114,7 +13586,7 @@ Are you sure?</source>
         <translation>Requerit per: %1</translation>
     </message>
     <message>
-        <location line="-432"/>
+        <location line="-446"/>
         <source>Confirm resources to update</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13139,7 +13611,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+46"/>
         <source>Checking for updates...</source>
         <translation>Buscant actualitzacions...</translation>
     </message>
@@ -13148,18 +13620,26 @@ Are you sure?</source>
         <source>Could not check or get the following resources for updates:&lt;br&gt;Do you wish to proceed without those resources?</source>
         <translation type="unfinished"></translation>
     </message>
+    <message numerus="yes">
+        <location line="+88"/>
+        <source>%n update(s) found. You&apos;re about to update the following resources:</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location line="+142"/>
+        <location line="+59"/>
         <source>The resource &apos;%1&apos; does not have a metadata yet. We need to generate it in order to track relevant information on how to update this mod. To do this, please select a mod provider which we can use to check for updates for this mod.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+59"/>
+        <location line="+63"/>
         <source>Generating metadata...</source>
         <translation>Creant metadades...</translation>
     </message>
     <message>
-        <location line="+106"/>
+        <location line="+110"/>
         <source>Changelog of the latest version</source>
         <translation>Registre de canvis de la versió anterior</translation>
     </message>
@@ -13169,7 +13649,7 @@ Are you sure?</source>
         <translation>Proveïdor: %1</translation>
     </message>
     <message>
-        <location line="-211"/>
+        <location line="-223"/>
         <source>Not installed</source>
         <translation>No està instal·lat</translation>
     </message>
@@ -13245,7 +13725,7 @@ Are you sure?</source>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+394"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
         <source>Abort</source>
         <translation>Cancel·lar</translation>
     </message>
@@ -13283,7 +13763,7 @@ Are you sure?</source>
         <translation>Carregar</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+67"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+68"/>
         <source>Confirm Deletion</source>
         <translation>Confirmar eliminació</translation>
     </message>
@@ -13305,7 +13785,7 @@ Are you sure?</source>
         <translation>Copia la imatge</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-210"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-220"/>
         <source>Context menu</source>
         <translation>Menú contextual</translation>
     </message>
@@ -13315,7 +13795,7 @@ Are you sure?</source>
         <translation>Captures de pantalla</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+143"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+152"/>
         <source>Unknown error</source>
         <translation>Error desconegut</translation>
     </message>
@@ -13326,7 +13806,7 @@ Are you sure?</source>
         <translation>La pujada ha finalitzat</translation>
     </message>
     <message>
-        <location line="-89"/>
+        <location line="-91"/>
         <source>You are about to upload %1 screenshots to %2.
 You should double-check for personal information.
 
@@ -13342,7 +13822,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <location line="+41"/>
         <source>Screenshots upload aborted</source>
         <translation type="unfinished"></translation>
@@ -13361,7 +13841,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>You are about to delete the selected screenshot.
 This may be permanent and it will be gone from the folder.
 
@@ -13369,7 +13849,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-96"/>
+        <location line="-97"/>
         <source>The &lt;a href=&quot;%1&quot;&gt;link  to the uploaded screenshot&lt;/a&gt; has been placed in your clipboard.</source>
         <translation>L&apos;enllaç &lt;a href=&quot;%1&quot;&gt;a la captura de pantalla pujada&lt;/a&gt; s&apos;ha col·locat al porta-retalls.</translation>
     </message>
@@ -13606,27 +14086,27 @@ Are you sure?</source>
 <context>
     <name>ShaderPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ShaderPackPage.cpp" line="+100"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/ShaderPackPage.cpp" line="+101"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>Baixada aturada per l&apos;usuari.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Cancel·lar</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location line="-181"/>
+        <location line="-190"/>
         <source>Download Packs</source>
         <translation>Baixar paquets</translation>
     </message>
@@ -13646,13 +14126,13 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+61"/>
-        <location line="+99"/>
+        <location line="+65"/>
+        <location line="+104"/>
         <source>Shader pack updates are unavailable when metadata is disabled!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-99"/>
         <source>Confirm Update</source>
         <translation>Confirmar actualització</translation>
     </message>
@@ -13664,7 +14144,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+22"/>
         <source>The shader pack updater was aborted!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13674,21 +14154,21 @@ Are you sure you want to do this?</source>
         <translation>&apos;%1&apos; està actualitzat! :)</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+51"/>
         <source>You are about to remove the metadata for %1 shader packs.
 Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-115"/>
-        <location line="+61"/>
+        <location line="-121"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Avortat</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Avisos</translation>
     </message>
@@ -13703,12 +14183,12 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>Confirm Removal</source>
         <translation>Confirmar Eliminació</translation>
     </message>
     <message>
-        <location line="-41"/>
+        <location line="-42"/>
         <source>Update checker</source>
         <translation>Comprovador d&apos;actualitzacions</translation>
     </message>
@@ -14270,7 +14750,7 @@ Are you sure?</source>
 <context>
     <name>Task</name>
     <message>
-        <location filename="../launcher/tasks/Task.cpp" line="+134"/>
+        <location filename="../launcher/tasks/Task.cpp" line="+141"/>
         <source>Aborted</source>
         <translation>Interromput</translation>
     </message>
@@ -14518,27 +14998,27 @@ falta &quot;inheritsFrom&quot;</translation>
 <context>
     <name>TexturePackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="+108"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="+109"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>Baixada aturada per l&apos;usuari.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Cancel·lar</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location line="-190"/>
+        <location line="-199"/>
         <source>Download Packs</source>
         <translation>Baixar paquets</translation>
     </message>
@@ -14558,54 +15038,54 @@ falta &quot;inheritsFrom&quot;</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+66"/>
-        <location line="+99"/>
+        <location line="+70"/>
+        <location line="+104"/>
         <source>Texture pack updates are unavailable when metadata is disabled!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-99"/>
         <source>Confirm Update</source>
         <translation>Confirmar actualització</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+78"/>
         <source>You are about to remove the metadata for %1 texture packs.
 Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-150"/>
+        <location line="-157"/>
         <source>Change a texture pack&apos;s version.</source>
         <translation>Canviar la versió d&apos;un paquet de textures.</translation>
     </message>
     <message>
-        <location line="+100"/>
+        <location line="+106"/>
         <source>&apos;%1&apos; is up-to-date! :)</source>
         <translation>&apos;%1&apos; està actualitzat! :)</translation>
     </message>
     <message>
-        <location line="-65"/>
-        <location line="+61"/>
+        <location line="-70"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Avortat</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Avisos</translation>
     </message>
     <message>
-        <location line="-49"/>
+        <location line="-51"/>
         <source>Updating texture packs while the game is running may cause pack duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+22"/>
         <source>The texture pack updater was aborted!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14620,7 +15100,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>Confirm Removal</source>
         <translation>Confirmar Eliminació</translation>
     </message>
@@ -14630,7 +15110,7 @@ Are you sure you want to do this?</source>
         <translation>Paquets de textures</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="-41"/>
+        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="-42"/>
         <source>Update checker</source>
         <translation>Comprovador d&apos;actualitzacions</translation>
     </message>
@@ -14685,6 +15165,29 @@ Are you sure you want to do this?</source>
         <location line="+12"/>
         <source>Completeness is the percentage of fully translated strings, not counting automatically guessed ones.</source>
         <translation>La integritat és el percentatge de cadenes totalment traduïdes, sense comptar les endevinades automàticament.</translation>
+    </message>
+</context>
+<context>
+    <name>UntrustedModsDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/UntrustedModsDialog.ui" line="+14"/>
+        <source>Easy There!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The modpack you are installing includes mods which are not hosted on Modrinth or CurseForge:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Malicious mods are often distributed through links sent on platforms such as Discord.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;We strongly recommend only importing modpacks from trusted sources.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>I trust this modpack and wish to proceed regardless</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -15245,11 +15748,12 @@ Si us plau, afegeix el teu compte de Mojang o Minecraft.</translation>
 <context>
     <name>VersionSelectDialog</name>
     <message>
+        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+74"/>
         <source>OK</source>
-        <translation type="vanished">D&apos;acord</translation>
+        <translation>D&apos;acord</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+104"/>
+        <location line="+30"/>
         <source>Reloads the version list.</source>
         <translation>Torna a carregar la llista de versions.</translation>
     </message>
@@ -15259,12 +15763,7 @@ Si us plau, afegeix el teu compte de Mojang o Minecraft.</translation>
         <translation>Tria la versió</translation>
     </message>
     <message>
-        <location line="-29"/>
-        <source>Ok</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="-28"/>
         <source>Cancel</source>
         <translation>Cancel·lar</translation>
     </message>
@@ -15404,7 +15903,7 @@ Si us plau, afegeix el teu compte de Mojang o Minecraft.</translation>
 <context>
     <name>WorldList</name>
     <message>
-        <location filename="../launcher/minecraft/WorldList.cpp" line="+272"/>
+        <location filename="../launcher/minecraft/WorldList.cpp" line="+273"/>
         <source>Info</source>
         <extracomment>special warnings?</extracomment>
         <translation>Informació</translation>
@@ -15659,7 +16158,7 @@ Are you sure?</source>
 <context>
     <name>XboxAuthorizationStep</name>
     <message>
-        <location filename="../launcher/minecraft/auth/steps/XboxAuthorizationStep.cpp" line="+167"/>
+        <location filename="../launcher/minecraft/auth/steps/XboxAuthorizationStep.cpp" line="+163"/>
         <source>XSTS authentication ended with unrecognized error(s):
 
 %1</source>
@@ -15673,17 +16172,12 @@ Are you sure?</source>
         <translation>Falta l&apos;element XErr a la resposta d&apos;error d&apos;autorització de %1.</translation>
     </message>
     <message>
-        <location line="-47"/>
-        <source>Failed to get authorization for %1 services. Error %2.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="-43"/>
         <source>Unknown STS error for %1 services: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+4"/>
         <source>Failed to get authorization for %1 services: %2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -15742,12 +16236,12 @@ Configureu el vostre compte segons %1.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-142"/>
+        <location line="-138"/>
         <source>Getting authorization to access %1 services.</source>
         <translation>S&apos;està obtenint l&apos;autorització per accedir als serveis de %1.</translation>
     </message>
     <message>
-        <location line="+64"/>
+        <location line="+60"/>
         <source>Could not parse authorization response for access to %1 services.</source>
         <translation>No s&apos;ha pogut processar la resposta d&apos;autorització per accedir als serveis %1.</translation>
     </message>

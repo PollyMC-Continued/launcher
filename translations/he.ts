@@ -142,7 +142,7 @@
 <context>
     <name>ATLauncher::PackInstallTask</name>
     <message>
-        <location filename="../launcher/modplatform/atlauncher/ATLPackInstallTask.cpp" line="+123"/>
+        <location filename="../launcher/modplatform/atlauncher/ATLPackInstallTask.cpp" line="+134"/>
         <source>Could not understand pack manifest:
 </source>
         <translation type="unfinished"></translation>
@@ -157,12 +157,12 @@
         <translation type="obsolete">נכשלה קבלת נתוני העל המקומיים עבור גרסה %2 של ‚%1’</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+42"/>
         <source>Deleting existing files...</source>
         <translation type="unfinished">הקבצים הקיימים נמחקים...</translation>
     </message>
     <message>
-        <location line="+147"/>
+        <location line="+151"/>
         <source>Unknown mod type: %1</source>
         <translation type="unfinished">סוג מוד לא מוכר: %1</translation>
     </message>
@@ -179,32 +179,32 @@
         <translation type="obsolete">לא הוגדרה גרסת טוען לערכת המודים!</translation>
     </message>
     <message>
-        <location line="-178"/>
+        <location line="-182"/>
         <source>Could not get local metadata index for &apos;%1&apos; v%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+194"/>
         <source>Could not get local metadata index for %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+34"/>
         <source>Could not find a version for the %1 loader</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>No loader version set for modpack.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+130"/>
+        <location line="+132"/>
         <source>Unknown or unsupported download type: %1</source>
         <translation type="unfinished">סוג הורדה לא מוכר או לא נתמך: %1</translation>
     </message>
     <message>
-        <location line="+114"/>
+        <location line="+115"/>
         <source>Downloading configs...</source>
         <translation type="unfinished">הגדרות התצורה מתקבלות...</translation>
     </message>
@@ -234,13 +234,13 @@
         <translation type="unfinished">הורדת מוד</translation>
     </message>
     <message>
-        <location line="+25"/>
-        <location line="+130"/>
+        <location line="+27"/>
+        <location line="+133"/>
         <source>Unknown download type: %1</source>
         <translation type="unfinished">סוג הורדה לא מוכר: %1</translation>
     </message>
     <message>
-        <location line="-50"/>
+        <location line="-52"/>
         <source>Blocked mods found</source>
         <translation type="unfinished">נמצאו מודים חסומים</translation>
     </message>
@@ -250,7 +250,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+58"/>
         <source>%1 out of %2 complete</source>
         <translation type="unfinished">הושלמו %1 מתוך %2</translation>
     </message>
@@ -265,7 +265,7 @@
         <translation type="unfinished">המודים מחולצים...</translation>
     </message>
     <message>
-        <location line="+72"/>
+        <location line="+81"/>
         <source>Installing modpack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -275,7 +275,7 @@
         <translation type="unfinished">נכשלה יצירת רכיב הספריות</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+30"/>
         <source>Unknown loader type: </source>
         <translation type="unfinished">סוג טוען מודים לא ידוע: </translation>
     </message>
@@ -722,7 +722,7 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation type="vanished">העדכון הצליח</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1306"/>
+        <location filename="../launcher/Application.cpp" line="+1319"/>
         <source>Incompatible system configuration</source>
         <translation>תצורת המערכת אינה נתמכת</translation>
     </message>
@@ -762,12 +762,12 @@ for details on the last update attempt.</source>
 עבור פרטים אודות נסיון העדכון האחרון.</translation>
     </message>
     <message>
-        <location line="-1700"/>
+        <location line="-1703"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>לא ניתן להציג יומן רישום זה מכיוון שגודל יומן הרישום עולה על %1 שורות.</translation>
     </message>
     <message>
-        <location line="+1522"/>
+        <location line="+1525"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>נראה שהשתמשת ב־%1 במיקום %2 בעבר. האם ברצונך להעביר את הנתונים שלך למיקום החדש %3?</translation>
     </message>
@@ -781,7 +781,7 @@ for details on the last update attempt.</source>
         <translation type="vanished">העדכון נכשל</translation>
     </message>
     <message>
-        <location line="-1820"/>
+        <location line="-1823"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -817,12 +817,12 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+531"/>
+        <location line="+526"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+28"/>
         <source>Loading instances…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -969,7 +969,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">מתבצע עדכון</translation>
     </message>
     <message>
-        <location line="-1419"/>
+        <location line="-1427"/>
         <source>Settings</source>
         <translation>הגדרות</translation>
     </message>
@@ -1000,7 +1000,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 למחיקת הLock הזה ולהמשיך בחרו &quot;התעלם&quot; למטה.</translation>
     </message>
     <message>
-        <location line="+1263"/>
+        <location line="+1271"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>נמצאו נתונים ישנים מ%1, אבל כבק קיים לך נתונים קיימים בשביל %2. למרבה הצער תצטרך להגר בעצמך. האם אתה רוצה להיות מוזכר מהעברת הנתונים בפעם הבאה שאתה מתחיל %2?</translation>
     </message>
@@ -1640,8 +1640,8 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+154"/>
+        <location line="+411"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1650,12 +1650,27 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-477"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+14"/>
+        <source>My Reports (%1 new)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>See what the team answered to the reports you sent from this launcher.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1896,7 +1911,7 @@ Send it again anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+17"/>
         <source>Thank you! Your report is on its way to the PollyMC team, and we read every one.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1915,6 +1930,14 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+5"/>
+        <source>
+
+Your report ID: %1
+This launcher will tell you when the team has an update. You can also check any time with &quot;My Reports&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+6"/>
         <source>Report sent</source>
         <translation type="unfinished"></translation>
@@ -1922,6 +1945,11 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
     <message>
         <location line="+2"/>
         <source>Join our Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>View My Reports</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2813,30 +2841,30 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
 <context>
     <name>DataPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/DataPackPage.cpp" line="+86"/>
-        <location line="+84"/>
-        <location line="+73"/>
+        <location filename="../launcher/ui/pages/instance/DataPackPage.cpp" line="+87"/>
+        <location line="+89"/>
+        <location line="+78"/>
         <source>Download stopped by user.</source>
         <translation>המשתמש עצר את ההורדה.</translation>
     </message>
     <message>
-        <location line="-137"/>
-        <location line="+80"/>
-        <location line="+73"/>
+        <location line="-146"/>
+        <location line="+84"/>
+        <location line="+79"/>
         <source>Abort</source>
         <translation>נטישה</translation>
     </message>
     <message>
-        <location line="-177"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
-        <location line="+19"/>
+        <location line="-188"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
+        <location line="+21"/>
         <source>Error</source>
         <translation>שגיאה</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-219"/>
         <source>Download Packs</source>
         <translation>הורדת חבילות נתונים</translation>
     </message>
@@ -2846,7 +2874,7 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
         <translation>שינוי גרסת חבילת נתונים.</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+79"/>
         <source>Updating data packs while the game is running may cause pack duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -2860,65 +2888,65 @@ Are you sure you want to do this?</source>
         <translation>אישור עדכון</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+78"/>
         <source>You are about to remove the metadata for %1 data packs.
 Are you sure?</source>
         <translation>עומדת להתבצע הסרה של נתוני העל של %1 חבילות נתונים. 
 להמשיך?</translation>
     </message>
     <message>
-        <location line="-50"/>
+        <location line="-51"/>
         <source>&apos;%1&apos; is up-to-date! :)</source>
         <translation>הגרסה של ‚%1’ עדכנית! :)</translation>
     </message>
     <message>
-        <location line="-119"/>
+        <location line="-125"/>
         <source>Download data packs from online mod platforms</source>
         <translation>הורדת ערכות נתונים מפלטפורמות מודים ברשת</translation>
     </message>
     <message>
-        <location line="+122"/>
+        <location line="+128"/>
         <source>All data packs are up-to-date! :)</source>
         <translation>כל חבילות הנתונים עדכניות! :)</translation>
     </message>
     <message>
-        <location line="-68"/>
-        <location line="+61"/>
+        <location line="-73"/>
+        <location line="+66"/>
         <location line="+23"/>
-        <location line="+73"/>
+        <location line="+78"/>
         <source>Aborted</source>
         <translation>ננטש</translation>
     </message>
     <message>
-        <location line="-151"/>
-        <location line="+84"/>
-        <location line="+73"/>
+        <location line="-161"/>
+        <location line="+89"/>
+        <location line="+78"/>
         <source>Warnings</source>
         <translation>אזהרות</translation>
     </message>
     <message>
-        <location line="-128"/>
-        <location line="+99"/>
+        <location line="-135"/>
+        <location line="+104"/>
         <source>Data pack updates are unavailable when metadata is disabled!</source>
         <translation>עדכוני חבילת נתונים אינם זמינים כאשר מטא-נתונים מושבתים!</translation>
     </message>
     <message>
-        <location line="-73"/>
+        <location line="-76"/>
         <source>The data pack updater was aborted!</source>
         <translation>עדכון חבילת הנתונים בוטל!</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+54"/>
         <source>Confirm Removal</source>
         <translation>אישור הסרה</translation>
     </message>
     <message>
-        <location line="-162"/>
+        <location line="-169"/>
         <source>Try to check or update all selected data packs (all data packs if none are selected)</source>
         <translation>נסה לבדוק או לעדכן את כל חבילות הנתונים שנבחרו (את כל חבילות הנתונים אם לא נבחרה אף אחת)</translation>
     </message>
     <message>
-        <location line="+118"/>
+        <location line="+124"/>
         <source>All selected data packs are up-to-date! :)</source>
         <translation>כל חבילות הנתונים שנבחרו עדכניות! :)</translation>
     </message>
@@ -2928,7 +2956,7 @@ Are you sure?</source>
         <translation>בודק העדכונים</translation>
     </message>
     <message>
-        <location line="-79"/>
+        <location line="-84"/>
         <source>Download Data Packs</source>
         <translation>הורדת ערכות נתונים</translation>
     </message>
@@ -2959,6 +2987,16 @@ Are you sure?</source>
     <message>
         <location line="+1"/>
         <source>Display the reminder immediately, ignoring its normal schedule and dismissed state.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show bug report update notification now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Display a sample &quot;your report has news&quot; notification in the window you are in, to test notifications without waiting for the team.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3198,19 +3236,20 @@ Are you sure?</source>
         <translation type="vanished">נותר מעט זיכרון פנוי</translation>
     </message>
     <message>
+        <location filename="../launcher/minecraft/launch/EnsureAvailableMemory.cpp" line="+43"/>
         <source>Your system is under critical memory pressure.
 This may lead to severe slowdowns, crashes or system instability.
 It is recommended to close other applications or restart your system.
 
 Launch anyway?</source>
-        <translation type="vanished">המערכת נמצאת תחת לחץ חמור של צריכת זיכרון.
+        <translation>המערכת נמצאת תחת לחץ חמור של צריכת זיכרון.
 הפעלת המשחק עלולה לגרום להאטה חמורה בביצועים, קריסות, או אי יציבות של המערכת.
 מומלץ לסגור יישומים אחרים או להפעיל מחדש את המערכת.
 
 להפעיל בכל זאת?</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/launch/EnsureAvailableMemory.cpp" line="+46"/>
+        <location line="+48"/>
         <source>Not enough RAM</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3225,34 +3264,37 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="-4"/>
         <source>Not enough RAM available to launch this instance</source>
         <translation>אין מספיק זיכרון RAM להפעלת העותק הזה של המשחק</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+29"/>
         <source>Note: only %1 MiB RAM is currently free, but this instance requests %2 MiB. Other running programs may cause slowdowns; consider closing some before playing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="-64"/>
         <source>High memory pressure</source>
-        <translation type="vanished">לחץ גבוה של צריכת זיכרון</translation>
+        <translation>לחץ גבוה של צריכת זיכרון</translation>
     </message>
     <message>
+        <location line="-17"/>
         <source>The system is under increased memory pressure.
 This may lead to lag or slowdowns.
 If possible, close other applications before continuing.
 
 Launch anyway?</source>
-        <translation type="vanished">המערכת נמצאת תחת לחץ מוגבר של צריכת זיכרון.
+        <translation>המערכת נמצאת תחת לחץ מוגבר של צריכת זיכרון.
 הפעלת המשחק עלולה לגרום לתקלות או האטה בביצועים.
 במידת האפשר, כדאי לסגור יישומים אחרים לפני שממשיכים.
 
 להפעיל בכל זאת?</translation>
     </message>
     <message>
+        <location line="+25"/>
         <source>The system is under high memory pressure</source>
-        <translation type="vanished">המערכת נמצאת תחת לחץ גבוה של צריכת זיכרון</translation>
+        <translation>המערכת נמצאת תחת לחץ גבוה של צריכת זיכרון</translation>
     </message>
     <message>
         <source>There might not be enough free RAM to launch this instance with the current memory settings.
@@ -3302,15 +3344,11 @@ Launch anyway? This may cause slowdowns in the game and your system.</source>
 <context>
     <name>EnsureOfflineLibraries</name>
     <message>
+        <location filename="../launcher/minecraft/launch/EnsureOfflineLibraries.cpp" line="+49"/>
         <source>
 This instance cannot be launched because some libraries are missing or have not been downloaded yet. Please try again in online mode with a working Internet connection</source>
-        <translation type="vanished">
+        <translation>
 לא ניתן להפעיל עותק זה מכיוון שחלק מהספריות חסרות או שעדיין לא הורדו. בבקשה נסה שנית במצב מקוון עם חיבור אינטרנט תקין</translation>
-    </message>
-    <message>
-        <location filename="../launcher/minecraft/launch/EnsureOfflineLibraries.cpp" line="+33"/>
-        <source>This instance cannot be launched because some libraries are missing or have not been downloaded yet. Please try again in online mode with a working Internet connection</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4166,42 +4204,42 @@ Are you sure?</source>
 <context>
     <name>FlameCheckUpdate</name>
     <message>
-        <location filename="../launcher/modplatform/flame/FlameCheckUpdate.cpp" line="+177"/>
+        <location filename="../launcher/modplatform/flame/FlameCheckUpdate.cpp" line="+182"/>
         <source>Parsing API response from CurseForge for &apos;%1&apos;...</source>
         <translation>ניתוח תגובת API מ-CurseForge עבור &apos;%1&apos;...</translation>
     </message>
     <message>
-        <location line="-85"/>
+        <location line="-90"/>
         <source>Parsing the API response from CurseForge for &apos;%1&apos;...</source>
         <translation>מנתח את תגובת ה-API מ-CurseForge עבור &apos;%1&apos;...</translation>
     </message>
     <message>
-        <location line="-52"/>
+        <location line="-54"/>
         <source>Preparing resources for CurseForge...</source>
         <translation>מכין משאבים עבור CurseForge...</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+63"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version.</source>
         <translation>לא נמצאה גרסה תקנית למשאב זה. נראה שאינו זמין עבור גרסת המשחק הנוכחית.</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+19"/>
         <source>Unknown</source>
         <translation>לא ידוע</translation>
     </message>
     <message>
-        <location line="-21"/>
+        <location line="-22"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version / mod loader.</source>
         <translation>לא נמצאה גרסה תקנית למשאב זה. נראה שאינו זמין עבור גרסת המשחק או טוען המודים הנוכחיים.</translation>
     </message>
     <message>
-        <location line="+83"/>
+        <location line="+88"/>
         <source>Resource has a new update available, but is not downloadable using CurseForge.</source>
         <translation>למשאב יש עדכון חדש זמין, אך הוא אינו ניתן להורדה באמצעות CurseForge.</translation>
     </message>
     <message>
-        <location line="-64"/>
+        <location line="-68"/>
         <source>Not installed</source>
         <translation>לא מותקן</translation>
     </message>
@@ -4209,7 +4247,7 @@ Are you sure?</source>
 <context>
     <name>FlameCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+598"/>
+        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+636"/>
         <source>Downloading mods...</source>
         <translation>המודים מתקבלים...</translation>
     </message>
@@ -4219,17 +4257,22 @@ Are you sure?</source>
         <translation>הקבצים הבאים אינם זמינים להורדה במשגרי משחק של צד שלישי.&lt;br/&gt;יהיה עליך להוריד אותם ולהוסיף אותם לעותק.</translation>
     </message>
     <message>
-        <location line="-197"/>
+        <location line="-218"/>
+        <source>The overrides has a path that leads to an arbitrary location (%1). This is a security risk and isn&apos;t allowed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
         <source>The specified overrides folder (%1) is missing. Maybe the modpack was already used before?</source>
         <translation>תיקיית העקיפות שצוינה (%1) חסרה. ייתכן שערכת המודים הייתה כבר בשימוש לפני כן?</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+35"/>
         <source>Unknown mod loader in manifest: %1</source>
         <translation>מטען מודים לא מוכר במניפסט: %1</translation>
     </message>
     <message>
-        <location line="-70"/>
+        <location line="-107"/>
         <source>No loader version set for modpack!</source>
         <translation>לא הוגדרה גרסת טוען לערכת המודים!</translation>
     </message>
@@ -4242,7 +4285,7 @@ Are you sure?</source>
         <translation type="vanished">נכשלה מחיקת הקבצים המתנגשים הישנים.</translation>
     </message>
     <message>
-        <location line="+157"/>
+        <location line="+194"/>
         <source>Unable to resolve mod IDs:
 </source>
         <translation>לא ניתן היה לפתור את מזהי המודים:
@@ -4259,7 +4302,7 @@ Are you sure?</source>
         <translation>הורדת מוד להבה</translation>
     </message>
     <message>
-        <location line="-298"/>
+        <location line="-335"/>
         <source>Failed to get local metadata index for %1</source>
         <translation>נכשלה קבלת מפתח נתוני העל המקומי עבור %1</translation>
     </message>
@@ -4274,14 +4317,14 @@ Are you sure?</source>
     </message>
     <message>
         <location line="-125"/>
-        <location line="+211"/>
+        <location line="+236"/>
         <source>Could not understand pack manifest:
 </source>
         <translation>לא ניתן היה להבין את המניפסט של החבילה:
 </translation>
     </message>
     <message>
-        <location line="+280"/>
+        <location line="+292"/>
         <source>Copying Blocked Mods...</source>
         <translation>המודים החסומים מועתקים...</translation>
     </message>
@@ -4296,7 +4339,7 @@ Are you sure?</source>
         <translation>הושלמו %1 מתוך %2</translation>
     </message>
     <message>
-        <location line="-354"/>
+        <location line="-391"/>
         <source>No index file.</source>
         <translation>אין קובץ אינדקס.</translation>
     </message>
@@ -4306,19 +4349,19 @@ Are you sure?</source>
         <translation>לא נמצאה גרסה עבור הטוען %1</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+72"/>
         <source>Could not rename the overrides folder:
 </source>
         <translation>לא ניתן היה לשנות את שם תיקיית העקיפות:
 </translation>
     </message>
     <message>
-        <location line="-218"/>
+        <location line="-249"/>
         <source> (version %1)</source>
         <translation> (גרסה %1)</translation>
     </message>
     <message>
-        <location line="+501"/>
+        <location line="+538"/>
         <source>Copying Blocked Mods (%1 out of %2 are done)</source>
         <translation>העתקת מודים חסומים (%1 מתוך %2 הסתיימו)</translation>
     </message>
@@ -4331,7 +4374,7 @@ Are you sure?</source>
 <context>
     <name>FlameManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+491"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+506"/>
         <source>CurseForge pack</source>
         <translation>חבילת CurseForge</translation>
     </message>
@@ -4341,12 +4384,12 @@ Are you sure?</source>
         <translation>בחר קובץ עדכון</translation>
     </message>
     <message>
-        <location line="-57"/>
+        <location line="-62"/>
         <source>%1 (Current)</source>
         <translation>%1 (נוכחי)</translation>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-42"/>
         <source>&lt;h1&gt;Hey there!&lt;/h1&gt;&lt;h4&gt;It seems like your Pack ID is null. This is because of a bug in older versions of the launcher.&lt;br/&gt;Unfortunately, we can&apos;t do the proper API requests without this information.&lt;br/&gt;&lt;br/&gt;So, in order for this feature to work, you will need to re-download the modpack from the built-in downloader.&lt;br/&gt;&lt;br/&gt;Don&apos;t worry though, it will ask you to update this instance instead, so you&apos;ll not lose this instance!&lt;/h4&gt;</source>
         <translation>&lt;h1&gt;היי!&lt;/h1&gt;&lt;h4&gt;נראה שמזהה החבילה שלך ריק. הסיבה לכך היא באג בגרסאות קודמות של המשגר.&lt;br/&gt;לצערנו, איננו יכולים לבצע את בקשות הממשק המתאימות ללא מידע זה.&lt;br/&gt;&lt;br/&gt;לכן, כדי שתכונה זו תפעל, תצטרך להוריד מחדש את חבילת המודים מהמורד המובנה.&lt;br/&gt;&lt;br/&gt;אל דאגה, הוא יבקש ממך לעדכן את העותק הזה במקום זאת, כך שלא תאבד את העותק הזה!&lt;/h4&gt;</translation>
     </message>
@@ -4840,11 +4883,12 @@ Are you sure?</source>
 <context>
     <name>InstallLoaderDialog</name>
     <message>
+        <location filename="../launcher/ui/dialogs/InstallLoaderDialog.cpp" line="+109"/>
         <source>OK</source>
-        <translation type="vanished">אישור</translation>
+        <translation>אישור</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/InstallLoaderDialog.cpp" line="+140"/>
+        <location line="+31"/>
         <source>Forge</source>
         <translation>Forge</translation>
     </message>
@@ -4864,12 +4908,7 @@ Are you sure?</source>
         <translation>ביטול</translation>
     </message>
     <message>
-        <location line="-1"/>
-        <source>Ok</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+33"/>
+        <location line="+32"/>
         <source>Fabric</source>
         <translation>‏Fabric</translation>
     </message>
@@ -4916,12 +4955,12 @@ Are you sure?</source>
         <translation>העותק %1 משוכפל</translation>
     </message>
     <message>
-        <location line="+146"/>
+        <location line="+147"/>
         <source>Instance folder copy has been aborted.</source>
         <translation>שכפול תיקיית העותק ננטש.</translation>
     </message>
     <message>
-        <location line="-42"/>
+        <location line="-43"/>
         <source>Instance folder copy failed.</source>
         <translation>שכפול תיקיית העותק נכשלה.</translation>
     </message>
@@ -4982,7 +5021,7 @@ Are you sure?</source>
 <context>
     <name>InstanceHealthCheckDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+61"/>
+        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+90"/>
         <source>No Java selected</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5016,7 +5055,12 @@ Switch Java in the instance&apos;s Java settings, or turn off the compatibility 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+175"/>
+        <source>Checking &lt;b&gt;%1&lt;/b&gt;…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+38"/>
         <source>Broken mod files (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5029,43 +5073,159 @@ Delete or re-download them (a fresh download of the same version is usually enou
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-201"/>
         <source>Version information not loaded yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-67"/>
+        <source>Error</source>
+        <translation type="unfinished">שגיאה</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Warning</source>
+        <translation type="unfinished">אזהרה</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Info</source>
+        <translation type="unfinished">מידע</translation>
+    </message>
+    <message numerus="yes">
+        <location line="+9"/>
+        <source>
+… and %n more</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+55"/>
         <source>The launcher could not read this instance&apos;s version list, so the loader check was skipped.
 Open the instance, go to the Version page and let it load once (or press Reload) before launching.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>%1 (loader component)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+17"/>
+        <source>Only %1 MiB are free on the drive this instance is stored on.
+Free up some space, or the game can fail while saving worlds or downloading files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Low disk space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Too much memory allocated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance is set to use up to %1 MiB, but the computer only has %2 MiB.
+Lower the maximum memory in the instance&apos;s settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>A lot of memory allocated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance may use up to %1 MiB of the computer&apos;s %2 MiB.
+That leaves little for the system and can make the game stutter; around half of the total is usually plenty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+39"/>
         <source>Check instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+21"/>
+        <source>Check Again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Open Mods Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Close</source>
         <translation type="unfinished">סגירה</translation>
     </message>
     <message>
-        <location line="+23"/>
-        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, no broken mod files, and the loader version checks out. Nothing stood in the way of launching.</source>
+        <location line="+128"/>
+        <source>Mods that may not fit this game version (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These mods are not marked as compatible with this instance&apos;s Minecraft version:
+%1
+
+They may still work, but if the game crashes, update or remove them first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, the mods have no broken files or conflicts, and the loader version checks out. Nothing stood in the way of launching.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location line="+5"/>
-        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting. The details are below each entry.</source>
+        <location line="+8"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message numerus="yes">
+        <location line="+1"/>
+        <source>, and %n warning(s) worth a look</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>. The details are below each entry.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+2"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; should start, but has %n warning(s) worth a look. The details are below each entry.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Instance check for &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>No problems found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5149,12 +5309,12 @@ Open the instance, go to the Version page and let it load once (or press Reload)
 <context>
     <name>InstanceStaging</name>
     <message>
-        <location filename="../launcher/InstanceList.cpp" line="+784"/>
+        <location filename="../launcher/InstanceList.cpp" line="+782"/>
         <source>Failed to commit instance, even after multiple retries. It is being blocked by something.</source>
         <translation>ביצוע העותק נכשל, גם לאחר נסיונות מרובים. זה נחסם על ידי משהו.</translation>
     </message>
     <message>
-        <location line="-22"/>
+        <location line="-20"/>
         <source>Could not create staging folder</source>
         <translation>לא היה ניתן ליצור תיקיית ביניים</translation>
     </message>
@@ -5390,7 +5550,7 @@ Open the instance, go to the Version page and let it load once (or press Reload)
 <context>
     <name>JavaListLoadTask</name>
     <message>
-        <location filename="../launcher/java/JavaInstallList.cpp" line="+158"/>
+        <location filename="../launcher/java/JavaInstallList.cpp" line="+159"/>
         <source>Detecting Java installations...</source>
         <translation>מזהה התקנות Java...</translation>
     </message>
@@ -5458,42 +5618,42 @@ Are you sure?</source>
         <translation>בד&amp;יקת ההגדרות</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="+278"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="+279"/>
         <source>Confirm Selection</source>
         <translation>אישור הבחירה</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+230"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+164"/>
         <source>(-Xms)</source>
         <translation>(-Xms)</translation>
     </message>
     <message>
-        <location line="-45"/>
+        <location line="+49"/>
         <source>(-Xmx)</source>
         <translation>(-Xmx)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-71"/>
         <source>The amount of memory Minecraft is started with.</source>
         <translation>כמות הזיכרון שמיינקרפט מתחיל איתה.</translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="-18"/>
         <source>M&amp;inimum Memory Usage:</source>
         <translation>מז&amp;ער השימוש בזיכרון:</translation>
     </message>
     <message>
-        <location line="-137"/>
+        <location line="-14"/>
         <source>Memor&amp;y</source>
         <translation>זיכרו&amp;ן</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+81"/>
         <source>The maximum amount of memory Minecraft is allowed to use.</source>
         <translation>כמות הזיכרון המרבית בה Minecraft מורשה להשתמש.</translation>
     </message>
     <message>
-        <location line="-115"/>
+        <location line="-143"/>
         <source>Auto-download &amp;Mojang Java</source>
         <translation>הורד-אוטומטית &amp;Mojang Java</translation>
     </message>
@@ -5503,9 +5663,14 @@ Are you sure?</source>
         <translation>כאשר אפשרות זו מופעלת, המשגר לא יבקש ממך לבחור גרסת Java אם לא נמצאו כאלה במהלך הפעלת המשחק.</translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+144"/>
         <source>&amp;PermGen Size:</source>
         <translation>&amp;גודל PermGen:</translation>
+    </message>
+    <message>
+        <location line="+51"/>
+        <source>Warn when there is not enough free memory</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="-49"/>
@@ -5513,12 +5678,12 @@ Are you sure?</source>
         <translation>איתור קובץ להרצה של Java</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+63"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+20"/>
         <source>Java Argumen&amp;ts</source>
         <translation>ארגומנטי&amp;ם של Java</translation>
     </message>
     <message>
-        <location line="-148"/>
+        <location line="-53"/>
         <source>The amount of memory available to store loaded Java classes.</source>
         <translation>כמות הזיכרון הזמינה לאחסון מחלקות Java טעונות.</translation>
     </message>
@@ -5527,17 +5692,17 @@ Are you sure?</source>
         <translation type="vanished">להזהיר כאשר אין מספיק זיכרון זמין</translation>
     </message>
     <message>
-        <location line="+135"/>
+        <location line="+40"/>
         <source>Memory Notice</source>
         <translation>הודעת זיכרון</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-107"/>
         <source>Ma&amp;ximum Memory Usage:</source>
         <translation>מ&amp;רב השימוש בזיכרון:</translation>
     </message>
     <message>
-        <location line="-192"/>
+        <location line="-128"/>
         <source>Automatically downloads and selects the Java build recommended by Mojang.</source>
         <translation>מוריד ובוחר באופן אוטומטי את גרסת הJava המומלצת בידי מייקרוסופט.</translation>
     </message>
@@ -5577,12 +5742,12 @@ Are you sure?</source>
         <translation>ז&amp;יהוי אוטומטי של גרסת Java</translation>
     </message>
     <message>
-        <location line="+162"/>
+        <location line="+302"/>
         <source>(-XX:PermSize)</source>
         <translation>(-XX:PermSize)</translation>
     </message>
     <message>
-        <location line="-115"/>
+        <location line="-255"/>
         <source>Open Java &amp;Downloader</source>
         <translation>פתח &amp;מוריד Java</translation>
     </message>
@@ -5777,12 +5942,7 @@ You can change the Java version in the settings later.
         <translation>לא רואה את השפה שלך או שאיכות התרגום גרועה?&lt;br/&gt;&lt;a href=&quot;%1&quot;&gt;אפשר לעזור לנו בתרגום!&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Use system locales</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+13"/>
+        <location line="+16"/>
         <source>Language picked automatically from your region (%1). Not right? Choose another one above.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5792,8 +5952,9 @@ You can change the Java version in the settings later.
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="-22"/>
         <source>Use system regional standards</source>
-        <translation type="vanished">שימוש בתקנים אזוריים של המערכת</translation>
+        <translation>שימוש בתקנים אזוריים של המערכת</translation>
     </message>
 </context>
 <context>
@@ -6499,7 +6660,7 @@ Granting %1 access to it via Flatseal is recommended.</source>
     </message>
     <message>
         <location line="+27"/>
-        <source>Could not launch Minecraft!</source>
+        <source>Could not launch Minecraft: %1</source>
         <extracomment>Error message displayed if instace can&apos;t start</extracomment>
         <translation type="unfinished"></translation>
     </message>
@@ -6849,7 +7010,7 @@ Reason:
     </message>
     <message>
         <location line="+9"/>
-        <source>The process failed to start.</source>
+        <source>The process failed to start: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6959,27 +7120,23 @@ Reason:
 <context>
     <name>MSADeviceCodeStep</name>
     <message>
-        <location filename="../launcher/minecraft/auth/steps/MSADeviceCodeStep.cpp" line="+158"/>
+        <location filename="../launcher/minecraft/auth/steps/MSADeviceCodeStep.cpp" line="+156"/>
         <source>Task aborted</source>
         <translation>המשימה ננטשה</translation>
     </message>
     <message>
         <location line="-38"/>
+        <location line="+8"/>
         <source>Device authorization failed: %1</source>
         <translation>אימות המכשיר נכשל: %1</translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="-71"/>
         <source>Logging in with Microsoft account(device code).</source>
         <translation>מתבצעת התחברות עם חשבון Microsoft (בעזרת קוד מכשיר).</translation>
     </message>
     <message>
-        <location line="+72"/>
-        <source>Failed to retrieve device authorization</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+6"/>
+        <location line="+76"/>
         <source>Device authorization failed: required fields missing</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7085,7 +7242,7 @@ Reason:
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+298"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+300"/>
         <source>Check for new updates for %1.</source>
         <translation>בדיקת עדכונים חדשים עבור %1.</translation>
     </message>
@@ -7200,17 +7357,22 @@ Reason:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+11"/>
+        <source>&amp;Pin Instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Keep the selected instance at the top of its group.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+8"/>
         <source>Chec&amp;k Instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Look for missing Java, broken mod files or a wrong loader version before launching.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
+        <location line="+11"/>
         <source>Copy &amp;Diagnostics</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7225,7 +7387,7 @@ Reason:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+70"/>
+        <location line="+81"/>
         <source>View current and previous launcher logs</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7274,17 +7436,17 @@ Reason:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-202"/>
+        <location line="-227"/>
         <source>Logs</source>
         <translation>יומנים</translation>
     </message>
     <message>
-        <location line="+177"/>
+        <location line="+202"/>
         <source>I&amp;con Theme</source>
         <translation>ערכת ס&amp;מלים</translation>
     </message>
     <message>
-        <location line="-662"/>
+        <location line="-687"/>
         <source>&amp;Edit</source>
         <translation>ע&amp;ריכה</translation>
     </message>
@@ -7293,12 +7455,12 @@ Reason:
         <translation type="vanished">סרגל כתבות</translation>
     </message>
     <message>
-        <location line="-25"/>
+        <location line="-26"/>
         <source>&amp;File</source>
         <translation>&amp;קובץ</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+76"/>
         <source>&amp;Help</source>
         <translation>ע&amp;זרה</translation>
     </message>
@@ -7367,40 +7529,40 @@ Reason:
         <translation>שכפול העותק הנבחר.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1056"/>
-        <location line="+140"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1091"/>
+        <location line="+143"/>
         <location line="+106"/>
         <source>Abort</source>
         <translation>בטל</translation>
     </message>
     <message>
-        <location line="-258"/>
-        <location line="+126"/>
+        <location line="-261"/>
+        <location line="+129"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
         <location line="+37"/>
-        <location line="+403"/>
+        <location line="+424"/>
         <source>Error</source>
         <translation>שגיאה</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-454"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-456"/>
         <source>Main Toolbar</source>
         <translation>סרגל כלים ראשי</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-409"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-430"/>
         <source>Modpack download</source>
         <translation>הורדת ערכת מודים</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+390"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+392"/>
         <source>&amp;Change Group...</source>
         <translation>שי&amp;נוי קבוצה...</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+749"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+771"/>
         <source>Rename Instance</source>
         <translation>שינוי שם עותק</translation>
     </message>
@@ -7410,7 +7572,7 @@ Reason:
         <translation>הוספת עו&amp;תק...</translation>
     </message>
     <message>
-        <location line="+431"/>
+        <location line="+456"/>
         <source>&amp;Matrix Space</source>
         <translation>מרחב &amp;Matrix</translation>
     </message>
@@ -7424,17 +7586,17 @@ Reason:
         <translation>התקנת קישור סמלי של %1 במיקום /usr/local/bin</translation>
     </message>
     <message>
-        <location line="-687"/>
+        <location line="-714"/>
         <source>Instance Toolbar</source>
         <translation>סרגל הכלים של העותק</translation>
     </message>
     <message>
-        <location line="+493"/>
+        <location line="+495"/>
         <source>Close &amp;Window</source>
         <translation>סגירת חלו&amp;ן</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-988"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1013"/>
         <source>Task aborted</source>
         <translation>המשימה ננטשה</translation>
     </message>
@@ -7444,7 +7606,7 @@ Reason:
         <translation>&amp;סקינים</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+423"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+431"/>
         <source>Rename group</source>
         <translation>שינוי שם הקבוצה</translation>
     </message>
@@ -7498,7 +7660,7 @@ Please check your trashbin to manually restore them.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+106"/>
+        <location line="+122"/>
         <source>Metadata cache clear Failed!
 To clear the metadata cache manually, press Folders -&gt; View Launcher Root Folder, and after closing the launcher delete the folder named &quot;meta&quot;
 </source>
@@ -7549,7 +7711,7 @@ To clear the metadata cache manually, press Folders -&gt; View Launcher Root Fol
         <translation type="vanished">אין כתבות זמינות.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-675"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-699"/>
         <source>The task has been aborted by the user.</source>
         <translation>המשימה ננטשה על ידי המשתמש.</translation>
     </message>
@@ -7568,12 +7730,12 @@ To clear the metadata cache manually, press Folders -&gt; View Launcher Root Fol
         <translation type="vanished">משגר Prism ‏(zip)</translation>
     </message>
     <message>
-        <location line="+69"/>
+        <location line="+94"/>
         <source>Open %1 subreddit.</source>
         <translation>פתיחת התת־אשכול של %1 ב־Reddit.</translation>
     </message>
     <message>
-        <location line="-243"/>
+        <location line="-268"/>
         <source>Cop&amp;y...</source>
         <translation>העת&amp;קה...</translation>
     </message>
@@ -7587,7 +7749,7 @@ To clear the metadata cache manually, press Folders -&gt; View Launcher Root Fol
         <translation type="vanished">ניהול &amp;סקינים...</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+275"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+283"/>
         <source>No instance available to add the resource to.
 Please create a new instance before attempting to install this resource again.</source>
         <translation>אין עותקים זמינים שאפשר להוסיף את המשאב אליהם.
@@ -7603,12 +7765,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="vanished">ערכות חתולים</translation>
     </message>
     <message>
-        <location line="+257"/>
+        <location line="+282"/>
         <source>Open %1 Discord guild.</source>
         <translation>פתיחת אגודת ה־Discord של %1.</translation>
     </message>
     <message>
-        <location line="-243"/>
+        <location line="-268"/>
         <source>Open the selected instance&apos;s root folder in a file browser.</source>
         <translation>פתיחת תיקיית השורש של העותק הנבחר בסייר קבצים.</translation>
     </message>
@@ -7623,7 +7785,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>נעילת סרגלי כלים</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+455"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+471"/>
         <source>Confirm Deletion</source>
         <translation>אישור המחיקה</translation>
     </message>
@@ -7633,32 +7795,49 @@ Please create a new instance before attempting to install this resource again.</
         <translation>יי&amp;צוא...</translation>
     </message>
     <message>
-        <location line="+299"/>
+        <location line="+324"/>
         <source>Get help with %1 or Minecraft.</source>
         <translation>קבלת עזרה עבור %1 או Minecraft.</translation>
     </message>
     <message>
-        <location line="-188"/>
+        <location line="-213"/>
         <source>Open the launcher&apos;s root folder in a file browser.</source>
         <translation>פתיחת תיקיית השורש של המשגר בסייר קבצים.</translation>
     </message>
     <message>
-        <location line="+82"/>
+        <location line="+96"/>
         <source>Report a Bug or Suggest a Feature</source>
         <translation>דיווח על תקלה או הצעת תכונה</translation>
     </message>
     <message>
-        <location line="-348"/>
+        <location line="-362"/>
         <source>&amp;Manage Accounts...</source>
         <translation>ניהול &amp;חשבונות...</translation>
     </message>
     <message>
-        <location line="-282"/>
+        <location line="-284"/>
         <source>What&apos;s New Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+655"/>
+        <location line="+627"/>
+        <source>Look for missing Java, broken or conflicting mods, a wrong loader version or too little memory/disk space before launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+30"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1354"/>
+        <location line="+136"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>See what the team answered to the bug reports you sent from this launcher.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
         <source>Open %1 Matrix space.</source>
         <translation>פתיחת מרחב ה־Matrix של %1.</translation>
     </message>
@@ -7677,17 +7856,17 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="vanished">פתיחת הוויקי של %1</translation>
     </message>
     <message>
-        <location line="-224"/>
+        <location line="-249"/>
         <source>Close the current window</source>
         <translation>סגירת החלון הנוכחי</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-734"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+460"/>
         <source>Warnings</source>
         <translation>אזהרות</translation>
     </message>
     <message>
-        <location line="+546"/>
+        <location line="+554"/>
         <source>Instance not editable</source>
         <translation>העותק אינו ניתן לעריכה</translation>
     </message>
@@ -7697,23 +7876,23 @@ Please create a new instance before attempting to install this resource again.</
         <translation>נכשל ביטול מחיקת העותק</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+151"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+176"/>
         <source>&amp;About %1</source>
         <translation>על &amp;אודות %1</translation>
     </message>
     <message>
-        <location line="-528"/>
+        <location line="-553"/>
         <source>&amp;Accounts</source>
         <translation>חש&amp;בונות</translation>
     </message>
     <message>
-        <location line="+598"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-505"/>
+        <location line="+623"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-513"/>
         <source>Accounts</source>
         <translation>חשבונות</translation>
     </message>
     <message>
-        <location line="-520"/>
+        <location line="-545"/>
         <source>Add a new instance.</source>
         <translation>הוספת עותק חדש.</translation>
     </message>
@@ -7722,7 +7901,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="vanished">אפשר לפתוח את בלוג הפיתוח ולקרוא כתבות נוספות על %1.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-692"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-724"/>
         <source>Backspace</source>
         <translation>מקש מחיקה</translation>
     </message>
@@ -7736,7 +7915,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>&amp;עותקים</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+617"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+649"/>
         <source>Ctrl+%1</source>
         <translation>Ctrl+%1</translation>
     </message>
@@ -7756,7 +7935,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>&amp;תיקייה</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+354"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+357"/>
         <source>Install modpack</source>
         <translation>התקנת ערכת מודים</translation>
     </message>
@@ -7771,12 +7950,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation>לא נוספו חשבונות!</translation>
     </message>
     <message>
-        <location line="+219"/>
+        <location line="+244"/>
         <source>Install to &amp;PATH</source>
         <translation>התקנת נתיב לשורת הפקודה (‎$&amp;PATH)</translation>
     </message>
     <message>
-        <location line="-327"/>
+        <location line="-352"/>
         <source>&amp;Edit...</source>
         <translation>ע&amp;ריכה...</translation>
     </message>
@@ -7786,12 +7965,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation>שורת מצב</translation>
     </message>
     <message>
-        <location line="+489"/>
+        <location line="+514"/>
         <source>View information about %1.</source>
         <translation>צפייה במידע על %1.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+184"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+189"/>
         <source>Group name</source>
         <translation>שם הקבוצה</translation>
     </message>
@@ -7801,14 +7980,14 @@ Please create a new instance before attempting to install this resource again.</
         <translation>הצגת יומנים</translation>
     </message>
     <message>
-        <location line="-155"/>
+        <location line="-180"/>
         <source>Launcher &amp;Root</source>
         <translation>ש&amp;ורש המשגר</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1059"/>
-        <location line="+88"/>
-        <location line="+1552"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1099"/>
+        <location line="+125"/>
+        <location line="+1572"/>
         <source>No instance selected</source>
         <translation>לא נבחר אף עותק</translation>
     </message>
@@ -7818,7 +7997,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>שינוי סמל</translation>
     </message>
     <message>
-        <location line="+268"/>
+        <location line="+293"/>
         <source>&amp;Discord Guild</source>
         <translation>א&amp;גודת ה־Discord</translation>
     </message>
@@ -7828,32 +8007,32 @@ Please create a new instance before attempting to install this resource again.</
         <translation>ני&amp;קוי מטמון נתוני על</translation>
     </message>
     <message>
-        <location line="-562"/>
+        <location line="-587"/>
         <source>F&amp;olders</source>
         <translation>תי&amp;קיות</translation>
     </message>
     <message>
-        <location line="+596"/>
+        <location line="+621"/>
         <source>Folders</source>
         <translation>תיקיות</translation>
     </message>
     <message>
-        <location line="-166"/>
+        <location line="-191"/>
         <source>&amp;Central Mods</source>
         <translation>מודים מ&amp;רכזיים</translation>
     </message>
     <message>
-        <location line="+107"/>
+        <location line="+132"/>
         <source>Sub&amp;reddit</source>
         <translation>תת־אשכול רדיט (Sub&amp;reddit)</translation>
     </message>
     <message>
-        <location line="-251"/>
+        <location line="-276"/>
         <source>Delete the selected instance.</source>
         <translation>מחיקת העותק הנבחר.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1241"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1266"/>
         <source>&amp;Delete group</source>
         <translation>מ&amp;חיקת קבוצה</translation>
     </message>
@@ -7882,27 +8061,17 @@ Please create a new instance before attempting to install this resource again.</
         <translation>שינוי הקבוצה של העותק הנבחר.</translation>
     </message>
     <message>
-        <location line="+326"/>
+        <location line="+351"/>
         <source>Clear cached metadata</source>
         <translation>ניקוי נתוני על שנאגרו במטמון</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-384"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-416"/>
         <source>Total playtime: 0s</source>
         <translation>זמן משחק בסה״כ: 0 שנ׳</translation>
     </message>
     <message>
-        <location line="+196"/>
-        <source>The star reminder will appear after the Settings dialog closes.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+17"/>
-        <source>The main window must be visible to show the star reminder.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+104"/>
+        <location line="+345"/>
         <source>Enjoying PollyMC-Continued?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7912,12 +8081,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="+1"/>
         <source>Star on GitHub</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+896"/>
+        <location line="+923"/>
         <source>Check instance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8045,7 +8214,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+119"/>
+        <location line="+120"/>
         <source>Your instance folder contains &apos;!&apos; and this is known to cause Java problems!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8075,23 +8244,23 @@ Are you sure?</source>
         <translation>זמן משחק בסה״כ: %1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-315"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-340"/>
         <source>Change the selected instance&apos;s icon.</source>
         <translation>שינוי סמל העותק הנבחר.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-376"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-377"/>
         <source>Successfully added %1 to PATH</source>
         <translation>ההוספה של %1 אל PATH הצליחה</translation>
     </message>
     <message>
-        <location line="-270"/>
+        <location line="-286"/>
         <location line="+22"/>
         <source>Enter a new group name.</source>
         <translation>נא להקליד שם קבוצה חדש.</translation>
     </message>
     <message>
-        <location line="-1299"/>
+        <location line="-1340"/>
         <source>Show PollyMC</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8101,12 +8270,38 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+619"/>
+        <location line="+291"/>
+        <location line="+150"/>
+        <source>Update on your bug report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-149"/>
+        <source>&quot;%1&quot;: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Updates on your bug reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 of your reports have news.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+147"/>
+        <source>&quot;Sample report&quot;: Seen - the team is looking into it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+210"/>
         <source>&amp;Rename group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+388"/>
+        <location line="+391"/>
         <source>The modpack, mod, or resource %1 is blocked for third-parties! Please download it manually.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8130,7 +8325,7 @@ URL:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+195"/>
+        <location line="+200"/>
         <source>Are you sure you want to delete the group &apos;%1&apos;?</source>
         <translation>למחוק את הקבוצה ‚%1’?</translation>
     </message>
@@ -8148,7 +8343,7 @@ URL:
 <context>
     <name>ManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-247"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-255"/>
         <source>URL:</source>
         <translation>כתובת:</translation>
     </message>
@@ -8167,22 +8362,22 @@ Make sure you also trust the URL.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+56"/>
         <source>Abort</source>
         <translation>בטל</translation>
     </message>
     <message>
-        <location line="+125"/>
+        <location line="+132"/>
         <source>The instance failed to update to pack version %1. Please check launcher logs for more information.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-137"/>
+        <location line="-145"/>
         <source>Error</source>
         <translation>שגיאה</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+8"/>
         <source>Task aborted</source>
         <translation>המשימה ננטשה</translation>
     </message>
@@ -8192,12 +8387,12 @@ Make sure you also trust the URL.
         <translation>מידע על הספק:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+123"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+130"/>
         <source>Update Successful</source>
         <translation>העדכון הצליח</translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-101"/>
         <source>Cannot update!</source>
         <translation>לא ניתן לעדכן!</translation>
     </message>
@@ -8232,17 +8427,17 @@ Make sure you also trust the URL.
         <translation>יומן שינויים</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-3"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-4"/>
         <source>Warnings</source>
         <translation>אזהרות</translation>
     </message>
     <message>
-        <location line="+30"/>
+        <location line="+31"/>
         <source>Failed to request changelog data for this modpack.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+97"/>
+        <location line="+104"/>
         <source>The instance updated to pack version %1 successfully.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8252,13 +8447,13 @@ Make sure you also trust the URL.
         <translation>העדכון נכשל</translation>
     </message>
     <message>
-        <location line="-105"/>
+        <location line="-112"/>
         <source>Failed to search for available versions.</source>
         <translation>נכשל החיפוש לאיתור גרסאות זמינות.</translation>
     </message>
     <message>
-        <location line="-89"/>
-        <location line="+78"/>
+        <location line="-90"/>
+        <location line="+79"/>
         <source>Update Pack</source>
         <translation>עדכון ערכה</translation>
     </message>
@@ -8286,7 +8481,7 @@ Make sure you also trust the URL.
 <context>
     <name>Meta::BaseEntityLoadTask</name>
     <message>
-        <location filename="../launcher/meta/BaseEntity.cpp" line="+122"/>
+        <location filename="../launcher/meta/BaseEntity.cpp" line="+124"/>
         <source>Loading local file</source>
         <translation>הקובץ המקומי נטען</translation>
     </message>
@@ -8334,7 +8529,7 @@ Make sure you also trust the URL.
 <context>
     <name>MinecraftInstance</name>
     <message>
-        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1030"/>
+        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1042"/>
         <source>&lt;ACCESS TOKEN&gt;</source>
         <translation>&lt;אסימון גישה&gt;</translation>
     </message>
@@ -8344,12 +8539,12 @@ Make sure you also trust the URL.
         <translation>, המשחק האחרון היה ב־%1 ונמשך %2</translation>
     </message>
     <message>
-        <location line="-765"/>
+        <location line="-773"/>
         <source>Profilers</source>
         <translation>מנהלי פרופילים</translation>
     </message>
     <message>
-        <location line="+749"/>
+        <location line="+757"/>
         <source>broken</source>
         <translation>שבור</translation>
     </message>
@@ -8359,12 +8554,12 @@ Make sure you also trust the URL.
         <translation>, סך כל זמן המשחק: %1</translation>
     </message>
     <message>
-        <location line="-783"/>
+        <location line="-791"/>
         <source>Launch &amp;Offline</source>
         <translation>הפעלה במצב &amp;לא מקוון</translation>
     </message>
     <message>
-        <location line="+723"/>
+        <location line="+731"/>
         <source>&lt;PROFILE ID&gt;</source>
         <translation>&lt;מזהה פרופיל&gt;</translation>
     </message>
@@ -8374,7 +8569,7 @@ Make sure you also trust the URL.
         <translation>&lt;מזהה הפעלה&gt;</translation>
     </message>
     <message>
-        <location line="-720"/>
+        <location line="-728"/>
         <source>&amp;Launch</source>
         <translation>ה&amp;פעלה</translation>
     </message>
@@ -8384,22 +8579,22 @@ Make sure you also trust the URL.
         <translation>&amp;ללא מנהל פרופילים</translation>
     </message>
     <message>
-        <location line="+750"/>
+        <location line="+758"/>
         <source>Minecraft %1</source>
         <translation>‎Minecraft %1</translation>
     </message>
     <message>
-        <location line="-770"/>
+        <location line="-778"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location line="+787"/>
+        <location line="+795"/>
         <source>, has crashed.</source>
         <translation>, קרס.</translation>
     </message>
     <message>
-        <location line="-785"/>
+        <location line="-793"/>
         <source>Ctrl+Alt+O</source>
         <translation>Ctrl+Alt+O</translation>
     </message>
@@ -8666,7 +8861,7 @@ It is most likely you will need to change the path - please refer to the mod&apo
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+344"/>
+        <location line="+340"/>
         <source>Select Global Data Packs Folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8817,6 +9012,59 @@ It is most likely you will need to change the path - please refer to the mod&apo
     </message>
 </context>
 <context>
+    <name>ModConflictChecker</name>
+    <message>
+        <location filename="../launcher/minecraft/mod/ModConflictChecker.cpp" line="+88"/>
+        <source>unknown version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Duplicate mod: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These files all provide the mod id &quot;%1&quot;, and the game will not start with more than one of them:
+%2
+Keep only one (usually the newest) and delete or disable the others.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>%1 conflicts with %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 (%2) says it is incompatible with %3 (%4), and both are enabled.
+Disable or remove one of them.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
+        <source>Disabled dependency: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 needs the mod &quot;%2&quot;, which is installed (%3) but disabled.
+Enable it to avoid a crash on startup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Possibly missing dependency: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 needs a mod with the id &quot;%2&quot;, but none was found in the mods folder.
+If the game starts fine it is probably bundled inside another mod; otherwise download it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ModFilterWidget</name>
     <message>
         <location filename="../launcher/ui/widgets/ModFilterWidget.ui" line="+284"/>
@@ -8957,7 +9205,7 @@ It is most likely you will need to change the path - please refer to the mod&apo
 <context>
     <name>ModFolderModel</name>
     <message>
-        <location filename="../launcher/minecraft/mod/ModFolderModel.cpp" line="+100"/>
+        <location filename="../launcher/minecraft/mod/ModFolderModel.cpp" line="+101"/>
         <source>File</source>
         <translation>קובץ</translation>
     </message>
@@ -9017,7 +9265,7 @@ It is most likely you will need to change the path - please refer to the mod&apo
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+224"/>
+        <location line="+247"/>
         <source>Confirm toggle</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9074,7 +9322,7 @@ Ignoring them may break the game.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-388"/>
+        <location line="-411"/>
         <source>Minecraft Versions</source>
         <translation>גרסאות של Minecraft</translation>
     </message>
@@ -9093,7 +9341,7 @@ Ignoring them may break the game.</source>
         <translation>גרסת המוד.</translation>
     </message>
     <message numerus="yes">
-        <location line="+245"/>
+        <location line="+268"/>
         <source>%n mod(s) will be disabled
 </source>
         <translation>
@@ -9103,7 +9351,7 @@ Ignoring them may break the game.</source>
         </translation>
     </message>
     <message>
-        <location line="-374"/>
+        <location line="-397"/>
         <source>Enable</source>
         <translation>הפעלה</translation>
     </message>
@@ -9167,7 +9415,7 @@ Ignoring them may break the game.</source>
         <translation>סוג המהדורה.</translation>
     </message>
     <message numerus="yes">
-        <location line="+232"/>
+        <location line="+255"/>
         <source>%n mod(s) will be enabled
 </source>
         <translation>
@@ -9215,26 +9463,27 @@ Ignoring them may break the game.</source>
     </message>
     <message>
         <location filename="../launcher/ui/pages/instance/ModFolderPage.cpp" line="+190"/>
-        <location line="+90"/>
+        <location line="+104"/>
         <source>Download stopped by user.</source>
         <translation>המשתמש עצר את ההורדה.</translation>
     </message>
     <message>
-        <location line="-70"/>
-        <location line="+86"/>
+        <location line="-83"/>
+        <location line="+99"/>
         <source>Abort</source>
         <translation>נטישה</translation>
     </message>
     <message>
-        <location line="-110"/>
-        <location line="+45"/>
-        <location line="+45"/>
-        <location line="+60"/>
+        <location line="-124"/>
+        <location line="+46"/>
+        <location line="+58"/>
+        <location line="+61"/>
+        <location line="+101"/>
         <source>Error</source>
         <translation>שגיאה</translation>
     </message>
     <message>
-        <location line="-256"/>
+        <location line="-372"/>
         <source>Try to check or update all selected mods (all mods if none are selected)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9260,19 +9509,19 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>The mods you are trying to delete are required by %1 mods.
 Do you want to disable them?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+86"/>
-        <location line="+105"/>
+        <location line="+119"/>
         <source>Mod updates are unavailable when metadata is disabled!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-99"/>
+        <location line="-113"/>
         <source>Updating mods while the game is running may cause mod duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -9280,6 +9529,11 @@ Are you sure you want to do this?</source>
     </message>
     <message>
         <location line="+20"/>
+        <source>There are no mods to check for updates.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
         <source>The mod updater was aborted!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9289,56 +9543,75 @@ Are you sure you want to do this?</source>
         <translation>כל המודים שנבחרו עדכניים! :)</translation>
     </message>
     <message>
-        <location line="-28"/>
+        <location line="+178"/>
+        <source>No mod loader was installed. Please try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-215"/>
         <source>Confirm Update</source>
         <translation>אישור עדכון</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+34"/>
         <source>&apos;%1&apos; is up-to-date! :)</source>
         <translation>הגרסה של ‚%1’ עדכנית! :)</translation>
     </message>
     <message>
-        <location line="-159"/>
+        <location line="-169"/>
         <source>Change a mod&apos;s version.</source>
         <translation>שינוי גרסה של מוד.</translation>
     </message>
     <message>
-        <source>You need to install a compatible mod loader before installing mods. Would you like to do so?</source>
-        <translation type="vanished">יש צורך בהתקנת טוען מודים תואם לפני שמתקינים מודים. האם ברצונך לעשות זאת?</translation>
+        <location line="+333"/>
+        <source>Missing Mod Loader</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+88"/>
-        <location line="+67"/>
-        <location line="+23"/>
+        <location line="+1"/>
+        <source>You need to install a compatible mod loader before installing mods. Would you like to do so?</source>
+        <translation>יש צורך בהתקנת טוען מודים תואם לפני שמתקינים מודים. האם ברצונך לעשות זאת?</translation>
+    </message>
+    <message>
+        <location line="-246"/>
+        <location line="+77"/>
+        <location line="+27"/>
         <source>Aborted</source>
         <translation>ננטש</translation>
     </message>
     <message>
-        <location line="-84"/>
-        <location line="+90"/>
+        <location line="-98"/>
+        <location line="+104"/>
         <source>Warnings</source>
         <translation>אזהרות</translation>
     </message>
+    <message numerus="yes">
+        <location line="-19"/>
+        <source>No updates were found, but %n mod(s) could not be checked.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location line="+25"/>
+        <location line="+45"/>
         <source>You are about to remove the metadata for %1 mods.
 Are you sure?</source>
         <translation>עומדת להתבצע הסרה של נתוני העל של %1 מודים. 
 להמשיך?</translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="-252"/>
         <source>Download mods from online mod platforms</source>
         <translation>הורדת מודים מפלטפורמות מודים ברשת</translation>
     </message>
     <message>
-        <location line="+192"/>
+        <location line="+202"/>
         <source>All selected mods are up-to-date! :)</source>
         <translation>כל ערכות המודים שנבחרו עדכניות! :)</translation>
     </message>
     <message>
-        <location line="-193"/>
+        <location line="-203"/>
         <location line="+111"/>
         <source>Download Mods</source>
         <translation>הורדת מודים</translation>
@@ -9349,17 +9622,18 @@ Are you sure?</source>
         <translation>ייצוא נתוני העל של המוד לטקסט.</translation>
     </message>
     <message>
-        <location line="+202"/>
+        <location line="+217"/>
         <source>Confirm Removal</source>
         <translation>אישור הסרה</translation>
     </message>
     <message>
-        <location line="-41"/>
+        <location line="-67"/>
+        <location line="+25"/>
         <source>Update checker</source>
         <translation>בודק העדכונים</translation>
     </message>
     <message>
-        <location line="-125"/>
+        <location line="-138"/>
         <source>Confirm Disable</source>
         <translation>אישור השבתה</translation>
     </message>
@@ -9403,7 +9677,7 @@ Are you sure?</source>
 <context>
     <name>Modrinth::ModpackListModel</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/modrinth/ModrinthModel.cpp" line="+324"/>
+        <location filename="../launcher/ui/pages/modplatform/modrinth/ModrinthModel.cpp" line="+329"/>
         <location line="+3"/>
         <source>Error</source>
         <translation>שגיאה</translation>
@@ -9430,7 +9704,7 @@ Please update %1!</source>
         <translation>המשאבים עבור Modrinth בהכנות...</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+37"/>
         <source>Waiting for the API response from Modrinth...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9440,22 +9714,22 @@ Please update %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+106"/>
+        <location line="+109"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version.</source>
         <translation>לא נמצאה גרסה תקנית למשאב זה. נראה שאינו זמין עבור גרסת המשחק הנוכחית.</translation>
     </message>
     <message>
-        <location line="-39"/>
+        <location line="-41"/>
         <source>Unknown</source>
         <translation>לא ידוע</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+38"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version / mod loader.</source>
         <translation>לא נמצאה גרסה תקנית למשאב זה. נראה שאינו זמין עבור גרסת המשחק או טוען המודים הנוכחיים.</translation>
     </message>
     <message>
-        <location line="-38"/>
+        <location line="-40"/>
         <source>Not installed</source>
         <translation>לא מותקן</translation>
     </message>
@@ -9463,7 +9737,7 @@ Please update %1!</source>
 <context>
     <name>ModrinthCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+292"/>
+        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+328"/>
         <source>Downloading mods...</source>
         <translation>המודים מתקבלים...</translation>
     </message>
@@ -9476,18 +9750,18 @@ Please update %1!</source>
         <translation type="vanished">נכשלה מחיקת הקבצים המתנגשים הישנים.</translation>
     </message>
     <message>
-        <location line="-155"/>
+        <location line="-182"/>
         <source>We couldn&apos;t find a suitable index file for the older version. This may cause some of the files to be duplicated. Do you want to continue?</source>
         <translation>לא נמצא קובץ מפתח מתאים לגרסה הישנה. ייתכן שחלק מהקבצים יהיו כפולים. להמשיך?</translation>
     </message>
     <message>
-        <location line="+57"/>
+        <location line="+58"/>
         <source>Could not rename the client overrides folder:
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+37"/>
+        <location line="+53"/>
         <source>Mod Download Modrinth</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9502,7 +9776,7 @@ Please update %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+30"/>
+        <location line="+40"/>
         <location line="+24"/>
         <source>%1 out of %2 complete</source>
         <translation>הושלמו %1 מתוך %2</translation>
@@ -9513,25 +9787,25 @@ Please update %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+60"/>
+        <location line="+62"/>
         <source>Could not understand pack index:
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-327"/>
+        <location line="-356"/>
         <source>No index file.</source>
         <translation>אין קובץ מפתח.</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+46"/>
         <source>Could not rename the overrides folder:
 </source>
         <translation>לא ניתן היה לשנות את שם תיקיית העקיפות:
 </translation>
     </message>
     <message>
-        <location line="-115"/>
+        <location line="-117"/>
         <source> (version %1)</source>
         <translation> (גרסה %1)</translation>
     </message>
@@ -9539,7 +9813,7 @@ Please update %1!</source>
 <context>
     <name>ModrinthManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+76"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+83"/>
         <source>Fetching changelogs...</source>
         <translation>יומני השינויים מתקבלים...</translation>
     </message>
@@ -9549,12 +9823,12 @@ Please update %1!</source>
         <translation>נא לבחור קובץ עדכון</translation>
     </message>
     <message>
-        <location line="-81"/>
+        <location line="-86"/>
         <source>%1 (Current)</source>
         <translation>%1 (נוכחי)</translation>
     </message>
     <message>
-        <location line="+81"/>
+        <location line="+86"/>
         <source>Modrinth pack</source>
         <translation>ערכת Modrinth</translation>
     </message>
@@ -9700,6 +9974,51 @@ Please update %1!</source>
     </message>
 </context>
 <context>
+    <name>MyReportsDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+151"/>
+        <location line="+4"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Bug reports and suggestions you sent from this launcher, and what the team answered.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>No reports yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>When you send a bug report or suggestion from this launcher, it shows up here, and you will be told when the team answers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <location line="+25"/>
+        <source>Check for updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-24"/>
+        <source>Close</source>
+        <translation type="unfinished">סגירה</translation>
+    </message>
+    <message>
+        <location line="+25"/>
+        <source>Last checked: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>Checking…</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Net::NetRequest</name>
     <message>
         <location filename="../launcher/net/NetRequest.cpp" line="+73"/>
@@ -9751,7 +10070,7 @@ Please update %1!</source>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+145"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9896,12 +10215,12 @@ Please update %1!</source>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/NewInstanceDialog.ui" line="+17"/>
-        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="+78"/>
+        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="+79"/>
         <source>New Instance</source>
         <translation>עותק חדש</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="-112"/>
+        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="-113"/>
         <source>No group</source>
         <translation>אין קבוצה</translation>
     </message>
@@ -10040,19 +10359,19 @@ Please update %1!</source>
         <translation>אי&amp;תור</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+483"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+486"/>
         <source>Clear</source>
         <translation>ניקוי</translation>
     </message>
     <message>
-        <location line="-222"/>
-        <location line="+135"/>
+        <location line="-225"/>
+        <location line="+138"/>
         <location line="+41"/>
         <source>Error</source>
         <translation>שגיאה</translation>
     </message>
     <message>
-        <location line="-252"/>
+        <location line="-255"/>
         <source>Current logs</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10067,7 +10386,7 @@ Please update %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+60"/>
+        <location line="+63"/>
         <source>The file (%1) encountered an error when reading: %2.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10121,8 +10440,8 @@ Are you sure?</source>
         <translation>יש לגלול עד הסוף</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="-320"/>
-        <location line="+218"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="-323"/>
+        <location line="+221"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>לא ניתן להציג יומן רישום זה מכיוון שגודל יומן הרישום עולה על %1 שורות.</translation>
     </message>
@@ -10318,19 +10637,19 @@ Are you sure?</source>
         <translation type="obsolete">עזרה</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+383"/>
-        <location line="+42"/>
+        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+388"/>
+        <location line="+44"/>
         <source>Search settings…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-41"/>
-        <location line="+42"/>
+        <location line="-43"/>
+        <location line="+44"/>
         <source>Search all settings (Ctrl+F). Several words narrow the results down.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+296"/>
+        <location line="+297"/>
         <source>No settings match &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10586,7 +10905,7 @@ StdErr: %2</source>
 <context>
     <name>PollyMCUpdaterApp</name>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="+99"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="+100"/>
         <source>Use a custom path as application root (use &apos;.&apos; for current directory).</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10930,19 +11249,13 @@ Updater log: %7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
-        <location line="+4"/>
-        <source>Failed to Check Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-4"/>
-        <source>Failed to launch child process to read version.</source>
+        <location line="+23"/>
+        <source>Failed to launch child process to read version, using the built-in version instead.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+4"/>
-        <source>Child launcher process failed.</source>
+        <source>Child launcher process did not finish in time, using the built-in version instead.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -11256,7 +11569,7 @@ Choose your name carefully:</source>
         <translation>ימים</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1173"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
         <source>%1 (in use)</source>
         <translation>%1 (בשימוש)</translation>
     </message>
@@ -11461,17 +11774,29 @@ Proceed with truncation?</source>
     </message>
     <message>
         <location filename="../launcher/InstanceDirUpdate.cpp" line="+64"/>
-        <location line="+33"/>
+        <location line="+40"/>
         <source>Cannot rename instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-32"/>
+        <location line="-39"/>
         <source>New instance root (%1) already exists. &lt;br /&gt;Only the metadata will be renamed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+5"/>
+        <source>Cannot rename instance folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The instance folder cannot be renamed while the instance is running.
+
+Only the instance name will be changed. The folder will keep its current name.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>&amp;Remember my choice</source>
         <translation>לז&amp;כור את הבחירה שלי</translation>
     </message>
@@ -11917,7 +12242,7 @@ Would you like to remove those existing saves as part of this update?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/meta/BaseEntity.cpp" line="+34"/>
+        <location filename="../launcher/meta/BaseEntity.cpp" line="+36"/>
         <source>Download of meta file %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12064,7 +12389,7 @@ Would you like to remove those existing saves as part of this update?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/modplatform/ModIndex.h" line="+143"/>
+        <location filename="../launcher/modplatform/ModIndex.h" line="+145"/>
         <source> for %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12147,7 +12472,7 @@ Error message: %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1040"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1049"/>
         <source>An auto-updater for PollyMC-Continued</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12191,16 +12516,146 @@ Error message: %3</source>
         <source>Send this error to the PollyMC developers</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../launcher/BugReportTracker.cpp" line="+164"/>
+        <source>Waiting for a dev to check it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Seen - the team is looking into it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The team needs more information - please reach out on Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Fixed - it will be in the next update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-193"/>
+        <source>Fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Fixed in version %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+2"/>
+        <source>Won&apos;t be fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Duplicate of another report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+4"/>
+        <source>Not a bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+1"/>
+        <source>Updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Crash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Suggestion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Other</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-13"/>
+        <source>Waiting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>In review</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Needs info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Duplicate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>NEW</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Sent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>(no title)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>%1  ·  ID %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <location line="+8"/>
+        <source>Copy ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-7"/>
+        <source>Give this ID to the team if you contact them about this report.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Copied!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Resource</name>
     <message>
-        <location filename="../launcher/minecraft/mod/Resource.cpp" line="+63"/>
+        <location filename="../launcher/minecraft/mod/Resource.cpp" line="+64"/>
         <source>Unknown</source>
         <translation>לא ידוע</translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="+50"/>
         <source>Not marked as compatible with the instance&apos;s game version.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12208,7 +12663,7 @@ Error message: %3</source>
 <context>
     <name>ResourceDownload::DataPackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+181"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+196"/>
         <source>data packs</source>
         <extracomment>String that gets appended to the data pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation type="unfinished"></translation>
@@ -12232,7 +12687,7 @@ Error message: %3</source>
 <context>
     <name>ResourceDownload::ModDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-69"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-81"/>
         <source>mods</source>
         <extracomment>String that gets appended to the mod download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation type="unfinished"></translation>
@@ -12256,7 +12711,7 @@ Error message: %3</source>
 <context>
     <name>ResourceDownload::ResourceDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="+189"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="+193"/>
         <source>Abort</source>
         <translation>נטישה</translation>
     </message>
@@ -12266,7 +12721,7 @@ Error message: %3</source>
         <translation>שגיאה</translation>
     </message>
     <message>
-        <location line="-96"/>
+        <location line="-98"/>
         <source>Ctrl+Return</source>
         <translation>Ctrl+Enter</translation>
     </message>
@@ -12280,7 +12735,7 @@ Error message: %3</source>
         <translation>סקירה ואישור</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+27"/>
         <source>Confirmation Needed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12291,7 +12746,7 @@ Are you sure you want to close this dialog?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+52"/>
         <source>Opens a new popup to review your selected %1 and confirm your selection. Shortcut: Ctrl+Return</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12311,12 +12766,12 @@ Are you sure you want to close this dialog?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+220"/>
+        <location line="+265"/>
         <source>Change %1 version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-50"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-53"/>
         <source>resources</source>
         <extracomment>String that gets appended to the download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation type="unfinished"></translation>
@@ -12330,35 +12785,35 @@ Are you sure you want to close this dialog?</source>
 <context>
     <name>ResourceDownload::ResourceModel</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourceModel.cpp" line="+221"/>
-        <location line="+20"/>
-        <location line="+180"/>
-        <location line="+4"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourceModel.cpp" line="+239"/>
+        <location line="+24"/>
+        <location line="+190"/>
+        <location line="+7"/>
         <source>Error</source>
         <translation>שגיאה</translation>
     </message>
     <message>
-        <location line="-203"/>
+        <location line="-220"/>
         <source>A network error occurred. Could not load project versions: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+23"/>
         <source>A network error occurred. Could not load project info: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>The request was aborted for an unknown reason</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+175"/>
+        <location line="+184"/>
         <source>A network error occurred. Could not load mods.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+8"/>
         <source>API version too old!
 Please update %1!</source>
         <translation>גרסת ה־API ישנה מדי!
@@ -12368,7 +12823,7 @@ Please update %1!</source>
 <context>
     <name>ResourceDownload::ResourcePackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+66"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+72"/>
         <source>resource packs</source>
         <extracomment>String that gets appended to the resource pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation type="unfinished"></translation>
@@ -12392,17 +12847,17 @@ Please update %1!</source>
 <context>
     <name>ResourceDownload::ResourcePage</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+219"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+233"/>
         <source> by </source>
         <translation> מאת </translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+36"/>
         <source>Discord: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+22"/>
         <source>No version available for the selected pack</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12412,7 +12867,7 @@ Please update %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source> [installed]</source>
         <comment>Mod version select</comment>
         <translation type="unfinished"></translation>
@@ -12428,12 +12883,12 @@ Please update %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+25"/>
         <source>Loading versions...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+94"/>
+        <location line="+103"/>
         <source>No versions available</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12444,7 +12899,7 @@ The author likely blocked third-party launchers.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+107"/>
+        <location line="+111"/>
         <source>Reinstall</source>
         <translation>התקנה מחדש</translation>
     </message>
@@ -12459,54 +12914,54 @@ The author likely blocked third-party launchers.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-335"/>
+        <location line="-355"/>
         <source>Donate information: </source>
         <translation>מידע על התרומה: </translation>
     </message>
     <message>
-        <location line="-116"/>
+        <location line="-129"/>
         <source>Search for %1...</source>
         <extracomment>String in the search bar of the mod downloading dialog</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+161"/>
+        <location line="+178"/>
         <source>Select %1 for download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-55"/>
         <source>&lt;b&gt;This project has been archived. It will not receive any further updates unless the author decides to unarchive the project.&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+25"/>
         <source>Wiki: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>ויקי: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="-2"/>
+        <location line="-3"/>
         <source>Issues: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>בעיות: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+300"/>
+        <location line="+320"/>
         <source>Cancel</source>
         <translation>ביטול</translation>
     </message>
     <message>
-        <location line="-296"/>
+        <location line="-314"/>
         <source>Source code: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>קוד מקור: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="-8"/>
+        <location line="-10"/>
         <source>External links:</source>
         <translation>קישורים חיצוניים:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.h" line="+47"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.h" line="+46"/>
         <source>resources</source>
         <extracomment>The plural version of &apos;resource&apos;</extracomment>
         <translation type="unfinished"></translation>
@@ -12521,7 +12976,7 @@ The author likely blocked third-party launchers.</source>
 <context>
     <name>ResourceDownload::ShaderPackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+34"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+40"/>
         <source>shader packs</source>
         <extracomment>String that gets appended to the shader pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>ערכות הרהבה (Shaders)</translation>
@@ -12545,7 +13000,7 @@ The author likely blocked third-party launchers.</source>
 <context>
     <name>ResourceDownload::TexturePackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-17"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-20"/>
         <source>texture packs</source>
         <extracomment>String that gets appended to the texture pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation type="unfinished"></translation>
@@ -12569,7 +13024,7 @@ The author likely blocked third-party launchers.</source>
 <context>
     <name>ResourceDownloadTask</name>
     <message>
-        <location filename="../launcher/ResourceDownloadTask.cpp" line="+45"/>
+        <location filename="../launcher/ResourceDownloadTask.cpp" line="+74"/>
         <source>Resource download</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12580,7 +13035,7 @@ The author likely blocked third-party launchers.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+56"/>
         <source>Failed to rename shader config from &apos;%1&apos; to &apos;%2&apos;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12588,7 +13043,7 @@ The author likely blocked third-party launchers.</source>
 <context>
     <name>ResourceFolderModel</name>
     <message>
-        <location filename="../launcher/minecraft/mod/ResourceFolderModel.h" line="+244"/>
+        <location filename="../launcher/minecraft/mod/ResourceFolderModel.h" line="+252"/>
         <source>Name</source>
         <translation>שם</translation>
     </message>
@@ -12617,7 +13072,7 @@ The author likely blocked third-party launchers.</source>
         <translation>ספק</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/mod/ResourceFolderModel.cpp" line="+271"/>
+        <location filename="../launcher/minecraft/mod/ResourceFolderModel.cpp" line="+296"/>
         <source>Confirm toggle</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12628,7 +13083,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+280"/>
+        <location line="+287"/>
         <source>
 Warning: This resource is symbolically linked from elsewhere. Editing it will also change the original.
 Canonical Path: %1</source>
@@ -12757,27 +13212,27 @@ Warning: This resource is hard linked elsewhere. Editing it will also change the
 <context>
     <name>ResourcePackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="+103"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="+104"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>המשתמש עצר את ההורדה.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>בטל</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>שגיאה</translation>
     </message>
     <message>
-        <location line="-189"/>
+        <location line="-198"/>
         <source>Download Packs</source>
         <translation>הורדת חבילות נתונים</translation>
     </message>
@@ -12792,13 +13247,13 @@ Warning: This resource is hard linked elsewhere. Editing it will also change the
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+83"/>
-        <location line="+99"/>
+        <location line="+87"/>
+        <location line="+104"/>
         <source>Resource pack updates are unavailable when metadata is disabled!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-99"/>
         <source>Confirm Update</source>
         <translation>אישור עדכון</translation>
     </message>
@@ -12810,7 +13265,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+22"/>
         <source>The resource pack updater was aborted!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12820,26 +13275,26 @@ Are you sure you want to do this?</source>
         <translation>הגרסה של ‚%1’ עדכנית! :)</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+51"/>
         <source>You are about to remove the metadata for %1 resource packs.
 Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-149"/>
+        <location line="-156"/>
         <source>Change a mod&apos;s version.</source>
         <translation>שינוי גרסה של מוד.</translation>
     </message>
     <message>
-        <location line="+34"/>
-        <location line="+61"/>
+        <location line="+35"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>ננטש</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>אזהרות</translation>
     </message>
@@ -12854,12 +13309,12 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>Confirm Removal</source>
         <translation>אישור הסרה</translation>
     </message>
     <message>
-        <location line="-41"/>
+        <location line="-42"/>
         <source>Update checker</source>
         <translation>בודק העדכונים</translation>
     </message>
@@ -12885,23 +13340,23 @@ Are you sure?</source>
 <context>
     <name>ResourceUpdateDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+126"/>
+        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+129"/>
         <location line="+98"/>
-        <location line="+160"/>
+        <location line="+169"/>
         <source>Abort</source>
         <translation>נטישה</translation>
     </message>
     <message>
-        <location line="-269"/>
+        <location line="-278"/>
         <location line="+95"/>
-        <location line="+146"/>
-        <location line="+16"/>
-        <location line="+56"/>
+        <location line="+153"/>
+        <location line="+17"/>
+        <location line="+58"/>
         <source>Error</source>
         <translation>שגיאה</translation>
     </message>
     <message>
-        <location line="-384"/>
+        <location line="-395"/>
         <source>Confirm resources to update</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12931,18 +13386,18 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+91"/>
+        <location line="+90"/>
         <source>Mod name: %1</source>
         <translation>שם המוד: %1</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>Possible solution: Getting the latest version manually:&lt;br&gt;%1&lt;br&gt;</source>
         <extracomment>%1 is the link to download it manually</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>Failed to check for updates</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12956,28 +13411,36 @@ Are you sure?</source>
         <source>Checking for dependencies...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message numerus="yes">
+        <location line="+47"/>
+        <source>%n update(s) found. You&apos;re about to update the following resources:</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location line="+56"/>
+        <location line="+13"/>
         <source>Looking for metadata</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+46"/>
         <source>The resource &apos;%1&apos; does not have a metadata yet. We need to generate it in order to track relevant information on how to update this mod. To do this, please select a mod provider which we can use to check for updates for this mod.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+59"/>
+        <location line="+63"/>
         <source>Generating metadata...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+54"/>
         <source>Couldn&apos;t find a valid version on the selected mod provider(s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+14"/>
         <source>Mod was disabled as it may be already installed.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13002,23 +13465,23 @@ Are you sure?</source>
         <translation>הגרסה החדשה: %1</translation>
     </message>
     <message>
-        <location line="-344"/>
+        <location line="-357"/>
         <location line="+99"/>
         <source>Warnings</source>
         <translation>אזהרות</translation>
     </message>
     <message>
-        <location line="-44"/>
+        <location line="-46"/>
         <source>Reason: %1</source>
         <translation>סיבה: %1</translation>
     </message>
     <message>
-        <location line="-80"/>
+        <location line="-79"/>
         <source>Checking for updates</source>
         <translation>מתבצעת בדיקה האם יש עדכונים</translation>
     </message>
     <message>
-        <location line="+384"/>
+        <location line="+398"/>
         <source>Required by:</source>
         <translation>נדרש על ידי:</translation>
     </message>
@@ -13028,17 +13491,17 @@ Are you sure?</source>
         <translation>נדרש על ידי: %1</translation>
     </message>
     <message>
-        <location line="-349"/>
+        <location line="-362"/>
         <source>Checking for updates...</source>
         <translation>מתבצעת בדיקת עדכונים...</translation>
     </message>
     <message>
-        <location line="+329"/>
+        <location line="+342"/>
         <source>Provider: %1</source>
         <translation>ספק: %1</translation>
     </message>
     <message>
-        <location line="-211"/>
+        <location line="-223"/>
         <source>Not installed</source>
         <translation>לא מותקן</translation>
     </message>
@@ -13114,7 +13577,7 @@ Are you sure?</source>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+373"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+384"/>
         <source>You are about to upload %1 screenshots to %2.
 You should double-check for personal information.
 
@@ -13130,7 +13593,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+18"/>
         <source>Abort</source>
         <translation>נטישה</translation>
     </message>
@@ -13166,7 +13629,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>You are about to delete the selected screenshot.
 This may be permanent and it will be gone from the folder.
 
@@ -13184,7 +13647,7 @@ Are you sure?</source>
         <translation>מחיקה</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-110"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-111"/>
         <location line="+41"/>
         <source>The task has been aborted by the user.</source>
         <translation>המשימה ננטשה על ידי המשתמש.</translation>
@@ -13200,7 +13663,7 @@ Are you sure?</source>
         <translation>העלאה</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+75"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+76"/>
         <source>Confirm Deletion</source>
         <translation>אישור המחיקה</translation>
     </message>
@@ -13222,7 +13685,7 @@ Are you sure?</source>
         <translation>העתקת תמונה</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-210"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-220"/>
         <source>Context menu</source>
         <translation>תפריט הקשר</translation>
     </message>
@@ -13232,7 +13695,7 @@ Are you sure?</source>
         <translation>צילומי מסך</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+143"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+152"/>
         <source>Unknown error</source>
         <translation>שגיאה לא מוכרת</translation>
     </message>
@@ -13475,27 +13938,27 @@ Are you sure?</source>
 <context>
     <name>ShaderPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ShaderPackPage.cpp" line="+100"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/ShaderPackPage.cpp" line="+101"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>המשתמש עצר את ההורדה.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>נטישה</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>שגיאה</translation>
     </message>
     <message>
-        <location line="-181"/>
+        <location line="-190"/>
         <source>Download Packs</source>
         <translation>הורדת ערכות</translation>
     </message>
@@ -13515,13 +13978,13 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+61"/>
-        <location line="+99"/>
+        <location line="+65"/>
+        <location line="+104"/>
         <source>Shader pack updates are unavailable when metadata is disabled!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-99"/>
         <source>Confirm Update</source>
         <translation>אישור עדכון</translation>
     </message>
@@ -13533,7 +13996,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+22"/>
         <source>The shader pack updater was aborted!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13543,21 +14006,21 @@ Are you sure you want to do this?</source>
         <translation>הגרסה של ‚%1’ עדכנית! :)</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+51"/>
         <source>You are about to remove the metadata for %1 shader packs.
 Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-115"/>
-        <location line="+61"/>
+        <location line="-121"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>ננטש</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>אזהרות</translation>
     </message>
@@ -13572,12 +14035,12 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>Confirm Removal</source>
         <translation>אישור הסרה</translation>
     </message>
     <message>
-        <location line="-41"/>
+        <location line="-42"/>
         <source>Update checker</source>
         <translation>בודק העדכונים</translation>
     </message>
@@ -14139,7 +14602,7 @@ Are you sure?</source>
 <context>
     <name>Task</name>
     <message>
-        <location filename="../launcher/tasks/Task.cpp" line="+134"/>
+        <location filename="../launcher/tasks/Task.cpp" line="+141"/>
         <source>Aborted</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14383,27 +14846,27 @@ inheritsFrom is missing</source>
 <context>
     <name>TexturePackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="+108"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="+109"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>המשתמש עצר את ההורדה.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>נטישה</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>שגיאה</translation>
     </message>
     <message>
-        <location line="-190"/>
+        <location line="-199"/>
         <source>Download Packs</source>
         <translation>הורדת חבילות נתונים</translation>
     </message>
@@ -14428,13 +14891,13 @@ inheritsFrom is missing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+66"/>
-        <location line="+99"/>
+        <location line="+70"/>
+        <location line="+104"/>
         <source>Texture pack updates are unavailable when metadata is disabled!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-99"/>
         <source>Confirm Update</source>
         <translation>אישור עדכון</translation>
     </message>
@@ -14446,7 +14909,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+22"/>
         <source>The texture pack updater was aborted!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14456,21 +14919,21 @@ Are you sure you want to do this?</source>
         <translation>הגרסה של ‚%1’ עדכנית! :)</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+51"/>
         <source>You are about to remove the metadata for %1 texture packs.
 Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-115"/>
-        <location line="+61"/>
+        <location line="-121"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>ננטש</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>אזהרות</translation>
     </message>
@@ -14485,12 +14948,12 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>Confirm Removal</source>
         <translation>אישור הסרה</translation>
     </message>
     <message>
-        <location line="-41"/>
+        <location line="-42"/>
         <source>Update checker</source>
         <translation>בודק העדכונים</translation>
     </message>
@@ -14549,6 +15012,29 @@ Are you sure?</source>
     <message>
         <location line="+12"/>
         <source>Completeness is the percentage of fully translated strings, not counting automatically guessed ones.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UntrustedModsDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/UntrustedModsDialog.ui" line="+14"/>
+        <source>Easy There!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The modpack you are installing includes mods which are not hosted on Modrinth or CurseForge:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Malicious mods are often distributed through links sent on platforms such as Discord.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;We strongly recommend only importing modpacks from trusted sources.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>I trust this modpack and wish to proceed regardless</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -15115,7 +15601,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="-29"/>
-        <source>Ok</source>
+        <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -15259,7 +15745,7 @@ Are you sure?</source>
 <context>
     <name>WorldList</name>
     <message>
-        <location filename="../launcher/minecraft/WorldList.cpp" line="+272"/>
+        <location filename="../launcher/minecraft/WorldList.cpp" line="+273"/>
         <source>Info</source>
         <extracomment>special warnings?</extracomment>
         <translation>מידע</translation>
@@ -15517,16 +16003,11 @@ Do you wish to proceed?</source>
     </message>
     <message>
         <location line="+48"/>
-        <source>Failed to get authorization for %1 services. Error %2.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
         <source>Unknown STS error for %1 services: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+4"/>
         <source>Failed to get authorization for %1 services: %2</source>
         <translation type="unfinished"></translation>
     </message>

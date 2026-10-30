@@ -142,7 +142,7 @@
 <context>
     <name>ATLauncher::PackInstallTask</name>
     <message>
-        <location filename="../launcher/modplatform/atlauncher/ATLPackInstallTask.cpp" line="+123"/>
+        <location filename="../launcher/modplatform/atlauncher/ATLPackInstallTask.cpp" line="+134"/>
         <source>Could not understand pack manifest:
 </source>
         <translation type="unfinished"></translation>
@@ -157,12 +157,12 @@
         <translation type="obsolete">Klarte ikke hente den lokale metadataindeksen for «%1» v%2</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+42"/>
         <source>Deleting existing files...</source>
         <translation type="unfinished">Sletter eksisterende filer …</translation>
     </message>
     <message>
-        <location line="+147"/>
+        <location line="+151"/>
         <source>Unknown mod type: %1</source>
         <translation type="unfinished">Ukjent modifikasjonstype: %1</translation>
     </message>
@@ -179,32 +179,32 @@
         <translation type="obsolete">Ingen lasterversjon satt for mod-pakken!</translation>
     </message>
     <message>
-        <location line="-178"/>
+        <location line="-182"/>
         <source>Could not get local metadata index for &apos;%1&apos; v%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+194"/>
         <source>Could not get local metadata index for %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+34"/>
         <source>Could not find a version for the %1 loader</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>No loader version set for modpack.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+130"/>
+        <location line="+132"/>
         <source>Unknown or unsupported download type: %1</source>
         <translation type="unfinished">Ukjent eller ustøttet nedlastingstype: %1</translation>
     </message>
     <message>
-        <location line="+114"/>
+        <location line="+115"/>
         <source>Downloading configs...</source>
         <translation type="unfinished">Laster ned oppsett …</translation>
     </message>
@@ -234,13 +234,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
-        <location line="+130"/>
+        <location line="+27"/>
+        <location line="+133"/>
         <source>Unknown download type: %1</source>
         <translation type="unfinished">Ukjent nedlastningstype: %1</translation>
     </message>
     <message>
-        <location line="-50"/>
+        <location line="-52"/>
         <source>Blocked mods found</source>
         <translation type="unfinished">Blokkerte mods funnet</translation>
     </message>
@@ -250,7 +250,7 @@
         <translation type="unfinished">Følgende filer er ikke tilgjengelige for nedlasting i tredjeparts launchers.&lt;br/&gt;Du må download manuelt og legge dem til i forekomsten.</translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+58"/>
         <source>%1 out of %2 complete</source>
         <translation type="unfinished"></translation>
     </message>
@@ -265,7 +265,7 @@
         <translation type="unfinished">Pakker ut modifikasjoner …</translation>
     </message>
     <message>
-        <location line="+72"/>
+        <location line="+81"/>
         <source>Installing modpack</source>
         <translation type="unfinished">Installerer mod-pakke</translation>
     </message>
@@ -275,7 +275,7 @@
         <translation type="unfinished">Klarte ikke opprette bibliotekskomponent</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+30"/>
         <source>Unknown loader type: </source>
         <translation type="unfinished">Ukjent innlastertype: </translation>
     </message>
@@ -722,7 +722,7 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation type="vanished">Oppdatering vellykket</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1306"/>
+        <location filename="../launcher/Application.cpp" line="+1319"/>
         <source>Incompatible system configuration</source>
         <translation>Ustøttet systemoppsett</translation>
     </message>
@@ -762,12 +762,12 @@ Sjekk Prism Launcher-oppdateringsloggen på:
 for detaljer om det siste oppdateringsforsøket.</translation>
     </message>
     <message>
-        <location line="-1700"/>
+        <location line="-1703"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Kunne ikke vise loggen siden den var lengre enn %1 linjer.</translation>
     </message>
     <message>
-        <location line="+1522"/>
+        <location line="+1525"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Det ser ut til at du brukte %1 på %2 tidligere. Vil du overføre dataene dine til den nye plasseringen %3?</translation>
     </message>
@@ -781,7 +781,7 @@ for detaljer om det siste oppdateringsforsøket.</translation>
         <translation type="vanished">Oppdatering mislyktes</translation>
     </message>
     <message>
-        <location line="-1820"/>
+        <location line="-1823"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -817,12 +817,12 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+531"/>
+        <location line="+526"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+28"/>
         <source>Loading instances…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -969,7 +969,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">Oppdatering pågår</translation>
     </message>
     <message>
-        <location line="-1419"/>
+        <location line="-1427"/>
         <source>Settings</source>
         <translation>Innstillinger</translation>
     </message>
@@ -1000,7 +1000,7 @@ for detaljer om det siste oppdateringsforsøket.
 For å slette denne låsfilen og fortsette, velg «Ignorer» nedenfor.</translation>
     </message>
     <message>
-        <location line="+1263"/>
+        <location line="+1271"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>Fant gammel data fra %1, men du har allerede eksisterende data for %2. Du må dessverre overføre dataene selv. Vil du bli påminnet om den pågående dataoverføringen neste gang du starter %2?</translation>
     </message>
@@ -1640,8 +1640,8 @@ For å slette denne låsfilen og fortsette, velg «Ignorer» nedenfor.</translat
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+154"/>
+        <location line="+411"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1650,12 +1650,27 @@ For å slette denne låsfilen og fortsette, velg «Ignorer» nedenfor.</translat
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-477"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+14"/>
+        <source>My Reports (%1 new)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>See what the team answered to the reports you sent from this launcher.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1896,7 +1911,7 @@ Send it again anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+17"/>
         <source>Thank you! Your report is on its way to the PollyMC team, and we read every one.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1915,6 +1930,14 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+5"/>
+        <source>
+
+Your report ID: %1
+This launcher will tell you when the team has an update. You can also check any time with &quot;My Reports&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+6"/>
         <source>Report sent</source>
         <translation type="unfinished"></translation>
@@ -1922,6 +1945,11 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
     <message>
         <location line="+2"/>
         <source>Join our Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>View My Reports</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2790,30 +2818,30 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
 <context>
     <name>DataPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/DataPackPage.cpp" line="+86"/>
-        <location line="+84"/>
-        <location line="+73"/>
+        <location filename="../launcher/ui/pages/instance/DataPackPage.cpp" line="+87"/>
+        <location line="+89"/>
+        <location line="+78"/>
         <source>Download stopped by user.</source>
         <translation>Nedlasting avbrutt av brukeren.</translation>
     </message>
     <message>
-        <location line="-137"/>
-        <location line="+80"/>
-        <location line="+73"/>
+        <location line="-146"/>
+        <location line="+84"/>
+        <location line="+79"/>
         <source>Abort</source>
         <translation>Avbryt</translation>
     </message>
     <message>
-        <location line="-177"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
-        <location line="+19"/>
+        <location line="-188"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
+        <location line="+21"/>
         <source>Error</source>
         <translation>Feil</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-219"/>
         <source>Download Packs</source>
         <translation>Last ned pakker</translation>
     </message>
@@ -2823,7 +2851,7 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
         <translation>Endre en datapakkes versjon.</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+79"/>
         <source>Updating data packs while the game is running may cause pack duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -2837,65 +2865,65 @@ Er du sikker på at du vil gjøre dette?</translation>
         <translation>Bekreft oppdatering</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+78"/>
         <source>You are about to remove the metadata for %1 data packs.
 Are you sure?</source>
         <translation>Du er iferd med å fjerne metadataene til %1 datapakker.
 Er du sikker?</translation>
     </message>
     <message>
-        <location line="-50"/>
+        <location line="-51"/>
         <source>&apos;%1&apos; is up-to-date! :)</source>
         <translation>«%1» er oppdatert! :)</translation>
     </message>
     <message>
-        <location line="-119"/>
+        <location line="-125"/>
         <source>Download data packs from online mod platforms</source>
         <translation>Last ned datapakker fra modplattformer på nettet</translation>
     </message>
     <message>
-        <location line="+122"/>
+        <location line="+128"/>
         <source>All data packs are up-to-date! :)</source>
         <translation>Alle datapakkene er oppdatert! :)</translation>
     </message>
     <message>
-        <location line="-68"/>
-        <location line="+61"/>
+        <location line="-73"/>
+        <location line="+66"/>
         <location line="+23"/>
-        <location line="+73"/>
+        <location line="+78"/>
         <source>Aborted</source>
         <translation>Avbrutt</translation>
     </message>
     <message>
-        <location line="-151"/>
-        <location line="+84"/>
-        <location line="+73"/>
+        <location line="-161"/>
+        <location line="+89"/>
+        <location line="+78"/>
         <source>Warnings</source>
         <translation>Advarsler</translation>
     </message>
     <message>
-        <location line="-128"/>
-        <location line="+99"/>
+        <location line="-135"/>
+        <location line="+104"/>
         <source>Data pack updates are unavailable when metadata is disabled!</source>
         <translation>Datapakkeoppdateringer er utilgjengelig når metadata er skrudd av!</translation>
     </message>
     <message>
-        <location line="-73"/>
+        <location line="-76"/>
         <source>The data pack updater was aborted!</source>
         <translation>Datapakkeoppdateringen ble avbrutt!</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+54"/>
         <source>Confirm Removal</source>
         <translation>Bekreft fjerning</translation>
     </message>
     <message>
-        <location line="-162"/>
+        <location line="-169"/>
         <source>Try to check or update all selected data packs (all data packs if none are selected)</source>
         <translation>Prøv å sjekke eller oppdatere alle valgte datapakker (alle sammen hvis ingen er valgt)</translation>
     </message>
     <message>
-        <location line="+118"/>
+        <location line="+124"/>
         <source>All selected data packs are up-to-date! :)</source>
         <translation>Alle de valgte datapakkene er oppdatert! :)</translation>
     </message>
@@ -2905,7 +2933,7 @@ Er du sikker?</translation>
         <translation>Oppdateringssjekker</translation>
     </message>
     <message>
-        <location line="-79"/>
+        <location line="-84"/>
         <source>Download Data Packs</source>
         <translation>Last ned datapakker</translation>
     </message>
@@ -2925,6 +2953,16 @@ Er du sikker?</translation>
     <message>
         <location line="+1"/>
         <source>Display the reminder immediately, ignoring its normal schedule and dismissed state.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show bug report update notification now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Display a sample &quot;your report has news&quot; notification in the window you are in, to test notifications without waiting for the team.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3160,7 +3198,7 @@ Er du sikker?</translation>
 <context>
     <name>EnsureAvailableMemory</name>
     <message>
-        <location filename="../launcher/minecraft/launch/EnsureAvailableMemory.cpp" line="+46"/>
+        <location filename="../launcher/minecraft/launch/EnsureAvailableMemory.cpp" line="+91"/>
         <source>Not enough RAM</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3175,12 +3213,40 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="-4"/>
         <source>Not enough RAM available to launch this instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="-52"/>
+        <source>The system is under increased memory pressure.
+This may lead to lag or slowdowns.
+If possible, close other applications before continuing.
+
+Launch anyway?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Your system is under critical memory pressure.
+This may lead to severe slowdowns, crashes or system instability.
+It is recommended to close other applications or restart your system.
+
+Launch anyway?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>High memory pressure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>The system is under high memory pressure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+56"/>
         <source>Note: only %1 MiB RAM is currently free, but this instance requests %2 MiB. Other running programs may cause slowdowns; consider closing some before playing.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3218,8 +3284,9 @@ Continue anyway? This may cause severe slowdowns or crashes.</source>
 <context>
     <name>EnsureOfflineLibraries</name>
     <message>
-        <location filename="../launcher/minecraft/launch/EnsureOfflineLibraries.cpp" line="+33"/>
-        <source>This instance cannot be launched because some libraries are missing or have not been downloaded yet. Please try again in online mode with a working Internet connection</source>
+        <location filename="../launcher/minecraft/launch/EnsureOfflineLibraries.cpp" line="+49"/>
+        <source>
+This instance cannot be launched because some libraries are missing or have not been downloaded yet. Please try again in online mode with a working Internet connection</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4072,42 +4139,42 @@ Er du sikker?</translation>
 <context>
     <name>FlameCheckUpdate</name>
     <message>
-        <location filename="../launcher/modplatform/flame/FlameCheckUpdate.cpp" line="+177"/>
+        <location filename="../launcher/modplatform/flame/FlameCheckUpdate.cpp" line="+182"/>
         <source>Parsing API response from CurseForge for &apos;%1&apos;...</source>
         <translation>Tolker API respons fra CurseForge for «%1» …</translation>
     </message>
     <message>
-        <location line="-85"/>
+        <location line="-90"/>
         <source>Parsing the API response from CurseForge for &apos;%1&apos;...</source>
         <translation>Tolker API respons fra CurseForge for «%1» …</translation>
     </message>
     <message>
-        <location line="-52"/>
+        <location line="-54"/>
         <source>Preparing resources for CurseForge...</source>
         <translation>Forbereder ressurser for CurseForge …</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+63"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version.</source>
         <translation>Fant ingen gyldig versjon for denne ressursen. Den er sannsynligvis utilgjengelig for denne versjonen av spillet.</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+19"/>
         <source>Unknown</source>
         <translation>Ukjent</translation>
     </message>
     <message>
-        <location line="-21"/>
+        <location line="-22"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version / mod loader.</source>
         <translation>Fant ingen gyldig versjon for denne ressursen. Den er sannsynligvis ikke tilgjengelig for den nåværende versjonen av spill- / mod-lasteren.</translation>
     </message>
     <message>
-        <location line="+83"/>
+        <location line="+88"/>
         <source>Resource has a new update available, but is not downloadable using CurseForge.</source>
         <translation>Ressursen har en ny oppdatering tilgjengelig, men den kan ikke lastes ned via CurseForge.</translation>
     </message>
     <message>
-        <location line="-64"/>
+        <location line="-68"/>
         <source>Not installed</source>
         <translation>Ikke installert</translation>
     </message>
@@ -4115,7 +4182,7 @@ Er du sikker?</translation>
 <context>
     <name>FlameCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+598"/>
+        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+636"/>
         <source>Downloading mods...</source>
         <translation>Laster ned modifikasjoner …</translation>
     </message>
@@ -4125,17 +4192,22 @@ Er du sikker?</translation>
         <translation>Følgende filer er ikke tilgjengelige for nedlasting i tredjeparts launchers.&lt;br/&gt;Du må download manuelt og legge dem til i forekomsten.</translation>
     </message>
     <message>
-        <location line="-197"/>
+        <location line="-218"/>
+        <source>The overrides has a path that leads to an arbitrary location (%1). This is a security risk and isn&apos;t allowed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
         <source>The specified overrides folder (%1) is missing. Maybe the modpack was already used before?</source>
         <translation>Den angitte overstyringsmappa (%1) mangler. Kanskje mod-pakken har blitt brukt før?</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+35"/>
         <source>Unknown mod loader in manifest: %1</source>
         <translation>Ukjent mod-laster i manifest: %1</translation>
     </message>
     <message>
-        <location line="-70"/>
+        <location line="-107"/>
         <source>No loader version set for modpack!</source>
         <translation>Ingen lasterversjon satt for mod-pakken!</translation>
     </message>
@@ -4148,7 +4220,7 @@ Er du sikker?</translation>
         <translation type="vanished">Kunne ikke fjerne gamle motstridende filer.</translation>
     </message>
     <message>
-        <location line="+157"/>
+        <location line="+194"/>
         <source>Unable to resolve mod IDs:
 </source>
         <translation>Kan ikke løse mod-IDer:
@@ -4165,7 +4237,7 @@ Er du sikker?</translation>
         <translation>Nedlasting av mod: Flame</translation>
     </message>
     <message>
-        <location line="-298"/>
+        <location line="-335"/>
         <source>Failed to get local metadata index for %1</source>
         <translation>Kunne ikke hente lokal metadataindeks for %1</translation>
     </message>
@@ -4176,14 +4248,14 @@ Er du sikker?</translation>
     </message>
     <message>
         <location line="-125"/>
-        <location line="+211"/>
+        <location line="+236"/>
         <source>Could not understand pack manifest:
 </source>
         <translation>Forstod ikke pakkemanifestet:
 </translation>
     </message>
     <message>
-        <location line="+280"/>
+        <location line="+292"/>
         <source>Copying Blocked Mods...</source>
         <translation>Kopierer blokkerte modifikasjoner …</translation>
     </message>
@@ -4198,7 +4270,7 @@ Er du sikker?</translation>
         <translation>%1 av %2 er fullført</translation>
     </message>
     <message>
-        <location line="-354"/>
+        <location line="-391"/>
         <source>No index file.</source>
         <translation>Ingen indeksfil.</translation>
     </message>
@@ -4208,19 +4280,19 @@ Er du sikker?</translation>
         <translation>Kunne ikke finne versjon for %1-lasteren</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+72"/>
         <source>Could not rename the overrides folder:
 </source>
         <translation>Kunne ikke endre navn på overrides folder:
 </translation>
     </message>
     <message>
-        <location line="-218"/>
+        <location line="-249"/>
         <source> (version %1)</source>
         <translation> (versjon %1)</translation>
     </message>
     <message>
-        <location line="+501"/>
+        <location line="+538"/>
         <source>Copying Blocked Mods (%1 out of %2 are done)</source>
         <translation>Kopierer blokkerte modifikasjoner (%1 av %2 er fullført)</translation>
     </message>
@@ -4233,7 +4305,7 @@ Er du sikker?</translation>
 <context>
     <name>FlameManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+491"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+506"/>
         <source>CurseForge pack</source>
         <translation>CurseForge pakke</translation>
     </message>
@@ -4243,12 +4315,12 @@ Er du sikker?</translation>
         <translation>Velg oppdateringsfil</translation>
     </message>
     <message>
-        <location line="-57"/>
+        <location line="-62"/>
         <source>%1 (Current)</source>
         <translation>%1 (Nåværende)</translation>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-42"/>
         <source>&lt;h1&gt;Hey there!&lt;/h1&gt;&lt;h4&gt;It seems like your Pack ID is null. This is because of a bug in older versions of the launcher.&lt;br/&gt;Unfortunately, we can&apos;t do the proper API requests without this information.&lt;br/&gt;&lt;br/&gt;So, in order for this feature to work, you will need to re-download the modpack from the built-in downloader.&lt;br/&gt;&lt;br/&gt;Don&apos;t worry though, it will ask you to update this instance instead, so you&apos;ll not lose this instance!&lt;/h4&gt;</source>
         <translation>&lt;h1&gt;Hei!&lt;/h1&gt;&lt;h4&gt;Det ser ut til at pakke-ID-en din er null. Dette er på grunn av en feil i eldre versjoner av startprogrammet.&lt;br/&gt;Dessverre kan vi ikke gjøre de riktige API-forespørslene uten denne informasjonen.&lt;br/&gt;&lt;br/&gt;Så for at denne funksjonen skal fungere, du må laste ned modpakken på nytt fra den innebygde nedlasteren.&lt;br/&gt;&lt;br/&gt;Ikke vær bekymret, den vil be deg om å oppdatere denne instansen i stedet, slik at du ikke mister denne instansen!&lt;/h4&gt;</translation>
     </message>
@@ -4714,11 +4786,12 @@ Er du sikker?</translation>
 <context>
     <name>InstallLoaderDialog</name>
     <message>
+        <location filename="../launcher/ui/dialogs/InstallLoaderDialog.cpp" line="+109"/>
         <source>OK</source>
-        <translation type="vanished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/InstallLoaderDialog.cpp" line="+140"/>
+        <location line="+31"/>
         <source>Forge</source>
         <translation>Forge</translation>
     </message>
@@ -4738,12 +4811,7 @@ Er du sikker?</translation>
         <translation>Avbryt</translation>
     </message>
     <message>
-        <location line="-1"/>
-        <source>Ok</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+33"/>
+        <location line="+32"/>
         <source>Fabric</source>
         <translation>Fabric</translation>
     </message>
@@ -4779,12 +4847,12 @@ Er du sikker?</translation>
         <translation>Kopierer instans %1</translation>
     </message>
     <message>
-        <location line="+146"/>
+        <location line="+147"/>
         <source>Instance folder copy has been aborted.</source>
         <translation>Kopiering av instansmappe er avbrutt.</translation>
     </message>
     <message>
-        <location line="-42"/>
+        <location line="-43"/>
         <source>Instance folder copy failed.</source>
         <translation>Kopiering av instansmappe mislyktes.</translation>
     </message>
@@ -4845,7 +4913,7 @@ Er du sikker?</translation>
 <context>
     <name>InstanceHealthCheckDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+61"/>
+        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+90"/>
         <source>No Java selected</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4879,7 +4947,12 @@ Switch Java in the instance&apos;s Java settings, or turn off the compatibility 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+175"/>
+        <source>Checking &lt;b&gt;%1&lt;/b&gt;…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+38"/>
         <source>Broken mod files (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4892,43 +4965,159 @@ Delete or re-download them (a fresh download of the same version is usually enou
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-201"/>
         <source>Version information not loaded yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-67"/>
+        <source>Error</source>
+        <translation type="unfinished">Feil</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Warning</source>
+        <translation type="unfinished">Advarsel</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Info</source>
+        <translation type="unfinished">Info</translation>
+    </message>
+    <message numerus="yes">
+        <location line="+9"/>
+        <source>
+… and %n more</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+55"/>
         <source>The launcher could not read this instance&apos;s version list, so the loader check was skipped.
 Open the instance, go to the Version page and let it load once (or press Reload) before launching.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>%1 (loader component)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+17"/>
+        <source>Only %1 MiB are free on the drive this instance is stored on.
+Free up some space, or the game can fail while saving worlds or downloading files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Low disk space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Too much memory allocated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance is set to use up to %1 MiB, but the computer only has %2 MiB.
+Lower the maximum memory in the instance&apos;s settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>A lot of memory allocated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance may use up to %1 MiB of the computer&apos;s %2 MiB.
+That leaves little for the system and can make the game stutter; around half of the total is usually plenty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+39"/>
         <source>Check instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+21"/>
+        <source>Check Again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Open Mods Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Close</source>
         <translation type="unfinished">Lukk</translation>
     </message>
     <message>
-        <location line="+23"/>
-        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, no broken mod files, and the loader version checks out. Nothing stood in the way of launching.</source>
+        <location line="+128"/>
+        <source>Mods that may not fit this game version (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These mods are not marked as compatible with this instance&apos;s Minecraft version:
+%1
+
+They may still work, but if the game crashes, update or remove them first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, the mods have no broken files or conflicts, and the loader version checks out. Nothing stood in the way of launching.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location line="+5"/>
-        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting. The details are below each entry.</source>
+        <location line="+8"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message numerus="yes">
+        <location line="+1"/>
+        <source>, and %n warning(s) worth a look</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>. The details are below each entry.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+2"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; should start, but has %n warning(s) worth a look. The details are below each entry.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Instance check for &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>No problems found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5012,12 +5201,12 @@ Open the instance, go to the Version page and let it load once (or press Reload)
 <context>
     <name>InstanceStaging</name>
     <message>
-        <location filename="../launcher/InstanceList.cpp" line="+784"/>
+        <location filename="../launcher/InstanceList.cpp" line="+782"/>
         <source>Failed to commit instance, even after multiple retries. It is being blocked by something.</source>
         <translation>Klarte ikke innsende instansen, selv etter flere forsøk. Den blokkeres av noe.</translation>
     </message>
     <message>
-        <location line="-22"/>
+        <location line="-20"/>
         <source>Could not create staging folder</source>
         <translation>Klarte ikke opprette oppsettingsmappe</translation>
     </message>
@@ -5237,7 +5426,7 @@ Open the instance, go to the Version page and let it load once (or press Reload)
 <context>
     <name>JavaListLoadTask</name>
     <message>
-        <location filename="../launcher/java/JavaInstallList.cpp" line="+158"/>
+        <location filename="../launcher/java/JavaInstallList.cpp" line="+159"/>
         <source>Detecting Java installations...</source>
         <translation>Finner Java-installasjoner …</translation>
     </message>
@@ -5305,42 +5494,42 @@ Er du sikker?</translation>
         <translation>&amp;Test innstillinger</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="+278"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="+279"/>
         <source>Confirm Selection</source>
         <translation>Bekreft valg</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+230"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+164"/>
         <source>(-Xms)</source>
         <translation>(-Xms)</translation>
     </message>
     <message>
-        <location line="-45"/>
+        <location line="+49"/>
         <source>(-Xmx)</source>
         <translation>(-Xmx)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-71"/>
         <source>The amount of memory Minecraft is started with.</source>
         <translation>Mengden minne Minecraft er startet med.</translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="-18"/>
         <source>M&amp;inimum Memory Usage:</source>
         <translation>&amp;Minimalt minnebruk:</translation>
     </message>
     <message>
-        <location line="-137"/>
+        <location line="-14"/>
         <source>Memor&amp;y</source>
         <translation>Minn&amp;e</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+81"/>
         <source>The maximum amount of memory Minecraft is allowed to use.</source>
         <translation>Den maksimale mengden minne Minecraft kan bruke.</translation>
     </message>
     <message>
-        <location line="-115"/>
+        <location line="-143"/>
         <source>Auto-download &amp;Mojang Java</source>
         <translation>Last ned &amp;Mojang-Java</translation>
     </message>
@@ -5350,7 +5539,7 @@ Er du sikker?</translation>
         <translation>Hvis slått på, vil startprogrammet ikke spør hvilken Java-versjon som skal brukes, hvis den ikke fant en ved oppstart.</translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+144"/>
         <source>&amp;PermGen Size:</source>
         <translation>&amp;PermGen-størrelse:</translation>
     </message>
@@ -5360,27 +5549,32 @@ Er du sikker?</translation>
         <translation>Finn Java-kjørefil</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+63"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+71"/>
         <source>Java Argumen&amp;ts</source>
         <translation>Java argument&amp;er</translation>
     </message>
     <message>
-        <location line="-148"/>
+        <location line="-53"/>
         <source>The amount of memory available to store loaded Java classes.</source>
         <translation>Mengden minne som er tilgjengelig for å lagre lastede Java-klasser.</translation>
     </message>
     <message>
-        <location line="+135"/>
+        <location line="+33"/>
+        <source>Warn when there is not enough free memory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Memory Notice</source>
         <translation>Minneadvarsel</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-107"/>
         <source>Ma&amp;ximum Memory Usage:</source>
         <translation>&amp;Maksimalt minnebruk:</translation>
     </message>
     <message>
-        <location line="-192"/>
+        <location line="-128"/>
         <source>Automatically downloads and selects the Java build recommended by Mojang.</source>
         <translation>Laster ned og velger Java-versjonen anbefalt av Mojang automatisk.</translation>
     </message>
@@ -5420,12 +5614,12 @@ Er du sikker?</translation>
         <translation>Auto-&amp;oppdag Java-versjon</translation>
     </message>
     <message>
-        <location line="+162"/>
+        <location line="+302"/>
         <source>(-XX:PermSize)</source>
         <translation>(-XX:PermSize)</translation>
     </message>
     <message>
-        <location line="-115"/>
+        <location line="-255"/>
         <source>Open Java &amp;Downloader</source>
         <translation>&amp;Åpne Java-nedlaster</translation>
     </message>
@@ -5621,7 +5815,7 @@ Du kan endre Java-versjonen i innstillingene seinere.
     </message>
     <message>
         <location line="+3"/>
-        <source>Use system locales</source>
+        <source>Use system regional standards</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6321,7 +6515,7 @@ Det anbefales å gi %1 tilgang til mappen via Flatseal.</translation>
     </message>
     <message>
         <location line="+27"/>
-        <source>Could not launch Minecraft!</source>
+        <source>Could not launch Minecraft: %1</source>
         <extracomment>Error message displayed if instace can&apos;t start</extracomment>
         <translation type="unfinished"></translation>
     </message>
@@ -6690,7 +6884,7 @@ Du må løse problemet manuelt.</translation>
     </message>
     <message>
         <location line="+14"/>
-        <source>The process failed to start.</source>
+        <source>The process failed to start: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6794,7 +6988,7 @@ Du må løse problemet manuelt.</translation>
 <context>
     <name>MSADeviceCodeStep</name>
     <message>
-        <location filename="../launcher/minecraft/auth/steps/MSADeviceCodeStep.cpp" line="+133"/>
+        <location filename="../launcher/minecraft/auth/steps/MSADeviceCodeStep.cpp" line="+131"/>
         <source>Device authorization failed: required fields missing</source>
         <translation>Enhetsautorisering mislyktes: nødvendige felt mangler</translation>
     </message>
@@ -6805,21 +6999,17 @@ Du må løse problemet manuelt.</translation>
     </message>
     <message>
         <location line="-38"/>
+        <location line="+8"/>
         <source>Device authorization failed: %1</source>
         <translation>Enhetsautorisering mislyktes: %1</translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="-71"/>
         <source>Logging in with Microsoft account(device code).</source>
         <translation>Logger inn med Microsoft bruker(enhet kode).</translation>
     </message>
     <message>
-        <location line="+72"/>
-        <source>Failed to retrieve device authorization</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+137"/>
+        <location line="+207"/>
         <source>Device Access failed: %1</source>
         <translation>Enhet tilgang feilet: %1</translation>
     </message>
@@ -6920,7 +7110,7 @@ Du må løse problemet manuelt.</translation>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+298"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+300"/>
         <source>Check for new updates for %1.</source>
         <translation>Se etter nye oppdateringer til %1.</translation>
     </message>
@@ -6929,22 +7119,22 @@ Du må løse problemet manuelt.</translation>
         <translation type="vanished">Hjelp</translation>
     </message>
     <message>
-        <location line="+542"/>
+        <location line="+567"/>
         <source>Java</source>
         <translation>Java</translation>
     </message>
     <message>
-        <location line="-188"/>
+        <location line="-213"/>
         <source>Logs</source>
         <translation>Logger</translation>
     </message>
     <message>
-        <location line="+177"/>
+        <location line="+202"/>
         <source>I&amp;con Theme</source>
         <translation>I&amp;kondrakt</translation>
     </message>
     <message>
-        <location line="-662"/>
+        <location line="-687"/>
         <source>&amp;Edit</source>
         <translation>&amp;Rediger</translation>
     </message>
@@ -6953,12 +7143,12 @@ Du må løse problemet manuelt.</translation>
         <translation type="vanished">Nyhetsfelt</translation>
     </message>
     <message>
-        <location line="-25"/>
+        <location line="-26"/>
         <source>&amp;File</source>
         <translation>&amp;Fil</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+76"/>
         <source>&amp;Help</source>
         <translation>&amp;Hjelp</translation>
     </message>
@@ -6997,7 +7187,7 @@ Du må løse problemet manuelt.</translation>
         <translation>&amp;Gjennomgå</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1783"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1842"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -7008,45 +7198,45 @@ Dette kan være permanent og vil fullstendig slette instansen.
 Er du sikker?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+656"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+681"/>
         <source>Open the icon theme folder in a file browser.</source>
         <translation>Åpne ikonmappen for drakten i en filbehandler.</translation>
     </message>
     <message>
-        <location line="-343"/>
+        <location line="-368"/>
         <source>Copy the selected instance.</source>
         <translation>Kopier den valgte instansen.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-727"/>
-        <location line="+140"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-751"/>
+        <location line="+143"/>
         <location line="+106"/>
         <source>Abort</source>
         <translation>Avbryt</translation>
     </message>
     <message>
-        <location line="-258"/>
-        <location line="+126"/>
+        <location line="-261"/>
+        <location line="+129"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
         <location line="+37"/>
-        <location line="+403"/>
+        <location line="+424"/>
         <source>Error</source>
         <translation>Feil</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-454"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-456"/>
         <source>Main Toolbar</source>
         <translation>Hovedverktøylinje</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-409"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-430"/>
         <source>Modpack download</source>
         <translation>Last ned mod-pakke</translation>
     </message>
     <message>
-        <location line="+318"/>
+        <location line="+339"/>
         <source>Check instance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7138,12 +7328,12 @@ Er du sikker?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+119"/>
+        <location line="+120"/>
         <source>Your instance folder contains &apos;!&apos; and this is known to cause Java problems!</source>
         <translation>Instansenmappen din inneholder «!», som kan skape problemer for Java!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+390"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+392"/>
         <source>&amp;Change Group...</source>
         <translation>&amp;Endre grupperinger …</translation>
     </message>
@@ -7168,7 +7358,7 @@ Er du sikker?</translation>
         <translation>Legg til instan&amp;s …</translation>
     </message>
     <message>
-        <location line="+431"/>
+        <location line="+456"/>
         <source>&amp;Matrix Space</source>
         <translation>&amp;Matrix-rom</translation>
     </message>
@@ -7177,27 +7367,27 @@ Er du sikker?</translation>
         <translation type="vanished">Mer nyheter...</translation>
     </message>
     <message>
-        <location line="-71"/>
+        <location line="-96"/>
         <source>Open the instance icons folder in a file browser.</source>
         <translation>Åpne ikonmappa for instansen i en filbehandler.</translation>
     </message>
     <message>
-        <location line="+133"/>
+        <location line="+158"/>
         <source>Install a %1 symlink to /usr/local/bin</source>
         <translation>Installer en %1-symlenke til /usr/local/bin</translation>
     </message>
     <message>
-        <location line="-687"/>
+        <location line="-714"/>
         <source>Instance Toolbar</source>
         <translation>Verktøylinje for instans</translation>
     </message>
     <message>
-        <location line="+493"/>
+        <location line="+495"/>
         <source>Close &amp;Window</source>
         <translation>Lukk &amp;vindu</translation>
     </message>
     <message numerus="yes">
-        <location filename="../launcher/ui/MainWindow.cpp" line="-259"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-260"/>
         <source> and its %n registered shortcut(s)</source>
         <translation>
             <numerusform> og sin %n registrerte snarvei</numerusform>
@@ -7205,27 +7395,27 @@ Er du sikker?</translation>
         </translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+113"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+127"/>
         <source>Open the bug tracker to report a bug with %1.</source>
         <translation>Åpne feilbehandler for å melde fra om feil med %1.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-729"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-753"/>
         <source>Task aborted</source>
         <translation>Oppgave avbrutt</translation>
     </message>
     <message>
-        <location line="+543"/>
+        <location line="+551"/>
         <source>This instance is not editable. It may be broken, invalid, or too old. Check logs for details.</source>
         <translation>Du kan ikke slette denne instansen. Den kan vere øydelagt, ugyldig, eller for gammal. Sjekk loggene for detaljer.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+70"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+81"/>
         <source>View current and previous launcher logs</source>
         <translation>Vis gjeldende og tidligere logger</translation>
     </message>
     <message>
-        <location line="-136"/>
+        <location line="-161"/>
         <source>&amp;Skins</source>
         <translation>&amp;Skins</translation>
     </message>
@@ -7269,7 +7459,7 @@ Er du sikker?</translation>
         <translation>Slett gruppe</translation>
     </message>
     <message>
-        <location line="+262"/>
+        <location line="+278"/>
         <source>Failed to add %1 to PATH</source>
         <translation>Kunne ikke legge til %1 til PATH</translation>
     </message>
@@ -7314,7 +7504,7 @@ Er du sikker?</translation>
         <translation>Den valgte instansen kjører for øyeblikket og kan derfor ikke slettes. Avslutt instansen før du prøver å slette den.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+459"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+484"/>
         <source>Open the Java folder in a file browser. Only available if the built-in Java downloader is used.</source>
         <translation>Åpne Java-mappen i en filbehandler. Bare tilgjengelig hvis den innebygde Java-nedlasteren er brukt.</translation>
     </message>
@@ -7323,7 +7513,7 @@ Er du sikker?</translation>
         <translation type="vanished">Ingen nyheter tilgjengelig.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-718"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-742"/>
         <source>The task has been aborted by the user.</source>
         <translation>Oppgaven ble avbrutt av brukeren.</translation>
     </message>
@@ -7333,7 +7523,7 @@ Er du sikker?</translation>
         <translation>Åpne en av mappene som er delt mellom instanser.</translation>
     </message>
     <message>
-        <location line="-396"/>
+        <location line="-421"/>
         <source>Rename</source>
         <translation>Gi nytt navn</translation>
     </message>
@@ -7347,17 +7537,17 @@ Er du sikker?</translation>
         <translation type="vanished">Prism Launcher (zip)</translation>
     </message>
     <message>
-        <location line="+69"/>
+        <location line="+94"/>
         <source>Open %1 subreddit.</source>
         <translation>Åpne subredditen %1.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+133"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+136"/>
         <source>The modpack, mod, or resource %1 is blocked for third-parties! Please download it manually.</source>
         <translation>Mod-pakken, modifikasjonen eller ressursen %1 er blokkert for tredjeparter! Vennligst last den ned manuelt.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-243"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-268"/>
         <source>Cop&amp;y...</source>
         <translation>Kopie&amp;r …</translation>
     </message>
@@ -7367,7 +7557,7 @@ Er du sikker?</translation>
         <translation>Åpne skallmappa i filnettleseren.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+142"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+147"/>
         <source>No instance available to add the resource to.
 Please create a new instance before attempting to install this resource again.</source>
         <translation>Ingen instanser tilgjengelig som ressursen kan legges til.
@@ -7379,7 +7569,7 @@ Lag en ny instans før du prøver å installere denne ressursen igjen.</translat
         <translation>Endre instansinnstillinger, mods og versjoner.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+734"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+751"/>
         <source>This is a problem: &lt;br/&gt; - The launcher will likely be deleted without warning by the operating system &lt;br/&gt; - close the launcher now and extract it to a real location, not a temporary folder</source>
         <translation>Det har oppstått et problem: &lt;br/&gt; - Programmet vil sannsynligvis bli slettet uten advarsel av operativsystemet &lt;br/&gt; - lukk programmet nå og lagre det i en ekte plass, ikke midlertidig mappe</translation>
     </message>
@@ -7388,12 +7578,12 @@ Lag en ny instans før du prøver å installere denne ressursen igjen.</translat
         <translation type="vanished">Kattpakker</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+257"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+282"/>
         <source>Open %1 Discord guild.</source>
         <translation>Åpne Discord-serveren %1.</translation>
     </message>
     <message>
-        <location line="-243"/>
+        <location line="-268"/>
         <source>Open the selected instance&apos;s root folder in a file browser.</source>
         <translation>Åpne den valgte instansens rotmappe i en filbehandler.</translation>
     </message>
@@ -7408,7 +7598,7 @@ Lag en ny instans før du prøver å installere denne ressursen igjen.</translat
         <translation>Lås verktøylinjer</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-279"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-280"/>
         <source>Confirm Deletion</source>
         <translation>Bekreft sletting</translation>
     </message>
@@ -7418,27 +7608,27 @@ Lag en ny instans før du prøver å installere denne ressursen igjen.</translat
         <translation>E&amp;ksporter …</translation>
     </message>
     <message>
-        <location line="+299"/>
+        <location line="+324"/>
         <source>Get help with %1 or Minecraft.</source>
         <translation>Få hjelp med %1 eller Minecraft.</translation>
     </message>
     <message>
-        <location line="-188"/>
+        <location line="-213"/>
         <source>Open the launcher&apos;s root folder in a file browser.</source>
         <translation>Åpne rotmappa til startprogrammet i en filbehandler.</translation>
     </message>
     <message>
-        <location line="+82"/>
+        <location line="+96"/>
         <source>Report a Bug or Suggest a Feature</source>
         <translation>Meld fra om feil eller foreslå en funksjon</translation>
     </message>
     <message>
-        <location line="-348"/>
+        <location line="-362"/>
         <source>&amp;Manage Accounts...</source>
         <translation>&amp;Håndter kontoer …</translation>
     </message>
     <message>
-        <location line="+373"/>
+        <location line="+398"/>
         <source>Open %1 Matrix space.</source>
         <translation>Åpne Matrix-rommet %1.</translation>
     </message>
@@ -7447,27 +7637,27 @@ Lag en ny instans før du prøver å installere denne ressursen igjen.</translat
         <translation type="vanished">Åpne %1-wikien</translation>
     </message>
     <message>
-        <location line="-132"/>
+        <location line="-157"/>
         <source>Close the current window</source>
         <translation>Lukk igjen det nåværende vinduet</translation>
     </message>
     <message>
-        <location line="+232"/>
+        <location line="+257"/>
         <source>&amp;Widget Themes</source>
         <translation>&amp;Widgettemaer</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-298"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-314"/>
         <source>Cannot set empty name.</source>
         <translation>Kan ikke sette navnet til å være tomt.</translation>
     </message>
     <message>
-        <location line="-436"/>
+        <location line="-444"/>
         <source>Warnings</source>
         <translation>Advarsler</translation>
     </message>
     <message>
-        <location line="-872"/>
+        <location line="-905"/>
         <source>Show PollyMC</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7477,17 +7667,7 @@ Lag en ny instans før du prøver å installere denne ressursen igjen.</translat
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+413"/>
-        <source>The star reminder will appear after the Settings dialog closes.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+17"/>
-        <source>The main window must be visible to show the star reminder.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+104"/>
+        <location line="+563"/>
         <source>Enjoying PollyMC-Continued?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7497,12 +7677,12 @@ Lag en ny instans før du prøver å installere denne ressursen igjen.</translat
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="+1"/>
         <source>Star on GitHub</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+533"/>
+        <location line="+539"/>
         <source>Invalid import link: missing &apos;url&apos; parameter.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7526,7 +7706,7 @@ URL:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+324"/>
+        <location line="+329"/>
         <source>Instance not editable</source>
         <translation>Instans kan ikke redigeres</translation>
     </message>
@@ -7536,7 +7716,33 @@ URL:
         <translation>Kunne ikke omgjøre sletting av instansen</translation>
     </message>
     <message>
-        <location line="-11"/>
+        <location line="-1067"/>
+        <location line="+150"/>
+        <source>Update on your bug report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-149"/>
+        <source>&quot;%1&quot;: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Updates on your bug reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 of your reports have news.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+147"/>
+        <source>&quot;Sample report&quot;: Seen - the team is looking into it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+905"/>
         <source>Cannot rename group</source>
         <translation>Kan ikke omdøpe gruppe</translation>
     </message>
@@ -7546,33 +7752,33 @@ URL:
         <translation>&amp;Om %1</translation>
     </message>
     <message>
-        <location line="-528"/>
+        <location line="-553"/>
         <source>&amp;Accounts</source>
         <translation>&amp;Brukere</translation>
     </message>
     <message>
-        <location line="+598"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-494"/>
+        <location line="+623"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
         <source>Accounts</source>
         <translation>Kontoer</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+734"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 lagt til «PATH» på vellykket vis. Du kan nå kjøre den ved å starte «%2».</translation>
     </message>
     <message>
-        <location line="+329"/>
+        <location line="+330"/>
         <source>You have now two options: &lt;br/&gt; - change the instance folder in the settings &lt;br/&gt; - move this installation of %1 to a different folder</source>
         <translation>Du har nå to muligheter: &lt;br/&gt; - Endre instans mappen i instillingene dine &lt;br/&gt; - flytt installasjonen av %1 til en annen mappe</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-520"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-545"/>
         <source>Add a new instance.</source>
         <translation>Legg til en ny instans.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-284"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-285"/>
         <source>Cannot Delete Running Instance</source>
         <translation>Kan ikke slette en instans som kjører</translation>
     </message>
@@ -7581,7 +7787,7 @@ URL:
         <translation type="vanished">Åpne utviklingsbloggen for å lese flere nyheter om %1.</translation>
     </message>
     <message>
-        <location line="-1471"/>
+        <location line="-1527"/>
         <source>Backspace</source>
         <translation>Tilbake</translation>
     </message>
@@ -7595,7 +7801,7 @@ URL:
         <translation>&amp;Instanser</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+617"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+649"/>
         <source>Ctrl+%1</source>
         <translation>Ctrl+%1</translation>
     </message>
@@ -7630,22 +7836,22 @@ URL:
         <translation>Ingen kontoer er lagt til!</translation>
     </message>
     <message>
-        <location line="+219"/>
+        <location line="+244"/>
         <source>Install to &amp;PATH</source>
         <translation>Installer til &amp;PATH</translation>
     </message>
     <message>
-        <location line="-327"/>
+        <location line="-352"/>
         <source>&amp;Edit...</source>
         <translation>&amp;Rediger …</translation>
     </message>
     <message>
-        <location line="-384"/>
+        <location line="-386"/>
         <source>What&apos;s New Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+188"/>
+        <location line="+190"/>
         <source>Status Bar</source>
         <translation>Statuspanel</translation>
     </message>
@@ -7740,17 +7946,22 @@ URL:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+11"/>
+        <source>&amp;Pin Instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Keep the selected instance at the top of its group.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+8"/>
         <source>Chec&amp;k Instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Look for missing Java, broken mod files or a wrong loader version before launching.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
+        <location line="+11"/>
         <source>Copy &amp;Diagnostics</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7760,7 +7971,19 @@ URL:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+19"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-463"/>
+        <location line="+136"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>See what the team answered to the bug reports you sent from this launcher.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+44"/>
         <source>View information about %1.</source>
         <translation>Vis informasjon om %1.</translation>
     </message>
@@ -7790,12 +8013,12 @@ URL:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+538"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
         <source>Group name</source>
         <translation>Gruppenavn</translation>
     </message>
     <message>
-        <location line="+340"/>
+        <location line="+356"/>
         <source>Deleting</source>
         <translation>Sletter</translation>
     </message>
@@ -7805,19 +8028,19 @@ URL:
         <translation>Se logg</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-996"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1020"/>
         <source>&amp;Rename group</source>
         <translation>&amp;Omdøp gruppe</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-155"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-180"/>
         <source>Launcher &amp;Root</source>
         <translation>Startprogram &amp;rot</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-403"/>
-        <location line="+88"/>
-        <location line="+1552"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
+        <location line="+125"/>
+        <location line="+1572"/>
         <source>No instance selected</source>
         <translation>Ingen instans er valgt</translation>
     </message>
@@ -7827,12 +8050,12 @@ URL:
         <translation>Endre ikon</translation>
     </message>
     <message>
-        <location line="+268"/>
+        <location line="+293"/>
         <source>&amp;Discord Guild</source>
         <translation>&amp;Discord-guild</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-333"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-334"/>
         <source>Metadata cache clear Failed!
 To clear the metadata cache manually, press Folders -&gt; View Launcher Root Folder, and after closing the launcher delete the folder named &quot;meta&quot;
 </source>
@@ -7847,42 +8070,42 @@ Trykk på Folders → View Launcher Root Folder, og etter at launcheren er lukke
         <translation>&amp;Tøm metadata mellomlager</translation>
     </message>
     <message>
-        <location line="-562"/>
+        <location line="-587"/>
         <source>F&amp;olders</source>
         <translation>&amp;Mapper</translation>
     </message>
     <message>
-        <location line="+596"/>
+        <location line="+621"/>
         <source>Folders</source>
         <translation>Mapper</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+366"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+367"/>
         <source>Your instance folder contains &apos;Rar$&apos; - that means you haven&apos;t extracted the launcher archive!</source>
         <translation>Instansmappen din inneholder «Rar$». Det betyr at du ikke har pakket ut startprogramarkivet!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-166"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-191"/>
         <source>&amp;Central Mods</source>
         <translation>&amp;Sentrale mods</translation>
     </message>
     <message>
-        <location line="+107"/>
+        <location line="+132"/>
         <source>Sub&amp;reddit</source>
         <translation>Sub&amp;reddit</translation>
     </message>
     <message>
-        <location line="-251"/>
+        <location line="-276"/>
         <source>Delete the selected instance.</source>
         <translation>Slett den valgte instansen.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1274"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Slett gruppe</translation>
     </message>
     <message>
-        <location line="+703"/>
+        <location line="+711"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>Noen instanser og snarveier kunne ikke gjenopprettes.
@@ -7898,7 +8121,7 @@ Sjekk papirkurven din for å manuelt gjenopprette dem.</translation>
         <translation type="vanished">Det er en kosete katt :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-717"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-725"/>
         <source>&amp;Create instance</source>
         <translation>&amp;Opprett instans</translation>
     </message>
@@ -7923,43 +8146,48 @@ Sjekk papirkurven din for å manuelt gjenopprette dem.</translation>
         <translation>CurseForge (zip)</translation>
     </message>
     <message>
-        <location line="+221"/>
+        <location line="+155"/>
+        <source>Look for missing Java, broken or conflicting mods, a wrong loader version or too little memory/disk space before launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+91"/>
         <source>Clear cached metadata</source>
         <translation>Tøm metadata i mellomlager</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-384"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-416"/>
         <source>Total playtime: 0s</source>
         <translation>Total spilletid: 0s</translation>
     </message>
     <message>
-        <location line="+1704"/>
+        <location line="+1761"/>
         <source>Total playtime: %1</source>
         <translation>Total spilletid: %1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-315"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-340"/>
         <source>Change the selected instance&apos;s icon.</source>
         <translation>Endre den valgte instansens ikon.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-376"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-377"/>
         <source>Successfully added %1 to PATH</source>
         <translation>%1 lagt til «PATH» på vellykket vis</translation>
     </message>
     <message>
-        <location line="-270"/>
+        <location line="-286"/>
         <location line="+22"/>
         <source>Enter a new group name.</source>
         <translation>Skriv inn et nytt gruppenavn.</translation>
     </message>
     <message>
-        <location line="+253"/>
+        <location line="+269"/>
         <source>An error occurred while trying to add %1 to PATH</source>
         <translation>En feil oppsto under forsøket på å legge til %1 til PATH</translation>
     </message>
     <message>
-        <location line="-263"/>
+        <location line="-279"/>
         <source>Are you sure you want to delete the group &apos;%1&apos;?</source>
         <translation>Er du sikker på at du vil slette gruppen «%1»?</translation>
     </message>
@@ -7991,12 +8219,12 @@ Sjekk papirkurven din for å manuelt gjenopprette dem.</translation>
         <translation>Instansen oppdaterte til versjon %1 på vellykket vis.</translation>
     </message>
     <message>
-        <location line="-119"/>
+        <location line="-126"/>
         <source>Abort</source>
         <translation>Avbryt</translation>
     </message>
     <message>
-        <location line="-71"/>
+        <location line="-72"/>
         <source>URL:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8015,7 +8243,7 @@ Make sure you also trust the URL.
         <translation>Feil</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+8"/>
         <source>Task aborted</source>
         <translation>Oppgave avbrutt</translation>
     </message>
@@ -8025,12 +8253,12 @@ Make sure you also trust the URL.
         <translation>Leverandørinformasjon:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+123"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+130"/>
         <source>Update Successful</source>
         <translation>Oppdatering vellykket</translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-101"/>
         <source>Cannot update!</source>
         <translation>Kan ikke oppdatere!</translation>
     </message>
@@ -8045,7 +8273,7 @@ Make sure you also trust the URL.
         <translation>Oppgaven ble avbrutt av brukeren.</translation>
     </message>
     <message>
-        <location line="+130"/>
+        <location line="+137"/>
         <source>The instance failed to update to pack version %1. Please check launcher logs for more information.</source>
         <translation>Instansen klarte ikke oppdatere til pakke versjon %1. Vennligst sjekk konsoll loggen for mer informasjon.</translation>
     </message>
@@ -8065,23 +8293,23 @@ Make sure you also trust the URL.
         <translation>Endringslogg</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-133"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-141"/>
         <source>Warnings</source>
         <translation>Advarsler</translation>
     </message>
     <message>
-        <location line="+132"/>
+        <location line="+140"/>
         <source>Update Failed</source>
         <translation>Oppdatering Mislyktest</translation>
     </message>
     <message>
-        <location line="-105"/>
+        <location line="-112"/>
         <source>Failed to search for available versions.</source>
         <translation>Klarte ikke søke etter tilgjengelige versjoner.</translation>
     </message>
     <message>
-        <location line="-89"/>
-        <location line="+78"/>
+        <location line="-90"/>
+        <location line="+79"/>
         <source>Update Pack</source>
         <translation>Oppdater pakke</translation>
     </message>
@@ -8091,7 +8319,7 @@ Make sure you also trust the URL.
         <translation>Ingen endringslogg er tilgjengelig for denne versjonen!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-63"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-64"/>
         <source>Website: &lt;a href=%1&gt;%2&lt;/a&gt;    |    Pack ID: %3    |    Version ID: %4</source>
         <translation>Nettside: &lt;a href=%1&gt;%2&lt;/a&gt;    |    Pakke-ID: %3    |    Versjons-ID: %4</translation>
     </message>
@@ -8116,7 +8344,7 @@ Make sure you also trust the URL.
         <translation>Oppdater til versjon:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+77"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+78"/>
         <source>Failed to request changelog data for this modpack.</source>
         <translation>Klarte ikke finne endringsloggsdata til denne mod-pakken.</translation>
     </message>
@@ -8124,7 +8352,7 @@ Make sure you also trust the URL.
 <context>
     <name>Meta::BaseEntityLoadTask</name>
     <message>
-        <location filename="../launcher/meta/BaseEntity.cpp" line="+122"/>
+        <location filename="../launcher/meta/BaseEntity.cpp" line="+124"/>
         <source>Loading local file</source>
         <translation>Laster inn lokal fil</translation>
     </message>
@@ -8172,7 +8400,7 @@ Make sure you also trust the URL.
 <context>
     <name>MinecraftInstance</name>
     <message>
-        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1030"/>
+        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1042"/>
         <source>&lt;ACCESS TOKEN&gt;</source>
         <translation>&lt;ACCESS TOKEN&gt;</translation>
     </message>
@@ -8182,12 +8410,12 @@ Make sure you also trust the URL.
         <translation>, sist spilt %1 i %2</translation>
     </message>
     <message>
-        <location line="-765"/>
+        <location line="-773"/>
         <source>Profilers</source>
         <translation>Profiler</translation>
     </message>
     <message>
-        <location line="+749"/>
+        <location line="+757"/>
         <source>broken</source>
         <translation>ødelagt</translation>
     </message>
@@ -8197,12 +8425,12 @@ Make sure you also trust the URL.
         <translation>, spilt til sammen i %1</translation>
     </message>
     <message>
-        <location line="-783"/>
+        <location line="-791"/>
         <source>Launch &amp;Offline</source>
         <translation>Start &amp;Offline</translation>
     </message>
     <message>
-        <location line="+723"/>
+        <location line="+731"/>
         <source>&lt;PROFILE ID&gt;</source>
         <translation>&lt;PROFILE ID&gt;</translation>
     </message>
@@ -8212,7 +8440,7 @@ Make sure you also trust the URL.
         <translation>&lt;SESSION ID&gt;</translation>
     </message>
     <message>
-        <location line="-720"/>
+        <location line="-728"/>
         <source>&amp;Launch</source>
         <translation>&amp;Start</translation>
     </message>
@@ -8222,22 +8450,22 @@ Make sure you also trust the URL.
         <translation>&amp;Ingen profilerer</translation>
     </message>
     <message>
-        <location line="+750"/>
+        <location line="+758"/>
         <source>Minecraft %1</source>
         <translation>Minecraft %1</translation>
     </message>
     <message>
-        <location line="-770"/>
+        <location line="-778"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location line="+787"/>
+        <location line="+795"/>
         <source>, has crashed.</source>
         <translation>, har krasjet.</translation>
     </message>
     <message>
-        <location line="-785"/>
+        <location line="-793"/>
         <source>Ctrl+Alt+O</source>
         <translation>Ctrl+Alt+O</translation>
     </message>
@@ -8362,7 +8590,7 @@ Make sure you also trust the URL.
         <translation>&amp;Vindusstørrelse:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+344"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+340"/>
         <source>Select Global Data Packs Folder</source>
         <translation>Velg mappen Global Data Packs</translation>
     </message>
@@ -8444,7 +8672,7 @@ Det er mest sannsynlig at du må endre banen – se modens nettsted for mer info
         <translation>Åpne &amp;Globale innstillinger</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-497"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-493"/>
         <source>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: The maximized option is not fully supported on this Minecraft version.&lt;/span&gt;</source>
         <translation>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Advarsel&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Maksimeringsalternativet støttes ikke fullt ut i denne versjonen av Minecraft.&lt;/span&gt;</translation>
     </message>
@@ -8656,6 +8884,59 @@ Det er mest sannsynlig at du må endre banen – se modens nettsted for mer info
     </message>
 </context>
 <context>
+    <name>ModConflictChecker</name>
+    <message>
+        <location filename="../launcher/minecraft/mod/ModConflictChecker.cpp" line="+88"/>
+        <source>unknown version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Duplicate mod: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These files all provide the mod id &quot;%1&quot;, and the game will not start with more than one of them:
+%2
+Keep only one (usually the newest) and delete or disable the others.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>%1 conflicts with %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 (%2) says it is incompatible with %3 (%4), and both are enabled.
+Disable or remove one of them.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
+        <source>Disabled dependency: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 needs the mod &quot;%2&quot;, which is installed (%3) but disabled.
+Enable it to avoid a crash on startup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Possibly missing dependency: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 needs a mod with the id &quot;%2&quot;, but none was found in the mods folder.
+If the game starts fine it is probably bundled inside another mod; otherwise download it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ModFilterWidget</name>
     <message>
         <location filename="../launcher/ui/widgets/ModFilterWidget.ui" line="+284"/>
@@ -8796,7 +9077,7 @@ Det er mest sannsynlig at du må endre banen – se modens nettsted for mer info
 <context>
     <name>ModFolderModel</name>
     <message>
-        <location filename="../launcher/minecraft/mod/ModFolderModel.cpp" line="+100"/>
+        <location filename="../launcher/minecraft/mod/ModFolderModel.cpp" line="+101"/>
         <source>File</source>
         <translation>Fil</translation>
     </message>
@@ -8931,7 +9212,7 @@ Det er mest sannsynlig at du må endre banen – se modens nettsted for mer info
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+224"/>
+        <location line="+247"/>
         <source>Confirm toggle</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9045,26 +9326,27 @@ Ignoring them may break the game.</source>
     </message>
     <message>
         <location filename="../launcher/ui/pages/instance/ModFolderPage.cpp" line="+190"/>
-        <location line="+90"/>
+        <location line="+104"/>
         <source>Download stopped by user.</source>
         <translation>Nedlasting avbrutt av brukeren.</translation>
     </message>
     <message>
-        <location line="-70"/>
-        <location line="+86"/>
+        <location line="-83"/>
+        <location line="+99"/>
         <source>Abort</source>
         <translation>Avbryt</translation>
     </message>
     <message>
-        <location line="-110"/>
-        <location line="+45"/>
-        <location line="+45"/>
-        <location line="+60"/>
+        <location line="-124"/>
+        <location line="+46"/>
+        <location line="+58"/>
+        <location line="+61"/>
+        <location line="+101"/>
         <source>Error</source>
         <translation>Feil</translation>
     </message>
     <message>
-        <location line="-250"/>
+        <location line="-366"/>
         <source>Check for Updates</source>
         <translation>Søk etter oppdateringer</translation>
     </message>
@@ -9095,7 +9377,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
         <source>Confirm Disable</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9107,12 +9389,12 @@ Do you want to disable them?</source>
     </message>
     <message>
         <location line="+86"/>
-        <location line="+105"/>
+        <location line="+119"/>
         <source>Mod updates are unavailable when metadata is disabled!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-100"/>
+        <location line="-114"/>
         <source>Confirm Update</source>
         <translation>Bekreft Oppdatering</translation>
     </message>
@@ -9125,6 +9407,11 @@ Are you sure you want to do this?</source>
     </message>
     <message>
         <location line="+20"/>
+        <source>There are no mods to check for updates.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
         <source>The mod updater was aborted!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9134,20 +9421,35 @@ Are you sure you want to do this?</source>
         <translation>&apos;%1&apos; er oppdatert! :)</translation>
     </message>
     <message>
-        <location line="-71"/>
-        <location line="+67"/>
-        <location line="+23"/>
+        <location line="+164"/>
+        <source>Missing Mod Loader</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>You need to install a compatible mod loader before installing mods. Would you like to do so?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>No mod loader was installed. Please try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-262"/>
+        <location line="+77"/>
+        <location line="+27"/>
         <source>Aborted</source>
         <translation>Avbrutt</translation>
     </message>
     <message>
-        <location line="-84"/>
-        <location line="+90"/>
+        <location line="-98"/>
+        <location line="+104"/>
         <source>Warnings</source>
         <translation>Advarsler</translation>
     </message>
     <message>
-        <location line="-22"/>
+        <location line="-26"/>
         <source>All mods are up-to-date! :)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9155,6 +9457,14 @@ Are you sure you want to do this?</source>
         <location line="+2"/>
         <source>All selected mods are up-to-date! :)</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+5"/>
+        <source>No updates were found, but %n mod(s) could not be checked.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
         <location line="+45"/>
@@ -9164,7 +9474,7 @@ Are you sure?</source>
 Er du sikker?</translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="-252"/>
         <source>Download mods from online mod platforms</source>
         <translation>Last ned mods fra modplattformer på nettet</translation>
     </message>
@@ -9175,17 +9485,18 @@ Er du sikker?</translation>
         <translation>Last ned mods</translation>
     </message>
     <message>
-        <location line="+126"/>
+        <location line="+141"/>
         <source>Confirm Removal</source>
         <translation>Bekreft Fjerning</translation>
     </message>
     <message>
-        <location line="-230"/>
+        <location line="-245"/>
         <source>Try to check or update all selected mods (all mods if none are selected)</source>
         <translation>Prøv å sjekke eller oppdatere alle valgte mods (alle mods hvis ingen er valgt)</translation>
     </message>
     <message>
-        <location line="+189"/>
+        <location line="+178"/>
+        <location line="+25"/>
         <source>Update checker</source>
         <translation>Oppdateringskontroll</translation>
     </message>
@@ -9229,7 +9540,7 @@ Er du sikker?</translation>
 <context>
     <name>Modrinth::ModpackListModel</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/modrinth/ModrinthModel.cpp" line="+324"/>
+        <location filename="../launcher/ui/pages/modplatform/modrinth/ModrinthModel.cpp" line="+329"/>
         <location line="+3"/>
         <source>Error</source>
         <translation>Feil</translation>
@@ -9256,32 +9567,32 @@ Oppdater %1!</translation>
         <translation>Forbereder ressurser for Modrinth …</translation>
     </message>
     <message>
-        <location line="+67"/>
+        <location line="+68"/>
         <source>Parsing the API response from Modrinth...</source>
         <translation>Tolker API respons fra Modrinth …</translation>
     </message>
     <message>
-        <location line="+106"/>
+        <location line="+109"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version.</source>
         <translation>Ingen gyldig versjon funnet for denne ressursen. Den er sannsynligvis utilgjengelig for denne versjonen av spillet.</translation>
     </message>
     <message>
-        <location line="-137"/>
+        <location line="-140"/>
         <source>Waiting for the API response from Modrinth...</source>
         <translation>Venter på API respons fra Modrinth …</translation>
     </message>
     <message>
-        <location line="+98"/>
+        <location line="+99"/>
         <source>Unknown</source>
         <translation>Ukjent</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+38"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version / mod loader.</source>
         <translation>Ingen gyldig version funnet for denne ressursen. Den er sannsynligvis ikke tilgjengelig for den nåværende versjonen av spillet / mod loader.</translation>
     </message>
     <message>
-        <location line="-38"/>
+        <location line="-40"/>
         <source>Not installed</source>
         <translation>Ikke installert</translation>
     </message>
@@ -9289,17 +9600,17 @@ Oppdater %1!</translation>
 <context>
     <name>ModrinthCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+292"/>
+        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+328"/>
         <source>Downloading mods...</source>
         <translation>Laster ned modifikasjoner …</translation>
     </message>
     <message>
-        <location line="-61"/>
+        <location line="-71"/>
         <source>Mod Download Modrinth</source>
         <translation>Last ned mods fra Modrinth</translation>
     </message>
     <message>
-        <location line="+172"/>
+        <location line="+182"/>
         <source>Download URL for %1 is not a correctly formatted URL</source>
         <translation>Nedlastingslenken til %1 er ikke formatert riktig</translation>
     </message>
@@ -9312,18 +9623,18 @@ Oppdater %1!</translation>
         <translation type="vanished">Kunne ikke fjerne gamle motstridende filer.</translation>
     </message>
     <message>
-        <location line="-266"/>
+        <location line="-293"/>
         <source>We couldn&apos;t find a suitable index file for the older version. This may cause some of the files to be duplicated. Do you want to continue?</source>
         <translation>Vi fant ikke en passende indeksfil for den eldre versjonen. Dette kan føre til at noen av filene dupliseres. Vil du fortsette?</translation>
     </message>
     <message>
-        <location line="+57"/>
+        <location line="+58"/>
         <source>Could not rename the client overrides folder:
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="+65"/>
         <source>One of the files has a path that leads to an arbitrary location (%1). This is a security risk and isn&apos;t allowed.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9333,31 +9644,31 @@ Oppdater %1!</translation>
         <translation>Filen «%1» mangler en nedlastingslenke. Dette er ugyldig i pakkeformatet.</translation>
     </message>
     <message>
-        <location line="+30"/>
+        <location line="+40"/>
         <location line="+24"/>
         <source>%1 out of %2 complete</source>
         <translation>%1 av %2 fullført</translation>
     </message>
     <message>
-        <location line="+152"/>
+        <location line="+154"/>
         <source>Could not understand pack index:
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-327"/>
+        <location line="-356"/>
         <source>No index file.</source>
         <translation>Ingen indeksfil.</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+46"/>
         <source>Could not rename the overrides folder:
 </source>
         <translation>Kunne ikke endre navn på overstyringsmappen:
 </translation>
     </message>
     <message>
-        <location line="-115"/>
+        <location line="-117"/>
         <source> (version %1)</source>
         <translation> (versjon %1)</translation>
     </message>
@@ -9365,7 +9676,7 @@ Oppdater %1!</translation>
 <context>
     <name>ModrinthManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+62"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+69"/>
         <source>Fetching changelogs...</source>
         <translation>Henter endringslogg …</translation>
     </message>
@@ -9375,12 +9686,12 @@ Oppdater %1!</translation>
         <translation>Velg oppdateringsfil</translation>
     </message>
     <message>
-        <location line="-81"/>
+        <location line="-86"/>
         <source>%1 (Current)</source>
         <translation>%1 (Nåværende)</translation>
     </message>
     <message>
-        <location line="+81"/>
+        <location line="+86"/>
         <source>Modrinth pack</source>
         <translation>Modrinth pakke</translation>
     </message>
@@ -9526,6 +9837,51 @@ Oppdater %1!</translation>
     </message>
 </context>
 <context>
+    <name>MyReportsDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+151"/>
+        <location line="+4"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Bug reports and suggestions you sent from this launcher, and what the team answered.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>No reports yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>When you send a bug report or suggestion from this launcher, it shows up here, and you will be told when the team answers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <location line="+25"/>
+        <source>Check for updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-24"/>
+        <source>Close</source>
+        <translation type="unfinished">Lukk</translation>
+    </message>
+    <message>
+        <location line="+25"/>
+        <source>Last checked: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>Checking…</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Net::NetRequest</name>
     <message>
         <location filename="../launcher/net/NetRequest.cpp" line="+73"/>
@@ -9577,7 +9933,7 @@ Oppdater %1!</translation>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+145"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9722,12 +10078,12 @@ Oppdater %1!</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/NewInstanceDialog.ui" line="+17"/>
-        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="+78"/>
+        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="+79"/>
         <source>New Instance</source>
         <translation>Ny instans</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="-112"/>
+        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="-113"/>
         <source>No group</source>
         <translation>Ingen gruppe</translation>
     </message>
@@ -9860,19 +10216,19 @@ Oppdater %1!</translation>
         <translation>&amp;Kopier</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+483"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+486"/>
         <source>Clear</source>
         <translation>Tøm</translation>
     </message>
     <message>
-        <location line="-222"/>
-        <location line="+135"/>
+        <location line="-225"/>
+        <location line="+138"/>
         <location line="+41"/>
         <source>Error</source>
         <translation>Feil</translation>
     </message>
     <message>
-        <location line="-252"/>
+        <location line="-255"/>
         <source>Current logs</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9882,7 +10238,7 @@ Oppdater %1!</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+60"/>
+        <location line="+63"/>
         <source>The file (%1) encountered an error when reading: %2.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9923,8 +10279,8 @@ Oppdater %1!</translation>
         <translation>Rull helt til bunnen</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="-395"/>
-        <location line="+218"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="-398"/>
+        <location line="+221"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Kunne ikke vise loggen siden den var lengre enn %1 linjer.</translation>
     </message>
@@ -10024,7 +10380,7 @@ Dette kan være permanent, og vil bli borte fra loggmappa.
 Er du sikker?</translation>
     </message>
     <message>
-        <location line="-121"/>
+        <location line="-124"/>
         <source>Unable to open %1 for reading: %2</source>
         <translation>Kunne ikke åpne %1 for lesning: %2</translation>
     </message>
@@ -10130,19 +10486,19 @@ Er du sikker?</translation>
         <translation type="obsolete">Hjelp</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+383"/>
-        <location line="+42"/>
+        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+388"/>
+        <location line="+44"/>
         <source>Search settings…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-41"/>
-        <location line="+42"/>
+        <location line="-43"/>
+        <location line="+44"/>
         <source>Search all settings (Ctrl+F). Several words narrow the results down.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+296"/>
+        <location line="+297"/>
         <source>No settings match &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10398,7 +10754,7 @@ StdErr: %2</source>
 <context>
     <name>PollyMCUpdaterApp</name>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="+99"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="+100"/>
         <source>Use a custom path as application root (use &apos;.&apos; for current directory).</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10742,19 +11098,13 @@ Updater log: %7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
-        <location line="+4"/>
-        <source>Failed to Check Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-4"/>
-        <source>Failed to launch child process to read version.</source>
+        <location line="+23"/>
+        <source>Failed to launch child process to read version, using the built-in version instead.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+4"/>
-        <source>Child launcher process failed.</source>
+        <source>Child launcher process did not finish in time, using the built-in version instead.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -11139,7 +11489,7 @@ Choose your name carefully:</source>
         <translation type="vanished">Ikke gjenkjent</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1173"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
         <source>%1 (in use)</source>
         <translation>%1 (i bruk)</translation>
     </message>
@@ -11293,7 +11643,7 @@ This message will be displayed until you remove this from the JVM arguments.</so
         <translation>Sorter etter relevans</translation>
     </message>
     <message>
-        <location filename="../launcher/meta/BaseEntity.cpp" line="+34"/>
+        <location filename="../launcher/meta/BaseEntity.cpp" line="+36"/>
         <source>Download of meta file %1</source>
         <translation>Nedlasting av metafil %1</translation>
     </message>
@@ -11714,17 +12064,29 @@ Er du sikker?</translation>
     </message>
     <message>
         <location filename="../launcher/InstanceDirUpdate.cpp" line="+64"/>
-        <location line="+33"/>
+        <location line="+40"/>
         <source>Cannot rename instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-32"/>
+        <location line="-39"/>
         <source>New instance root (%1) already exists. &lt;br /&gt;Only the metadata will be renamed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+5"/>
+        <source>Cannot rename instance folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The instance folder cannot be renamed while the instance is running.
+
+Only the instance name will be changed. The folder will keep its current name.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>&amp;Remember my choice</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11920,7 +12282,7 @@ Do you wish to proceed?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/modplatform/ModIndex.h" line="+143"/>
+        <location filename="../launcher/modplatform/ModIndex.h" line="+145"/>
         <source> for %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11978,7 +12340,7 @@ Error message: %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1040"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1049"/>
         <source>An auto-updater for PollyMC-Continued</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12022,16 +12384,146 @@ Error message: %3</source>
         <source>Send this error to the PollyMC developers</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../launcher/BugReportTracker.cpp" line="+164"/>
+        <source>Waiting for a dev to check it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Seen - the team is looking into it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The team needs more information - please reach out on Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Fixed - it will be in the next update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-193"/>
+        <source>Fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Fixed in version %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+2"/>
+        <source>Won&apos;t be fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Duplicate of another report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+4"/>
+        <source>Not a bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+1"/>
+        <source>Updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Crash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Suggestion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Other</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-13"/>
+        <source>Waiting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>In review</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Needs info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Duplicate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>NEW</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Sent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>(no title)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>%1  ·  ID %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <location line="+8"/>
+        <source>Copy ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-7"/>
+        <source>Give this ID to the team if you contact them about this report.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Copied!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Resource</name>
     <message>
-        <location filename="../launcher/minecraft/mod/Resource.cpp" line="+63"/>
+        <location filename="../launcher/minecraft/mod/Resource.cpp" line="+64"/>
         <source>Unknown</source>
         <translation>Ukjent</translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="+50"/>
         <source>Not marked as compatible with the instance&apos;s game version.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12039,7 +12531,7 @@ Error message: %3</source>
 <context>
     <name>ResourceDownload::DataPackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+181"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+196"/>
         <source>data packs</source>
         <extracomment>String that gets appended to the data pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation type="unfinished"></translation>
@@ -12063,7 +12555,7 @@ Error message: %3</source>
 <context>
     <name>ResourceDownload::ModDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-69"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-81"/>
         <source>mods</source>
         <extracomment>String that gets appended to the mod download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>mods</translation>
@@ -12091,7 +12583,7 @@ Error message: %3</source>
         <translation type="vanished">mods</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="+189"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="+193"/>
         <source>Abort</source>
         <translation>Avbryt</translation>
     </message>
@@ -12101,17 +12593,17 @@ Error message: %3</source>
         <translation>Feil</translation>
     </message>
     <message>
-        <location line="-96"/>
+        <location line="-98"/>
         <source>Ctrl+Return</source>
         <translation>Ctrl+Enter</translation>
     </message>
     <message>
-        <location line="+332"/>
+        <location line="+379"/>
         <source>Change %1 version</source>
         <translation>Endre versjon %1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-48"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-51"/>
         <source>Download %1</source>
         <translation>Last ned %1</translation>
     </message>
@@ -12120,24 +12612,24 @@ Error message: %3</source>
         <translation type="vanished">shaderpakker</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="-306"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="-352"/>
         <source>You have %1 selected resources.
 Are you sure you want to close this dialog?</source>
         <translation>Du har %1 valgte ressurser.
 Er du sikker på at du vil lukke denne dialogboksen?</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+52"/>
         <source>Opens a new popup to review your selected %1 and confirm your selection. Shortcut: Ctrl+Return</source>
         <translation>Åpner et nytt popup-vindu som lar deg gå gjennom dine %1 og bekrefte utvalget. Snarvei: Ctrl+Enter</translation>
     </message>
     <message>
-        <location line="-78"/>
+        <location line="-80"/>
         <source>Review and confirm</source>
         <translation>Gå gjennom og bekreft</translation>
     </message>
     <message>
-        <location line="+113"/>
+        <location line="+115"/>
         <source>Checking for dependencies...</source>
         <translation>Kontrollerer avhengigheter …</translation>
     </message>
@@ -12166,7 +12658,7 @@ Er du sikker på at du vil lukke denne dialogboksen?</translation>
         <translation type="vanished">teksturpakker</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="-64"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="-65"/>
         <source>Confirmation Needed</source>
         <translation>Bekreftelse nødvendig</translation>
     </message>
@@ -12174,35 +12666,35 @@ Er du sikker på at du vil lukke denne dialogboksen?</translation>
 <context>
     <name>ResourceDownload::ResourceModel</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourceModel.cpp" line="+221"/>
-        <location line="+20"/>
-        <location line="+180"/>
-        <location line="+4"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourceModel.cpp" line="+239"/>
+        <location line="+24"/>
+        <location line="+190"/>
+        <location line="+7"/>
         <source>Error</source>
         <translation>Feil</translation>
     </message>
     <message>
-        <location line="-179"/>
+        <location line="-191"/>
         <source>The request was aborted for an unknown reason</source>
         <translation>Forespørselen ble avbrutt av en ukjent grunn</translation>
     </message>
     <message>
-        <location line="+175"/>
+        <location line="+184"/>
         <source>A network error occurred. Could not load mods.</source>
         <translation>En nettverksfeil oppsto. Kunne ikke laste mods.</translation>
     </message>
     <message>
-        <location line="-180"/>
+        <location line="-190"/>
         <source>A network error occurred. Could not load project info: %1</source>
         <translation>Det oppsto en nettverksfeil. Kunne ikke laste inn prosjektinfo: %1</translation>
     </message>
     <message>
-        <location line="-19"/>
+        <location line="-23"/>
         <source>A network error occurred. Could not load project versions: %1</source>
         <translation>Det oppsto en nettverksfeil. Kunne ikke laste inn prosjektversjoner: %1</translation>
     </message>
     <message>
-        <location line="+204"/>
+        <location line="+221"/>
         <source>API version too old!
 Please update %1!</source>
         <translation>API-versjon for gammel!
@@ -12212,7 +12704,7 @@ Vennligst oppdater %1!</translation>
 <context>
     <name>ResourceDownload::ResourcePackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+68"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+74"/>
         <source>resource packs</source>
         <extracomment>String that gets appended to the resource pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>ressurspakker</translation>
@@ -12236,18 +12728,18 @@ Vennligst oppdater %1!</translation>
 <context>
     <name>ResourceDownload::ResourcePage</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+219"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+233"/>
         <source> by </source>
         <translation> av </translation>
     </message>
     <message>
-        <location line="+86"/>
+        <location line="+92"/>
         <source> [installed]</source>
         <comment>Mod version select</comment>
         <translation type="unfinished"> [installert]</translation>
     </message>
     <message>
-        <location line="+126"/>
+        <location line="+136"/>
         <source>No versions available</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12258,7 +12750,7 @@ The author likely blocked third-party launchers.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+107"/>
+        <location line="+111"/>
         <source>Reinstall</source>
         <translation>Installer på nytt</translation>
     </message>
@@ -12268,7 +12760,7 @@ The author likely blocked third-party launchers.</source>
         <translation>Ctrl+Enter</translation>
     </message>
     <message>
-        <location line="-227"/>
+        <location line="-241"/>
         <source>Cannot select invalid version :(</source>
         <translation>Kunne ikke velge ugyldig versjon :(</translation>
     </message>
@@ -12278,42 +12770,42 @@ The author likely blocked third-party launchers.</source>
         <translation>Ingen gyldig versjon funnet.</translation>
     </message>
     <message>
-        <location line="-83"/>
+        <location line="-89"/>
         <source>Donate information: </source>
         <translation>Doneringsinformasjon </translation>
     </message>
     <message>
-        <location line="+335"/>
+        <location line="+355"/>
         <source>The resource was not found</source>
         <translation>Ressursen ble ikke funnet</translation>
     </message>
     <message>
-        <location line="-316"/>
+        <location line="-335"/>
         <source>Wiki: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Wiki: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+6"/>
         <source>Discord: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Discord: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="-6"/>
+        <location line="-9"/>
         <source>Issues: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Problemer: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+300"/>
+        <location line="+320"/>
         <source>Cancel</source>
         <translation>Avbryt</translation>
     </message>
     <message>
-        <location line="-209"/>
+        <location line="-222"/>
         <source>Loading versions...</source>
         <translation>Laster inn versjoner …</translation>
     </message>
     <message>
-        <location line="-87"/>
+        <location line="-92"/>
         <source>Source code: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Kildekode: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
@@ -12322,19 +12814,19 @@ The author likely blocked third-party launchers.</source>
         <translation type="vanished"> [installert]</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.h" line="+47"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.h" line="+46"/>
         <source>resources</source>
         <extracomment>The plural version of &apos;resource&apos;</extracomment>
         <translation>ressurser</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+23"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+25"/>
         <source>No version available for the selected pack</source>
         <translation>Ingen versjon tilgjengelig for den valgte pakken</translation>
     </message>
     <message>
-        <location line="-159"/>
-        <location line="+161"/>
+        <location line="-176"/>
+        <location line="+178"/>
         <source>Select %1 for download</source>
         <translation>Velg %1 til nedlasting</translation>
     </message>
@@ -12345,13 +12837,13 @@ The author likely blocked third-party launchers.</source>
         <translation>ressurs</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="-162"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="-179"/>
         <source>Search for %1...</source>
         <extracomment>String in the search bar of the mod downloading dialog</extracomment>
         <translation>Søk etter %1 …</translation>
     </message>
     <message>
-        <location line="+111"/>
+        <location line="+124"/>
         <source>&lt;b&gt;This project has been archived. It will not receive any further updates unless the author decides to unarchive the project.&lt;/b&gt;</source>
         <translation>&lt;b&gt;Dette prosjektet har blitt arkivert. Det kommer ikke til å oppdateres lenger med mindre forfatteren velger å fjerne arkiveringen.&lt;/b&gt;</translation>
     </message>
@@ -12361,7 +12853,7 @@ The author likely blocked third-party launchers.</source>
         <translation>Eksterne lenker:</translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+39"/>
         <source>Deselect %1 for download</source>
         <translation>Fravelg %1 til nedlasting</translation>
     </message>
@@ -12369,7 +12861,7 @@ The author likely blocked third-party launchers.</source>
 <context>
     <name>ResourceDownload::ShaderPackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+34"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+40"/>
         <source>shader packs</source>
         <extracomment>String that gets appended to the shader pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>shaderpakker</translation>
@@ -12393,7 +12885,7 @@ The author likely blocked third-party launchers.</source>
 <context>
     <name>ResourceDownload::TexturePackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-17"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-20"/>
         <source>texture packs</source>
         <extracomment>String that gets appended to the texture pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>teksturpakker</translation>
@@ -12417,7 +12909,7 @@ The author likely blocked third-party launchers.</source>
 <context>
     <name>ResourceDownloadTask</name>
     <message>
-        <location filename="../launcher/ResourceDownloadTask.cpp" line="+45"/>
+        <location filename="../launcher/ResourceDownloadTask.cpp" line="+74"/>
         <source>Resource download</source>
         <translation>Ressursnedlasting</translation>
     </message>
@@ -12429,7 +12921,7 @@ The author likely blocked third-party launchers.</source>
 %1</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+56"/>
         <source>Failed to rename shader config from &apos;%1&apos; to &apos;%2&apos;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12437,7 +12929,7 @@ The author likely blocked third-party launchers.</source>
 <context>
     <name>ResourceFolderModel</name>
     <message>
-        <location filename="../launcher/minecraft/mod/ResourceFolderModel.h" line="+244"/>
+        <location filename="../launcher/minecraft/mod/ResourceFolderModel.h" line="+252"/>
         <source>Name</source>
         <translation>Navn</translation>
     </message>
@@ -12462,7 +12954,7 @@ The author likely blocked third-party launchers.</source>
         <translation>Levrandør</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/mod/ResourceFolderModel.cpp" line="+271"/>
+        <location filename="../launcher/minecraft/mod/ResourceFolderModel.cpp" line="+296"/>
         <source>Confirm toggle</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12473,7 +12965,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+280"/>
+        <location line="+287"/>
         <source>
 Warning: This resource is symbolically linked from elsewhere. Editing it will also change the original.
 Canonical Path: %1</source>
@@ -12598,27 +13090,27 @@ Advarsel: Denne ressursen er hardlenket fra et annet sted. Å redigere den vil o
 <context>
     <name>ResourcePackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="+103"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="+104"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>Nedlasting avbrutt av brukeren.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Avbryt</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Feil</translation>
     </message>
     <message>
-        <location line="-189"/>
+        <location line="-198"/>
         <source>Download Packs</source>
         <translation>Last ned pakker</translation>
     </message>
@@ -12633,13 +13125,13 @@ Advarsel: Denne ressursen er hardlenket fra et annet sted. Å redigere den vil o
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+69"/>
-        <location line="+99"/>
+        <location line="+73"/>
+        <location line="+104"/>
         <source>Resource pack updates are unavailable when metadata is disabled!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-99"/>
         <source>Confirm Update</source>
         <translation>Bekreft oppdatering</translation>
     </message>
@@ -12651,7 +13143,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+22"/>
         <source>The resource pack updater was aborted!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12661,21 +13153,21 @@ Are you sure you want to do this?</source>
         <translation>«%1» er oppdatert! :)</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+51"/>
         <source>You are about to remove the metadata for %1 resource packs.
 Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-115"/>
-        <location line="+61"/>
+        <location line="-121"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Avbrutt</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Advarsler</translation>
     </message>
@@ -12690,17 +13182,17 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>Confirm Removal</source>
         <translation>Bekreft Fjerning</translation>
     </message>
     <message>
-        <location line="-168"/>
+        <location line="-175"/>
         <source>Download resource packs from online mod platforms</source>
         <translation>Last ned ressurspakker fra modplattformer på nettet</translation>
     </message>
     <message>
-        <location line="+127"/>
+        <location line="+133"/>
         <source>Update checker</source>
         <translation>Oppdateringssjekker</translation>
     </message>
@@ -12726,23 +13218,23 @@ Are you sure?</source>
 <context>
     <name>ResourceUpdateDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+126"/>
+        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+129"/>
         <location line="+98"/>
-        <location line="+160"/>
+        <location line="+169"/>
         <source>Abort</source>
         <translation>Avbryt</translation>
     </message>
     <message>
-        <location line="-269"/>
+        <location line="-278"/>
         <location line="+95"/>
-        <location line="+146"/>
-        <location line="+16"/>
-        <location line="+56"/>
+        <location line="+153"/>
+        <location line="+17"/>
+        <location line="+58"/>
         <source>Error</source>
         <translation>Feil</translation>
     </message>
     <message>
-        <location line="-203"/>
+        <location line="-213"/>
         <source>Checking for dependencies...</source>
         <translation>Kontrollerer avhengigheter …</translation>
     </message>
@@ -12753,7 +13245,7 @@ Are you sure?</source>
         <translation>Advarsler</translation>
     </message>
     <message>
-        <location line="-175"/>
+        <location line="-176"/>
         <source>Confirm resources to update</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12788,12 +13280,12 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+33"/>
         <source>Checking for updates...</source>
         <translation>Ser etter oppdateringer …</translation>
     </message>
     <message>
-        <location line="+46"/>
+        <location line="+44"/>
         <source>Mod name: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12803,13 +13295,13 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Possible solution: Getting the latest version manually:&lt;br&gt;%1&lt;br&gt;</source>
         <extracomment>%1 is the link to download it manually</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>Failed to check for updates</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12818,28 +13310,36 @@ Are you sure?</source>
         <source>Could not check or get the following resources for updates:&lt;br&gt;Do you wish to proceed without those resources?</source>
         <translation type="unfinished"></translation>
     </message>
+    <message numerus="yes">
+        <location line="+88"/>
+        <source>%n update(s) found. You&apos;re about to update the following resources:</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location line="+97"/>
+        <location line="+13"/>
         <source>Looking for metadata</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+46"/>
         <source>The resource &apos;%1&apos; does not have a metadata yet. We need to generate it in order to track relevant information on how to update this mod. To do this, please select a mod provider which we can use to check for updates for this mod.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+59"/>
+        <location line="+63"/>
         <source>Generating metadata...</source>
         <translation>Genererer metadata …</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+54"/>
         <source>Couldn&apos;t find a valid version on the selected mod provider(s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+14"/>
         <source>Mod was disabled as it may be already installed.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12879,7 +13379,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-246"/>
+        <location line="-258"/>
         <source>Not installed</source>
         <translation>Ikke installert</translation>
     </message>
@@ -12955,7 +13455,7 @@ Are you sure?</source>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+394"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
         <source>Abort</source>
         <translation>Avbryt</translation>
     </message>
@@ -13010,7 +13510,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-143"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-152"/>
         <source>Context menu</source>
         <translation>Kontekstmeny</translation>
     </message>
@@ -13020,7 +13520,7 @@ Are you sure?</source>
         <translation>Skjermbilder</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+143"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+152"/>
         <source>Unknown error</source>
         <translation>Ukjent feil</translation>
     </message>
@@ -13031,7 +13531,7 @@ Are you sure?</source>
         <translation>Opplasting fullført</translation>
     </message>
     <message>
-        <location line="-89"/>
+        <location line="-91"/>
         <source>You are about to upload %1 screenshots to %2.
 You should double-check for personal information.
 
@@ -13047,7 +13547,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <location line="+41"/>
         <source>Screenshots upload aborted</source>
         <translation type="unfinished"></translation>
@@ -13066,7 +13566,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>You are about to delete the selected screenshot.
 This may be permanent and it will be gone from the folder.
 
@@ -13079,7 +13579,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-102"/>
+        <location line="-103"/>
         <source>The &lt;a href=&quot;%1&quot;&gt;link  to the uploaded screenshot&lt;/a&gt; has been placed in your clipboard.</source>
         <translation>&lt;a href=&quot;%1&quot;&gt;Lenken til det opplastede skjermbildet&lt;/a&gt; er plassert i utklippstavla di.</translation>
     </message>
@@ -13316,27 +13816,27 @@ Are you sure?</source>
 <context>
     <name>ShaderPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ShaderPackPage.cpp" line="+100"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/ShaderPackPage.cpp" line="+101"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>Nedlasting avbrutt av brukeren.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Avbryt</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Feil</translation>
     </message>
     <message>
-        <location line="-181"/>
+        <location line="-190"/>
         <source>Download Packs</source>
         <translation>Last ned pakker</translation>
     </message>
@@ -13351,13 +13851,13 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+61"/>
-        <location line="+99"/>
+        <location line="+65"/>
+        <location line="+104"/>
         <source>Shader pack updates are unavailable when metadata is disabled!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-99"/>
         <source>Confirm Update</source>
         <translation>Bekreft oppdatering</translation>
     </message>
@@ -13369,7 +13869,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+22"/>
         <source>The shader pack updater was aborted!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13379,31 +13879,31 @@ Are you sure you want to do this?</source>
         <translation>«%1» er oppdatert! :)</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+51"/>
         <source>You are about to remove the metadata for %1 shader packs.
 Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-115"/>
-        <location line="+61"/>
+        <location line="-121"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Avbrutt</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Advarsler</translation>
     </message>
     <message>
-        <location line="-136"/>
+        <location line="-142"/>
         <source>Download shader packs from online mod platforms</source>
         <translation>Laster ned shaderpakker fra modplattformer på nettet</translation>
     </message>
     <message>
-        <location line="+114"/>
+        <location line="+120"/>
         <source>All shader packs are up-to-date! :)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13413,12 +13913,12 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>Confirm Removal</source>
         <translation>Bekreft Fjerning</translation>
     </message>
     <message>
-        <location line="-41"/>
+        <location line="-42"/>
         <source>Update checker</source>
         <translation>Oppdateringssjekker</translation>
     </message>
@@ -13981,7 +14481,7 @@ Er du sikker?</translation>
 <context>
     <name>Task</name>
     <message>
-        <location filename="../launcher/tasks/Task.cpp" line="+134"/>
+        <location filename="../launcher/tasks/Task.cpp" line="+141"/>
         <source>Aborted</source>
         <translation type="unfinished">Avbrutt</translation>
     </message>
@@ -14223,27 +14723,27 @@ inheritsFrom is missing</source>
 <context>
     <name>TexturePackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="+108"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="+109"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>Nedlasting avbrutt av brukeren.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Avbryt</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Feil</translation>
     </message>
     <message>
-        <location line="-190"/>
+        <location line="-199"/>
         <source>Download Packs</source>
         <translation>Last ned pakker</translation>
     </message>
@@ -14263,13 +14763,13 @@ inheritsFrom is missing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+66"/>
-        <location line="+99"/>
+        <location line="+70"/>
+        <location line="+104"/>
         <source>Texture pack updates are unavailable when metadata is disabled!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-99"/>
         <source>Confirm Update</source>
         <translation>Bekreft oppdatering</translation>
     </message>
@@ -14281,7 +14781,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+22"/>
         <source>The texture pack updater was aborted!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14291,31 +14791,31 @@ Are you sure you want to do this?</source>
         <translation>«%1» er oppdatert! :)</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+51"/>
         <source>You are about to remove the metadata for %1 texture packs.
 Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-115"/>
-        <location line="+61"/>
+        <location line="-121"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Avbrutt</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Advarsler</translation>
     </message>
     <message>
-        <location line="-145"/>
+        <location line="-151"/>
         <source>Download texture packs from online mod platforms</source>
         <translation>Last ned teksturpakker fra modplattformer på nettet</translation>
     </message>
     <message>
-        <location line="+123"/>
+        <location line="+129"/>
         <source>All texture packs are up-to-date! :)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14325,7 +14825,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+45"/>
         <source>Confirm Removal</source>
         <translation>Bekreft Fjerning</translation>
     </message>
@@ -14335,7 +14835,7 @@ Are you sure?</source>
         <translation>Teksturpakker</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="-41"/>
+        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="-42"/>
         <source>Update checker</source>
         <translation>Oppdateringssjekker</translation>
     </message>
@@ -14389,6 +14889,29 @@ Are you sure?</source>
     <message>
         <location line="+12"/>
         <source>Completeness is the percentage of fully translated strings, not counting automatically guessed ones.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UntrustedModsDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/UntrustedModsDialog.ui" line="+14"/>
+        <source>Easy There!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The modpack you are installing includes mods which are not hosted on Modrinth or CurseForge:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Malicious mods are often distributed through links sent on platforms such as Discord.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;We strongly recommend only importing modpacks from trusted sources.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>I trust this modpack and wish to proceed regardless</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -14947,11 +15470,12 @@ Vennligst legg til en Microsoft-konto.</translation>
 <context>
     <name>VersionSelectDialog</name>
     <message>
+        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+74"/>
         <source>OK</source>
-        <translation type="vanished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+104"/>
+        <location line="+30"/>
         <source>Reloads the version list.</source>
         <translation>Oppdaterer versjonoppføringene.</translation>
     </message>
@@ -14961,12 +15485,7 @@ Vennligst legg til en Microsoft-konto.</translation>
         <translation>Velg versjon</translation>
     </message>
     <message>
-        <location line="-29"/>
-        <source>Ok</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="-28"/>
         <source>Cancel</source>
         <translation>Avbryt</translation>
     </message>
@@ -15106,7 +15625,7 @@ Vennligst legg til en Microsoft-konto.</translation>
 <context>
     <name>WorldList</name>
     <message>
-        <location filename="../launcher/minecraft/WorldList.cpp" line="+272"/>
+        <location filename="../launcher/minecraft/WorldList.cpp" line="+273"/>
         <source>Info</source>
         <extracomment>special warnings?</extracomment>
         <translation>Info</translation>
@@ -15364,22 +15883,17 @@ Do you wish to proceed?</source>
 <context>
     <name>XboxAuthorizationStep</name>
     <message>
-        <location filename="../launcher/minecraft/auth/steps/XboxAuthorizationStep.cpp" line="+71"/>
+        <location filename="../launcher/minecraft/auth/steps/XboxAuthorizationStep.cpp" line="+68"/>
         <source>Unknown STS error for %1 services: %2</source>
         <translation>Ukjent STS problem for %1 tjenester: %2</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-48"/>
         <source>Getting authorization to access %1 services.</source>
         <translation>Henter autentisering for tilgang til %1 tjenester.</translation>
     </message>
     <message>
-        <location line="+48"/>
-        <source>Failed to get authorization for %1 services. Error %2.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
+        <location line="+52"/>
         <source>Failed to get authorization for %1 services: %2</source>
         <translation type="unfinished"></translation>
     </message>

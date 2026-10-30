@@ -142,7 +142,7 @@
 <context>
     <name>ATLauncher::PackInstallTask</name>
     <message>
-        <location filename="../launcher/modplatform/atlauncher/ATLPackInstallTask.cpp" line="+123"/>
+        <location filename="../launcher/modplatform/atlauncher/ATLPackInstallTask.cpp" line="+134"/>
         <source>Could not understand pack manifest:
 </source>
         <translation>Tidak dapat memahami manifest pack:
@@ -158,12 +158,12 @@
         <translation type="vanished">Gagal mendapatkan indeks metadata lokal untuk &apos;%1&apos; v%2</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+42"/>
         <source>Deleting existing files...</source>
         <translation>Menghapus file yang sudah ada...</translation>
     </message>
     <message>
-        <location line="+147"/>
+        <location line="+151"/>
         <source>Unknown mod type: %1</source>
         <translation>Jenis mod tidak dikenal: %1</translation>
     </message>
@@ -180,32 +180,32 @@
         <translation type="vanished">Tidak ada versi loader yang diatur untuk modpack!</translation>
     </message>
     <message>
-        <location line="-178"/>
+        <location line="-182"/>
         <source>Could not get local metadata index for &apos;%1&apos; v%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+194"/>
         <source>Could not get local metadata index for %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+34"/>
         <source>Could not find a version for the %1 loader</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>No loader version set for modpack.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+130"/>
+        <location line="+132"/>
         <source>Unknown or unsupported download type: %1</source>
         <translation>Jenis unduhan tidak dikenal atau tidak didukung: %1</translation>
     </message>
     <message>
-        <location line="+114"/>
+        <location line="+115"/>
         <source>Downloading configs...</source>
         <translation>Mengunduh konfigurasi...</translation>
     </message>
@@ -235,13 +235,13 @@
         <translation>Unduh mod</translation>
     </message>
     <message>
-        <location line="+25"/>
-        <location line="+130"/>
+        <location line="+27"/>
+        <location line="+133"/>
         <source>Unknown download type: %1</source>
         <translation>Jenis unduhan tidak dikenal: %1</translation>
     </message>
     <message>
-        <location line="-50"/>
+        <location line="-52"/>
         <source>Blocked mods found</source>
         <translation>Mod yang diblokir ditemukan</translation>
     </message>
@@ -251,7 +251,7 @@
         <translation>File berikut tidak tersedia untuk diunduh di peluncur pihak ketiga.&lt;br/&gt;Anda perlu mengunduhnya secara manual dan menambahkannya ke instance.</translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+58"/>
         <source>%1 out of %2 complete</source>
         <translation>%1 dari %2 selesai</translation>
     </message>
@@ -266,7 +266,7 @@
         <translation>Mengekstrak mod...</translation>
     </message>
     <message>
-        <location line="+72"/>
+        <location line="+81"/>
         <source>Installing modpack</source>
         <translation>Memasang modpack</translation>
     </message>
@@ -276,7 +276,7 @@
         <translation>Gagal membuat komponen library</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+30"/>
         <source>Unknown loader type: </source>
         <translation>Jenis loader tidak dikenal: </translation>
     </message>
@@ -728,7 +728,7 @@ Anda dapat menambahkan akun Microsoft, offline, atau Yggdrasil (authlib-injector
         <translation type="vanished">Pembaruan Berhasil</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1306"/>
+        <location filename="../launcher/Application.cpp" line="+1319"/>
         <source>Incompatible system configuration</source>
         <translation>Konfigurasi sistem tidak kompatibel</translation>
     </message>
@@ -768,12 +768,12 @@ Periksa log pembaru Prism Launcher di:
 untuk detail mengenai pembaruan terakhir.</translation>
     </message>
     <message>
-        <location line="-1700"/>
+        <location line="-1703"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Tidak bisa menampilkan log ini karena panjangnya melebihi %1 baris.</translation>
     </message>
     <message>
-        <location line="+1522"/>
+        <location line="+1525"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Sepertinya Anda sudah menggunakan %1 dengan %2 sebelumnya. Apakah anda ingin memigrasikan data ke lokasi baru %3?</translation>
     </message>
@@ -841,7 +841,7 @@ Periksa log pembaruan PollyMC-Continued di:
 untuk detail.</translation>
     </message>
     <message>
-        <location line="-1820"/>
+        <location line="-1823"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -877,12 +877,12 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+531"/>
+        <location line="+526"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+28"/>
         <source>Loading instances…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1029,7 +1029,7 @@ Salin ke folder portabel ini? Akun, pengaturan, dan daftar instansimu akan dipin
         <translation type="vanished">Pembaruan Sedang Berlangsung</translation>
     </message>
     <message>
-        <location line="-1419"/>
+        <location line="-1427"/>
         <source>Settings</source>
         <translation>Pengaturan</translation>
     </message>
@@ -1060,7 +1060,7 @@ Untuk detail mengenai pembaruan terakhir.
 Untuk menghapus lock ini dan melanjutkan pilih &quot;Abaikan&quot; di bawah.</translation>
     </message>
     <message>
-        <location line="+1263"/>
+        <location line="+1271"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>Data lama dari %1 telah ditemukan, tetapi Anda memiliki data yang sudah ada untuk %2. Sayangnya Anda harus memigrasikan secara manual. Apakah Anda ingin diingatkan tentang ini saat Anda membuka ulang %2?</translation>
     </message>
@@ -1700,8 +1700,8 @@ Untuk menghapus lock ini dan melanjutkan pilih &quot;Abaikan&quot; di bawah.</tr
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+154"/>
+        <location line="+411"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1710,12 +1710,27 @@ Untuk menghapus lock ini dan melanjutkan pilih &quot;Abaikan&quot; di bawah.</tr
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-477"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+14"/>
+        <source>My Reports (%1 new)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>See what the team answered to the reports you sent from this launcher.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1956,7 +1971,7 @@ Send it again anyway?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+17"/>
         <source>Thank you! Your report is on its way to the PollyMC team, and we read every one.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1975,6 +1990,14 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+5"/>
+        <source>
+
+Your report ID: %1
+This launcher will tell you when the team has an update. You can also check any time with &quot;My Reports&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+6"/>
         <source>Report sent</source>
         <translation type="unfinished"></translation>
@@ -1982,6 +2005,11 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
     <message>
         <location line="+2"/>
         <source>Join our Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>View My Reports</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2873,30 +2901,30 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
 <context>
     <name>DataPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/DataPackPage.cpp" line="+86"/>
-        <location line="+84"/>
-        <location line="+73"/>
+        <location filename="../launcher/ui/pages/instance/DataPackPage.cpp" line="+87"/>
+        <location line="+89"/>
+        <location line="+78"/>
         <source>Download stopped by user.</source>
         <translation>Pengunduhan dibatalkan oleh pengguna.</translation>
     </message>
     <message>
-        <location line="-137"/>
-        <location line="+80"/>
-        <location line="+73"/>
+        <location line="-146"/>
+        <location line="+84"/>
+        <location line="+79"/>
         <source>Abort</source>
         <translation>Batalkan</translation>
     </message>
     <message>
-        <location line="-177"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
-        <location line="+19"/>
+        <location line="-188"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
+        <location line="+21"/>
         <source>Error</source>
         <translation>Eror</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-219"/>
         <source>Download Packs</source>
         <translation>Unduh Pack</translation>
     </message>
@@ -2906,7 +2934,7 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
         <translation>Mengubah versi data pack.</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+79"/>
         <source>Updating data packs while the game is running may cause pack duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -2920,65 +2948,65 @@ Apakah kamu yakin kamu ingin melakukan ini?</translation>
         <translation>Konfirmasi Pembaruan</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+78"/>
         <source>You are about to remove the metadata for %1 data packs.
 Are you sure?</source>
         <translation>Kamu akan menghapus metadata untuk data pack %1.
 Apakah kamu yakin?</translation>
     </message>
     <message>
-        <location line="-50"/>
+        <location line="-51"/>
         <source>&apos;%1&apos; is up-to-date! :)</source>
         <translation>&apos;%1&apos; dalam versi terkini! :)</translation>
     </message>
     <message>
-        <location line="-119"/>
+        <location line="-125"/>
         <source>Download data packs from online mod platforms</source>
         <translation>Unduh data pack dari platform mod online</translation>
     </message>
     <message>
-        <location line="+122"/>
+        <location line="+128"/>
         <source>All data packs are up-to-date! :)</source>
         <translation>Semua data pack sudah terbaru! :)</translation>
     </message>
     <message>
-        <location line="-68"/>
-        <location line="+61"/>
+        <location line="-73"/>
+        <location line="+66"/>
         <location line="+23"/>
-        <location line="+73"/>
+        <location line="+78"/>
         <source>Aborted</source>
         <translation>Dibatalkan</translation>
     </message>
     <message>
-        <location line="-151"/>
-        <location line="+84"/>
-        <location line="+73"/>
+        <location line="-161"/>
+        <location line="+89"/>
+        <location line="+78"/>
         <source>Warnings</source>
         <translation>Peringatan</translation>
     </message>
     <message>
-        <location line="-128"/>
-        <location line="+99"/>
+        <location line="-135"/>
+        <location line="+104"/>
         <source>Data pack updates are unavailable when metadata is disabled!</source>
         <translation>Pembaruan data pack tidak tersedia ketika metadata dinonaktifkan!</translation>
     </message>
     <message>
-        <location line="-73"/>
+        <location line="-76"/>
         <source>The data pack updater was aborted!</source>
         <translation>Pembaruan data pack dibatalkan!</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+54"/>
         <source>Confirm Removal</source>
         <translation>Konfirmasi Hapus</translation>
     </message>
     <message>
-        <location line="-162"/>
+        <location line="-169"/>
         <source>Try to check or update all selected data packs (all data packs if none are selected)</source>
         <translation>Mencoba memeriksa atau memperbarui semua data pack yang dipilih (semua data pack jika tidak ada yang dipilih)</translation>
     </message>
     <message>
-        <location line="+118"/>
+        <location line="+124"/>
         <source>All selected data packs are up-to-date! :)</source>
         <translation>Semua data pack terpilih dalam versi terbaru :)</translation>
     </message>
@@ -2988,7 +3016,7 @@ Apakah kamu yakin?</translation>
         <translation>Pemeriksa pembaruan</translation>
     </message>
     <message>
-        <location line="-79"/>
+        <location line="-84"/>
         <source>Download Data Packs</source>
         <translation>Unduh Data Pack</translation>
     </message>
@@ -3019,6 +3047,16 @@ Apakah kamu yakin?</translation>
     <message>
         <location line="+1"/>
         <source>Display the reminder immediately, ignoring its normal schedule and dismissed state.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show bug report update notification now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Display a sample &quot;your report has news&quot; notification in the window you are in, to test notifications without waiting for the team.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3258,19 +3296,20 @@ Apakah kamu yakin?</translation>
         <translation type="vanished">Memori bebas rendah</translation>
     </message>
     <message>
+        <location filename="../launcher/minecraft/launch/EnsureAvailableMemory.cpp" line="+43"/>
         <source>Your system is under critical memory pressure.
 This may lead to severe slowdowns, crashes or system instability.
 It is recommended to close other applications or restart your system.
 
 Launch anyway?</source>
-        <translation type="vanished">Sistem Anda dalam tekanan memori kritis.
+        <translation>Sistem Anda dalam tekanan memori kritis.
 Ini dapat menyebabkan pelambatan parah, kegagalan atau ketidakstabilan sistem.
 Disarankan untuk menutup aplikasi lain atau memulai ulang sistem Anda.
 
 Jalankan saja?</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/launch/EnsureAvailableMemory.cpp" line="+46"/>
+        <location line="+48"/>
         <source>Not enough RAM</source>
         <translation>RAM tidak cukup</translation>
     </message>
@@ -3290,34 +3329,37 @@ Total RAM sistem: %2 MiB
 Lanjutkan saja? Ini dapat menyebabkan penurunan performa yang signifikan atau crash.</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="-4"/>
         <source>Not enough RAM available to launch this instance</source>
         <translation>RAM tidak cukup untuk meluncurkan instansi ini</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+29"/>
         <source>Note: only %1 MiB RAM is currently free, but this instance requests %2 MiB. Other running programs may cause slowdowns; consider closing some before playing.</source>
         <translation>Catatan: hanya %1 MiB RAM yang saat ini bebas, tetapi instance ini meminta %2 MiB. Program lain yang berjalan dapat menyebabkan penurunan performa; pertimbangkan untuk menutup beberapa sebelum bermain.</translation>
     </message>
     <message>
+        <location line="-64"/>
         <source>High memory pressure</source>
-        <translation type="vanished">Tekanan memori tinggi</translation>
+        <translation>Tekanan memori tinggi</translation>
     </message>
     <message>
+        <location line="-17"/>
         <source>The system is under increased memory pressure.
 This may lead to lag or slowdowns.
 If possible, close other applications before continuing.
 
 Launch anyway?</source>
-        <translation type="vanished">Sistem sedang dalam tekanan memori bertambah.
+        <translation>Sistem sedang dalam tekanan memori bertambah.
 Ini dapat menyebabkan lag atau pelambatan.
 Bila mungkin, tutup aplikasi lain sebelum melanjutkan.
 
 Jalankan saja?</translation>
     </message>
     <message>
+        <location line="+25"/>
         <source>The system is under high memory pressure</source>
-        <translation type="vanished">Sistem dalam tekanan memori tinggi</translation>
+        <translation>Sistem dalam tekanan memori tinggi</translation>
     </message>
     <message>
         <source>There might not be enough free RAM to launch this instance with the current memory settings.
@@ -3367,15 +3409,15 @@ Jalankan saja? Ini dapat menyebabkan pelambatan dalam permainan dan sistem Anda.
 <context>
     <name>EnsureOfflineLibraries</name>
     <message>
+        <location filename="../launcher/minecraft/launch/EnsureOfflineLibraries.cpp" line="+49"/>
         <source>
 This instance cannot be launched because some libraries are missing or have not been downloaded yet. Please try again in online mode with a working Internet connection</source>
-        <translation type="vanished">
+        <translation>
 Instansi ini tidak dapat diluncurkan karena beberapa librari tidak ditemukan atau belum diunduh. Coba lagi dalam mode daring dengan koneksi internet</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/launch/EnsureOfflineLibraries.cpp" line="+33"/>
         <source>This instance cannot be launched because some libraries are missing or have not been downloaded yet. Please try again in online mode with a working Internet connection</source>
-        <translation>Instansi ini tidak dapat diluncurkan karena beberapa pustaka hilang atau belum diunduh. Silakan coba lagi dalam mode online dengan koneksi Internet yang berfungsi</translation>
+        <translation type="vanished">Instansi ini tidak dapat diluncurkan karena beberapa pustaka hilang atau belum diunduh. Silakan coba lagi dalam mode online dengan koneksi Internet yang berfungsi</translation>
     </message>
 </context>
 <context>
@@ -4231,42 +4273,42 @@ Apakah Anda yakin?</translation>
 <context>
     <name>FlameCheckUpdate</name>
     <message>
-        <location filename="../launcher/modplatform/flame/FlameCheckUpdate.cpp" line="+177"/>
+        <location filename="../launcher/modplatform/flame/FlameCheckUpdate.cpp" line="+182"/>
         <source>Parsing API response from CurseForge for &apos;%1&apos;...</source>
         <translation>Menulis respons API dari CurseForge untuk &apos;%1&apos;...</translation>
     </message>
     <message>
-        <location line="-85"/>
+        <location line="-90"/>
         <source>Parsing the API response from CurseForge for &apos;%1&apos;...</source>
         <translation>Mengurai respons API dari CurseForge untuk &apos;%1&apos;...</translation>
     </message>
     <message>
-        <location line="-52"/>
+        <location line="-54"/>
         <source>Preparing resources for CurseForge...</source>
         <translation>Mempersiapkan sumber daya untuk CurseForge...</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+63"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version.</source>
         <translation>Tidak ada versi berlaku yang ditemukan untuk sumber daya. Mungkin tidak tersedia untuk versi permainan saat ini.</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+19"/>
         <source>Unknown</source>
         <translation>Tidak Diketahui</translation>
     </message>
     <message>
-        <location line="-21"/>
+        <location line="-22"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version / mod loader.</source>
         <translation>Tidak ada versi berlaku yang ditemukan untuk sumber daya. Mungkin tidak tersedia untuk versi permainan / pemuat mod saat ini.</translation>
     </message>
     <message>
-        <location line="+83"/>
+        <location line="+88"/>
         <source>Resource has a new update available, but is not downloadable using CurseForge.</source>
         <translation>Pembaruan tersedia untuk sumber daya, tetapi tidak dapat diunduh melalui CurseForge.</translation>
     </message>
     <message>
-        <location line="-64"/>
+        <location line="-68"/>
         <source>Not installed</source>
         <translation>Tidak terinstal</translation>
     </message>
@@ -4274,7 +4316,7 @@ Apakah Anda yakin?</translation>
 <context>
     <name>FlameCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+598"/>
+        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+636"/>
         <source>Downloading mods...</source>
         <translation>Mengunduh mod-mod...</translation>
     </message>
@@ -4284,17 +4326,22 @@ Apakah Anda yakin?</translation>
         <translation>Berkas-berkas berikut tidak tersedia untuk diunduh peluncur pihak ketiga.&lt;br/&gt;Anda harus mengunduh mereka secara manual dan menambahkan ke dalam instansi.</translation>
     </message>
     <message>
-        <location line="-197"/>
+        <location line="-218"/>
+        <source>The overrides has a path that leads to an arbitrary location (%1). This is a security risk and isn&apos;t allowed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
         <source>The specified overrides folder (%1) is missing. Maybe the modpack was already used before?</source>
         <translation>Folder override yang ditentukan (%1) tidak ada. Mungkin modpack sudah pernah digunakan sebelumnya?</translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+35"/>
         <source>Unknown mod loader in manifest: %1</source>
         <translation>Pemuat mod tidak diketahui dalam manifest: %1</translation>
     </message>
     <message>
-        <location line="-70"/>
+        <location line="-107"/>
         <source>No loader version set for modpack!</source>
         <translation>Versi pemuat tidak terpilih untuk modpack!</translation>
     </message>
@@ -4307,7 +4354,7 @@ Apakah Anda yakin?</translation>
         <translation type="vanished">Gagal menghapus file lama yang bertentangan.</translation>
     </message>
     <message>
-        <location line="+157"/>
+        <location line="+194"/>
         <source>Unable to resolve mod IDs:
 </source>
         <translation>Tidak dapat menemukan ID-ID mod:
@@ -4324,7 +4371,7 @@ Apakah Anda yakin?</translation>
         <translation>Unduhan Mod Flame</translation>
     </message>
     <message>
-        <location line="-298"/>
+        <location line="-335"/>
         <source>Failed to get local metadata index for %1</source>
         <translation>Gagal mendapatkan indeks metadata lokal untuk %1</translation>
     </message>
@@ -4339,14 +4386,14 @@ Apakah Anda yakin?</translation>
     </message>
     <message>
         <location line="-125"/>
-        <location line="+211"/>
+        <location line="+236"/>
         <source>Could not understand pack manifest:
 </source>
         <translation>Tidak dapat memahami manifest paket:
 </translation>
     </message>
     <message>
-        <location line="+280"/>
+        <location line="+292"/>
         <source>Copying Blocked Mods...</source>
         <translation>Menyalin Mod-mod Diblokir...</translation>
     </message>
@@ -4361,7 +4408,7 @@ Apakah Anda yakin?</translation>
         <translation>%1 dari %2 selesai</translation>
     </message>
     <message>
-        <location line="-354"/>
+        <location line="-391"/>
         <source>No index file.</source>
         <translation>Tidak ada berkas indeks.</translation>
     </message>
@@ -4375,7 +4422,7 @@ Apakah Anda yakin?</translation>
         <translation type="vanished">Kami tidak dapat mengambil file lama karena: %1. Hal ini dapat menyebabkan beberapa file duplikat. Apakah Anda ingin melanjutkan?</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="+72"/>
         <source>Could not rename the overrides folder:
 </source>
         <translation>Tidak dapat menamai ulang folder pengesampingan:
@@ -4386,12 +4433,12 @@ Apakah Anda yakin?</translation>
         <translation type="vanished">Kami tidak dapat mengambil file lama karena tugas dibatalkan. Hal ini dapat menyebabkan beberapa file duplikat. Apakah Anda ingin melanjutkan?</translation>
     </message>
     <message>
-        <location line="-218"/>
+        <location line="-249"/>
         <source> (version %1)</source>
         <translation> (versi %1)</translation>
     </message>
     <message>
-        <location line="+501"/>
+        <location line="+538"/>
         <source>Copying Blocked Mods (%1 out of %2 are done)</source>
         <translation>Menyalin Mod-mod diblokir (%1 dari %2 selesai)</translation>
     </message>
@@ -4404,7 +4451,7 @@ Apakah Anda yakin?</translation>
 <context>
     <name>FlameManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+491"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+506"/>
         <source>CurseForge pack</source>
         <translation>Paket CurseForge</translation>
     </message>
@@ -4414,12 +4461,12 @@ Apakah Anda yakin?</translation>
         <translation>Pilih berkas pembaruan</translation>
     </message>
     <message>
-        <location line="-57"/>
+        <location line="-62"/>
         <source>%1 (Current)</source>
         <translation>%1 (Saat ini)</translation>
     </message>
     <message>
-        <location line="-40"/>
+        <location line="-42"/>
         <source>&lt;h1&gt;Hey there!&lt;/h1&gt;&lt;h4&gt;It seems like your Pack ID is null. This is because of a bug in older versions of the launcher.&lt;br/&gt;Unfortunately, we can&apos;t do the proper API requests without this information.&lt;br/&gt;&lt;br/&gt;So, in order for this feature to work, you will need to re-download the modpack from the built-in downloader.&lt;br/&gt;&lt;br/&gt;Don&apos;t worry though, it will ask you to update this instance instead, so you&apos;ll not lose this instance!&lt;/h4&gt;</source>
         <translation>&lt;h1&gt;Halo!&lt;/h1&gt;&lt;h4&gt;Sepertinya ID Paket Anda null. Ini dikarenakan terdapat sebuah bug dalam versi-versi lebih lama peluncur.&lt;br/&gt;Sayang sekali, kami tidak dapat melakukan permintaan API yang seharusnya tanpa informasi ini.&lt;br/&gt;&lt;br/&gt;Jadi, agar fitur ini dapat bekerja, Anda harus mengunduh ulang modpack dari pengunduh terinstal. &lt;br/&gt;&lt;br/&gt;Jangan khawatir, Anda akan diminta untuk memperbarui instansi ini sebaliknya, agar Anda tidak akan kehilangan instansi ini!&lt;/h4&gt;</translation>
     </message>
@@ -4917,11 +4964,12 @@ Apakah Anda yakin?</translation>
 <context>
     <name>InstallLoaderDialog</name>
     <message>
+        <location filename="../launcher/ui/dialogs/InstallLoaderDialog.cpp" line="+109"/>
         <source>OK</source>
-        <translation type="vanished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/InstallLoaderDialog.cpp" line="+140"/>
+        <location line="+31"/>
         <source>Forge</source>
         <translation>Forge</translation>
     </message>
@@ -4941,12 +4989,11 @@ Apakah Anda yakin?</translation>
         <translation>Batalkan</translation>
     </message>
     <message>
-        <location line="-1"/>
         <source>Ok</source>
-        <translation>Oke</translation>
+        <translation type="vanished">Oke</translation>
     </message>
     <message>
-        <location line="+33"/>
+        <location line="+32"/>
         <source>Fabric</source>
         <translation>Fabric</translation>
     </message>
@@ -4993,12 +5040,12 @@ Apakah Anda yakin?</translation>
         <translation>Menyalin Instansi %1</translation>
     </message>
     <message>
-        <location line="+146"/>
+        <location line="+147"/>
         <source>Instance folder copy has been aborted.</source>
         <translation>Penyalinan folder instansi telah dibatalkan.</translation>
     </message>
     <message>
-        <location line="-42"/>
+        <location line="-43"/>
         <source>Instance folder copy failed.</source>
         <translation>Folder Instansi gagal di salin.</translation>
     </message>
@@ -5059,7 +5106,7 @@ Apakah Anda yakin?</translation>
 <context>
     <name>InstanceHealthCheckDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+61"/>
+        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+90"/>
         <source>No Java selected</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5093,7 +5140,12 @@ Switch Java in the instance&apos;s Java settings, or turn off the compatibility 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+175"/>
+        <source>Checking &lt;b&gt;%1&lt;/b&gt;…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+38"/>
         <source>Broken mod files (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5106,42 +5158,155 @@ Delete or re-download them (a fresh download of the same version is usually enou
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="-201"/>
         <source>Version information not loaded yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-67"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Warning</source>
+        <translation type="unfinished">Peringatan</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Info</source>
+        <translation type="unfinished">Informasi</translation>
+    </message>
+    <message numerus="yes">
+        <location line="+9"/>
+        <source>
+… and %n more</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+55"/>
         <source>The launcher could not read this instance&apos;s version list, so the loader check was skipped.
 Open the instance, go to the Version page and let it load once (or press Reload) before launching.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>%1 (loader component)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+17"/>
+        <source>Only %1 MiB are free on the drive this instance is stored on.
+Free up some space, or the game can fail while saving worlds or downloading files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Low disk space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Too much memory allocated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance is set to use up to %1 MiB, but the computer only has %2 MiB.
+Lower the maximum memory in the instance&apos;s settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>A lot of memory allocated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This instance may use up to %1 MiB of the computer&apos;s %2 MiB.
+That leaves little for the system and can make the game stutter; around half of the total is usually plenty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+39"/>
         <source>Check instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+21"/>
+        <source>Check Again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Open Mods Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Close</source>
         <translation type="unfinished">Tutup</translation>
     </message>
     <message>
-        <location line="+23"/>
-        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, no broken mod files, and the loader version checks out. Nothing stood in the way of launching.</source>
+        <location line="+128"/>
+        <source>Mods that may not fit this game version (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These mods are not marked as compatible with this instance&apos;s Minecraft version:
+%1
+
+They may still work, but if the game crashes, update or remove them first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, the mods have no broken files or conflicts, and the loader version checks out. Nothing stood in the way of launching.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location line="+5"/>
-        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting. The details are below each entry.</source>
+        <location line="+8"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message numerus="yes">
+        <location line="+1"/>
+        <source>, and %n warning(s) worth a look</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>. The details are below each entry.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+2"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; should start, but has %n warning(s) worth a look. The details are below each entry.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Instance check for &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>No problems found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5225,12 +5390,12 @@ Open the instance, go to the Version page and let it load once (or press Reload)
 <context>
     <name>InstanceStaging</name>
     <message>
-        <location filename="../launcher/InstanceList.cpp" line="+784"/>
+        <location filename="../launcher/InstanceList.cpp" line="+782"/>
         <source>Failed to commit instance, even after multiple retries. It is being blocked by something.</source>
         <translation>Gagal melakukan instansi, bahkan setelah percobaan berulang kali. instansi sedang diblokir oleh sesuatu.</translation>
     </message>
     <message>
-        <location line="-22"/>
+        <location line="-20"/>
         <source>Could not create staging folder</source>
         <translation>Gagal membuat berkas staging</translation>
     </message>
@@ -5466,7 +5631,7 @@ Open the instance, go to the Version page and let it load once (or press Reload)
 <context>
     <name>JavaListLoadTask</name>
     <message>
-        <location filename="../launcher/java/JavaInstallList.cpp" line="+158"/>
+        <location filename="../launcher/java/JavaInstallList.cpp" line="+159"/>
         <source>Detecting Java installations...</source>
         <translation>Mendeteksi Instalasi Java...</translation>
     </message>
@@ -5534,42 +5699,42 @@ Apakah Anda yakin?</translation>
         <translation>Uji P&amp;engaturan</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="+278"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="+279"/>
         <source>Confirm Selection</source>
         <translation>Konfirmasi Pilihan</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+230"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+164"/>
         <source>(-Xms)</source>
         <translation>(-Xms)</translation>
     </message>
     <message>
-        <location line="-45"/>
+        <location line="+49"/>
         <source>(-Xmx)</source>
         <translation>(-Xmx)</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-71"/>
         <source>The amount of memory Minecraft is started with.</source>
         <translation>Jumlah memori yang digunakan untuk memulai Minecraft.</translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="-18"/>
         <source>M&amp;inimum Memory Usage:</source>
         <translation>Penggunaan memori M&amp;inimum:</translation>
     </message>
     <message>
-        <location line="-137"/>
+        <location line="-14"/>
         <source>Memor&amp;y</source>
         <translation>&amp;Memori</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+81"/>
         <source>The maximum amount of memory Minecraft is allowed to use.</source>
         <translation>Jumlah maksimum memori yang dapat digunakan oleh Minecraft.</translation>
     </message>
     <message>
-        <location line="-115"/>
+        <location line="-143"/>
         <source>Auto-download &amp;Mojang Java</source>
         <translation>Otomatis-unduh Java dari &amp;Mojang</translation>
     </message>
@@ -5579,9 +5744,14 @@ Apakah Anda yakin?</translation>
         <translation>Jika diaktifkan, peluncur tidak akan mengalihkanmu untuk memilih versi Java jika salah satunya tidak ditemukan saat memulai.</translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+144"/>
         <source>&amp;PermGen Size:</source>
         <translation>Ukuran &amp;PermGen:</translation>
+    </message>
+    <message>
+        <location line="+51"/>
+        <source>Warn when there is not enough free memory</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="-49"/>
@@ -5589,12 +5759,12 @@ Apakah Anda yakin?</translation>
         <translation>Cari berkas Java</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+63"/>
+        <location filename="../launcher/ui/widgets/JavaSettingsWidget.ui" line="+20"/>
         <source>Java Argumen&amp;ts</source>
         <translation>&amp;Argumen Java</translation>
     </message>
     <message>
-        <location line="-148"/>
+        <location line="-53"/>
         <source>The amount of memory available to store loaded Java classes.</source>
         <translation>Jumlah memori yang tersedia untuk menyimpan kelas-kelas Java yang dimuat.</translation>
     </message>
@@ -5603,17 +5773,17 @@ Apakah Anda yakin?</translation>
         <translation type="vanished">Peringatkan saat memori tidak cukup</translation>
     </message>
     <message>
-        <location line="+135"/>
+        <location line="+40"/>
         <source>Memory Notice</source>
         <translation>Peringatan Memori</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-107"/>
         <source>Ma&amp;ximum Memory Usage:</source>
         <translation>Penggunaan memori Ma&amp;ximum:</translation>
     </message>
     <message>
-        <location line="-192"/>
+        <location line="-128"/>
         <source>Automatically downloads and selects the Java build recommended by Mojang.</source>
         <translation>Otomatis mengunduh dan memilih built Java yang direkomendasikan oleh Mojang.</translation>
     </message>
@@ -5653,12 +5823,12 @@ Apakah Anda yakin?</translation>
         <translation>&amp;Deteksi-Otomatis versi Java</translation>
     </message>
     <message>
-        <location line="+162"/>
+        <location line="+302"/>
         <source>(-XX:PermSize)</source>
         <translation>(-XX:PermSize)</translation>
     </message>
     <message>
-        <location line="-115"/>
+        <location line="-255"/>
         <source>Open Java &amp;Downloader</source>
         <translation>&amp;Pengunduh Java Terbuka</translation>
     </message>
@@ -5853,12 +6023,11 @@ Anda nanti dapat mengubah versi Java di pengaturan.
         <translation>Bahasa Anda tidak ada atau kualitas terjemahannya buruk?&lt;br/&gt;&lt;a href=&quot;%1&quot;&gt;Bantu kami dengan menerjemahkannya!&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+3"/>
         <source>Use system locales</source>
-        <translation>Gunakan lokal sistem</translation>
+        <translation type="vanished">Gunakan lokal sistem</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+16"/>
         <source>Language picked automatically from your region (%1). Not right? Choose another one above.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5868,8 +6037,9 @@ Anda nanti dapat mengubah versi Java di pengaturan.
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="-22"/>
         <source>Use system regional standards</source>
-        <translation type="vanished">Gunakan standar regional sistem</translation>
+        <translation>Gunakan standar regional sistem</translation>
     </message>
 </context>
 <context>
@@ -6604,19 +6774,20 @@ Memberikan %1 akses kepadanya melalui Flatseal direkomendasikan.</translation>
         <translation>Perintah pembungkus &quot;%1&quot; tidak dapat ditemukan.</translation>
     </message>
     <message>
-        <location line="+27"/>
         <source>Could not launch Minecraft!</source>
         <extracomment>Error message displayed if instace can&apos;t start</extracomment>
-        <translation>Tidak dapat meluncurkan Minecraft!</translation>
+        <translation type="vanished">Tidak dapat meluncurkan Minecraft!</translation>
     </message>
     <message>
-        <location line="-130"/>
+        <location line="-103"/>
         <source>Legacy launcher library could not be found. Please check your installation.</source>
         <translation>Library peluncur versi lama tidak dapat ditemukan. Mohon memeriksa instalasi Anda.</translation>
     </message>
     <message>
+        <location line="+130"/>
         <source>Could not launch Minecraft: %1</source>
-        <translation type="vanished">Tidak dapat meluncurkan Minecraft: %1</translation>
+        <extracomment>Error message displayed if instace can&apos;t start</extracomment>
+        <translation>Tidak dapat meluncurkan Minecraft: %1</translation>
     </message>
 </context>
 <context>
@@ -6977,13 +7148,13 @@ Anda harus memperbaiki masalah ini secara manual.</translation>
         <translation>Proses gagal dengan kode keluar %1.</translation>
     </message>
     <message>
-        <location line="+14"/>
         <source>The process failed to start.</source>
-        <translation>Proses gagal dimulai.</translation>
+        <translation type="vanished">Proses gagal dimulai.</translation>
     </message>
     <message>
+        <location line="+14"/>
         <source>The process failed to start: %1</source>
-        <translation type="vanished">Proses gagal dimulai: %1</translation>
+        <translation>Proses gagal dimulai: %1</translation>
     </message>
 </context>
 <context>
@@ -7086,7 +7257,7 @@ Anda harus memperbaiki masalah ini secara manual.</translation>
 <context>
     <name>MSADeviceCodeStep</name>
     <message>
-        <location filename="../launcher/minecraft/auth/steps/MSADeviceCodeStep.cpp" line="+133"/>
+        <location filename="../launcher/minecraft/auth/steps/MSADeviceCodeStep.cpp" line="+131"/>
         <source>Device authorization failed: required fields missing</source>
         <translation>Otorisasi perangkat gagal: bagan yang dibutuhkan kosong</translation>
     </message>
@@ -7097,21 +7268,21 @@ Anda harus memperbaiki masalah ini secara manual.</translation>
     </message>
     <message>
         <location line="-38"/>
+        <location line="+8"/>
         <source>Device authorization failed: %1</source>
         <translation>Otorisasi perangkat gagal: %1</translation>
     </message>
     <message>
-        <location line="-65"/>
+        <location line="-71"/>
         <source>Logging in with Microsoft account(device code).</source>
         <translation>Sedang masuk dengan akun Microsoft(kode perangkat).</translation>
     </message>
     <message>
-        <location line="+72"/>
         <source>Failed to retrieve device authorization</source>
-        <translation>Gagal mengambil otorisasi perangkat</translation>
+        <translation type="vanished">Gagal mengambil otorisasi perangkat</translation>
     </message>
     <message>
-        <location line="+137"/>
+        <location line="+207"/>
         <source>Device Access failed: %1</source>
         <translation>Akses perangkat gagal: %1</translation>
     </message>
@@ -7212,7 +7383,7 @@ Anda harus memperbaiki masalah ini secara manual.</translation>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+298"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+300"/>
         <source>Check for new updates for %1.</source>
         <translation>Periksa pembaruan untuk %1.</translation>
     </message>
@@ -7221,22 +7392,22 @@ Anda harus memperbaiki masalah ini secara manual.</translation>
         <translation type="vanished">Bantuan</translation>
     </message>
     <message>
-        <location line="+542"/>
+        <location line="+567"/>
         <source>Java</source>
         <translation>Java</translation>
     </message>
     <message>
-        <location line="-188"/>
+        <location line="-213"/>
         <source>Logs</source>
         <translation>Log-log</translation>
     </message>
     <message>
-        <location line="+177"/>
+        <location line="+202"/>
         <source>I&amp;con Theme</source>
         <translation>Tema Ikon (&amp;C)</translation>
     </message>
     <message>
-        <location line="-662"/>
+        <location line="-687"/>
         <source>&amp;Edit</source>
         <translation>Sunting (&amp;E)</translation>
     </message>
@@ -7245,12 +7416,12 @@ Anda harus memperbaiki masalah ini secara manual.</translation>
         <translation type="vanished">Toolbar Berita</translation>
     </message>
     <message>
-        <location line="-25"/>
+        <location line="-26"/>
         <source>&amp;File</source>
         <translation>&amp;Folder</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+76"/>
         <source>&amp;Help</source>
         <translation>Bantuan (&amp;H)</translation>
     </message>
@@ -7345,17 +7516,22 @@ Anda harus memperbaiki masalah ini secara manual.</translation>
         <translation>Ganti tampilan peluncur antara tema terang, gelap, dan lainnya.</translation>
     </message>
     <message>
+        <location line="+11"/>
+        <source>&amp;Pin Instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Keep the selected instance at the top of its group.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+8"/>
         <source>Chec&amp;k Instance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Look for missing Java, broken mod files or a wrong loader version before launching.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
+        <location line="+11"/>
         <source>Copy &amp;Diagnostics</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7365,7 +7541,7 @@ Anda harus memperbaiki masalah ini secara manual.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+111"/>
+        <location line="+122"/>
         <source>More</source>
         <translation>Lainnya</translation>
     </message>
@@ -7389,12 +7565,12 @@ Anda harus memperbaiki masalah ini secara manual.</translation>
         <translation type="vanished">&amp;Meong</translation>
     </message>
     <message>
-        <location line="-678"/>
+        <location line="-703"/>
         <source>&amp;View</source>
         <translation>Lihat (&amp;V)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1783"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1842"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -7405,40 +7581,40 @@ Ini mungkin permanen dan akan sepenuhnya menghapus instansi ini.
 Apakah Anda yakin?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+656"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+681"/>
         <source>Open the icon theme folder in a file browser.</source>
         <translation>Buka folder tema ikon dalam file browser.</translation>
     </message>
     <message>
-        <location line="-343"/>
+        <location line="-368"/>
         <source>Copy the selected instance.</source>
         <translation>Salin instansi yang terpilih.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-727"/>
-        <location line="+140"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-751"/>
+        <location line="+143"/>
         <location line="+106"/>
         <source>Abort</source>
         <translation>Batalkan</translation>
     </message>
     <message>
-        <location line="-258"/>
-        <location line="+126"/>
+        <location line="-261"/>
+        <location line="+129"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
         <location line="+37"/>
-        <location line="+403"/>
+        <location line="+424"/>
         <source>Error</source>
         <translation>Kesalahan</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-454"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-456"/>
         <source>Main Toolbar</source>
         <translation>Bilah Alat Utama</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-439"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-460"/>
         <source>Invalid import link: URL must be http(s).</source>
         <translation>Tautan impor tidak valid: URL harus http(s).</translation>
     </message>
@@ -7448,7 +7624,7 @@ Apakah Anda yakin?</translation>
         <translation>Unduhan modpack</translation>
     </message>
     <message>
-        <location line="+318"/>
+        <location line="+339"/>
         <source>Check instance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7540,12 +7716,12 @@ Apakah Anda yakin?</translation>
         <translation>Instans sudah berjalan.</translation>
     </message>
     <message>
-        <location line="+119"/>
+        <location line="+120"/>
         <source>Your instance folder contains &apos;!&apos; and this is known to cause Java problems!</source>
         <translation>Folder instansi Anda memiliki &apos;!&apos; dan ini diketahui menyebabkan masalah Java!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+390"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+392"/>
         <source>&amp;Change Group...</source>
         <translation>Ganti Grup... (&amp;C).</translation>
     </message>
@@ -7570,7 +7746,7 @@ Apakah Anda yakin?</translation>
         <translation>Tambahkan Instansi... (&amp;E).</translation>
     </message>
     <message>
-        <location line="+431"/>
+        <location line="+456"/>
         <source>&amp;Matrix Space</source>
         <translation>Space &amp;Matrix</translation>
     </message>
@@ -7579,44 +7755,44 @@ Apakah Anda yakin?</translation>
         <translation type="vanished">Berita Lainnya...</translation>
     </message>
     <message>
-        <location line="-71"/>
+        <location line="-96"/>
         <source>Open the instance icons folder in a file browser.</source>
         <translation>Buka folder ikon-ikon instansi di file browser.</translation>
     </message>
     <message>
-        <location line="+133"/>
+        <location line="+158"/>
         <source>Install a %1 symlink to /usr/local/bin</source>
         <translation>Instal tautan simbolis %1 ke /usr/local/bin</translation>
     </message>
     <message>
-        <location line="-687"/>
+        <location line="-714"/>
         <source>Instance Toolbar</source>
         <translation>Toolbar Instansi</translation>
     </message>
     <message>
-        <location line="+493"/>
+        <location line="+495"/>
         <source>Close &amp;Window</source>
         <translation>Tutup &amp;Window</translation>
     </message>
     <message numerus="yes">
-        <location filename="../launcher/ui/MainWindow.cpp" line="-259"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-260"/>
         <source> and its %n registered shortcut(s)</source>
         <translation>
             <numerusform> dan pintasan terdaftar %n mereka</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+113"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+127"/>
         <source>Open the bug tracker to report a bug with %1.</source>
         <translation>Buka pelacak bug untuk melaporkan bug dengan %1.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-729"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-753"/>
         <source>Task aborted</source>
         <translation>Tugas dibatalkan</translation>
     </message>
     <message>
-        <location line="+218"/>
+        <location line="+221"/>
         <source>Do you want to download and import a modpack from:
 %1
 
@@ -7629,17 +7805,17 @@ URL:
 %2</translation>
     </message>
     <message>
-        <location line="+325"/>
+        <location line="+330"/>
         <source>This instance is not editable. It may be broken, invalid, or too old. Check logs for details.</source>
         <translation>Instansi ini tidak dapat disunting. Kemungkinan karena rusak, tidak valid, atau terlalu tua. Periksa log untuk keterangan.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+70"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+81"/>
         <source>View current and previous launcher logs</source>
         <translation>Lihat catatan terbaru dan sebelumnya dari peluncur</translation>
     </message>
     <message>
-        <location line="-136"/>
+        <location line="-161"/>
         <source>&amp;Skins</source>
         <translation>&amp;Skin</translation>
     </message>
@@ -7687,7 +7863,7 @@ URL:
         <translation>Hapus grup</translation>
     </message>
     <message>
-        <location line="+262"/>
+        <location line="+278"/>
         <source>Failed to add %1 to PATH</source>
         <translation>Gagal menambahkan %1 ke PATH</translation>
     </message>
@@ -7732,7 +7908,7 @@ URL:
         <translation>Instansi yang dipilih sedang berjalan dan tidak bisa dihapus. Tolong hentikan instansi sebelum mencoba menghapusnya.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+459"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+484"/>
         <source>Open the Java folder in a file browser. Only available if the built-in Java downloader is used.</source>
         <translation>Membuka folder java dalam peramban berkas. Hanya tersedia jika pengunduh Java bawaan digunakan.</translation>
     </message>
@@ -7741,7 +7917,7 @@ URL:
         <translation type="vanished">Tidak ada berita tersedia.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-718"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-742"/>
         <source>The task has been aborted by the user.</source>
         <translation>Tugas telah dibatalkan oleh pengguna.</translation>
     </message>
@@ -7751,7 +7927,7 @@ URL:
         <translation>Buka salah satu folder yang dibagi antara instansi-instansi.</translation>
     </message>
     <message>
-        <location line="-396"/>
+        <location line="-421"/>
         <source>Rename</source>
         <translation>Namai Ulang</translation>
     </message>
@@ -7765,17 +7941,17 @@ URL:
         <translation type="vanished">Prism Launcher (zip)</translation>
     </message>
     <message>
-        <location line="+69"/>
+        <location line="+94"/>
         <source>Open %1 subreddit.</source>
         <translation>Buka subreddit %1.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+133"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+136"/>
         <source>The modpack, mod, or resource %1 is blocked for third-parties! Please download it manually.</source>
         <translation>Modpack, mod, atau sumber daya %1 diblokir dari pihak-pihak ketiga. Mohon unduh secara manual.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-243"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-268"/>
         <source>Cop&amp;y...</source>
         <translation>Salin... (&amp;Y).</translation>
     </message>
@@ -7789,7 +7965,7 @@ URL:
         <translation type="vanished">Atur Koleksi &amp;Skin...</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+142"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+147"/>
         <source>No instance available to add the resource to.
 Please create a new instance before attempting to install this resource again.</source>
         <translation>Tidak ada instansi yang tersedia untuk menambahkan sumber daya.
@@ -7801,7 +7977,7 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation>Ubah pengaturan instansi, mod, dan versi.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+734"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+751"/>
         <source>This is a problem: &lt;br/&gt; - The launcher will likely be deleted without warning by the operating system &lt;br/&gt; - close the launcher now and extract it to a real location, not a temporary folder</source>
         <translation>Ini adalah masalah: &lt;br/&gt; - Peluncur akan mungkin terhapus tanpa peringatan oleh sistem operasi &lt;br/&gt; - tutup peluncur sekarang dan ekstraksikan ke dalam lokasi yang sebenarnya, bukan folder sementara</translation>
     </message>
@@ -7810,12 +7986,12 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation type="vanished">Paket-paket Kucing</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+257"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+282"/>
         <source>Open %1 Discord guild.</source>
         <translation>Buka %1 guild Discord.</translation>
     </message>
     <message>
-        <location line="-243"/>
+        <location line="-268"/>
         <source>Open the selected instance&apos;s root folder in a file browser.</source>
         <translation>Buka folder root instansi terpilih di file browser.</translation>
     </message>
@@ -7830,7 +8006,7 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation>Kunci Toolbar</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-279"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-280"/>
         <source>Confirm Deletion</source>
         <translation>Konfirmasi Penghapusan</translation>
     </message>
@@ -7840,27 +8016,27 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation>E&amp;kspor...</translation>
     </message>
     <message>
-        <location line="+299"/>
+        <location line="+324"/>
         <source>Get help with %1 or Minecraft.</source>
         <translation>Dapatkan bantuan dengan %1 atau Minecraft.</translation>
     </message>
     <message>
-        <location line="-188"/>
+        <location line="-213"/>
         <source>Open the launcher&apos;s root folder in a file browser.</source>
         <translation>Buka folder root peluncur di dalam file browser.</translation>
     </message>
     <message>
-        <location line="+82"/>
+        <location line="+96"/>
         <source>Report a Bug or Suggest a Feature</source>
         <translation>Laporkan Bug atau Sarankan Fitur</translation>
     </message>
     <message>
-        <location line="-348"/>
+        <location line="-362"/>
         <source>&amp;Manage Accounts...</source>
         <translation>Kelola Akun... (&amp;M).</translation>
     </message>
     <message>
-        <location line="+373"/>
+        <location line="+398"/>
         <source>Open %1 Matrix space.</source>
         <translation>Buka space Matrix %1.</translation>
     </message>
@@ -7869,27 +8045,27 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation type="vanished">Buka wiki %1</translation>
     </message>
     <message>
-        <location line="-132"/>
+        <location line="-157"/>
         <source>Close the current window</source>
         <translation>Tutup window saat ini</translation>
     </message>
     <message>
-        <location line="+232"/>
+        <location line="+257"/>
         <source>&amp;Widget Themes</source>
         <translation>Tema-tema &amp;Widget</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-298"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-314"/>
         <source>Cannot set empty name.</source>
         <translation>Tidak dapat menyetel nama kosong.</translation>
     </message>
     <message>
-        <location line="-436"/>
+        <location line="-444"/>
         <source>Warnings</source>
         <translation>Peringatan-peringatan</translation>
     </message>
     <message>
-        <location line="-872"/>
+        <location line="-905"/>
         <source>Show PollyMC</source>
         <translation>Tampilkan PollyMC</translation>
     </message>
@@ -7899,17 +8075,7 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation>Keluar</translation>
     </message>
     <message>
-        <location line="+413"/>
-        <source>The star reminder will appear after the Settings dialog closes.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+17"/>
-        <source>The main window must be visible to show the star reminder.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+104"/>
+        <location line="+563"/>
         <source>Enjoying PollyMC-Continued?</source>
         <translation>Suka PollyMC-Continued?</translation>
     </message>
@@ -7919,12 +8085,12 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation>Beri bintang pada proyek di GitHub!</translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="+1"/>
         <source>Star on GitHub</source>
         <translation>Bintang di GitHub</translation>
     </message>
     <message>
-        <location line="+881"/>
+        <location line="+892"/>
         <source>Instance not editable</source>
         <translation>Instansi tidak dapat disunting</translation>
     </message>
@@ -7934,7 +8100,33 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation>Gagal mengembalikan penghapusan instansi</translation>
     </message>
     <message>
-        <location line="-11"/>
+        <location line="-1067"/>
+        <location line="+150"/>
+        <source>Update on your bug report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-149"/>
+        <source>&quot;%1&quot;: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Updates on your bug reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 of your reports have news.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+147"/>
+        <source>&quot;Sample report&quot;: Seen - the team is looking into it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+905"/>
         <source>Cannot rename group</source>
         <translation>Tidak dapat memberi nama ulang kelompok</translation>
     </message>
@@ -7944,33 +8136,33 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation>Tent&amp;ang %1</translation>
     </message>
     <message>
-        <location line="-528"/>
+        <location line="-553"/>
         <source>&amp;Accounts</source>
         <translation>&amp;Akun-akun</translation>
     </message>
     <message>
-        <location line="+598"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-494"/>
+        <location line="+623"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
         <source>Accounts</source>
         <translation>Akun</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+734"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 sukses ditambahkan ke PATH Anda. Anda sekarang dapat memulainya dengan menjalankan `%2`.</translation>
     </message>
     <message>
-        <location line="+329"/>
+        <location line="+330"/>
         <source>You have now two options: &lt;br/&gt; - change the instance folder in the settings &lt;br/&gt; - move this installation of %1 to a different folder</source>
         <translation>Anda sekarang memiliki dua opsi: &lt;br/&gt; - ganti folder instansi dalam setelan &lt;br/&gt; - pindahkan instalasi %1 ke folder yang berbeda</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-520"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-545"/>
         <source>Add a new instance.</source>
         <translation>Tambahkan instansi baru.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-284"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-285"/>
         <source>Cannot Delete Running Instance</source>
         <translation>Tidak bisa menghapus Instansi yang sedang berjalan</translation>
     </message>
@@ -7979,7 +8171,7 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation type="vanished">Buka blog pengembangan untuk membaca lebih banyak mengenai %1.</translation>
     </message>
     <message>
-        <location line="-1471"/>
+        <location line="-1527"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
@@ -7993,7 +8185,7 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation>&amp;Instansi-instansi</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+617"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+649"/>
         <source>Ctrl+%1</source>
         <translation>Ctrl+%1</translation>
     </message>
@@ -8013,7 +8205,7 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation>&amp;Folder</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+354"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+357"/>
         <source>Install modpack</source>
         <translation>Instal paket mod</translation>
     </message>
@@ -8033,22 +8225,22 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation>Tidak ada akun yang ditambahkan!</translation>
     </message>
     <message>
-        <location line="+219"/>
+        <location line="+244"/>
         <source>Install to &amp;PATH</source>
         <translation>Instal ke &amp;PATH</translation>
     </message>
     <message>
-        <location line="-327"/>
+        <location line="-352"/>
         <source>&amp;Edit...</source>
         <translation>Sunting... (&amp;E).</translation>
     </message>
     <message>
-        <location line="-384"/>
+        <location line="-386"/>
         <source>What&apos;s New Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+188"/>
+        <location line="+190"/>
         <source>Status Bar</source>
         <translation>Bar Status</translation>
     </message>
@@ -8078,7 +8270,24 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation>PollyMC-Continued (zip)</translation>
     </message>
     <message>
-        <location line="+229"/>
+        <location line="+177"/>
+        <source>Look for missing Java, broken or conflicting mods, a wrong loader version or too little memory/disk space before launching.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+30"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-820"/>
+        <location line="+136"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>See what the team answered to the bug reports you sent from this launcher.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+44"/>
         <source>View information about %1.</source>
         <translation>Lihat informasi tentang %1.</translation>
     </message>
@@ -8088,12 +8297,12 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation>Buka folder tema-tema widget dalam file browser.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+184"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
         <source>Group name</source>
         <translation>Nama grup</translation>
     </message>
     <message>
-        <location line="+340"/>
+        <location line="+356"/>
         <source>Deleting</source>
         <translation>Menghapus</translation>
     </message>
@@ -8103,24 +8312,24 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation>Lihat riwayat sebelumnya</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-547"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-568"/>
         <source>Invalid import link: missing &apos;url&apos; parameter.</source>
         <translation>Tautan impor tidak valid: parameter &apos;url&apos; kosong.</translation>
     </message>
     <message>
-        <location line="-449"/>
+        <location line="-452"/>
         <source>&amp;Rename group</source>
         <translation>Namakan ulang kelompok (&amp;R)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-155"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-180"/>
         <source>Launcher &amp;Root</source>
         <translation>&amp;Root Launcher</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-403"/>
-        <location line="+88"/>
-        <location line="+1552"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
+        <location line="+125"/>
+        <location line="+1572"/>
         <source>No instance selected</source>
         <translation>Tidak instansi yang dipilih</translation>
     </message>
@@ -8130,12 +8339,12 @@ Silahkan buat instansi baru sebelum mencoba menginstal sumber daya ini lagi.</tr
         <translation>Ubah Ikon</translation>
     </message>
     <message>
-        <location line="+268"/>
+        <location line="+293"/>
         <source>&amp;Discord Guild</source>
         <translation>Guild &amp;Discord</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-333"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-334"/>
         <source>Metadata cache clear Failed!
 To clear the metadata cache manually, press Folders -&gt; View Launcher Root Folder, and after closing the launcher delete the folder named &quot;meta&quot;
 </source>
@@ -8149,42 +8358,42 @@ Untuk menghapus cache metadata secara manual, tekan Folder -&gt; Lihat Folder ro
         <translation>Hapus &amp;Cache Metadata</translation>
     </message>
     <message>
-        <location line="-562"/>
+        <location line="-587"/>
         <source>F&amp;olders</source>
         <translation>F&amp;older-folder</translation>
     </message>
     <message>
-        <location line="+596"/>
+        <location line="+621"/>
         <source>Folders</source>
         <translation>Folder-folder</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+366"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+367"/>
         <source>Your instance folder contains &apos;Rar$&apos; - that means you haven&apos;t extracted the launcher archive!</source>
         <translation>Terdapat &apos;Rar$&apos; di folder Instansi Anda - yang berarti Anda belum mengekstraksi arsip peluncur!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-166"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-191"/>
         <source>&amp;Central Mods</source>
         <translation>Mod-mod Utama (&amp;C)</translation>
     </message>
     <message>
-        <location line="+107"/>
+        <location line="+132"/>
         <source>Sub&amp;reddit</source>
         <translation>Sub&amp;reddit</translation>
     </message>
     <message>
-        <location line="-251"/>
+        <location line="-276"/>
         <source>Delete the selected instance.</source>
         <translation>Hapus instansi terpilih.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1274"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
         <source>&amp;Delete group</source>
         <translation>Hapus grup (&amp;D)</translation>
     </message>
     <message>
-        <location line="+703"/>
+        <location line="+711"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>Beberapa instansi dan pintasan tidak bisa dipulihkan.
@@ -8200,7 +8409,7 @@ Silakan periksa trashbin kamu untuk mengembalikannya secara manual.</translation
         <translation type="vanished">Ihhh kucingg gemeshh cubit ah unyuu imut waaaaa, tembem banget ya ampunnn lucuuukk sumpahh :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-717"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-725"/>
         <source>&amp;Create instance</source>
         <translation>Buat instansi (&amp;C)</translation>
     </message>
@@ -8225,43 +8434,43 @@ Silakan periksa trashbin kamu untuk mengembalikannya secara manual.</translation
         <translation>CurseForge (zip)</translation>
     </message>
     <message>
-        <location line="+221"/>
+        <location line="+246"/>
         <source>Clear cached metadata</source>
         <translation>Hapus metadata dalam cache</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-384"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-416"/>
         <source>Total playtime: 0s</source>
         <translation>Total waktu bermain: 0d</translation>
     </message>
     <message>
-        <location line="+1704"/>
+        <location line="+1761"/>
         <source>Total playtime: %1</source>
         <translation>Waktu main total: %1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-315"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-340"/>
         <source>Change the selected instance&apos;s icon.</source>
         <translation>Ubah ikon pada instansi yang dipilih.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-376"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-377"/>
         <source>Successfully added %1 to PATH</source>
         <translation>Sukses menambahkan %1 ke PATH</translation>
     </message>
     <message>
-        <location line="-270"/>
+        <location line="-286"/>
         <location line="+22"/>
         <source>Enter a new group name.</source>
         <translation>Masukkan nama grup baru.</translation>
     </message>
     <message>
-        <location line="+253"/>
+        <location line="+269"/>
         <source>An error occurred while trying to add %1 to PATH</source>
         <translation>Sebuah kesalahan terjadi ketika menambahkan %1 ke PATH</translation>
     </message>
     <message>
-        <location line="-263"/>
+        <location line="-279"/>
         <source>Are you sure you want to delete the group &apos;%1&apos;?</source>
         <translation>Apakah Anda yakin untuk menghapus kelompok &apos;%1&apos;?</translation>
     </message>
@@ -8288,27 +8497,27 @@ Silakan periksa trashbin kamu untuk mengembalikannya secara manual.</translation
 <context>
     <name>ManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-247"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-255"/>
         <source>URL:</source>
         <translation>URL:</translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+198"/>
         <source>The instance updated to pack version %1 successfully.</source>
         <translation>Instansi berhasil diperbarui ke versi paket %1.</translation>
     </message>
     <message>
-        <location line="-119"/>
+        <location line="-126"/>
         <source>Abort</source>
         <translation>Batalkan</translation>
     </message>
     <message>
-        <location line="-12"/>
+        <location line="-13"/>
         <source>Error</source>
         <translation>Kesalahan</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+8"/>
         <source>Task aborted</source>
         <translation>Tugas dibatalkan</translation>
     </message>
@@ -8318,12 +8527,12 @@ Silakan periksa trashbin kamu untuk mengembalikannya secara manual.</translation
         <translation>Informasi penyedia:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+123"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+130"/>
         <source>Update Successful</source>
         <translation>Pembaharuan Berhasil</translation>
     </message>
     <message>
-        <location line="-94"/>
+        <location line="-101"/>
         <source>Cannot update!</source>
         <translation>Tidak dapat memperbarui!</translation>
     </message>
@@ -8338,7 +8547,7 @@ Silakan periksa trashbin kamu untuk mengembalikannya secara manual.</translation
         <translation>Tugas telah dibatalkan oleh pengguna.</translation>
     </message>
     <message>
-        <location line="+130"/>
+        <location line="+137"/>
         <source>The instance failed to update to pack version %1. Please check launcher logs for more information.</source>
         <translation>Instansi gagal diperbarui ke versi paket %1. Tolong cek log peluncur untuk informasi lebih lanjut.</translation>
     </message>
@@ -8358,17 +8567,17 @@ Silakan periksa trashbin kamu untuk mengembalikannya secara manual.</translation
         <translation>Daftar perubahan</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-133"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-141"/>
         <source>Warnings</source>
         <translation>Peringatan-peringatan</translation>
     </message>
     <message>
-        <location line="+132"/>
+        <location line="+140"/>
         <source>Update Failed</source>
         <translation>Pembaruan Gagal</translation>
     </message>
     <message>
-        <location line="-189"/>
+        <location line="-197"/>
         <source>This is a local modpack.
 This can be updated either using a file in %1 format or an URL.
 Do not use a different format than the one mentioned as it may break the instance.
@@ -8381,13 +8590,13 @@ Pastikan Anda juga mempercayai URL tersebut.
 </translation>
     </message>
     <message>
-        <location line="+84"/>
+        <location line="+85"/>
         <source>Failed to search for available versions.</source>
         <translation>Gagal mencari versi-versi tersedia.</translation>
     </message>
     <message>
-        <location line="-89"/>
-        <location line="+78"/>
+        <location line="-90"/>
+        <location line="+79"/>
         <source>Update Pack</source>
         <translation>Perbarui paket</translation>
     </message>
@@ -8397,7 +8606,7 @@ Pastikan Anda juga mempercayai URL tersebut.
         <translation>Tidak ada daftar perubahan untuk versi ini!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-63"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="-64"/>
         <source>Website: &lt;a href=%1&gt;%2&lt;/a&gt;    |    Pack ID: %3    |    Version ID: %4</source>
         <translation>Situs: &lt;a href=%1&gt;%2&lt;/a&gt;    |    Pack ID: %3    |    Version ID: %4</translation>
     </message>
@@ -8422,7 +8631,7 @@ Pastikan Anda juga mempercayai URL tersebut.
         <translation>Perbarui ke versi:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+77"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+78"/>
         <source>Failed to request changelog data for this modpack.</source>
         <translation>Gagal meminta daftar perubahan untuk modpack ini.</translation>
     </message>
@@ -8430,7 +8639,7 @@ Pastikan Anda juga mempercayai URL tersebut.
 <context>
     <name>Meta::BaseEntityLoadTask</name>
     <message>
-        <location filename="../launcher/meta/BaseEntity.cpp" line="+122"/>
+        <location filename="../launcher/meta/BaseEntity.cpp" line="+124"/>
         <source>Loading local file</source>
         <translation>Memuat berkas lokal</translation>
     </message>
@@ -8478,7 +8687,7 @@ Pastikan Anda juga mempercayai URL tersebut.
 <context>
     <name>MinecraftInstance</name>
     <message>
-        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1030"/>
+        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1042"/>
         <source>&lt;ACCESS TOKEN&gt;</source>
         <translation>&lt;ACCESS TOKEN&gt;</translation>
     </message>
@@ -8488,12 +8697,12 @@ Pastikan Anda juga mempercayai URL tersebut.
         <translation>, terakhir dimainkan %1 selama %2</translation>
     </message>
     <message>
-        <location line="-765"/>
+        <location line="-773"/>
         <source>Profilers</source>
         <translation>Profiler-profile</translation>
     </message>
     <message>
-        <location line="+749"/>
+        <location line="+757"/>
         <source>broken</source>
         <translation>rusak</translation>
     </message>
@@ -8503,12 +8712,12 @@ Pastikan Anda juga mempercayai URL tersebut.
         <translation>, total waktu bermain %1</translation>
     </message>
     <message>
-        <location line="-783"/>
+        <location line="-791"/>
         <source>Launch &amp;Offline</source>
         <translation>Luncurkan Luring (&amp;O)</translation>
     </message>
     <message>
-        <location line="+723"/>
+        <location line="+731"/>
         <source>&lt;PROFILE ID&gt;</source>
         <translation>&lt;PROFILE ID&gt;</translation>
     </message>
@@ -8518,7 +8727,7 @@ Pastikan Anda juga mempercayai URL tersebut.
         <translation>&lt;SESSION ID&gt;</translation>
     </message>
     <message>
-        <location line="-720"/>
+        <location line="-728"/>
         <source>&amp;Launch</source>
         <translation>Ja&amp;lankan</translation>
     </message>
@@ -8528,22 +8737,22 @@ Pastikan Anda juga mempercayai URL tersebut.
         <translation>Tidak Ada Pemrofil (&amp;N)</translation>
     </message>
     <message>
-        <location line="+750"/>
+        <location line="+758"/>
         <source>Minecraft %1</source>
         <translation>Minecraft %1</translation>
     </message>
     <message>
-        <location line="-770"/>
+        <location line="-778"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location line="+787"/>
+        <location line="+795"/>
         <source>, has crashed.</source>
         <translation>, telah crash.</translation>
     </message>
     <message>
-        <location line="-785"/>
+        <location line="-793"/>
         <source>Ctrl+Alt+O</source>
         <translation>Ctrl+Alt+O</translation>
     </message>
@@ -8668,7 +8877,7 @@ Pastikan Anda juga mempercayai URL tersebut.
         <translation>&amp;Ukuran Jendela:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+344"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+340"/>
         <source>Select Global Data Packs Folder</source>
         <translation>Pilih Folder Global Data Pack</translation>
     </message>
@@ -8750,7 +8959,7 @@ Kemungkinan besar kamu akan perlu mengubah path - silakan merujuk ke situs mod.<
         <translation>Buka Pengaturan &amp;Global</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-497"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-493"/>
         <source>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: The maximized option is not fully supported on this Minecraft version.&lt;/span&gt;</source>
         <translation>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Perhatian&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Opsi jendela dimaksimalkan tidak sepenuhnya didukung pada versi Minecraft ini.&lt;/span&gt;</translation>
     </message>
@@ -8966,6 +9175,59 @@ Kemungkinan besar kamu akan perlu mengubah path - silakan merujuk ke situs mod.<
     </message>
 </context>
 <context>
+    <name>ModConflictChecker</name>
+    <message>
+        <location filename="../launcher/minecraft/mod/ModConflictChecker.cpp" line="+88"/>
+        <source>unknown version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Duplicate mod: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These files all provide the mod id &quot;%1&quot;, and the game will not start with more than one of them:
+%2
+Keep only one (usually the newest) and delete or disable the others.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>%1 conflicts with %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 (%2) says it is incompatible with %3 (%4), and both are enabled.
+Disable or remove one of them.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
+        <source>Disabled dependency: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 needs the mod &quot;%2&quot;, which is installed (%3) but disabled.
+Enable it to avoid a crash on startup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Possibly missing dependency: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 needs a mod with the id &quot;%2&quot;, but none was found in the mods folder.
+If the game starts fine it is probably bundled inside another mod; otherwise download it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ModFilterWidget</name>
     <message>
         <location filename="../launcher/ui/widgets/ModFilterWidget.ui" line="+284"/>
@@ -9106,7 +9368,7 @@ Kemungkinan besar kamu akan perlu mengubah path - silakan merujuk ke situs mod.<
 <context>
     <name>ModFolderModel</name>
     <message>
-        <location filename="../launcher/minecraft/mod/ModFolderModel.cpp" line="+100"/>
+        <location filename="../launcher/minecraft/mod/ModFolderModel.cpp" line="+101"/>
         <source>File</source>
         <translation>File</translation>
     </message>
@@ -9131,27 +9393,27 @@ Kemungkinan besar kamu akan perlu mengubah path - silakan merujuk ke situs mod.<
         <translation>Gambar</translation>
     </message>
     <message>
-        <location line="+388"/>
+        <location line="+411"/>
         <source>Only Disable Selected</source>
         <translation>Hanya Nonaktifkan yang Dipilih</translation>
     </message>
     <message>
-        <location line="-387"/>
+        <location line="-410"/>
         <source>Required By</source>
         <translation>Dibutuhkan Oleh</translation>
     </message>
     <message>
-        <location line="+378"/>
+        <location line="+401"/>
         <source>Confirm enable</source>
         <translation>Konfirmasi pengaktifan</translation>
     </message>
     <message>
-        <location line="-378"/>
+        <location line="-401"/>
         <source>Minecraft Versions</source>
         <translation>Versi-versi Minecraft</translation>
     </message>
     <message>
-        <location line="+370"/>
+        <location line="+393"/>
         <source>Confirm toggle</source>
         <translation>Konfirmasi toggle</translation>
     </message>
@@ -9164,7 +9426,7 @@ Kemungkinan besar kamu akan perlu mengubah path - silakan merujuk ke situs mod.<
         <translation type="vanished">Nama File</translation>
     </message>
     <message>
-        <location line="-246"/>
+        <location line="-269"/>
         <source>Is the mod enabled?</source>
         <translation>Apakah mod diaktifkan?</translation>
     </message>
@@ -9184,7 +9446,7 @@ Kemungkinan besar kamu akan perlu mengubah path - silakan merujuk ke situs mod.<
         <translation>Versi dari mod.</translation>
     </message>
     <message numerus="yes">
-        <location line="+245"/>
+        <location line="+268"/>
         <source>%n mod(s) will be disabled
 </source>
         <translation>
@@ -9193,7 +9455,7 @@ Kemungkinan besar kamu akan perlu mengubah path - silakan merujuk ke situs mod.<
         </translation>
     </message>
     <message>
-        <location line="-229"/>
+        <location line="-252"/>
         <source>For each mod, the number of other mods which depend on it.</source>
         <translation>Untuk setiap mod, jumlah mod-mod lain yang bergantung padanya.</translation>
     </message>
@@ -9203,12 +9465,12 @@ Kemungkinan besar kamu akan perlu mengubah path - silakan merujuk ke situs mod.<
         <translation>Aktifkan</translation>
     </message>
     <message>
-        <location line="+376"/>
+        <location line="+399"/>
         <source>Only Toggle Selected</source>
         <translation>Aktifkan Hanya yang Terpilih</translation>
     </message>
     <message>
-        <location line="-346"/>
+        <location line="-369"/>
         <source>Folder</source>
         <translation>Folder</translation>
     </message>
@@ -9223,7 +9485,7 @@ Kemungkinan besar kamu akan perlu mengubah path - silakan merujuk ke situs mod.<
         <translation>Pemuat mod.</translation>
     </message>
     <message>
-        <location line="+250"/>
+        <location line="+273"/>
         <source>Would you like to disable them as well?
 Ignoring them may break the game.</source>
         <translation>Apakah Anda juga ingin menonaktifkan mereka?
@@ -9244,7 +9506,7 @@ Mengabaikannya dapat menimbulkan masalah.</translation>
         </translation>
     </message>
     <message>
-        <location line="-386"/>
+        <location line="-409"/>
         <source>Last Modified</source>
         <translation>Terakhir Diubah</translation>
     </message>
@@ -9264,7 +9526,7 @@ Mengabaikannya dapat menimbulkan masalah.</translation>
         <translation>Tanggal dan waktu terakhir kalinya mod ini diubah (atau ditambahkan).</translation>
     </message>
     <message numerus="yes">
-        <location line="+249"/>
+        <location line="+272"/>
         <source>The enabled mod(s) require %n mod(s).
 </source>
         <translation>
@@ -9280,12 +9542,12 @@ Ignoring them may break the game.</source>
 Mengabaikan dapat menimbulkan masalah.</translation>
     </message>
     <message>
-        <location line="-381"/>
+        <location line="-404"/>
         <source>Provider</source>
         <translation>Penyedia</translation>
     </message>
     <message>
-        <location line="+382"/>
+        <location line="+405"/>
         <source>Only Enable Selected</source>
         <translation>Hanya Aktifkan yang Terpilih</translation>
     </message>
@@ -9300,7 +9562,7 @@ Mengabaikan dapat menimbulkan masalah.</translation>
         <translation>Nonaktifkan yang Diperlukan</translation>
     </message>
     <message>
-        <location line="-250"/>
+        <location line="-273"/>
         <source>The supported minecraft versions.</source>
         <translation>Versi-versi Minecraft yang didukung.</translation>
     </message>
@@ -9320,14 +9582,14 @@ Mengabaikan dapat menimbulkan masalah.</translation>
         <translation>Jenis Keluaran</translation>
     </message>
     <message>
-        <location line="+371"/>
+        <location line="+394"/>
         <source>Toggling these mod(s) will cause changes to other mods.
 </source>
         <translation>Mengaktifkan atau menonaktifkan mod(s) ini akan menyebabkan perubahan pada mod lain.
 </translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="-260"/>
         <source>On what environment the mod is running.</source>
         <translation>Environmen di mana mod ini sedang berjalan.</translation>
     </message>
@@ -9345,7 +9607,7 @@ Mengabaikan dapat menimbulkan masalah.</translation>
         <translation type="vanished">Mod berikut akan dinonaktifkan:</translation>
     </message>
     <message>
-        <location line="+234"/>
+        <location line="+257"/>
         <source>Do you want to automatically apply these related changes?
 Ignoring them may break the game.</source>
         <translation>Apakah Anda ingin menerapkan perubahan terkait ini secara otomatis?
@@ -9375,33 +9637,34 @@ Mengabaikan dapat menyebabkan permainan menjadi bermasalah.</translation>
     </message>
     <message>
         <location filename="../launcher/ui/pages/instance/ModFolderPage.cpp" line="+190"/>
-        <location line="+90"/>
+        <location line="+104"/>
         <source>Download stopped by user.</source>
         <translation>Pengunduhan dibatalkan oleh pengguna.</translation>
     </message>
     <message>
-        <location line="-70"/>
-        <location line="+86"/>
+        <location line="-83"/>
+        <location line="+99"/>
         <source>Abort</source>
         <translation>Hentikan</translation>
     </message>
     <message>
-        <location line="-110"/>
-        <location line="+45"/>
-        <location line="+45"/>
-        <location line="+60"/>
+        <location line="-124"/>
+        <location line="+46"/>
+        <location line="+58"/>
+        <location line="+61"/>
+        <location line="+101"/>
         <source>Error</source>
         <translation>Kesalahan</translation>
     </message>
     <message>
-        <location line="-191"/>
+        <location line="-306"/>
         <source>The mods you are trying to delete are required by %1 mods.
 Do you want to disable them?</source>
         <translation>Mod-mod yang Anda mencoba hapus diperlukan oleh %1 mod.
 Apakah Anda ingin menonaktifkan mereka?</translation>
     </message>
     <message>
-        <location line="-59"/>
+        <location line="-60"/>
         <source>Check for Updates</source>
         <translation>Periksa Pembaruan</translation>
     </message>
@@ -9411,52 +9674,54 @@ Apakah Anda ingin menonaktifkan mereka?</translation>
         <translation>Konfirmasi Hapus</translation>
     </message>
     <message>
-        <location line="+133"/>
+        <location line="+143"/>
         <source>All mods are up-to-date! :)</source>
         <translation>Semua mod dalam versi terkini! :)</translation>
     </message>
     <message>
-        <location line="-28"/>
+        <location line="-37"/>
         <source>Confirm Update</source>
         <translation>Konfirmasi Pembaruan</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+34"/>
         <source>&apos;%1&apos; is up-to-date! :)</source>
         <translation>&apos;%1&apos; dalam versi terkini! :)</translation>
     </message>
     <message>
-        <location line="-159"/>
+        <location line="-169"/>
         <source>Change a mod&apos;s version.</source>
         <translation>Ganti versi dari mod.</translation>
     </message>
     <message>
+        <location line="+334"/>
         <source>You need to install a compatible mod loader before installing mods. Would you like to do so?</source>
-        <translation type="vanished">Anda harus memasang pemuat mod yang cocok sebelum memasang mod. Apakah Anda ingin melakukannya?</translation>
+        <translation>Anda harus memasang pemuat mod yang cocok sebelum memasang mod. Apakah Anda ingin melakukannya?</translation>
     </message>
     <message>
+        <location line="-1"/>
         <source>Missing Mod Loader</source>
-        <translation type="vanished">Pemuat Mod Tidak Ada</translation>
+        <translation>Pemuat Mod Tidak Ada</translation>
     </message>
     <message>
         <source>The following mods depend on the mod(s) you want to remove:</source>
         <translation type="vanished">Mod berikut bergantung pada mod yang ingin Anda hapus:</translation>
     </message>
     <message>
-        <location line="+88"/>
-        <location line="+67"/>
-        <location line="+23"/>
+        <location line="-245"/>
+        <location line="+77"/>
+        <location line="+27"/>
         <source>Aborted</source>
         <translation>Dibatalkan</translation>
     </message>
     <message>
-        <location line="-84"/>
-        <location line="+90"/>
+        <location line="-98"/>
+        <location line="+104"/>
         <source>Warnings</source>
         <translation>Peringatan-peringatan</translation>
     </message>
     <message>
-        <location line="-49"/>
+        <location line="-62"/>
         <source>Updating mods while the game is running may cause mod duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -9465,24 +9730,36 @@ Berkas lama mungkin tidak terhapus karena sedang dipakai.
 Apakah Anda yakin untuk melakukan hal ini?</translation>
     </message>
     <message>
-        <location line="+74"/>
+        <location line="+20"/>
+        <source>There are no mods to check for updates.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+23"/>
+        <source>No updates were found, but %n mod(s) could not be checked.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+45"/>
         <source>You are about to remove the metadata for %1 mods.
 Are you sure?</source>
         <translation>Anda akan menghapus metadata untuk %1 mod.
 Apakah Anda yakin?</translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="-252"/>
         <source>Download mods from online mod platforms</source>
         <translation>Unduh mod-mod dari platform mod daring</translation>
     </message>
     <message>
-        <location line="+192"/>
+        <location line="+202"/>
         <source>All selected mods are up-to-date! :)</source>
         <translation>Semua mod terpilih dalam versi terkini! :)</translation>
     </message>
     <message>
-        <location line="-193"/>
+        <location line="-203"/>
         <location line="+111"/>
         <source>Download Mods</source>
         <translation>Unduh mod</translation>
@@ -9493,49 +9770,51 @@ Apakah Anda yakin?</translation>
         <translation>Ekspor metadata mod menjadi teks.</translation>
     </message>
     <message>
-        <location line="+202"/>
+        <location line="+217"/>
         <source>Confirm Removal</source>
         <translation>Konfirmasi Hapus</translation>
     </message>
     <message>
-        <location line="-79"/>
-        <location line="+105"/>
+        <location line="-93"/>
+        <location line="+119"/>
         <source>Mod updates are unavailable when metadata is disabled!</source>
         <translation>Pembaruan mod tidak tersedia jika metadata dinonaktifkan!</translation>
     </message>
     <message>
-        <location line="-256"/>
+        <location line="-271"/>
         <source>Try to check or update all selected mods (all mods if none are selected)</source>
         <translation>Coba periksa atau perbarui semua mod terpilih (semua mod bila tidak ada yang dipilih)</translation>
     </message>
     <message>
+        <location line="+372"/>
         <source>No mod loader was installed. Please try again.</source>
-        <translation type="vanished">Tidak ada pemuat mod dipasang, mohon coba kembali.</translation>
+        <translation>Tidak ada pemuat mod dipasang, mohon coba kembali.</translation>
     </message>
     <message>
-        <location line="+189"/>
+        <location line="-194"/>
+        <location line="+25"/>
         <source>Update checker</source>
         <translation>Pemeriksa pembaruan</translation>
     </message>
     <message>
-        <location line="-12"/>
+        <location line="-16"/>
         <source>The mod updater was aborted!</source>
         <translation>Pemerbarui mod terhentikan!</translation>
     </message>
     <message>
-        <location line="-125"/>
+        <location line="-135"/>
         <source>If you remove mods while the game is running it may crash your game.
 Are you sure you want to do this?</source>
         <translation>Menghapus mod ketika permainan masih berjalan dapat menyebabkan permainan berhenti mendadak.
 Apakah Anda yakin untuk melakukan hal ini?</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
         <source>Confirm Disable</source>
         <translation>Konfirmasi Penonaktifan</translation>
     </message>
     <message>
-        <location line="-38"/>
+        <location line="-39"/>
         <source>View the homepages of all selected mods.</source>
         <translation>Tampilkan laman rumah dari semua mod terpilih.</translation>
     </message>
@@ -9579,7 +9858,7 @@ Apakah Anda yakin untuk melakukan hal ini?</translation>
 <context>
     <name>Modrinth::ModpackListModel</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/modrinth/ModrinthModel.cpp" line="+324"/>
+        <location filename="../launcher/ui/pages/modplatform/modrinth/ModrinthModel.cpp" line="+329"/>
         <location line="+3"/>
         <source>Error</source>
         <translation>Kesalahan</translation>
@@ -9606,32 +9885,32 @@ Mohon perbarui %1!</translation>
         <translation>Mempersiapkan sumber daya untuk Modrinth...</translation>
     </message>
     <message>
-        <location line="+67"/>
+        <location line="+68"/>
         <source>Parsing the API response from Modrinth...</source>
         <translation>Mengurai respons API dari Modrinth...</translation>
     </message>
     <message>
-        <location line="+106"/>
+        <location line="+109"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version.</source>
         <translation>Tidak ada versi berlaku yang ditemukan untuk sumber daya. Mungkin tidak tersedia untuk versi permainan saat ini.</translation>
     </message>
     <message>
-        <location line="-137"/>
+        <location line="-140"/>
         <source>Waiting for the API response from Modrinth...</source>
         <translation>Menunggu respons API dari Modrinth...</translation>
     </message>
     <message>
-        <location line="+98"/>
+        <location line="+99"/>
         <source>Unknown</source>
         <translation>Tidak diketahui</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+38"/>
         <source>No valid version found for this resource. It&apos;s probably unavailable for the current game version / mod loader.</source>
         <translation>Tidak ada versi berlaku yang ditemukan untuk sumber daya. Mungkin tidak tersedia untuk versi permainan / pemuat mod saat ini.</translation>
     </message>
     <message>
-        <location line="-38"/>
+        <location line="-40"/>
         <source>Not installed</source>
         <translation>Tidak terinstal</translation>
     </message>
@@ -9639,17 +9918,17 @@ Mohon perbarui %1!</translation>
 <context>
     <name>ModrinthCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+292"/>
+        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+328"/>
         <source>Downloading mods...</source>
         <translation>Mengunduh mod-mod...</translation>
     </message>
     <message>
-        <location line="-61"/>
+        <location line="-71"/>
         <source>Mod Download Modrinth</source>
         <translation>Unduhan Mod Modrinth</translation>
     </message>
     <message>
-        <location line="+172"/>
+        <location line="+182"/>
         <source>Download URL for %1 is not a correctly formatted URL</source>
         <translation>Tautan unduh untuk %1 bukanlah tautan dengan format yang benar</translation>
     </message>
@@ -9658,7 +9937,7 @@ Mohon perbarui %1!</translation>
         <translation type="vanished">Menghapus file lama yang bertentangan...</translation>
     </message>
     <message>
-        <location line="-209"/>
+        <location line="-235"/>
         <source>Could not rename the client overrides folder:
 </source>
         <translation>Tidak dapat menamai ulang folder pengesampingan klien:
@@ -9669,47 +9948,47 @@ Mohon perbarui %1!</translation>
         <translation type="vanished">Gagal menghapus file lama yang bertentangan.</translation>
     </message>
     <message>
-        <location line="-57"/>
+        <location line="-58"/>
         <source>We couldn&apos;t find a suitable index file for the older version. This may cause some of the files to be duplicated. Do you want to continue?</source>
         <translation>Kami tidak dapat menemukan berkas indeks untuk versi lebih lama. Ini dapat menyebabkan beberapa berkas terduplikasi. Apakah Anda ingin melanjutkan?</translation>
     </message>
     <message>
-        <location line="+120"/>
+        <location line="+137"/>
         <source>The file &apos;%1&apos; is missing a download link. This is invalid in the pack format.</source>
         <translation>File &apos;%1&apos; tidak memiliki tautan unduhan. Ini tidak valid dalam format paket.</translation>
     </message>
     <message>
-        <location line="+30"/>
+        <location line="+40"/>
         <location line="+24"/>
         <source>%1 out of %2 complete</source>
         <translation>%1 dari %2 selesai</translation>
     </message>
     <message>
-        <location line="-175"/>
+        <location line="-202"/>
         <source>No index file.</source>
         <translation>Tidak ada berkas indeks.</translation>
     </message>
     <message>
-        <location line="+45"/>
+        <location line="+46"/>
         <source>Could not rename the overrides folder:
 </source>
         <translation>Tidak dapat menamai ulang folder pengesampingan:
 </translation>
     </message>
     <message>
-        <location line="+282"/>
+        <location line="+310"/>
         <source>Could not understand pack index:
 </source>
         <translation>Tidak dapat mengerti index paket:
 </translation>
     </message>
     <message>
-        <location line="-397"/>
+        <location line="-427"/>
         <source> (version %1)</source>
         <translation> (versi %1)</translation>
     </message>
     <message>
-        <location line="+177"/>
+        <location line="+195"/>
         <source>One of the files has a path that leads to an arbitrary location (%1). This is a security risk and isn&apos;t allowed.</source>
         <translation>Salah satu berkas memiliki path yang menuju lokasi tidak ada (%1). Ini adalah risiko keamanan dan tidak diperbolehkan.</translation>
     </message>
@@ -9717,7 +9996,7 @@ Mohon perbarui %1!</translation>
 <context>
     <name>ModrinthManagedPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+62"/>
+        <location filename="../launcher/ui/pages/instance/ManagedPackPage.cpp" line="+69"/>
         <source>Fetching changelogs...</source>
         <translation>Mendapatkan daftar perubahan...</translation>
     </message>
@@ -9727,12 +10006,12 @@ Mohon perbarui %1!</translation>
         <translation>Pilih berkas pembaruan</translation>
     </message>
     <message>
-        <location line="-81"/>
+        <location line="-86"/>
         <source>%1 (Current)</source>
         <translation>%1 (Sekarang)</translation>
     </message>
     <message>
-        <location line="+81"/>
+        <location line="+86"/>
         <source>Modrinth pack</source>
         <translation>Paket Modrinth</translation>
     </message>
@@ -9882,6 +10161,51 @@ Mohon perbarui %1!</translation>
     </message>
 </context>
 <context>
+    <name>MyReportsDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+151"/>
+        <location line="+4"/>
+        <source>My Reports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Bug reports and suggestions you sent from this launcher, and what the team answered.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>No reports yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>When you send a bug report or suggestion from this launcher, it shows up here, and you will be told when the team answers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <location line="+25"/>
+        <source>Check for updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-24"/>
+        <source>Close</source>
+        <translation type="unfinished">Tutup</translation>
+    </message>
+    <message>
+        <location line="+25"/>
+        <source>Last checked: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>Checking…</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Net::NetRequest</name>
     <message>
         <location filename="../launcher/net/NetRequest.cpp" line="+159"/>
@@ -9950,7 +10274,7 @@ Mohon perbarui %1!</translation>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+145"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10115,12 +10439,12 @@ Mohon perbarui %1!</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/NewInstanceDialog.ui" line="+17"/>
-        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="+78"/>
+        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="+79"/>
         <source>New Instance</source>
         <translation>Instansi Baru</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="-112"/>
+        <location filename="../launcher/ui/dialogs/NewInstanceDialog.cpp" line="-113"/>
         <source>No group</source>
         <translation>Tidak ada grup</translation>
     </message>
@@ -10259,13 +10583,13 @@ Mohon perbarui %1!</translation>
         <translation>&amp;Temukan</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+483"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+486"/>
         <source>Clear</source>
         <translation>Bersihkan</translation>
     </message>
     <message>
-        <location line="-222"/>
-        <location line="+135"/>
+        <location line="-225"/>
+        <location line="+138"/>
         <location line="+41"/>
         <source>Error</source>
         <translation>Kesalahan</translation>
@@ -10276,7 +10600,7 @@ Mohon perbarui %1!</translation>
         <translation>Bersihkan riwayat</translation>
     </message>
     <message>
-        <location line="-299"/>
+        <location line="-302"/>
         <source>Current logs</source>
         <translation>Daftar peristiwa saat ini</translation>
     </message>
@@ -10286,7 +10610,7 @@ Mohon perbarui %1!</translation>
         <translation>Batasi panjang baris</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+224"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+227"/>
         <source>Are you sure you want to delete all log files?</source>
         <translation>Apakah Anda yakin untuk menghapus semua berkas log?</translation>
     </message>
@@ -10312,8 +10636,8 @@ Mohon perbarui %1!</translation>
         <translation>Gulir langsung ke bawah</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="-240"/>
-        <location line="+218"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="-243"/>
+        <location line="+221"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Tidak bisa menampilkan log ini karena panjangnya melebihi %1 baris.</translation>
     </message>
@@ -10350,7 +10674,7 @@ Mohon perbarui %1!</translation>
         <translation>Konfirmasi Penghapusan</translation>
     </message>
     <message>
-        <location line="-112"/>
+        <location line="-115"/>
         <source>The file (%1) is too big. You may want to open it in a viewer optimized for large files.</source>
         <translation>File (%1) terlalu besar. Anda mungkin ingin membuka file tersebut di pembaca yang dioptimalkan untuk file besar.</translation>
     </message>
@@ -10360,7 +10684,7 @@ Mohon perbarui %1!</translation>
         <translation>Salin seluruh riwayat ke papan klip</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+127"/>
+        <location filename="../launcher/ui/pages/instance/OtherLogsPage.cpp" line="+130"/>
         <source>Unable to delete %1: %2</source>
         <translation>Tidak dapat menghapus %1: %2</translation>
     </message>
@@ -10419,7 +10743,7 @@ Apakah Anda yakin?</translation>
 %1</translation>
     </message>
     <message>
-        <location line="-151"/>
+        <location line="-154"/>
         <source>Unable to open %1 for reading: %2</source>
         <translation>Tidak dapat membuka %1 untuk membaca: %2</translation>
     </message>
@@ -10567,19 +10891,19 @@ Apakah Anda yakin?</translation>
         <translation type="vanished">Akan diperbaiki nanti.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+383"/>
-        <location line="+42"/>
+        <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+388"/>
+        <location line="+44"/>
         <source>Search settings…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-41"/>
-        <location line="+42"/>
+        <location line="-43"/>
+        <location line="+44"/>
         <source>Search all settings (Ctrl+F). Several words narrow the results down.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+296"/>
+        <location line="+297"/>
         <source>No settings match &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10859,7 +11183,7 @@ StdErr: %2</translation>
 <context>
     <name>PollyMCUpdaterApp</name>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="+99"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="+100"/>
         <source>Use a custom path as application root (use &apos;.&apos; for current directory).</source>
         <translation type="unfinished">Gunakan path kustom sebagai root aplikasi (gunakan &apos;.&apos; untuk direktori saat ini).</translation>
     </message>
@@ -11211,20 +11535,26 @@ Updater log: %7</source>
         <translation type="unfinished">Gagal mengekstraksi %1 ke %2</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+23"/>
+        <source>Failed to launch child process to read version, using the built-in version instead.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+4"/>
+        <source>Child launcher process did not finish in time, using the built-in version instead.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Failed to Check Version</source>
-        <translation type="unfinished">Gagal Memeriksa Versi</translation>
+        <translation type="obsolete">Gagal Memeriksa Versi</translation>
     </message>
     <message>
-        <location line="-4"/>
         <source>Failed to launch child process to read version.</source>
-        <translation type="unfinished">Gagal meluncurkan anak proses untuk membaca versi.</translation>
+        <translation type="obsolete">Gagal meluncurkan anak proses untuk membaca versi.</translation>
     </message>
     <message>
-        <location line="+4"/>
         <source>Child launcher process failed.</source>
-        <translation type="unfinished">Proses peluncur anak gagal.</translation>
+        <translation type="obsolete">Proses peluncur anak gagal.</translation>
     </message>
 </context>
 <context>
@@ -11950,7 +12280,7 @@ Lanjutkan dengan pemotongan?</translation>
         <translation type="vanished">Tidak dikenali</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1173"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
         <source>%1 (in use)</source>
         <translation>%1 (sedang digunakan)</translation>
     </message>
@@ -12073,10 +12403,11 @@ Lanjutkan dengan pemotongan?</translation>
         <translation>Entri-entri Desktop</translation>
     </message>
     <message>
+        <location filename="../launcher/InstanceDirUpdate.cpp" line="+6"/>
         <source>The instance folder cannot be renamed while the instance is running.
 
 Only the instance name will be changed. The folder will keep its current name.</source>
-        <translation type="vanished">Folder instansi tidak dapat diatur namanya ketika instansi sedang berjalan.
+        <translation>Folder instansi tidak dapat diatur namanya ketika instansi sedang berjalan.
 
 Hanya nama instansi akan diubah. Folder akan mempertahankan namanya saat ini.</translation>
     </message>
@@ -12145,7 +12476,7 @@ Hanya nama instansi akan diubah. Folder akan mempertahankan namanya saat ini.</t
         <translation>Dengan terima kasih spesial kepada</translation>
     </message>
     <message numerus="yes">
-        <location filename="../launcher/InstanceDirUpdate.cpp" line="+48"/>
+        <location filename="../launcher/InstanceDirUpdate.cpp" line="+49"/>
         <source>The following instance(s) might reference files in this instance:
 
 %1
@@ -12212,7 +12543,7 @@ Apakah kamu ingin lanjut?</numerusform>
         <translation>Berdasarkan Relevansi</translation>
     </message>
     <message>
-        <location filename="../launcher/meta/BaseEntity.cpp" line="+34"/>
+        <location filename="../launcher/meta/BaseEntity.cpp" line="+36"/>
         <source>Download of meta file %1</source>
         <translation>Mengunduh meta file %1</translation>
     </message>
@@ -12237,8 +12568,8 @@ Apakah kamu ingin lanjut?</numerusform>
         <translation>Ganti nama folder instansi</translation>
     </message>
     <message>
-        <location line="-9"/>
-        <location line="+33"/>
+        <location line="-16"/>
+        <location line="+40"/>
         <source>Cannot rename instance</source>
         <translation>Tidak bisa mengganti nama instansi</translation>
     </message>
@@ -12356,7 +12687,7 @@ Nama baru: %2</translation>
         <translation>Tidak dapat memproses file versi %1: %2 di baris %3 kolom %4.</translation>
     </message>
     <message>
-        <location filename="../launcher/modplatform/ModIndex.h" line="+143"/>
+        <location filename="../launcher/modplatform/ModIndex.h" line="+145"/>
         <source> for %1</source>
         <translation> .untuk %1</translation>
     </message>
@@ -12785,8 +13116,9 @@ Apakah Anda yakin?</translation>
         <translation>Aset untuk %1</translation>
     </message>
     <message>
+        <location filename="../launcher/InstanceDirUpdate.cpp" line="-49"/>
         <source>Cannot rename instance folder</source>
-        <translation type="vanished">Tidak dapat mengatur nama folder instansi</translation>
+        <translation>Tidak dapat mengatur nama folder instansi</translation>
     </message>
     <message>
         <location filename="../launcher/modplatform/flame/FlameAPI.cpp" line="+7"/>
@@ -12846,7 +13178,7 @@ Pesan kesalahan: %3</translation>
         <translation>Kesalahan jaringan: %1</translation>
     </message>
     <message>
-        <location filename="../launcher/InstanceDirUpdate.cpp" line="-38"/>
+        <location filename="../launcher/InstanceDirUpdate.cpp" line="+11"/>
         <source>Would you also like to rename the instance folder?
 
 Old name: %1
@@ -12877,7 +13209,7 @@ Nama baru: %2</translation>
         <translation type="vanished">Rory ID 11 (digambar oleh Ashtaka)</translation>
     </message>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1040"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1049"/>
         <source>An auto-updater for PollyMC-Continued</source>
         <translation>Pembaru otomatis untuk PollyMC-Continued</translation>
     </message>
@@ -12921,16 +13253,146 @@ Nama baru: %2</translation>
         <source>Send this error to the PollyMC developers</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../launcher/BugReportTracker.cpp" line="+164"/>
+        <source>Waiting for a dev to check it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Seen - the team is looking into it</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The team needs more information - please reach out on Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Fixed - it will be in the next update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-193"/>
+        <source>Fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Fixed in version %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+2"/>
+        <source>Won&apos;t be fixed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Duplicate of another report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+4"/>
+        <source>Not a bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+1"/>
+        <source>Updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Crash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Suggestion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Other</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-13"/>
+        <source>Waiting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>In review</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Needs info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Duplicate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>NEW</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Sent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>(no title)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>%1  ·  ID %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <location line="+8"/>
+        <source>Copy ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-7"/>
+        <source>Give this ID to the team if you contact them about this report.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Copied!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Resource</name>
     <message>
-        <location filename="../launcher/minecraft/mod/Resource.cpp" line="+112"/>
+        <location filename="../launcher/minecraft/mod/Resource.cpp" line="+114"/>
         <source>Not marked as compatible with the instance&apos;s game version.</source>
         <translation>Tidak ditandai sebagai kompatibel dengan versi permainan dari instansi.</translation>
     </message>
     <message>
-        <location line="-49"/>
+        <location line="-50"/>
         <source>Unknown</source>
         <translation>Tidak diketahui</translation>
     </message>
@@ -12938,7 +13400,7 @@ Nama baru: %2</translation>
 <context>
     <name>ResourceDownload::DataPackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+181"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+196"/>
         <source>data packs</source>
         <extracomment>String that gets appended to the data pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>data pack</translation>
@@ -12962,7 +13424,7 @@ Nama baru: %2</translation>
 <context>
     <name>ResourceDownload::ModDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-69"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-81"/>
         <source>mods</source>
         <extracomment>String that gets appended to the mod download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>mod-mod</translation>
@@ -12990,7 +13452,7 @@ Nama baru: %2</translation>
         <translation type="vanished">mod</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="+189"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="+193"/>
         <source>Abort</source>
         <translation>Batalkan</translation>
     </message>
@@ -13000,17 +13462,17 @@ Nama baru: %2</translation>
         <translation>Kesalahan</translation>
     </message>
     <message>
-        <location line="-96"/>
+        <location line="-98"/>
         <source>Ctrl+Return</source>
         <translation>Ctrl+Return</translation>
     </message>
     <message>
-        <location line="+332"/>
+        <location line="+379"/>
         <source>Change %1 version</source>
         <translation>Ubah versi %1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-48"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-51"/>
         <source>Download %1</source>
         <translation>Unduh %1</translation>
     </message>
@@ -13023,24 +13485,24 @@ Nama baru: %2</translation>
         <translation type="vanished">paket shader</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="-306"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="-352"/>
         <source>You have %1 selected resources.
 Are you sure you want to close this dialog?</source>
         <translation>Anda telah memilih %1 sumber daya.
 Apakah Anda yakin ingin menutup dialog ini?</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+52"/>
         <source>Opens a new popup to review your selected %1 and confirm your selection. Shortcut: Ctrl+Return</source>
         <translation>Membuka sebuah popup baru untuk mengkaji ulang terpilih %1 Anda dan mengkonfirmasi pilihan Anda. Pintasan: Ctrl+Return</translation>
     </message>
     <message>
-        <location line="-78"/>
+        <location line="-80"/>
         <source>Review and confirm</source>
         <translation>Kaji ulang dan konfirmasi</translation>
     </message>
     <message>
-        <location line="+113"/>
+        <location line="+115"/>
         <source>Checking for dependencies...</source>
         <translation>Memeriksa ketergantungan...</translation>
     </message>
@@ -13069,7 +13531,7 @@ Apakah Anda yakin ingin menutup dialog ini?</translation>
         <translation type="vanished">paket tekstur</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="-64"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.cpp" line="-65"/>
         <source>Confirmation Needed</source>
         <translation>Konfirmasi Dibutuhkan</translation>
     </message>
@@ -13077,35 +13539,35 @@ Apakah Anda yakin ingin menutup dialog ini?</translation>
 <context>
     <name>ResourceDownload::ResourceModel</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourceModel.cpp" line="+221"/>
-        <location line="+20"/>
-        <location line="+180"/>
-        <location line="+4"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourceModel.cpp" line="+239"/>
+        <location line="+24"/>
+        <location line="+190"/>
+        <location line="+7"/>
         <source>Error</source>
         <translation>Kesalahan</translation>
     </message>
     <message>
-        <location line="-179"/>
+        <location line="-191"/>
         <source>The request was aborted for an unknown reason</source>
         <translation>Permintaan dibatalkan untuk alasan yang tidak diketahui</translation>
     </message>
     <message>
-        <location line="+175"/>
+        <location line="+184"/>
         <source>A network error occurred. Could not load mods.</source>
         <translation>Sebuah kesalahan jaringan telah terjadi. Tidak dapat memuat mod-mod.</translation>
     </message>
     <message>
-        <location line="-180"/>
+        <location line="-190"/>
         <source>A network error occurred. Could not load project info: %1</source>
         <translation>Terjadi sebuah masalah jaringan. Tidak dapat memuat informasi proyek: %1</translation>
     </message>
     <message>
-        <location line="-19"/>
+        <location line="-23"/>
         <source>A network error occurred. Could not load project versions: %1</source>
         <translation>Terjadi sebuah masalah jaringan. Tidak dapat memuat versi-versi proyek: %1</translation>
     </message>
     <message>
-        <location line="+204"/>
+        <location line="+221"/>
         <source>API version too old!
 Please update %1!</source>
         <translation>Versi API terlalu lama!
@@ -13115,7 +13577,7 @@ Mohon perbarui %1!</translation>
 <context>
     <name>ResourceDownload::ResourcePackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+68"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+74"/>
         <source>resource packs</source>
         <extracomment>String that gets appended to the resource pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>paket-paket sumber daya</translation>
@@ -13139,18 +13601,18 @@ Mohon perbarui %1!</translation>
 <context>
     <name>ResourceDownload::ResourcePage</name>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+219"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+233"/>
         <source> by </source>
         <translation> oleh </translation>
     </message>
     <message>
-        <location line="+86"/>
+        <location line="+92"/>
         <source> [installed]</source>
         <comment>Mod version select</comment>
         <translation> [diinstal]</translation>
     </message>
     <message>
-        <location line="+234"/>
+        <location line="+248"/>
         <source>Reinstall</source>
         <translation>Instal Ulang</translation>
     </message>
@@ -13160,7 +13622,7 @@ Mohon perbarui %1!</translation>
         <translation>Ctrl+Return</translation>
     </message>
     <message>
-        <location line="-227"/>
+        <location line="-241"/>
         <source>Cannot select invalid version :(</source>
         <translation>Tidak dapat memilih versi tidak sesuai :(</translation>
     </message>
@@ -13170,47 +13632,47 @@ Mohon perbarui %1!</translation>
         <translation>Tidak ada versi sesuai ditemukan.</translation>
     </message>
     <message>
-        <location line="-83"/>
+        <location line="-89"/>
         <source>Donate information: </source>
         <translation>Informasi sumbangan: </translation>
     </message>
     <message>
-        <location line="+335"/>
+        <location line="+355"/>
         <source>The resource was not found</source>
         <translation>Sumber daya tidak ditemukan</translation>
     </message>
     <message>
-        <location line="-316"/>
+        <location line="-335"/>
         <source>Wiki: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Wiki: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+183"/>
+        <location line="+198"/>
         <source>No versions available</source>
         <translation>Tidak ada versi yang tersedia</translation>
     </message>
     <message>
-        <location line="-179"/>
+        <location line="-192"/>
         <source>Discord: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Server Discord: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="-6"/>
+        <location line="-9"/>
         <source>Issues: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Masalah-masalah: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
-        <location line="+300"/>
+        <location line="+320"/>
         <source>Cancel</source>
         <translation>Batalkan</translation>
     </message>
     <message>
-        <location line="-209"/>
+        <location line="-222"/>
         <source>Loading versions...</source>
         <translation>Memuat versi-versi...</translation>
     </message>
     <message>
-        <location line="-87"/>
+        <location line="-92"/>
         <source>Source code: &lt;a href=%1&gt;%1&lt;/a&gt;</source>
         <translation>Kode sumber: &lt;a href=%1&gt;%1&lt;/a&gt;</translation>
     </message>
@@ -13219,24 +13681,24 @@ Mohon perbarui %1!</translation>
         <translation type="vanished"> [diinstal]</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.h" line="+47"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.h" line="+46"/>
         <source>resources</source>
         <extracomment>The plural version of &apos;resource&apos;</extracomment>
         <translation>sumber-sumber daya</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+23"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="+25"/>
         <source>No version available for the selected pack</source>
         <translation>Tidak ada versi yang tersedia untuk paket terpilih</translation>
     </message>
     <message>
-        <location line="-159"/>
-        <location line="+161"/>
+        <location line="-176"/>
+        <location line="+178"/>
         <source>Select %1 for download</source>
         <translation>Centang %1 untuk unduhan</translation>
     </message>
     <message>
-        <location line="+157"/>
+        <location line="+169"/>
         <source>No versions for &apos;%1&apos; are available.
 The author likely blocked third-party launchers.</source>
         <translation>Tidak ada versi untuk &apos;%1&apos; yang tersedia.
@@ -13249,13 +13711,13 @@ Pencipta mungkin memblokir peluncur pihak ketiga.</translation>
         <translation>sumber daya</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="-319"/>
+        <location filename="../launcher/ui/pages/modplatform/ResourcePage.cpp" line="-348"/>
         <source>Search for %1...</source>
         <extracomment>String in the search bar of the mod downloading dialog</extracomment>
         <translation>Cari untuk %1...</translation>
     </message>
     <message>
-        <location line="+111"/>
+        <location line="+124"/>
         <source>&lt;b&gt;This project has been archived. It will not receive any further updates unless the author decides to unarchive the project.&lt;/b&gt;</source>
         <translation>&lt;b&gt;Proyek ini telah di arsipkan. Proyek tidak akan menerima pembaruan lebih lanjut kecuali pembuatnya membatalkan pengarsipannya.&lt;/b&gt;</translation>
     </message>
@@ -13265,7 +13727,7 @@ Pencipta mungkin memblokir peluncur pihak ketiga.</translation>
         <translation>Tautan eksternal:</translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+39"/>
         <source>Deselect %1 for download</source>
         <translation>Hapus centang %1 untuk unduhan</translation>
     </message>
@@ -13273,7 +13735,7 @@ Pencipta mungkin memblokir peluncur pihak ketiga.</translation>
 <context>
     <name>ResourceDownload::ShaderPackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+34"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="+40"/>
         <source>shader packs</source>
         <extracomment>String that gets appended to the shader pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>paket-paket shader</translation>
@@ -13297,7 +13759,7 @@ Pencipta mungkin memblokir peluncur pihak ketiga.</translation>
 <context>
     <name>ResourceDownload::TexturePackDownloadDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-17"/>
+        <location filename="../launcher/ui/dialogs/ResourceDownloadDialog.h" line="-20"/>
         <source>texture packs</source>
         <extracomment>String that gets appended to the texture pack download dialog title (&quot;Download &quot; + resourcesString())</extracomment>
         <translation>paket-paket tekstur</translation>
@@ -13321,12 +13783,12 @@ Pencipta mungkin memblokir peluncur pihak ketiga.</translation>
 <context>
     <name>ResourceDownloadTask</name>
     <message>
-        <location filename="../launcher/ResourceDownloadTask.cpp" line="+99"/>
+        <location filename="../launcher/ResourceDownloadTask.cpp" line="+131"/>
         <source>Failed to rename shader config from &apos;%1&apos; to &apos;%2&apos;</source>
         <translation>Gagal menamai ulang konfigurasi shader dari &apos;%1&apos; menjadi &apos;%2&apos;</translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="-57"/>
         <source>Resource download</source>
         <translation>Unduhan sumber daya</translation>
     </message>
@@ -13341,7 +13803,7 @@ Pencipta mungkin memblokir peluncur pihak ketiga.</translation>
 <context>
     <name>ResourceFolderModel</name>
     <message>
-        <location filename="../launcher/minecraft/mod/ResourceFolderModel.h" line="+244"/>
+        <location filename="../launcher/minecraft/mod/ResourceFolderModel.h" line="+252"/>
         <source>Name</source>
         <translation>Nama</translation>
     </message>
@@ -13351,7 +13813,7 @@ Pencipta mungkin memblokir peluncur pihak ketiga.</translation>
         <translation>Ukuran Berkas</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/mod/ResourceFolderModel.cpp" line="+271"/>
+        <location filename="../launcher/minecraft/mod/ResourceFolderModel.cpp" line="+296"/>
         <source>Confirm toggle</source>
         <translation>Konfirmasi toggle</translation>
     </message>
@@ -13360,7 +13822,7 @@ Pencipta mungkin memblokir peluncur pihak ketiga.</translation>
         <translation type="vanished">Nama File</translation>
     </message>
     <message>
-        <location line="+443"/>
+        <location line="+450"/>
         <source>Override Columns Visibility</source>
         <translation>Tindih Visibilitas Kolom</translation>
     </message>
@@ -13424,14 +13886,14 @@ Jalur kanonis: %1</translation>
         <translation>Penyedia sumber dari sumber daya.</translation>
     </message>
     <message>
-        <location line="-349"/>
+        <location line="-356"/>
         <source>If you enable/disable this resource while the game is running it may crash your game.
 Are you sure you want to do this?</source>
         <translation>Mengaktifkan/menonaktifkan sumber daya ini ketika permainan masih berjalan dapat menyebabkan permainan berhenti mendadak.
 Apakah Anda yakin untuk melakukan hal ini?</translation>
     </message>
     <message>
-        <location line="+286"/>
+        <location line="+293"/>
         <source>
 Warning: This resource is hard linked elsewhere. Editing it will also change the original.</source>
         <translation>
@@ -13519,55 +13981,55 @@ Peringatan: Sumber daya ini ditaut-keraskan di tempat lain. Menyuntingnya akan m
 <context>
     <name>ResourcePackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="+103"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="+104"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>Pengunduhan dibatalkan oleh pengguna.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Hentikan</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Kesalahan</translation>
     </message>
     <message>
-        <location line="-189"/>
+        <location line="-198"/>
         <source>Download Packs</source>
         <translation>Unduh Paket</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="+99"/>
         <source>Confirm Update</source>
         <translation>Konfirmasi Pembaruan</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+27"/>
         <source>&apos;%1&apos; is up-to-date! :)</source>
         <translation>&apos;%1&apos; dalam versi terkini! :)</translation>
     </message>
     <message>
-        <location line="-99"/>
+        <location line="-105"/>
         <source>Change a mod&apos;s version.</source>
         <translation>Ganti versi dari mod.</translation>
     </message>
     <message>
-        <location line="+34"/>
-        <location line="+61"/>
+        <location line="+35"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Dibatalkan</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Peringatan</translation>
     </message>
@@ -13577,25 +14039,25 @@ Peringatan: Sumber daya ini ditaut-keraskan di tempat lain. Menyuntingnya akan m
         <translation>Pembaruan paket sumber daya dibatalkan!</translation>
     </message>
     <message>
-        <location line="-109"/>
+        <location line="-115"/>
         <source>Try to check or update all selected resource packs (all resource packs if none are selected)</source>
         <translation>Coba periksa atau perbarui semua paket sumber daya terpilih (semua bila tidak ada yang terpilih)</translation>
     </message>
     <message>
-        <location line="+116"/>
+        <location line="+122"/>
         <source>All resource packs are up-to-date! :)</source>
         <translation>Semua paket sumber daya dalam versi terbaru :)</translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+48"/>
         <source>You are about to remove the metadata for %1 resource packs.
 Are you sure?</source>
         <translation>Anda akan menghapus metadata untuk %1 paket sumber daya.
 Apakah Anda yakin?</translation>
     </message>
     <message>
-        <location line="-80"/>
-        <location line="+99"/>
+        <location line="-83"/>
+        <location line="+104"/>
         <source>Resource pack updates are unavailable when metadata is disabled!</source>
         <translation>Pembaruan paket sumber daya tidak tersedia ketika metadata dinonaktifkan!</translation>
     </message>
@@ -13605,17 +14067,17 @@ Apakah Anda yakin?</translation>
         <translation>Paket sumber daya</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="-20"/>
+        <location filename="../launcher/ui/pages/instance/ResourcePackPage.cpp" line="-22"/>
         <source>Confirm Removal</source>
         <translation>Konfirmasi Hapus</translation>
     </message>
     <message>
-        <location line="-168"/>
+        <location line="-175"/>
         <source>Download resource packs from online mod platforms</source>
         <translation>Unduh paket sumber daya dari platform mod daring</translation>
     </message>
     <message>
-        <location line="+127"/>
+        <location line="+133"/>
         <source>Update checker</source>
         <translation>Pemeriksa pembaruan</translation>
     </message>
@@ -13625,7 +14087,7 @@ Apakah Anda yakin?</translation>
         <translation>Semua paket sumber daya terpilih dalam versi terbaru :)</translation>
     </message>
     <message>
-        <location line="-29"/>
+        <location line="-31"/>
         <source>Updating resource packs while the game is running may cause pack duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -13650,48 +14112,48 @@ Apakah Anda yakin ingin melakukan ini?</translation>
 <context>
     <name>ResourceUpdateDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+183"/>
+        <location filename="../launcher/ui/dialogs/ResourceUpdateDialog.cpp" line="+186"/>
         <source>Failed to check for updates</source>
         <translation>Gagal memeriksa pembaruan</translation>
     </message>
     <message>
         <location line="-57"/>
         <location line="+98"/>
-        <location line="+160"/>
+        <location line="+169"/>
         <source>Abort</source>
         <translation>Batalkan</translation>
     </message>
     <message>
-        <location line="-269"/>
+        <location line="-278"/>
         <location line="+95"/>
-        <location line="+146"/>
-        <location line="+16"/>
-        <location line="+56"/>
+        <location line="+153"/>
+        <location line="+17"/>
+        <location line="+58"/>
         <source>Error</source>
         <translation>Kesalahan</translation>
     </message>
     <message>
-        <location line="-347"/>
+        <location line="-358"/>
         <source>Metadata generation failed</source>
         <translation>Pembuatan metadata gagal</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+104"/>
         <source>Could not check or get the following resources for updates:&lt;br&gt;Do you wish to proceed without those resources?</source>
         <translation>Tidak dapat memerika atau mendapatkan sumber daya berikut untuk diperbarui:&lt;br&gt;Apakah Anda ingin melanjutkan tanpa sumber daya tersebut?</translation>
     </message>
     <message>
-        <location line="-140"/>
+        <location line="-141"/>
         <source>Confirm resources to update</source>
         <translation>Konfirmasi sumber daya untuk diperbarui</translation>
     </message>
     <message>
-        <location line="+129"/>
+        <location line="+128"/>
         <source>Mod name: %1</source>
         <translation>Nama mod: %1</translation>
     </message>
     <message>
-        <location line="+296"/>
+        <location line="+311"/>
         <source>New Version Type: %1</source>
         <translation>Jenis Versi Baru: %1</translation>
     </message>
@@ -13706,7 +14168,7 @@ Apakah Anda yakin ingin melakukan ini?</translation>
         <translation>Versi baru: %1</translation>
     </message>
     <message>
-        <location line="-239"/>
+        <location line="-252"/>
         <source>Checking for dependencies...</source>
         <translation>Memeriksa ketergantungan...</translation>
     </message>
@@ -13717,32 +14179,32 @@ Apakah Anda yakin ingin melakukan ini?</translation>
         <translation>Peringatan-peringatan</translation>
     </message>
     <message>
-        <location line="-137"/>
+        <location line="-138"/>
         <source>Could not generate metadata for the following resources:&lt;br&gt;Do you wish to proceed without those resources?</source>
         <translation>Tidak dapat membuat metadata untuk sumber daya berikut:&lt;br&gt;Apakah Anda ingin melanjutkan tanpa sumber daya tersebut?</translation>
     </message>
     <message>
-        <location line="+356"/>
+        <location line="+367"/>
         <source>Couldn&apos;t find a valid version on the selected mod provider(s)</source>
         <translation>Tidak dapat memilih versi sesuai pada penyedia(-penyedia) mod terpilih</translation>
     </message>
     <message>
-        <location line="-383"/>
+        <location line="-394"/>
         <source>You&apos;re about to update the following resources:</source>
         <translation>Anda akan memperbarui sumber daya berikut:</translation>
     </message>
     <message>
-        <location line="+405"/>
+        <location line="+419"/>
         <source>Old version: %1</source>
         <translation>Versi lama: %1</translation>
     </message>
     <message>
-        <location line="-285"/>
+        <location line="-300"/>
         <source>Reason: %1</source>
         <translation>Alasan: %1</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+4"/>
         <source>Possible solution: Getting the latest version manually:&lt;br&gt;%1&lt;br&gt;</source>
         <extracomment>%1 is the link to download it manually</extracomment>
         <translation>Solusi memungkinkan: Mendapatkan versi terkini secara manual:&lt;br&gt;%1&lt;br&gt;</translation>
@@ -13753,12 +14215,12 @@ Apakah Anda yakin ingin melakukan ini?</translation>
         <translation>Memeriksa pembaruan</translation>
     </message>
     <message>
-        <location line="+186"/>
+        <location line="+191"/>
         <source>Looking for metadata</source>
         <translation>Mencari metadata</translation>
     </message>
     <message>
-        <location line="+198"/>
+        <location line="+207"/>
         <source>Required by:</source>
         <translation>Dibutuhkan oleh:</translation>
     </message>
@@ -13768,12 +14230,12 @@ Apakah Anda yakin ingin melakukan ini?</translation>
         <translation>Dibutuhkan oleh: %1</translation>
     </message>
     <message>
-        <location line="-150"/>
+        <location line="-158"/>
         <source>The resource &apos;%1&apos; does not have a metadata yet. We need to generate it in order to track relevant information on how to update this mod. To do this, please select a mod provider which we can use to check for updates for this mod.</source>
         <translation>Sumber daya &apos;%1&apos; belum memiliki metadata. Kami harus membuatnya untuk melacak informasi relevan tentang cara memperbarui mod ini. Untuk itu, mohon memilih penyedia mod yang kami dapat gunakan untuk memeriksa pembaruan.</translation>
     </message>
     <message>
-        <location line="-248"/>
+        <location line="-254"/>
         <source>Mod name: %1&lt;br&gt;File name: %2&lt;br&gt;Reason: %3&lt;br&gt;&lt;br&gt;</source>
         <translation>Nama mod: %1&lt;br&gt;Nama berkas: %2&lt;br&gt;Alasan: %3&lt;br&gt;&lt;br&gt;</translation>
     </message>
@@ -13783,17 +14245,24 @@ Apakah Anda yakin ingin melakukan ini?</translation>
         <translation>Hanya sumber daya dengan centang akan diperbarui!</translation>
     </message>
     <message>
-        <location line="+71"/>
+        <location line="+72"/>
         <source>Checking for updates...</source>
         <translation>Memerika pembaruan...</translation>
     </message>
+    <message numerus="yes">
+        <location line="+145"/>
+        <source>%n update(s) found. You&apos;re about to update the following resources:</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location line="+258"/>
+        <location line="+122"/>
         <source>Generating metadata...</source>
         <translation>Membuat metadata...</translation>
     </message>
     <message>
-        <location line="+106"/>
+        <location line="+110"/>
         <source>Changelog of the latest version</source>
         <translation>Daftar perubahan versi terbaru</translation>
     </message>
@@ -13803,7 +14272,7 @@ Apakah Anda yakin ingin melakukan ini?</translation>
         <translation>Penyedia: %1</translation>
     </message>
     <message>
-        <location line="-211"/>
+        <location line="-223"/>
         <source>Not installed</source>
         <translation>Tidak terinstal</translation>
     </message>
@@ -13879,7 +14348,7 @@ Apakah Anda yakin ingin melakukan ini?</translation>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+394"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
         <source>Abort</source>
         <translation>Hentikan</translation>
     </message>
@@ -13923,7 +14392,7 @@ Apakah Anda yakin ingin melakukan ini?</translation>
         <translation>Unggah</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-77"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-79"/>
         <source>You are about to upload the selected screenshot to %1.
 You should double-check for personal information.
 
@@ -13934,7 +14403,7 @@ Anda sebaiknya pastikan kembali tidak ada informasi pribadi.
 Apakah Anda yakin?</translation>
     </message>
     <message>
-        <location line="+144"/>
+        <location line="+147"/>
         <source>Confirm Deletion</source>
         <translation>Konfirmasi Penghapusan</translation>
     </message>
@@ -13967,12 +14436,12 @@ Apakah Anda yakin?</translation>
         <translation>Salin gambar</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-204"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="-214"/>
         <source>Context menu</source>
         <translation>Menu Konteks</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+68"/>
         <source>You are about to upload %1 screenshots to %2.
 You should double-check for personal information.
 
@@ -13988,7 +14457,7 @@ Apakah Anda yakin?</translation>
         <translation>Tangkapan layar</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+82"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+84"/>
         <source>Unknown error</source>
         <translation>Error tidak diketahui</translation>
     </message>
@@ -14257,27 +14726,27 @@ Apakah Anda yakin?</translation>
 <context>
     <name>ShaderPackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ShaderPackPage.cpp" line="+100"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/ShaderPackPage.cpp" line="+101"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>Pengunduhan dibatalkan oleh pengguna.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Hentikan</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Kesalahan</translation>
     </message>
     <message>
-        <location line="-160"/>
+        <location line="-169"/>
         <source>Change a shader pack&apos;s version.</source>
         <translation>Ganti versi dari paket shader.</translation>
     </message>
@@ -14287,7 +14756,7 @@ Apakah Anda yakin?</translation>
         <translation>Unduh Paket-paket</translation>
     </message>
     <message>
-        <location line="+88"/>
+        <location line="+92"/>
         <source>Updating shader packs while the game is running may pack duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -14307,12 +14776,12 @@ Apakah Anda yakin untuk melanjutkan?</translation>
     </message>
     <message>
         <location line="-5"/>
-        <location line="+99"/>
+        <location line="+104"/>
         <source>Shader pack updates are unavailable when metadata is disabled!</source>
         <translation>Pembaruan paket shader tidak tersedia ketika metadata dinonaktifkan!</translation>
     </message>
     <message>
-        <location line="-66"/>
+        <location line="-69"/>
         <source>All shader packs are up-to-date! :)</source>
         <translation>Semua paket shader dalam versi terbaru :)</translation>
     </message>
@@ -14327,25 +14796,25 @@ Apakah Anda yakin untuk melanjutkan?</translation>
         <translation>Pembaruan paket shader dibatalkan!</translation>
     </message>
     <message>
-        <location line="-61"/>
-        <location line="+61"/>
+        <location line="-66"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Dibatalkan</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Peringatan-peringatan</translation>
     </message>
     <message>
-        <location line="-136"/>
+        <location line="-142"/>
         <source>Download shader packs from online mod platforms</source>
         <translation>Unduh paket shader dari platform mod daring</translation>
     </message>
     <message>
-        <location line="+161"/>
+        <location line="+168"/>
         <source>You are about to remove the metadata for %1 shader packs.
 Are you sure?</source>
         <translation>Anda akan menghapus metadata untuk %1 paket shader.
@@ -14357,17 +14826,17 @@ Apakah Anda yakin?</translation>
         <translation>Konfirmasi Penghapusan</translation>
     </message>
     <message>
-        <location line="-44"/>
+        <location line="-45"/>
         <source>All selected shader packs are up-to-date! :)</source>
         <translation>Semua paket shader terpilih dalam versi terbaru :)</translation>
     </message>
     <message>
-        <location line="-110"/>
+        <location line="-116"/>
         <source>Try to check or update all selected shader packs (all shader packs if none are selected)</source>
         <translation>Coba periksa atau perbarui semua paket shader terpilih (semuanya bila tidak ada yang terpilih)</translation>
     </message>
     <message>
-        <location line="+113"/>
+        <location line="+119"/>
         <source>Update checker</source>
         <translation>Pemeriksa pembaruan</translation>
     </message>
@@ -14926,7 +15395,7 @@ Apakah Anda yakin?</translation>
 <context>
     <name>Task</name>
     <message>
-        <location filename="../launcher/tasks/Task.cpp" line="+134"/>
+        <location filename="../launcher/tasks/Task.cpp" line="+141"/>
         <source>Aborted</source>
         <translation>Dibatalkan</translation>
     </message>
@@ -15178,58 +15647,58 @@ inheritsFrom hilang</translation>
 <context>
     <name>TexturePackPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="+108"/>
-        <location line="+84"/>
+        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="+109"/>
+        <location line="+89"/>
         <source>Download stopped by user.</source>
         <translation>Pengunduhan dibatalkan oleh pengguna.</translation>
     </message>
     <message>
-        <location line="-64"/>
-        <location line="+80"/>
+        <location line="-68"/>
+        <location line="+84"/>
         <source>Abort</source>
         <translation>Hentikan</translation>
     </message>
     <message>
-        <location line="-104"/>
-        <location line="+39"/>
-        <location line="+45"/>
-        <location line="+54"/>
+        <location line="-109"/>
+        <location line="+42"/>
+        <location line="+47"/>
+        <location line="+57"/>
         <source>Error</source>
         <translation>Kesalahan</translation>
     </message>
     <message>
-        <location line="-99"/>
-        <location line="+99"/>
+        <location line="-104"/>
+        <location line="+104"/>
         <source>Texture pack updates are unavailable when metadata is disabled!</source>
         <translation>Pembaruan paket tekstur tidak tersedia ketika metadata dinonaktifkan!</translation>
     </message>
     <message>
-        <location line="-190"/>
+        <location line="-199"/>
         <source>Download Packs</source>
         <translation>Unduh Paket</translation>
     </message>
     <message>
-        <location line="+96"/>
+        <location line="+100"/>
         <source>Confirm Update</source>
         <translation>Konfirmasi Pembaruan</translation>
     </message>
     <message>
-        <location line="-89"/>
+        <location line="-93"/>
         <source>Try to check or update all selected texture packs (all texture packs if none are selected)</source>
         <translation>Coba periksa atau perbarui semua paket tekstur terpilih (semua bila tidak ada yang terpilih)</translation>
     </message>
     <message>
-        <location line="+119"/>
+        <location line="+125"/>
         <source>All selected texture packs are up-to-date! :)</source>
         <translation>Semua paket tekstur terpilih dalam versi terbaru! :)</translation>
     </message>
     <message>
-        <location line="-105"/>
+        <location line="-111"/>
         <source>Change a texture pack&apos;s version.</source>
         <translation>Ganti versi dari paket tekstur.</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+109"/>
         <source>All texture packs are up-to-date! :)</source>
         <translation>Semua paket tekstur dalam versi terbaru! :)</translation>
     </message>
@@ -15239,32 +15708,32 @@ inheritsFrom hilang</translation>
         <translation>&apos;%1&apos; dalam versi terkini! :)</translation>
     </message>
     <message>
-        <location line="-96"/>
+        <location line="-102"/>
         <source>View the homepages of all selected texture packs.</source>
         <translation>Lihat laman rumah dari semua paket tekstur terpilih.</translation>
     </message>
     <message>
-        <location line="+31"/>
-        <location line="+61"/>
+        <location line="+32"/>
+        <location line="+66"/>
         <location line="+23"/>
         <source>Aborted</source>
         <translation>Dibatalkan</translation>
     </message>
     <message>
-        <location line="-78"/>
-        <location line="+84"/>
+        <location line="-83"/>
+        <location line="+89"/>
         <source>Warnings</source>
         <translation>Peringatan-peringatan</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>You are about to remove the metadata for %1 texture packs.
 Are you sure?</source>
         <translation>Anda akan menghapus metadata untuk %1 paket tekstur.
 Apakah Anda yakin?</translation>
     </message>
     <message>
-        <location line="-74"/>
+        <location line="-77"/>
         <source>Updating texture packs while the game is running may cause pack duplication and game crashes.
 The old files may not be deleted as they are in use.
 Are you sure you want to do this?</source>
@@ -15273,17 +15742,17 @@ Berkas lama mungkin tidak dapat terhapus karena sedang dipakai.
 Apakah Anda yakin untuk melanjutkan?</translation>
     </message>
     <message>
-        <location line="-96"/>
+        <location line="-100"/>
         <source>Download texture packs from online mod platforms</source>
         <translation>Unduh paket sumber dari platform mod daring</translation>
     </message>
     <message>
-        <location line="+116"/>
+        <location line="+122"/>
         <source>The texture pack updater was aborted!</source>
         <translation>Pembaruan paket tekstur dibatalkan!</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+54"/>
         <source>Confirm Removal</source>
         <translation>Konfirmasi Penghapusan</translation>
     </message>
@@ -15293,7 +15762,7 @@ Apakah Anda yakin untuk melanjutkan?</translation>
         <translation>Paket Tekstur</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="-41"/>
+        <location filename="../launcher/ui/pages/instance/TexturePackPage.cpp" line="-42"/>
         <source>Update checker</source>
         <translation>Pemeriksa pembaruan</translation>
     </message>
@@ -15351,6 +15820,29 @@ Apakah Anda yakin untuk melanjutkan?</translation>
         <location line="+12"/>
         <source>Completeness is the percentage of fully translated strings, not counting automatically guessed ones.</source>
         <translation>Kelengkapan adalah persentase dari deretan yang telah diterjemahkan sepenuhnya, tidak termasuk yang ditebak secara otomatis.</translation>
+    </message>
+</context>
+<context>
+    <name>UntrustedModsDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/UntrustedModsDialog.ui" line="+14"/>
+        <source>Easy There!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The modpack you are installing includes mods which are not hosted on Modrinth or CurseForge:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Malicious mods are often distributed through links sent on platforms such as Discord.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;We strongly recommend only importing modpacks from trusted sources.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>I trust this modpack and wish to proceed regardless</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -15918,11 +16410,12 @@ Mohon menambahkan akun Microsoft Anda.</translation>
 <context>
     <name>VersionSelectDialog</name>
     <message>
+        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+74"/>
         <source>OK</source>
-        <translation type="vanished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/VersionSelectDialog.cpp" line="+104"/>
+        <location line="+30"/>
         <source>Reloads the version list.</source>
         <translation>Muat Ulang daftar versi.</translation>
     </message>
@@ -15932,12 +16425,11 @@ Mohon menambahkan akun Microsoft Anda.</translation>
         <translation>Pilih Versi</translation>
     </message>
     <message>
-        <location line="-29"/>
         <source>Ok</source>
-        <translation>Ok</translation>
+        <translation type="vanished">Ok</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-28"/>
         <source>Cancel</source>
         <translation>Batalkan</translation>
     </message>
@@ -16077,7 +16569,7 @@ Mohon menambahkan akun Microsoft Anda.</translation>
 <context>
     <name>WorldList</name>
     <message>
-        <location filename="../launcher/minecraft/WorldList.cpp" line="+272"/>
+        <location filename="../launcher/minecraft/WorldList.cpp" line="+273"/>
         <source>Info</source>
         <extracomment>special warnings?</extracomment>
         <translation>Informasi</translation>
@@ -16337,7 +16829,7 @@ Apakah Anda yakin?</translation>
 <context>
     <name>XboxAuthorizationStep</name>
     <message>
-        <location filename="../launcher/minecraft/auth/steps/XboxAuthorizationStep.cpp" line="+167"/>
+        <location filename="../launcher/minecraft/auth/steps/XboxAuthorizationStep.cpp" line="+163"/>
         <source>XSTS authentication ended with unrecognized error(s):
 
 %1</source>
@@ -16361,17 +16853,16 @@ Apakah Anda yakin?</translation>
         <translation>Akun Microsoft ini tidak memiliki profil Xbox Live. Beli game tersebut di %1 terlebih dahulu.</translation>
     </message>
     <message>
-        <location line="-53"/>
         <source>Failed to get authorization for %1 services. Error %2.</source>
-        <translation>Gagal mendapatkan otorisasi untuk layanan %1. Error %2.</translation>
+        <translation type="vanished">Gagal mendapatkan otorisasi untuk layanan %1. Error %2.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-49"/>
         <source>Unknown STS error for %1 services: %2</source>
         <translation>Kesalahan STS tidak diketahui untuk layanan %1: %2</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+43"/>
         <source>XErr element is missing from %1 authorization error response.</source>
         <translation>Elemen XErr tidak ada dari respons kesalahan otorisasi %1.</translation>
     </message>
@@ -16415,12 +16906,12 @@ Mohon atur akun anda menurut %1.</translation>
         <translation>Akun Microsoft ini telah ditangguhkan oleh Xbox karena melanggar satu atau lebih standar komunitas dan tidak dapat digunakan.</translation>
     </message>
     <message>
-        <location line="-129"/>
+        <location line="-125"/>
         <source>Getting authorization to access %1 services.</source>
         <translation>Mendapatkan otorisasi untuk mengakses layanan %1.</translation>
     </message>
     <message>
-        <location line="+64"/>
+        <location line="+60"/>
         <source>Could not parse authorization response for access to %1 services.</source>
         <translation>Tidak dapat menguraikan tanggapan otorisasi untuk akses ke %1 layanan.</translation>
     </message>
