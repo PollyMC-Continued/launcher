@@ -2,12 +2,20 @@
 
 ## v10.0.1
 
-**Fixes a false alarm in "Check instance" for modpacks that bundle their libraries.**
+**Fixes "Check instance" false alarms for bundled libraries, detects version mismatches, and improves "Update Pack" reliability.**
+
+**Added:**
+
+- **Dependency version mismatches detected** — "Check instance" now reports an error when a required mod is installed, but its version is outside the required range (e.g., a mod needs `[1.3.8, 1.4)` but `21.1.1` is installed). Previously, the launcher only checked if the mod was present, letting the game crash on startup.
+- **Pack file verification** — "Check instance" now compares your actual instance against the modpack's file list. It warns you about pack files missing from your instance and flags "orphan" mods (jars in your mods folder that are not part of the pack, often left behind by previous updates or added manually).
 
 **Fixed:**
 
 - **Mod conflict false alarms with bundled libraries** — Many modpacks, including All the Mods 10: To the Sky, ship libraries inside other mods (NeoForge's "Jar-in-Jar"). "Check instance" no longer reports those libraries as possibly missing when another installed mod already includes them. Real missing dependencies are still reported.
 - **Mods that only contain other mods** — Library-style mods that carry their mods inside themselves (such as Kotlin for Forge) are now recognized and counted as installed, instead of being skipped.
+- **Update Pack ignoring changed or deleted files** — Modrinth and CurseForge updates now verify that "kept" files actually still exist on your disk. If you updated or deleted a mod individually outside the pack, "Update Pack" will now detect it, warn you, and restore the pack's version. Intentionally disabled mods are still respected and left alone.
+- **Stale configs not overwriting** — Fixed a bug on Windows where updating a pack would silently fail to overwrite existing config files and overrides, leaving you with outdated settings. Files are now verified and removed before copying.
+- **Override cleanup failing** — Fixed a bug where certain config files were never deleted between pack updates if their path contained the word "overrides" (e.g., `overrides/config/overrides.cfg`).
 
 ## v10.0.0
 

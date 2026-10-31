@@ -40,7 +40,9 @@ class InstanceCreationTask : public InstanceTask {
 
     /** True when a pack-managed file is on disk, enabled or disabled: the user may have
      *  disabled a mod on purpose, and optional pack files are stored with a ".disabled" suffix. */
+   public:
     static bool packFileExists(const QDir& gameDir, const QString& relativePath);
+   protected:
 
    protected:
     void setError(const QString& message) { m_error_message = message; };
