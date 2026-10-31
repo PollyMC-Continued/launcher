@@ -48,13 +48,16 @@
 #include "InstanceList.h"
 #include "Json.h"
 
+#include <QDir>
 #include <QMap>
 #include <QSet>
+#include <QVariant>
 
 #include "minecraft/MinecraftInstance.h"
 #include "minecraft/PackProfile.h"
 
 #include "modplatform/helpers/OverrideUtils.h"
+#include "modplatform/packwiz/Packwiz.h"
 
 #include "settings/INISettingsObject.h"
 
@@ -90,6 +93,27 @@ bool FlameCreationTask::abort()
 
     return InstanceCreationTask::abort();
 }
+
+namespace {
+// The launcher's own mod metadata (<folder>/.index/*.pw.toml) remembers which file it last
+// installed for a CurseForge project, even when that file was swapped later (for example by
+// "Check for Updates"). Returns that file's path relative to the game folder if it is on disk,
+// or an empty string.
+QString indexedFileForProject(const QDir& gameDir, const QString& targetFolder, int projectId)
+{
+    if (targetFolder.isEmpty() || projectId <= 0)
+        return {};
+    const QDir indexDir(FS::PathCombine(gameDir.absolutePath(), targetFolder, ".index"));
+    if (!indexDir.exists())
+        return {};
+    QVariant id(projectId);
+    auto meta = Packwiz::V1::getIndexForMod(indexDir, id);
+    if (!meta.isValid() || meta.filename.isEmpty())
+        return {};
+    QString relative = FS::PathCombine(targetFolder, meta.filename);
+    return InstanceCreationTask::packFileExists(gameDir, relative) ? relative : QString();
+}
+}  // namespace
 
 bool FlameCreationTask::updateInstance()
 {
@@ -138,11 +162,19 @@ bool FlameCreationTask::updateInstance()
     QString old_index_folder(FS::PathCombine(old_inst_dir.absolutePath(), "flame"));
     QString old_index_path(FS::PathCombine(old_index_folder, "manifest.json"));
 
-    QFileInfo old_index_file(old_index_path);
-    if (old_index_file.exists()) {
-        Flame::Manifest old_pack;
-        Flame::loadManifest(old_pack, old_index_path);
+    Flame::Manifest old_pack;
+    bool old_manifest_loaded = false;
+    if (QFileInfo::exists(old_index_path)) {
+        try {
+            Flame::loadManifest(old_pack, old_index_path);
+            old_manifest_loaded = true;
+        } catch (const JSONValidationError& e) {
+            // treated like a missing index below: the user is asked before going on
+            qWarning() << "Could not read the previous pack manifest:" << e.cause();
+        }
+    }
 
+    if (old_manifest_loaded) {
         auto& old_files = old_pack.files;
 
         auto& files = m_pack.files;
@@ -204,16 +236,21 @@ bool FlameCreationTask::updateInstance()
 
         auto [job, raw_response] = api.getFiles(fileIds);
 
+        // If we cannot learn the old file names, the old versions cannot be removed. That must
+        // not pass silently: it is how duplicate mods end up in the instance.
+        bool lookupFailed = false;
+
         QEventLoop loop;
 
         connect(job.get(), &Task::succeeded, this, [this, raw_response, fileIds, old_inst_dir, &old_files, old_minecraft_dir, keptFileIds,
-                                                    &assumedStillPresent] {
+                                                    &assumedStillPresent, &lookupFailed] {
             // Parse the API response
             QJsonParseError parse_error{};
             auto doc = QJsonDocument::fromJson(*raw_response, &parse_error);
             if (parse_error.error != QJsonParseError::NoError) {
                 qWarning() << QString("Could not parse Flame files response as JSON at offset %1: %2").arg(parse_error.offset).arg(parse_error.errorString());
                 qWarning() << *raw_response;
+                lookupFailed = true;
                 return;
             }
 
@@ -236,13 +273,18 @@ bool FlameCreationTask::updateInstance()
                         continue;
                     }
 
+                    // Keep the manifest entry (project id, target folder) and only add the file
+                    // name to it. We don't care about blocked mods, we just need local data to
+                    // delete the file.
                     Flame::File file;
-                    // We don't care about blocked mods, we just need local data to delete the file
+                    if (auto existing = old_files.constFind(id); existing != old_files.constEnd())
+                        file = *existing;
                     file.version = FlameMod::loadIndexedPackVersion(entry_obj);
                     old_files.insert(id, file);
                 }
             } catch (Json::JsonException& e) {
                 qCritical() << e.cause() << e.what();
+                lookupFailed = true;
             }
 
             // Delete the files
@@ -252,9 +294,19 @@ bool FlameCreationTask::updateInstance()
 
                 QString relative_path(FS::PathCombine(file.targetFolder, file.version.fileName));
                 scheduleToDelete(m_parent, old_minecraft_dir, relative_path, true);
+
+                // The same mod may also be on disk under another name, because it was updated
+                // outside the pack. The pack brings its own version, so this one would become
+                // a duplicate.
+                const QString indexed = indexedFileForProject(old_minecraft_dir, file.targetFolder, file.projectId);
+                if (!indexed.isEmpty() && indexed != relative_path)
+                    scheduleToDelete(m_parent, old_minecraft_dir, indexed, true);
             }
         });
-        connect(job.get(), &Task::failed, this, [](QString reason) { qCritical() << QString("Could not download mod files: %1").arg(reason); });
+        connect(job.get(), &Task::failed, this, [&lookupFailed](QString reason) {
+            qCritical() << QString("Could not download mod files: %1").arg(reason);
+            lookupFailed = true;
+        });
         connect(job.get(), &Task::finished, &loop, &QEventLoop::quit);
 
         m_processUpdateFileInfoJob = job;
@@ -264,21 +316,74 @@ bool FlameCreationTask::updateInstance()
 
         m_processUpdateFileInfoJob = nullptr;
 
+        if (lookupFailed) {
+            auto dialog = CustomMessageBox::selectable(
+                m_parent, tr("Could not check the old files"),
+                tr("The launcher could not get the file names of the previous pack version from CurseForge, so the old mod files "
+                   "cannot be removed. Updating now would likely leave duplicate mods in the instance, which stops the game from "
+                   "starting.\n\nDo you want to continue anyway?"),
+                QMessageBox::Warning, QMessageBox::Ok | QMessageBox::Cancel);
+
+            if (dialog->exec() == QDialog::DialogCode::Rejected) {
+                m_abort = true;
+                return false;
+            }
+        } else {
+            int unidentified = 0;
+            for (const auto& file : old_files) {
+                if (file.version.fileName.isEmpty())
+                    unidentified++;
+            }
+            if (unidentified > 0) {
+                logWarning(tr("%1 file(s) of the previous pack version could not be identified on CurseForge anymore, so they could "
+                              "not be removed. If the game reports duplicate mods, delete the older copies by hand.")
+                               .arg(unidentified));
+            }
+        }
+
         // The old manifest only proves these files were on disk when the pack was installed;
         // verify that before trusting it (see the comment on assumedStillPresent). Files the
         // API did not give us a name for are left alone: better optimistic than broken.
         QStringList filesToRestore;
+        QStringList filesReplaced;
+        QStringList duplicatesRemoved;
         for (auto it = assumedStillPresent.constBegin(); it != assumedStillPresent.constEnd(); ++it) {
             const Flame::File& file = it.value();
             if (file.version.fileName.isEmpty() || file.targetFolder.isEmpty())
                 continue;
 
             const QString relative_path(FS::PathCombine(file.targetFolder, file.version.fileName));
-            if (packFileExists(old_minecraft_dir, relative_path))
+            const QString indexed = indexedFileForProject(old_minecraft_dir, file.targetFolder, file.projectId);
+            const bool otherFile = !indexed.isEmpty() && indexed != relative_path;
+
+            if (packFileExists(old_minecraft_dir, relative_path)) {
+                // The pack's file is there, but so is another file of the same mod (left over
+                // from an earlier update): two jars with one mod id stop the game from starting.
+                if (otherFile) {
+                    scheduleToDelete(m_parent, old_minecraft_dir, indexed, true);
+                    duplicatesRemoved << indexed;
+                }
                 continue;
+            }
+
+            // The pack's file is gone because the mod was updated to another file (for example
+            // with "Check for Updates"): downloading the pack's file again would duplicate it.
+            if (otherFile) {
+                filesReplaced << relative_path;
+                continue;
+            }
 
             m_pack.files.insert(it.key(), file);
             filesToRestore << relative_path;
+        }
+        if (!filesReplaced.isEmpty()) {
+            logWarning(tr("These files were part of the pack before, but you replaced them with another version of the same mod, so "
+                          "they are not downloaded again:\n%1")
+                           .arg(filesReplaced.join('\n')));
+        }
+        if (!duplicatesRemoved.isEmpty()) {
+            logWarning(tr("These files were extra copies of mods the pack already provides, so they are removed:\n%1")
+                           .arg(duplicatesRemoved.join('\n')));
         }
         if (!filesToRestore.isEmpty()) {
             logWarning(tr("These files were part of the pack before, but are no longer on disk (perhaps they were "
