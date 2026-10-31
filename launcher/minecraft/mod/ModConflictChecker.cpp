@@ -394,7 +394,7 @@ QList<ModConflictChecker::Conflict> ModConflictChecker::check(const QList<Mod*>&
 
     // ---- 3. required dependencies that are disabled or absent ----
     {
-        // ids shipped inside an enabled jar (NeoForge Jar-in-Jar): these are present at runtime even though
+        // ids shipped inside an enabled jar (Jar-in-Jar): these are present at runtime even though
         // there is no file for them in the mods folder
         QSet<QString> bundledIds;
         for (const Mod* mod : enabled) {
@@ -444,8 +444,19 @@ QList<ModConflictChecker::Conflict> ModConflictChecker::check(const QList<Mod*>&
     // ---- 4. required dependencies whose installed version is outside the declared range ----
     // "requires buildinggadgets2 [1.3.8,1.4)" with buildinggadgets2 21.1.1 installed: the
     // dependency is present, so check 3 is happy, but the game still refuses to start.
+    // A dependency can also be satisfied by a jar bundled inside another mod (Jar-in-Jar), whose
+    // version we know from the nested jar's own metadata; that version has to fit the range too.
     // Only clear-cut cases are reported; anything the evaluator cannot decide is skipped.
     {
+        // which enabled mod bundles which dependency id, for the report text
+        QHash<QString, Mod*> bundlerOf;
+        for (Mod* mod : enabled) {
+            for (const QString& id : mod->bundledModIds()) {
+                if (!bundlerOf.contains(id))
+                    bundlerOf.insert(id, mod);
+            }
+        }
+
         for (Mod* mod : enabled) {
             const QHash<QString, QString> ranges = mod->dependencyRanges();
             for (auto it = ranges.constBegin(); it != ranges.constEnd(); ++it) {
@@ -455,8 +466,27 @@ QList<ModConflictChecker::Conflict> ModConflictChecker::check(const QList<Mod*>&
                     continue;
 
                 const QList<Mod*> targets = enabledById.value(depId);
-                if (targets.isEmpty())
-                    continue;  // not installed at all - that is check 3's business
+                if (targets.isEmpty()) {
+                    // not a file in the mods folder: maybe bundled inside another enabled jar
+                    Mod* bundler = bundlerOf.value(depId, nullptr);
+                    if (!bundler)
+                        continue;  // not installed at all - that is check 3's business
+                    const QString bundledVersion = bundler->bundledModVersions().value(depId);
+                    if (bundledVersion.isEmpty())
+                        continue;  // present, but the nested jar's version is unknown: nothing to check
+                    if (evaluateRange(range, bundledVersion) != Verdict::Outside)
+                        continue;
+
+                    conflicts.append({ Kind::DependencyVersion, Severity::Error,
+                                       tr("Outdated bundled dependency version: %1").arg(depId),
+                                       tr("%1 (%2) requires %3 version %4, but the copy bundled inside %5 (%6) is version %7.\n"
+                                          "The game will refuse to start with this combination.\n"
+                                          "Update the mod that bundles it, or install a separate copy inside that range.")
+                                           .arg(displayName(mod), fileLabel(mod), depId, range, displayName(bundler), fileLabel(bundler),
+                                                bundledVersion),
+                                       { mod, bundler } });
+                    continue;
+                }
 
                 for (Mod* target : targets) {
                     if (target->version().isEmpty())

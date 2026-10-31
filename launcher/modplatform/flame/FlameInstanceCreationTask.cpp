@@ -57,7 +57,6 @@
 #include "minecraft/PackProfile.h"
 
 #include "modplatform/helpers/OverrideUtils.h"
-#include "modplatform/packwiz/Packwiz.h"
 
 #include "settings/INISettingsObject.h"
 
@@ -93,27 +92,6 @@ bool FlameCreationTask::abort()
 
     return InstanceCreationTask::abort();
 }
-
-namespace {
-// The launcher's own mod metadata (<folder>/.index/*.pw.toml) remembers which file it last
-// installed for a CurseForge project, even when that file was swapped later (for example by
-// "Check for Updates"). Returns that file's path relative to the game folder if it is on disk,
-// or an empty string.
-QString indexedFileForProject(const QDir& gameDir, const QString& targetFolder, int projectId)
-{
-    if (targetFolder.isEmpty() || projectId <= 0)
-        return {};
-    const QDir indexDir(FS::PathCombine(gameDir.absolutePath(), targetFolder, ".index"));
-    if (!indexDir.exists())
-        return {};
-    QVariant id(projectId);
-    auto meta = Packwiz::V1::getIndexForMod(indexDir, id);
-    if (!meta.isValid() || meta.filename.isEmpty())
-        return {};
-    QString relative = FS::PathCombine(targetFolder, meta.filename);
-    return InstanceCreationTask::packFileExists(gameDir, relative) ? relative : QString();
-}
-}  // namespace
 
 bool FlameCreationTask::updateInstance()
 {
@@ -189,35 +167,33 @@ bool FlameCreationTask::updateInstance()
         // Remove repeated files, we don't need to download them!
         auto files_iterator = files.begin();
         while (files_iterator != files.end()) {
-            auto const& file = files_iterator;
+            auto old_file = old_files.find(files_iterator.key());
+            if (old_file != old_files.end() && old_file->fileId == files_iterator->fileId) {
+                qDebug() << "Removed file at" << files_iterator->targetFolder << "with id" << files_iterator->fileId
+                         << "from list of downloads";
 
-            auto old_file = old_files.find(file.key());
-            if (old_file != old_files.end()) {
-                // We found a match, but is it a different version?
-                if (old_file->fileId == file->fileId) {
-                    qDebug() << "Removed file at" << file->targetFolder << "with id" << file->fileId << "from list of downloads";
+                assumedStillPresent.insert(files_iterator.key(), *files_iterator);
 
-                    assumedStillPresent.insert(file.key(), *file);
-
-                    old_files.remove(file.key());
-                    files_iterator = files.erase(files_iterator);
-
-                    if (files_iterator != files.begin())
-                        files_iterator--;
-                }
+                old_files.remove(files_iterator.key());
+                // erase() already points at the next entry, so do not advance again: stepping
+                // back and forth around the erased position used to skip the entry right after
+                // an erased first element, which then lost its dedup and disk verification.
+                files_iterator = files.erase(files_iterator);
+                continue;
             }
 
-            files_iterator++;
+            ++files_iterator;
         }
 
         QDir old_minecraft_dir(inst->gameRoot());
 
         // We will remove all the previous overrides, to prevent duplicate files!
         // TODO: Currently 'overrides' will always override the stuff on update. How do we preserve unchanged overrides?
-        // FIXME: We may want to do something about disabled mods.
         auto old_overrides = Override::readOverrides("overrides", old_index_folder);
         for (const auto& entry : old_overrides) {
-            scheduleToDelete(m_parent, old_minecraft_dir, entry);
+            // also remove the ".disabled" twin, so a mod the user disabled inside the overrides
+            // is not resurrected (enabled) next to its disabled copy by the new overrides
+            scheduleToDelete(m_parent, old_minecraft_dir, entry, true);
         }
 
         // Remove remaining old files (we need to do an API request to know which ids are which files...)
@@ -298,7 +274,7 @@ bool FlameCreationTask::updateInstance()
                 // The same mod may also be on disk under another name, because it was updated
                 // outside the pack. The pack brings its own version, so this one would become
                 // a duplicate.
-                const QString indexed = indexedFileForProject(old_minecraft_dir, file.targetFolder, file.projectId);
+                const QString indexed = indexedFileForProject(old_minecraft_dir, file.targetFolder, QVariant(file.projectId));
                 if (!indexed.isEmpty() && indexed != relative_path)
                     scheduleToDelete(m_parent, old_minecraft_dir, indexed, true);
             }
@@ -353,7 +329,7 @@ bool FlameCreationTask::updateInstance()
                 continue;
 
             const QString relative_path(FS::PathCombine(file.targetFolder, file.version.fileName));
-            const QString indexed = indexedFileForProject(old_minecraft_dir, file.targetFolder, file.projectId);
+            const QString indexed = indexedFileForProject(old_minecraft_dir, file.targetFolder, QVariant(file.projectId));
             const bool otherFile = !indexed.isEmpty() && indexed != relative_path;
 
             if (packFileExists(old_minecraft_dir, relative_path)) {
@@ -774,13 +750,26 @@ void FlameCreationTask::setupDownloadJob(QEventLoop& loop)
         }
     }
 
-    connect(m_filesJob.get(), &NetJob::finished, this, [this, &loop]() {
-        m_filesJob.reset();
-        validateOtherResources(loop);
-    });
-    connect(m_filesJob.get(), &NetJob::failed, [this](QString reason) {
-        m_filesJob.reset();
+    // NOTE: none of the handlers below may reset m_filesJob from inside the job's own signal
+    // emission! Even though shared_qobject_ptr defers the actual deletion (deleteLater), dropping
+    // the last reference while the sender is still emitting is fragile, and the long-running
+    // validateOtherResources() used to run inside that emission. Instead, 'succeeded', 'failed'
+    // and 'aborted' only do bookkeeping (Task always emits exactly one of them before 'finished'),
+    // and 'finished' hands the last reference of the job to the event loop, so the NetJob is
+    // destroyed only after the emission has completely unwound.
+    connect(m_filesJob.get(), &NetJob::succeeded, this, [this, &loop]() { validateOtherResources(loop); });
+    connect(m_filesJob.get(), &NetJob::failed, this, [this, &loop](QString reason) {
         setError(reason);
+        loop.quit();
+    });
+    connect(m_filesJob.get(), &NetJob::aborted, &loop, &QEventLoop::quit);
+    connect(m_filesJob.get(), &NetJob::finished, this, [this]() {
+        // Keep the job alive with a local reference while clearing the member, and release that
+        // reference in a queued call: by the time it runs, the emission has completely unwound,
+        // and the NetJob is deleted deleteLater-style, well away from its own signals.
+        auto job = m_filesJob;
+        m_filesJob.reset();
+        QMetaObject::invokeMethod(this, [job]() mutable { job.reset(); }, Qt::QueuedConnection);
     });
     connect(m_filesJob.get(), &NetJob::progress, this, [this](qint64 current, qint64 total) {
         setDetails(tr("%1 out of %2 complete").arg(current).arg(total));
@@ -839,6 +828,16 @@ void FlameCreationTask::validateOtherResources(QEventLoop& loop)
     for (auto [fileName, targetFolder] : m_otherResources) {
         qDebug() << "Checking" << fileName << "...";
         auto localPath = FS::PathCombine(m_stagingPath, "minecraft", targetFolder, fileName);
+
+        // A resource that was never downloaded (blocked on CurseForge, or the download failed) must
+        // not abort the import: warn about it and leave it out. Optional resources the user did not
+        // select are stored with a ".disabled" suffix, so those still count as present.
+        if (!QFileInfo::exists(localPath) && !QFileInfo::exists(localPath + ".disabled")) {
+            logWarning(tr("Pack resource '%1' (for the '%2' folder) is not on disk: it was not downloaded, so it is left "
+                          "out of the instance.")
+                           .arg(fileName, targetFolder));
+            continue;
+        }
 
         /// @brief check the target and move the the file
         /// @return path where file can now be found
@@ -902,6 +901,15 @@ void FlameCreationTask::validateOtherResources(QEventLoop& loop)
                 break;
         }
     }
+    // Nothing in the normal flow resets the resolver before this point (only its failure and
+    // the blocked-mods-dialog cancel paths do, and neither reaches this function), but do not
+    // trust that blindly: dereferencing a null resolver here would be a hard crash.
+    if (!m_modIdResolver) {
+        qWarning() << "Flame creation task: the mod id resolver is gone, skipping metadata creation";
+        loop.quit();
+        return;
+    }
+
     // TODO make this work with other sorts of resource
     auto task = makeShared<ConcurrentTask>("CreateModMetadata", APPLICATION->settings()->get("NumberOfConcurrentTasks").toInt());
     auto results = m_modIdResolver->getResults().files;
@@ -913,6 +921,10 @@ void FlameCreationTask::validateOtherResources(QEventLoop& loop)
         task->addTask(makeShared<LocalResourceUpdateTask>(folder, file.pack, file.version));
     }
     connect(task.get(), &Task::finished, &loop, &QEventLoop::quit);
+    // Release the abort handle only after the task's own 'finished' emission has unwound (the
+    // queued connection below is the same safe pattern ResourceFolderModel uses), so an abort()
+    // that races with the task's signals never meets a half-destroyed object.
+    connect(task.get(), &Task::finished, this, [this]() { m_processUpdateFileInfoJob.reset(); }, Qt::QueuedConnection);
     m_processUpdateFileInfoJob = task;
     task->start();
 }
