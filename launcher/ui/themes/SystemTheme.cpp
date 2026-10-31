@@ -35,6 +35,7 @@
  */
 #include "SystemTheme.h"
 #include <QApplication>
+#include <QDir>
 #include <QStyle>
 #include <QStyleFactory>
 #include "HintOverrideProxyStyle.h"
@@ -73,7 +74,15 @@ void SystemTheme::apply(bool initial)
     // Native styles must never get a palette stamped over them, on any
     // apply — not just the first. See S_NATIVE_STYLES comment.
     if (S_NATIVE_STYLES.contains(m_themeName)) {
+        // Switching *from* a custom/dark theme leaves its app stylesheet and
+        // stamped palette behind. Qt 6.11's windows11 style does not cope with
+        // being installed under a leftover QStyleSheetStyle + custom palette
+        // (crash right after "Application theme set."), so wipe both first and
+        // hand the style back the palette the app started with.
+        APPLICATION->setStyleSheet(QString());
         HintOverrideProxyStyle::installFor(qtTheme());
+        QApplication::setPalette(m_colorPalette);
+        QDir::setSearchPaths("theme", searchPaths());
         return;
     }
 

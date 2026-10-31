@@ -16,6 +16,7 @@
 - **Update Pack ignoring changed or deleted files** — Modrinth and CurseForge updates now verify that "kept" files actually still exist on your disk. If you updated or deleted a mod individually outside the pack, "Update Pack" will now detect it, warn you, and restore the pack's version. Intentionally disabled mods are still respected and left alone.
 - **Stale configs not overwriting** — Fixed a bug on Windows where updating a pack would silently fail to overwrite existing config files and overrides, leaving you with outdated settings. Files are now verified and removed before copying.
 - **Override cleanup failing** — Fixed a bug where certain config files were never deleted between pack updates if their path contained the word "overrides" (e.g., `overrides/config/overrides.cfg`).
+- **Crash when switching to the Windows 11 style** — On Windows, changing the widget style from Dark (or another custom theme) to "Windows 11" could close the launcher right after the change. The launcher now clears the leftover theme before applying the Windows 11 style, so the switch completes.
 
 ## v10.0.0
 
