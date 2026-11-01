@@ -4154,12 +4154,12 @@ Are you sure you want to do this?</source>
 <context>
     <name>FlameCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+636"/>
+        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+780"/>
         <source>Downloading mods...</source>
         <translation>Се преземаат модови...</translation>
     </message>
     <message>
-        <location line="-58"/>
+        <location line="-71"/>
         <source>The following files are not available for download in third party launchers.&lt;br/&gt;You will need to manually download them and add them to the instance.</source>
         <translation>Овие фајлови не се достапни за превземање во други лаунчери.&lt;br/&gt;Вие ќе морате мануелно да ги превземете и да ги додадете во инстансата.</translation>
     </message>
@@ -4174,20 +4174,55 @@ Are you sure you want to do this?</source>
         <translation>Неуспешно собирање на локална метадата индекс за %1</translation>
     </message>
     <message>
-        <location line="-149"/>
-        <location line="+236"/>
+        <location line="-275"/>
+        <location line="+362"/>
         <source>Could not understand pack manifest:
 </source>
         <translation>Не може да се разбере манифестот на пакетот:
 </translation>
     </message>
     <message>
-        <location line="-231"/>
+        <location line="-357"/>
         <source> (version %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+119"/>
+        <location line="+171"/>
+        <source>Could not check the old files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The launcher could not get the file names of the previous pack version from CurseForge, so the old mod files cannot be removed. Updating now would likely leave duplicate mods in the instance, which stops the game from starting.
+
+Do you want to continue anyway?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>%1 file(s) of the previous pack version could not be identified on CurseForge anymore, so they could not be removed. If the game reports duplicate mods, delete the older copies by hand.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+42"/>
+        <source>These files were part of the pack before, but you replaced them with another version of the same mod, so they are not downloaded again:
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>These files were extra copies of mods the pack already provides, so they are removed:
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>These files were part of the pack before, but are no longer on disk (perhaps they were updated or removed individually), so they will be downloaded again:
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
         <source>No index file.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4244,7 +4279,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+44"/>
         <source>%1 out of %2 complete</source>
         <translation>%1 од %2 завршено</translation>
     </message>
@@ -4259,7 +4294,12 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-361"/>
+        <location line="+33"/>
+        <source>Pack resource &apos;%1&apos; (for the &apos;%2&apos; folder) is not on disk: it was not downloaded, so it is left out of the instance.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-407"/>
         <source>Failed to find version for %1 loader</source>
         <translation>Не успеа да најде верзиа за не %1 лоадер</translation>
     </message>
@@ -4814,7 +4854,7 @@ Are you sure you want to do this?</source>
 <context>
     <name>InstanceCreationTask</name>
     <message>
-        <location filename="../launcher/InstanceCreationTask.cpp" line="+63"/>
+        <location filename="../launcher/InstanceCreationTask.cpp" line="+67"/>
         <source>Removing old conflicting files...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4853,7 +4893,7 @@ Are you sure you want to do this?</source>
 <context>
     <name>InstanceHealthCheckDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+90"/>
+        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+97"/>
         <source>No Java selected</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4887,12 +4927,12 @@ Switch Java in the instance&apos;s Java settings, or turn off the compatibility 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+175"/>
+        <location line="+256"/>
         <source>Checking &lt;b&gt;%1&lt;/b&gt;…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+38"/>
+        <location line="+39"/>
         <source>Broken mod files (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4905,7 +4945,7 @@ Delete or re-download them (a fresh download of the same version is usually enou
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-201"/>
+        <location line="-283"/>
         <source>Version information not loaded yet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4979,7 +5019,33 @@ That leaves little for the system and can make the game stutter; around half of 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+39"/>
+        <location line="+86"/>
+        <source>Pack files missing (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These files belong to %1, but they are not in the instance anymore:
+%2
+
+Running Update Pack downloads them again. If you removed any of them on purpose, disable them instead of deleting, so the launcher can tell the difference.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>Mods that are not part of %1 (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These jars in the mods folder are not in the pack&apos;s file list. They were either added outside the pack, or left behind when the pack updated a mod to a different file name:
+%1
+
+If the game complains about duplicate or incompatible mods, remove or disable the ones you did not add yourself.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
         <source>Check instance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5004,7 +5070,7 @@ That leaves little for the system and can make the game stutter; around half of 
         <translation type="unfinished">Затвори</translation>
     </message>
     <message>
-        <location line="+128"/>
+        <location line="+129"/>
         <source>Mods that may not fit this game version (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8698,7 +8764,7 @@ It is most likely you will need to change the path - please refer to the mod&apo
 <context>
     <name>ModConflictChecker</name>
     <message>
-        <location filename="../launcher/minecraft/mod/ModConflictChecker.cpp" line="+88"/>
+        <location filename="../launcher/minecraft/mod/ModConflictChecker.cpp" line="+338"/>
         <source>unknown version</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8726,7 +8792,7 @@ Disable or remove one of them.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+58"/>
         <source>Disabled dependency: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8743,8 +8809,32 @@ Enable it to avoid a crash on startup.</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>%1 needs a mod with the id &quot;%2&quot;, but none was found in the mods folder.
-If the game starts fine it is probably bundled inside another mod; otherwise download it.</source>
+        <source>%1 needs a mod with the id &quot;%2&quot;, but it was not found in the mods folder or bundled inside any of the installed mods.
+Download it, unless the game already starts fine.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+46"/>
+        <source>Outdated bundled dependency version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 (%2) requires %3 version %4, but the copy bundled inside %5 (%6) is version %7.
+The game will refuse to start with this combination.
+Update the mod that bundles it, or install a separate copy inside that range.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Outdated dependency version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 (%2) requires %3 version %4, but %5 (%6) is installed.
+The game will refuse to start with this combination.
+Update or replace the dependency with a version inside that range.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -9415,18 +9505,36 @@ Please update %1!</source>
 <context>
     <name>ModrinthCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+74"/>
+        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+101"/>
         <source> (version %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+71"/>
+        <location line="+117"/>
+        <source>These files were part of the pack before, but you replaced them with another version of the same mod, so they are not downloaded again:
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>These files were extra copies of mods the pack already provides, so they are removed:
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>These files were part of the pack before, but are no longer on disk (perhaps they were updated or removed individually), so they will be downloaded again:
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>No index file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>We couldn&apos;t find a suitable index file for the older version. This may cause some of the files to be duplicated. Do you want to continue?</source>
+        <source>We couldn&apos;t find a usable index file for the older version. This may cause some of the files to be duplicated. Do you want to continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -12039,7 +12147,7 @@ Proceed with truncation?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/themes/SystemTheme.cpp" line="+91"/>
+        <location filename="../launcher/ui/themes/SystemTheme.cpp" line="+100"/>
         <source>Windows Vista</source>
         <translation type="unfinished"></translation>
     </message>

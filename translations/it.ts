@@ -4318,17 +4318,52 @@ Sei sicuro?</translation>
 <context>
     <name>FlameCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+636"/>
+        <location filename="../launcher/modplatform/flame/FlameInstanceCreationTask.cpp" line="+780"/>
         <source>Downloading mods...</source>
         <translation>Download delle mod in corso...</translation>
     </message>
     <message>
-        <location line="-58"/>
+        <location line="-71"/>
         <source>The following files are not available for download in third party launchers.&lt;br/&gt;You will need to manually download them and add them to the instance.</source>
         <translation>Le seguenti mod sono bloccate su launcher di terze parti.&lt;br/&gt;Dovrai scaricarle e aggiungerle manualmente al modpack.</translation>
     </message>
     <message>
-        <location line="-218"/>
+        <location line="-412"/>
+        <source>Could not check the old files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The launcher could not get the file names of the previous pack version from CurseForge, so the old mod files cannot be removed. Updating now would likely leave duplicate mods in the instance, which stops the game from starting.
+
+Do you want to continue anyway?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>%1 file(s) of the previous pack version could not be identified on CurseForge anymore, so they could not be removed. If the game reports duplicate mods, delete the older copies by hand.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+42"/>
+        <source>These files were part of the pack before, but you replaced them with another version of the same mod, so they are not downloaded again:
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>These files were extra copies of mods the pack already provides, so they are removed:
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>These files were part of the pack before, but are no longer on disk (perhaps they were updated or removed individually), so they will be downloaded again:
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+126"/>
         <source>The overrides has a path that leads to an arbitrary location (%1). This is a security risk and isn&apos;t allowed.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4343,7 +4378,12 @@ Sei sicuro?</translation>
         <translation>Mod loader sconosciuto trovato nel manifesto: %1</translation>
     </message>
     <message>
-        <location line="-107"/>
+        <location line="+295"/>
+        <source>Pack resource &apos;%1&apos; (for the &apos;%2&apos; folder) is not on disk: it was not downloaded, so it is left out of the instance.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-402"/>
         <source>No loader version set for modpack!</source>
         <translation>Nessuna versione del modloader impostata per il modpack!</translation>
     </message>
@@ -4387,30 +4427,30 @@ Sei sicuro?</translation>
         <translation type="vanished">Impossibile recuperare i vecchi file.</translation>
     </message>
     <message>
-        <location line="-125"/>
-        <location line="+236"/>
+        <location line="-251"/>
+        <location line="+362"/>
         <source>Could not understand pack manifest:
 </source>
         <translation>Impossibile capire il manifesto del pacchetto:
 </translation>
     </message>
     <message>
-        <location line="+292"/>
+        <location line="+305"/>
         <source>Copying Blocked Mods...</source>
         <translation>Copiando Mods Bloccate...</translation>
     </message>
     <message>
-        <location line="-67"/>
+        <location line="-80"/>
         <source>Blocked mods found</source>
         <translation>Identificate delle mod bloccate</translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+67"/>
         <source>%1 out of %2 complete</source>
         <translation>%1 completati su %2</translation>
     </message>
     <message>
-        <location line="-391"/>
+        <location line="-404"/>
         <source>No index file.</source>
         <translation>File indice mancante.</translation>
     </message>
@@ -4435,17 +4475,17 @@ Sei sicuro?</translation>
         <translation type="vanished">Non è stato possibile recuperare i vecchi file perché l&apos;operazione è stata interrotta. Questo può causare la duplicazione di alcuni dei file. Vuoi continuare?</translation>
     </message>
     <message>
-        <location line="-249"/>
+        <location line="-375"/>
         <source> (version %1)</source>
         <translation> (versione %1)</translation>
     </message>
     <message>
-        <location line="+538"/>
+        <location line="+677"/>
         <source>Copying Blocked Mods (%1 out of %2 are done)</source>
         <translation>Copiando Mods Bloccate (%1 su %2 sono pronte)</translation>
     </message>
     <message>
-        <location line="-234"/>
+        <location line="-247"/>
         <source>Mysterious trailing dots removed from Minecraft version while importing pack.</source>
         <translation>Misteriosi punti finali rimossi dalla versione di Minecraft durante l&apos;importazione del pacchetto.</translation>
     </message>
@@ -5055,7 +5095,7 @@ Sei sicuro?</translation>
 <context>
     <name>InstanceCreationTask</name>
     <message>
-        <location filename="../launcher/InstanceCreationTask.cpp" line="+47"/>
+        <location filename="../launcher/InstanceCreationTask.cpp" line="+51"/>
         <source>Could not create instance:
 %1</source>
         <translation type="unfinished"></translation>
@@ -5108,7 +5148,7 @@ Sei sicuro?</translation>
 <context>
     <name>InstanceHealthCheckDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+90"/>
+        <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+97"/>
         <source>No Java selected</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5142,12 +5182,12 @@ Switch Java in the instance&apos;s Java settings, or turn off the compatibility 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+175"/>
+        <location line="+256"/>
         <source>Checking &lt;b&gt;%1&lt;/b&gt;…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+38"/>
+        <location line="+39"/>
         <source>Broken mod files (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5160,7 +5200,7 @@ Delete or re-download them (a fresh download of the same version is usually enou
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-201"/>
+        <location line="-283"/>
         <source>Version information not loaded yet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5233,7 +5273,33 @@ That leaves little for the system and can make the game stutter; around half of 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+39"/>
+        <location line="+86"/>
+        <source>Pack files missing (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These files belong to %1, but they are not in the instance anymore:
+%2
+
+Running Update Pack downloads them again. If you removed any of them on purpose, disable them instead of deleting, so the launcher can tell the difference.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>Mods that are not part of %1 (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>These jars in the mods folder are not in the pack&apos;s file list. They were either added outside the pack, or left behind when the pack updated a mod to a different file name:
+%1
+
+If the game complains about duplicate or incompatible mods, remove or disable the ones you did not add yourself.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
         <source>Check instance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5258,7 +5324,7 @@ That leaves little for the system and can make the game stutter; around half of 
         <translation type="unfinished">Chiudi</translation>
     </message>
     <message>
-        <location line="+128"/>
+        <location line="+129"/>
         <source>Mods that may not fit this game version (%1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9184,7 +9250,7 @@ It is most likely you will need to change the path - please refer to the mod&apo
 <context>
     <name>ModConflictChecker</name>
     <message>
-        <location filename="../launcher/minecraft/mod/ModConflictChecker.cpp" line="+88"/>
+        <location filename="../launcher/minecraft/mod/ModConflictChecker.cpp" line="+338"/>
         <source>unknown version</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9212,7 +9278,7 @@ Disable or remove one of them.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+58"/>
         <source>Disabled dependency: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9229,8 +9295,32 @@ Enable it to avoid a crash on startup.</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>%1 needs a mod with the id &quot;%2&quot;, but none was found in the mods folder.
-If the game starts fine it is probably bundled inside another mod; otherwise download it.</source>
+        <source>%1 needs a mod with the id &quot;%2&quot;, but it was not found in the mods folder or bundled inside any of the installed mods.
+Download it, unless the game already starts fine.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+46"/>
+        <source>Outdated bundled dependency version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 (%2) requires %3 version %4, but the copy bundled inside %5 (%6) is version %7.
+The game will refuse to start with this combination.
+Update the mod that bundles it, or install a separate copy inside that range.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Outdated dependency version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 (%2) requires %3 version %4, but %5 (%6) is installed.
+The game will refuse to start with this combination.
+Update or replace the dependency with a version inside that range.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -9934,7 +10024,7 @@ Aggiorna %1!</translation>
 <context>
     <name>ModrinthCreationTask</name>
     <message>
-        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+328"/>
+        <location filename="../launcher/modplatform/modrinth/ModrinthInstanceCreationTask.cpp" line="+430"/>
         <source>Downloading mods...</source>
         <translation>Download delle mod in corso...</translation>
     </message>
@@ -9964,12 +10054,11 @@ Aggiorna %1!</translation>
         <translation type="vanished">Impossibile rimuovere i vecchi file in conflitto.</translation>
     </message>
     <message>
-        <location line="-58"/>
         <source>We couldn&apos;t find a suitable index file for the older version. This may cause some of the files to be duplicated. Do you want to continue?</source>
-        <translation>Non siamo riusciti a trovare un file di indice adatto per la versione precedente. Questo potrebbe causare la duplicazione di alcuni file. Vuoi continuare?</translation>
+        <translation type="vanished">Non siamo riusciti a trovare un file di indice adatto per la versione precedente. Questo potrebbe causare la duplicazione di alcuni file. Vuoi continuare?</translation>
     </message>
     <message>
-        <location line="+137"/>
+        <location line="+79"/>
         <source>The file &apos;%1&apos; is missing a download link. This is invalid in the pack format.</source>
         <translation>Il file &apos;%1&apos; non ha un link di download. Questo è invalido nel formato del pacchetto.</translation>
     </message>
@@ -9985,7 +10074,30 @@ Aggiorna %1!</translation>
         <translation>File indice mancante.</translation>
     </message>
     <message>
-        <location line="+46"/>
+        <location line="-29"/>
+        <source>These files were part of the pack before, but you replaced them with another version of the same mod, so they are not downloaded again:
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>These files were extra copies of mods the pack already provides, so they are removed:
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>These files were part of the pack before, but are no longer on disk (perhaps they were updated or removed individually), so they will be downloaded again:
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
+        <source>We couldn&apos;t find a usable index file for the older version. This may cause some of the files to be duplicated. Do you want to continue?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+45"/>
         <source>Could not rename the overrides folder:
 </source>
         <translation>Impossibile rinominare la cartella degli overrides:
@@ -9999,12 +10111,12 @@ Aggiorna %1!</translation>
 </translation>
     </message>
     <message>
-        <location line="-427"/>
+        <location line="-502"/>
         <source> (version %1)</source>
         <translation> (versione %1)</translation>
     </message>
     <message>
-        <location line="+195"/>
+        <location line="+270"/>
         <source>One of the files has a path that leads to an arbitrary location (%1). This is a security risk and isn&apos;t allowed.</source>
         <translation>Uno dei file ha un percorso che conduce ad una posizione arbitraria (%1). Questo è un rischio della sicurezza e non è permesso.</translation>
     </message>
@@ -12537,7 +12649,7 @@ Vuoi procedere?</numerusform>
         <translation>C&apos;è stato un errore nei seguenti cambi di nome: &lt;br/&gt; - Vecchia cartella dell&apos;istanza: %1&lt;br/&gt; - Nuova cartella dell&apos;istanza: %2&lt;br/&gt;Sono stati rinominati solo i metadati.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/themes/SystemTheme.cpp" line="+106"/>
+        <location filename="../launcher/ui/themes/SystemTheme.cpp" line="+115"/>
         <source>Widget style trying to look like your win32 theme</source>
         <translation>Lo stile Widget che cerca di assomigliare al tuo tema win32</translation>
     </message>
