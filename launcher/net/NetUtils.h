@@ -48,7 +48,9 @@ inline bool isServerError(QNetworkReply::NetworkError x)
 {
     static QSet<QNetworkReply::NetworkError> errors = { QNetworkReply::InternalServerError,
                                                         QNetworkReply::OperationNotImplementedError,
-                                                        QNetworkReply::ServiceUnavailableError,
+                                                        QNetworkReply::ServiceUnavailableError,     // 503 | seen in logs in 2026
+                                                        //QNetworkReply::GatewayTimeoutError,       // 504 | seen in logs in 2024
+                                                        // Qt doesn't have it mapped. Unknown covers it
                                                         QNetworkReply::UnknownServerError };
     return errors.contains(x);
 }

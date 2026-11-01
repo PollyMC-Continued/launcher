@@ -1,10 +1,14 @@
 #include "InstanceCreationTask.h"
 
 #include <QDebug>
+#include <QDir>
 #include <QFile>
+#include <QFileInfo>
 
+#include "FileSystem.h"
 #include "InstanceTask.h"
 #include "minecraft/MinecraftLoadAndCheck.h"
+#include "modplatform/packwiz/Packwiz.h"
 #include "tasks/SequentialTask.h"
 
 bool InstanceCreationTask::abort()
@@ -18,7 +22,7 @@ bool InstanceCreationTask::abort()
         return m_gameFilesTask->abort();
     }
 
-    return true;
+    return InstanceTask::abort();
 }
 
 void InstanceCreationTask::executeTask()
@@ -133,4 +137,34 @@ void InstanceCreationTask::scheduleToDelete(QWidget* parent, QDir dir, QString p
             m_filesToRemove.append(dir.absoluteFilePath(path + ".disabled"));
         }
     }
+}
+
+bool InstanceCreationTask::packFileExists(const QDir& gameDir, const QString& relativePath)
+{
+    if (relativePath.isEmpty())
+        return false;
+    const QString base = gameDir.absolutePath();
+    if (QFileInfo::exists(FS::PathCombine(base, relativePath)))
+        return true;
+    if (relativePath.endsWith(".disabled")) {
+        // optional pack file that the user enabled: it is on disk without the suffix
+        return QFileInfo::exists(FS::PathCombine(base, relativePath.chopped(9)));
+    }
+    // required pack file that the user disabled: still on disk, just not active
+    return QFileInfo::exists(FS::PathCombine(base, relativePath + ".disabled"));
+}
+
+QString InstanceCreationTask::indexedFileForProject(const QDir& gameDir, const QString& targetFolder, const QVariant& projectId)
+{
+    if (targetFolder.isEmpty() || projectId.isNull() || projectId.toString().isEmpty())
+        return {};
+    const QDir indexDir(FS::PathCombine(gameDir.absolutePath(), targetFolder, ".index"));
+    if (!indexDir.exists())
+        return {};
+    QVariant id(projectId);
+    auto meta = Packwiz::V1::getIndexForMod(indexDir, id);
+    if (!meta.isValid() || meta.filename.isEmpty())
+        return {};
+    QString relative = FS::PathCombine(targetFolder, meta.filename);
+    return packFileExists(gameDir, relative) ? relative : QString();
 }

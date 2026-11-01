@@ -47,6 +47,7 @@ class DataPackFolderModel : public ResourceFolderModel {
     enum Columns { ActiveColumn = 0, ImageColumn, NameColumn, PackFormatColumn, DateColumn, NUM_COLUMNS };
 
     explicit DataPackFolderModel(const QString& dir, BaseInstance* instance, bool is_indexed, bool create_dir, QObject* parent = nullptr);
+    ~DataPackFolderModel() override { stopBackgroundWork(); }
 
     virtual QString id() const override { return "datapacks"; }
 

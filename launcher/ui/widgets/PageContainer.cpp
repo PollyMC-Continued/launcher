@@ -70,6 +70,7 @@
 #include <QTimer>
 #include <QToolButton>
 #include <QUrl>
+#include <utility>
 
 #include <algorithm>
 
@@ -250,40 +251,43 @@ class SearchResultDelegate : public QStyledItemDelegate {
 
 class PageEntryFilterModel : public QSortFilterProxyModel {
    public:
-    explicit PageEntryFilterModel(QObject* parent = 0) : QSortFilterProxyModel(parent) {}
+    explicit PageEntryFilterModel(QObject* parent = nullptr) : QSortFilterProxyModel(parent) {}
 
    protected:
-    bool filterAcceptsRow(int sourceRow, const QModelIndex& sourceParent) const
+    bool filterAcceptsRow(int sourceRow, const QModelIndex& sourceParent) const override
     {
         const QString pattern = filterRegularExpression().pattern();
-        const auto model = static_cast<PageModel*>(sourceModel());
-        const auto page = model->pages().at(sourceRow);
-        if (!page->shouldDisplay())
+        auto* const model = static_cast<PageModel*>(sourceModel());
+        auto* const page = model->pages().at(sourceRow);
+        if (!page->shouldDisplay()) {
             return false;
+        }
         // Regular contents check, then check page-filter.
         return QSortFilterProxyModel::filterAcceptsRow(sourceRow, sourceParent);
     }
 };
 
-PageContainer::PageContainer(BasePageProvider* pageProvider, QString defaultId, QWidget* parent) : QWidget(parent)
+PageContainer::PageContainer(BasePageProvider* pageProvider, QString defaultId, QWidget* parent)
+    : QWidget(parent)
+    , m_proxyModel(new PageEntryFilterModel(this))
+    , m_model(new PageModel(this))
 {
     createUI();
     useSidebarStyle(true);
 
-    m_model = new PageModel(this);
-    m_proxyModel = new PageEntryFilterModel(this);
     int counter = 0;
     auto pages = pageProvider->getPages();
-    for (auto page : pages) {
-        auto widget = dynamic_cast<QWidget*>(page);
+    for (auto* page : pages) {
+        auto* widget = dynamic_cast<QWidget*>(page);
         widget->setParent(this);
         page->stackIndex = m_pageStack->addWidget(widget);
         page->listIndex = counter;
         page->setParentContainer(this);
         counter++;
-        page->updateExtraInfo = [this](QString id, QString info) {
-            if (m_currentPage && id == m_currentPage->id())
+        page->updateExtraInfo = [this](const QString& id, const QString& info) {
+            if (m_currentPage && id == m_currentPage->id()) {
                 m_header->setText(m_currentPage->displayName() + info);
+            }
         };
     }
     m_model->setPages(pages);
@@ -299,7 +303,7 @@ PageContainer::PageContainer(BasePageProvider* pageProvider, QString defaultId, 
     connect(m_pageList->selectionModel(), &QItemSelectionModel::currentRowChanged, this, &PageContainer::currentChanged);
     m_pageStack->setStackingMode(QStackedLayout::StackOne);
     m_pageList->setFocus();
-    selectPage(defaultId);
+    selectPage(std::move(defaultId));
 
     // Ctrl+F jumps to the search box, like the command palette shortcut in the main window.
     auto* findShortcut = new QShortcut(QKeySequence(QKeySequence::Find), this);
@@ -312,7 +316,7 @@ PageContainer::PageContainer(BasePageProvider* pageProvider, QString defaultId, 
 bool PageContainer::selectPage(QString pageId)
 {
     // now find what we want to have selected...
-    auto page = m_model->findPageEntryById(pageId);
+    auto* page = m_model->findPageEntryById(pageId);
     QModelIndex index;
     if (page) {
         index = m_proxyModel->mapFromSource(m_model->index(page->listIndex));
@@ -364,11 +368,12 @@ void PageContainer::createUI()
     QFont headerLabelFont = m_header->font();
     headerLabelFont.setBold(true);
     const int pointSize = headerLabelFont.pointSize();
-    if (pointSize > 0)
+    if (pointSize > 0) {
         headerLabelFont.setPointSize(pointSize + 2);
+    }
     m_header->setFont(headerLabelFont);
 
-    QHBoxLayout* headerHLayout = new QHBoxLayout;
+    auto* headerHLayout = new QHBoxLayout;
     const int leftMargin = APPLICATION->style()->pixelMetric(QStyle::PM_LayoutLeftMargin);
     headerHLayout->addSpacerItem(new QSpacerItem(leftMargin, 0, QSizePolicy::Fixed, QSizePolicy::Ignored));
     headerHLayout->addWidget(m_header);
@@ -413,11 +418,13 @@ void PageContainer::createUI()
 
 void PageContainer::retranslate()
 {
-    if (m_currentPage)
+    if (m_currentPage) {
         m_header->setText(m_currentPage->displayName());
+    }
 
-    for (auto page : m_model->pages())
+    for (auto* page : m_model->pages()) {
         page->retranslate();
+    }
 
     // the search index holds translated labels - rebuild it (lazily) on the next search
     m_searchIndexBuilt = false;
@@ -478,14 +485,14 @@ void PageContainer::help()
 
 void PageContainer::currentChanged(const QModelIndex& current)
 {
-    int selected_index = current.isValid() ? m_proxyModel->mapToSource(current).row() : -1;
+    int selectedIndex = current.isValid() ? m_proxyModel->mapToSource(current).row() : -1;
 
-    auto* selected = m_model->pages().at(selected_index);
+    auto* selected = m_model->pages().at(selectedIndex);
     auto* previous = m_currentPage;
 
     emit selectedPageChanged(previous, selected);
 
-    showPage(selected_index);
+    showPage(selectedIndex);
 }
 
 bool PageContainer::prepareToClose()
@@ -501,9 +508,10 @@ bool PageContainer::prepareToClose()
 
 bool PageContainer::saveAll()
 {
-    for (auto page : m_model->pages()) {
-        if (!page->apply())
+    for (auto* page : m_model->pages()) {
+        if (!page->apply()) {
             return false;
+        }
     }
     return true;
 }

@@ -111,7 +111,7 @@ void LaunchController::decideAccount()
         }
     }
 
-    if (!m_accountToUse) {
+    if (!m_accountToUse && accounts->anyAccountIsValid()) {
         // If no default account is set, ask the user which one to use.
         ProfileSelectDialog selectDialog(tr("Which account would you like to use?"), ProfileSelectDialog::GlobalDefaultCheckbox,
                                          m_parentWidget);
@@ -337,13 +337,13 @@ bool LaunchController::reauthenticateAccount(MinecraftAccountPtr account, QStrin
         m_parentWidget, tr("Account refresh failed"), tr("%1. Do you want to reauthenticate this account?").arg(reason),
         QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No, QMessageBox::StandardButton::Yes);
     if (button == QMessageBox::StandardButton::Yes) {
-        auto accounts = APPLICATION->accounts();
-        bool isDefault = accounts->defaultAccount() == account;
-        accounts->removeAccount(accounts->index(accounts->findAccountByProfileId(account->profileId())));
+        auto* accounts = APPLICATION->accounts();
+        const bool isDefault = accounts->defaultAccount() == account;
         if (account->accountType() == AccountType::MSA) {
             auto newAccount = MSALoginDialog::newAccount(m_parentWidget);
 
             if (newAccount != nullptr) {
+                accounts->removeAccount(accounts->index(accounts->findAccountByProfileId(account->profileId())));
                 accounts->addAccount(newAccount);
 
                 if (isDefault)

@@ -303,6 +303,26 @@ QStringList Mod::dependencies() const
     return details().dependencies;
 }
 
+QHash<QString, QString> Mod::dependencyRanges() const
+{
+    return details().dependencyRanges;
+}
+
+QStringList Mod::breaks() const
+{
+    return details().breaks;
+}
+
+QStringList Mod::bundledModIds() const
+{
+    return details().bundledModIds;
+}
+
+QHash<QString, QString> Mod::bundledModVersions() const
+{
+    return details().bundledModVersions;
+}
+
 int Mod::requiredByCount() const
 {
     return m_requiredByCount;

@@ -130,7 +130,7 @@ void AppearanceWidget::applyIconTheme(int index)
     auto newIconTheme = m_ui->iconsComboBox->itemData(index).toString();
     if (originalIconTheme != newIconTheme) {
         settings->set("IconTheme", newIconTheme);
-        APPLICATION->themeManager()->applyCurrentlySelectedTheme();
+        APPLICATION->themeManager()->applyCurrentlySelectedThemeLater();
     }
 }
 
@@ -142,7 +142,7 @@ void AppearanceWidget::applyWidgetTheme(int index)
     auto newAppTheme = m_ui->widgetStyleComboBox->itemData(index).toString();
     if (originalAppTheme != newAppTheme) {
         settings->set("ApplicationTheme", newAppTheme);
-        APPLICATION->themeManager()->applyCurrentlySelectedTheme();
+        APPLICATION->themeManager()->applyCurrentlySelectedThemeLater();
     }
 
     updateConsolePreview();

@@ -10,6 +10,7 @@ class ResourcePackFolderModel : public ResourceFolderModel {
     enum Columns { ActiveColumn = 0, ImageColumn, NameColumn, PackFormatColumn, DateColumn, ProviderColumn, SizeColumn, NUM_COLUMNS };
 
     explicit ResourcePackFolderModel(const QDir& dir, BaseInstance* instance, bool is_indexed, bool create_dir, QObject* parent = nullptr);
+    ~ResourcePackFolderModel() override { stopBackgroundWork(); }
 
     QString id() const override { return "resourcepacks"; }
 

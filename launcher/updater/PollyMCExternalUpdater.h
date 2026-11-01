@@ -22,14 +22,12 @@
 
 #pragma once
 
-#include <QObject>
-
 #include "ExternalUpdater.h"
 
 class QWidget;
 
 /*!
- * An implementation for the updater on windows and linux that uses out external updater.
+ * An implementation for the updater on Windows and linux that uses out external updater.
  */
 
 class PollyMCExternalUpdater : public ExternalUpdater {
@@ -69,7 +67,7 @@ class PollyMCExternalUpdater : public ExternalUpdater {
      * Set whether or not to check for updates automatically.
      *
      * The update schedule cycle will be reset in a short delay after the property’s new value is set. This is to allow
-     * reverting this property without kicking off a schedule change immediately."
+     * reverting this property without kicking off a schedule change immediately.
      */
     void setAutomaticallyChecksForUpdates(bool check) override;
 
@@ -77,7 +75,7 @@ class PollyMCExternalUpdater : public ExternalUpdater {
      * Set the current automatic update check interval in seconds.
      *
      * The update schedule cycle will be reset in a short delay after the property’s new value is set. This is to allow
-     * reverting this property without kicking off a schedule change immediately."
+     * reverting this property without kicking off a schedule change immediately.
      */
     void setUpdateCheckInterval(double seconds) override;
 

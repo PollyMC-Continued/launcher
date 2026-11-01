@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QDir>
+
 #include "BaseVersion.h"
 #include "InstanceTask.h"
 #include "minecraft/MinecraftInstance.h"
@@ -35,6 +37,17 @@ class InstanceCreationTask : public InstanceTask {
     virtual std::unique_ptr<MinecraftInstance> createInstance() { return nullptr; }
 
     QString getError() const { return m_error_message; }
+
+    /** True when a pack-managed file is on disk, enabled or disabled: the user may have
+     *  disabled a mod on purpose, and optional pack files are stored with a ".disabled" suffix. */
+   public:
+    static bool packFileExists(const QDir& gameDir, const QString& relativePath);
+   protected:
+    /** The launcher's own mod metadata (<folder>/.index/*.pw.toml) remembers which file it last
+     *  installed for a project (CurseForge or Modrinth project id), even when that file was
+     *  swapped later (for example by "Check for Updates"). Returns that file's path relative to
+     *  the game folder if it is on disk, or an empty string. */
+    static QString indexedFileForProject(const QDir& gameDir, const QString& targetFolder, const QVariant& projectId);
 
    protected:
     void setError(const QString& message) { m_error_message = message; };

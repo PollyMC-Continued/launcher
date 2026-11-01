@@ -304,7 +304,17 @@ std::tuple<QDateTime, QString, QString, QString, QString> read_lock_File(const Q
 Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 {
     // Skip splash in headless/offscreen environments.
-    const bool headless = QGuiApplication::platformName() == "offscreen"
+    // Also skipped for --version / --help: those just print text and exit, and the updater runs
+    // "--version" on a child launcher process, which must not wait for (or show) a splash screen.
+    bool infoOnly = false;
+    for (int i = 1; i < argc; ++i) {
+        const QByteArray arg = argv[i];
+        if (arg == "--version" || arg == "-v" || arg == "--help" || arg == "-h") {
+            infoOnly = true;
+            break;
+        }
+    }
+    const bool headless = infoOnly || QGuiApplication::platformName() == "offscreen"
                           || qEnvironmentVariableIsSet("POLLYMC_NO_SPLASH");
     if (!headless) {
         m_splash = new SplashScreen;
@@ -798,6 +808,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_settings->registerSetting({ "MinMemAlloc", "MinMemoryAlloc" }, 512);
         m_settings->registerSetting({ "MaxMemAlloc", "MaxMemoryAlloc" }, SysInfo::defaultMaxJvmMem());
         m_settings->registerSetting("PermGen", 128);
+        m_settings->registerSetting("LowMemWarning", true);
 
         // Java Settings
         m_settings->registerSetting("JavaPath", "");
@@ -948,8 +959,10 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         }
         {
             auto resetIfInvalid = [this](const Setting* setting) {
-                if (const QUrl url(setting->get().toString()); !url.isValid() || (url.scheme() != "http" && url.scheme() != "https")) {
-                    m_settings->reset(setting->id());
+                if (const auto value = setting->get().toString(); !value.isEmpty()) {
+                    if (const QUrl url(value); !url.isValid() || (url.scheme() != "http" && url.scheme() != "https")) {
+                        m_settings->reset(setting->id());
+                    }
                 }
             };
 
@@ -972,16 +985,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_settings->registerSetting("MSAClientIDOverride", "");
 
         // Custom Flame API Key
-        {
-            m_settings->registerSetting("CFKeyOverride", "");
-            m_settings->registerSetting("FlameKeyOverride", "");
+        m_settings->registerSetting({ "FlameKeyOverride", "CFKeyOverride" }, "");
 
-            QString flameKey = m_settings->get("CFKeyOverride").toString();
-
-            if (!flameKey.isEmpty())
-                m_settings->set("FlameKeyOverride", flameKey);
-            m_settings->reset("CFKeyOverride");
-        }
         m_settings->registerSetting("FallbackMRBlockedMods", true);
         m_settings->registerSetting("ModrinthToken", "");
         m_settings->registerSetting("UserAgentOverride", "");
@@ -1071,7 +1076,15 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         // run, the language file - arrives, it is applied to whatever is on screen by then.
         // Nothing waits for it.
         m_translations->downloadIndex();
+
+        // The job and the request behind it are started through queued calls, which only run once the event loop
+        // does - and that is not until the whole UI below has been built (almost 3 seconds in a slow start, all of it
+        // wasted waiting). Run the queued calls now so the request leaves immediately; the transfer itself then
+        // proceeds on the network thread while startup continues. A few passes, because each step queues the next.
+        for (int pass = 0; pass < 8; ++pass)
+            QCoreApplication::sendPostedEvents(nullptr, QEvent::MetaCall);
     }
+
 
     // Instance icons
     {
@@ -1094,7 +1107,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
     // ThemeManager is not a QObject and cannot own the connection.
     connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, [this] {
         if (m_settings->get("AppearanceMode").toString() == "System")
-            m_themeManager->applyCurrentlySelectedTheme();
+            m_themeManager->applyCurrentlySelectedThemeLater();
     });
 #endif
 

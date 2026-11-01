@@ -228,6 +228,29 @@ void ToastNotification::prepareToast(const QString& title,
     updateSize();
 }
 
+void ToastNotification::setIconGlyph(const QString& glyph)
+{
+    m_iconLabel->setText(glyph);
+}
+
+void ToastNotification::moveToWindow(QWidget* newParent)
+{
+    if (!newParent || newParent == parentWidget())
+        return;
+    const bool wasVisible = m_visible;
+    if (m_animation->state() != QAbstractAnimation::Stopped)
+        m_animation->stop();
+    setParent(newParent);  // hides the widget
+    m_appliedStyle.clear();
+    applyStyle();
+    updateSize();
+    if (wasVisible) {
+        move(m_finalPos);
+        show();
+        raise();
+    }
+}
+
 void ToastNotification::updateSize()
 {
     if (!layout())
@@ -292,9 +315,11 @@ void ToastNotification::onCloseClicked()
 void ToastNotification::onActionClicked()
 {
     m_autoHideTimer->stop();
-    if (m_action)
-        m_action();
+    // Close the card first and run the action afterwards: the action often opens a dialog with its own event loop.
+    auto action = m_action;
     slideOut(true);
+    if (action)
+        QTimer::singleShot(0, this, [action]() { action(); });
 }
 
 void ToastNotification::onAnimationFinished()

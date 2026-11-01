@@ -583,7 +583,7 @@ void TranslationsModel::regionLookupSucceeded()
 void TranslationsModel::setUseSystemLocale(bool useSystemLocale)
 {
     APPLICATION->settings()->set("UseSystemLocale", useSystemLocale);
-    QLocale::setDefault(QLocale(useSystemLocale ? QString::fromStdString(std::locale().name()) : defaultLangCode));
+    QLocale::setDefault(useSystemLocale ? QLocale::system() : QLocale(selectedLanguage()));
 }
 
 bool TranslationsModel::selectLanguage(QString key)
