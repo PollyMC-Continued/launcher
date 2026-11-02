@@ -140,7 +140,7 @@ QList<ModPlatform::Category> ModrinthAPI::loadCategories(const QByteArray& respo
     QJsonDocument doc = QJsonDocument::fromJson(response, &parse_error);
     if (parse_error.error != QJsonParseError::NoError) {
         qWarning() << QString("Could not parse categories response as JSON at offset %1: %2").arg(parse_error.offset).arg(parse_error.errorString());
-        qWarning() << *response;
+        qWarning() << response;
         return categories;
     }
 

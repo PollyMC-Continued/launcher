@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.25) # Required for features like `CMAKE_MSVC_DEBUG_INFORMATION_FORMAT`
 
-set(Launcher_VERSION "9.5.0" CACHE STRING "Launcher version in MAJOR.MINOR.PATCH format")
+set(Launcher_VERSION "10.0.0" CACHE STRING "Launcher version in MAJOR.MINOR.PATCH format")
 if(Launcher_VERSION STREQUAL "")
     set(Launcher_VERSION "9.0.10" CACHE STRING "Launcher version in MAJOR.MINOR.PATCH format" FORCE)
 endif()
@@ -187,6 +187,8 @@ set(Launcher_LOGIN_CALLBACK_URL "https://login.live.com/oauth20_desktop.srf" CAC
 set(Launcher_LEGACY_FMLLIBS_BASE_URL "https://files.prismlauncher.org/fmllibs/" CACHE STRING "URL for legacy (<=1.5.2) FML Libraries.")
 
 ######## Set version numbers ########
+# (PollyMC: version is derived from project(Launcher VERSION ...) at the top of this file,
+#  which defines Launcher_VERSION_MAJOR/MINOR/PATCH automatically. Do not hardcode them here.)
 set(Launcher_VERSION_NAME "${Launcher_VERSION_MAJOR}.${Launcher_VERSION_MINOR}.${Launcher_VERSION_PATCH}")
 set(Launcher_VERSION_NAME4 "${Launcher_VERSION_MAJOR}.${Launcher_VERSION_MINOR}.${Launcher_VERSION_PATCH}.0")
 set(Launcher_VERSION_NAME4_COMMA "${Launcher_VERSION_MAJOR},${Launcher_VERSION_MINOR},${Launcher_VERSION_PATCH},0")
@@ -223,6 +225,7 @@ set(Launcher_BUG_TRACKER_URL "" CACHE STRING "URL for the bug tracker.")
 # Bug report endpoint: receives reports from the in-launcher "Report a Bug" dialog and forwards them to a Discord channel (see report-server/).
 # Leave empty to disable the dialog (the menu item then opens Launcher_BUG_TRACKER_URL instead).
 set(Launcher_BUG_REPORT_API_URL "https://pollymc.vercel.app/api/report" CACHE STRING "URL of the bug report endpoint.")
+set(Launcher_BUG_REPORT_STATUS_URL "https://pollymc.vercel.app/api/status" CACHE STRING "URL of the bug report status endpoint (empty = no status tracking).")
 
 # Antivirus exclusion guide opened from the network error window when a download fails with "Permission denied".
 set(Launcher_AV_EXCLUSION_URL "https://pollymc.vercel.app/antivirus/" CACHE STRING "URL for the antivirus exclusion guide.")

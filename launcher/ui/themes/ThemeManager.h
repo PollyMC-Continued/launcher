@@ -45,6 +45,12 @@ class ThemeManager {
     QDir getIconThemesFolder();
     QDir getApplicationThemesFolder();
     void applyCurrentlySelectedTheme(bool initial = false);
+
+    /// Same as applyCurrentlySelectedTheme(), but runs from the event loop instead of right
+    /// now. Use this from widget signal handlers (combo boxes, colour-scheme changes): the
+    /// style gets replaced, and that must not happen while a popup/widget is mid-event.
+    /// Several calls before it runs are merged into one.
+    void applyCurrentlySelectedThemeLater();
     void setIconTheme(const QString& name);
     void setApplicationTheme(const QString& name, bool initial = false);
 
@@ -64,6 +70,7 @@ class ThemeManager {
     void refresh();
 
    private:
+    bool m_applyPending = false;
     std::map<QString, std::unique_ptr<ITheme>> m_themes;
     std::map<QString, IconTheme> m_icons;
     QDir m_iconThemeFolder{"iconthemes"};

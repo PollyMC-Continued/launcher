@@ -57,7 +57,7 @@ ModPlatform::ResourceType identify(QFileInfo file)
             qDebug() << "Can't Identify" << file.fileName();
         }
     } else {
-        qDebug() << "Can't find" << file.absolutePath();
+        qDebug() << "Can't find" << file.absoluteFilePath();
     }
     return ModPlatform::ResourceType::Unknown;
 }

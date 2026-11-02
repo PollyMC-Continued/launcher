@@ -188,15 +188,16 @@ QList<BasePage*> NewInstanceDialog::getPages()
 
     importPage = new ImportPage(this);
 
+    // Order: Custom, Import, Modrinth, CurseForge, ATLauncher, FTB, then the rest.
     pages.append(new CustomPage(this));
     pages.append(importPage);
-    pages.append(new AtlPage(this));
+    pages.append(new ModrinthPage(this));
     if (APPLICATION->capabilities() & Application::SupportsFlame)
         pages.append(new FlamePage(this));
+    pages.append(new AtlPage(this));
     pages.append(new FtbPage(this));
     pages.append(new LegacyFTB::Page(this));
     pages.append(new FTBImportAPP::ImportFTBPage(this));
-    pages.append(new ModrinthPage(this));
     pages.append(new TechnicPage(this));
 
     return pages;

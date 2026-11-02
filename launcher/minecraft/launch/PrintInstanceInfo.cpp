@@ -61,13 +61,19 @@ void PrintInstanceInfo::executeTask()
     auto instance = m_parent->instance();
     QStringList log;
 
+    log << "";
     log << "OS: " + QString("%1 | %2 | %3").arg(QSysInfo::prettyProductName(), QSysInfo::kernelType(), QSysInfo::kernelVersion());
 #ifdef Q_OS_FREEBSD
     ::runSysctlHwModel(log);
     ::runPciconf(log);
 #else
     log << "CPU: " + HardwareInfo::cpuInfo();
+#ifdef Q_OS_MACOS
+    log << "Memory pressure level: " + MacOSHardwareInfo::memoryPressureLevelName();
+#else
     log << QString("RAM: %1 MiB (available: %2 MiB)").arg(HardwareInfo::totalRamMiB()).arg(HardwareInfo::availableRamMiB());
+#endif
+
 #endif
     log.append(HardwareInfo::gpuInfo());
     log << "";

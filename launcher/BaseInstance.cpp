@@ -42,6 +42,7 @@
 #include <QFileInfo>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QUuid>
 
 #include "Application.h"
 #include "Json.h"
@@ -82,6 +83,7 @@ BaseInstance::BaseInstance(SettingsObject* globalSettings, std::unique_ptr<Setti
     m_settings->registerSetting("notes", "");
 
     m_settings->registerSetting("lastLaunchTime", 0);
+    m_settings->registerSetting("pinned", false);
     m_settings->registerSetting("totalTimePlayed", 0);
     if (m_settings->get("totalTimePlayed").toLongLong() < 0)
         m_settings->reset("totalTimePlayed");
@@ -89,6 +91,14 @@ BaseInstance::BaseInstance(SettingsObject* globalSettings, std::unique_ptr<Setti
 
     m_settings->registerSetting("linkedInstances", "[]");
     m_settings->registerSetting("shortcuts", QString());
+    m_settings->registerSetting("uuid", QString());
+
+    const auto savedUUID = m_settings->get("uuid").toString();
+    if (savedUUID.isEmpty()) {
+        regenerateUuid();
+    } else {
+        m_uuid = savedUUID;
+    }
 
     // Game time override
     auto gameTimeOverride = m_settings->registerSetting("OverrideGameTime", false);
@@ -269,6 +279,13 @@ QString BaseInstance::id() const
     return QFileInfo(instanceRoot()).fileName();
 }
 
+void BaseInstance::regenerateUuid()
+{
+    const auto newUUID = QUuid::createUuid().toString(QUuid::Id128);
+    m_settings->set("uuid", newUUID);
+    m_uuid = newUUID;
+}
+
 bool BaseInstance::isRunning() const
 {
     return m_isRunning;
@@ -368,6 +385,19 @@ void BaseInstance::setLastLaunch(qint64 val)
     emit propertiesChanged(this);
 }
 
+bool BaseInstance::isPinned() const
+{
+    return m_settings->get("pinned").toBool();
+}
+
+void BaseInstance::setPinned(bool pinned)
+{
+    if (isPinned() == pinned)
+        return;  // setting involves saving a file
+    m_settings->set("pinned", pinned);
+    emit propertiesChanged(this);
+}
+
 void BaseInstance::setNotes(QString val)
 {
     // FIXME: if no change, do not set. setting involves saving a file.
@@ -446,7 +476,7 @@ QList<ShortcutData> BaseInstance::shortcuts() const
 
         QString shortcutName = dict["name"].toString();
         QString filePath = dict["filePath"].toString();
-        if (!QDir(filePath).exists()) {
+        if (!QFileInfo::exists(filePath)) {
             qWarning() << "Shortcut" << shortcutName << "for instance" << name() << "have non-existent path" << filePath;
             continue;
         }
