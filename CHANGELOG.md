@@ -1,5 +1,15 @@
 # Changelog
 
+## v10.0.2
+
+**Fixes a crash when closing the Modrinth or CurseForge pages while their filter lists were still loading, and two smaller issues found in the same code.**
+
+**Fixed:**
+
+- **Crash when closing the Modrinth or CurseForge pages while their filters load** — The Modrinth and CurseForge pages of the "New Instance" window and of an instance's "Download mods" window fetch their filter category lists in the background when opened. If you closed the page before the list arrived (easy to do on a slow connection), the finished request could still call back into a page that no longer existed, and the launcher could crash. The category work is now tied to the page's lifetime: once the page closes, a pending category list can no longer touch it.
+- **Garbled log line when a category list could not be read** — If the Modrinth or CurseForge category list arrived but could not be read as JSON, the log printed a single stray character (the first one of the response) instead of the response itself. The log now shows what was actually received, which makes such problems much easier to diagnose.
+- **A leftover search timer** — When a mod page's filters were set up a second time, the old "wait a moment before searching" timer was left alive next to the new one, and a search that was already waiting could fire on top of the new one. The old timer is now removed before the new one is created. (In practice the filters are set up only once per page, so you were unlikely to notice.)
+
 ## v10.0.1
 
 **Fixes "Check instance" false alarms for bundled libraries, detects version mismatches, and improves "Update Pack" reliability.**
@@ -14,6 +24,8 @@
 - **Mod conflict false alarms with bundled libraries** — Many modpacks, including All the Mods 10: To the Sky, ship libraries inside other mods (NeoForge's "Jar-in-Jar"). "Check instance" no longer reports those libraries as possibly missing when another installed mod already includes them. Real missing dependencies are still reported.
 - **Mods that only contain other mods** — Library-style mods that carry their mods inside themselves (such as Kotlin for Forge) are now recognized and counted as installed, instead of being skipped.
 - **Update Pack ignoring changed or deleted files** — Modrinth and CurseForge updates now verify that "kept" files actually still exist on your disk. If you updated or deleted a mod individually outside the pack, "Update Pack" will now detect it, warn you, and restore the pack's version. Intentionally disabled mods are still respected and left alone.
+- **CurseForge "Update Pack" leaving duplicate mods behind** — After an update, an instance could end up with two versions of the same mod (for example two Ars Nouveau or GeckoLib jars), and the game refused to start. If you had updated a mod yourself (for example with "Check for Updates"), "Update Pack" would also download the pack's old copy of it again next to yours. "Update Pack" now notices when a mod was replaced by another version of the same mod, no longer downloads the pack's file a second time, and removes extra copies of mods the pack already provides. The removed files are listed in the log.
+- **CurseForge "Update Pack" hiding failures** — If the launcher could not get the old file names from CurseForge, or could not read the previous pack's file list, the update went on silently and could not clean up old files. It now asks you before continuing, and tells you in the log when some old files could not be identified.
 - **Stale configs not overwriting** — Fixed a bug on Windows where updating a pack would silently fail to overwrite existing config files and overrides, leaving you with outdated settings. Files are now verified and removed before copying.
 - **Override cleanup failing** — Fixed a bug where certain config files were never deleted between pack updates if their path contained the word "overrides" (e.g., `overrides/config/overrides.cfg`).
 - **Crash when switching to the Windows 11 style** — On Windows, changing the widget style from Dark (or another custom theme) to "Windows 11" could close the launcher right after the change. The launcher now clears the leftover theme before applying the Windows 11 style, so the switch completes.

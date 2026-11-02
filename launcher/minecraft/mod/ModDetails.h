@@ -153,10 +153,15 @@ struct ModDetails {
      * conflict than report one that does not exist. */
     QStringList breaks = {};
 
-    /* IDs of mods that are shipped inside this jar rather than as separate files: the NeoForge Jar-in-Jar
-     * entries under META-INF/jarjar/ (searched recursively) and any extra [[mods]] entries of the jar itself.
-     * A dependency on one of these is already satisfied by this jar. */
+    /* IDs of mods that are shipped inside this jar rather than as separate files: the Jar-in-Jar
+     * entries under META-INF/jarjar/ (NeoForge/Forge) or META-INF/jars/ (Fabric/Quilt), searched
+     * recursively, plus any extra [[mods]] entries of the jar itself. A dependency on one of
+     * these is already satisfied by this jar. */
     QStringList bundledModIds = {};
+
+    /* Version of each bundled mod, when its metadata declares one: "jij-lib" -> "1.2.3".
+     * Used to check declared dependency ranges against what the bundling jar actually ships. */
+    QHash<QString, QString> bundledModVersions = {};
 
     ModDetails() = default;
 
@@ -176,6 +181,7 @@ struct ModDetails {
         , dependencyRanges(other.dependencyRanges)
         , breaks(other.breaks)
         , bundledModIds(other.bundledModIds)
+        , bundledModVersions(other.bundledModVersions)
     {}
 
     ModDetails& operator=(const ModDetails& other) = default;

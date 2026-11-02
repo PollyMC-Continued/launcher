@@ -8,6 +8,7 @@
 #include "FileSystem.h"
 #include "InstanceTask.h"
 #include "minecraft/MinecraftLoadAndCheck.h"
+#include "modplatform/packwiz/Packwiz.h"
 #include "tasks/SequentialTask.h"
 
 bool InstanceCreationTask::abort()
@@ -151,4 +152,19 @@ bool InstanceCreationTask::packFileExists(const QDir& gameDir, const QString& re
     }
     // required pack file that the user disabled: still on disk, just not active
     return QFileInfo::exists(FS::PathCombine(base, relativePath + ".disabled"));
+}
+
+QString InstanceCreationTask::indexedFileForProject(const QDir& gameDir, const QString& targetFolder, const QVariant& projectId)
+{
+    if (targetFolder.isEmpty() || projectId.isNull() || projectId.toString().isEmpty())
+        return {};
+    const QDir indexDir(FS::PathCombine(gameDir.absolutePath(), targetFolder, ".index"));
+    if (!indexDir.exists())
+        return {};
+    QVariant id(projectId);
+    auto meta = Packwiz::V1::getIndexForMod(indexDir, id);
+    if (!meta.isValid() || meta.filename.isEmpty())
+        return {};
+    QString relative = FS::PathCombine(targetFolder, meta.filename);
+    return packFileExists(gameDir, relative) ? relative : QString();
 }

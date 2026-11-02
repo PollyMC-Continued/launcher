@@ -31,6 +31,33 @@
 #include <QHash>
 #include <vector>
 
+namespace {
+// Modrinth download URLs look like
+// https://cdn.modrinth.com/data/<project id>/versions/<version id>/<file name>
+// The project id in them is the same id the launcher's .index metadata uses, so it lets us
+// recognize a pack file even after the user replaced it with another version of the same
+// project (for example with "Check for Updates").
+QString projectIdFromDownloads(const QQueue<QUrl>& downloads)
+{
+    for (const auto& url : downloads) {
+        if (url.host() != BuildConfig.MODRINTH_DOWNLOAD_HOST)
+            continue;
+        const QStringList parts = url.path().split('/', Qt::SkipEmptyParts);
+        if (parts.size() >= 3 && parts.first() == "data" && parts.at(2) == "versions")
+            return parts.at(1);
+    }
+    return {};
+}
+
+// The folder whose .index keeps the launcher's metadata for a pack file ("mods" for
+// "mods/foo.jar"); empty for files that live in no such folder.
+QString parentFolderOf(const QString& path)
+{
+    const int slash = path.indexOf('/');
+    return slash > 0 ? path.left(slash) : QString();
+}
+}  // namespace
+
 bool ModrinthCreationTask::abort()
 {
     if (!canAbort()) {
@@ -91,9 +118,18 @@ bool ModrinthCreationTask::updateInstance()
 
     QString oldIndexPath(FS::PathCombine(oldIndexFolder, "modrinth.index.json"));
     QFileInfo oldIndexFile(oldIndexPath);
+    bool oldIndexUsable = false;
+    std::vector<File> oldFiles;
     if (oldIndexFile.exists()) {
-        std::vector<File> oldFiles;
-        parseManifest(oldIndexPath, oldFiles, false, false);
+        oldIndexUsable = parseManifest(oldIndexPath, oldFiles, false, false);
+        if (!oldIndexUsable) {
+            // Without the old index we can not know which files to remove. This is treated like
+            // a missing index below (the user is warned), instead of silently duplicating files.
+            qWarning() << "Could not read the previous pack index:" << getError();
+        }
+    }
+
+    if (oldIndexUsable) {
 
         // Files the previous pack version already had are assumed to still be on disk. That
         // assumption is the weak point of the whole update: nothing stops the user (or the
@@ -129,13 +165,63 @@ bool ModrinthCreationTask::updateInstance()
         QDir oldMinecraftDir(inst->gameRoot());
 
         // The old index only proves the file was there when the pack was installed; verify
-        // that before trusting it (see the comment on assumedStillPresent).
+        // that before trusting it (see the comment on assumedStillPresent). A file that is
+        // gone may also have been replaced by another version of the same mod, updated
+        // outside the pack: downloading the pack's copy again would create a duplicate mod
+        // id, which stops the game from starting.
         QStringList filesToRestore;
+        QStringList filesReplaced;
+        QStringList duplicatesRemoved;
         for (const auto& file : assumedStillPresent) {
-            if (packFileExists(oldMinecraftDir, file.path))
+            const QString indexed = indexedFileForProject(oldMinecraftDir, parentFolderOf(file.path),
+                                                          QVariant(projectIdFromDownloads(file.downloads)));
+            const bool otherFile = !indexed.isEmpty() && indexed != file.path;
+
+            if (packFileExists(oldMinecraftDir, file.path)) {
+                // The pack's file is there, but so is another file of the same mod (left over
+                // from an update outside the pack): remove the extra copy.
+                if (otherFile) {
+                    scheduleToDelete(m_parent, oldMinecraftDir, indexed, true);
+                    duplicatesRemoved << indexed;
+                }
                 continue;
+            }
+
+            // The pack's file is gone because the mod was updated to another file (for example
+            // with "Check for Updates"): the pack keeps the newer file instead.
+            if (otherFile) {
+                filesReplaced << file.path;
+                continue;
+            }
+
             m_files.push_back(file);
             filesToRestore << file.path;
+        }
+
+        // Some files were removed from the old version, and some will be downloaded in an updated version,
+        // so we're fine removing them!
+        for (const auto& file : oldFiles) {
+            scheduleToDelete(m_parent, oldMinecraftDir, file.path, true);
+
+            // The same mod may also be on disk under another name, because it was updated
+            // outside the pack. The pack brings its own version, so that copy would become a
+            // duplicate mod id next to it.
+            const QString indexed = indexedFileForProject(oldMinecraftDir, parentFolderOf(file.path),
+                                                          QVariant(projectIdFromDownloads(file.downloads)));
+            if (!indexed.isEmpty() && indexed != file.path) {
+                scheduleToDelete(m_parent, oldMinecraftDir, indexed, true);
+                duplicatesRemoved << indexed;
+            }
+        }
+
+        if (!filesReplaced.isEmpty()) {
+            logWarning(tr("These files were part of the pack before, but you replaced them with another version of the same mod, so "
+                          "they are not downloaded again:\n%1")
+                           .arg(filesReplaced.join('\n')));
+        }
+        if (!duplicatesRemoved.isEmpty()) {
+            logWarning(tr("These files were extra copies of mods the pack already provides, so they are removed:\n%1")
+                           .arg(duplicatesRemoved.join('\n')));
         }
         if (!filesToRestore.isEmpty()) {
             logWarning(tr("These files were part of the pack before, but are no longer on disk (perhaps they were "
@@ -143,30 +229,23 @@ bool ModrinthCreationTask::updateInstance()
                            .arg(filesToRestore.join('\n')));
         }
 
-        // Some files were removed from the old version, and some will be downloaded in an updated version,
-        // so we're fine removing them!
-        if (!oldFiles.empty()) {
-            for (const auto& file : oldFiles) {
-                scheduleToDelete(m_parent, oldMinecraftDir, file.path, true);
-            }
-        }
-
         // We will remove all the previous overrides, to prevent duplicate files!
         // TODO: Currently 'overrides' will always override the stuff on update. How do we preserve unchanged overrides?
-        // FIXME: We may want to do something about disabled mods.
         auto oldOverrides = Override::readOverrides("overrides", oldIndexFolder);
         for (const auto& entry : oldOverrides) {
-            scheduleToDelete(m_parent, oldMinecraftDir, entry);
+            // also remove the ".disabled" twin, so a mod the user disabled inside the overrides
+            // is not resurrected (enabled) next to its disabled copy by the new overrides
+            scheduleToDelete(m_parent, oldMinecraftDir, entry, true);
         }
 
         auto oldClientOverrides = Override::readOverrides("client-overrides", oldIndexFolder);
         for (const auto& entry : oldClientOverrides) {
-            scheduleToDelete(m_parent, oldMinecraftDir, entry);
+            scheduleToDelete(m_parent, oldMinecraftDir, entry, true);
         }
     } else {
-        // We don't have an old index file, so we may duplicate stuff!
+        // We don't have a usable old index file (missing or unreadable), so we may duplicate stuff!
         auto* dialog = CustomMessageBox::selectable(m_parent, tr("No index file."),
-                                                    tr("We couldn't find a suitable index file for the older version. This may cause some "
+                                                    tr("We couldn't find a usable index file for the older version. This may cause some "
                                                        "of the files to be duplicated. Do you want to continue?"),
                                                     QMessageBox::Warning, QMessageBox::Ok | QMessageBox::Cancel);
 

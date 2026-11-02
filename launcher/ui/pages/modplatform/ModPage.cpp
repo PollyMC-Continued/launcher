@@ -77,6 +77,8 @@ void ModPage::setFilterWidget(std::unique_ptr<ModFilterWidget>& widget)
 
     // Debounce: checkbox toggles and text edits fire filterChanged rapidly;
     // each one would otherwise trigger a fresh network search.
+    // Drop a previous call's timer: it keeps its timeout connection and would fire alongside the new one.
+    delete m_searchDebounceTimer;
     m_searchDebounceTimer = new QTimer(this);
     m_searchDebounceTimer->setSingleShot(true);
     m_searchDebounceTimer->setInterval(300);

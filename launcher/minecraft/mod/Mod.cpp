@@ -318,6 +318,11 @@ QStringList Mod::bundledModIds() const
     return details().bundledModIds;
 }
 
+QHash<QString, QString> Mod::bundledModVersions() const
+{
+    return details().bundledModVersions;
+}
+
 int Mod::requiredByCount() const
 {
     return m_requiredByCount;

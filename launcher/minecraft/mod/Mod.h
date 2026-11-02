@@ -75,6 +75,7 @@ class Mod : public Resource {
     QHash<QString, QString> dependencyRanges() const;
     QStringList breaks() const;
     QStringList bundledModIds() const;
+    QHash<QString, QString> bundledModVersions() const;
 
     int requiredByCount() const;
     int requiresCount() const;
