@@ -1641,8 +1641,8 @@ Da biste obrisali ovo zaključavanje i nastavili dalje izaberite &quot;Ignoriši
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+154"/>
-        <location line="+411"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
+        <location line="+392"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1651,7 +1651,7 @@ Da biste obrisali ovo zaključavanje i nastavili dalje izaberite &quot;Ignoriši
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-477"/>
+        <location line="-458"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
