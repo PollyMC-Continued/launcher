@@ -51,6 +51,7 @@
 
 #include "minecraft/auth/MinecraftAccount.h"
 
+class CrashMarker;
 class LaunchController;
 class LocalPeer;
 class InstanceWindow;
@@ -268,6 +269,16 @@ class Application : public QApplication {
     void subRunningInstance();
     bool shouldExitNow() const;
 
+    /// Session-end handling for the crash marker: the OS logging us off is a clean exit too.
+    void handleSessionEnd();
+    /// Marker housekeeping that runs when the event loop is up (so the heartbeat timer starts).
+    void setupCrashMarkerHousekeeping();
+#if defined(Q_OS_WIN)
+    /// Windows-only: catches console control events (Ctrl+C, logoff, closing the console
+    /// window) on their own thread and removes the crash marker there.
+    void installWindowsConsoleHandler();
+#endif
+
    private:
     QHash<QString, int> m_qsaveResources;
     mutable QMutex m_qsaveResourcesMutex;
@@ -324,8 +335,12 @@ class Application : public QApplication {
     // main window, if any
     MainWindow* m_mainWindow = nullptr;
 
-    // true when the previous run left the crash marker behind (it did not shut down cleanly)
+    // true when the previous run ended unexpectedly while the machine stayed up (crash, kill,
+    // freeze): a leftover crash marker alone no longer decides this, see CrashMarker.
     bool m_previousRunCrashed = false;
+
+    // the crash marker of this session (path, heartbeat, session-end handling)
+    CrashMarker* m_crashMarker = nullptr;
 
     // startup splash, shown until the main window takes over
     SplashScreen* m_splash = nullptr;

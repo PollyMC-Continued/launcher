@@ -804,6 +804,8 @@ SET(LAUNCHER_SOURCES
     # Application base
     Application.h
     Application.cpp
+    CrashMarker.h
+    CrashMarker.cpp
     DiscordRichPresence.h
     DiscordRichPresence.cpp
     DataMigrationTask.h
@@ -1098,6 +1100,8 @@ SET(LAUNCHER_SOURCES
     ui/dialogs/BugReportDialog.h
     ui/dialogs/MyReportsDialog.cpp
     ui/dialogs/MyReportsDialog.h
+    ui/dialogs/FriendlyError.cpp
+    ui/dialogs/FriendlyError.h
     ui/dialogs/NetworkJobFailedDialog.cpp
     ui/dialogs/NetworkJobFailedDialog.h
     ui/dialogs/NewComponentDialog.cpp

@@ -50,6 +50,13 @@ class BugReportDialog : public QDialog {
     /// Fills in the form for an error the user just ran into (type "Bug", the error text, and a prompt to say what they were doing).
     void prefillError(const QString& title, const QString& details);
 
+    /// \brief The friendly-category banner to show at the top of a report whose text looks like
+    /// a connection / antivirus / disk / clock problem rather than a launcher bug.
+    ///
+    /// \return the banner text (explanation and fix steps), or an empty string when the text
+    /// does not match any of those categories and the report should go through unchanged.
+    static QString friendlyProblemBanner(const QString& title, const QString& details);
+
     void done(int result) override;
 
     /// Opens the report dialog pre-filled with an error. Used by the "Report Bug" buttons on error windows.
@@ -90,6 +97,7 @@ class BugReportDialog : public QDialog {
     QToolButton* m_detailsToggle = nullptr;
     QLabel* m_details = nullptr;
     QLabel* m_intro = nullptr;
+    QWidget* m_friendlyBanner = nullptr;  // shown when the report looks like a non-launcher problem
     QComboBox* m_type = nullptr;
     QLineEdit* m_name = nullptr;
     QLineEdit* m_contact = nullptr;

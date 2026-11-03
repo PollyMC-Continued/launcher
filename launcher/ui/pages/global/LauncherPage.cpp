@@ -229,6 +229,7 @@ void LauncherPage::applySettings()
     s->set("AutoLaunchLastInstance", ui->autoLaunchCheckBox->isChecked());
     s->set("MinimizeToTray", ui->minimizeToTrayCheckBox->isChecked());
     s->set("DiscordRPEnabled", ui->discordRPEnabledCheckBox->isChecked());
+    s->set("ShowCrashRecoveryPrompt", ui->showCrashRecoveryPromptCheckBox->isChecked());
 
     s->set("MenuBarInsteadOfToolBar", ui->preferMenuBarCheckBox->isChecked());
 
@@ -295,6 +296,7 @@ void LauncherPage::loadSettings()
     ui->autoLaunchCheckBox->setChecked(s->get("AutoLaunchLastInstance").toBool());
     ui->minimizeToTrayCheckBox->setChecked(s->get("MinimizeToTray").toBool());
     ui->discordRPEnabledCheckBox->setChecked(s->get("DiscordRPEnabled").toBool());
+    ui->showCrashRecoveryPromptCheckBox->setChecked(s->get("ShowCrashRecoveryPrompt").toBool());
 
     ui->preferMenuBarCheckBox->setChecked(s->get("MenuBarInsteadOfToolBar").toBool());
 

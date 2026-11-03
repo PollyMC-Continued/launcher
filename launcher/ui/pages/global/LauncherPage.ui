@@ -334,6 +334,16 @@
              </property>
             </widget>
            </item>
+           <item>
+            <widget class="QCheckBox" name="showCrashRecoveryPromptCheckBox">
+             <property name="toolTip">
+              <string>When the launcher closes without warning while your computer keeps running, ask whether to send the log from that session. Unexpected restarts and power losses are never counted as crashes.</string>
+             </property>
+             <property name="text">
+              <string>Offer to report a crash after an unexpected exit</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </item>

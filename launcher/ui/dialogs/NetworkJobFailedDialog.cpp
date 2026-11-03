@@ -20,10 +20,12 @@
 
 #include <QClipboard>
 #include <QFileDialog>
+#include <QHash>
 #include <QLabel>
 #include <QPushButton>
 #include <QShortcut>
 #include <QStandardPaths>
+#include <QToolButton>
 #include <utility>
 
 #include "Application.h"
@@ -31,6 +33,7 @@
 #include "DesktopServices.h"
 #include "ui/GuiUtil.h"
 #include "ui/dialogs/BugReportDialog.h"
+#include "ui/dialogs/FriendlyError.h"
 #include "ui_NetworkJobFailedDialog.h"
 
 namespace {
@@ -38,6 +41,25 @@ namespace {
 bool looksLikePermissionError(const QString& error)
 {
     return error.contains("denied", Qt::CaseInsensitive) || error.contains("access", Qt::CaseInsensitive);
+}
+
+// Timeouts and connection errors: the launcher did its job, the network (or something in front
+// of it) did not. The transfer timeout surfaces as OperationCanceledError, and a connection
+// reset as RemoteHostClosedError - QNetworkReply has no reset-specific code of its own.
+bool isConnectionError(QNetworkReply::NetworkError error)
+{
+    switch (error) {
+        case QNetworkReply::TimeoutError:
+        case QNetworkReply::OperationCanceledError:
+        case QNetworkReply::ConnectionRefusedError:
+        case QNetworkReply::HostNotFoundError:
+        case QNetworkReply::RemoteHostClosedError:
+        case QNetworkReply::NetworkSessionFailedError:
+        case QNetworkReply::TemporaryNetworkFailureError:
+            return true;
+        default:
+            return false;
+    }
 }
 }  // namespace
 
@@ -66,10 +88,21 @@ NetworkJobFailedDialog::NetworkJobFailedDialog(const QString& jobName, const int
     connect(copyButton, &QPushButton::clicked, this, &NetworkJobFailedDialog::copyUrl);
 
     if (!BuildConfig.BUG_REPORT_API_URL.isEmpty()) {
-        auto* reportButton = m_ui->dialogButtonBox->addButton(tr("Report Bug"), QDialogButtonBox::ActionRole);
-        reportButton->setToolTip(tr("Send this error to the PollyMC developers"));
-        connect(reportButton, &QPushButton::clicked, this, &NetworkJobFailedDialog::reportBug);
+        m_reportButton = m_ui->dialogButtonBox->addButton(tr("Report Bug"), QDialogButtonBox::ActionRole);
+        m_reportButton->setToolTip(tr("Send this error to the PollyMC developers"));
+        connect(m_reportButton, &QPushButton::clicked, this, &NetworkJobFailedDialog::reportBug);
     }
+
+    // "Show details" hides the full URL list for the connection-trouble layout; the arrow turns
+    // with the list, like the expander in the bug report dialog.
+    m_detailsToggle = new QToolButton(this);
+    m_detailsToggle->setText(tr("Show details"));
+    m_detailsToggle->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    m_detailsToggle->setArrowType(Qt::RightArrow);
+    m_detailsToggle->setCheckable(true);
+    m_detailsToggle->setVisible(false);
+    connect(m_detailsToggle, &QToolButton::toggled, this, &NetworkJobFailedDialog::toggleDetails);
+    m_ui->verticalLayout->insertWidget(2, m_detailsToggle);
 
     // Antivirus repair options: only shown once a failed request actually looks like
     // a "Permission denied" (see addFailedRequest).
@@ -108,7 +141,7 @@ NetworkJobFailedDialog::~NetworkJobFailedDialog()
     delete m_ui;
 }
 
-void NetworkJobFailedDialog::addFailedRequest(const QUrl& url, QString error) const
+void NetworkJobFailedDialog::addFailedRequest(const QUrl& url, QString error, QNetworkReply::NetworkError errorCode)
 {
     if (!m_permissionTrouble && looksLikePermissionError(error)) {
         m_permissionTrouble = true;
@@ -116,10 +149,84 @@ void NetworkJobFailedDialog::addFailedRequest(const QUrl& url, QString error) co
         showPermissionRepairOptions();
     }
 
+    m_totalFailures++;
+    const bool connectionTrouble = isConnectionError(errorCode) ||
+                                    (errorCode == QNetworkReply::NoError && FriendlyError::categorize(error) == FriendlyError::Category::Network);
+    if (connectionTrouble) {
+        m_connectionFailures++;
+        const QString host = url.host().toLower();
+        if (!host.isEmpty()) {
+            m_failuresPerHost[host]++;
+        }
+    }
+
     auto* item = new QTreeWidgetItem(m_ui->detailsTable, { url.toString(), std::move(error) });
     m_ui->detailsTable->addTopLevelItem(item);
     if (m_ui->detailsTable->selectedItems().isEmpty()) {
         m_ui->detailsTable->setCurrentItem(item);
+    }
+}
+
+void NetworkJobFailedDialog::finalizeFailedRequests()
+{
+    if (m_friendlyLayout || m_totalFailures == 0) {
+        return;
+    }
+    // ">= 80% are timeouts or connection errors to the same host" - one host, named once in the
+    // message instead of a wall of URLs.
+    if (m_connectionFailures * 10 < m_totalFailures * 8) {
+        return;
+    }
+    QString host;
+    int hostFailures = 0;
+    for (auto it = m_failuresPerHost.cbegin(); it != m_failuresPerHost.cend(); ++it) {
+        if (it.value() > hostFailures) {
+            host = it.key();
+            hostFailures = it.value();
+        }
+    }
+    if (!host.isEmpty() && hostFailures * 10 >= m_totalFailures * 8) {
+        showConnectionTroubleLayout(host);
+    }
+}
+
+void NetworkJobFailedDialog::showConnectionTroubleLayout(const QString& host)
+{
+    m_friendlyLayout = true;
+
+    const auto advice = FriendlyError::adviceFor(FriendlyError::Category::Network, host);
+    m_ui->failLabel->setText(advice.title);
+    m_ui->requestCountLabel->setText(advice.explanation);
+
+    QStringList lines = advice.steps;
+    lines.prepend(tr("This looks like a connection problem on your side, not a launcher bug. "
+                     "Please don't report it unless it keeps happening on a working connection."));
+    auto* stepsLabel = new QLabel(lines.join(QStringLiteral("\n")), this);
+    stepsLabel->setWordWrap(true);
+    stepsLabel->setStyleSheet(QStringLiteral("color: gray;"));
+    m_ui->verticalLayout->insertWidget(2, stepsLabel);
+
+    // one host instead of a wall of URLs: the full list stays one click away
+    m_detailsToggle->setVisible(true);
+    m_detailsToggle->setToolTip(tr("Show every URL that failed"));
+    toggleDetails();
+    // nothing is selected while the list is hidden, so "Copy URL" copies all of them
+    m_ui->detailsTable->clearSelection();
+
+    // a connection problem is not something the developers can fix: keep Retry / Abort / Copy,
+    // and keep the report path out of sight (the banner in the report dialog still allows it)
+    if (m_reportButton) {
+        m_reportButton->setVisible(false);
+    }
+}
+
+void NetworkJobFailedDialog::toggleDetails()
+{
+    const bool visible = m_detailsToggle->isChecked();
+    m_ui->detailsTable->setVisible(visible);
+    m_detailsToggle->setArrowType(visible ? Qt::DownArrow : Qt::RightArrow);
+    if (!visible) {
+        m_ui->detailsTable->clearSelection();
     }
 }
 
@@ -136,6 +243,19 @@ void NetworkJobFailedDialog::showPermissionRepairOptions() const
 void NetworkJobFailedDialog::copyUrl() const
 {
     auto items = m_ui->detailsTable->selectedItems();
+    if (items.isEmpty() && !m_ui->detailsTable->isVisible()) {
+        // with the details collapsed (connection trouble) there is no selection: copy them all,
+        // one "URL - error" line each, so the block is still copy-pasteable
+        QStringList lines;
+        for (int i = 0; i < m_ui->detailsTable->topLevelItemCount(); i++) {
+            const auto* item = m_ui->detailsTable->topLevelItem(i);
+            lines << QStringLiteral("%1 - %2").arg(item->text(0), item->text(1));
+        }
+        if (!lines.isEmpty()) {
+            QGuiApplication::clipboard()->setText(lines.join('\n'));
+        }
+        return;
+    }
     if (items.isEmpty()) {
         return;
     }

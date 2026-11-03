@@ -1,5 +1,24 @@
 # Changelog
 
+## v10.0.3
+
+**No more "the launcher closed unexpectedly" after shutting down or restarting your computer, and clearer messages when something on your side - not the launcher - goes wrong.**
+
+**Fixed:**
+
+- **"The launcher closed unexpectedly" after a shutdown, restart or power loss** — The launcher kept a small marker file while it ran and removed it when it closed normally; if the marker was still there on the next start, it assumed it had crashed. But when Windows shuts down, the machine loses power or you log off while the launcher is open, the launcher never gets the chance to clean up - so the next start wrongly asked you to send a crash report. The launcher now also removes the marker when the system ends the session, and the marker records when the computer was last booted: if that changed, the previous run ended with a shutdown or power loss, which is logged quietly instead of being treated as a crash. An old marker from an earlier version is simply ignored.
+- **Crash prompt asking twice about one event** — the leftover marker is now removed before the prompt can be shown again for the same incident.
+
+**Added:**
+
+- **Friendlier messages for problems that are not launcher bugs** — When downloads fail because a server cannot be reached, the error window now says so in one sentence - which server, and that this is usually the internet connection, a firewall or antivirus program, a provider or regional block, or the server being down - with a short list of things to try (another network or a VPN, the proxy settings, temporarily turning off antivirus filtering, opening the server's address in a browser). The full list of failed downloads is one click away behind "Show details". Similar notes appear for "Permission denied" (security software), full or read-only disks, and secure connection problems (often a wrong system clock). In these cases the "Report Bug" button is hidden, since these are not problems the developers can fix; the report window still shows the same advice with a way to send the report anyway.
+- **Setting to turn off the crash prompt** — "Offer to report a crash after an unexpected exit" in the launcher settings. Real crashes are still asked about; shutdowns and power losses never are.
+
+**Changed:**
+
+- **Downloads survive flaky connections better** — When most of a download job's requests time out, the remaining retries run at most two at a time and wait longer between attempts, instead of hammering a struggling connection. The default retry limit before the error window appears is now 3 instead of 1.
+- **Better judgement of what is a crash** — A leftover marker alone no longer means "crash": the previous session's log is checked for real crash evidence, and only a recent unclean exit on the same boot still counts. A stale or unreadable marker is ignored.
+
 ## v10.0.2
 
 **Fixes a crash when closing the Modrinth or CurseForge pages while their filter lists were still loading, and two smaller issues found in the same code.**
