@@ -1,57 +1,76 @@
-# PollyMC-Continued
+<div align="center">
 
-> **Heads up:** This is a revival of PollyMC — forked from [Prism Launcher](https://github.com/PrismLauncher/PrismLauncher), not from fn2006's original repo.
->
-> [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FsM3JNTN9z)
+<img width="160" height="160" src="/program_info/org.pollymc.PollyMC.svg" alt="PollyMC-Continued logo">
 
-Lets you play Minecraft **without a Microsoft account** — add offline accounts and launch the full game with no restrictions.
+<h1>
+<a style="color:#f5c2e7" href="https://pollymc.vercel.app/">PollyMC-Continued</a>
+</h1>
+
+**Play Minecraft your way.** Offline accounts with no strings attached, a built-in skin browser, scriptable bots and a launcher that stays fast.
+
+PollyMC lives on. This revival is built on top of [Prism Launcher](https://github.com/PrismLauncher/PrismLauncher), not on fn2006's original repo.
+
+<div>
+
+[![GitHub Repo stars](https://img.shields.io/github/stars/PollyMC-Continued/launcher?label=Stars&style=for-the-badge&color=%23f5c2e7)](https://github.com/PollyMC-Continued/launcher/stargazers)
+[![GitHub release](https://img.shields.io/github/v/release/PollyMC-Continued/launcher?style=for-the-badge&color=%23f5c2e7)](https://github.com/PollyMC-Continued/launcher/releases)
+[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FsM3JNTN9z)
+
+</div>
+
+</div>
 
 ## Features
 
-- **Offline accounts** — no Microsoft login required; offline accounts launch the full game
-- **Authlib-injector** account support for third-party auth servers
-- **Skins** — local skin library, offline skin agent that serves skins to the game, and an online skin browser (crafty.gg) with search, page navigation, and a rotatable 3D preview
-- **Command palette** — Ctrl+Shift+P opens a searchable list of every launcher action; navigate with arrows, run with Enter
-- **Bot manager** — add Minecraft bots, connect them to a server, control them from a built-in console, and script sequences of actions (chat, commands, waits, loops)
-- **Setup wizard** — offers offline account on first launch
-- **Automatic updater** — GitHub releases on Windows and Linux
-- **NSIS installer** with upgrade support
-- **Package repositories** — apt and pacman, published via GitHub Pages
+**Accounts**
 
-## Install
+- Offline accounts that unlock the whole game, no Microsoft login needed
+- Authlib-injector support for third-party auth servers
+- A setup wizard that offers to create an offline account the first time you open the launcher
 
-Download the artifact for your platform from the [releases page](https://github.com/PollyMC-Continued/launcher/releases).
+**Skins**
 
-### Windows
+- Keep a local skin library and let the offline skin agent serve it to the game
+- Browse [crafty.gg](https://crafty.gg/) from inside the launcher, with search, paging and a 3D preview you can spin around
 
-- **Installer** — `PollyMC-Continued-10.0.2-Windows-Setup.exe`. Runs the NSIS installer, creates a Start Menu entry, supports upgrade-in-place.
-- **Portable** — `PollyMC-Continued-10.0.2-Windows-portable.zip`. Extract anywhere, run `pollymc.exe`. Data lives next to the binary.
+**Tools**
 
-### macOS (arm64)
+- Command palette on `Ctrl+Shift+P`: type to find any launcher action and hit Enter to run it
+- Bot manager: spawn Minecraft bots, join a server, drive them from a console, or script whole routines with chat, commands, waits and loops
+- Instance health check that understands NeoForge Jar-in-Jar, so bundled dependencies aren't flagged as missing
+- Report A Bug dialog, reachable straight from error windows
 
-- **Disk image** — `PollyMC-Continued-10.0.2-macOS-arm64.dmg`. Open, drag `PollyMC.app` to Applications.
-- **ZIP** — same contents, for scripted installs.
+**Polish**
 
-Auto-update is not available on macOS yet — download the latest `.dmg` or `.zip` when a new release is out.
+- Better settings search
+- Picks your language automatically, and the splash screen speaks it too
+- Automatic updates from GitHub releases on Windows and Linux
+- NSIS installer with in-place upgrades
+- apt and pacman repositories hosted on GitHub Pages
+- 100% free and open source
+- ...and everything Prism Launcher already does
 
-### Linux
+## Star History
 
-- **AppImage** — `PollyMC-Continued-10.0.2-x86_64.AppImage`. `chmod +x` and run. Self-contained; needs glibc 2.35 or newer (Ubuntu 22.04, Debian 12, Fedora 40+, Arch).
-- **Portable tarball** — `PollyMC-Continued-10.0.2-Linux-x86_64.tar.gz`. Extract, run `bin/pollymc`. Data lives in the extracted folder. Needs glibc 2.39 or newer plus a system Qt 6.4+, because it is built on Ubuntu 24.04.
-- **DEB** — see the apt repository below, or install a downloaded `.deb` with `sudo dpkg -i`.
-- **pacman** — see the Arch repository below, or install a downloaded `.pkg.tar.zst` with `sudo pacman -U`.
+<a href="https://www.star-history.com/?repos=pollymc-continued%2Flauncher&type=date&legend=bottom-right">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=pollymc-continued/launcher&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=pollymc-continued/launcher&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=pollymc-continued/launcher&type=date&legend=top-left" />
+ </picture>
+</a>
 
-### Debian / Ubuntu (apt)
+## Contributing
 
-Add the repository, then install with `sudo apt install`:
+Found a bug or have an idea? Open an [issue](https://github.com/PollyMC-Continued/launcher/issues) or use Report A Bug inside the launcher. Pull requests for code, docs and translations are always appreciated.
 
-```bash
-# (Optional) trust the repo signing key if the repository is signed
-curl -fsSL https://corecommit.github.io/PollyMC-Continued/apt/pollymc-continued.gpg \
-  | sudo tee /etc/apt/keyrings/pollymc-continued.asc
+## Good to know
 
-echo "deb [signed-by=/etc/apt/keyrings/pollymc-continued.asc] https://corecommit.github.io/PollyMC-Continued/apt stable main" \
-  | sudo tee /etc/apt/sources.list.d/pollymc-continued.list
+- Not affiliated with the Prism Launcher team
+- No tracking and no data collection, and the source is open if you want to verify that
+- Built for people who want to play Minecraft without being forced to buy it first
+- Contributions from anyone are welcome
 
-sudo apt update
-sudo apt install pollymc-continued
+## License
+
+Released under the terms of the [LICENSE](https://github.com/PollyMC-Continued/launcher/blob/main/LICENSE) file.
