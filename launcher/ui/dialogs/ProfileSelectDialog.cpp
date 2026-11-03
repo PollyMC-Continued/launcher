@@ -22,6 +22,7 @@
 #include <QPushButton>
 
 #include "Application.h"
+#include "ui/GuiUtil.h"
 
 // HACK: hide checkboxes from AccountList
 class HideCheckboxProxyModel : public QIdentityProxyModel {
@@ -65,6 +66,9 @@ ProfileSelectDialog::ProfileSelectDialog(const QString& message, int flags, QWid
 
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("OK"));
+
+    // remember the window size between runs, like the settings window does
+    GuiUtil::rememberGeometry(this, "ProfileSelectGeometry");
 }
 
 ProfileSelectDialog::~ProfileSelectDialog()

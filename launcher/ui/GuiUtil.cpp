@@ -40,6 +40,7 @@
 #include <QApplication>
 #include <QBuffer>
 #include <QClipboard>
+#include <QDialog>
 #include <QFileDialog>
 #include <QStandardPaths>
 
@@ -238,4 +239,22 @@ QString GuiUtil::BrowseForFile(QString context, QString caption, QString filter,
 QStringList GuiUtil::BrowseForFiles(QString context, QString caption, QString filter, QString defaultPath, QWidget* parentWidget)
 {
     return BrowseForFileInternal(context, caption, filter, defaultPath, parentWidget, false);
+}
+
+void GuiUtil::rememberGeometry(QDialog* dialog, const QString& settingsKey)
+{
+    if (!dialog)
+        return;
+
+    // Bring back the size and position of the last run, if we have one on record.
+    const QByteArray geometry = QByteArray::fromBase64(APPLICATION->settings()->get(settingsKey).toString().toUtf8());
+    if (!geometry.isEmpty())
+        dialog->restoreGeometry(geometry);
+
+    // And remember it again on every close (accept, reject, Esc, X - all end in finished()).
+    QObject::connect(dialog, &QDialog::finished, dialog, [dialog, settingsKey] {
+        if (APPLICATION->settings()->contains(settingsKey)) {
+            APPLICATION->settings()->set(settingsKey, QString::fromUtf8(dialog->saveGeometry().toBase64()));
+        }
+    });
 }

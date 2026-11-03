@@ -23,7 +23,9 @@
 #include <QMetaType>
 #include <QString>
 #include <QVariant>
+#ifndef Q_MOC_RUN
 #include <compare>
+#endif
 #include <cstdint>
 #include <memory>
 

@@ -50,7 +50,6 @@
 #include "ResourceDownloadTask.h"
 
 #include "minecraft/MinecraftInstance.h"
-#include "minecraft/PackProfile.h"
 
 #include "ui/dialogs/ResourceDownloadDialog.h"
 
@@ -63,14 +62,14 @@ ModPage::ModPage(ModDownloadDialog* dialog, BaseInstance& instance) : ResourcePa
 
 void ModPage::setFilterWidget(std::unique_ptr<ModFilterWidget>& widget)
 {
-    if (m_filter_widget)
+    if (m_filter_widget) {
         disconnect(m_filter_widget.get(), nullptr, nullptr, nullptr);
-
-    auto old = m_ui->splitter->replaceWidget(0, widget.get());
-    // because we replaced the widget we also need to delete it
-    if (old) {
-        delete old;
     }
+
+    auto* old = m_ui->splitter->replaceWidget(0, widget.get());
+    // because we replaced the widget we also need to delete it
+
+    delete old;
 
     m_filter_widget.swap(widget);
 
@@ -78,6 +77,8 @@ void ModPage::setFilterWidget(std::unique_ptr<ModFilterWidget>& widget)
 
     // Debounce: checkbox toggles and text edits fire filterChanged rapidly;
     // each one would otherwise trigger a fresh network search.
+    // Drop a previous call's timer: it keeps its timeout connection and would fire alongside the new one.
+    delete m_searchDebounceTimer;
     m_searchDebounceTimer = new QTimer(this);
     m_searchDebounceTimer->setSingleShot(true);
     m_searchDebounceTimer->setInterval(300);
@@ -118,10 +119,13 @@ QMap<QString, QString> ModPage::urlHandlers() const
 
 /******** Make changes to the UI ********/
 
-void ModPage::addResourceToPage(ModPlatform::IndexedPack::Ptr pack, ModPlatform::IndexedVersion& version, ResourceFolderModel* base_model)
+void ModPage::addResourceToPage(ModPlatform::IndexedPack::Ptr pack,
+                                ModPlatform::IndexedVersion& version,
+                                ResourceFolderModel* baseModel,
+                                QString downloadReason)
 {
-    bool is_indexed = !APPLICATION->settings()->get("ModMetadataDisabled").toBool();
-    m_model->addPack(pack, version, base_model, is_indexed);
+    bool isIndexed = !APPLICATION->settings()->get("ModMetadataDisabled").toBool();
+    m_model->addPack(pack, version, baseModel, isIndexed, downloadReason);
 }
 
 }  // namespace ResourceDownload

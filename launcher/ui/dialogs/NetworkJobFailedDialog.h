@@ -26,6 +26,9 @@ class NetworkJobFailedDialog;
 }
 QT_END_NAMESPACE
 
+class QLabel;
+class QPushButton;
+
 class NetworkJobFailedDialog : public QDialog {
     Q_OBJECT
 
@@ -38,8 +41,19 @@ class NetworkJobFailedDialog : public QDialog {
    private slots:
     void copyUrl() const;
     void reportBug();
+    /// Antivirus workaround: pick another folder for temporary downloads and retry the job.
+    void retryWithDifferentTempFolder();
+    /// Opens the guide on excluding the launcher from antivirus scanning.
+    void openAntivirusGuide();
 
    private:
+    /// Shows the antivirus hint label and the repair buttons (once a "Permission denied" is seen).
+    void showPermissionRepairOptions() const;
+
     Ui::NetworkJobFailedDialog* m_ui;
     QString m_jobName;
+    QLabel* m_permissionHint = nullptr;
+    QPushButton* m_stagingButton = nullptr;
+    QPushButton* m_avGuideButton = nullptr;
+    mutable bool m_permissionTrouble = false;
 };

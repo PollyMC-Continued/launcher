@@ -62,7 +62,10 @@ class MinecraftSettingsWidget : public QWidget {
     void saveDataPacksPath();
     void selectDataPacksFolder();
 
+   protected:
     MinecraftInstance* m_instance;
+
+   public:
     Ui::MinecraftSettingsWidget* m_ui;
     JavaSettingsWidget* m_javaSettings = nullptr;
     QComboBox* m_resolutionPresets = nullptr;

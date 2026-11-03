@@ -42,7 +42,6 @@
 
 #include "Application.h"
 
-#include "console/BootDebug.h"
 #include "BuildConfig.h"
 
 #include "DataMigrationTask.h"
@@ -68,6 +67,7 @@
 #include "ui/pages/global/DeveloperPage.h"
 #include "ui/pages/global/JavaPage.h"
 #include "ui/pages/global/LanguagePage.h"
+#include "ui/widgets/SplashScreen.h"
 #include "ui/pages/global/LauncherPage.h"
 #include "ui/pages/global/MinecraftPage.h"
 #include "ui/pages/global/ProxyPage.h"
@@ -81,6 +81,8 @@
 #include "ui/setupwizard/ThemeWizardPage.h"
 
 #include "ui/dialogs/CustomMessageBox.h"
+
+#include "ui/dialogs/BugReportDialog.h"
 
 #include "ui/pagedialog/PageDialog.h"
 
@@ -105,7 +107,6 @@
 #include <QPainter>
 #include <QStringList>
 #include <QStringLiteral>
-#include <QSplashScreen>
 #include <QSvgRenderer>
 #include <QStyleFactory>
 #include <QStyleHints>
@@ -302,41 +303,29 @@ std::tuple<QDateTime, QString, QString, QString, QString> read_lock_File(const Q
 
 Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 {
-    BootDebug::stage("app: constructor entered");
-
     // Skip splash in headless/offscreen environments.
-    const bool headless = QGuiApplication::platformName() == "offscreen"
+    // Also skipped for --version / --help: those just print text and exit, and the updater runs
+    // "--version" on a child launcher process, which must not wait for (or show) a splash screen.
+    bool infoOnly = false;
+    for (int i = 1; i < argc; ++i) {
+        const QByteArray arg = argv[i];
+        if (arg == "--version" || arg == "-v" || arg == "--help" || arg == "-h") {
+            infoOnly = true;
+            break;
+        }
+    }
+    const bool headless = infoOnly || QGuiApplication::platformName() == "offscreen"
                           || qEnvironmentVariableIsSet("POLLYMC_NO_SPLASH");
     if (!headless) {
-        QSvgRenderer renderer(QStringLiteral(":/branding/splash-logo.svg"));
-        if (renderer.isValid()) {
-            // Splash canvas: 400x260 dark, matching the app's dark theme
-            QPixmap splashPixmap(400, 260);
-            splashPixmap.fill(QColor("#191919"));
-            QPainter p(&splashPixmap);
-            p.setRenderHint(QPainter::Antialiasing);
-            p.setRenderHint(QPainter::SmoothPixmapTransform);
-            // Wordmark is 144:48 aspect (3:1). Scale to 320x107,
-            // centered horizontally and vertically with a slight
-            // upward bias for visual balance.
-            const QRectF targetRect(
-                (400 - 320) / 2.0,
-                (260 - 107) / 2.0 - 10,
-                320,
-                107
-            );
-            renderer.render(&p, targetRect);
-            p.end();
-            m_splash = new QSplashScreen(splashPixmap, Qt::WindowStaysOnTopHint);
-            m_splash->show();
-            // Paint it once so the user sees it before we block on init.
-            QApplication::processEvents();
-        }
+        m_splash = new SplashScreen;
+        // Really paint it before we block on init, otherwise it stays blank until the event loop runs.
+        m_splash->presentNow();
+        // Safety net: the splash must never stay on screen over another window (settings, wizards, dialogs).
+        installEventFilter(this);
     }
     if (console::isConsole()) {
         isANSIColorConsole = true;
     }
-    BootDebug::stage("app: splash screen shown");
 
     setOrganizationName(BuildConfig.LAUNCHER_NAME);
     setOrganizationDomain(BuildConfig.LAUNCHER_DOMAIN);
@@ -403,7 +392,6 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         return;
     }
 
-    BootDebug::stage("app: command line parsed");
 
     QString origcwdPath = QDir::currentPath();
     QString binPath = applicationDirPath();
@@ -479,14 +467,12 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         return;
     }
     m_dataPath = dataPath;
-    BootDebug::stage("app: data directory ready");
 
     /*
      * Establish the mechanism for communication with an already running PrismLauncher that uses the same data path.
      * If there is one, tell it what the user actually wanted to do and exit.
      * We want to initialize this before logging to avoid messing with the log of a potential already running copy.
      */
-    BootDebug::stage("app: single-instance check passed");
     auto appID = ApplicationId::fromPathAndVersion(QDir::currentPath(), BuildConfig.printableVersionString());
     {
         // FIXME: you can run the same binaries with multiple data dirs and they won't clash. This could cause issues for updates.
@@ -553,7 +539,6 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         for (auto i = 4; i > 0; i--)
             FS::move(logBase.arg(i - 1), logBase.arg(i));
 
-        BootDebug::stage("app: opening log file");
         logFile = std::unique_ptr<QFile>(new QFile(logBase.arg(0)));
         if (!logFile->open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate)) {
             showFatalErrorMessage(tr("Data folder is not writable"),
@@ -566,7 +551,6 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         }
         qInstallMessageHandler(appDebugOutput);
         qSetMessagePattern(defaultLogFormat);
-        BootDebug::stage("app: logger installed (launcher log active from here)");
 
         logModel.reset(new LogModel(this));
 
@@ -617,6 +601,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         }
 
         qInfo() << "<> Log initialized.";
+        if (m_splash)
+            m_splash->setStatus(QString(), 0.05);
     }
 
     {
@@ -672,6 +658,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
             qInfo() << "Name of the world to join  :" << m_worldToJoin;
         }
         qInfo() << "<> Paths set.";
+        if (m_splash)
+            m_splash->setStatus(QString(), 0.10);
     }
 
     if (m_liveCheck) {
@@ -795,6 +783,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         // Language
         m_settings->registerSetting("Language", QString());
         m_settings->registerSetting("UseSystemLocale", false);
+        // first run only: when the OS language has no translation, guess one from the IP's country
+        m_settings->registerSetting("AutoDetectLanguageByIp", true);
 
         // Console
         m_settings->registerSetting("ShowConsole", false);
@@ -818,6 +808,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_settings->registerSetting({ "MinMemAlloc", "MinMemoryAlloc" }, 512);
         m_settings->registerSetting({ "MaxMemAlloc", "MaxMemoryAlloc" }, SysInfo::defaultMaxJvmMem());
         m_settings->registerSetting("PermGen", 128);
+        m_settings->registerSetting("LowMemWarning", true);
 
         // Java Settings
         m_settings->registerSetting("JavaPath", "");
@@ -898,9 +889,21 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
         m_settings->registerSetting("PagedGeometry", "");
 
+        m_settings->registerSetting("BugReportGeometry", "");
+
         m_settings->registerSetting("NewInstanceGeometry", "");
 
         m_settings->registerSetting("UpdateDialogGeometry", "");
+        // "What's New" window after an update: the version that ran last (empty on a fresh install),
+        // whether to show the window, and its remembered size
+        m_settings->registerSetting("LastRunVersion", QString());
+        m_settings->registerSetting("WhatsNewEnabled", true);
+        m_settings->registerSetting("WhatsNewDialogGeometry", "");
+        // The "What's New" browser (Help > What's New and the What's New toolbar) and its size
+        m_settings->registerSetting("WhatsNewBrowserGeometry", "");
+        // Set once the What's New toolbar has been revealed; a window state saved by an older
+        // release keeps the toolbar hidden, so Application shows it one time after restoring it.
+        m_settings->registerSetting("WhatsNewToolbarShown", false);
 
         m_settings->registerSetting("NewsGeometry", "");
 
@@ -910,6 +913,22 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_settings->registerSetting("ShaderDownloadGeometry", "");
         m_settings->registerSetting("DataPackDownloadGeometry", "");
         m_settings->registerSetting("SkinBrowserGeometry", "");
+
+        // further dialogs whose size is remembered between runs
+        m_settings->registerSetting("AboutGeometry", "");
+        m_settings->registerSetting("VersionSelectGeometry", "");
+        m_settings->registerSetting("NetworkErrorGeometry", "");
+        m_settings->registerSetting("ExportInstanceGeometry", "");
+        m_settings->registerSetting("ExportPackGeometry", "");
+        m_settings->registerSetting("ExportModListGeometry", "");
+        m_settings->registerSetting("CopyInstanceGeometry", "");
+        m_settings->registerSetting("CreateShortcutGeometry", "");
+        m_settings->registerSetting("ReviewMessageBoxGeometry", "");
+        m_settings->registerSetting("BlockedModsGeometry", "");
+        m_settings->registerSetting("ScrollMessageBoxGeometry", "");
+        m_settings->registerSetting("ResourceUpdateGeometry", "");
+        m_settings->registerSetting("ProfileSelectGeometry", "");
+        m_settings->registerSetting("InstanceCheckGeometry", "");
 
         // data pack window
         // in future, more pages may be added - so this name is chosen to avoid needing migration
@@ -940,8 +959,10 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         }
         {
             auto resetIfInvalid = [this](const Setting* setting) {
-                if (const QUrl url(setting->get().toString()); !url.isValid() || (url.scheme() != "http" && url.scheme() != "https")) {
-                    m_settings->reset(setting->id());
+                if (const auto value = setting->get().toString(); !value.isEmpty()) {
+                    if (const QUrl url(value); !url.isValid() || (url.scheme() != "http" && url.scheme() != "https")) {
+                        m_settings->reset(setting->id());
+                    }
                 }
             };
 
@@ -964,16 +985,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_settings->registerSetting("MSAClientIDOverride", "");
 
         // Custom Flame API Key
-        {
-            m_settings->registerSetting("CFKeyOverride", "");
-            m_settings->registerSetting("FlameKeyOverride", "");
+        m_settings->registerSetting({ "FlameKeyOverride", "CFKeyOverride" }, "");
 
-            QString flameKey = m_settings->get("CFKeyOverride").toString();
-
-            if (!flameKey.isEmpty())
-                m_settings->set("FlameKeyOverride", flameKey);
-            m_settings->reset("CFKeyOverride");
-        }
         m_settings->registerSetting("FallbackMRBlockedMods", true);
         m_settings->registerSetting("ModrinthToken", "");
         m_settings->registerSetting("UserAgentOverride", "");
@@ -1002,6 +1015,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         PixmapCache::setInstance(new PixmapCache(this));
 
         qInfo() << "<> Settings loaded.";
+        if (m_splash)
+            m_splash->setStatus(QString(), 0.15);
     }
 
 #ifndef QT_NO_ACCESSIBILITY
@@ -1020,6 +1035,30 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         qInfo() << "<> Network done.";
     }
 
+    // init the http meta cache - the translations index needs it, so it comes first
+    {
+        m_metacache.reset(new HttpMetaCache("metacache"));
+        m_metacache->addBase("asset_indexes", QDir("assets/indexes").absolutePath());
+        m_metacache->addBase("libraries", QDir("libraries").absolutePath());
+        m_metacache->addBase("fmllibs", QDir("mods/minecraftforge/libs").absolutePath());
+        m_metacache->addBase("general", QDir("cache").absolutePath());
+        m_metacache->addBase("ATLauncherPacks", QDir("cache/ATLauncherPacks").absolutePath());
+        m_metacache->addBase("FTBPacks", QDir("cache/FTBPacks").absolutePath());
+        m_metacache->addBase("TechnicPacks", QDir("cache/TechnicPacks").absolutePath());
+        m_metacache->addBase("FlamePacks", QDir("cache/FlamePacks").absolutePath());
+        m_metacache->addBase("FlameMods", QDir("cache/FlameMods").absolutePath());
+        m_metacache->addBase("ModrinthPacks", QDir("cache/ModrinthPacks").absolutePath());
+        m_metacache->addBase("ModrinthModpacks", QDir("cache/ModrinthModpacks").absolutePath());
+        m_metacache->addBase("translations", QDir("translations").absolutePath());
+        m_metacache->addBase("meta", QDir("meta").absolutePath());
+        m_metacache->addBase("java", QDir("cache/java").absolutePath());
+        m_metacache->addBase("feed", QDir("cache/feed").absolutePath());
+        m_metacache->Load();
+        qInfo() << "<> Cache initialized.";
+        if (m_splash)
+            m_splash->setStatus(QString(), 0.30);
+    }
+
     // load translations
     {
         m_translations.reset(new TranslationsModel("translations"));
@@ -1027,7 +1066,25 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_translations->selectLanguage(bcp47Name);
         qInfo() << "Your language is" << bcp47Name;
         qInfo() << "<> Translations loaded.";
+        // from here on the splash speaks the language the user picked (as far as it is translated)
+        if (m_splash)
+            m_splash->setStatus(tr("Loading icons…"), 0.40);
+
+        // Kick off the translation index download right away: the request goes out over the
+        // network immediately (it does not need the event loop), while the UI below keeps
+        // starting up in English or in the cached language. When the index - and, on a first
+        // run, the language file - arrives, it is applied to whatever is on screen by then.
+        // Nothing waits for it.
+        m_translations->downloadIndex();
+
+        // The job and the request behind it are started through queued calls, which only run once the event loop
+        // does - and that is not until the whole UI below has been built (almost 3 seconds in a slow start, all of it
+        // wasted waiting). Run the queued calls now so the request leaves immediately; the transfer itself then
+        // proceeds on the network thread while startup continues. A few passes, because each step queues the next.
+        for (int pass = 0; pass < 8; ++pass)
+            QCoreApplication::sendPostedEvents(nullptr, QEvent::MetaCall);
     }
+
 
     // Instance icons
     {
@@ -1038,6 +1095,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         connect(setting.get(), &Setting::SettingChanged,
                 [this](const Setting&, QVariant value) { m_icons->directoryChanged(value.toString()); });
         qInfo() << "<> Instance icons initialized.";
+        if (m_splash)
+            m_splash->setStatus(tr("Loading instances…"), 0.55);
     }
 
     // Themes
@@ -1048,7 +1107,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
     // ThemeManager is not a QObject and cannot own the connection.
     connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, [this] {
         if (m_settings->get("AppearanceMode").toString() == "System")
-            m_themeManager->applyCurrentlySelectedTheme();
+            m_themeManager->applyCurrentlySelectedThemeLater();
     });
 #endif
 
@@ -1082,7 +1141,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         qInfo() << "Loading Instances...";
         m_instances->loadList();
         qInfo() << "<> Instances loaded.";
-        BootDebug::stage("app: instances loaded");
+        if (m_splash)
+            m_splash->setStatus(tr("Loading accounts…"), 0.75);
     }
 
     // and accounts
@@ -1093,35 +1153,9 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_accounts->loadList();
         m_accounts->fillQueue();
         qInfo() << "<> Accounts loaded.";
+        if (m_splash)
+            m_splash->setStatus(tr("Almost ready…"), 0.90);
     }
-
-    // init the http meta cache
-    {
-        m_metacache.reset(new HttpMetaCache("metacache"));
-        m_metacache->addBase("asset_indexes", QDir("assets/indexes").absolutePath());
-        m_metacache->addBase("libraries", QDir("libraries").absolutePath());
-        m_metacache->addBase("fmllibs", QDir("mods/minecraftforge/libs").absolutePath());
-        m_metacache->addBase("general", QDir("cache").absolutePath());
-        m_metacache->addBase("ATLauncherPacks", QDir("cache/ATLauncherPacks").absolutePath());
-        m_metacache->addBase("FTBPacks", QDir("cache/FTBPacks").absolutePath());
-        m_metacache->addBase("TechnicPacks", QDir("cache/TechnicPacks").absolutePath());
-        m_metacache->addBase("FlamePacks", QDir("cache/FlamePacks").absolutePath());
-        m_metacache->addBase("FlameMods", QDir("cache/FlameMods").absolutePath());
-        m_metacache->addBase("ModrinthPacks", QDir("cache/ModrinthPacks").absolutePath());
-        m_metacache->addBase("ModrinthModpacks", QDir("cache/ModrinthModpacks").absolutePath());
-        m_metacache->addBase("translations", QDir("translations").absolutePath());
-        m_metacache->addBase("meta", QDir("meta").absolutePath());
-        m_metacache->addBase("java", QDir("cache/java").absolutePath());
-        m_metacache->addBase("feed", QDir("cache/feed").absolutePath());
-        m_metacache->Load();
-        qInfo() << "<> Cache initialized.";
-        BootDebug::stage("app: network cache initialized");
-    }
-
-    // Now we have network, download translation updates. Defer the request
-    // until the event loop is running so startup can paint the UI (in English,
-    // or in the cached language) instead of touching the network first.
-    QTimer::singleShot(0, this, [this]() { m_translations->downloadIndex(); });
 
     // FIXME: what to do with these?
     m_profilers.insert("jprofiler", std::shared_ptr<BaseProfilerFactory>(new JProfilerFactory()));
@@ -1149,6 +1183,9 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
             logFile->flush();
             logFile->close();
         }
+        // shutting down cleanly: take the crash marker with us so the next run
+        // knows this session ended normally
+        FS::deletePath(FS::PathCombine(m_dataPath, "crash.marker"));
     });
 
     // MSA/Flame flags are read by the first-run wizard; D-Bus and library probes can wait for the window
@@ -1228,7 +1265,13 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         }
 
         auto update_success_marker = QFileInfo(UpdaterNames::resolve(m_dataPath, UpdaterNames::SuccessMarker));
-        if (update_success_marker.exists()) {
+        // When the updater left release notes and the "What's New" window is enabled, that window
+        // announces the update (once the main window is up), so the plain message box is not needed.
+        const bool whatsNewWillShow = m_settings->get("WhatsNewEnabled").toBool()
+                                      && QFileInfo::exists(UpdaterNames::resolve(m_dataPath, UpdaterNames::ChangelogFile));
+        if (update_success_marker.exists() && whatsNewWillShow) {
+            FS::deletePath(update_success_marker.absoluteFilePath());
+        } else if (update_success_marker.exists()) {
             closeSplashScreen();
             auto infoMsg = tr("You are now running %1.\n"
                               "\n"
@@ -1286,6 +1329,24 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         installEventFilter(new ToolTipFilter);
     }
 
+    // Crash recovery: a marker that survives everything except a clean shutdown.
+    // It is written once startup has come this far, and removed in aboutToQuit.
+    // If we find it now, the previous run died unexpectedly (crash, kill, power loss).
+    {
+        const QString markerPath = FS::PathCombine(m_dataPath, "crash.marker");
+        m_previousRunCrashed = QFileInfo::exists(markerPath);
+        if (m_previousRunCrashed) {
+            qWarning() << "The previous run did not shut down cleanly - a crash report will be offered.";
+        }
+        QFile marker(markerPath);
+        if (marker.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+            marker.write(QDateTime::currentDateTime().toString(Qt::ISODate).toUtf8());
+            marker.close();
+        } else {
+            qWarning() << "Could not write the crash marker" << markerPath << ":" << marker.errorString();
+        }
+    }
+
     if (createSetupWizard()) {
         return;
     }
@@ -1294,7 +1355,6 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
     qDebug() << "Installed style:" << QApplication::style()->metaObject()->className()
              << "objectName:" << QApplication::style()->objectName();
     performMainStartupAction();
-    BootDebug::stage("app: constructor finished");
 }
 
 bool Application::createSetupWizard()
@@ -1431,17 +1491,39 @@ void Application::closeSplashScreen()
 {
     if (!m_splash)
         return;
+    removeEventFilter(this);
     m_splash->close();
     m_splash->deleteLater();
     m_splash = nullptr;
 }
 
+bool Application::eventFilter(QObject* watched, QEvent* event)
+{
+    // The splash is only for the time before the real UI exists. As soon as any other top-level window
+    // (settings, a dialog, the setup wizard, the main window...) is shown, get it out of the way.
+    if (m_splash && event->type() == QEvent::Show) {
+        auto* widget = qobject_cast<QWidget*>(watched);
+        if (widget && widget != m_splash && widget->isWindow()) {
+            const auto type = widget->windowType();
+            if (type == Qt::Window || type == Qt::Dialog) {
+                qDebug() << "Closing the splash: another window is being shown:" << widget->metaObject()->className();
+                closeSplashScreen();
+            }
+        }
+    }
+    return QApplication::eventFilter(watched, event);
+}
+
 void Application::performMainStartupAction()
 {
     m_status = Application::Initialized;
-    // Any window shown from here on is the real startup UI, so the splash
-    // must be gone before we branch into launching or opening windows.
-    closeSplashScreen();
+    // The splash stays up while the main window is being built, so there is no empty gap between the
+    // two; the event filter closes it the moment any other window is shown. Launching an instance
+    // closes it too, and the timer is a last resort if nothing ever shows up.
+    if (m_splash) {
+        m_splash->setStatus(tr("Opening the launcher…"), 0.97);
+        QTimer::singleShot(12000, this, [this] { closeSplashScreen(); });
+    }
     if (!m_instanceIdToLaunch.isEmpty()) {
         auto inst = instances()->getInstanceById(m_instanceIdToLaunch);
         if (inst) {
@@ -1819,6 +1901,13 @@ MainWindow* Application::showMainWindow(bool minimized)
         m_mainWindow->restoreState(QByteArray::fromBase64(APPLICATION->settings()->get("MainWindowState").toString().toUtf8()));
         m_mainWindow->restoreGeometry(QByteArray::fromBase64(APPLICATION->settings()->get("MainWindowGeometry").toString().toUtf8()));
 
+        // The What's New toolbar (the renamed News toolbar) is new: a window state saved by an
+        // older release still has it hidden, so reveal it once. Hiding it again afterwards sticks.
+        if (!settings()->get("WhatsNewToolbarShown").toBool()) {
+            m_mainWindow->showWhatsNewToolbar();
+            settings()->set("WhatsNewToolbarShown", true);
+        }
+
         if (minimized) {
             m_mainWindow->showMinimized();
         } else {
@@ -1829,6 +1918,12 @@ MainWindow* Application::showMainWindow(bool minimized)
         connect(this, &Application::updateAllowedChanged, m_mainWindow, &MainWindow::updatesAllowedChanged);
         connect(m_mainWindow, &MainWindow::isClosing, this, &Application::on_windowClose);
         m_openWindows++;
+
+        // The last run crashed: offer to report it once the window has settled.
+        if (m_previousRunCrashed) {
+            m_previousRunCrashed = false;
+            QTimer::singleShot(600, this, &Application::offerCrashRecovery);
+        }
 
         // Auto-launch last instance if enabled
         if (!minimized && settings()->get("AutoLaunchLastInstance").toBool()) {
@@ -1846,6 +1941,51 @@ MainWindow* Application::showMainWindow(bool minimized)
             DiscordRichPresence::instance()->init();
     }
     return m_mainWindow;
+}
+
+void Application::offerCrashRecovery()
+{
+    if (!m_mainWindow)
+        return;
+
+    // The logs are rotated on startup, so the crashed session's log is the "-1" file.
+    const QString logPath = FS::PathCombine(m_dataPath, "logs", QStringLiteral("%1-1.log").arg(BuildConfig.LAUNCHER_NAME));
+    QString crashedLog;
+    try {
+        crashedLog = QString::fromUtf8(FS::read(logPath));
+    } catch ([[maybe_unused]] const Exception& e) {
+        qWarning() << "Could not read the previous session's log" << logPath;
+    }
+
+    if (crashedLog.isEmpty()) {
+        qDebug() << "No previous-session log to attach to the crash report; skipping the prompt.";
+        return;
+    }
+
+    // shown in full in the details box, trimmed for the report description below
+    const QString logTail = crashedLog.right(8000);
+
+    QMessageBox box(QMessageBox::Warning, tr("Launcher closed unexpectedly"),
+                   tr("%1 did not shut down properly last time.\n\n"
+                      "If it crashed or froze on you, you can send us a crash report - the log from that session is "
+                      "attached automatically.")
+                       .arg(BuildConfig.LAUNCHER_DISPLAYNAME),
+                   QMessageBox::Yes | QMessageBox::No, m_mainWindow);
+    box.button(QMessageBox::Yes)->setText(tr("Report this crash"));
+    box.button(QMessageBox::No)->setText(tr("Ignore"));
+    box.setDefaultButton(QMessageBox::No);
+    box.setDetailedText(logTail);
+    box.setMinimumWidth(460);
+    box.adjustSize();
+
+    if (box.exec() != QMessageBox::Yes)
+        return;
+
+    // The report's own log checkbox only covers the *current* session, so put the tail of the
+    // crashed session's log into the description where it survives.
+    const QString details = tr("The launcher closed unexpectedly (crash or freeze). Last part of the log from that session:\n\n%1")
+                                .arg(crashedLog.right(1400));
+    BugReportDialog::reportError(m_mainWindow, tr("Launcher closed unexpectedly"), details);
 }
 
 ViewLogWindow* Application::showLogWindow()

@@ -5,6 +5,8 @@
 #include <QPushButton>
 #include <QShortcut>
 
+#include "ui/GuiUtil.h"
+
 ReviewMessageBox::ReviewMessageBox(QWidget* parent, [[maybe_unused]] QString const& title, [[maybe_unused]] QString const& icon)
     : QDialog(parent), ui(new Ui::ReviewMessageBox)
 {
@@ -43,6 +45,9 @@ ReviewMessageBox::ReviewMessageBox(QWidget* parent, [[maybe_unused]] QString con
 
         QApplication::clipboard()->setText(txt);
     });
+
+    // remember the window size between runs, like the settings window does
+    GuiUtil::rememberGeometry(this, "ReviewMessageBoxGeometry");
 }
 
 ReviewMessageBox::~ReviewMessageBox()

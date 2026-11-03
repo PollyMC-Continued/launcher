@@ -75,6 +75,15 @@ class ToastNotification : public QFrame {
      */
     void showToast(const QPoint& finalPos, int displayMs = 8000);
 
+    /*! Replace the small glyph in front of the title (a star by default). */
+    void setIconGlyph(const QString& glyph);
+
+    /*!
+     * Re-parent the card to another top-level window (the one the user is in now). A visible card stays
+     * visible; the caller positions it afterwards with updatePosition().
+     */
+    void moveToWindow(QWidget* newParent);
+
     /*!
      * Move the visible card instantly (no animation), e.g. after a parent
      * resize or status-bar toggle.

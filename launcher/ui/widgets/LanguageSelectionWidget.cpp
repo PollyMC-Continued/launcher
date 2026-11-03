@@ -2,6 +2,7 @@
 
 #include <QCheckBox>
 #include <QHeaderView>
+#include <QLocale>
 #include <QLabel>
 #include <QTreeView>
 #include <QVBoxLayout>
@@ -25,6 +26,17 @@ LanguageSelectionWidget::LanguageSelectionWidget(QWidget* parent) : QWidget(pare
     languageView->header()->setCascadingSectionResizes(true);
     languageView->header()->setStretchLastSection(false);
     verticalLayout->addWidget(languageView);
+    loadingLabel = new QLabel(this);
+    loadingLabel->setObjectName(QStringLiteral("loadingLabel"));
+    loadingLabel->setWordWrap(true);
+    loadingLabel->setStyleSheet(QStringLiteral("color: gray;"));
+    verticalLayout->addWidget(loadingLabel);
+    autoDetectLabel = new QLabel(this);
+    autoDetectLabel->setObjectName(QStringLiteral("autoDetectLabel"));
+    autoDetectLabel->setWordWrap(true);
+    autoDetectLabel->setStyleSheet(QStringLiteral("color: gray;"));
+    autoDetectLabel->hide();
+    verticalLayout->addWidget(autoDetectLabel);
     helpUsLabel = new QLabel(this);
     helpUsLabel->setObjectName(QStringLiteral("helpUsLabel"));
     helpUsLabel->setTextInteractionFlags(Qt::LinksAccessibleByMouse);
@@ -46,6 +58,23 @@ LanguageSelectionWidget::LanguageSelectionWidget(QWidget* parent) : QWidget(pare
     languageView->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
     languageView->header()->setSectionResizeMode(0, QHeaderView::Stretch);
     connect(languageView->selectionModel(), &QItemSelectionModel::currentRowChanged, this, &LanguageSelectionWidget::languageRowChanged);
+    // First run: the language list fills in as soon as the index download lands. Until then,
+    // the widget is usable in English - say so instead of looking silently broken.
+    connect(translations, &QAbstractItemModel::rowsInserted, this, &LanguageSelectionWidget::updateLoadingHint);
+    connect(translations, &QAbstractItemModel::rowsRemoved, this, &LanguageSelectionWidget::updateLoadingHint);
+    updateLoadingHint();
+    // The language can be guessed from the IP shortly after the page opens; show it when it happens.
+    connect(translations, &TranslationsModel::languageAutoDetected, this, &LanguageSelectionWidget::updateAutoDetectHint);
+    updateAutoDetectHint();
+    // A hand-made choice (click or keyboard) always wins over a late guess.
+    connect(languageView, &QTreeView::clicked, this, [this, translations] {
+        translations->cancelAutoDetect();
+        autoDetectLabel->hide();
+    });
+    connect(languageView, &QTreeView::activated, this, [this, translations] {
+        translations->cancelAutoDetect();
+        autoDetectLabel->hide();
+    });
     verticalLayout->setContentsMargins(0, 0, 0, 0);
 
     auto language_setting = APPLICATION->settings()->getSetting("Language");
@@ -63,7 +92,33 @@ void LanguageSelectionWidget::retranslate()
     QString text = tr("Don't see your language or the quality is poor?<br/><a href=\"%1\">Help us with translations!</a>")
                        .arg(BuildConfig.TRANSLATIONS_URL);
     helpUsLabel->setText(text);
-    formatCheckbox->setText(tr("Use system locales"));
+    formatCheckbox->setText(tr("Use system regional standards"));
+    updateLoadingHint();
+    updateAutoDetectHint();
+}
+
+void LanguageSelectionWidget::updateAutoDetectHint()
+{
+    const QString country = APPLICATION->translations()->autoDetectedCountry();
+    if (country.isEmpty()) {
+        autoDetectLabel->hide();
+        return;
+    }
+    const QString name = QLocale::territoryToString(QLocale::codeToTerritory(country));
+    autoDetectLabel->setText(tr("Language picked automatically from your region (%1). Not right? Choose another one above.").arg(name));
+    autoDetectLabel->show();
+}
+
+void LanguageSelectionWidget::updateLoadingHint()
+{
+    const bool downloading = APPLICATION->translations()->rowCount() <= 1;
+    loadingLabel->setVisible(downloading);
+    if (downloading) {
+        loadingLabel->setText(tr("Downloading the list of languages… You can continue in English now and "
+                                 "switch languages at any time - the list fills in by itself."));
+    } else {
+        loadingLabel->clear();
+    }
 }
 
 void LanguageSelectionWidget::languageRowChanged(const QModelIndex& current, const QModelIndex& previous)
@@ -72,6 +127,8 @@ void LanguageSelectionWidget::languageRowChanged(const QModelIndex& current, con
         return;
     }
     auto translations = APPLICATION->translations();
+    if (languageView->hasFocus())  // arrow keys; programmatic changes don't have focus
+        translations->cancelAutoDetect();
     QString key = translations->data(current, Qt::UserRole).toString();
     translations->selectLanguage(key);
     translations->updateLanguage(key);

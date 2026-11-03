@@ -1,26 +1,146 @@
 # Changelog
 
-## Unreleased
+## v10.0.2
 
-**Added:**
-
-- **Boot & crash diagnostics (`boot-debug.log`)** — A new early-boot diagnostics layer writes `boot-debug.log` next to the executable from the very first statement of `main()` (before any Qt object exists). It records how far startup got (stage markers through the whole early path), captures Qt fatal startup messages verbatim (e.g. a platform plugin that fails to load), and installs crash handlers that log the exception code, faulting address and module for unhandled exceptions, `qFatal`/`abort()`, `std::terminate`, CRT invalid parameters and pure virtual calls. Wine/Winlator environments are detected and recorded. This closes the "crashes on start with no log file" blind spot: any failure that happens *before* the launcher's own `logs/PollyMC-0.log` is created now leaves a full trace.
-- **Build toolchain manifest (`build-env.txt`)** — CI records the exact MSYS2 package versions each build was made with and ships the manifest inside the portable zip, so "works on one machine, crashes on another" reports can be compared against known-good builds.
+**Fixes a crash when closing the Modrinth or CurseForge pages while their filter lists were still loading, and two smaller issues found in the same code.**
 
 **Fixed:**
 
-- **Download retry timer thread-safety** — The delayed download retry (added in v9.4.2) created a `QTimer` from whatever thread the network job's state machine ran on; on code paths where that is a worker thread, this can misbehave or crash. The retry now always hops to the job's own thread before starting the timer.
-- **CI smoke tests could ship a crashing build as green** — The Windows smoke test only failed when the process exited with `STATUS_DLL_NOT_FOUND`. A binary that crashed instantly (access violation, `qFatal`, stack overflow, ...) passed as "DLLs loaded OK". The smoke test now fails on *any* abnormal exit code during the startup window, verifies the launcher actually created its log file, and dumps `boot-debug.log`, stderr and the Windows event log on failure. The portable zip (the artifact Winlator users run) is now smoke-tested directly, including an explicit check that `platforms/qwindows.dll` is present.
+- **Crash when closing the Modrinth or CurseForge pages while their filters load** — The Modrinth and CurseForge pages of the "New Instance" window and of an instance's "Download mods" window fetch their filter category lists in the background when opened. If you closed the page before the list arrived (easy to do on a slow connection), the finished request could still call back into a page that no longer existed, and the launcher could crash. The category work is now tied to the page's lifetime: once the page closes, a pending category list can no longer touch it.
+- **Garbled log line when a category list could not be read** — If the Modrinth or CurseForge category list arrived but could not be read as JSON, the log printed a single stray character (the first one of the response) instead of the response itself. The log now shows what was actually received, which makes such problems much easier to diagnose.
+- **A leftover search timer** — When a mod page's filters were set up a second time, the old "wait a moment before searching" timer was left alive next to the new one, and a search that was already waiting could fire on top of the new one. The old timer is now removed before the new one is created. (In practice the filters are set up only once per page, so you were unlikely to notice.)
 
-## v9.4.2
+## v10.0.1
+
+**Fixes "Check instance" false alarms for bundled libraries, detects version mismatches, and improves "Update Pack" reliability.**
+
+**Added:**
+
+- **Dependency version mismatches detected** — "Check instance" now reports an error when a required mod is installed, but its version is outside the required range (e.g., a mod needs `[1.3.8, 1.4)` but `21.1.1` is installed). Previously, the launcher only checked if the mod was present, letting the game crash on startup.
+- **Pack file verification** — "Check instance" now compares your actual instance against the modpack's file list. It warns you about pack files missing from your instance and flags "orphan" mods (jars in your mods folder that are not part of the pack, often left behind by previous updates or added manually).
+
+**Fixed:**
+
+- **Mod conflict false alarms with bundled libraries** — Many modpacks, including All the Mods 10: To the Sky, ship libraries inside other mods (NeoForge's "Jar-in-Jar"). "Check instance" no longer reports those libraries as possibly missing when another installed mod already includes them. Real missing dependencies are still reported.
+- **Mods that only contain other mods** — Library-style mods that carry their mods inside themselves (such as Kotlin for Forge) are now recognized and counted as installed, instead of being skipped.
+- **Update Pack ignoring changed or deleted files** — Modrinth and CurseForge updates now verify that "kept" files actually still exist on your disk. If you updated or deleted a mod individually outside the pack, "Update Pack" will now detect it, warn you, and restore the pack's version. Intentionally disabled mods are still respected and left alone.
+- **CurseForge "Update Pack" leaving duplicate mods behind** — After an update, an instance could end up with two versions of the same mod (for example two Ars Nouveau or GeckoLib jars), and the game refused to start. If you had updated a mod yourself (for example with "Check for Updates"), "Update Pack" would also download the pack's old copy of it again next to yours. "Update Pack" now notices when a mod was replaced by another version of the same mod, no longer downloads the pack's file a second time, and removes extra copies of mods the pack already provides. The removed files are listed in the log.
+- **CurseForge "Update Pack" hiding failures** — If the launcher could not get the old file names from CurseForge, or could not read the previous pack's file list, the update went on silently and could not clean up old files. It now asks you before continuing, and tells you in the log when some old files could not be identified.
+- **Stale configs not overwriting** — Fixed a bug on Windows where updating a pack would silently fail to overwrite existing config files and overrides, leaving you with outdated settings. Files are now verified and removed before copying.
+- **Override cleanup failing** — Fixed a bug where certain config files were never deleted between pack updates if their path contained the word "overrides" (e.g., `overrides/config/overrides.cfg`).
+- **Crash when switching to the Windows 11 style** — On Windows, changing the widget style from Dark (or another custom theme) to "Windows 11" could close the launcher right after the change. The launcher now clears the leftover theme before applying the Windows 11 style, so the switch completes.
+
+## v10.0.0
+
+**This update brings the launcher's own new features together with a big core update.** New in the launcher itself: pinning instances, mod conflict detection, a smarter "Check instance" and the new "My Reports" page for your bug reports. Under the hood, the launcher's core has been brought up to date with Prism Launcher 11.1.1 (we were on 11.0.0 before), pulling in five upstream releases' worth of fixes and improvements. Offline accounts, offline skins and everything else you're used to work exactly as before, and your instances, accounts and settings carry over untouched.
+
+**Added:**
+
+- **Pin instances** — Right-click an instance (or use the instance toolbar) and pick "Pin Instance" to keep it at the top of its group, whatever the sort order is. Pinned instances show a small pin.
+- **Mod conflict detection** — Two files with the same mod id, mods that declare themselves incompatible with each other (from the jar and from Modrinth/CurseForge data) and mods whose dependency is disabled or missing are now found. Conflicting mods get a red row in the mod list, and everything is listed in "Check instance".
+- **Check instance: more checks** — Also looks at free disk space, whether the memory setting fits the computer, and mods not marked for the instance's game version. Results are sorted worst first, there is a "Check Again" button, and "Copy Report" puts the list on the clipboard.
+- **Answers to your bug reports** — After you send a report you get a report ID (like K7X9F-3QD2M). When the team updates its status, the launcher shows a notification the next time it starts, e.g. "Fixed in version 9.4.3". Clicking it opens My Reports.
+- **My Reports** — Lists the bug reports and suggestions you sent from this launcher, one card each: a colored status pill (Waiting, In review, Needs info, Fixed...), what you wrote, the team's answer in plain words, the type (Bug, Crash, Suggestion, Other), the date and the report ID with a "Copy ID" button. Open it from the "My Reports" button in the top corner of the report window (it counts reports with news), from "View My Reports" in the window that confirms your report was sent, or from the notification when the team answers. "Check for updates" looks again straight away.
+- **Play offline when the login servers are down** — If Microsoft's login servers are unreachable, you now get a clear message with a retry button, and you can start the game in offline mode instead of being stuck at the login screen.
+- **Warning for untrusted mods in imported modpacks** — When you import a Modrinth or CurseForge modpack containing mods that don't come from the platform itself, the launcher warns you before installing, so you know what you're getting.
+- **Better graphics card detection** — On computers with more than one graphics card (like most gaming laptops), the launcher now asks the operating system directly which cards you have, and on Windows the fastest card is listed first. The game launches on the right card more often.
+- **Clearer errors when the game won't start** — If Java refuses to start, the launcher now shows the actual reason in the log instead of a generic failure message.
+- **Option to turn off the low memory warning** — If you deliberately run the game with little free memory, you can now switch the warning off in the settings.
+
+**Changed:**
+
+- **Check instance no longer freezes** — Mod jars are scanned in the background, so big modpacks don't lock the window.
+- **Update checker is more honest** — The update window shows how many updates were found, and "up to date" no longer appears when some mods could not be checked.
+- **Notifications don't overlap** — The GitHub star reminder now waits until the report check has finished, so the two never pop up at the same time.
+- **Clearer thank-you message** — After sending a report, the window shows your report ID, a "View My Reports" button, and says the launcher will tell you when the team answers.
+- **Memory slider now shows free memory** — In the Java settings, the slider shows how much memory is actually free right now instead of the total amount installed, making it much easier to pick a sensible value.
+- **The launcher freezes less** — Settings are saved far less often and information is cached instead of being recalculated every time. The launcher feels snappier all round, especially on slower hard drives.
+- **Faster instance list and mod lists** — Starting the launcher, browsing instances and opening the mods of a big modpack are all noticeably quicker.
+- **More reliable CurseForge downloads** — Downloads from CurseForge's file servers are now more reliable.
+- **Safer folder names for imported modpacks** — Special characters and symbols that cause trouble in folder names are kept out when the launcher creates an instance from a modpack.
+- **The Modrinth modpack page now shows the pack's changelog** — You can see what's new in a pack before you install or update it.
+- **Language settings are better behaved** — The confusing "Use system locale" option is now called "Use system regional standards", and turning it on or off no longer resets your chosen language by accident.
+- **New Instance window order** — The install sources are now listed as Custom, Import, Modrinth, CurseForge, ATLauncher, FTB and then the rest.
+- **A shorter More menu** — "My Reports" is no longer in the More menu. You can still open it from the report window, the report-sent window and the notification when the team answers.
+
+**Fixed:**
+
+- **Windows 11 theme** — selected rows in lists, trees and tables are now readable whatever their highlight color is: the text turns white on dark highlights and black on light ones (gray, green…). Unselected rows are unchanged.
+- **Crash when changing the theme or icons in Settings** — The launcher could close right after picking a theme or icon set (seen on Windows 11). The window style is now swapped after the dropdown has finished closing, and it is no longer replaced when it is already the right one.
+- **"Child launcher process failed" during the update check** — The launcher no longer shows this error when checking for updates. The check skips the splash screen, waits longer on slow computers, and falls back to the installed version if the check still can't finish.
+- **Mod updates picking the wrong file** — When two updates had the same name, only one of them was downloaded (and the other was skipped or downloaded twice). Each update is now tracked on its own.
+- **Update check on an empty mod folder** — Checking for updates with no mods installed could crash; it now says there is nothing to check.
+- **Quilt mod dependencies** — They were read from the wrong place in quilt.mod.json and never found. Fabric's "java" requirement is no longer mistaken for a missing mod.
+- **Native crash when launching certain modpacks** — A rare crash caused by background work being cleaned up at the wrong moment is fixed.
+- **Background work is cleaned up safely** — When a window or list closes, its leftover background work is now stopped properly, preventing rare crashes.
+- **Safer modpack imports (security)** — A maliciously crafted modpack could, in certain cases, place files outside the instance folder during import. This affected CurseForge and ATLauncher packs and is now blocked.
+- **Importing the same modpack twice no longer causes conflicts** — Each import now gets its own identity instead of sharing one with the original.
+- **Renaming an instance while the game is running is no longer allowed** — This used to break the running instance.
+- **Instance shortcuts** — Shortcuts keep working when you rename an instance, and existing shortcuts are found again after restarting the launcher.
+- **Duplicating an instance** — The copy now gets its own identity, so the two no longer clash.
+- **Crash when installing a mod loader that was disabled** — Fixed.
+- **Mod dependencies of dependencies** — Enabling or disabling a mod now correctly handles mods that sit behind other dependencies as well.
+- **Microsoft accounts are kept until sign-in works** — The launcher no longer removes an account just because a re-login attempt failed; your account stays in the list.
+- **No more empty account picker** — The launcher no longer opens the account selection window when there are no accounts to choose from.
+- **Offline accounts are refreshed properly at launch** — Skins and profiles update as they should when you start the game.
+- **A rare case where the launcher's own folders could be deleted during cleanup** — Fixed. Your data is safe.
+- **Crash when opening the "Other logs" page** — Fixed.
+- **Crash when closing the data packs window** — Fixed, along with a small memory leak.
+- **Sign-in with a code now shows the real error** — Instead of failing silently, you see what actually went wrong.
+- **Updating an installed modpack works again** — The "Update" button on an installed Modrinth or CurseForge pack no longer fails.
+- **macOS fixes** — The menu bar is readable again in dark mode, and Cmd+Q now quits the whole launcher instead of closing only the active window.
+- **Translation downloads** — If the list of translations can't be fetched, your chosen language no longer falls back to English.
+- **Crash when opening or importing some instances (0xC0000005)** — Instances whose packwiz metadata contains unusual Minecraft versions could crash the launcher on a background thread while the mod list was loading.
+- **Version sorting** — Minecraft version strings are now compared with a total ordering, so sorting mod metadata can no longer walk past the end of the list and read garbage memory.
+
+**Where to find the mod incompatibility option:**
+
+- Mod conflicts (duplicate mods, mods that conflict with each other, disabled or missing dependencies) are shown in the mod list and in "Check instance".
+- The option **Detect and show mod incompatibilities (experimental)** is off by default. It controls the highlighting of mods that are not marked as compatible with the instance's Minecraft version. Turn it on in **Settings > General > Mods and Modpacks**.
+
+**Notes:**
+
+- Your instances, accounts, settings and skins carry over exactly as they are — nothing to do after updating.
+- Offline accounts, offline skins and the launcher's other own features work exactly as before.
+
+## v9.5.1
+
+**Changed:**
+
+- **Clearer report sending** — The bug report window now shows a progress bar and tells you what it's doing while your report is sent.
+- **Clearer report errors** — If a report can't be sent, the message now tells you what to do.
+
+**Fixed:**
+
+- **Spam reports blocked** — Bug reports are now protected against spam, so the team's inbox stays usable.
+
+**Note:** Older launcher versions can no longer send bug reports. Please update to keep reporting problems.
+
+## v9.5.0
 
 **Added:**
 
 - **In-launcher bug reports** — Help > Report a Bug lets you send a bug, crash or suggestion to the team, with optional screenshots and the launcher log (personal paths hidden).
-- **Report Bug button on error windows** — Error windows, including the network error window, can now open the report form with the error already filled in.
+- **Crash recovery prompt** — If the launcher closed without warning last time, it offers to send a crash report with the previous session's log attached.
+- **Copy diagnostics** — Help > Copy Diagnostics puts the launcher version, system, Qt and Java details on your clipboard in one click, ready to paste into a support chat.
+- **Instance health check** — Right-click an instance (or use the instance toolbar) and pick "Check instance" to find a missing Java, a broken mod jar or a wrong loader version before you launch.
+- **Search in settings** — The settings window has a search box (Ctrl+F) that jumps straight to a setting. It understands several words, tooltips and drop-down choices, forgives skipped letters, shows where each result lives and opens the right tab for you.
+- **Language from your region** — On first run, if your system language has no translation, the launcher picks one from your region (via a quick country lookup) and says so on the language page. Choosing a language yourself always wins.
+- **Mod download repair** — When a download fails with "Permission denied", the error window now offers to retry through a different temp folder or to open the antivirus exclusion guide.
+
+**Changed:**
+
+- **New splash screen** — The startup splash has a fresh look (logo on a soft glow, an animated progress bar and a status line) and shows what the launcher is doing. The status text uses the language you picked, as far as it is translated. It also no longer stays over other windows such as Settings: it closes as soon as any other window opens.
+- **Faster first-run translations** — The window now appears right away and switches to your language as soon as it finishes downloading, instead of holding back the UI.
+- **Quieter update checks** — A failed update check no longer disturbs startup: it just leaves a short note in the status bar, and a failed check can never take the launcher down with it.
+- **Remembered window sizes** — More windows (About, version pickers, export and copy dialogs, the network error window and others) now reopen at the size you left them.
+- **Windows Qt pinned to 6.11.2** — Qt 6.12.0 is unstable and breaks on some devices, so the Windows build now stays on 6.11.2 instead of the newest version MSYS2 ships. The build fails if the pin does not take effect.
+
 
 **Fixed:**
 
+- **Report drafts are kept** — Closing the "Report a Bug" window by accident no longer throws away what you typed; it is restored the next time you open it.
+- **Duplicate report warning** — If you already sent the same report this session, the launcher says so before sending it again.
 - **Download errors** — Failed downloads now show the real reason (such as "Permission denied"), are retried after a short pause, and are written to the log. Task failures are no longer hidden from the log by default.
 
 ## v9.4.1

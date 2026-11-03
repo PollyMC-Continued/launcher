@@ -47,6 +47,7 @@ class TexturePackFolderModel : public ResourceFolderModel {
     enum Columns { ActiveColumn = 0, ImageColumn, NameColumn, DateColumn, ProviderColumn, SizeColumn, NUM_COLUMNS };
 
     explicit TexturePackFolderModel(const QDir& dir, BaseInstance* instance, bool is_indexed, bool create_dir, QObject* parent = nullptr);
+    ~TexturePackFolderModel() override { stopBackgroundWork(); }
 
     virtual QString id() const override { return "texturepacks"; }
 

@@ -20,6 +20,7 @@
 #include "minecraft/mod/ResourceFolderModel.h"
 #include "modplatform/ModIndex.h"
 #include "modplatform/flame/FlamePackExportTask.h"
+#include "ui/GuiUtil.h"
 #include "ui/dialogs/CustomMessageBox.h"
 #include "ui/dialogs/ProgressDialog.h"
 #include "ui_ExportPackDialog.h"
@@ -130,6 +131,9 @@ ExportPackDialog::ExportPackDialog(MinecraftInstance* instance, QWidget* parent,
 
     m_ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
     m_ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("OK"));
+
+    // remember the window size between runs, like the settings window does
+    GuiUtil::rememberGeometry(this, "ExportPackGeometry");
 }
 
 ExportPackDialog::~ExportPackDialog()

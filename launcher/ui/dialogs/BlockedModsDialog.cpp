@@ -30,6 +30,8 @@
 #include "settings/SettingsObject.h"
 #include "modplatform/helpers/HashUtils.h"
 
+#include "ui/GuiUtil.h"
+
 #include <QDebug>
 #include <QDesktopServices>
 #include <QDialogButtonBox>
@@ -78,6 +80,9 @@ BlockedModsDialog::BlockedModsDialog(QWidget* parent, const QString& title, cons
     setAcceptDrops(true);
 
     update();
+
+    // remember the window size between runs, like the settings window does
+    GuiUtil::rememberGeometry(this, "BlockedModsGeometry");
 }
 
 BlockedModsDialog::~BlockedModsDialog()

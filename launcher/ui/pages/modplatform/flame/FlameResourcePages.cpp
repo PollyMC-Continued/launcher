@@ -249,7 +249,7 @@ void FlameModPage::prepareProviderCategories()
 {
     auto [task, response] = FlameAPI::getModCategories();
     m_categoriesTask = task;
-    connect(m_categoriesTask.get(), &Task::succeeded, [this, response]() {
+    connect(m_categoriesTask.get(), &Task::succeeded, this, [this, response]() {
         auto categories = FlameAPI::loadModCategories(*response);
         m_filter_widget->setCategories(categories);
     });

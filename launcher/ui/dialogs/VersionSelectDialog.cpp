@@ -44,6 +44,8 @@
 
 #include "ui/widgets/VersionSelectWidget.h"
 
+#include "ui/GuiUtil.h"
+
 #include "BaseVersion.h"
 #include "BaseVersionList.h"
 
@@ -69,7 +71,7 @@ VersionSelectDialog::VersionSelectDialog(BaseVersionList* vlist, QString title, 
     m_buttonBox->setOrientation(Qt::Horizontal);
     m_buttonBox->setStandardButtons(QDialogButtonBox::Cancel | QDialogButtonBox::Ok);
 
-    m_buttonBox->button(QDialogButtonBox::Ok)->setText(tr("Ok"));
+    m_buttonBox->button(QDialogButtonBox::Ok)->setText(tr("OK"));
     m_buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
     m_horizontalLayout->addWidget(m_buttonBox);
 
@@ -90,6 +92,9 @@ VersionSelectDialog::VersionSelectDialog(BaseVersionList* vlist, QString title, 
     if (!cancelable) {
         m_buttonBox->button(QDialogButtonBox::Cancel)->setEnabled(false);
     }
+
+    // remember the window size between runs, like the settings window does
+    GuiUtil::rememberGeometry(this, "VersionSelectGeometry");
 }
 
 void VersionSelectDialog::retranslate()
@@ -144,7 +149,7 @@ BaseVersion::Ptr VersionSelectDialog::selectedVersion() const
 
 void VersionSelectDialog::on_refreshButton_clicked()
 {
-    m_versionWidget->loadList();
+    m_versionWidget->loadList(true);
 }
 
 void VersionSelectDialog::setExactFilter(BaseVersionList::ModelRoles role, QString filter)

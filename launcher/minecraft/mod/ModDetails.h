@@ -35,6 +35,7 @@
 
 #pragma once
 
+#include <QHash>
 #include <QString>
 #include <QStringList>
 #include <QUrl>
@@ -140,6 +141,28 @@ struct ModDetails {
 
     QStringList dependencies = {};
 
+    /* Raw version requirement per dependency id, when the mod's metadata declares one:
+     * NeoForge/Forge "versionRange" (a Maven range like "[1.3.8,1.4)") or a Fabric/Quilt
+     * version predicate (">=1.3 <1.4"). An empty value means "any version". Kept as the raw
+     * string; ModConflictChecker is the one place that interprets it, and skips anything it
+     * cannot parse with certainty rather than risk a false accusation. */
+    QHash<QString, QString> dependencyRanges = {};
+
+    /* IDs of mods this mod declares itself incompatible with, for every version of them.
+     * Version-restricted declarations ("breaks < 1.2") are left out on purpose: we'd rather miss a
+     * conflict than report one that does not exist. */
+    QStringList breaks = {};
+
+    /* IDs of mods that are shipped inside this jar rather than as separate files: the Jar-in-Jar
+     * entries under META-INF/jarjar/ (NeoForge/Forge) or META-INF/jars/ (Fabric/Quilt), searched
+     * recursively, plus any extra [[mods]] entries of the jar itself. A dependency on one of
+     * these is already satisfied by this jar. */
+    QStringList bundledModIds = {};
+
+    /* Version of each bundled mod, when its metadata declares one: "jij-lib" -> "1.2.3".
+     * Used to check declared dependency ranges against what the bundling jar actually ships. */
+    QHash<QString, QString> bundledModVersions = {};
+
     ModDetails() = default;
 
     /** Metadata should be handled manually to properly set the mod status. */
@@ -155,6 +178,10 @@ struct ModDetails {
         , licenses(other.licenses)
         , icon_file(other.icon_file)
         , dependencies(other.dependencies)
+        , dependencyRanges(other.dependencyRanges)
+        , breaks(other.breaks)
+        , bundledModIds(other.bundledModIds)
+        , bundledModVersions(other.bundledModVersions)
     {}
 
     ModDetails& operator=(const ModDetails& other) = default;

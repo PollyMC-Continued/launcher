@@ -25,6 +25,49 @@ EnsureAvailableMemory::EnsureAvailableMemory(LaunchTask* parent, MinecraftInstan
 
 void EnsureAvailableMemory::executeTask()
 {
+#ifdef Q_OS_MACOS
+    QString text;
+    switch (MacOSHardwareInfo::memoryPressureLevel()) {
+        case MacOSHardwareInfo::MemoryPressureLevel::Normal:
+            emitSucceeded();
+            return;
+        case MacOSHardwareInfo::MemoryPressureLevel::Warning:
+            text =
+                tr("The system is under increased memory pressure.\n"
+                   "This may lead to lag or slowdowns.\n"
+                   "If possible, close other applications before continuing.\n\n"
+                   "Launch anyway?");
+            break;
+        case MacOSHardwareInfo::MemoryPressureLevel::Critical:
+            text =
+                tr("Your system is under critical memory pressure.\n"
+                   "This may lead to severe slowdowns, crashes or system instability.\n"
+                   "It is recommended to close other applications or restart your system.\n\n"
+                   "Launch anyway?");
+            break;
+    }
+
+    bool shouldAbort = false;
+
+    if (m_instance->settings()->get("LowMemWarning").toBool()) {
+        auto* dialog = CustomMessageBox::selectable(nullptr, tr("High memory pressure"), text, QMessageBox::Icon::Warning,
+                                                    QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                                                    QMessageBox::StandardButton::No);
+
+        shouldAbort = dialog->exec() == QMessageBox::No;
+        dialog->deleteLater();
+    }
+
+    const auto message = tr("The system is under high memory pressure");
+    if (shouldAbort) {
+        emit logLine(message, MessageLevel::Fatal);
+        emitFailed(message);
+        return;
+    }
+
+    emit logLine(message, MessageLevel::Warning);
+    emitSucceeded();
+#else
     const uint64_t total = HardwareInfo::totalRamMiB();
     const uint64_t available = HardwareInfo::availableRamMiB();
     const uint64_t min = m_instance->settings()->get("MinMemAlloc").toUInt();
@@ -42,36 +85,42 @@ void EnsureAvailableMemory::executeTask()
         // Hard incompatibility: the system physically cannot back this
         // allocation no matter what else is running. Keep this as a blocking
         // warning (existing Yes/No dialog), but base the message on total RAM.
-        auto* dialog = CustomMessageBox::selectable(
-            nullptr, tr("Not enough RAM"),
-            tr("This instance is configured to use more memory than your system has installed.\n\n"
-               "Required: %1 MiB\nTotal system RAM: %2 MiB\n\n"
-               "Continue anyway? This may cause severe slowdowns or crashes.")
-                .arg(required)
-                .arg(total),
-            QMessageBox::Icon::Warning, QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
-            QMessageBox::StandardButton::No);
-        const auto response = dialog->exec();
-        dialog->deleteLater();
-
         const auto message = tr("Not enough RAM available to launch this instance");
-        if (response == QMessageBox::No) {
-            emit logLine(message, MessageLevel::Fatal);
-            emitFailed(message);
-            return;
-        }
+        if (m_instance->settings()->get("LowMemWarning").toBool()) {
+            auto* dialog = CustomMessageBox::selectable(
+                nullptr, tr("Not enough RAM"),
+                tr("This instance is configured to use more memory than your system has installed.\n\n"
+                   "Required: %1 MiB\nTotal system RAM: %2 MiB\n\n"
+                   "Continue anyway? This may cause severe slowdowns or crashes.")
+                    .arg(required)
+                    .arg(total),
+                QMessageBox::Icon::Warning, QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                QMessageBox::StandardButton::No);
 
-        emit logLine(message, MessageLevel::Warning);
+            const auto response = dialog->exec();
+            dialog->deleteLater();
+
+            if (response == QMessageBox::No) {
+                emit logLine(message, MessageLevel::Fatal);
+                emitFailed(message);
+                return;
+            }
+
+            emit logLine(message, MessageLevel::Warning);
+        } else {
+            emit logLine(message, MessageLevel::Warning);
+        }
     } else if (required > available) {
         // Soft warning: fundamentally viable on this hardware, but not enough
         // is free right now due to other running programs. Log only, don't
         // block launch — this is not the instance's fault.
         emit logLine(tr("Note: only %1 MiB RAM is currently free, but this instance requests %2 MiB. "
-                         "Other running programs may cause slowdowns; consider closing some before playing.")
-                         .arg(available)
-                         .arg(required),
-                     MessageLevel::Warning);
+                        "Other running programs may cause slowdowns; consider closing some before playing.")
+                        .arg(available)
+                        .arg(required),
+                    MessageLevel::Warning);
     }
 
     emitSucceeded();
+#endif
 }

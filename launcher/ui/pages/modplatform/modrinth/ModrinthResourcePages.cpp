@@ -167,7 +167,7 @@ void ModrinthModPage::prepareProviderCategories()
 {
     auto [categoriesTask, response] = ModrinthAPI::getModCategories();
     m_categoriesTask = categoriesTask;
-    connect(m_categoriesTask.get(), &Task::succeeded, [this, response]() {
+    connect(m_categoriesTask.get(), &Task::succeeded, this, [this, response]() {
         auto categories = ModrinthAPI::loadModCategories(*response);
         m_filter_widget->setCategories(categories);
     });

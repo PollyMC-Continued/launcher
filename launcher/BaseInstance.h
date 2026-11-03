@@ -114,7 +114,9 @@ class BaseInstance : public QObject {
 
     /// The instance's ID. The ID SHALL be determined by LAUNCHER internally. The ID IS guaranteed to
     /// be unique.
-    virtual QString id() const;
+    QString id() const;
+    QString uuid() const { return m_uuid; }
+    void regenerateUuid();
 
     void setMinecraftRunning(bool running);
     void setRunning(bool running);
@@ -180,6 +182,10 @@ class BaseInstance : public QObject {
     qint64 lastLaunch() const;
     /// Sets the last launched time to 'val' milliseconds since epoch
     void setLastLaunch(qint64 val = QDateTime::currentMSecsSinceEpoch());
+
+    /// Pinned instances are listed before the others of their group, whatever the sort mode is.
+    bool isPinned() const;
+    void setPinned(bool pinned);
 
     /*!
      * \brief Gets this instance's settings object.
@@ -315,6 +321,7 @@ class BaseInstance : public QObject {
     RuntimeContext m_runtimeContext;
 
    private: /* data */
+    QString m_uuid;
     Status m_status = Status::Present;
     bool m_crashed = false;
     bool m_hasUpdate = false;

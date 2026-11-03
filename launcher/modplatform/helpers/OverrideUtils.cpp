@@ -1,5 +1,6 @@
 #include "OverrideUtils.h"
 
+#include <QDir>
 #include <QDirIterator>
 
 #include "FileSystem.h"
@@ -21,12 +22,18 @@ void createOverrides(const QString& name, const QString& parent_folder, const QS
     }
 
     QDirIterator override_iterator(override_path, QDirIterator::Subdirectories);
+    // Everything below the override folder, as a path relative to it. Note: the old
+    // `split(name)` trick broke on any file whose path contained the folder name again
+    // (e.g. "overrides/config/overrides.cfg"), which then never got cleaned up on updates.
+    const QString base = override_path + QLatin1Char('/');
     while (override_iterator.hasNext()) {
         auto override_file_path = override_iterator.next();
         QFileInfo info(override_file_path);
         if (info.isFile()) {
-            // Absolute path with temp directory -> relative path
-            override_file_path = override_file_path.split(name).last().remove(0, 1);
+            if (override_file_path.startsWith(base))
+                override_file_path = override_file_path.mid(base.size());
+            else
+                override_file_path = QDir(base).relativeFilePath(override_file_path);
 
             file.write(override_file_path.toUtf8());
             file.write("\n");

@@ -22,7 +22,7 @@
 #include <QTimer>
 #include <QUrl>
 #include <QVBoxLayout>
-#include <QSplashScreen>
+#include "ui/widgets/SplashScreen.h"
 #include <QSvgRenderer>
 
 #include "Application.h"
@@ -80,20 +80,7 @@ void runAfterSettingsClose(QWidget* page, std::function<void()> fn)
 
 void showSplashPreview()
 {
-    QPixmap pixmap(400, 260);
-    pixmap.fill(QColor(QStringLiteral("#191919")));
-    QSvgRenderer renderer(QStringLiteral(":/branding/splash-logo.svg"));
-    if (renderer.isValid()) {
-        QPainter painter(&pixmap);
-        painter.setRenderHint(QPainter::Antialiasing);
-        painter.setRenderHint(QPainter::SmoothPixmapTransform);
-        renderer.render(&painter, QRectF(40, 76, 320, 107));
-    }
-    auto* splash = new QSplashScreen(pixmap, Qt::WindowStaysOnTopHint);
-    splash->show();
-    splash->raise();
-    QTimer::singleShot(1800, splash, &QSplashScreen::close);
-    QTimer::singleShot(1900, splash, &QObject::deleteLater);
+    SplashScreen::showPreview();
 }
 } // namespace
 
@@ -111,6 +98,16 @@ DeveloperPage::DeveloperPage(QWidget* parent) : QWidget(parent)
         auto* mainWindow = APPLICATION->showMainWindow();
         if (mainWindow) {
             mainWindow->triggerStarToastForDeveloper();
+        }
+    });
+
+    auto* reportToast = new QPushButton(tr("Show bug report update notification now"), this);
+    reportToast->setToolTip(tr("Display a sample \"your report has news\" notification in the window you are in, to test notifications without waiting for the team."));
+    layout->addWidget(reportToast);
+    connect(reportToast, &QPushButton::clicked, this, []() {
+        auto* mainWindow = APPLICATION->showMainWindow();
+        if (mainWindow) {
+            mainWindow->triggerReportToastForDeveloper();
         }
     });
 
@@ -204,6 +201,31 @@ DeveloperPage::DeveloperPage(QWidget* parent) : QWidget(parent)
         }
         if (!APPLICATION->triggerUpdatePreview())
             QMessageBox::information(this, tr("Developer tools"), tr("This platform's updater does not support the update UI preview."));
+    });
+
+    auto* showWhatsNewToolbar = new QPushButton(tr("Show What's New toolbar"), this);
+    showWhatsNewToolbar->setToolTip(
+        tr("Reveals the bottom What's New toolbar. Use this if it went missing, for example after running an older launcher that hid it again."));
+    layout->addWidget(showWhatsNewToolbar);
+    connect(showWhatsNewToolbar, &QPushButton::clicked, this, [this]() {
+        auto* mainWindow = APPLICATION->showMainWindow();
+        if (!mainWindow) {
+            QMessageBox::warning(this, tr("Developer tools"), tr("The main window is not available."));
+            return;
+        }
+        mainWindow->showWhatsNewToolbar();
+    });
+
+    auto* openWhatsNew = new QPushButton(tr("Open What's New browser"), this);
+    openWhatsNew->setToolTip(tr("Opens the What's New version browser without using the toolbar or the Help menu."));
+    layout->addWidget(openWhatsNew);
+    connect(openWhatsNew, &QPushButton::clicked, this, [this]() {
+        auto* mainWindow = APPLICATION->showMainWindow();
+        if (!mainWindow) {
+            QMessageBox::warning(this, tr("Developer tools"), tr("The main window is not available."));
+            return;
+        }
+        mainWindow->showWhatsNewBrowser();
     });
 
     auto* simulateFailure = new QPushButton(tr("Simulate update-check failure"), this);

@@ -1,5 +1,6 @@
 #include "ScrollMessageBox.h"
 #include <QPushButton>
+#include "ui/GuiUtil.h"
 #include "ui_ScrollMessageBox.h"
 
 ScrollMessageBox::ScrollMessageBox(QWidget* parent, const QString& title, const QString& text, const QString& body, const QString& option)
@@ -17,6 +18,9 @@ ScrollMessageBox::ScrollMessageBox(QWidget* parent, const QString& title, const 
 
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
     ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("OK"));
+
+    // remember the window size between runs, like the settings window does
+    GuiUtil::rememberGeometry(this, "ScrollMessageBoxGeometry");
 }
 
 ScrollMessageBox::~ScrollMessageBox()

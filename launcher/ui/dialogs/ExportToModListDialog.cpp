@@ -24,6 +24,7 @@
 #include "Markdown.h"
 #include "StringUtils.h"
 #include "modplatform/helpers/ExportToModList.h"
+#include "ui/GuiUtil.h"
 #include "ui_ExportToModListDialog.h"
 
 #include <QFileDialog>
@@ -68,6 +69,9 @@ ExportToModListDialog::ExportToModListDialog(QString name, QList<Mod*> mods, QWi
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
     ui->buttonBox->button(QDialogButtonBox::Save)->setText(tr("Save"));
     triggerImp();
+
+    // remember the window size between runs, like the settings window does
+    GuiUtil::rememberGeometry(this, "ExportModListGeometry");
 }
 
 ExportToModListDialog::~ExportToModListDialog()

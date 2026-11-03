@@ -22,12 +22,12 @@
 
 #pragma once
 
-#include <QObject>
-
 #include "ExternalUpdater.h"
 
+class QWidget;
+
 /*!
- * An implementation for the updater on windows and linux that uses out external updater.
+ * An implementation for the updater on Windows and linux that uses out external updater.
  */
 
 class PollyMCExternalUpdater : public ExternalUpdater {
@@ -67,7 +67,7 @@ class PollyMCExternalUpdater : public ExternalUpdater {
      * Set whether or not to check for updates automatically.
      *
      * The update schedule cycle will be reset in a short delay after the property’s new value is set. This is to allow
-     * reverting this property without kicking off a schedule change immediately."
+     * reverting this property without kicking off a schedule change immediately.
      */
     void setAutomaticallyChecksForUpdates(bool check) override;
 
@@ -75,7 +75,7 @@ class PollyMCExternalUpdater : public ExternalUpdater {
      * Set the current automatic update check interval in seconds.
      *
      * The update schedule cycle will be reset in a short delay after the property’s new value is set. This is to allow
-     * reverting this property without kicking off a schedule change immediately."
+     * reverting this property without kicking off a schedule change immediately.
      */
     void setUpdateCheckInterval(double seconds) override;
 
@@ -102,6 +102,13 @@ class PollyMCExternalUpdater : public ExternalUpdater {
 
    private:
     void finishCheck(int exit_code, const QByteArray& std_output, const QByteArray& std_error, const QString& failureReason);
+
+    // A live parent for dialogs, or nullptr once the main window is gone (never dangling).
+    QWidget* safeParent() const;
+    // Collapses a failure reason into one short line for the status bar.
+    static QString singleLine(const QString& text);
+    // Quiet, non-blocking failure notice for background checks (status bar of the main window).
+    void quietNotify(const QString& message);
 
     class Private;
 

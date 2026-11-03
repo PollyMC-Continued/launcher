@@ -7,10 +7,14 @@ on:
     # Translation-only pushes don't build (tags and manual runs still do).
     paths-ignore:
       - "translations/**"
+      - ".github/workflows/**"
+      - "**/*.md"
   pull_request:
     branches: [main]
     paths-ignore:
       - "translations/**"
+      - ".github/workflows/**"
+      - "**/*.md"
   workflow_dispatch:
 
 permissions:
@@ -22,8 +26,8 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' && !startsWith(github.ref, 'refs/tags/') }}
 
 env:
-  # Single source of truth for every platform's ONNX Runtime download.
   ORT_VERSION: "1.22.0"
+  WINDOWS_QT_VERSION: "6.11.2"
 
 jobs:
   skip-check:
@@ -224,6 +228,106 @@ jobs:
             mingw-w64-ucrt-x86_64-nsis
             mingw-w64-ucrt-x86_64-ccache
             mingw-w64-ucrt-x86_64-onnxruntime
+
+      - name: Pin Qt to ${{ env.WINDOWS_QT_VERSION }}
+        # MSYS2 is rolling and `pacman -S qt6-*` always installs the newest Qt.
+        # Downgrade every installed Qt 6 package to the pinned version in ONE
+        # transaction (Qt modules require matching versions of each other).
+        run: |
+          set -euo pipefail
+          QT_PIN="$WINDOWS_QT_VERSION"
+          # repo.msys2.org is the canonical origin; the rest are official
+          # mirrors (https://www.msys2.org/docs/mirrors/). A single mirror can
+          # stall or rate-limit mid-run, so every network access below falls
+          # back through this list instead of failing the build.
+          MIRRORS=(
+            "https://mirror.msys2.org/mingw/ucrt64"
+            "https://repo.msys2.org/mingw/ucrt64"
+            "https://mirror.sjtu.edu.cn/msys2/mingw/ucrt64"
+            "https://mirrors.tuna.tsinghua.edu.cn/msys2/mingw/ucrt64"
+          )
+
+          echo "Installed Qt packages before pinning:"
+          pacman -Q | grep -E '^mingw-w64-ucrt-x86_64-qt6-' || true
+
+          mapfile -t PKGS < <(pacman -Qq | grep -E '^mingw-w64-ucrt-x86_64-qt6-')
+          if [ "${#PKGS[@]}" -eq 0 ]; then
+            echo "::error::No Qt 6 packages are installed; nothing to pin."
+            exit 1
+          fi
+
+          # Fetch the directory index from the first mirror that answers.
+          MIRROR=""
+          for m in "${MIRRORS[@]}"; do
+            echo "Fetching package index from $m ..."
+            if curl -fsSL --retry 2 --connect-timeout 15 --max-time 120 "$m/" -o /tmp/ucrt64-index.html; then
+              MIRROR="$m"
+              break
+            fi
+            echo "::warning::Index fetch from $m failed, trying the next mirror."
+          done
+          if [ -z "$MIRROR" ]; then
+            echo "::error::Could not fetch the ucrt64 package index from any mirror."
+            exit 1
+          fi
+
+          FILES=()
+          MISSING=()
+          for pkg in "${PKGS[@]}"; do
+            # Newest packaging revision of the pinned version, e.g. <pkg>-6.11.2-1-any.pkg.tar.zst
+            file=$(grep -oE "href=\"${pkg}-${QT_PIN}-[0-9]+-any\.pkg\.tar\.zst\"" /tmp/ucrt64-index.html \
+                   | sed -E 's/^href="//; s/"$//' | sort -V | tail -n1 || true)
+            if [ -z "$file" ]; then
+              MISSING+=("$pkg")
+            else
+              FILES+=("$file")
+            fi
+          done
+
+          if [ "${#MISSING[@]}" -gt 0 ]; then
+            echo "::error::No ${QT_PIN} build found on the MSYS2 mirror for: ${MISSING[*]}"
+            echo "::error::Mixing Qt versions would break the build, so aborting. The mirror may have pruned ${QT_PIN}."
+            exit 1
+          fi
+
+          # Download the packages (and their signatures) with curl instead of
+          # handing URLs to pacman: curl gives per-file retries, stall
+          # detection and per-mirror fallback. pacman -U then installs the
+          # local files in one transaction and verifies signatures as usual.
+          DLDIR="$(mktemp -d)"
+          download() {
+            local file="$1"
+            for m in "${MIRRORS[@]}"; do
+              if curl -fL --retry 3 --retry-delay 5 --connect-timeout 15 \
+                   --speed-limit 1024 --speed-time 30 \
+                   "$m/$file" -o "$DLDIR/$file"; then
+                return 0
+              fi
+              echo "::warning::Download of $file from $m failed, trying the next mirror."
+            done
+            return 1
+          }
+          for file in "${FILES[@]}"; do
+            download "$file" || { echo "::error::Could not download $file from any mirror."; exit 1; }
+            download "$file.sig" || { echo "::error::Could not download $file.sig from any mirror."; exit 1; }
+          done
+
+          # One transaction so Qt's inter-module version dependencies resolve together.
+          pacman -U --noconfirm "$DLDIR"/*.pkg.tar.zst
+
+          # Prevent any later pacman call in this job from upgrading Qt again.
+          IGNORE=$(printf '%s ' "${PKGS[@]}")
+          sed -i "s|^#\?IgnorePkg.*|IgnorePkg = ${IGNORE}|" /etc/pacman.conf
+
+          echo "Installed Qt packages after pinning:"
+          pacman -Q | grep -E '^mingw-w64-ucrt-x86_64-qt6-' || true
+
+          GOT=$(/ucrt64/bin/qmake6 -query QT_VERSION | tr -d '\r')
+          if [ "$GOT" != "$QT_PIN" ]; then
+            echo "::error::Qt pin failed: expected ${QT_PIN}, qmake6 reports ${GOT}."
+            exit 1
+          fi
+          echo "Qt pinned to ${GOT}"
 
       - name: Record exact toolchain versions (build-env.txt)
         # MSYS2 is a rolling release and `update: true` builds with whatever is
@@ -439,13 +543,6 @@ jobs:
           function Show-Diagnostics {
             param([string]$Label)
             Write-Host "::error::$Label"
-            $bootLog = Join-Path $exeDir "boot-debug.log"
-            if (Test-Path $bootLog) {
-              Write-Host "=== boot-debug.log (last 60 lines) ==="
-              Get-Content $bootLog | Select-Object -Last 60 | ForEach-Object { Write-Host $_ }
-            } else {
-              Write-Host "boot-debug.log was NOT created - the process never reached main() (loader-level failure)."
-            }
             $appLog = Join-Path $dataDir "logs\PollyMC-0.log"
             if (Test-Path $appLog) {
               Write-Host "=== launcher log (last 40 lines) ==="
@@ -533,12 +630,10 @@ jobs:
           }
 
           function Show-PortableDiagnostics {
-            $bootLog = Join-Path $portableDir "boot-debug.log"
-            if (Test-Path $bootLog) {
-              Write-Host "=== boot-debug.log (last 60 lines) ==="
-              Get-Content $bootLog | Select-Object -Last 60 | ForEach-Object { Write-Host $_ }
-            } else {
-              Write-Host "boot-debug.log was NOT created - the process never reached main()."
+            $appLog = Join-Path $portableDir "logs\PollyMC-0.log"
+            if (Test-Path $appLog) {
+              Write-Host "=== launcher log (last 40 lines) ==="
+              Get-Content $appLog | Select-Object -Last 40 | ForEach-Object { Write-Host $_ }
             }
           }
 
@@ -1609,64 +1704,3 @@ jobs:
         run: |
           set -euo pipefail
           gh workflow run gh-pages.yml --ref "${{ github.event.repository.default_branch }}" -f scope=repos
-
-      - name: Update version in README
-        run: |
-          set -euo pipefail
-
-          TAG="${{ steps.prep.outputs.tag_name }}"
-          VERSION="${TAG#v}"
-
-          # Current version(s) present in README
-          CURRENT=$(grep -oE 'PollyMC-Continued-[0-9]+\.[0-9]+\.[0-9]+' README.md \
-                    | head -1 | sed 's/PollyMC-Continued-//' || true)
-
-          if [ "$CURRENT" = "$VERSION" ]; then
-            echo "README already at ${VERSION}, nothing to do."
-            exit 0
-          fi
-
-          if [ -z "$CURRENT" ]; then
-            echo "::error::No 'PollyMC-Continued-X.Y.Z' pattern found in README.md."
-            echo "::error::The README's artifact filename examples must follow that format."
-            exit 1
-          fi
-
-          # Guard against downgrades (tag push of an older tag)
-          NEWER=$(printf '%s\n%s\n' "$VERSION" "$CURRENT" | sort -V | tail -1)
-          if [ "$NEWER" = "$CURRENT" ] && [ "$VERSION" != "$CURRENT" ]; then
-            echo "::warning::README version ${CURRENT} is newer than tag ${VERSION}; skipping."
-            exit 0
-          fi
-
-          # Rewrite only the version segment of PollyMC-Continued-<semver>- names.
-          sed -i -E "s/PollyMC-Continued-[0-9]+\.[0-9]+\.[0-9]+-/PollyMC-Continued-${VERSION}-/g" README.md
-
-          if git diff --quiet -- README.md; then
-            echo "No changes after sed, nothing to commit."
-            exit 0
-          fi
-
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          git add README.md
-          git commit -m "Chore: bump README version to ${VERSION} [skip-all]"
-
-          # Tag pushes are detached: push to the default branch; branch pushes go back to their branch.
-          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
-            TARGET_BRANCH="${{ github.event.repository.default_branch }}"
-          else
-            TARGET_BRANCH="$GITHUB_REF_NAME"
-          fi
-
-          for attempt in 1 2 3 4 5; do
-            if git push origin "HEAD:${TARGET_BRANCH}"; then
-              echo "Pushed version update to ${TARGET_BRANCH}."
-              exit 0
-            fi
-            echo "Push rejected, pulling and rebasing (attempt ${attempt}/5)..."
-            git pull --rebase origin "${TARGET_BRANCH}"
-          done
-          echo "::error::Failed to push version update after 5 attempts."
-          exit 1

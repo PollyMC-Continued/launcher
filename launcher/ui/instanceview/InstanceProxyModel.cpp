@@ -59,6 +59,10 @@ bool InstanceProxyModel::subSortLessThan(const QModelIndex& left, const QModelIn
 {
     BaseInstance* pdataLeft = static_cast<BaseInstance*>(left.internalPointer());
     BaseInstance* pdataRight = static_cast<BaseInstance*>(right.internalPointer());
+    // pinned instances always come first within their group
+    if (pdataLeft->isPinned() != pdataRight->isPinned()) {
+        return pdataLeft->isPinned();
+    }
     QString sortMode = APPLICATION->settings()->get("InstSortMode").toString();
     if (sortMode == "LastLaunch") {
         return pdataLeft->lastLaunch() > pdataRight->lastLaunch();

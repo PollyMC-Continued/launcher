@@ -50,7 +50,6 @@
 #include "minecraft/auth/MinecraftAccount.h"
 
 class LaunchController;
-class NewsChecker;
 class QToolButton;
 class InstanceProxyModel;
 class LabeledToolButton;
@@ -66,7 +65,7 @@ class QShowEvent;
 class QResizeEvent;
 class QActionGroup;
 
-class ToastNotification;
+class BugReportStatusChecker;
 class BotManagerDialog;
 
 namespace Ui {
@@ -95,8 +94,17 @@ class MainWindow : public QMainWindow {
     // Used by the command palette's intent suggestions.
     void triggerInstanceAction(const QString& id, QAction* action);
 
+    // Reveals the What's New toolbar (the renamed News toolbar). Application calls this once when
+    // the toolbar is introduced, because a window state saved by an older release keeps it hidden.
+    void showWhatsNewToolbar();
+
+    // Opens the What's New version browser (the same dialog as Help > What's New and the toolbar
+    // button). Exposed for the hidden Developer Mode page.
+    void showWhatsNewBrowser();
+
     // Narrow entry points used by the hidden Developer Mode page.
     void triggerStarToastForDeveloper();
+    void triggerReportToastForDeveloper();
     void checkForUpdatesForDeveloper();
    signals:
     void isClosing();
@@ -106,6 +114,7 @@ class MainWindow : public QMainWindow {
 
    private slots:
     void on_actionAbout_triggered();
+    void on_actionWhatsNew_triggered();
 
     void on_actionAddInstance_triggered();
 
@@ -146,19 +155,20 @@ class MainWindow : public QMainWindow {
 
     void on_actionReportBug_triggered();
 
+    void on_actionMyReports_triggered();
+
+    void on_actionCopyDiagnostics_triggered();
+
+    void on_actionCheckInstance_triggered();
+    void on_actionPinInstance_triggered();
+
     void on_actionClearMetadata_triggered();
 
 #ifdef Q_OS_MAC
     void on_actionAddToPATH_triggered();
 #endif
 
-    void on_actionOpenWiki_triggered();
-
     void on_actionBots_triggered();
-
-    void on_actionMoreNews_triggered();
-
-    void newsButtonClicked();
 
     void on_actionLaunchInstance_triggered();
 
@@ -226,8 +236,6 @@ class MainWindow : public QMainWindow {
 
     void repopulateAccountsMenu();
 
-    void updateNewsLabel();
-
     void konamiTriggered();
 
     void globalSettingsClosed();
@@ -258,9 +266,11 @@ class MainWindow : public QMainWindow {
     void runModalTask(Task* task);
     void instanceFromInstanceTask(InstanceTask* task);
 
+    void maybeShowWhatsNew();
+    void presentWhatsNew(int retriesLeft, const QString& previousVersion);
     void maybeShowStarToast();
-    void prepareStarToast();
-    QPoint toastPosition() const;
+    void maybeCheckReportStatus();
+    void postStarToast(bool preview);
     void showCommandPalette();
 
    private:
@@ -268,7 +278,6 @@ class MainWindow : public QMainWindow {
     // these are managed by Qt's memory management model!
     InstanceView* view = nullptr;
     InstanceProxyModel* proxymodel = nullptr;
-    QToolButton* newsLabel = nullptr;
     QLabel* m_statusLeft = nullptr;
     QActionGroup* m_themeGroup = nullptr;
     QLabel* m_statusCenter = nullptr;
@@ -276,12 +285,13 @@ class MainWindow : public QMainWindow {
     QTimer* m_memoryTimer = nullptr;
     bool m_forceClose = false;
     QSystemTrayIcon* m_trayIcon = nullptr;
-    ToastNotification* m_toast = nullptr;
     bool m_starToastScheduled = false;
-    // Set while the star toast was triggered from the Developer page; dismissing it then must not
-    // permanently disable the real reminder.
-    bool m_starToastIsPreview = false;
-    QTimer* m_devStarWait = nullptr;
+    // Status of the bug reports this launcher sent (the team answers through PollyBot)
+    BugReportStatusChecker* m_reportChecker = nullptr;
+    bool m_reportCheckScheduled = false;
+    bool m_reportCheckRunning = false;
+    bool m_whatsNewScheduled = false;
+    QTimer* m_reportPoll = nullptr;  // re-checks the bug reports while the launcher stays open
     BotManagerDialog* m_botManager = nullptr;
     LabeledToolButton* changeIconButton = nullptr;
     LabeledToolButton* renameButton = nullptr;
@@ -289,8 +299,6 @@ class MainWindow : public QMainWindow {
     KonamiCode* secretEventFilter = nullptr;
 
     std::shared_ptr<Setting> instanceToolbarSetting = nullptr;
-
-    unique_qobject_ptr<NewsChecker> m_newsChecker;
 
     BaseInstance* m_selectedInstance = nullptr;
     QString m_currentInstIcon;

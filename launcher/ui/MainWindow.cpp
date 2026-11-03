@@ -45,7 +45,7 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
-#include "ui/widgets/ToastNotification.h"
+#include "ui/widgets/ToastCenter.h"
 
 #include <QDate>
 #include <QDir>
@@ -71,6 +71,7 @@
 #include <QProgressDialog>
 #include <QShortcut>
 #include <QStatusBar>
+#include <QSysInfo>
 #include <QSystemTrayIcon>
 #include <QTimer>
 #include <QToolBar>
@@ -92,7 +93,6 @@
 #include <minecraft/auth/AccountList.h>
 #include <net/ApiDownload.h>
 #include <net/NetJob.h>
-#include <news/NewsChecker.h>
 #include <tools/BaseProfiler.h>
 #include <updater/ExternalUpdater.h>
 #include "InstanceWindow.h"
@@ -101,6 +101,8 @@
 #include "ui/ViewLogWindow.h"
 #include "bot/BotManagerDialog.h"
 #include "ui/dialogs/AboutDialog.h"
+#include "ui/dialogs/WhatsNewBrowserDialog.h"
+#include "ui/dialogs/WhatsNewDialog.h"
 #include "ui/dialogs/CommandPalette.h"
 #include "ui/dialogs/CommandRegistry.h"
 #include "ui/dialogs/CopyInstanceDialog.h"
@@ -110,10 +112,12 @@
 #include "ui/dialogs/ExportPackDialog.h"
 #include "ui/dialogs/IconPickerDialog.h"
 #include "ui/dialogs/ImportResourceDialog.h"
+#include "ui/dialogs/InstanceHealthCheckDialog.h"
 #include "ui/dialogs/PerformancePresetsDialog.h"
 #include "ui/dialogs/NewInstanceDialog.h"
 #include "ui/dialogs/BugReportDialog.h"
-#include "ui/dialogs/NewsDialog.h"
+#include "ui/dialogs/MyReportsDialog.h"
+#include "BugReportTracker.h"
 #include "ui/dialogs/ProgressDialog.h"
 #include "ui/instanceview/InstanceDelegate.h"
 #include "ui/instanceview/InstanceProxyModel.h"
@@ -160,10 +164,6 @@ const QString kStarRepoUrl = QStringLiteral("https://github.com/PollyMC-Continue
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    // Hide news toolbar (disabled)
-    ui->newsToolBar->hide();
-    ui->actionMoreNews->setVisible(false);
 
     setWindowIcon(APPLICATION->logo());
     // only the main window shows name and version, no branch or channel suffix
@@ -234,7 +234,11 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
         helpMenuButton = dynamic_cast<QToolButton*>(ui->mainToolBar->widgetForAction(ui->actionHelpButton));
         ui->actionHelpButton->setMenu(new QMenu(this));
         ui->actionHelpButton->menu()->setToolTipsVisible(true);
-        ui->actionHelpButton->menu()->addActions(ui->helpMenu->actions());
+        // The What's New toolbar button already opens the browser, so the More menu skips it.
+        for (QAction* action : ui->helpMenu->actions()) {
+            if (action != ui->actionWhatsNew)
+                ui->actionHelpButton->menu()->addAction(action);
+        }
         helpMenuButton->setPopupMode(QToolButton::InstantPopup);
 
         auto accountMenuButton = dynamic_cast<QToolButton*>(ui->mainToolBar->widgetForAction(ui->actionAccountsButton));
@@ -251,6 +255,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     // hide, disable and show stuff
     {
         ui->actionReportBug->setVisible(!BuildConfig.BUG_TRACKER_URL.isEmpty() || !BuildConfig.BUG_REPORT_API_URL.isEmpty());
+        ui->actionMyReports->setVisible(!BuildConfig.BUG_REPORT_API_URL.isEmpty() && !BuildConfig.BUG_REPORT_STATUS_URL.isEmpty());
         ui->actionMATRIX->setVisible(!BuildConfig.MATRIX_URL.isEmpty());
         ui->actionDISCORD->setVisible(!BuildConfig.DISCORD_URL.isEmpty());
         ui->actionREDDIT->setVisible(!BuildConfig.SUBREDDIT_URL.isEmpty());
@@ -309,12 +314,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     {
         secretEventFilter = new KonamiCode(this);
         connect(secretEventFilter, &KonamiCode::triggered, this, &MainWindow::konamiTriggered);
-    }
-
-    // Add the news label to the news toolbar (hidden - disabled)
-    {
-        ui->newsToolBar->hide();
-        ui->actionMoreNews->setVisible(false);
     }
 
     // Create the instance list widget
@@ -433,14 +432,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     // TODO: refresh accounts here?
     // auto accounts = APPLICATION->accounts();
 
-    // load the news
-    {
-        if (m_newsChecker) {
-            m_newsChecker->reloadNews();
-        }
-        updateNewsLabel();
-    }
-
     if (APPLICATION->updaterEnabled()) {
         bool updatesAllowed = APPLICATION->updatesAreAllowed();
         updatesAllowedChanged(updatesAllowed);
@@ -462,13 +453,50 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     // removing this looks stupid
     view->setFocus();
 
-    // GitHub star reminder toast — hidden until maybeShowStarToast() decides
-    // it is time to show it.
-    m_toast = new ToastNotification(this);
-    connect(m_toast, &ToastNotification::dismissed, this, [this] {
-        if (m_starToastIsPreview)
+    // Toasts (GitHub star reminder, answers to bug reports) are shown by the ToastCenter in whichever
+    // launcher window the user is working in; the main window is where they go when none is active.
+    ToastCenter::instance()->setHomeWindow(this);
+
+    // Answers from the team to bug reports sent from this launcher. Checked shortly after start and then every few minutes.
+    m_reportChecker = new BugReportStatusChecker(this);
+    connect(m_reportChecker, &BugReportStatusChecker::finished, this, [this](const QList<BugReportTracker::Entry>& unseen) {
+        m_reportCheckRunning = false;
+        if (unseen.isEmpty())
             return;
-        APPLICATION->settings()->set("StarReminderDismissed", true);
+
+        QString title;
+        QString body;
+        if (unseen.size() == 1) {
+            const auto& e = unseen.first();
+            title = tr("Update on your bug report");
+            body = tr("\"%1\": %2").arg(e.title.left(48), BugReportTracker::statusText(e.status, e.version));
+        } else {
+            title = tr("Updates on your bug reports");
+            body = tr("%1 of your reports have news.").arg(unseen.size());
+        }
+
+        QStringList ids;
+        for (const auto& e : unseen)
+            ids << e.id;
+
+        ToastCenter::Request request;
+        request.key = QStringLiteral("bug-report-update");
+        request.icon = QStringLiteral("●");
+        request.title = title;
+        request.body = body;
+        request.actionText = tr("My Reports");
+        request.action = [this] { on_actionMyReports_triggered(); };
+        // Only now does the user count as informed. If the toast could not be shown (no window to show it in),
+        // the reports stay "unseen" and it is tried again at the next check.
+        request.onShown = [ids] { BugReportTracker::markAnnounced(ids); };
+        ToastCenter::instance()->post(std::move(request));
+    });
+
+    m_reportPoll = new QTimer(this);
+    m_reportPoll->setInterval(3 * 60 * 1000);
+    connect(m_reportPoll, &QTimer::timeout, this, [this] {
+        if (!m_reportChecker->isRunning())
+            m_reportChecker->check();
     });
 
     retranslateUi();
@@ -495,11 +523,6 @@ void MainWindow::retranslateUi()
     }
 
     ui->retranslateUi(this);
-
-    if (m_toast && m_toast->isToastVisible()) {
-        prepareStarToast();
-        m_toast->updatePosition(toastPosition());
-    }
 
     MinecraftAccountPtr defaultAccount = APPLICATION->accounts()->defaultAccount();
     if (defaultAccount) {
@@ -539,17 +562,25 @@ void MainWindow::setStatusBarVisibility(bool state)
     statusBar()->setVisible(state);
     APPLICATION->settings()->set("StatusBarVisible", state);
     // The status bar's height isn't final until the layout has run.
-    QTimer::singleShot(0, this, [this] {
-        if (m_toast && m_toast->isToastVisible())
-            m_toast->updatePosition(toastPosition());
-    });
+    QTimer::singleShot(0, this, [] { ToastCenter::instance()->reposition(); });
 }
 
 void MainWindow::showEvent(QShowEvent* event)
 {
     QMainWindow::showEvent(event);
+    // After an update, tell the user what is new (once per session, as soon as the window is up).
+    if (!m_whatsNewScheduled) {
+        m_whatsNewScheduled = true;
+        QTimer::singleShot(600, this, &MainWindow::maybeShowWhatsNew);
+    }
     // Try the star reminder once per session, shortly after the window is up.
     // maybeShowStarToast() re-checks visibility, modals, and running instances.
+    // Check for answers to the user's bug reports first; the star reminder below waits for the result.
+    if (!m_reportCheckScheduled) {
+        m_reportCheckScheduled = true;
+        m_reportCheckRunning = true;
+        QTimer::singleShot(1000, this, &MainWindow::maybeCheckReportStatus);
+    }
     if (!m_starToastScheduled) {
         m_starToastScheduled = true;
         QTimer::singleShot(1500, this, &MainWindow::maybeShowStarToast);
@@ -559,18 +590,6 @@ void MainWindow::showEvent(QShowEvent* event)
 void MainWindow::resizeEvent(QResizeEvent* event)
 {
     QMainWindow::resizeEvent(event);
-    if (m_toast && m_toast->isToastVisible())
-        m_toast->updatePosition(toastPosition());
-}
-
-QPoint MainWindow::toastPosition() const
-{
-    const int margin = 12;
-    const int statusBarHeight = statusBar()->isVisible() ? statusBar()->height() : 0;
-    const int x = margin;
-    // height() (not sizeHint()) so word-wrapped / translated text is accounted for
-    const int y = height() - statusBarHeight - m_toast->height() - margin;
-    return QPoint(x, qMax(margin, y));
 }
 
 void MainWindow::showCommandPalette()
@@ -589,48 +608,113 @@ void MainWindow::triggerInstanceAction(const QString& id, QAction* action)
 
 void MainWindow::triggerStarToastForDeveloper()
 {
-    if (!m_toast || m_devStarWait)  // a request is already waiting; don't stack timers
+    // Explicit developer action: skip the weekly/dismissed gates, and don't let closing this preview turn the real
+    // reminder off. The toast appears in whichever window is active (including Settings), so there is nothing to wait for.
+    postStarToast(true);
+}
+
+void MainWindow::triggerReportToastForDeveloper()
+{
+    // Same card the team's answers use, with sample text: checks the toast itself, separately from the Discord/relay side.
+    ToastCenter::Request request;
+    request.icon = QStringLiteral("●");
+    request.title = tr("Update on your bug report");
+    request.body = tr("\"Sample report\": Seen - the team is looking into it");
+    request.actionText = tr("My Reports");
+    request.action = [this] { on_actionMyReports_triggered(); };
+    ToastCenter::instance()->post(std::move(request));
+}
+
+void MainWindow::maybeShowWhatsNew()
+{
+    auto* settings = APPLICATION->settings();
+    const QString current = BuildConfig.printableVersionString();
+    const QString previous = settings->get("LastRunVersion").toString();
+
+    if (previous == current) {
+        // same version as last time: any release notes still lying around belong to an update that never happened
+        WhatsNewDialog::discardPendingNotes();
+        return;
+    }
+
+    // From here on this version counts as seen, whatever happens below.
+    settings->set("LastRunVersion", current);
+    const QString notes = WhatsNewDialog::takePendingNotes();
+
+    // No notes: a fresh install, or the version changed without the updater. Stay quiet.
+    // (A missing "previous" alone does not mean a fresh install: users coming from a release that did not
+    // track the version yet have notes from the updater, and are exactly who this window is for.)
+    if (notes.isEmpty())
         return;
 
-    // The Developer page lives inside the modal Settings dialog, which blocks the main window, so
-    // wait until it has closed (and until a previous toast has finished animating) before showing.
-    if (QApplication::activeModalWidget())
-        statusBar()->showMessage(tr("The star reminder will appear after the Settings dialog closes."), 5000);
+    // Keep a copy for Help > What's New.
+    WhatsNewDialog::storeNotes(current, notes);
 
-    m_devStarWait = new QTimer(this);
-    m_devStarWait->setInterval(100);
-    connect(m_devStarWait, &QTimer::timeout, this, [this, ticks = 0]() mutable {
-        ++ticks;
-        const bool giveUp = ticks > 600;  // ~60 seconds
-        if (!giveUp && (QApplication::activeModalWidget() || m_toast->isBusy()))
-            return;
+    if (!settings->get("WhatsNewEnabled").toBool())
+        return;
 
-        m_devStarWait->stop();
-        m_devStarWait->deleteLater();
-        m_devStarWait = nullptr;
+    presentWhatsNew(5, previous);
+}
 
-        if (giveUp)
-            return;
-        if (!isVisible() || isMinimized()) {
-            statusBar()->showMessage(tr("The main window must be visible to show the star reminder."), 5000);
-            return;
-        }
+void MainWindow::presentWhatsNew(int retriesLeft, const QString& previousVersion)
+{
+    // Another dialog (setup wizard, error box...) is in the way: try again in a moment instead of stacking windows.
+    if (!isVisible() || isMinimized() || QApplication::activeModalWidget()) {
+        if (retriesLeft > 0)
+            QTimer::singleShot(3000, this, [this, retriesLeft, previousVersion] { presentWhatsNew(retriesLeft - 1, previousVersion); });
+        return;
+    }
+    const auto stored = WhatsNewDialog::loadStoredNotes();
+    WhatsNewDialog dialog(BuildConfig.printableVersionString(), previousVersion, stored.markdown, this);
+    dialog.exec();
+}
 
-        // Explicit developer action: bypass the weekly/dismissed gates, and don't let dismissing
-        // this preview turn the real reminder off.
-        m_starToastIsPreview = true;
-        prepareStarToast();
-        m_toast->showToast(toastPosition());
-    });
-    m_devStarWait->start();
+void MainWindow::on_actionWhatsNew_triggered()
+{
+    showWhatsNewBrowser();
+}
+
+void MainWindow::showWhatsNewToolbar()
+{
+    ui->newsToolBar->setVisible(true);
+}
+
+void MainWindow::showWhatsNewBrowser()
+{
+    WhatsNewBrowserDialog dialog(this);
+    dialog.exec();
+}
+
+void MainWindow::maybeCheckReportStatus()
+{
+    if (BuildConfig.BUG_REPORT_API_URL.isEmpty() || BuildConfig.BUG_REPORT_STATUS_URL.isEmpty()) {
+        m_reportCheckRunning = false;
+        return;
+    }
+    if (!m_reportPoll->isActive())
+        m_reportPoll->start();
+    m_reportChecker->check();  // always ends in finished(), which clears m_reportCheckRunning
+}
+
+void MainWindow::on_actionMyReports_triggered()
+{
+    // Opened from a toast while Settings (or another window) is in front? Then it belongs to that window.
+    QWidget* parent = QApplication::activeWindow();
+    MyReportsDialog dialog(parent ? parent : this);
+    dialog.exec();
 }
 
 void MainWindow::maybeShowStarToast()
 {
+    // A bug report answer goes first: wait for the check (a few seconds at most), then try again.
+    if (m_reportCheckRunning) {
+        QTimer::singleShot(1500, this, &MainWindow::maybeShowStarToast);
+        return;
+    }
     if (!isVisible() || isMinimized())
         return;
     // A toast (possibly a developer preview) is still on screen or animating.
-    if (m_toast && m_toast->isBusy())
+    if (ToastCenter::instance()->isBusy())
         return;
     // Setup wizard or any modal dialog is in the way.
     if (QApplication::activeModalWidget())
@@ -649,16 +733,20 @@ void MainWindow::maybeShowStarToast()
         return;
 
     settings->set("StarReminderLastShown", QDate::currentDate().toString(Qt::ISODate));
-    m_starToastIsPreview = false;
-    prepareStarToast();
-    m_toast->showToast(toastPosition());
+    postStarToast(false);
 }
 
-void MainWindow::prepareStarToast()
+void MainWindow::postStarToast(bool preview)
 {
-    m_toast->prepareToast(tr("Enjoying PollyMC-Continued?"),
-                          tr("Give the project a star on GitHub!"), tr("Star on GitHub"),
-                          [] { DesktopServices::openUrl(QUrl(kStarRepoUrl)); });
+    ToastCenter::Request request;
+    request.key = QStringLiteral("star-reminder");
+    request.title = tr("Enjoying PollyMC-Continued?");
+    request.body = tr("Give the project a star on GitHub!");
+    request.actionText = tr("Star on GitHub");
+    request.action = [] { DesktopServices::openUrl(QUrl(kStarRepoUrl)); };
+    if (!preview)  // closing a developer preview must not switch the real reminder off
+        request.onDismissed = [] { APPLICATION->settings()->set("StarReminderDismissed", true); };
+    ToastCenter::instance()->post(std::move(request));
 }
 
 void MainWindow::lockToolbars(bool state)
@@ -967,28 +1055,6 @@ bool MainWindow::eventFilter(QObject* obj, QEvent* ev)
     return QMainWindow::eventFilter(obj, ev);
 }
 
-void MainWindow::updateNewsLabel()
-{
-    if (!newsLabel || !m_newsChecker) return;
-
-    if (m_newsChecker->isLoadingNews()) {
-        newsLabel->setText(tr("Loading news..."));
-        newsLabel->setEnabled(false);
-        ui->actionMoreNews->setVisible(false);
-    } else {
-        QList<NewsEntryPtr> entries = m_newsChecker->getNewsEntries();
-        if (entries.length() > 0) {
-            newsLabel->setText(entries[0]->title);
-            newsLabel->setEnabled(true);
-            ui->actionMoreNews->setVisible(true);
-        } else {
-            newsLabel->setText(tr("No news available."));
-            newsLabel->setEnabled(false);
-            ui->actionMoreNews->setVisible(false);
-        }
-    }
-}
-
 QList<int> stringToIntList(const QString& string)
 {
     QStringList split = string.split(',', Qt::SkipEmptyParts);
@@ -1090,6 +1156,9 @@ void MainWindow::processURLs(QList<QUrl> urls)
 {
     // NOTE: This loop only processes one dropped file!
     for (auto& url : urls) {
+        if (url.isEmpty() || url.toString().trimmed().isEmpty())
+            continue;
+
         qDebug() << "Processing" << url;
 
         // The isLocalFile() check below doesn't work as intended without an explicit scheme.
@@ -1283,6 +1352,11 @@ void MainWindow::processURLs(QList<QUrl> urls)
 
         auto localFileName = QDir::toNativeSeparators(local_url.toLocalFile());
         QFileInfo localFileInfo(localFileName);
+
+        if (localFileName.isEmpty() || !localFileInfo.exists()) {
+            qDebug() << "Ignoring invalid path" << localFileName;
+            continue;
+        }
 
         auto type = ResourceUtils::identify(localFileInfo);
 
@@ -1567,6 +1641,40 @@ void MainWindow::on_actionEditInstance_triggered()
     }
 }
 
+void MainWindow::on_actionPinInstance_triggered()
+{
+    if (!m_selectedInstance)
+        return;
+
+    // the action is checkable, but the instance is the source of truth: toggling its state
+    // emits propertiesChanged, which re-sorts the list and syncs the check mark again
+    m_selectedInstance->setPinned(!m_selectedInstance->isPinned());
+    ui->actionPinInstance->setChecked(m_selectedInstance->isPinned());
+
+    // keep the (possibly moved) instance in view
+    const auto current = view->selectionModel()->currentIndex();
+    if (current.isValid())
+        view->scrollTo(current);
+}
+
+void MainWindow::on_actionCheckInstance_triggered()
+{
+    if (!m_selectedInstance)
+        return;
+
+    // the checks are Minecraft-specific (Java, mods folder, loader components)
+    auto mcInstance = dynamic_cast<MinecraftInstance*>(m_selectedInstance);
+    if (!mcInstance) {
+        CustomMessageBox::selectable(this, tr("Check instance"),
+                                     tr("This kind of instance cannot be checked automatically."), QMessageBox::Information)
+            ->show();
+        return;
+    }
+
+    InstanceHealthCheckDialog dialog(mcInstance, this);
+    dialog.exec();
+}
+
 void MainWindow::on_actionManageAccounts_triggered()
 {
     APPLICATION->ShowGlobalSettings(this, "accounts");
@@ -1580,6 +1688,68 @@ void MainWindow::on_actionReportBug_triggered()
     }
     BugReportDialog dialog(this);
     dialog.exec();
+}
+
+void MainWindow::on_actionCopyDiagnostics_triggered()
+{
+    // One click -> everything a supporter usually asks for, on the clipboard.
+    QStringList lines;
+
+    {
+        QString version = BuildConfig.printableVersionString();
+        if (!BuildConfig.GIT_COMMIT.isEmpty())
+            version += tr(" (commit %1)").arg(BuildConfig.GIT_COMMIT.left(8));
+        lines << tr("Launcher: %1").arg(version);
+    }
+
+    if (!BuildConfig.BUILD_PLATFORM.isEmpty())
+        lines << tr("Platform: %1").arg(BuildConfig.BUILD_PLATFORM);
+
+    lines << tr("System: %1").arg(QSysInfo::prettyProductName());
+    lines << tr("CPU architecture: %1").arg(QSysInfo::currentCpuArchitecture());
+    lines << tr("Qt: %1").arg(QString::fromLatin1(qVersion()));
+
+    // Java: the global default, plus the selected instance's override (if any).
+    auto describeJava = [](SettingsObject* settings) -> QString {
+        const QString path = settings->get("JavaPath").toString();
+        if (path.isEmpty())
+            return {};
+        const QString version = settings->get("JavaVersion").toString();
+        const QString arch = settings->get("JavaRealArchitecture").toString().isEmpty()
+                                 ? settings->get("JavaArchitecture").toString()
+                                 : settings->get("JavaRealArchitecture").toString();
+        const QString vendor = settings->get("JavaVendor").toString();
+        const QString resolved = FS::ResolveExecutable(path);
+        QString out = QDir::toNativeSeparators(path);
+        if (!version.isEmpty() || !arch.isEmpty() || !vendor.isEmpty()) {
+            QStringList bits;
+            if (!version.isEmpty())
+                bits << version;
+            if (!arch.isEmpty())
+                bits << arch;
+            if (!vendor.isEmpty())
+                bits << vendor;
+            out += QStringLiteral(" (%1)").arg(bits.join(QStringLiteral(", ")));
+        }
+        out += resolved.isNull() ? QStringLiteral(" [not found]") : QStringLiteral("");
+        return out;
+    };
+
+    const QString globalJava = describeJava(APPLICATION->settings());
+    lines << tr("Java: %1").arg(globalJava.isEmpty() ? tr("not set") : globalJava);
+
+    if (m_selectedInstance) {
+        if (auto mcInstance = dynamic_cast<MinecraftInstance*>(m_selectedInstance)) {
+            const QString instanceJava = describeJava(mcInstance->settings());
+            if (!instanceJava.isEmpty() && instanceJava != globalJava)
+                lines << tr("Java (instance \"%1\"): %2").arg(mcInstance->name(), instanceJava);
+        }
+    }
+
+    const QString diagnostics = lines.join(QLatin1Char('\n'));
+    GuiUtil::setClipboardText(diagnostics);
+    statusBar()->showMessage(tr("Diagnostics copied to the clipboard - paste it into a support chat."), 5000);
+    qDebug() << "Diagnostics copied:" << lines;
 }
 
 void MainWindow::on_actionClearMetadata_triggered()
@@ -1618,28 +1788,6 @@ void MainWindow::on_actionAddToPATH_triggered()
     }
 }
 #endif
-
-void MainWindow::on_actionOpenWiki_triggered()
-{
-    DesktopServices::openUrl(QUrl(BuildConfig.WIKI_URL));
-}
-
-void MainWindow::on_actionMoreNews_triggered()
-{
-    if (!m_newsChecker) return;
-    auto entries = m_newsChecker->getNewsEntries();
-    NewsDialog news_dialog(entries, this);
-    news_dialog.exec();
-}
-
-void MainWindow::newsButtonClicked()
-{
-    if (!m_newsChecker) return;
-    auto entries = m_newsChecker->getNewsEntries();
-    NewsDialog news_dialog(entries, this);
-    news_dialog.toggleArticleList();
-    news_dialog.exec();
-}
 
 void MainWindow::on_actionAbout_triggered()
 {
@@ -1906,6 +2054,7 @@ void MainWindow::instanceChanged(const QModelIndex& current, [[maybe_unused]] co
 
         ui->actionKillInstance->setEnabled(m_selectedInstance->isRunning());
         ui->actionExportInstance->setEnabled(m_selectedInstance->canExport());
+        ui->actionPinInstance->setChecked(m_selectedInstance->isPinned());
         renameButton->setText(m_selectedInstance->name());
         updateStatusDescription();
         updateStatusCenter();
@@ -2017,11 +2166,13 @@ void MainWindow::setInstanceActionsEnabled(bool enabled)
 {
     ui->actionEditInstance->setEnabled(enabled);
     ui->actionChangeInstGroup->setEnabled(enabled);
+    ui->actionPinInstance->setEnabled(enabled);
     ui->actionViewSelectedInstFolder->setEnabled(enabled);
     ui->actionExportInstance->setEnabled(enabled);
     ui->actionDeleteInstance->setEnabled(enabled);
     ui->actionCopyInstance->setEnabled(enabled);
     ui->actionCreateInstanceShortcut->setEnabled(enabled);
+    ui->actionCheckInstance->setEnabled(enabled);
 }
 
 void MainWindow::refreshCurrentInstance()

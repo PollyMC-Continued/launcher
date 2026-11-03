@@ -38,6 +38,7 @@
 
 #include <QListView>
 #include <QModelIndex>
+#include <QPointer>
 #include <QWidget>
 
 #include "ui/pages/BasePageContainer.h"
@@ -46,6 +47,7 @@
 class QLayout;
 class IconLabel;
 class QSortFilterProxyModel;
+class QStandardItemModel;
 class PageModel;
 class QLabel;
 class QListView;
@@ -56,8 +58,10 @@ class QGridLayout;
 class PageContainer : public QWidget, public BasePageContainer {
     Q_OBJECT
    public:
-    explicit PageContainer(BasePageProvider* pageProvider, QString defaultId = QString(), QWidget* parent = 0);
-    virtual ~PageContainer() {}
+    explicit PageContainer(BasePageProvider* pageProvider,
+                           QString defaultId = QString(),
+                           QWidget* parent = nullptr);
+    ~PageContainer() override = default;
 
     void addButtons(QWidget* buttons);
     void addButtons(QLayout* buttons);
@@ -90,7 +94,14 @@ class PageContainer : public QWidget, public BasePageContainer {
 
     void changeEvent(QEvent*) override;
 
-    void hidePageList() { m_pageList->hide(); }
+    void hidePageList()
+    {
+        m_pageList->hide();
+        if (m_searchBox)
+            m_searchBox->hide();
+        if (m_searchResults)
+            m_searchResults->hide();
+    }
 
    private:
     void createUI();
@@ -107,7 +118,19 @@ class PageContainer : public QWidget, public BasePageContainer {
     void currentChanged(const QModelIndex& current);
     void showPage(int row);
 
+    // Settings search (Ctrl+F): typing in the sidebar box replaces the page list with
+    // matching settings; picking one jumps to its page and highlights the widget.
+    void searchTextChanged(const QString& text);
+    void searchReturnPressed();
+    void searchResultActivated(const QModelIndex& index);
+
    private:
+    void buildSearchIndex();
+    void runSearch(const QString& query);
+    void clearSearch();
+    void jumpToResult(const QModelIndex& index);
+    bool eventFilter(QObject* watched, QEvent* event) override;
+
     BasePageContainer* m_container = nullptr;
     BasePage* m_currentPage = 0;
     QSortFilterProxyModel* m_proxyModel;
@@ -116,4 +139,24 @@ class PageContainer : public QWidget, public BasePageContainer {
     QListView* m_pageList;
     QLabel* m_header;
     QGridLayout* m_layout;
+
+    // ---- settings search ----
+    struct SearchEntry {
+        QString label;     // what is shown and matched first
+        QString keywords;  // tooltips, combo box items, ... matched at a lower weight, never shown
+        QString section;   // "Tab › Group" the setting lives in
+        QString pageId;
+        QString pageName;
+        QPointer<QWidget> widget;  // what gets revealed, focused and highlighted
+        bool control = false;      // a real control (checkbox, labelled field, button) rather than loose text
+        bool flash = true;
+    };
+    QLineEdit* m_searchBox = nullptr;
+    QListView* m_searchResults = nullptr;
+    QStandardItemModel* m_searchResultsModel = nullptr;
+    QStringList m_queryTokens;  // lower-cased words of the current query, also used to highlight matches
+    QList<SearchEntry> m_searchIndex;
+    QList<int> m_activeResults;
+    bool m_searchIndexBuilt = false;
+    bool m_inSearch = false;
 };
