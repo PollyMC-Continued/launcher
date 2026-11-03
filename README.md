@@ -1,6 +1,6 @@
 <div align="center">
 
-<img width="160" height="160" src="/program_info/org.pollymc.PollyMC.svg" alt="PollyMC-Continued logo">
+<img width="600" height="160" src="/program_info/launcher-logo.svg" alt="PollyMC-Continued logo">
 
 <h1>
 <a style="color:#f5c2e7" href="https://pollymc.vercel.app/">PollyMC-Continued</a>
