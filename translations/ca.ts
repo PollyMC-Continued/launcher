@@ -722,12 +722,12 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation type="vanished">Actualitzat amb èxit</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1319"/>
+        <location filename="../launcher/Application.cpp" line="+1364"/>
         <source>Incompatible system configuration</source>
         <translation>Configuració del sistema no compatible</translation>
     </message>
     <message>
-        <location line="+995"/>
+        <location line="+1056"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -762,12 +762,12 @@ Dona una ullada al registre d&apos;actualitzador de Prism Launcher a:·
 Per a obtenir més informació sobre l&apos;últim intent d&apos;actualització.</translation>
     </message>
     <message>
-        <location line="-1703"/>
+        <location line="-1776"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>No es pot mostrar aquest registre, ja que sobrepassa les %1 línies.</translation>
     </message>
     <message>
-        <location line="+1525"/>
+        <location line="+1598"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Sembla que ja has utilitzat %1 a %2 anteriorment. Vols migrar les dades a la nova ubicació %3?</translation>
     </message>
@@ -781,7 +781,7 @@ Per a obtenir més informació sobre l&apos;últim intent d&apos;actualització.
         <translation type="vanished">Actualització fallida</translation>
     </message>
     <message>
-        <location line="-1823"/>
+        <location line="-1899"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -817,7 +817,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+526"/>
+        <location line="+529"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -837,7 +837,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+62"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other launcher update is running. To delete the lock file and continue, select &quot;Ignore&quot; below.</source>
@@ -901,12 +901,12 @@ Pot resoldre aquest problema tornant a montar /tmp com a &quot;exec&quot; o esta
 </translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+229"/>
         <source>Opening the launcher…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+444"/>
+        <location line="+487"/>
         <location line="+20"/>
         <source>Launcher closed unexpectedly</source>
         <translation type="unfinished"></translation>
@@ -969,7 +969,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">Actualització en curs</translation>
     </message>
     <message>
-        <location line="-1427"/>
+        <location line="-1500"/>
         <source>Settings</source>
         <translation>Opcions</translation>
     </message>
@@ -1000,7 +1000,7 @@ Per obtenir detalls sobre l&apos;últim intent d&apos;actualització.
 Per esborrar aquest bloqueig i procedir, selecciona &quot;Ignora&quot;.</translation>
     </message>
     <message>
-        <location line="+1271"/>
+        <location line="+1344"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>S&apos;ha trobat dades antigues del %1, però ja existeixen dades pel %2. Malauradament, l&apos;haureu de migrar pel vostre compte. Voldries ser recordat de la migració de les teves dades el pròxim cop que iniciïs %2?</translation>
     </message>
@@ -1640,8 +1640,8 @@ Per esborrar aquest bloqueig i procedir, selecciona &quot;Ignora&quot;.</transla
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1650,7 +1650,7 @@ Per esborrar aquest bloqueig i procedir, selecciona &quot;Ignora&quot;.</transla
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-518"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1670,7 +1670,7 @@ Per esborrar aquest bloqueig i procedir, selecciona &quot;Ignora&quot;.</transla
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+34"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1816,12 +1816,22 @@ Per esborrar aquest bloqueig i procedir, selecciona &quot;Ignora&quot;.</transla
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <location line="+18"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>If that does not help, you can report it anyway with the button below - we will take a look.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>Error: %1
 %2
 
@@ -6196,7 +6206,7 @@ You may have to fix your mods because the game is still logging to files and lik
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+670"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+680"/>
         <source>s</source>
         <translation>s</translation>
     </message>
@@ -6250,7 +6260,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Retallar mods blocats en comptes de copiar-los</translation>
     </message>
     <message>
-        <location line="-362"/>
+        <location line="-372"/>
         <source>Never rename the folder</source>
         <translation>No canviar mai el nom de la carpeta</translation>
     </message>
@@ -6265,7 +6275,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation> hores</translation>
     </message>
     <message>
-        <location line="+322"/>
+        <location line="+332"/>
         <source> lines</source>
         <translation> línies</translation>
     </message>
@@ -6285,7 +6295,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;Mods:</translation>
     </message>
     <message>
-        <location line="-333"/>
+        <location line="-343"/>
         <source>User Interface</source>
         <translation>Interfície d&apos;usuari</translation>
     </message>
@@ -6355,6 +6365,16 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>When the launcher closes without warning while your computer keeps running, ask whether to send the log from that session. Unexpected restarts and power losses are never counted as crashes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Offer to report a crash after an unexpected exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+26"/>
         <source>&amp;Auto Java Download:</source>
         <translation type="unfinished"></translation>
@@ -6375,7 +6395,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Temps d&apos;espera del HTTP:</translation>
     </message>
     <message>
-        <location line="-572"/>
+        <location line="-582"/>
         <source>Always rename the folder</source>
         <translation>Canvia sempre el nom de la carpeta</translation>
     </message>
@@ -6385,7 +6405,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Canviar de nom instàncies</translation>
     </message>
     <message>
-        <location line="+379"/>
+        <location line="+389"/>
         <source>Check &amp;subfolders for blocked mods</source>
         <translation>Comprovar &amp;subcarpetes per a mods blocats</translation>
     </message>
@@ -6415,7 +6435,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Si s&apos;activa, a més de la carpeta de descàrregues, També es registraran les subcarpetes quan es busquin recursos (p. ex. quan es busquin mods blocats a CurseForge).</translation>
     </message>
     <message>
-        <location line="-215"/>
+        <location line="-225"/>
         <source>Every </source>
         <translation>Cada </translation>
     </message>
@@ -6425,7 +6445,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Ordenar instàncies</translation>
     </message>
     <message>
-        <location line="+449"/>
+        <location line="+459"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Disabling mod metadata may also disable some QoL features, such as mod updating!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Atenció&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Desactivar les metadades dels mods pot afectar algunes característiques de comoditat com l&apos;actualització de mods!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -6435,7 +6455,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;Descàrregues:</translation>
     </message>
     <message>
-        <location line="-146"/>
+        <location line="-156"/>
         <source>On Launch</source>
         <translation>Al llançament</translation>
     </message>
@@ -6445,7 +6465,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Amb quina freqüència?</translation>
     </message>
     <message>
-        <location line="+447"/>
+        <location line="+457"/>
         <source>Seconds to wait until the requests are terminated</source>
         <translation>Segons d&apos;espera abans d&apos;aturar les sol·licituds</translation>
     </message>
@@ -6460,7 +6480,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Deixar de registrar quan el registre es &amp;sobrecarrega</translation>
     </message>
     <message>
-        <location line="-347"/>
+        <location line="-357"/>
         <source>Set to 0 to only check on launch</source>
         <translation>Posa 0 per comprovar només al llançament</translation>
     </message>
@@ -6470,7 +6490,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Vols continuar igualment?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+247"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+257"/>
         <source>Keep track of mod metadata</source>
         <translation>Guardar metadades dels mods</translation>
     </message>
@@ -6480,22 +6500,22 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Detecta, instal·la i actualitza automàticament dependències de mods.</translation>
     </message>
     <message>
-        <location line="-363"/>
+        <location line="-373"/>
         <source>The menubar is more friendly for keyboard-driven interaction.</source>
         <translation>La barra de menú és més còmoda per interacció amb el teclat.</translation>
     </message>
     <message>
-        <location line="+562"/>
+        <location line="+572"/>
         <source>Concurrent Task Limit:</source>
         <translation>Límit de tasques concurrents:</translation>
     </message>
     <message>
-        <location line="-641"/>
+        <location line="-651"/>
         <source>&amp;By last launched</source>
         <translation>Per últim cop &amp;llançat</translation>
     </message>
     <message>
-        <location line="+343"/>
+        <location line="+353"/>
         <source>I&amp;nstances:</source>
         <translation>I&amp;nstàncies:</translation>
     </message>
@@ -6515,17 +6535,17 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;Icones:</translation>
     </message>
     <message>
-        <location line="-393"/>
+        <location line="-403"/>
         <source>By &amp;name</source>
         <translation>Per &amp;nom</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+320"/>
         <source>&amp;Skins:</source>
         <translation>&amp;Aspectes:</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-218"/>
         <source>Updater</source>
         <translation>Actualitzador</translation>
     </message>
@@ -6535,12 +6555,12 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;Reemplaçar la barra d&apos;eines amb una barra de menús</translation>
     </message>
     <message>
-        <location line="+182"/>
+        <location line="+192"/>
         <source>Folders</source>
         <translation>Carpetes</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-43"/>
         <location filename="../launcher/ui/pages/global/LauncherPage.h" line="+59"/>
         <source>General</source>
         <translation>General</translation>
@@ -6577,12 +6597,12 @@ Es recomana que li donis permisos a %1 a través de Flatseal.</translation>
         <translation>Estàs intentant utilitzar una carpeta d&apos;instància on la seva ruta conté almenys un &quot;!&quot;. Java és conegut per causar problemes en aquest cas. Potser les teves instàncies no funcionen!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+324"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+334"/>
         <source>Store version information provided by mod providers (like Modrinth or CurseForge) for mods.</source>
         <translation>Guarda informació de la versió donada pels proveïdors de mods (con Modrinth o CurseForge) dels mods.</translation>
     </message>
     <message>
-        <location line="-389"/>
+        <location line="-399"/>
         <source>Ask what to do</source>
         <translation>Preguntar què fer</translation>
     </message>
@@ -10101,7 +10121,7 @@ Si us plau, actualitza %1!</translation>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+168"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10143,7 +10163,7 @@ Si us plau, actualitza %1!</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+50"/>
+        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+72"/>
         <source>All %1 requests failed after %2 attempts</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10174,6 +10194,11 @@ Si us plau, actualitza %1!</translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>Show details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>This looks like antivirus software (or ransomware protection) blocking the launcher&apos;s temporary files. You can retry through a different temporary folder, or open the guide on letting your antivirus leave the launcher alone.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10198,7 +10223,17 @@ Si us plau, actualitza %1!</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+75"/>
+        <source>This looks like a connection problem on your side, not a launcher bug. Please don&apos;t report it unless it keeps happening on a working connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show every URL that failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+64"/>
         <source>Network error: %1</source>
         <translation type="unfinished">Error a la xarxa: %1</translation>
     </message>

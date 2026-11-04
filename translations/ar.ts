@@ -722,12 +722,12 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation type="vanished">نجح التحديث</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1319"/>
+        <location filename="../launcher/Application.cpp" line="+1364"/>
         <source>Incompatible system configuration</source>
         <translation>إعدادات نظام جهازك غير متوافق</translation>
     </message>
     <message>
-        <location line="+995"/>
+        <location line="+1056"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -762,12 +762,12 @@ for details on the last update attempt.</source>
 للحصول على تفاصيل حول محاولة التحديث الأخيرة.</translation>
     </message>
     <message>
-        <location line="-1703"/>
+        <location line="-1776"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>لا يمكن عرض هذا السجل لأن طول السجل تعدى %1 سطر.</translation>
     </message>
     <message>
-        <location line="+1525"/>
+        <location line="+1598"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>يبدو أنك استخدمت %1 على %2 من قبل. هل تريد ترحيل بياناتك إلى الموقع الجديد %3؟</translation>
     </message>
@@ -781,7 +781,7 @@ for details on the last update attempt.</source>
         <translation type="vanished">فشل التحديث</translation>
     </message>
     <message>
-        <location line="-1823"/>
+        <location line="-1899"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -817,7 +817,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+526"/>
+        <location line="+529"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -837,7 +837,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+62"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other launcher update is running. To delete the lock file and continue, select &quot;Ignore&quot; below.</source>
@@ -901,12 +901,12 @@ You may solve this issue by remounting /tmp as &apos;exec&apos; or setting the j
 </translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+229"/>
         <source>Opening the launcher…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+444"/>
+        <location line="+487"/>
         <location line="+20"/>
         <source>Launcher closed unexpectedly</source>
         <translation type="unfinished"></translation>
@@ -973,7 +973,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">التحديث قيد التقدم</translation>
     </message>
     <message>
-        <location line="-1427"/>
+        <location line="-1500"/>
         <source>Settings</source>
         <translation>الإعدادات</translation>
     </message>
@@ -1004,7 +1004,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 لحذف هذا القفل والمتابعة، حدد &quot;تجاهل&quot; أدناه.</translation>
     </message>
     <message>
-        <location line="+1271"/>
+        <location line="+1344"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>تم العثور على بيانات قديمة من %1 ولكن لديك بالفعل بيانات موجودة لـ%2. للأسف ستحتاج إلى الترحيل بنفسك. هل تريد أن يُذكّرك بترحيل البيانات المعلّقة في المرة القادمة التي تبدأ فيها %2؟</translation>
     </message>
@@ -1644,8 +1644,8 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1654,7 +1654,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-518"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1674,7 +1674,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+34"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1820,12 +1820,22 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <location line="+18"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>If that does not help, you can report it anyway with the button below - we will take a look.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>Error: %1
 %2
 
@@ -6307,7 +6317,7 @@ You may have to fix your mods because the game is still logging to files and lik
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+670"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+680"/>
         <source>s</source>
         <translation>ث</translation>
     </message>
@@ -6373,7 +6383,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>انقل الإضافات المحظورة بدل نسخهم</translation>
     </message>
     <message>
-        <location line="-362"/>
+        <location line="-372"/>
         <source>Never rename the folder</source>
         <translation>لا تغير اسم المجلد أبدا</translation>
     </message>
@@ -6388,7 +6398,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation> ساعة</translation>
     </message>
     <message>
-        <location line="+322"/>
+        <location line="+332"/>
         <source> lines</source>
         <translation> سطر</translation>
     </message>
@@ -6408,7 +6418,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;الإضافات:</translation>
     </message>
     <message>
-        <location line="-333"/>
+        <location line="-343"/>
         <source>User Interface</source>
         <translation>واجهة المستخدم</translation>
     </message>
@@ -6417,7 +6427,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">تنزيل ملفات اللعبه النطلوبة أثناء إنشاء النسخه. قم بتعطيل هذا الخيار لتخطي التنزيل الأولي وجلب الملفات عند تشغيل البرنامج.</translation>
     </message>
     <message>
-        <location line="+419"/>
+        <location line="+429"/>
         <source>Mods and Modpacks</source>
         <translation>الإضافات وحزم الإضافات</translation>
     </message>
@@ -6427,7 +6437,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>انتهاء مهلة الHTTP:</translation>
     </message>
     <message>
-        <location line="-572"/>
+        <location line="-582"/>
         <source>Always rename the folder</source>
         <translation>غيّر اسم المجلد دائما</translation>
     </message>
@@ -6502,6 +6512,16 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>When the launcher closes without warning while your computer keeps running, ask whether to send the log from that session. Unexpected restarts and power losses are never counted as crashes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Offer to report a crash after an unexpected exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+29"/>
         <source>Folder where PollyMC-Continued stores automatically downloaded Java versions. Do NOT set this to your system Java installation.</source>
         <translation type="unfinished"></translation>
@@ -6537,7 +6557,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>عند تفعيله, سيتم البحث في المجلدات الفرعية لمجلد التنزيلات أيضا عند البحث عن الموارد (مثلا عند البحث عن الإضافات المحظورة في كورس فورج).</translation>
     </message>
     <message>
-        <location line="-215"/>
+        <location line="-225"/>
         <source>Every </source>
         <translation>كل </translation>
     </message>
@@ -6547,7 +6567,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ترتيب النماذج</translation>
     </message>
     <message>
-        <location line="+449"/>
+        <location line="+459"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Disabling mod metadata may also disable some QoL features, such as mod updating!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;تنبيه&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: قد يؤدي تعطيل بيانات تعريف الإضافات لتعطيل بعض مزايا جودة التجربة مثل تحديث الإضافات!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -6557,7 +6577,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;التنزيلات :</translation>
     </message>
     <message>
-        <location line="-146"/>
+        <location line="-156"/>
         <source>On Launch</source>
         <translation>عند التشغيل</translation>
     </message>
@@ -6571,7 +6591,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">إزالة</translation>
     </message>
     <message>
-        <location line="+447"/>
+        <location line="+457"/>
         <source>Seconds to wait until the requests are terminated</source>
         <translation>الثواني الذي يجب انتظارها حتى تنتهي الطلبات</translation>
     </message>
@@ -6590,7 +6610,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">تنزيل ملقات اللعبه أثناء إنشاء النسخة</translation>
     </message>
     <message>
-        <location line="-347"/>
+        <location line="-357"/>
         <source>Set to 0 to only check on launch</source>
         <translation>اجعله 0 لكي يتم التأكيد فقط عند التشغيل</translation>
     </message>
@@ -6600,7 +6620,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>هل تريد المتابعة على أي حال؟</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+247"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+257"/>
         <source>Keep track of mod metadata</source>
         <translation>تعقب بيانات تعريف الإضافات</translation>
     </message>
@@ -6610,22 +6630,22 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>اكشف, حمل وحدث تبعيات الإضافات تلقائيا.</translation>
     </message>
     <message>
-        <location line="-363"/>
+        <location line="-373"/>
         <source>The menubar is more friendly for keyboard-driven interaction.</source>
         <translation>يعد شريط القوائم أفضل للتحكم باستخدام لوحة المفاتيح.</translation>
     </message>
     <message>
-        <location line="+562"/>
+        <location line="+572"/>
         <source>Concurrent Task Limit:</source>
         <translation>حد المهام المتزامنة:</translation>
     </message>
     <message>
-        <location line="-641"/>
+        <location line="-651"/>
         <source>&amp;By last launched</source>
         <translation>&amp;حسب آخر تشغيل</translation>
     </message>
     <message>
-        <location line="+343"/>
+        <location line="+353"/>
         <source>I&amp;nstances:</source>
         <translation>الن&amp;ماذج:</translation>
     </message>
@@ -6645,17 +6665,17 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;الأيقونات:</translation>
     </message>
     <message>
-        <location line="-393"/>
+        <location line="-403"/>
         <source>By &amp;name</source>
         <translation>حسب&amp; الاسم</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+320"/>
         <source>&amp;Skins:</source>
         <translation>&amp;المظاهر:</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-218"/>
         <source>Updater</source>
         <translation>المحدث</translation>
     </message>
@@ -6665,7 +6685,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;استبدال شريط الأدوات بشريط القوائم</translation>
     </message>
     <message>
-        <location line="+182"/>
+        <location line="+192"/>
         <source>Folders</source>
         <translation>المجلدات</translation>
     </message>
@@ -6674,7 +6694,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">حسب الوقت الاجمالي و اللعب</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-43"/>
         <location filename="../launcher/ui/pages/global/LauncherPage.h" line="+59"/>
         <source>General</source>
         <translation>عام</translation>
@@ -6690,7 +6710,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>التحقق من التحديثات تلقائيا</translation>
     </message>
     <message>
-        <location line="+182"/>
+        <location line="+192"/>
         <source>&amp;Auto Java Download:</source>
         <translation>&amp;تحميل جافا تلقائياً:</translation>
     </message>
@@ -6721,7 +6741,7 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>خزن معلومات الإصدار المزودة من قبل موفري الإضافات (مثل مودرينث وكورس فورج) للإضافات.</translation>
     </message>
     <message>
-        <location line="-389"/>
+        <location line="-399"/>
         <source>Ask what to do</source>
         <translation>السؤال عن الإجراءات المطلوبة</translation>
     </message>
@@ -10299,7 +10319,7 @@ Please update %1!</source>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+168"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10341,7 +10361,7 @@ Please update %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+50"/>
+        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+72"/>
         <source>All %1 requests failed after %2 attempts</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10372,6 +10392,11 @@ Please update %1!</source>
     </message>
     <message>
         <location line="+7"/>
+        <source>Show details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>This looks like antivirus software (or ransomware protection) blocking the launcher&apos;s temporary files. You can retry through a different temporary folder, or open the guide on letting your antivirus leave the launcher alone.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10396,7 +10421,17 @@ Please update %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+75"/>
+        <source>This looks like a connection problem on your side, not a launcher bug. Please don&apos;t report it unless it keeps happening on a working connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show every URL that failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+64"/>
         <source>Network error: %1</source>
         <translation type="unfinished">خطأ في الشبكة: %1</translation>
     </message>

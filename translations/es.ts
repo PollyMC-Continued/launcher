@@ -654,24 +654,24 @@ Puedes añadir una cuenta de Microsoft, offline o Yggdrasil (authlib-injector) p
         <translation type="vanished">Actualización realizada</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1319"/>
+        <location filename="../launcher/Application.cpp" line="+1364"/>
         <source>Incompatible system configuration</source>
         <translation>Sistema de configuración incompatible</translation>
     </message>
     <message>
-        <location line="+995"/>
+        <location line="+1056"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
         <translation>¡Migración fallida! Motivo: %1</translation>
     </message>
     <message>
-        <location line="-1703"/>
+        <location line="-1776"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>No se puede mostrar este registro porque su longitud supera las %1 líneas.</translation>
     </message>
     <message>
-        <location line="-304"/>
+        <location line="-307"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -707,7 +707,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+526"/>
+        <location line="+529"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -727,7 +727,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+62"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other launcher update is running. To delete the lock file and continue, select &quot;Ignore&quot; below.</source>
@@ -778,12 +778,12 @@ See the updater log for details.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+244"/>
+        <location line="+262"/>
         <source>Opening the launcher…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+444"/>
+        <location line="+487"/>
         <location line="+20"/>
         <source>Launcher closed unexpectedly</source>
         <translation type="unfinished"></translation>
@@ -881,7 +881,7 @@ Consulta el registro del actualizador de PollyMC-Continued en:
 para obtener detalles.</translation>
     </message>
     <message>
-        <location line="-964"/>
+        <location line="-1025"/>
         <source>Your /tmp directory is currently mounted with the &apos;noexec&apos; flag enabled.
 Some versions of Minecraft may not launch.
 
@@ -894,7 +894,7 @@ Puede resolver este problema volviendo a montar /tmp como &apos;exec&apos; o est
 </translation>
     </message>
     <message>
-        <location line="+1035"/>
+        <location line="+1096"/>
         <source>Instances were found at %1, but %2 is looking in %3. Do you want to migrate them to the new location?</source>
         <translation>Se encontraron instancias en %1, pero %2 está buscando en %3. ¿Quieres migrarlas a la nueva ubicación?</translation>
     </message>
@@ -929,12 +929,12 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">Actualización en progreso</translation>
     </message>
     <message>
-        <location line="-1427"/>
+        <location line="-1500"/>
         <source>Settings</source>
         <translation>Ajustes</translation>
     </message>
     <message>
-        <location line="+1271"/>
+        <location line="+1344"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>Se encontraron antiguos datos de %1, pero ya existen datos para %2. Lamentablemente deberás migrarla por tu cuenta. ¿Deseas ser recordado de la migración de tus datos pendientes la próxima vez que inicies %2?</translation>
     </message>
@@ -1574,8 +1574,8 @@ Copy them into this portable folder? This will move your accounts, settings, and
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1584,7 +1584,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-518"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1604,7 +1604,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+34"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1750,12 +1750,22 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <location line="+18"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>If that does not help, you can report it anyway with the button below - we will take a look.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>Error: %1
 %2
 
@@ -6079,7 +6089,7 @@ You may have to fix your mods because the game is still logging to files and lik
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+670"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+680"/>
         <source>s</source>
         <translation>s</translation>
     </message>
@@ -6129,7 +6139,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Mover los mods bloqueados en lugar de copiarlos</translation>
     </message>
     <message>
-        <location line="-362"/>
+        <location line="-372"/>
         <source>Never rename the folder</source>
         <translation>Nunca renombrar la carpeta</translation>
     </message>
@@ -6144,7 +6154,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation> horas</translation>
     </message>
     <message>
-        <location line="+322"/>
+        <location line="+332"/>
         <source> lines</source>
         <translation> líneas</translation>
     </message>
@@ -6164,12 +6174,12 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;Mods:</translation>
     </message>
     <message>
-        <location line="-333"/>
+        <location line="-343"/>
         <source>User Interface</source>
         <translation>Interfaz de usuario</translation>
     </message>
     <message>
-        <location line="+419"/>
+        <location line="+429"/>
         <source>Mods and Modpacks</source>
         <translation>Mods y Modpacks</translation>
     </message>
@@ -6179,7 +6189,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Tiempo de espera HTTP:</translation>
     </message>
     <message>
-        <location line="-572"/>
+        <location line="-582"/>
         <source>Always rename the folder</source>
         <translation>Cambia siempre el nombre de la carpeta</translation>
     </message>
@@ -6254,6 +6264,16 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>When the launcher closes without warning while your computer keeps running, ask whether to send the log from that session. Unexpected restarts and power losses are never counted as crashes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Offer to report a crash after an unexpected exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+29"/>
         <source>Folder where PollyMC-Continued stores automatically downloaded Java versions. Do NOT set this to your system Java installation.</source>
         <translation>Carpeta donde PollyMC-Continued almacena las versiones de Java descargadas automáticamente. NO establezcas esto en tu instalación de Java del sistema.</translation>
@@ -6289,7 +6309,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Cuando esté activado, además de en la carpeta de descargas, se van a buscar los recursos en sus sub-carpetas (por ejemplo, cuando se estén buscando mods bloqueados en CurseForge).</translation>
     </message>
     <message>
-        <location line="-215"/>
+        <location line="-225"/>
         <source>Every </source>
         <translation>Cada </translation>
     </message>
@@ -6299,7 +6319,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Ordenación de instancias</translation>
     </message>
     <message>
-        <location line="+449"/>
+        <location line="+459"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Disabling mod metadata may also disable some QoL features, such as mod updating!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Advertencia&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: ¡Deshabilitar los metadatos de los mods también puede deshabilitar futuras características de calidad de vida, como la actualización de mods!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -6309,7 +6329,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;Descargas:</translation>
     </message>
     <message>
-        <location line="-146"/>
+        <location line="-156"/>
         <source>On Launch</source>
         <translation>En el lanzamiento</translation>
     </message>
@@ -6319,7 +6339,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>¿Con qué frecuencia?</translation>
     </message>
     <message>
-        <location line="+447"/>
+        <location line="+457"/>
         <source>Seconds to wait until the requests are terminated</source>
         <translation>Segundos de espera hasta que finalicen las solicitudes</translation>
     </message>
@@ -6334,7 +6354,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Dejar de registrar cuando el registro se &amp;sobrecargue</translation>
     </message>
     <message>
-        <location line="-347"/>
+        <location line="-357"/>
         <source>Set to 0 to only check on launch</source>
         <translation>Establecer en 0 para comprobar solo al iniciar</translation>
     </message>
@@ -6344,7 +6364,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>¿Deseas continuar de todos modos?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+247"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+257"/>
         <source>Keep track of mod metadata</source>
         <translation>Realizar un seguimiento de los metadatos de los mods</translation>
     </message>
@@ -6354,22 +6374,22 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Detecta, instala y actualiza automáticamente las dependencias de los mods.</translation>
     </message>
     <message>
-        <location line="-363"/>
+        <location line="-373"/>
         <source>The menubar is more friendly for keyboard-driven interaction.</source>
         <translation>La barra de menús es más amigable para la interacción con teclado.</translation>
     </message>
     <message>
-        <location line="+562"/>
+        <location line="+572"/>
         <source>Concurrent Task Limit:</source>
         <translation>Límite de tareas simultáneas:</translation>
     </message>
     <message>
-        <location line="-641"/>
+        <location line="-651"/>
         <source>&amp;By last launched</source>
         <translation>Por último lanzamiento (&amp;B)</translation>
     </message>
     <message>
-        <location line="+343"/>
+        <location line="+353"/>
         <source>I&amp;nstances:</source>
         <translation>I&amp;nstancias:</translation>
     </message>
@@ -6389,17 +6409,17 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;Iconos:</translation>
     </message>
     <message>
-        <location line="-393"/>
+        <location line="-403"/>
         <source>By &amp;name</source>
         <translation>Por &amp;nombre</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+320"/>
         <source>&amp;Skins:</source>
         <translation>&amp;Skins:</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-218"/>
         <source>Updater</source>
         <translation>Actualizador</translation>
     </message>
@@ -6409,12 +6429,12 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Sustituir la ba&amp;rra de herramientas por la barra de menús</translation>
     </message>
     <message>
-        <location line="+182"/>
+        <location line="+192"/>
         <source>Folders</source>
         <translation>Carpetas</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-43"/>
         <location filename="../launcher/ui/pages/global/LauncherPage.h" line="+59"/>
         <source>General</source>
         <translation>General</translation>
@@ -6430,7 +6450,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Buscar actualizaciones automáticamente</translation>
     </message>
     <message>
-        <location line="+182"/>
+        <location line="+192"/>
         <source>&amp;Auto Java Download:</source>
         <translation>Descarga &amp;automática de Java:</translation>
     </message>
@@ -6461,7 +6481,7 @@ Se recomienda conceder acceso a %1 vía Flatseal.</translation>
         <translation>Almacena la información de la versión proporcionada por los proveedores de mods (como Modrinth o CurseForge) para los mods.</translation>
     </message>
     <message>
-        <location line="-389"/>
+        <location line="-399"/>
         <source>Ask what to do</source>
         <translation>Preguntar qué hacer</translation>
     </message>
@@ -9971,7 +9991,7 @@ Please update %1!</source>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+168"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10011,7 +10031,7 @@ Please update %1!</source>
         <translation type="vanished">De un total de %1 solicitudes, %2 han fallado tras %3 intentos</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+50"/>
+        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+72"/>
         <source>All %1 requests failed after %2 attempts</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10042,6 +10062,11 @@ Please update %1!</source>
     </message>
     <message>
         <location line="+7"/>
+        <source>Show details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>This looks like antivirus software (or ransomware protection) blocking the launcher&apos;s temporary files. You can retry through a different temporary folder, or open the guide on letting your antivirus leave the launcher alone.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10066,7 +10091,17 @@ Please update %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+75"/>
+        <source>This looks like a connection problem on your side, not a launcher bug. Please don&apos;t report it unless it keeps happening on a working connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show every URL that failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+64"/>
         <source>Network error: %1</source>
         <translation type="unfinished">Error de red: %1</translation>
     </message>

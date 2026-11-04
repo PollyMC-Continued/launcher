@@ -728,12 +728,12 @@ Mund të shtoni një llogari Microsoft, offline ose Yggdrasil (authlib-injector)
         <translation type="vanished">Perditesimi ia Doli</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1319"/>
+        <location filename="../launcher/Application.cpp" line="+1364"/>
         <source>Incompatible system configuration</source>
         <translation>Konfigurim i papajtueshëm i sistemit</translation>
     </message>
     <message>
-        <location line="+995"/>
+        <location line="+1056"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -768,12 +768,12 @@ Kontrolloni regjistrin e përditësuesit të Prism Launcher te:
 për detaje mbi përpjekjen e fundit për përditësim.</translation>
     </message>
     <message>
-        <location line="-1703"/>
+        <location line="-1776"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Nuk mund ta shfaqë këtë regjistër pasi gjatësia e tij tejkaloi %1 rreshta.</translation>
     </message>
     <message>
-        <location line="+1525"/>
+        <location line="+1598"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Me sa duket e ke përdorur %1 në %2 më parë. Dëshiron të migrosh të dhënat e tua në vendndodhjen e re të %3?</translation>
     </message>
@@ -841,7 +841,7 @@ Kontrolloni regjistrin e përditësuesit të PollyMC-Continued në:
 për detaje.</translation>
     </message>
     <message>
-        <location line="-1823"/>
+        <location line="-1899"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -877,7 +877,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+526"/>
+        <location line="+529"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -897,7 +897,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+62"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other launcher update is running. To delete the lock file and continue, select &quot;Ignore&quot; below.</source>
@@ -961,12 +961,12 @@ Ju mund ta zgjidhni këtë problem duke e rimontuar /tmp si &apos;exec&apos; ose
 </translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+229"/>
         <source>Opening the launcher…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+444"/>
+        <location line="+487"/>
         <location line="+20"/>
         <source>Launcher closed unexpectedly</source>
         <translation type="unfinished"></translation>
@@ -1031,7 +1031,7 @@ T&apos;i kopjosh në këtë dosje portative? Llogaritë, cilësimet dhe lista e 
         <translation type="vanished">Përditsimi në vazhdim</translation>
     </message>
     <message>
-        <location line="-1427"/>
+        <location line="-1500"/>
         <source>Settings</source>
         <translation>Cilesimet</translation>
     </message>
@@ -1062,7 +1062,7 @@ për detaje mbi përpjekjen e fundit të përditësimit.
 Për të fshirë këtë bllokim dhe për të vazhduar, zgjidhni &quot;Injoro&quot; më poshtë.</translation>
     </message>
     <message>
-        <location line="+1271"/>
+        <location line="+1344"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>U gjetën të dhëna të vjetra nga %1, por ju tashmë keni të dhëna ekzistuese për %2. Fatkeqësisht, do t&apos;ju duhet të migroni vetë. Dëshironi të kujtoheni për migrimin e të dhënave në pritje herën tjetër që të nisni %2?</translation>
     </message>
@@ -1702,8 +1702,8 @@ Për të fshirë këtë bllokim dhe për të vazhduar, zgjidhni &quot;Injoro&quo
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1712,7 +1712,7 @@ Për të fshirë këtë bllokim dhe për të vazhduar, zgjidhni &quot;Injoro&quo
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-518"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1732,7 +1732,7 @@ Për të fshirë këtë bllokim dhe për të vazhduar, zgjidhni &quot;Injoro&quo
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+34"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1878,12 +1878,22 @@ Për të fshirë këtë bllokim dhe për të vazhduar, zgjidhni &quot;Injoro&quo
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <location line="+18"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>If that does not help, you can report it anyway with the button below - we will take a look.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>Error: %1
 %2
 
@@ -6362,7 +6372,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+670"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+680"/>
         <source>s</source>
         <translation>s</translation>
     </message>
@@ -6428,7 +6438,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation>Lëviz modet e bllokuara në vend të kopjimit të tyre</translation>
     </message>
     <message>
-        <location line="-362"/>
+        <location line="-372"/>
         <source>Never rename the folder</source>
         <translation>Mos riemërto kurrë dosjen</translation>
     </message>
@@ -6447,7 +6457,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation> hours</translation>
     </message>
     <message>
-        <location line="+322"/>
+        <location line="+332"/>
         <source> lines</source>
         <translation> vija</translation>
     </message>
@@ -6467,7 +6477,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation>&amp;Modet:</translation>
     </message>
     <message>
-        <location line="-333"/>
+        <location line="-343"/>
         <source>User Interface</source>
         <translation>Ndërfaqja e Përdoruesit</translation>
     </message>
@@ -6476,7 +6486,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation type="vanished">Shkarkon skedarët e nevojshëm të lojës gjatë krijimit të instancës. Çaktivizo këtë për të kaluar shkarkimin fillestar dhe për të marrë skedarët kur instanca niset.</translation>
     </message>
     <message>
-        <location line="+419"/>
+        <location line="+429"/>
         <source>Mods and Modpacks</source>
         <translation>Modet dhe Paketat e Modeve</translation>
     </message>
@@ -6486,7 +6496,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation>Koha Jashtë HTTP:</translation>
     </message>
     <message>
-        <location line="-572"/>
+        <location line="-582"/>
         <source>Always rename the folder</source>
         <translation>Riemërto gjithmonë dosjen</translation>
     </message>
@@ -6561,6 +6571,16 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>When the launcher closes without warning while your computer keeps running, ask whether to send the log from that session. Unexpected restarts and power losses are never counted as crashes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Offer to report a crash after an unexpected exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+29"/>
         <source>Folder where PollyMC-Continued stores automatically downloaded Java versions. Do NOT set this to your system Java installation.</source>
         <translation>Dosja ku PollyMC-Continued ruaj versionet e Java të shkarkuara automatikisht. MOS e cakto këtë në instalimin e Java të sistemit tënd.</translation>
@@ -6596,7 +6616,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation>Kur aktivizohet, përveç dosjes së shkarkimeve, nëndosjet e saj do të kërkohen gjithashtu kur kërkohen burime (p.sh. kur kërkohen modet e bllokuara në CurseForge).</translation>
     </message>
     <message>
-        <location line="-215"/>
+        <location line="-225"/>
         <source>Every </source>
         <translation>Çdo </translation>
     </message>
@@ -6606,7 +6626,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation>Renditja e Instancave</translation>
     </message>
     <message>
-        <location line="+449"/>
+        <location line="+459"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Disabling mod metadata may also disable some QoL features, such as mod updating!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Paralajmërim&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Çaktivizimi i metadatave të modeve mund të çaktivizojë gjithashtu disa veçori cilësie të jetës, si përditësimi i modeve!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -6616,7 +6636,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation>&amp;Shkarkimet:</translation>
     </message>
     <message>
-        <location line="-146"/>
+        <location line="-156"/>
         <source>On Launch</source>
         <translation>Gjatë Nisjes</translation>
     </message>
@@ -6630,7 +6650,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation type="vanished">Hiq</translation>
     </message>
     <message>
-        <location line="+447"/>
+        <location line="+457"/>
         <source>Seconds to wait until the requests are terminated</source>
         <translation>Sekonda për të pritur derisa kërkesat të ndërpriten</translation>
     </message>
@@ -6649,7 +6669,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation type="vanished">Shkarko skedarët e lojës gjatë krijimit të instancës</translation>
     </message>
     <message>
-        <location line="-347"/>
+        <location line="-357"/>
         <source>Set to 0 to only check on launch</source>
         <translation>Vendos në 0 për të kontrolluar vetëm gjatë nisjes</translation>
     </message>
@@ -6659,7 +6679,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation>Dëshiron të vazhdosh gjithsesi?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+247"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+257"/>
         <source>Keep track of mod metadata</source>
         <translation>Mbaj gjurmët e metadatave të modeve</translation>
     </message>
@@ -6669,22 +6689,22 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation>Zbulo, instalo dhe përditëso automatikisht varësitë e modeve.</translation>
     </message>
     <message>
-        <location line="-363"/>
+        <location line="-373"/>
         <source>The menubar is more friendly for keyboard-driven interaction.</source>
         <translation>Shiriti i menysë asht ma miqësor për ndërveprim të drejtuar nga tastiera.</translation>
     </message>
     <message>
-        <location line="+562"/>
+        <location line="+572"/>
         <source>Concurrent Task Limit:</source>
         <translation>Kufiri i Detyrave të Njëkohshme:</translation>
     </message>
     <message>
-        <location line="-641"/>
+        <location line="-651"/>
         <source>&amp;By last launched</source>
         <translation>&amp;Sipas nisjes së fundit</translation>
     </message>
     <message>
-        <location line="+343"/>
+        <location line="+353"/>
         <source>I&amp;nstances:</source>
         <translation>&amp;Instancat:</translation>
     </message>
@@ -6708,7 +6728,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation>&amp;Ikonat:</translation>
     </message>
     <message>
-        <location line="-393"/>
+        <location line="-403"/>
         <source>By &amp;name</source>
         <translation>Sipas &amp;emrit</translation>
     </message>
@@ -6717,7 +6737,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation type="vanished">Drejtori shtesë instancash</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+320"/>
         <source>&amp;Skins:</source>
         <translation>&amp;Lëkurat:</translation>
     </message>
@@ -6726,7 +6746,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation type="vanished">Dyfiso drejtorinë</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-218"/>
         <source>Updater</source>
         <translation>Përditësuesi</translation>
     </message>
@@ -6736,7 +6756,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation>&amp;Zëvendëso shiritin e veglave me shiritin e menysë</translation>
     </message>
     <message>
-        <location line="+182"/>
+        <location line="+192"/>
         <source>Folders</source>
         <translation>Dosjet</translation>
     </message>
@@ -6745,7 +6765,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation type="vanished">Sipas kohës totale të &amp;luajtur</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-43"/>
         <location filename="../launcher/ui/pages/global/LauncherPage.h" line="+59"/>
         <source>General</source>
         <translation>Të Përgjithshme</translation>
@@ -6761,7 +6781,7 @@ Mund të të duhet të rregullosh modet e tua sepse loja vazhdon të shkruajë n
         <translation>Kontrollo për përditësime automatikisht</translation>
     </message>
     <message>
-        <location line="+182"/>
+        <location line="+192"/>
         <source>&amp;Auto Java Download:</source>
         <translation>&amp;Shkarkimi Automatik i Java-s:</translation>
     </message>
@@ -6792,7 +6812,7 @@ Rekomandohet t&apos;i jepësh %1 akses nëpërmjet Flatseal.</translation>
         <translation>Ruaj informacionin e versionit të dhënë nga ofruesit e modeve (si Modrinth ose CurseForge) për modet.</translation>
     </message>
     <message>
-        <location line="-389"/>
+        <location line="-399"/>
         <source>Ask what to do</source>
         <translation>Pyet çfarë të bësh</translation>
     </message>
@@ -10375,7 +10395,7 @@ Ju lutem përditësoni %1!</translation>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+168"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10415,7 +10435,7 @@ Ju lutem përditësoni %1!</translation>
         <translation type="vanished">Nga %1 kërkesat, %2 dështuan pas %3 përpjekjesh</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+50"/>
+        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+72"/>
         <source>All %1 requests failed after %2 attempts</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10446,6 +10466,11 @@ Ju lutem përditësoni %1!</translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>Show details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>This looks like antivirus software (or ransomware protection) blocking the launcher&apos;s temporary files. You can retry through a different temporary folder, or open the guide on letting your antivirus leave the launcher alone.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10470,7 +10495,17 @@ Ju lutem përditësoni %1!</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+75"/>
+        <source>This looks like a connection problem on your side, not a launcher bug. Please don&apos;t report it unless it keeps happening on a working connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show every URL that failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+64"/>
         <source>Network error: %1</source>
         <translation type="unfinished">Gabim rrjeti: %1</translation>
     </message>

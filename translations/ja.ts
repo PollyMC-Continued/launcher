@@ -728,12 +728,12 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation type="vanished">アップデート成功</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1319"/>
+        <location filename="../launcher/Application.cpp" line="+1364"/>
         <source>Incompatible system configuration</source>
         <translation>システム構成に互換性がありません</translation>
     </message>
     <message>
-        <location line="+995"/>
+        <location line="+1056"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -768,12 +768,12 @@ for details on the last update attempt.</source>
 のログを確認してください。</translation>
     </message>
     <message>
-        <location line="-1703"/>
+        <location line="-1776"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>ログの長さが %1 行を超えたため、このログを表示できません。</translation>
     </message>
     <message>
-        <location line="+1525"/>
+        <location line="+1598"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>あなたは以前 %2 に %1 を使用していたようです。データを %3 の新しい場所に移行しますか？</translation>
     </message>
@@ -838,7 +838,7 @@ for details.</source>
 %2</translation>
     </message>
     <message>
-        <location line="-1823"/>
+        <location line="-1899"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -874,7 +874,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+526"/>
+        <location line="+529"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -894,7 +894,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+62"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other launcher update is running. To delete the lock file and continue, select &quot;Ignore&quot; below.</source>
@@ -958,12 +958,12 @@ Minecraftのバージョンによっては起動しない可能性がありま�
 </translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+229"/>
         <source>Opening the launcher…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+444"/>
+        <location line="+487"/>
         <location line="+20"/>
         <source>Launcher closed unexpectedly</source>
         <translation type="unfinished"></translation>
@@ -1026,7 +1026,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">アップデート中</translation>
     </message>
     <message>
-        <location line="-1427"/>
+        <location line="-1500"/>
         <source>Settings</source>
         <translation>設定</translation>
     </message>
@@ -1057,7 +1057,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 このロックファイルを上書きしてアップデートを続行する場合は、以下の「無視」を選択してください。</translation>
     </message>
     <message>
-        <location line="+1271"/>
+        <location line="+1344"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>%1 からの古いデータが見つかりましたが、%2 用のデータが既に存在しています。手動で移行する必要があります。次回 %2 を起動する際に保留中のデータ移行について通知しますか？</translation>
     </message>
@@ -1697,8 +1697,8 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1707,7 +1707,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-518"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1727,7 +1727,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+34"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1873,12 +1873,22 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <location line="+18"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>If that does not help, you can report it anyway with the button below - we will take a look.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>Error: %1
 %2
 
@@ -6365,7 +6375,7 @@ You may have to fix your mods because the game is still logging to files and lik
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+670"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+680"/>
         <source>s</source>
         <translation>秒</translation>
     </message>
@@ -6423,7 +6433,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ブロックされたModをコピーせずに移動する</translation>
     </message>
     <message>
-        <location line="-362"/>
+        <location line="-372"/>
         <source>Never rename the folder</source>
         <translation>フォルダ名は変更しない</translation>
     </message>
@@ -6438,7 +6448,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation> 時間</translation>
     </message>
     <message>
-        <location line="+322"/>
+        <location line="+332"/>
         <source> lines</source>
         <translation> 行</translation>
     </message>
@@ -6458,7 +6468,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Mod(&amp;M):</translation>
     </message>
     <message>
-        <location line="-333"/>
+        <location line="-343"/>
         <source>User Interface</source>
         <translation>ユーザーインターフェース</translation>
     </message>
@@ -6467,7 +6477,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">起動構成の作成時にゲームファイルをダウンロードします。これを無効にすると、初回ダウンロードがスキップされ、代わりに起動構成の起動時にファイルが取得されます。</translation>
     </message>
     <message>
-        <location line="+419"/>
+        <location line="+429"/>
         <source>Mods and Modpacks</source>
         <translation>ModとModパック</translation>
     </message>
@@ -6477,7 +6487,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>HTTPタイムアウト:</translation>
     </message>
     <message>
-        <location line="-572"/>
+        <location line="-582"/>
         <source>Always rename the folder</source>
         <translation>常にフォルダ名を変更する</translation>
     </message>
@@ -6552,6 +6562,16 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>When the launcher closes without warning while your computer keeps running, ask whether to send the log from that session. Unexpected restarts and power losses are never counted as crashes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Offer to report a crash after an unexpected exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+29"/>
         <source>Folder where PollyMC-Continued stores automatically downloaded Java versions. Do NOT set this to your system Java installation.</source>
         <translation>PollyMC-Continuedが自動的にダウンロードしたJavaバージョンを保存するフォルダー。システムJavaのインストール先に設定しないでください。</translation>
@@ -6587,7 +6607,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>有効にすると、リソースを検索する際に、ダウンロードフォルダに加え、サブフォルダも再帰的に検索します（例: CurseForgeのブロックされたModを探す場合など）。</translation>
     </message>
     <message>
-        <location line="-215"/>
+        <location line="-225"/>
         <source>Every </source>
         <translation>すべての</translation>
     </message>
@@ -6597,7 +6617,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>起動構成の並び替え</translation>
     </message>
     <message>
-        <location line="+449"/>
+        <location line="+459"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Disabling mod metadata may also disable some QoL features, such as mod updating!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;警告&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Modのメタデータを無効にすると、Modのアップデートなどの便利機能も無効化されます！&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -6607,7 +6627,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ダウンロード(&amp;D):</translation>
     </message>
     <message>
-        <location line="-146"/>
+        <location line="-156"/>
         <source>On Launch</source>
         <translation>起動時</translation>
     </message>
@@ -6621,7 +6641,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">削除</translation>
     </message>
     <message>
-        <location line="+447"/>
+        <location line="+457"/>
         <source>Seconds to wait until the requests are terminated</source>
         <translation>リクエストが終了するまで待つ秒数</translation>
     </message>
@@ -6640,7 +6660,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">起動構成の作成時にゲームファイルをダウンロードする</translation>
     </message>
     <message>
-        <location line="-347"/>
+        <location line="-357"/>
         <source>Set to 0 to only check on launch</source>
         <translation>0に設定すると起動時にのみ確認します</translation>
     </message>
@@ -6650,7 +6670,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>強制的に続行しますか？</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+247"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+257"/>
         <source>Keep track of mod metadata</source>
         <translation>Modのメタデータを保持する</translation>
     </message>
@@ -6660,22 +6680,22 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Modの依存関係を自動的に検出し、インストール、更新します。</translation>
     </message>
     <message>
-        <location line="-363"/>
+        <location line="-373"/>
         <source>The menubar is more friendly for keyboard-driven interaction.</source>
         <translation>メニューバーによりキーボード操作がしやすくなります。</translation>
     </message>
     <message>
-        <location line="+562"/>
+        <location line="+572"/>
         <source>Concurrent Task Limit:</source>
         <translation>同時タスクの上限:</translation>
     </message>
     <message>
-        <location line="-641"/>
+        <location line="-651"/>
         <source>&amp;By last launched</source>
         <translation>最後に起動した順(&amp;B)</translation>
     </message>
     <message>
-        <location line="+343"/>
+        <location line="+353"/>
         <source>I&amp;nstances:</source>
         <translation>起動構成(&amp;N):</translation>
     </message>
@@ -6695,17 +6715,17 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>アイコン(&amp;I):</translation>
     </message>
     <message>
-        <location line="-393"/>
+        <location line="-403"/>
         <source>By &amp;name</source>
         <translation>名前順(&amp;N)</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+320"/>
         <source>&amp;Skins:</source>
         <translation>スキン(&amp;S):</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-218"/>
         <source>Updater</source>
         <translation>アップデート</translation>
     </message>
@@ -6715,7 +6735,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ツールバーをメニューバーに置き換える(&amp;R)</translation>
     </message>
     <message>
-        <location line="+182"/>
+        <location line="+192"/>
         <source>Folders</source>
         <translation>フォルダ</translation>
     </message>
@@ -6724,7 +6744,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">総プレイ時間順(&amp;P)</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-43"/>
         <location filename="../launcher/ui/pages/global/LauncherPage.h" line="+59"/>
         <source>General</source>
         <translation>全般</translation>
@@ -6740,7 +6760,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>アップデートを自動で確認</translation>
     </message>
     <message>
-        <location line="+182"/>
+        <location line="+192"/>
         <source>&amp;Auto Java Download:</source>
         <translation>Javaの自動ダウンロード(&amp;A):</translation>
     </message>
@@ -6771,7 +6791,7 @@ Flatsealを使用して%1へのアクセスを取得することを推奨しま�
         <translation>ModrinthやCurseForgeなどのMod提供者から提供されるModのバージョン情報を保存します。</translation>
     </message>
     <message>
-        <location line="-389"/>
+        <location line="-399"/>
         <source>Ask what to do</source>
         <translation>毎回確認する</translation>
     </message>
@@ -10335,7 +10355,7 @@ Please update %1!</source>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+168"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10375,7 +10395,7 @@ Please update %1!</source>
         <translation type="vanished">%3 回試行しましたが、%1 のうち、%2 が失敗しました</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+50"/>
+        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+72"/>
         <source>All %1 requests failed after %2 attempts</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10406,6 +10426,11 @@ Please update %1!</source>
     </message>
     <message>
         <location line="+7"/>
+        <source>Show details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>This looks like antivirus software (or ransomware protection) blocking the launcher&apos;s temporary files. You can retry through a different temporary folder, or open the guide on letting your antivirus leave the launcher alone.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10430,7 +10455,17 @@ Please update %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+75"/>
+        <source>This looks like a connection problem on your side, not a launcher bug. Please don&apos;t report it unless it keeps happening on a working connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show every URL that failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+64"/>
         <source>Network error: %1</source>
         <translation type="unfinished">ネットワークエラー: %1</translation>
     </message>

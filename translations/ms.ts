@@ -719,12 +719,12 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation type="vanished">Kemas Kini Berjaya</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1319"/>
+        <location filename="../launcher/Application.cpp" line="+1364"/>
         <source>Incompatible system configuration</source>
         <translation>Konfigurasi sistem tidak serasi</translation>
     </message>
     <message>
-        <location line="+995"/>
+        <location line="+1056"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -759,12 +759,12 @@ Semak log kemas kini Prism Launcher di:
 untuk butiran tentang percubaan kemas kini terakhir.</translation>
     </message>
     <message>
-        <location line="-1703"/>
+        <location line="-1776"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Tidak dapat memaparkan log tersebut kerana panjang log melebihi %1 baris.</translation>
     </message>
     <message>
-        <location line="+1525"/>
+        <location line="+1598"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Nampaknya anda sudah menggunakan %1 pada %2 sebelum ini. Adakah anda mahu memindahkan data anda ke lokasi baharu %3?</translation>
     </message>
@@ -778,7 +778,7 @@ untuk butiran tentang percubaan kemas kini terakhir.</translation>
         <translation type="vanished">Kemas Kini Gagal</translation>
     </message>
     <message>
-        <location line="-1823"/>
+        <location line="-1899"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -814,7 +814,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+526"/>
+        <location line="+529"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -834,7 +834,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+62"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other launcher update is running. To delete the lock file and continue, select &quot;Ignore&quot; below.</source>
@@ -898,12 +898,12 @@ Anda boleh menyelesaikan isu ini dengan memasang semula /tmp sebagai &apos;exec&
 </translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+229"/>
         <source>Opening the launcher…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+444"/>
+        <location line="+487"/>
         <location line="+20"/>
         <source>Launcher closed unexpectedly</source>
         <translation type="unfinished"></translation>
@@ -965,7 +965,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">Kemas Kini Sedang Dijalankan</translation>
     </message>
     <message>
-        <location line="-1427"/>
+        <location line="-1500"/>
         <source>Settings</source>
         <translation>Tetapan</translation>
     </message>
@@ -996,7 +996,7 @@ untuk butiran tentang percubaan kemas kini terakhir.
 Untuk menghapus lock ini dan melanjutkan pilih &quot;Abaikan&quot; di bawah.</translation>
     </message>
     <message>
-        <location line="+1271"/>
+        <location line="+1344"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>Data lama daripada %1 ditemui, tetapi anda sudah mempunyai data sedia ada untuk %2. Malangnya anda perlu berpindah sendiri. Adakah anda ingin diingatkan tentang pemindahan data yang belum selesai pada kali seterusnya anda memulakan %2?</translation>
     </message>
@@ -1636,8 +1636,8 @@ Untuk menghapus lock ini dan melanjutkan pilih &quot;Abaikan&quot; di bawah.</tr
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1646,7 +1646,7 @@ Untuk menghapus lock ini dan melanjutkan pilih &quot;Abaikan&quot; di bawah.</tr
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-518"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1666,7 +1666,7 @@ Untuk menghapus lock ini dan melanjutkan pilih &quot;Abaikan&quot; di bawah.</tr
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+34"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1812,12 +1812,22 @@ Untuk menghapus lock ini dan melanjutkan pilih &quot;Abaikan&quot; di bawah.</tr
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <location line="+18"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>If that does not help, you can report it anyway with the button below - we will take a look.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>Error: %1
 %2
 
@@ -6160,7 +6170,7 @@ Anda mungkin perlu membetulkan mod anda kerana permainan masih mengelog masuk ke
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+670"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+680"/>
         <source>s</source>
         <translation>s</translation>
     </message>
@@ -6214,7 +6224,7 @@ Anda mungkin perlu membetulkan mod anda kerana permainan masih mengelog masuk ke
         <translation>Alihkan mod yang disekat dan bukannya menyalinnya</translation>
     </message>
     <message>
-        <location line="-362"/>
+        <location line="-372"/>
         <source>Never rename the folder</source>
         <translation>Jangan sekali-kali menamakan semula folder</translation>
     </message>
@@ -6229,7 +6239,7 @@ Anda mungkin perlu membetulkan mod anda kerana permainan masih mengelog masuk ke
         <translation> jam</translation>
     </message>
     <message>
-        <location line="+322"/>
+        <location line="+332"/>
         <source> lines</source>
         <translation> baris</translation>
     </message>
@@ -6244,7 +6254,7 @@ Anda mungkin perlu membetulkan mod anda kerana permainan masih mengelog masuk ke
         <translation>&amp;Mod:</translation>
     </message>
     <message>
-        <location line="-333"/>
+        <location line="-343"/>
         <source>User Interface</source>
         <translation>Antaramuka Pengguna</translation>
     </message>
@@ -6314,6 +6324,16 @@ Anda mungkin perlu membetulkan mod anda kerana permainan masih mengelog masuk ke
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>When the launcher closes without warning while your computer keeps running, ask whether to send the log from that session. Unexpected restarts and power losses are never counted as crashes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Offer to report a crash after an unexpected exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+26"/>
         <source>&amp;Auto Java Download:</source>
         <translation type="unfinished"></translation>
@@ -6344,7 +6364,7 @@ Anda mungkin perlu membetulkan mod anda kerana permainan masih mengelog masuk ke
         <translation>Masa Tamat HTTP:</translation>
     </message>
     <message>
-        <location line="-572"/>
+        <location line="-582"/>
         <source>Always rename the folder</source>
         <translation>Sentiasa namakan semula folder</translation>
     </message>
@@ -6354,7 +6374,7 @@ Anda mungkin perlu membetulkan mod anda kerana permainan masih mengelog masuk ke
         <translation>Penamaan Semula Pemasangan</translation>
     </message>
     <message>
-        <location line="+379"/>
+        <location line="+389"/>
         <source>Check &amp;subfolders for blocked mods</source>
         <translation>Semak &amp;subfolder untuk mod yang disekat</translation>
     </message>
@@ -6384,7 +6404,7 @@ Anda mungkin perlu membetulkan mod anda kerana permainan masih mengelog masuk ke
         <translation>Apabila didayakan, sebagai tambahan kepada folder muat turun, subfoldernya juga akan dicari semasa mencari sumber (contoh semasa mencari mod yang disekat di CurseForge).</translation>
     </message>
     <message>
-        <location line="-215"/>
+        <location line="-225"/>
         <source>Every </source>
         <translation>Setiap </translation>
     </message>
@@ -6394,7 +6414,7 @@ Anda mungkin perlu membetulkan mod anda kerana permainan masih mengelog masuk ke
         <translation>Pengisihan Pemasangan</translation>
     </message>
     <message>
-        <location line="+449"/>
+        <location line="+459"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Disabling mod metadata may also disable some QoL features, such as mod updating!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Amaran&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Menyahdayakan metadata mod juga boleh menyahdayakan beberapa ciri QoL, seperti pengemaskinian mod!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -6404,7 +6424,7 @@ Anda mungkin perlu membetulkan mod anda kerana permainan masih mengelog masuk ke
         <translation>Muat &amp;turun:</translation>
     </message>
     <message>
-        <location line="-146"/>
+        <location line="-156"/>
         <source>On Launch</source>
         <translation>Semasa Pelancaran</translation>
     </message>
@@ -6414,7 +6434,7 @@ Anda mungkin perlu membetulkan mod anda kerana permainan masih mengelog masuk ke
         <translation>Berapa Kerap?</translation>
     </message>
     <message>
-        <location line="+447"/>
+        <location line="+457"/>
         <source>Seconds to wait until the requests are terminated</source>
         <translation>Saat untuk menunggu sehingga permintaan dibatalkan</translation>
     </message>
@@ -6424,7 +6444,7 @@ Anda mungkin perlu membetulkan mod anda kerana permainan masih mengelog masuk ke
         <translation>Berhenti mengelog apabila log melepa&amp;si had</translation>
     </message>
     <message>
-        <location line="-347"/>
+        <location line="-357"/>
         <source>Set to 0 to only check on launch</source>
         <translation>Tetapkan kepada 0 untuk hanya menyemak semasa pelancaran</translation>
     </message>
@@ -6434,7 +6454,7 @@ Anda mungkin perlu membetulkan mod anda kerana permainan masih mengelog masuk ke
         <translation>Adakah anda tetap ingin meneruskan?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+247"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+257"/>
         <source>Keep track of mod metadata</source>
         <translation>Catat jejak metadata mod</translation>
     </message>
@@ -6444,22 +6464,22 @@ Anda mungkin perlu membetulkan mod anda kerana permainan masih mengelog masuk ke
         <translation>Kesan, pasang dan kemas kini kebergantungan mod secara automatik.</translation>
     </message>
     <message>
-        <location line="-363"/>
+        <location line="-373"/>
         <source>The menubar is more friendly for keyboard-driven interaction.</source>
         <translation>Bar menu ialah lebih ramah untuk interaksi berasaskan papan kekunci.</translation>
     </message>
     <message>
-        <location line="+562"/>
+        <location line="+572"/>
         <source>Concurrent Task Limit:</source>
         <translation>Had Tugas Serentak:</translation>
     </message>
     <message>
-        <location line="-641"/>
+        <location line="-651"/>
         <source>&amp;By last launched</source>
         <translation>&amp;Ikut terakhir dilancarkan</translation>
     </message>
     <message>
-        <location line="+343"/>
+        <location line="+353"/>
         <source>I&amp;nstances:</source>
         <translation>Pemasa&amp;ngan:</translation>
     </message>
@@ -6479,17 +6499,17 @@ Anda mungkin perlu membetulkan mod anda kerana permainan masih mengelog masuk ke
         <translation>&amp;Ikon:</translation>
     </message>
     <message>
-        <location line="-393"/>
+        <location line="-403"/>
         <source>By &amp;name</source>
         <translation>Ikut &amp;nama</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+320"/>
         <source>&amp;Skins:</source>
         <translation>&amp;Kekulit:</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-218"/>
         <source>Updater</source>
         <translation>Pengemas kini</translation>
     </message>
@@ -6499,12 +6519,12 @@ Anda mungkin perlu membetulkan mod anda kerana permainan masih mengelog masuk ke
         <translation>Ganti ba&amp;r alat dengan bar menu</translation>
     </message>
     <message>
-        <location line="+182"/>
+        <location line="+192"/>
         <source>Folders</source>
         <translation>Folder</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-43"/>
         <location filename="../launcher/ui/pages/global/LauncherPage.h" line="+59"/>
         <source>General</source>
         <translation>Umum</translation>
@@ -6541,12 +6561,12 @@ Memberi %1 akses kepadanya melalui Flatseal adalah disyorkan.</translation>
         <translation>Anda cuba menentukan folder pemasangan yang laluannya mengandungi sekurang-kurangnya satu &apos;!&apos;. Java diketahui menyebabkan masalah jika itu berlaku, pemasangan anda (mungkin) tidak akan bermula!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+324"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+334"/>
         <source>Store version information provided by mod providers (like Modrinth or CurseForge) for mods.</source>
         <translation>Simpan maklumat versi yang disediakan oleh penyedia mod (seperti Modrinth atau CurseForge) untuk mod.</translation>
     </message>
     <message>
-        <location line="-389"/>
+        <location line="-399"/>
         <source>Ask what to do</source>
         <translation>Tanya apa yang perlu dilakukan</translation>
     </message>
@@ -10077,7 +10097,7 @@ Sila kemas kini %1!</translation>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+168"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10119,7 +10139,7 @@ Sila kemas kini %1!</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+50"/>
+        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+72"/>
         <source>All %1 requests failed after %2 attempts</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10150,6 +10170,11 @@ Sila kemas kini %1!</translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>Show details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>This looks like antivirus software (or ransomware protection) blocking the launcher&apos;s temporary files. You can retry through a different temporary folder, or open the guide on letting your antivirus leave the launcher alone.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10174,7 +10199,17 @@ Sila kemas kini %1!</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+75"/>
+        <source>This looks like a connection problem on your side, not a launcher bug. Please don&apos;t report it unless it keeps happening on a working connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show every URL that failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+64"/>
         <source>Network error: %1</source>
         <translation type="unfinished">Ralat rangkaian: %1</translation>
     </message>

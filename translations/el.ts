@@ -711,12 +711,12 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation type="vanished">Επιτυχής Ενημέρωση</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1319"/>
+        <location filename="../launcher/Application.cpp" line="+1364"/>
         <source>Incompatible system configuration</source>
         <translation>Μη συμβατή διαμόρφωση συστήματος</translation>
     </message>
     <message>
-        <location line="+995"/>
+        <location line="+1056"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -751,12 +751,12 @@ for details on the last update attempt.</source>
 για λεπτομέρειες της τελευταίας προσπάθειας ενημέρωσης.</translation>
     </message>
     <message>
-        <location line="-1703"/>
+        <location line="-1776"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Δεν μπορεί να γίνει η απεικόνηση της καταγραφής διότι το μήκος ξεπέρασε τις %1 γραμμές.</translation>
     </message>
     <message>
-        <location line="+1525"/>
+        <location line="+1598"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Φαίνεται ότι χρησιμοποιήσατε το %1 στις %2 προηγουμένως. Θέλετε να μεταφέρετε τα δεδομένα σας στη νέα τοποθεσία του %3;</translation>
     </message>
@@ -770,7 +770,7 @@ for details on the last update attempt.</source>
         <translation type="vanished">Αναβάθμιση Απέτυχε</translation>
     </message>
     <message>
-        <location line="-1823"/>
+        <location line="-1899"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -806,7 +806,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+526"/>
+        <location line="+529"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -826,7 +826,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+62"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other launcher update is running. To delete the lock file and continue, select &quot;Ignore&quot; below.</source>
@@ -890,12 +890,12 @@ You may solve this issue by remounting /tmp as &apos;exec&apos; or setting the j
 </translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+229"/>
         <source>Opening the launcher…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+444"/>
+        <location line="+487"/>
         <location line="+20"/>
         <source>Launcher closed unexpectedly</source>
         <translation type="unfinished"></translation>
@@ -958,7 +958,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">Ενημέρωση σε Εξέλιξη</translation>
     </message>
     <message>
-        <location line="-1427"/>
+        <location line="-1500"/>
         <source>Settings</source>
         <translation>Ρυθμίσεις</translation>
     </message>
@@ -989,7 +989,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 Για να διαγράψετε αυτό το κλείδωμα και για να συνεχίσετε επιλέξτε &quot;Αγνόηση&quot; παρακάτω.</translation>
     </message>
     <message>
-        <location line="+1271"/>
+        <location line="+1344"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>Βρέθηκαν παλιά δεδομένα από το %1, αλλά έχετε ήδη υπάρχοντα δεδομένα για το %2. Δυστυχώς, θα χρειαστεί να μεταφέρετε τα δεδομένα μόνοι σας. Θέλετε να σας υπενθυμίσουμε για την εκκρεμή μεταφορά δεδομένων την επόμενη φορά που θα ξεκινήσετε το %2;</translation>
     </message>
@@ -1629,8 +1629,8 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1639,7 +1639,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-518"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1659,7 +1659,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+34"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1805,12 +1805,22 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <location line="+18"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>If that does not help, you can report it anyway with the button below - we will take a look.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>Error: %1
 %2
 
@@ -6212,7 +6222,7 @@ You may have to fix your mods because the game is still logging to files and lik
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+524"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+534"/>
         <source>Install dependencies automatically</source>
         <translation>Αυτόματη εγκατάσταση εξαρτήσεων</translation>
     </message>
@@ -6241,12 +6251,12 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Φάκελος Λήψεων</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="-351"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="-361"/>
         <source> hours</source>
         <translation> ώρες</translation>
     </message>
     <message>
-        <location line="+306"/>
+        <location line="+316"/>
         <source>Log History &amp;Limit:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6261,7 +6271,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;Πρόσθετα:</translation>
     </message>
     <message>
-        <location line="-333"/>
+        <location line="-343"/>
         <source>User Interface</source>
         <translation>Περιβάλλον χρήστη</translation>
     </message>
@@ -6361,6 +6371,16 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>When the launcher closes without warning while your computer keeps running, ask whether to send the log from that session. Unexpected restarts and power losses are never counted as crashes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Offer to report a crash after an unexpected exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+26"/>
         <source>&amp;Auto Java Download:</source>
         <translation type="unfinished"></translation>
@@ -6406,12 +6426,12 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-615"/>
+        <location line="-625"/>
         <source>Instance Renaming</source>
         <translation>Μετονομασία στιγμιοτύπου</translation>
     </message>
     <message>
-        <location line="+247"/>
+        <location line="+257"/>
         <location line="+20"/>
         <location line="+27"/>
         <location line="+33"/>
@@ -6444,7 +6464,7 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>Όταν είναι ενεργοποιημένο, εκτός από τον φάκελο “Λήψεις”, θα αναζητούνται και οι υποφάκελοί του κατά την αναζήτηση πόρων (π.χ. κατά την αναζήτηση αποκλεισμένων mods στο CurseForge).</translation>
     </message>
     <message>
-        <location line="-215"/>
+        <location line="-225"/>
         <source>Every </source>
         <translation>Κάθε </translation>
     </message>
@@ -6454,12 +6474,12 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>Ταξινόμηση στιγμιοτύπων</translation>
     </message>
     <message>
-        <location line="+344"/>
+        <location line="+354"/>
         <source>&amp;Downloads:</source>
         <translation>&amp;Λήψεις:</translation>
     </message>
     <message>
-        <location line="-146"/>
+        <location line="-156"/>
         <source>On Launch</source>
         <translation>Κατά την Εκκίνηση</translation>
     </message>
@@ -6473,7 +6493,7 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation type="vanished">Αφαίρεση</translation>
     </message>
     <message>
-        <location line="+360"/>
+        <location line="+370"/>
         <source>&amp;Stop logging when log overflows</source>
         <translation>&amp;Παύση καταγραφής όταν η καταγραφή υπερβεί το όριο</translation>
     </message>
@@ -6488,12 +6508,12 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>Αυτόματη ανίχνευση, εγκατάσταση και ενημέρωση των εξαρτήσεων των τροποποιήσεων.</translation>
     </message>
     <message>
-        <location line="-442"/>
+        <location line="-452"/>
         <source>&amp;By last launched</source>
         <translation>&amp;Κατά τελευταία εκκίνηση</translation>
     </message>
     <message>
-        <location line="+343"/>
+        <location line="+353"/>
         <source>I&amp;nstances:</source>
         <translation>&amp;Εγκαταστάσεις:</translation>
     </message>
@@ -6558,27 +6578,27 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>&amp;Εικονίδια:</translation>
     </message>
     <message>
-        <location line="-393"/>
+        <location line="-403"/>
         <source>By &amp;name</source>
         <translation>&amp;Κατά όνομα</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+320"/>
         <source>&amp;Skins:</source>
         <translation>&amp;Σκίνς:</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-218"/>
         <source>Updater</source>
         <translation>Πρόγραμμα ενημέρωσης</translation>
     </message>
     <message>
-        <location line="+172"/>
+        <location line="+182"/>
         <source>Folders</source>
         <translation>Φάκελοι</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-43"/>
         <location filename="../launcher/ui/pages/global/LauncherPage.h" line="+59"/>
         <source>General</source>
         <translation>Γενικά</translation>
@@ -10070,7 +10090,7 @@ Please update %1!</source>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+168"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10108,7 +10128,7 @@ Please update %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+50"/>
+        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+72"/>
         <source>All %1 requests failed after %2 attempts</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10139,6 +10159,11 @@ Please update %1!</source>
     </message>
     <message>
         <location line="+7"/>
+        <source>Show details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>This looks like antivirus software (or ransomware protection) blocking the launcher&apos;s temporary files. You can retry through a different temporary folder, or open the guide on letting your antivirus leave the launcher alone.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10163,7 +10188,17 @@ Please update %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+75"/>
+        <source>This looks like a connection problem on your side, not a launcher bug. Please don&apos;t report it unless it keeps happening on a working connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show every URL that failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+64"/>
         <source>Network error: %1</source>
         <translation type="unfinished"></translation>
     </message>
