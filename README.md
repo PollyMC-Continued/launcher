@@ -1,10 +1,14 @@
 <div align="center">
 
-<img width="600" height="160" src="/program_info/launcher-logo.svg" alt="PollyMC-Continued logo">
+<p align="center">
+  <img width="600" height="160" src="/program_info/org.pollymc.PollyMC.svg" alt="PollyMC-Continued logo">
+</p>
 
-<h1>
-<a style="color:#f5c2e7" href="https://pollymc.vercel.app/">PollyMC-Continued</a>
-</h1>
+<p align="center">
+  <a href="https://pollymc.vercel.app/">
+    <img src="/program_info/launcher-logo-text.svg" alt="PollyMC-Continued" height="60">
+  </a>
+</p>
 
 **Play Minecraft your way.** Offline accounts with no strings attached, a built-in skin browser, scriptable bots and a launcher that stays fast.
 
