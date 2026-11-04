@@ -728,12 +728,12 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation type="vanished">ອັບເດດສຳເລັດແລ້ວ</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1319"/>
+        <location filename="../launcher/Application.cpp" line="+1364"/>
         <source>Incompatible system configuration</source>
         <translation>ການກຳນົດຄ່າລະບົບບໍ່ເຂົ້າກັນ</translation>
     </message>
     <message>
-        <location line="+995"/>
+        <location line="+1056"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -768,12 +768,12 @@ for details on the last update attempt.</source>
 ສຳລັບລາຍລະອຽດ.</translation>
     </message>
     <message>
-        <location line="-1703"/>
+        <location line="-1776"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>ບໍ່ສາມາດສະແດງບັນທຶກ (log) ນີ້ໄດ້ ເນື່ອງຈາກຄວາມຍາວເກີນ %1 ແຖວ.</translation>
     </message>
     <message>
-        <location line="+1525"/>
+        <location line="+1598"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>ເບິ່ງຄືວ່າເຈົ້າເຄີຍໃຊ້ %1 ໃນ %2 ມາກ່ອນ. ເຈົ້າຕ້ອງການຍ້າຍຂໍ້ມູນໄປຍັງຕຳແໜ່ງໃໝ່ຂອງ %3 ຫຼື ບໍ່?</translation>
     </message>
@@ -841,7 +841,7 @@ for details.</source>
 ສຳລັບລາຍລະອຽດ.</translation>
     </message>
     <message>
-        <location line="-1823"/>
+        <location line="-1899"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -877,7 +877,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+526"/>
+        <location line="+529"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -897,7 +897,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+62"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other launcher update is running. To delete the lock file and continue, select &quot;Ignore&quot; below.</source>
@@ -961,12 +961,12 @@ Minecraft ບາງເວີຊັນອາດຈະເປີດບໍ່ໄດ�
 </translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+229"/>
         <source>Opening the launcher…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+444"/>
+        <location line="+487"/>
         <location line="+20"/>
         <source>Launcher closed unexpectedly</source>
         <translation type="unfinished"></translation>
@@ -1031,7 +1031,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">ກຳລັງດຳເນີນການອັບເດດ</translation>
     </message>
     <message>
-        <location line="-1427"/>
+        <location line="-1500"/>
         <source>Settings</source>
         <translation>ການຕັ້ງຄ່າ</translation>
     </message>
@@ -1062,7 +1062,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 ເພື່ອລຶບການລັອກນີ້ ແລະ ດຳເນີນການຕໍ່ ໃຫ້ເລືອກ &quot;ຂ້າມ&quot; ຢູ່ລຸ່ມນີ້.</translation>
     </message>
     <message>
-        <location line="+1271"/>
+        <location line="+1344"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>ພົບຂໍ້ມູນເກົ່າຈາກ %1, ແຕ່ເຈົ້າມີຂໍ້ມູນຂອງ %2 ຢູ່ແລ້ວ. ເຈົ້າຈຳເປັນຕ້ອງຍ້າຍຂໍ້ມູນດ້ວຍຕົນເອງ. ເຈົ້າຕ້ອງການໃຫ້ແຈ້ງເຕືອນການຍ້າຍຂໍ້ມູນອີກຄັ້ງໃນຄັ້ງຕໍ່ໄປທີ່ເປີດ %2 ຫຼື ບໍ່?</translation>
     </message>
@@ -1702,8 +1702,8 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1712,7 +1712,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-518"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1732,7 +1732,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+34"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1878,12 +1878,22 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <location line="+18"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>If that does not help, you can report it anyway with the button below - we will take a look.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>Error: %1
 %2
 
@@ -6287,7 +6297,7 @@ You may have to fix your mods because the game is still logging to files and lik
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+670"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+680"/>
         <source>s</source>
         <translation>ວິນາທີ</translation>
     </message>
@@ -6345,7 +6355,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ຍ້າຍມອດທີ່ຖືກບລັອກແທນການຄັດລອກ</translation>
     </message>
     <message>
-        <location line="-362"/>
+        <location line="-372"/>
         <source>Never rename the folder</source>
         <translation>ບໍ່ຕ້ອງປ່ຽນຊື່ໂຟນເດີຈັກເທື່ອ</translation>
     </message>
@@ -6360,7 +6370,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation> ຊົ່ວໂມງ</translation>
     </message>
     <message>
-        <location line="+322"/>
+        <location line="+332"/>
         <source> lines</source>
         <translation> ແຖວ</translation>
     </message>
@@ -6380,7 +6390,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;ມອດ:</translation>
     </message>
     <message>
-        <location line="-333"/>
+        <location line="-343"/>
         <source>User Interface</source>
         <translation>ສ່ວນຕິດຕໍ່ຜູ້ໃຊ້</translation>
     </message>
@@ -6450,6 +6460,16 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>When the launcher closes without warning while your computer keeps running, ask whether to send the log from that session. Unexpected restarts and power losses are never counted as crashes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Offer to report a crash after an unexpected exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+29"/>
         <source>Folder where PollyMC-Continued stores automatically downloaded Java versions. Do NOT set this to your system Java installation.</source>
         <translation>ໂຟນເດີທີ່ PollyMC-Continued ເກັບເວີຊັນ Java ທີ່ດາວໂຫຼດອັດຕະໂນມັດ. ຫ້າມຕັ້ງອັນນີ້ໃສ່ການຕິດຕັ້ງ Java ຂອງລະບົບ.</translation>
@@ -6465,7 +6485,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ໝົດເວລາ HTTP:</translation>
     </message>
     <message>
-        <location line="-572"/>
+        <location line="-582"/>
         <source>Always rename the folder</source>
         <translation>ປ່ຽນຊື່ໂຟນເດີສະເໝີ</translation>
     </message>
@@ -6475,7 +6495,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ການປ່ຽນຊື່ອິນສະແຕນຊ໌</translation>
     </message>
     <message>
-        <location line="+379"/>
+        <location line="+389"/>
         <source>Check &amp;subfolders for blocked mods</source>
         <translation>&amp;ກວດສອບໂຟນເດີຍ່ອຍສຳລັບມອດທີ່ຖືກບລັອກ</translation>
     </message>
@@ -6505,7 +6525,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ຫາກເປີດໃຊ້, ລະບົບຈະຄົ້ນຫາໃນໂຟນເດີຍ່ອຍພ້ອມກັບໂຟນເດີດາວໂຫຼດ ເມື່ອຊອກຫາຊັບພະຍາກອນ (ເຊັ່ນ: ເມື່ອຊອກຫາຊັບພະຍາກອນທີ່ຖືກບລັອກໃນ CurseForge).</translation>
     </message>
     <message>
-        <location line="-215"/>
+        <location line="-225"/>
         <source>Every </source>
         <translation>ທຸກໆ </translation>
     </message>
@@ -6515,7 +6535,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ການຮຽງລຳດັບອິນສະແຕນຊ໌</translation>
     </message>
     <message>
-        <location line="+449"/>
+        <location line="+459"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Disabling mod metadata may also disable some QoL features, such as mod updating!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;ຄຳເຕືອນ&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: ການປິດໃຊ້ງານ metadata ຂອງມອດອາດຈະເຮັດໃຫ້ຟີເຈີບາງຢ່າງໃຊ້ງານບໍ່ໄດ້ ເຊັ່ນ ການອັບເດດມອດ!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -6525,7 +6545,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;ການດາວໂຫຼດ:</translation>
     </message>
     <message>
-        <location line="-146"/>
+        <location line="-156"/>
         <source>On Launch</source>
         <translation>ເມື່ອເປີດ</translation>
     </message>
@@ -6535,7 +6555,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ຖີ່ປານໃດ?</translation>
     </message>
     <message>
-        <location line="+447"/>
+        <location line="+457"/>
         <source>Seconds to wait until the requests are terminated</source>
         <translation>ຈຳນວນວິນາທີທີ່ຈະລໍຖ້າກ່ອນຈະຍົກເລີກການຮ້ອງຂໍ</translation>
     </message>
@@ -6550,7 +6570,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;ຢຸດບັນທຶກເມື່ອ log ເກີນຂີດຈຳກັດ</translation>
     </message>
     <message>
-        <location line="-347"/>
+        <location line="-357"/>
         <source>Set to 0 to only check on launch</source>
         <translation>ກຳນົດເປັນ 0 ເພື່ອກວດສອບສະເພາະຕອນເປີດລັນເຊີ</translation>
     </message>
@@ -6560,7 +6580,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ທ່ານຕ້ອງການດຳເນີນການຕໍ່ບໍ່?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+247"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+257"/>
         <source>Keep track of mod metadata</source>
         <translation>ຕິດຕາມຂໍ້ມູນ metadata ຂອງມອດ</translation>
     </message>
@@ -6570,22 +6590,22 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ກວດຫາ, ຕິດຕັ້ງ ແລະ ອັບເດດສ່ວນປະກອບທີ່ຈຳເປັນຂອງມອດໂດຍອັດຕະໂນມັດ.</translation>
     </message>
     <message>
-        <location line="-363"/>
+        <location line="-373"/>
         <source>The menubar is more friendly for keyboard-driven interaction.</source>
         <translation>ແຖບເມນູຈະສະດວກກວ່າສຳລັບການໃຊ້ງານຜ່ານຄີບອດ.</translation>
     </message>
     <message>
-        <location line="+562"/>
+        <location line="+572"/>
         <source>Concurrent Task Limit:</source>
         <translation>ຂີດຈຳກັດວຽກງານພ້ອມກັນ:</translation>
     </message>
     <message>
-        <location line="-641"/>
+        <location line="-651"/>
         <source>&amp;By last launched</source>
         <translation>&amp;ຕາມການເປີດໃຊ້ຫຼ້າສຸດ</translation>
     </message>
     <message>
-        <location line="+343"/>
+        <location line="+353"/>
         <source>I&amp;nstances:</source>
         <translation>&amp;ອິນສະແຕນຊ໌:</translation>
     </message>
@@ -6605,17 +6625,17 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;ໄອຄອນ:</translation>
     </message>
     <message>
-        <location line="-393"/>
+        <location line="-403"/>
         <source>By &amp;name</source>
         <translation>&amp;ຕາມຊື່</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+320"/>
         <source>&amp;Skins:</source>
         <translation>&amp;ສະກິນ:</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-218"/>
         <source>Updater</source>
         <translation>ຕົວອັບເດດ</translation>
     </message>
@@ -6625,12 +6645,12 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;ປ່ຽນແຖບເຄື່ອງມືເປັນແຖບເມນູ</translation>
     </message>
     <message>
-        <location line="+182"/>
+        <location line="+192"/>
         <source>Folders</source>
         <translation>ໂຟນເດີ</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-43"/>
         <location filename="../launcher/ui/pages/global/LauncherPage.h" line="+59"/>
         <source>General</source>
         <translation>ທົ່ວໄປ</translation>
@@ -6646,7 +6666,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ກວດສອບການອັບເດດອັດຕະໂນມັດ</translation>
     </message>
     <message>
-        <location line="+182"/>
+        <location line="+192"/>
         <source>&amp;Auto Java Download:</source>
         <translation>&amp;ດາວໂຫຼດ Java ອັດຕະໂນມັດ:</translation>
     </message>
@@ -6677,7 +6697,7 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>ເກັບຂໍ້ມູນເວີຊັນທີ່ໄດ້ມາຈາກຜູ້ໃຫ້ບໍລິການມອດ (ເຊັ່ນ Modrinth ຫຼື CurseForge).</translation>
     </message>
     <message>
-        <location line="-389"/>
+        <location line="-399"/>
         <source>Ask what to do</source>
         <translation>ຖາມວ່າຈະໃຫ້ເຮັດແນວໃດ</translation>
     </message>
@@ -10248,7 +10268,7 @@ Please update %1!</source>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+168"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10288,7 +10308,7 @@ Please update %1!</source>
         <translation type="vanished">ຈາກການຮ້ອງຂໍທັງໝົດ %1, ລົ້ມເຫຼວ %2 ຫຼັງຈາກພະຍາຍາມ %3 ຄັ້ງ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+50"/>
+        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+72"/>
         <source>All %1 requests failed after %2 attempts</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10319,6 +10339,11 @@ Please update %1!</source>
     </message>
     <message>
         <location line="+7"/>
+        <source>Show details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>This looks like antivirus software (or ransomware protection) blocking the launcher&apos;s temporary files. You can retry through a different temporary folder, or open the guide on letting your antivirus leave the launcher alone.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10343,7 +10368,17 @@ Please update %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+75"/>
+        <source>This looks like a connection problem on your side, not a launcher bug. Please don&apos;t report it unless it keeps happening on a working connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show every URL that failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+64"/>
         <source>Network error: %1</source>
         <translation type="unfinished">ເຄືອຂ່າຍຜິດພາດ: %1</translation>
     </message>

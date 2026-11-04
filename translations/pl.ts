@@ -728,12 +728,12 @@ Możesz dodać konto Microsoft, offline lub Yggdrasil (authlib-injector), aby ro
         <translation type="vanished">Aktualizacja się powiodła</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1319"/>
+        <location filename="../launcher/Application.cpp" line="+1364"/>
         <source>Incompatible system configuration</source>
         <translation>Niekompatybilna konfiguracja systemu</translation>
     </message>
     <message>
-        <location line="+995"/>
+        <location line="+1056"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -768,12 +768,12 @@ Sprawdź logi aktualizatora Prism Launcher w:
 po więcej informacji o ostatniej próbie aktualizacji.</translation>
     </message>
     <message>
-        <location line="-1703"/>
+        <location line="-1776"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Nie można pokazać tego loga, bo przekroczył %1 linijek.</translation>
     </message>
     <message>
-        <location line="+1525"/>
+        <location line="+1598"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Wygląda na to, że wcześniej używano %1 na %2. Czy chcesz przenieść swoje dane do nowej lokalizacji %3?</translation>
     </message>
@@ -844,7 +844,7 @@ Sprawdź log aktualizatora PollyMC-Continued w:
 aby uzyskać szczegóły.</translation>
     </message>
     <message>
-        <location line="-1823"/>
+        <location line="-1899"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -880,7 +880,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+526"/>
+        <location line="+529"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -900,7 +900,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+62"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other launcher update is running. To delete the lock file and continue, select &quot;Ignore&quot; below.</source>
@@ -964,12 +964,12 @@ Możesz rozwiązać ten problem poprzez załadowanie folderu /tmp z flagą &apos
 </translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+229"/>
         <source>Opening the launcher…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+444"/>
+        <location line="+487"/>
         <location line="+20"/>
         <source>Launcher closed unexpectedly</source>
         <translation type="unfinished"></translation>
@@ -1036,7 +1036,7 @@ Skopiować je do tego folderu przenośnego? Twoje konta, ustawienia i lista inst
         <translation type="vanished">Aktualizacja w toku</translation>
     </message>
     <message>
-        <location line="-1427"/>
+        <location line="-1500"/>
         <source>Settings</source>
         <translation>Ustawienia</translation>
     </message>
@@ -1066,7 +1066,7 @@ Szczegóły ostatniej próby aktualizacji znajdziesz w logu aktualizatora Prism 
 Aby usunąć tę blokadę i kontynuować, wybierz poniżej „Ignoruj”.</translation>
     </message>
     <message>
-        <location line="+1271"/>
+        <location line="+1344"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>Znaleziono stare dane z %1, ale masz już istniejące dane dla %2. Niestety musisz przeprowadzić migrację ręcznie. Czy chcesz otrzymać przypomnienie o oczekującej migracji danych przy następnym uruchomieniu %2?</translation>
     </message>
@@ -1706,8 +1706,8 @@ Aby usunąć tę blokadę i kontynuować, wybierz poniżej „Ignoruj”.</trans
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1716,7 +1716,7 @@ Aby usunąć tę blokadę i kontynuować, wybierz poniżej „Ignoruj”.</trans
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-518"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1736,7 +1736,7 @@ Aby usunąć tę blokadę i kontynuować, wybierz poniżej „Ignoruj”.</trans
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+34"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1882,12 +1882,22 @@ Aby usunąć tę blokadę i kontynuować, wybierz poniżej „Ignoruj”.</trans
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <location line="+18"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>If that does not help, you can report it anyway with the button below - we will take a look.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>Error: %1
 %2
 
@@ -6382,7 +6392,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+670"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+680"/>
         <source>s</source>
         <translation>sek</translation>
     </message>
@@ -6448,7 +6458,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation>Zamiast kopiować zablokowane mody, przesuń je</translation>
     </message>
     <message>
-        <location line="-362"/>
+        <location line="-372"/>
         <source>Never rename the folder</source>
         <translation>Nigdy nie zmieniaj nazwy folderu</translation>
     </message>
@@ -6467,7 +6477,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation> godzin</translation>
     </message>
     <message>
-        <location line="+322"/>
+        <location line="+332"/>
         <source> lines</source>
         <translation> wierszy</translation>
     </message>
@@ -6487,7 +6497,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation>&amp;Modyfikacje:</translation>
     </message>
     <message>
-        <location line="-333"/>
+        <location line="-343"/>
         <source>User Interface</source>
         <translation>Interfejs użytkownika</translation>
     </message>
@@ -6496,7 +6506,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation type="vanished">Podczas tworzenia instancji pobierane są wymagane pliki gry. Wyłącz tę opcję, aby pominąć początkowe pobieranie i pobrać pliki dopiero po uruchomieniu instancji.</translation>
     </message>
     <message>
-        <location line="+419"/>
+        <location line="+429"/>
         <source>Mods and Modpacks</source>
         <translation>Mody i Modpacki</translation>
     </message>
@@ -6506,7 +6516,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation>Przerwa HTTP:</translation>
     </message>
     <message>
-        <location line="-572"/>
+        <location line="-582"/>
         <source>Always rename the folder</source>
         <translation>Zawsze zmieniaj nazwę folderu</translation>
     </message>
@@ -6581,6 +6591,16 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+7"/>
+        <source>When the launcher closes without warning while your computer keeps running, ask whether to send the log from that session. Unexpected restarts and power losses are never counted as crashes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Offer to report a crash after an unexpected exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+29"/>
         <source>Folder where PollyMC-Continued stores automatically downloaded Java versions. Do NOT set this to your system Java installation.</source>
         <translation>Folder, w którym PollyMC-Continued przechowuje automatycznie pobierane wersje Javy. NIE ustawiaj tego na instalację Javy systemowej.</translation>
@@ -6616,7 +6636,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation>Gdy włączone folder Pobrane i jego podfoldery też będą przeszukiwane podczas szukania zasobów (np. podczas szukania zablokowanych modów na CurseForge).</translation>
     </message>
     <message>
-        <location line="-215"/>
+        <location line="-225"/>
         <source>Every </source>
         <translation>Co </translation>
     </message>
@@ -6626,7 +6646,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation>Sortowanie instancji</translation>
     </message>
     <message>
-        <location line="+449"/>
+        <location line="+459"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Disabling mod metadata may also disable some QoL features, such as mod updating!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Ostrzeżenie&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Wyłączanie metadanych może wyłączyć niektóre małe funkcje, takie jak aktualizowanie modyfikacji!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -6636,7 +6656,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation>&amp;Pobrane:</translation>
     </message>
     <message>
-        <location line="-146"/>
+        <location line="-156"/>
         <source>On Launch</source>
         <translation>Przy uruchomieniu</translation>
     </message>
@@ -6650,7 +6670,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation type="vanished">Usuń</translation>
     </message>
     <message>
-        <location line="+447"/>
+        <location line="+457"/>
         <source>Seconds to wait until the requests are terminated</source>
         <translation>Sekundy oczekiwania na zakończenie zapytań</translation>
     </message>
@@ -6669,7 +6689,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation type="vanished">Pobierz pliki gry podczas tworzenia instancji</translation>
     </message>
     <message>
-        <location line="-347"/>
+        <location line="-357"/>
         <source>Set to 0 to only check on launch</source>
         <translation>Ustaw na 0, by sprawdzać tylko przy uruchamianiu</translation>
     </message>
@@ -6679,7 +6699,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation>Czy mimo to chcesz kontynuować?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+247"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+257"/>
         <source>Keep track of mod metadata</source>
         <translation>Trzymaj rękę na pulsie metadanych modów</translation>
     </message>
@@ -6689,22 +6709,22 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation>Austomatycznie wykryj, instaluj i aktualizuj zależności modów.</translation>
     </message>
     <message>
-        <location line="-363"/>
+        <location line="-373"/>
         <source>The menubar is more friendly for keyboard-driven interaction.</source>
         <translation>Pasek menu jest bardziej przyjazny dla interakcji za pomocą klawiatury.</translation>
     </message>
     <message>
-        <location line="+562"/>
+        <location line="+572"/>
         <source>Concurrent Task Limit:</source>
         <translation>Limit zadań równoległych:</translation>
     </message>
     <message>
-        <location line="-641"/>
+        <location line="-651"/>
         <source>&amp;By last launched</source>
         <translation>&amp;Według ostatniego uruchomienia</translation>
     </message>
     <message>
-        <location line="+343"/>
+        <location line="+353"/>
         <source>I&amp;nstances:</source>
         <translation>I&amp;nstancje:</translation>
     </message>
@@ -6728,7 +6748,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation>&amp;Ikony:</translation>
     </message>
     <message>
-        <location line="-393"/>
+        <location line="-403"/>
         <source>By &amp;name</source>
         <translation>Według &amp;nazwy</translation>
     </message>
@@ -6737,7 +6757,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation type="vanished">Dodatkowe katalogi instancji</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+320"/>
         <source>&amp;Skins:</source>
         <translation>&amp;Skórki:</translation>
     </message>
@@ -6746,7 +6766,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation type="vanished">Skopiuj katalog</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-218"/>
         <source>Updater</source>
         <translation>Updater</translation>
     </message>
@@ -6756,7 +6776,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation>&amp;Zamień pasek narzędzi na pasek menu</translation>
     </message>
     <message>
-        <location line="+182"/>
+        <location line="+192"/>
         <source>Folders</source>
         <translation>Foldery</translation>
     </message>
@@ -6765,7 +6785,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation type="vanished">Według całkowitego czasu &amp;gry</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-43"/>
         <location filename="../launcher/ui/pages/global/LauncherPage.h" line="+59"/>
         <source>General</source>
         <translation>Główne</translation>
@@ -6781,7 +6801,7 @@ Może być konieczne naprawienie modyfikacji, ponieważ gra nadal zapisuje logi 
         <translation>Sprawdzaj aktualizacje przy starcie</translation>
     </message>
     <message>
-        <location line="+182"/>
+        <location line="+192"/>
         <source>&amp;Auto Java Download:</source>
         <translation>&amp;Automatyczne pobieranie Javy:</translation>
     </message>
@@ -6812,7 +6832,7 @@ Przyznanie %1 dostępu do niego za pomocą Flatseal jest zalecane.</translation>
         <translation>Zapisz informacje dotyczące wersji dostarczane przez dostarczycieli modów (jak na przykład Modrinth czy CurseForge).</translation>
     </message>
     <message>
-        <location line="-389"/>
+        <location line="-399"/>
         <source>Ask what to do</source>
         <translation>Spytaj się co robić</translation>
     </message>
@@ -10422,7 +10442,7 @@ Proszę zaktualizować %1!</translation>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+168"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10462,7 +10482,7 @@ Proszę zaktualizować %1!</translation>
         <translation type="vanished">Spośród %1 żądań, %2 nie powiodło się po %3 próbach</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+50"/>
+        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+72"/>
         <source>All %1 requests failed after %2 attempts</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10493,6 +10513,11 @@ Proszę zaktualizować %1!</translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>Show details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>This looks like antivirus software (or ransomware protection) blocking the launcher&apos;s temporary files. You can retry through a different temporary folder, or open the guide on letting your antivirus leave the launcher alone.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10517,7 +10542,17 @@ Proszę zaktualizować %1!</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+75"/>
+        <source>This looks like a connection problem on your side, not a launcher bug. Please don&apos;t report it unless it keeps happening on a working connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show every URL that failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+64"/>
         <source>Network error: %1</source>
         <translation type="unfinished">Błąd sieciowy: %1</translation>
     </message>

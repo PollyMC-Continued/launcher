@@ -722,12 +722,12 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <translation type="vanished">העדכון הצליח</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1319"/>
+        <location filename="../launcher/Application.cpp" line="+1364"/>
         <source>Incompatible system configuration</source>
         <translation>תצורת המערכת אינה נתמכת</translation>
     </message>
     <message>
-        <location line="+995"/>
+        <location line="+1056"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -762,12 +762,12 @@ for details on the last update attempt.</source>
 עבור פרטים אודות נסיון העדכון האחרון.</translation>
     </message>
     <message>
-        <location line="-1703"/>
+        <location line="-1776"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>לא ניתן להציג יומן רישום זה מכיוון שגודל יומן הרישום עולה על %1 שורות.</translation>
     </message>
     <message>
-        <location line="+1525"/>
+        <location line="+1598"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>נראה שהשתמשת ב־%1 במיקום %2 בעבר. האם ברצונך להעביר את הנתונים שלך למיקום החדש %3?</translation>
     </message>
@@ -781,7 +781,7 @@ for details on the last update attempt.</source>
         <translation type="vanished">העדכון נכשל</translation>
     </message>
     <message>
-        <location line="-1823"/>
+        <location line="-1899"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -817,7 +817,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+526"/>
+        <location line="+529"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -837,7 +837,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+62"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other launcher update is running. To delete the lock file and continue, select &quot;Ignore&quot; below.</source>
@@ -901,12 +901,12 @@ You may solve this issue by remounting /tmp as &apos;exec&apos; or setting the j
 </translation>
     </message>
     <message>
-        <location line="+211"/>
+        <location line="+229"/>
         <source>Opening the launcher…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+444"/>
+        <location line="+487"/>
         <location line="+20"/>
         <source>Launcher closed unexpectedly</source>
         <translation type="unfinished"></translation>
@@ -969,7 +969,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">מתבצע עדכון</translation>
     </message>
     <message>
-        <location line="-1427"/>
+        <location line="-1500"/>
         <source>Settings</source>
         <translation>הגדרות</translation>
     </message>
@@ -1000,7 +1000,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 למחיקת הLock הזה ולהמשיך בחרו &quot;התעלם&quot; למטה.</translation>
     </message>
     <message>
-        <location line="+1271"/>
+        <location line="+1344"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>נמצאו נתונים ישנים מ%1, אבל כבק קיים לך נתונים קיימים בשביל %2. למרבה הצער תצטרך להגר בעצמך. האם אתה רוצה להיות מוזכר מהעברת הנתונים בפעם הבאה שאתה מתחיל %2?</translation>
     </message>
@@ -1640,8 +1640,8 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+152"/>
-        <location line="+392"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
         <location line="+8"/>
@@ -1650,7 +1650,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-458"/>
+        <location line="-518"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1670,7 +1670,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+34"/>
         <source>What kind of report is this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1816,12 +1816,22 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <location line="+18"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>If that does not help, you can report it anyway with the button below - we will take a look.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
+        <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>Error: %1
 %2
 
@@ -6291,7 +6301,7 @@ You may have to fix your mods because the game is still logging to files and lik
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+670"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+680"/>
         <source>s</source>
         <translation>ש׳</translation>
     </message>
@@ -6334,7 +6344,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>תיקיית סקינים</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="-552"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="-562"/>
         <source>Never rename the folder</source>
         <translation>אין לשנות תיקייה זו לעולם</translation>
     </message>
@@ -6349,7 +6359,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation> שעות</translation>
     </message>
     <message>
-        <location line="+322"/>
+        <location line="+332"/>
         <source> lines</source>
         <translation> שורות</translation>
     </message>
@@ -6364,7 +6374,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;מודים:</translation>
     </message>
     <message>
-        <location line="-333"/>
+        <location line="-343"/>
         <source>User Interface</source>
         <translation>ממשק משתמש</translation>
     </message>
@@ -6431,6 +6441,16 @@ You may have to fix your mods because the game is still logging to files and lik
     <message>
         <location line="+3"/>
         <source>Show what you&apos;re playing on Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>When the launcher closes without warning while your computer keeps running, ask whether to send the log from that session. Unexpected restarts and power losses are never counted as crashes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Offer to report a crash after an unexpected exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6509,7 +6529,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>זמן מוקצב ל־HTTP‏:</translation>
     </message>
     <message>
-        <location line="-572"/>
+        <location line="-582"/>
         <source>Always rename the folder</source>
         <translation>תמיד יש לשנות את שם התיקייה</translation>
     </message>
@@ -6519,7 +6539,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>שינוי שם עותק</translation>
     </message>
     <message>
-        <location line="+247"/>
+        <location line="+257"/>
         <location line="+20"/>
         <location line="+27"/>
         <location line="+33"/>
@@ -6557,7 +6577,7 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>כאשר אפשרות זו מופעלת, בנוסף לתיקיית ההורדות, יתבצע חיפוש גם בתיקיות המשנה שלה בעת חיפוש משאבים (למשל, כאשר מחפשים מוד חסום ב־CurseForge).</translation>
     </message>
     <message>
-        <location line="-215"/>
+        <location line="-225"/>
         <source>Every </source>
         <translation>כל </translation>
     </message>
@@ -6567,12 +6587,12 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>מצב מיון תצוגות עותקים</translation>
     </message>
     <message>
-        <location line="+344"/>
+        <location line="+354"/>
         <source>&amp;Downloads:</source>
         <translation>&amp;הורדות:</translation>
     </message>
     <message>
-        <location line="-146"/>
+        <location line="-156"/>
         <source>On Launch</source>
         <translation>בהפעלה</translation>
     </message>
@@ -6586,12 +6606,12 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation type="vanished">הסרה</translation>
     </message>
     <message>
-        <location line="+447"/>
+        <location line="+457"/>
         <source>Seconds to wait until the requests are terminated</source>
         <translation>שניות להמתנה לפני סגירה כפויה של הבקשות</translation>
     </message>
     <message>
-        <location line="-434"/>
+        <location line="-444"/>
         <source>Set to 0 to only check on launch</source>
         <translation>יש להגדיר בתור 0 כדי שהבדיקה תתבצע רק בהפעלה</translation>
     </message>
@@ -6606,17 +6626,17 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>שורת התפריט ידידותית יותר לאינטראקציה בעזרת המקלדת.</translation>
     </message>
     <message>
-        <location line="+562"/>
+        <location line="+572"/>
         <source>Concurrent Task Limit:</source>
         <translation>מגבלת תהליכים מקבילים:</translation>
     </message>
     <message>
-        <location line="-641"/>
+        <location line="-651"/>
         <source>&amp;By last launched</source>
         <translation>לפי מועד הפעלה א&amp;חרון</translation>
     </message>
     <message>
-        <location line="+343"/>
+        <location line="+353"/>
         <source>I&amp;nstances:</source>
         <translation>עותקי&amp;ם:</translation>
     </message>
@@ -6631,17 +6651,17 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>&amp;סמלים:</translation>
     </message>
     <message>
-        <location line="-393"/>
+        <location line="-403"/>
         <source>By &amp;name</source>
         <translation>לפי &amp;שם</translation>
     </message>
     <message>
-        <location line="+310"/>
+        <location line="+320"/>
         <source>&amp;Skins:</source>
         <translation>&amp;סקינים:</translation>
     </message>
     <message>
-        <location line="-208"/>
+        <location line="-218"/>
         <source>Updater</source>
         <translation>מעדכן</translation>
     </message>
@@ -6651,7 +6671,7 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>ה&amp;חלפת סרגל הכלים בשורת תפריט</translation>
     </message>
     <message>
-        <location line="+182"/>
+        <location line="+192"/>
         <source>Folders</source>
         <translation>תיקיות</translation>
     </message>
@@ -6660,7 +6680,7 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation type="vanished">לפי סה״כ זמן מ&amp;שחק</translation>
     </message>
     <message>
-        <location line="-33"/>
+        <location line="-43"/>
         <location filename="../launcher/ui/pages/global/LauncherPage.h" line="+59"/>
         <source>General</source>
         <translation>כללי</translation>
@@ -6676,7 +6696,7 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>בדיקה אחר עדכונים אוטומטית</translation>
     </message>
     <message>
-        <location line="+182"/>
+        <location line="+192"/>
         <source>&amp;Auto Java Download:</source>
         <translation>הורדה או&amp;טומטית של Java‏:</translation>
     </message>
@@ -6686,7 +6706,7 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>תיקיית עותק</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="-247"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="-257"/>
         <source>Ask what to do</source>
         <translation>לשאול מה לעשות</translation>
     </message>
@@ -10182,7 +10202,7 @@ Please update %1!</source>
 <context>
     <name>NetJob</name>
     <message>
-        <location filename="../launcher/net/NetJob.cpp" line="+150"/>
+        <location filename="../launcher/net/NetJob.cpp" line="+168"/>
         <source>Could not abort every task in the network job</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10210,7 +10230,7 @@ Please update %1!</source>
         <translation>שגיאה</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+50"/>
+        <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+72"/>
         <source>All %1 requests failed after %2 attempts</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10241,6 +10261,11 @@ Please update %1!</source>
     </message>
     <message>
         <location line="+7"/>
+        <source>Show details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>This looks like antivirus software (or ransomware protection) blocking the launcher&apos;s temporary files. You can retry through a different temporary folder, or open the guide on letting your antivirus leave the launcher alone.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10265,7 +10290,17 @@ Please update %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+75"/>
+        <source>This looks like a connection problem on your side, not a launcher bug. Please don&apos;t report it unless it keeps happening on a working connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Show every URL that failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+64"/>
         <source>Network error: %1</source>
         <translation type="unfinished"></translation>
     </message>
