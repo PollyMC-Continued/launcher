@@ -71,6 +71,18 @@ void NetJob::executeNextSubTask()
     // We're finished, check for failures and retry if we can (up to 3 times)
     if (isRunning() && m_queue.isEmpty() && m_doing.isEmpty() && !m_failed.isEmpty() && m_try < 3) {
         m_try += 1;
+
+        // After 2 rounds of mostly timeouts / unreachable connections, the network (or something
+        // in front of it) is struggling, not the individual files: retry the rest more gently -
+        // at most 2 at a time. The limit lives for this job only.
+        if (m_try > 2 && !m_loweredConcurrency && mostlyConnectionTrouble()) {
+            m_loweredConcurrency = true;
+            m_normalMaxConcurrent = m_total_max_size;
+            m_total_max_size = qMin(m_total_max_size, 2);
+            qInfo() << "Most failed requests in" << objectName()
+                    << "are timeouts or connection errors - retrying with at most 2 at a time";
+        }
+
         m_failed.removeIf([this](QHash<Task*, Task::Ptr>::iterator task) {
             // there is no point in retrying on 404 Not Found
             if (static_cast<Net::NetRequest*>(task->get())->replyStatusCode() == 404) {
@@ -82,13 +94,19 @@ void NetJob::executeNextSubTask()
         });
         if (!m_queue.isEmpty()) {
             // Give antivirus scanners / indexers a moment to release a freshly written file before trying again:
-            // retrying instantly just hits the same lock. 1s, then 2s, then 3s.
+            // retrying instantly just hits the same lock. 1s, then 2s, then 3s - for timeout-type
+            // errors only, the pause grows faster (1s, 3s, 8s) to give a struggling network time
+            // to come back.
             //
             // Thread-safety: executeNextSubTask() can be reached from worker threads (queued signals from
             // sub-tasks on some code paths), but a QTimer may only be created on a thread that runs an event
             // loop - i.e. the NetJob's own thread. Hop there first with a queued invocation; if the job is
             // destroyed in the meantime, Qt simply drops the call (and the timer's context object below).
-            const int delayMs = qMin(m_try, 3) * 1000;
+            int delayMs = qMin(m_try, 3) * 1000;
+            if (mostlyConnectionTrouble()) {
+                static constexpr int timeoutDelaysMs[] = { 1000, 3000, 8000 };
+                delayMs = timeoutDelaysMs[qBound(0, m_try - 1, 2)];
+            }
             QMetaObject::invokeMethod(
                 this,
                 [this, delayMs] {
@@ -189,6 +207,27 @@ bool NetJob::isOnline()
     return false;
 };
 
+bool NetJob::mostlyConnectionTrouble()
+{
+    // "most" = at least 80%: the same bar the failed-request window uses to switch to its
+    // "can't reach <host>" layout. Failures without a reply (disk/validator errors) count as
+    // non-connection trouble, which is what they are.
+    const auto failed = getFailedActions();
+    if (failed.isEmpty()) {
+        return false;
+    }
+    int connection = 0;
+    for (const auto job : failed) {
+        const auto err = job->error();
+        if (err == QNetworkReply::TimeoutError || err == QNetworkReply::OperationCanceledError ||
+            err == QNetworkReply::ConnectionRefusedError || err == QNetworkReply::HostNotFoundError ||
+            err == QNetworkReply::RemoteHostClosedError || err == QNetworkReply::NetworkSessionFailedError) {
+            connection++;
+        }
+    }
+    return connection * 10 >= failed.size() * 8;
+}
+
 void NetJob::emitFailed(QString reason)
 {
 #if defined(LAUNCHER_APPLICATION)
@@ -203,9 +242,10 @@ void NetJob::emitFailed(QString reason)
             // the request's own fail reason covers disk/validator errors that the network reply knows nothing about
             const auto requestReason = request->failReason().isEmpty() ? request->errorString() : request->failReason();
             qCCritical(taskNetLogC) << "Download failed:" << request->url().toString() << "-" << requestReason;
-            dialog->addFailedRequest(request->url(), requestReason);
+            dialog->addFailedRequest(request->url(), requestReason, request->error());
         }
-
+        // decides whether this looks like "can't reach <host>" and switches the friendly layout in
+        dialog->finalizeFailedRequests();
         dialog->open();
 
         connect(dialog, &QDialog::finished, this, [this, reason = std::move(reason)](int result) {

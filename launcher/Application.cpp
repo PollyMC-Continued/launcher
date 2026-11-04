@@ -43,6 +43,7 @@
 #include "Application.h"
 
 #include "BuildConfig.h"
+#include "CrashMarker.h"
 
 #include "DataMigrationTask.h"
 #include "java/JavaInstallList.h"
@@ -92,6 +93,10 @@
 
 #include <iostream>
 #include <mutex>
+
+#if defined(Q_OS_WIN)
+#include <atomic>
+#endif
 
 #include <QAccessible>
 #include <QCheckBox>
@@ -176,6 +181,31 @@
 
 #define STRINGIFY(x) #x
 #define TOSTRING(x) STRINGIFY(x)
+
+#if defined(Q_OS_WIN)
+namespace {
+// The crash marker path, kept for the console control handler. Set once during startup before
+// the handler is installed; read afterwards from the handler's own thread. A pointer-sized
+// value with atomic semantics is what SetConsoleCtrlHandler's contract needs - the default
+// handler terminates the process as soon as this handler returns.
+std::atomic<const CrashMarker*> g_crashMarker = nullptr;
+
+BOOL WINAPI crashMarkerConsoleHandler(DWORD ctrlType)
+{
+    // Ctrl+C, closing the console window, logoff and shutdown all arrive here (CTRL_C_EVENT,
+    // CTRL_CLOSE_EVENT, CTRL_BREAK_EVENT, CTRL_LOGOFF_EVENT, CTRL_SHUTDOWN_EVENT). Any of them
+    // ends the process without an aboutToQuit, which is exactly what the marker is for.
+    Q_UNUSED(ctrlType);
+    if (const CrashMarker* marker = g_crashMarker.load()) {
+        CrashMarker::removeAt(marker->path());
+    }
+    // Remove ourselves and defer to the default handler so the process still ends normally;
+    // the GUI thread's own exit paths (aboutToQuit, commitDataRequest) run when they can.
+    SetConsoleCtrlHandler(crashMarkerConsoleHandler, FALSE);
+    return FALSE;
+}
+}  // namespace
+#endif
 
 static const QLatin1String liveCheckFile("live.check");
 
@@ -718,8 +748,11 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
 
         m_settings->registerSetting("NumberOfConcurrentTasks", 10);
         m_settings->registerSetting("NumberOfConcurrentDownloads", 6);
-        m_settings->registerSetting("NumberOfManualRetries", 1);
+        m_settings->registerSetting("NumberOfManualRetries", 3);
         m_settings->registerSetting("RequestTimeout", 60);
+        // hidden setting: turns off the "the launcher closed unexpectedly" prompt after an
+        // unclean exit (still logged either way); the checkbox lives in the launcher settings
+        m_settings->registerSetting("ShowCrashRecoveryPrompt", true);
 
         QString defaultMonospace;
         int defaultSize = 11;
@@ -1174,6 +1207,14 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
     connect(this, &Application::clickedOnDock, [this]() { this->showMainWindow(); });
 #endif
 
+    // The OS ending the session (Windows shutdown/logoff, Linux session end, macOS logout) is a
+    // clean exit as far as the crash marker is concerned. commitDataRequest is the reliable
+    // cross-platform signal; saveStateRequest additionally covers session-manager checkpoints.
+    // DirectConnection: the GUI thread is the one the session manager talks to, and Qt 6's
+    // isSessionRestored() has already settled by the time a queued call would run.
+    connect(this, &QGuiApplication::commitDataRequest, this, &Application::handleSessionEnd, Qt::DirectConnection);
+    connect(this, &QGuiApplication::saveStateRequest, this, &Application::handleSessionEnd, Qt::DirectConnection);
+
     connect(this, &Application::aboutToQuit, [this]() {
         if (m_instances) {
             // save any remaining instance state
@@ -1185,7 +1226,11 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         }
         // shutting down cleanly: take the crash marker with us so the next run
         // knows this session ended normally
-        FS::deletePath(FS::PathCombine(m_dataPath, "crash.marker"));
+        if (m_crashMarker) {
+            m_crashMarker->remove();
+        } else {
+            FS::deletePath(FS::PathCombine(m_dataPath, "crash.marker"));
+        }
     });
 
     // MSA/Flame flags are read by the first-run wizard; D-Bus and library probes can wait for the window
@@ -1330,21 +1375,39 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
     }
 
     // Crash recovery: a marker that survives everything except a clean shutdown.
-    // It is written once startup has come this far, and removed in aboutToQuit.
-    // If we find it now, the previous run died unexpectedly (crash, kill, power loss).
+    // It is written once startup has come this far, refreshed by a heartbeat while running, and
+    // removed on clean exits (quit, session end). What a leftover marker means is decided with
+    // the boot identity and the previous session's log, so a reboot or power loss while the
+    // launcher was open no longer looks like a crash.
     {
-        const QString markerPath = FS::PathCombine(m_dataPath, "crash.marker");
-        m_previousRunCrashed = QFileInfo::exists(markerPath);
-        if (m_previousRunCrashed) {
-            qWarning() << "The previous run did not shut down cleanly - a crash report will be offered.";
+        m_crashMarker = new CrashMarker(FS::PathCombine(m_dataPath, "crash.marker"), m_startTime, this);
+        m_previousRunCrashed = false;
+
+        // The logs are rotated on startup, so the previous session's log is the "-1" file. Only
+        // the tail is read: whatever evidence there is sits at the end, and the file can be big.
+        const QString previousSessionLog =
+            CrashMarker::readFileTail(FS::PathCombine(m_dataPath, "logs", QStringLiteral("%1-1.log").arg(BuildConfig.LAUNCHER_NAME)), 16 * 1024);
+
+        switch (m_crashMarker->classifyPreviousRun(previousSessionLog)) {
+            case CrashMarker::PreviousRun::Clean:
+                break;
+            case CrashMarker::PreviousRun::SystemShutdown:
+                // the machine was restarted or lost power while the launcher was open: the
+                // launcher never got to clean up, but nothing crashed
+                qInfo() << "The previous run ended with a system shutdown, restart or power loss - not treating it as a crash.";
+                break;
+            case CrashMarker::PreviousRun::SoftExit:
+                qInfo() << "The previous run left the crash marker behind, but there is no sign of a crash - not asking about it.";
+                break;
+            case CrashMarker::PreviousRun::Crash:
+                m_previousRunCrashed = true;
+                qWarning() << "The previous run did not shut down cleanly - a crash report will be offered.";
+                break;
         }
-        QFile marker(markerPath);
-        if (marker.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-            marker.write(QDateTime::currentDateTime().toString(Qt::ISODate).toUtf8());
-            marker.close();
-        } else {
-            qWarning() << "Could not write the crash marker" << markerPath << ":" << marker.errorString();
-        }
+
+        m_crashMarker->touch();
+        // keep the marker's heartbeat fresh from now on
+        QTimer::singleShot(0, this, [this] { setupCrashMarkerHousekeeping(); });
     }
 
     if (createSetupWizard()) {
@@ -1943,10 +2006,53 @@ MainWindow* Application::showMainWindow(bool minimized)
     return m_mainWindow;
 }
 
+void Application::handleSessionEnd()
+{
+    // The OS is ending the session (Windows WM_QUERYENDSESSION/WM_ENDSESSION, Linux session end,
+    // macOS logout). That is not a crash: take the crash marker with us so the next run knows.
+    qDebug() << "The session is ending - removing the crash marker.";
+    if (m_crashMarker) {
+        m_crashMarker->remove();
+    }
+}
+
+void Application::setupCrashMarkerHousekeeping()
+{
+    if (!m_crashMarker) {
+        return;
+    }
+    m_crashMarker->startHeartbeat();
+
+#if defined(Q_OS_WIN)
+    // Windows may deliver WM_QUERYENDSESSION/WM_ENDSESSION while the Qt event loop is blocked in
+    // a native dialog or a long paint, and Ctrl+C / closing the console window arrives as a
+    // console control event on a thread of its own. Qt's commitDataRequest does not fire on
+    // every one of those paths, so watch for them here as well. The console handler must be
+    // async-safe: it only deletes the marker file and leaves the rest of the shutdown to the
+    // default handler / the GUI thread.
+    installWindowsConsoleHandler();
+#endif
+}
+
+#if defined(Q_OS_WIN)
+void Application::installWindowsConsoleHandler()
+{
+    g_crashMarker.store(m_crashMarker);
+    SetConsoleCtrlHandler(crashMarkerConsoleHandler, TRUE);
+}
+#endif
+
 void Application::offerCrashRecovery()
 {
     if (!m_mainWindow)
         return;
+
+    // can be turned off with the hidden ShowCrashRecoveryPrompt setting (checkbox in the
+    // launcher settings); an unclean exit is still logged either way
+    if (!m_settings || !m_settings->get("ShowCrashRecoveryPrompt").toBool()) {
+        qInfo() << "The crash recovery prompt is disabled - not asking about the previous run.";
+        return;
+    }
 
     // The logs are rotated on startup, so the crashed session's log is the "-1" file.
     const QString logPath = FS::PathCombine(m_dataPath, "logs", QStringLiteral("%1-1.log").arg(BuildConfig.LAUNCHER_NAME));

@@ -61,6 +61,7 @@
 #include <QToolButton>
 #include <QUrl>
 #include <QVBoxLayout>
+#include <QWidget>
 
 #include "Application.h"
 #include "BugReportTracker.h"
@@ -71,6 +72,7 @@
 #include "logs/AnonymizeLog.h"
 #include "settings/SettingsObject.h"
 #include "ui/dialogs/CustomMessageBox.h"
+#include "ui/dialogs/FriendlyError.h"
 
 namespace {
 constexpr int MaxScreenshots = 3;
@@ -193,6 +195,18 @@ BugReportDialog::BugReportDialog(QWidget* parent) : QDialog(parent)
         header->addWidget(myReports, 0, Qt::AlignTop | Qt::AlignRight);
     }
     outer->addLayout(header);
+
+    // ---- friendly-problem banner (only for reports that look like connection/antivirus/disk trouble) ----
+    // Hidden by default; prefillError() fills and shows it when the error text matches.
+    m_friendlyBanner = new QWidget(this);
+    m_friendlyBanner->setVisible(false);
+    auto bannerLayout = new QVBoxLayout(m_friendlyBanner);
+    bannerLayout->setContentsMargins(0, 0, 0, 0);
+    auto bannerText = new QLabel(m_friendlyBanner);
+    bannerText->setObjectName(QStringLiteral("friendlyBannerText"));
+    bannerText->setWordWrap(true);
+    bannerLayout->addWidget(bannerText);
+    outer->addWidget(m_friendlyBanner);
 
     // ---- scrollable form ----
     m_scroll = new QScrollArea(this);
@@ -485,12 +499,41 @@ void BugReportDialog::setBusy(bool busy)
         updateState();
 }
 
+QString BugReportDialog::friendlyProblemBanner(const QString& title, const QString& details)
+{
+    // The whole report text is examined, not just the error: the type and what the user added
+    // around it ("I can't download anything") are clues too.
+    const auto category = FriendlyError::categorize(title + QStringLiteral("\n") + details);
+    if (category == FriendlyError::Category::None || category == FriendlyError::Category::SystemShutdown) {
+        return {};
+    }
+
+    const auto advice = FriendlyError::adviceFor(category);
+    QStringList lines;
+    lines << tr("This looks like a %1 problem, not a launcher bug. Here is how to fix it:").arg(FriendlyError::problemName(category));
+    for (const QString& step : advice.steps) {
+        lines << QStringLiteral("• ") + step;
+    }
+    // the report itself stays available: this is advice, not a refusal
+    lines << tr("If that does not help, you can report it anyway with the button below - we will take a look.");
+    return lines.join(QStringLiteral("\n"));
+}
+
 void BugReportDialog::prefillError(const QString& title, const QString& details)
 {
     constexpr int MaxDetailChars = 2000;
     m_intro->setText(tr("We filled in the error for you. Add what you were doing when it happened, then send it. "
                         "Your report goes <b>privately</b> to the PollyMC team on Discord."));
     m_type->setCurrentIndex(m_type->findData(QStringLiteral("bug")));
+
+    // a connection / antivirus / disk / clock problem is usually fixable on the user's side:
+    // say so up front, with the report still one click away for them
+    const QString banner = friendlyProblemBanner(title, details);
+    if (!banner.isEmpty()) {
+        auto* bannerText = m_friendlyBanner->findChild<QLabel*>(QStringLiteral("friendlyBannerText"));
+        bannerText->setText(banner);
+        m_friendlyBanner->setVisible(true);
+    }
 
     QString body = details.trimmed();
     if (body.size() > MaxDetailChars)

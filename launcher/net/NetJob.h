@@ -76,6 +76,9 @@ class NetJob : public ConcurrentTask {
    protected:
     void updateState() override;
     bool isOnline();
+    /// True when at least 80% of the failed requests are timeouts or connection errors: the
+    /// network is struggling, not the files.
+    bool mostlyConnectionTrouble();
 
    private:
     QNetworkAccessManager* m_network;
@@ -83,4 +86,9 @@ class NetJob : public ConcurrentTask {
     int m_try = 1;
     bool m_ask_retry = true;
     int m_manual_try = 0;
+
+    // retry-timeout workaround: after 2 rounds of mostly timeouts, the remaining retries of this
+    // job run at most 2 at a time (the user's own limit is untouched and applies to the next job)
+    bool m_loweredConcurrency = false;
+    int m_normalMaxConcurrent = 0;
 };
