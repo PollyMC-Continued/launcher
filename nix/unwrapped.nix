@@ -1,6 +1,7 @@
 {
   lib,
   stdenv,
+  symlinkJoin,
   cmake,
   cmark,
   extra-cmake-modules,
@@ -14,11 +15,20 @@
   stripJavaArchivesHook,
   tomlplusplus,
   zlib,
+  onnxruntime,
   msaClientID ? null,
   libarchive,
 }:
 
 let
+  onnxruntimeRoot = symlinkJoin {
+    name = "onnxruntime-root";
+    paths = [
+      onnxruntime.out
+      onnxruntime.dev
+    ];
+  };
+
   date =
     let
       # YYYYMMDD
@@ -46,6 +56,7 @@ stdenv.mkDerivation {
     fileset = lib.fileset.unions [
       ../CMakeLists.txt
       ../COPYING.md
+      ../CHANGELOG.md
 
       ../buildconfig
       ../cmake
@@ -73,16 +84,20 @@ stdenv.mkDerivation {
     cmark
     kdePackages.qtbase
     kdePackages.qtnetworkauth
+    kdePackages.qtsvg
+    kdePackages.qtwebsockets
     qrencode
     libarchive
     tomlplusplus
     zlib
+    onnxruntime
   ]
   ++ lib.optional stdenv.hostPlatform.isLinux gamemode;
 
   cmakeFlags = [
     # downstream branding
     (lib.cmakeFeature "Launcher_BUILD_PLATFORM" "nixpkgs")
+    (lib.cmakeFeature "onnxruntime_ROOT" "${onnxruntimeRoot}")
   ]
   ++ lib.optionals (msaClientID != null) [
     (lib.cmakeFeature "Launcher_MSA_CLIENT_ID" (toString msaClientID))
