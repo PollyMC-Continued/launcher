@@ -178,7 +178,7 @@ jobs:
     runs-on: windows-latest
     timeout-minutes: 90
     permissions:
-      contents: read
+      contents: write   # only used by the storage-full fallback that attaches files to the release draft
     env:
       # Job-level so the Build step's ccache sees it.
       CCACHE_DIR: ${{ github.workspace }}/.ccache
@@ -662,6 +662,8 @@ jobs:
           Write-Host "Portable package OK: started up and created its log file"
 
       - name: Upload artifacts
+        id: upload
+        continue-on-error: true   # a full artifact quota must not fail the build
         uses: actions/upload-artifact@v4
         with:
           name: PollyMC-Continued-Windows
@@ -670,14 +672,32 @@ jobs:
             PollyMC-Continued-*-Windows-portable.zip
           if-no-files-found: error
 
+      - name: Artifact storage unavailable
+        if: steps.upload.outcome == 'failure' && needs.skip-check.outputs.skip_release != 'true'
+        run: echo "::warning::Uploading the artifact failed (storage quota full?). Attaching the files straight to the release draft instead."
+
+      - name: Attach to release draft (artifact storage fallback)
+        if: steps.upload.outcome == 'failure' && needs.skip-check.outputs.skip_release != 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.skip-check.outputs.version }}
+          target_commitish: ${{ github.sha }}
+          draft: true
+          files: |
+            PollyMC-Continued-*-Setup.exe
+            PollyMC-Continued-*-Windows-portable.zip
+
   build-linux:
     name: Linux (.deb + tarball)
     needs: [skip-check]
+    outputs:
+      # false when the tarball artifact could not be stored; the cross-distro test then skips.
+      artifact_ok: ${{ steps.upload_tar.outcome == 'success' }}
     if: needs.skip-check.outputs.skip != 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     permissions:
-      contents: read
+      contents: write   # only used by the storage-full fallback that attaches files to the release draft
     env:
       # Job-level so the Build step's ccache sees it; fixed path avoids the default dir.
       CCACHE_DIR: ${{ github.workspace }}/.ccache
@@ -785,6 +805,8 @@ jobs:
           key: ccache-linux-deb-${{ github.run_id }}
 
       - name: Upload .deb artifact
+        id: upload_deb
+        continue-on-error: true   # a full artifact quota must not fail the build
         uses: actions/upload-artifact@v4
         with:
           name: PollyMC-Continued-Linux-DEB
@@ -850,22 +872,42 @@ jobs:
           done
 
       - name: Upload artifact
+        id: upload_tar
+        continue-on-error: true   # a full artifact quota must not fail the build
         uses: actions/upload-artifact@v4
         with:
           name: PollyMC-Continued-Linux
           path: PollyMC-Continued-${{ needs.skip-check.outputs.version }}-Linux-x86_64.tar.gz
           if-no-files-found: error
 
+      - name: Artifact storage unavailable
+        if: (steps.upload_deb.outcome == 'failure' || steps.upload_tar.outcome == 'failure') && needs.skip-check.outputs.skip_release != 'true'
+        run: echo "::warning::Uploading the artifact failed (storage quota full?). Attaching the files straight to the release draft instead."
+
+      - name: Attach to release draft (artifact storage fallback)
+        if: (steps.upload_deb.outcome == 'failure' || steps.upload_tar.outcome == 'failure') && needs.skip-check.outputs.skip_release != 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.skip-check.outputs.version }}
+          target_commitish: ${{ github.sha }}
+          draft: true
+          files: |
+            build-deb/*.deb
+            PollyMC-Continued-*-Linux-x86_64.tar.gz
+
   build-appimage:
     name: Linux AppImage (glibc 2.35)
     needs: [skip-check]
+    outputs:
+      # false when the AppImage artifact could not be stored; the smoke test then skips.
+      artifact_ok: ${{ steps.upload.outcome == 'success' }}
     if: needs.skip-check.outputs.skip != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     # 22.04 container, not the 24.04 runner: pins the glibc floor to 2.35 (24.04 needs >= 2.38).
     container: ubuntu:22.04
     permissions:
-      contents: read
+      contents: write   # only used by the storage-full fallback that attaches files to the release draft
     # Container jobs default to dash, which lacks pipefail: force bash.
     defaults:
       run:
@@ -1194,16 +1236,33 @@ jobs:
           symbol_versions 'GLIBCXX_[0-9]+\.[0-9]+\.[0-9]+' | sort -uV | tail -3
 
       - name: Upload AppImage artifact
+        id: upload
+        continue-on-error: true   # a full artifact quota must not fail the build
         uses: actions/upload-artifact@v4
         with:
           name: PollyMC-Continued-AppImage
           path: PollyMC-Continued-${{ needs.skip-check.outputs.version }}-x86_64.AppImage
           if-no-files-found: error
 
+      - name: Artifact storage unavailable
+        if: steps.upload.outcome == 'failure' && needs.skip-check.outputs.skip_release != 'true'
+        run: echo "::warning::Uploading the artifact failed (storage quota full?). Attaching the files straight to the release draft instead."
+
+      - name: Attach to release draft (artifact storage fallback)
+        if: steps.upload.outcome == 'failure' && needs.skip-check.outputs.skip_release != 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.skip-check.outputs.version }}
+          target_commitish: ${{ github.sha }}
+          draft: true
+          files: |
+            PollyMC-Continued-*-x86_64.AppImage
+
   linux-appimage-smoke:
     name: Linux AppImage (Ubuntu 22.04 smoke test)
     needs: [skip-check, build-appimage]
-    if: needs.skip-check.outputs.skip != 'true'
+    # Skipped (not failed) when the artifact could not be stored, so the release still goes out.
+    if: needs.skip-check.outputs.skip != 'true' && needs.build-appimage.outputs.artifact_ok == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     # Oldest supported glibc: if it starts here, it starts on newer distros.
@@ -1263,7 +1322,8 @@ jobs:
   linux-tarball-cross-distro:
     name: Linux tarball (cross-distro smoke test)
     needs: [skip-check, build-linux]
-    if: needs.skip-check.outputs.skip != 'true'
+    # Skipped (not failed) when the artifact could not be stored, so the release still goes out.
+    if: needs.skip-check.outputs.skip != 'true' && needs.build-linux.outputs.artifact_ok == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     container: archlinux:latest
@@ -1345,7 +1405,7 @@ jobs:
     runs-on: macos-15
     timeout-minutes: 90
     permissions:
-      contents: read
+      contents: write   # only used by the storage-full fallback that attaches files to the release draft
     env:
       BUILD_TYPE: Release
       MACOSX_DEPLOYMENT_TARGET: "13.0"
@@ -1501,6 +1561,8 @@ jobs:
             "$BUILD_TYPE"
 
       - name: Upload artifacts
+        id: upload
+        continue-on-error: true   # a full artifact quota must not fail the build
         uses: actions/upload-artifact@v4
         with:
           name: PollyMC-Continued-macOS
@@ -1509,6 +1571,22 @@ jobs:
             dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-arm64.dmg
             dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-arm64.sha256
           if-no-files-found: error
+
+      - name: Artifact storage unavailable
+        if: steps.upload.outcome == 'failure' && needs.skip-check.outputs.skip_release != 'true'
+        run: echo "::warning::Uploading the artifact failed (storage quota full?). Attaching the files straight to the release draft instead."
+
+      - name: Attach to release draft (artifact storage fallback)
+        if: steps.upload.outcome == 'failure' && needs.skip-check.outputs.skip_release != 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.skip-check.outputs.version }}
+          target_commitish: ${{ github.sha }}
+          draft: true
+          files: |
+            dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-arm64.zip
+            dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-arm64.dmg
+            dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-arm64.sha256
 
       - name: Remove temporary signing keychain
         if: ${{ always() }}
@@ -1525,7 +1603,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     permissions:
-      contents: read
+      contents: write   # only used by the storage-full fallback that attaches files to the release draft
     container: archlinux:latest
     steps:
       - name: Checkout
@@ -1593,11 +1671,27 @@ jobs:
           key: ccache-arch-${{ github.run_id }}
 
       - name: Upload Arch package artifact
+        id: upload
+        continue-on-error: true   # a full artifact quota must not fail the build
         uses: actions/upload-artifact@v4
         with:
           name: PollyMC-Continued-Arch
           path: packaging/arch/PollyMC-Continued-*.pkg.tar.zst
           if-no-files-found: error
+
+      - name: Artifact storage unavailable
+        if: steps.upload.outcome == 'failure' && needs.skip-check.outputs.skip_release != 'true'
+        run: echo "::warning::Uploading the artifact failed (storage quota full?). Attaching the files straight to the release draft instead."
+
+      - name: Attach to release draft (artifact storage fallback)
+        if: steps.upload.outcome == 'failure' && needs.skip-check.outputs.skip_release != 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.skip-check.outputs.version }}
+          target_commitish: ${{ github.sha }}
+          draft: true
+          files: |
+            packaging/arch/PollyMC-Continued-*.pkg.tar.zst
 
   release:
     name: Release
@@ -1608,7 +1702,12 @@ jobs:
       needs.skip-check.outputs.skip_release != 'true' &&
       !contains(needs.*.result, 'failure') &&
       !contains(needs.*.result, 'cancelled') &&
-      !contains(needs.*.result, 'skipped') &&
+      needs.changelog-check.result == 'success' &&
+      needs.build-windows.result == 'success' &&
+      needs.build-linux.result == 'success' &&
+      needs.build-appimage.result == 'success' &&
+      needs.build-macos.result == 'success' &&
+      needs.build-arch.result == 'success' &&
       (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     timeout-minutes: 45
@@ -1625,6 +1724,8 @@ jobs:
           fetch-depth: 0
 
       - name: Download all artifacts
+        # Builds whose artifact could not be stored already attached their files to the release draft.
+        continue-on-error: true
         uses: actions/download-artifact@v4
         with:
           merge-multiple: true
