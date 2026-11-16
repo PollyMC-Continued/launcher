@@ -1702,7 +1702,7 @@ Poistaaksesi tämän lukituksen ja jatkaaksesi, valitse alempaa &quot;Sivuuta&qu
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
         <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
@@ -7238,27 +7238,46 @@ Tämä on korjattava manuaalisesti.</translation>
 <context>
     <name>MMCZip::ExtractZipTask</name>
     <message>
-        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+108"/>
+        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+143"/>
         <source>Failed to parse file %1</source>
         <translation>Tiedoston %1 jäsentäminen epäonnistui</translation>
     </message>
     <message>
-        <location line="-15"/>
+        <location line="-20"/>
         <source>Extracting %1 was cancelled, because it was effectively outside of the target path %2</source>
         <translation>%1:n purkaminen peruttiin, koska se oli käytännössä ulkopuolella kohdepolkua %2</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-89"/>
+        <source>%1 GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Failed to enumerate files in archive</source>
         <translation>Ei voitu luetella tiedostoja arkistossa</translation>
     </message>
     <message>
-        <location line="+57"/>
-        <source>Failed to extract file %1 to %2</source>
-        <translation>Ei voitu purkaa tiedostoa %1 kohteeseen %2</translation>
+        <location line="+17"/>
+        <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="+60"/>
+        <source>Failed to extract file %1 to %2%3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to extract file %1 to %2</source>
+        <translation type="vanished">Ei voitu purkaa tiedostoa %1 kohteeseen %2</translation>
+    </message>
+    <message>
+        <location line="-74"/>
         <source>Extracting empty archives seems odd...</source>
         <translation>Tyhjien arkistojen purkaminen vaikuttaa oudolta...</translation>
     </message>
@@ -7345,7 +7364,7 @@ Tämä on korjattava manuaalisesti.</translation>
         <translation>Kopioi koodi leikepöydälle</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+128"/>
+        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+130"/>
         <source>Open %1 or scan the QR and enter the above code if needed.</source>
         <translation>Avaa %1 tai skannaa QR koodi ja syötä koodi ylhäältä, jos tarvittu.</translation>
     </message>
@@ -7579,7 +7598,7 @@ Tämä on korjattava manuaalisesti.</translation>
         <translation>&amp;Näytä</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1842"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1858"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -7607,8 +7626,8 @@ Oletko varma?</translation>
         <translation>Keskeytä</translation>
     </message>
     <message>
-        <location line="-261"/>
-        <location line="+129"/>
+        <location line="-262"/>
+        <location line="+130"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -8075,7 +8094,7 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
         <translation>Varoitukset</translation>
     </message>
     <message>
-        <location line="-905"/>
+        <location line="-920"/>
         <source>Show PollyMC</source>
         <translation>Näytä PollyMC</translation>
     </message>
@@ -8100,7 +8119,12 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
         <translation>Tähti GitHubissa</translation>
     </message>
     <message>
-        <location line="+892"/>
+        <location line="+343"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+564"/>
         <source>Instance not editable</source>
         <translation>Pelipaketti ei ole muokattavissa</translation>
     </message>
@@ -8110,7 +8134,7 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
         <translation>Instanssin poiston peruutus epäonnistui</translation>
     </message>
     <message>
-        <location line="-1067"/>
+        <location line="-1082"/>
         <location line="+150"/>
         <source>Update on your bug report</source>
         <translation type="unfinished"></translation>
@@ -8136,7 +8160,7 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+905"/>
+        <location line="+920"/>
         <source>Cannot rename group</source>
         <translation>Ryhmän uudelleennimeäminen epäonnistui</translation>
     </message>
@@ -8152,12 +8176,12 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
     </message>
     <message>
         <location line="+623"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-517"/>
         <source>Accounts</source>
         <translation>Tilit</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+773"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 lisättiin onnistuneesti PATH:iin. Voit nyt käynnistää sen suorittamalla `%2`.</translation>
     </message>
@@ -8181,7 +8205,7 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
         <translation type="vanished">Avaa kehittäjäblogi lukeaksesi lisää uutisia %1:sta.</translation>
     </message>
     <message>
-        <location line="-1527"/>
+        <location line="-1542"/>
         <source>Backspace</source>
         <translation>Askelpalautin</translation>
     </message>
@@ -8215,7 +8239,7 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
         <translation>&amp;Kansio</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+357"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+372"/>
         <source>Install modpack</source>
         <translation>Asenna modipaketti</translation>
     </message>
@@ -8286,7 +8310,7 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
     </message>
     <message>
         <location line="+30"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-820"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-835"/>
         <location line="+136"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -8307,7 +8331,7 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
         <translation>Avaa widgettiteemakansion tiedostoselaimessa.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+888"/>
         <source>Group name</source>
         <translation>Ryhmän nimi</translation>
     </message>
@@ -8327,7 +8351,7 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
         <translation>Väärä tuontilinkki: url-parametri puuttuu.</translation>
     </message>
     <message>
-        <location line="-452"/>
+        <location line="-467"/>
         <source>&amp;Rename group</source>
         <translation>&amp;Nimeä ryhmä uudelleen</translation>
     </message>
@@ -8339,7 +8363,7 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1572"/>
+        <location line="+1587"/>
         <source>No instance selected</source>
         <translation>Pelipakettia ei ole valittu</translation>
     </message>
@@ -8398,12 +8422,12 @@ Tyhjentääksesi metadata-välimuistin manuaalisesti, valitse Kansiot -&gt; Näy
         <translation>Poista valittu pelipaketti.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1314"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Poista ryhmä</translation>
     </message>
     <message>
-        <location line="+711"/>
+        <location line="+726"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>Joitain instansseja ja pikakomentoja ei voitu palauttaa.
@@ -8419,7 +8443,7 @@ Tarkista roskakorisi palauttaaksesi ne käsin.</translation>
         <translation type="vanished">Se on pörröinen kisu :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-725"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-740"/>
         <source>&amp;Create instance</source>
         <translation>&amp;Luo pelipaketti</translation>
     </message>
@@ -8454,7 +8478,7 @@ Tarkista roskakorisi palauttaaksesi ne käsin.</translation>
         <translation>Kokonaispeliaika: 0s</translation>
     </message>
     <message>
-        <location line="+1761"/>
+        <location line="+1776"/>
         <source>Total playtime: %1</source>
         <translation>Kokonaispeliaika: %1</translation>
     </message>
@@ -8688,7 +8712,7 @@ Varmista luottamuksesi URL:ään.
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+140"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>Keskeytetty</translation>
@@ -12345,7 +12369,7 @@ Jatketaanko lyhennyksellä?</translation>
         <translation type="vanished">Tunnistamaton</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1229"/>
         <source>%1 (in use)</source>
         <translation>%1 (käytössä)</translation>
     </message>
@@ -13302,7 +13326,7 @@ Uusi nimi: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14391,7 +14415,7 @@ Oletko varma, että haluat tehdä näin?</translation>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+409"/>
         <source>Abort</source>
         <translation>Keskeytä</translation>
     </message>
@@ -14903,7 +14927,7 @@ Oletko varma?</translation>
     </message>
     <message>
         <location line="+73"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+275"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
         <source>Select a skin</source>
         <translation>Valitse skini</translation>
     </message>
@@ -14953,7 +14977,7 @@ Oletko varma?</translation>
         <translation>Ota tämä skini käyttöön valitulla tilillä</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-191"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
         <source>Looking for skins</source>
         <translation>Etsitään skinejä</translation>
     </message>
@@ -14989,7 +15013,7 @@ Oletko varma?</translation>
         <translation>Skinejä ei löytynyt kohteelle %1</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+46"/>
         <source>Unnamed skin</source>
         <translation>Nimetön skini</translation>
     </message>
@@ -15103,7 +15127,7 @@ Oletko varma?</translation>
         <translation>Selaa ja käytä verkossa julkaistuja skinejä</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+367"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+373"/>
         <source>You are about to delete &quot;%1&quot;.
 Are you sure?</source>
         <translation>Olet poistamassa &quot;%1&quot;.
@@ -15155,7 +15179,7 @@ Oletko varma?</translation>
         <translation>Skinin lähetys epäonnistui!</translation>
     </message>
     <message>
-        <location line="-198"/>
+        <location line="-204"/>
         <location line="+8"/>
         <source>Skin Import</source>
         <translation>Tuo skini</translation>
@@ -15171,7 +15195,7 @@ Oletko varma?</translation>
         <translation>Ladattu kuva ei ole kelvollinen skini.</translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+148"/>
         <location line="+8"/>
         <source>Skin Save</source>
         <translation>Ihon tallennus</translation>
@@ -15217,7 +15241,7 @@ Oletko varma?</translation>
         <translation>Poistovirhe</translation>
     </message>
     <message>
-        <location line="-359"/>
+        <location line="-365"/>
         <source>Cancel</source>
         <translation>Peruuta</translation>
     </message>
@@ -15227,7 +15251,7 @@ Oletko varma?</translation>
         <translation>Avaa kansio</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+310"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+316"/>
         <source>Skin Delete</source>
         <translation>Skinin poisto</translation>
     </message>
@@ -15272,12 +15296,12 @@ Oletko varma?</translation>
         <translation>Tuo URL:stä</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-463"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-469"/>
         <source>Select Skin Texture</source>
         <translation>Valitse skinitekstuuri</translation>
     </message>
     <message>
-        <location line="+305"/>
+        <location line="+311"/>
         <source>Confirm Deletion</source>
         <translation>Vahvista poisto</translation>
     </message>
@@ -15363,12 +15387,12 @@ Oletko varma?</translation>
         <translation>Uudelleennimeä valittu skini</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-206"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-212"/>
         <source>Selected file is not a valid skin</source>
         <translation>Valittu tiedosto ei ole kelvollinen skini</translation>
     </message>
     <message>
-        <location line="+378"/>
+        <location line="+384"/>
         <source>Download user skin</source>
         <translation>Lataa käyttäjän skini</translation>
     </message>
@@ -15389,7 +15413,7 @@ Oletko varma?</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>

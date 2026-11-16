@@ -1640,7 +1640,7 @@ For å slette denne låsfilen og fortsette, velg «Ignorer» nedenfor.</translat
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
         <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
@@ -7046,27 +7046,46 @@ Du må løse problemet manuelt.</translation>
 <context>
     <name>MMCZip::ExtractZipTask</name>
     <message>
-        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+108"/>
+        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+143"/>
         <source>Failed to parse file %1</source>
         <translation>Feilet å analysere fil %1</translation>
     </message>
     <message>
-        <location line="-15"/>
+        <location line="-20"/>
         <source>Extracting %1 was cancelled, because it was effectively outside of the target path %2</source>
         <translation>Utpakkingen av %1 ble avbrutt, siden den faktisk befant seg utenfor målstien %2</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-89"/>
+        <source>%1 GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Failed to enumerate files in archive</source>
         <translation>Kunne ikke telle opp filer i arkivet</translation>
     </message>
     <message>
-        <location line="+57"/>
-        <source>Failed to extract file %1 to %2</source>
-        <translation>Klarte ikke pakke ut fila %1 til %2</translation>
+        <location line="+17"/>
+        <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="+60"/>
+        <source>Failed to extract file %1 to %2%3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to extract file %1 to %2</source>
+        <translation type="vanished">Klarte ikke pakke ut fila %1 til %2</translation>
+    </message>
+    <message>
+        <location line="-74"/>
         <source>Extracting empty archives seems odd...</source>
         <translation>Pakker ut tomme arkiver, merkelig …</translation>
     </message>
@@ -7149,7 +7168,7 @@ Du må løse problemet manuelt.</translation>
         <translation>Kopier kode til utklippstavlen</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+128"/>
+        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+130"/>
         <source>Open %1 or scan the QR and enter the above code if needed.</source>
         <translation>Åpne %1 eller scan QR koden og skriv inn koden over hvis nødvendig.</translation>
     </message>
@@ -7273,7 +7292,7 @@ Du må løse problemet manuelt.</translation>
         <translation>&amp;Gjennomgå</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1842"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1858"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -7301,8 +7320,8 @@ Er du sikker?</translation>
         <translation>Avbryt</translation>
     </message>
     <message>
-        <location line="-261"/>
-        <location line="+129"/>
+        <location line="-262"/>
+        <location line="+130"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -7743,7 +7762,7 @@ Lag en ny instans før du prøver å installere denne ressursen igjen.</translat
         <translation>Advarsler</translation>
     </message>
     <message>
-        <location line="-905"/>
+        <location line="-920"/>
         <source>Show PollyMC</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7768,7 +7787,12 @@ Lag en ny instans før du prøver å installere denne ressursen igjen.</translat
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+539"/>
+        <location line="+343"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+211"/>
         <source>Invalid import link: missing &apos;url&apos; parameter.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7802,7 +7826,7 @@ URL:
         <translation>Kunne ikke omgjøre sletting av instansen</translation>
     </message>
     <message>
-        <location line="-1067"/>
+        <location line="-1082"/>
         <location line="+150"/>
         <source>Update on your bug report</source>
         <translation type="unfinished"></translation>
@@ -7828,7 +7852,7 @@ URL:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+905"/>
+        <location line="+920"/>
         <source>Cannot rename group</source>
         <translation>Kan ikke omdøpe gruppe</translation>
     </message>
@@ -7844,12 +7868,12 @@ URL:
     </message>
     <message>
         <location line="+623"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-517"/>
         <source>Accounts</source>
         <translation>Kontoer</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+773"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 lagt til «PATH» på vellykket vis. Du kan nå kjøre den ved å starte «%2».</translation>
     </message>
@@ -7873,7 +7897,7 @@ URL:
         <translation type="vanished">Åpne utviklingsbloggen for å lese flere nyheter om %1.</translation>
     </message>
     <message>
-        <location line="-1527"/>
+        <location line="-1542"/>
         <source>Backspace</source>
         <translation>Tilbake</translation>
     </message>
@@ -8099,7 +8123,7 @@ URL:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+888"/>
         <source>Group name</source>
         <translation>Gruppenavn</translation>
     </message>
@@ -8114,7 +8138,7 @@ URL:
         <translation>Se logg</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1020"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1035"/>
         <source>&amp;Rename group</source>
         <translation>&amp;Omdøp gruppe</translation>
     </message>
@@ -8126,7 +8150,7 @@ URL:
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1572"/>
+        <location line="+1587"/>
         <source>No instance selected</source>
         <translation>Ingen instans er valgt</translation>
     </message>
@@ -8186,12 +8210,12 @@ Trykk på Folders → View Launcher Root Folder, og etter at launcheren er lukke
         <translation>Slett den valgte instansen.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1314"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Slett gruppe</translation>
     </message>
     <message>
-        <location line="+711"/>
+        <location line="+726"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>Noen instanser og snarveier kunne ikke gjenopprettes.
@@ -8207,7 +8231,7 @@ Sjekk papirkurven din for å manuelt gjenopprette dem.</translation>
         <translation type="vanished">Det er en kosete katt :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-725"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-740"/>
         <source>&amp;Create instance</source>
         <translation>&amp;Opprett instans</translation>
     </message>
@@ -8247,7 +8271,7 @@ Sjekk papirkurven din for å manuelt gjenopprette dem.</translation>
         <translation>Total spilletid: 0s</translation>
     </message>
     <message>
-        <location line="+1761"/>
+        <location line="+1776"/>
         <source>Total playtime: %1</source>
         <translation>Total spilletid: %1</translation>
     </message>
@@ -8477,7 +8501,7 @@ Make sure you also trust the URL.
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+140"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>Avbrutt</translation>
@@ -11636,7 +11660,7 @@ Choose your name carefully:</source>
         <translation type="vanished">Ikke gjenkjent</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1229"/>
         <source>%1 (in use)</source>
         <translation>%1 (i bruk)</translation>
     </message>
@@ -12522,7 +12546,7 @@ Error message: %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13602,7 +13626,7 @@ Are you sure?</source>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+409"/>
         <source>Abort</source>
         <translation>Avbryt</translation>
     </message>
@@ -14094,7 +14118,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+73"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+275"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
         <source>Select a skin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14144,7 +14168,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-191"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
         <source>Looking for skins</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14180,7 +14204,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+46"/>
         <source>Unnamed skin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14285,7 +14309,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+41"/>
         <source>No Cape</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14415,7 +14439,7 @@ Er du sikker?</translation>
         <translation>Skallbilder må være av størrelse 64 × 64 eller 64 × 32-piksel PNG-filer.</translation>
     </message>
     <message>
-        <location line="-399"/>
+        <location line="-405"/>
         <source>Cancel</source>
         <translation>Avbryt</translation>
     </message>
@@ -14505,7 +14529,7 @@ Er du sikker?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+310"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+316"/>
         <source>Skin Delete</source>
         <translation>Fjern Skin</translation>
     </message>
@@ -14538,7 +14562,7 @@ Er du sikker?</translation>
         <translation>Sletting av nåværende skin feilet!</translation>
     </message>
     <message>
-        <location line="-248"/>
+        <location line="-254"/>
         <source>Select Skin Texture</source>
         <translation>Velg skin-utseende</translation>
     </message>
@@ -14548,7 +14572,7 @@ Er du sikker?</translation>
         <translation>&amp;Slett skall</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+257"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+263"/>
         <source>Context menu</source>
         <translation>Kontekstmeny</translation>
     </message>
@@ -14579,7 +14603,7 @@ Er du sikker?</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>

@@ -1506,7 +1506,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
         <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
@@ -6782,7 +6782,17 @@ Reason:
 <context>
     <name>MMCZip::ExtractZipTask</name>
     <message>
-        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+42"/>
+        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+34"/>
+        <source>%1 GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Failed to enumerate files in archive</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6792,17 +6802,22 @@ Reason:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+48"/>
+        <location line="+14"/>
+        <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+51"/>
         <source>Extracting %1 was cancelled, because it was effectively outside of the target path %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>Failed to extract file %1 to %2</source>
+        <location line="+9"/>
+        <source>Failed to extract file %1 to %2%3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>Failed to parse file %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6879,7 +6894,7 @@ Reason:
         <translation>Цуцлах</translation>
     </message>
     <message>
-        <location line="+128"/>
+        <location line="+130"/>
         <source>Open %1 or scan the QR and enter the above code if needed.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6985,15 +7000,15 @@ Reason:
         <translation>Сонгосон инстанцыг хуулах.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1091"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1107"/>
         <location line="+143"/>
         <location line="+106"/>
         <source>Abort</source>
         <translation>Цуцлах</translation>
     </message>
     <message>
-        <location line="-261"/>
-        <location line="+129"/>
+        <location line="-262"/>
+        <location line="+130"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -7003,7 +7018,7 @@ Reason:
         <translation>Алдаа</translation>
     </message>
     <message>
-        <location line="-1581"/>
+        <location line="-1596"/>
         <source>Show PollyMC</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7020,12 +7035,12 @@ Reason:
     <message>
         <location line="+96"/>
         <location line="+125"/>
-        <location line="+1572"/>
+        <location line="+1587"/>
         <source>No instance selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-1696"/>
+        <location line="-1711"/>
         <source>Total playtime: 0s</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7060,7 +7075,12 @@ Reason:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+137"/>
+        <location line="+138"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
         <source>The task has been aborted by the user.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7390,7 +7410,7 @@ Are you sure?</source>
         <translation>Анхааруулгууд</translation>
     </message>
     <message>
-        <location line="-612"/>
+        <location line="-627"/>
         <location line="+150"/>
         <source>Update on your bug report</source>
         <translation type="unfinished"></translation>
@@ -7416,7 +7436,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+905"/>
+        <location line="+920"/>
         <source>Cannot rename group</source>
         <translation>Группийг дахин нэрлэж болохгүй</translation>
     </message>
@@ -7637,7 +7657,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1040"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1055"/>
         <location line="+136"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -7939,7 +7959,7 @@ Are you sure?</source>
         <translation>&amp;Хавтас</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+471"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+486"/>
         <source>Group name</source>
         <translation>Групп нэр</translation>
     </message>
@@ -7949,7 +7969,7 @@ Are you sure?</source>
         <translation>Устгаж байна</translation>
     </message>
     <message>
-        <location line="-1020"/>
+        <location line="-1035"/>
         <source>&amp;Rename group</source>
         <translation>&amp;Группийг дахин нэрлэх</translation>
     </message>
@@ -7974,7 +7994,7 @@ Are you sure?</source>
         <translation>Sub&amp;reddit</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+664"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+679"/>
         <location line="+22"/>
         <source>Enter a new group name.</source>
         <translation>Шинэ групп нэр оруулна уу.</translation>
@@ -8157,7 +8177,7 @@ Make sure you also trust the URL.
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+140"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>Цуцлагдсан</translation>
@@ -11945,7 +11965,7 @@ Proceed with truncation?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1363"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1378"/>
         <source>%1 (in use)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12070,7 +12090,7 @@ Proceed with truncation?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13126,7 +13146,7 @@ Are you sure you want to do this?</source>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+316"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+318"/>
         <source>Context menu</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13618,7 +13638,7 @@ Are you sure you want to do this?</source>
     </message>
     <message>
         <location line="+73"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+275"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
         <source>Select a skin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13668,7 +13688,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-191"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
         <source>Looking for skins</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13704,7 +13724,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+46"/>
         <source>Unnamed skin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13814,7 +13834,7 @@ Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+41"/>
         <source>No Cape</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14071,7 +14091,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-285"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-291"/>
         <source>Cancel</source>
         <translation>Цуцлах</translation>
     </message>
@@ -14081,7 +14101,7 @@ Are you sure?</source>
         <translation>Хавтасын онгойлгох</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+524"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+530"/>
         <source>Username not found</source>
         <translation>Хэрэглэгчийн нэр олдсонгүй</translation>
     </message>
@@ -14102,7 +14122,7 @@ Are you sure?</source>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>

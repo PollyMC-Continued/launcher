@@ -1702,7 +1702,7 @@ Për të fshirë këtë bllokim dhe për të vazhduar, zgjidhni &quot;Injoro&quo
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
         <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
@@ -7301,27 +7301,46 @@ Do të të duhet ta korrigjosh këtë problem manualisht.</translation>
 <context>
     <name>MMCZip::ExtractZipTask</name>
     <message>
-        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+108"/>
+        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+143"/>
         <source>Failed to parse file %1</source>
         <translation>Dështoi analizimi i skedarit %1</translation>
     </message>
     <message>
-        <location line="-15"/>
+        <location line="-20"/>
         <source>Extracting %1 was cancelled, because it was effectively outside of the target path %2</source>
         <translation>Nxjerrja e %1 u anulua, sepse ishte efektivisht jashtë shtegut të synuar %2</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-89"/>
+        <source>%1 GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Failed to enumerate files in archive</source>
         <translation>Dështoi numërimi i skedarëve në arkiv</translation>
     </message>
     <message>
-        <location line="+57"/>
-        <source>Failed to extract file %1 to %2</source>
-        <translation>Dështoi nxjerrja e skedarit %1 te %2</translation>
+        <location line="+17"/>
+        <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="+60"/>
+        <source>Failed to extract file %1 to %2%3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to extract file %1 to %2</source>
+        <translation type="vanished">Dështoi nxjerrja e skedarit %1 te %2</translation>
+    </message>
+    <message>
+        <location line="-74"/>
         <source>Extracting empty archives seems odd...</source>
         <translation>Nxjerrja e arkivave bosh duket e çuditshme...</translation>
     </message>
@@ -7408,7 +7427,7 @@ Do të të duhet ta korrigjosh këtë problem manualisht.</translation>
         <translation>Kopjo kodin në clipboard</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+128"/>
+        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+130"/>
         <source>Open %1 or scan the QR and enter the above code if needed.</source>
         <translation>Hap %1 ose skano QR-in dhe fut kodin e mësipërm nëse nevojitet.</translation>
     </message>
@@ -7642,7 +7661,7 @@ Do të të duhet ta korrigjosh këtë problem manualisht.</translation>
         <translation>&amp;Shiko</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1842"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1858"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -7670,8 +7689,8 @@ Je i sigurt?</translation>
         <translation>Ndërprit</translation>
     </message>
     <message>
-        <location line="-261"/>
-        <location line="+129"/>
+        <location line="-262"/>
+        <location line="+130"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -8138,7 +8157,7 @@ Ju lutem krijo një instancë të re para se të provosh të instalosh sërish k
         <translation>Paralajmërime</translation>
     </message>
     <message>
-        <location line="-905"/>
+        <location line="-920"/>
         <source>Show PollyMC</source>
         <translation>Shfaq PollyMC</translation>
     </message>
@@ -8163,7 +8182,12 @@ Ju lutem krijo një instancë të re para se të provosh të instalosh sërish k
         <translation>Yll në GitHub</translation>
     </message>
     <message>
-        <location line="+892"/>
+        <location line="+343"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+564"/>
         <source>Instance not editable</source>
         <translation>Instanca nuk mund të ndryshohet</translation>
     </message>
@@ -8173,7 +8197,7 @@ Ju lutem krijo një instancë të re para se të provosh të instalosh sërish k
         <translation>Dështoi zhbërja e hedhjes së instancës në kosh</translation>
     </message>
     <message>
-        <location line="-1067"/>
+        <location line="-1082"/>
         <location line="+150"/>
         <source>Update on your bug report</source>
         <translation type="unfinished"></translation>
@@ -8199,7 +8223,7 @@ Ju lutem krijo një instancë të re para se të provosh të instalosh sërish k
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+905"/>
+        <location line="+920"/>
         <source>Cannot rename group</source>
         <translation>Nuk mund të riemërtohet grupi</translation>
     </message>
@@ -8215,12 +8239,12 @@ Ju lutem krijo një instancë të re para se të provosh të instalosh sërish k
     </message>
     <message>
         <location line="+623"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-517"/>
         <source>Accounts</source>
         <translation>Llogaritë</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+773"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 u shtua me sukses te PATH-i yt. Tani mund ta nisësh duke ekzekutuar `%2`.</translation>
     </message>
@@ -8244,7 +8268,7 @@ Ju lutem krijo një instancë të re para se të provosh të instalosh sërish k
         <translation type="vanished">Hap blogun e zhvillimit për të lexuar ma shumë lajme rreth %1.</translation>
     </message>
     <message>
-        <location line="-1527"/>
+        <location line="-1542"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
@@ -8278,7 +8302,7 @@ Ju lutem krijo një instancë të re para se të provosh të instalosh sërish k
         <translation>&amp;Dosja</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+357"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+372"/>
         <source>Install modpack</source>
         <translation>Instalo paketën e modeve</translation>
     </message>
@@ -8349,7 +8373,7 @@ Ju lutem krijo një instancë të re para se të provosh të instalosh sërish k
     </message>
     <message>
         <location line="+30"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-820"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-835"/>
         <location line="+136"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -8370,7 +8394,7 @@ Ju lutem krijo një instancë të re para se të provosh të instalosh sërish k
         <translation>Hap dosjen e temave të miniaplikacioneve në një shfletues skedarësh.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+888"/>
         <source>Group name</source>
         <translation>Emri i grupit</translation>
     </message>
@@ -8390,7 +8414,7 @@ Ju lutem krijo një instancë të re para se të provosh të instalosh sërish k
         <translation>Lidhje importi e pavlefshme: parametri &apos;url&apos; mungon.</translation>
     </message>
     <message>
-        <location line="-452"/>
+        <location line="-467"/>
         <source>&amp;Rename group</source>
         <translation>&amp;Riemërto grupin</translation>
     </message>
@@ -8402,7 +8426,7 @@ Ju lutem krijo një instancë të re para se të provosh të instalosh sërish k
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1572"/>
+        <location line="+1587"/>
         <source>No instance selected</source>
         <translation>Nuk asht zgjedhur asnjë instancë</translation>
     </message>
@@ -8461,12 +8485,12 @@ Për të pastruar manualisht cache-in e metadatave, shtyp Dosjet -&gt; Shiko Dos
         <translation>Fshi instancën e zgjedhur.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1314"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Fshi grupin</translation>
     </message>
     <message>
-        <location line="+711"/>
+        <location line="+726"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>Disa instanca dhe shkurtore nuk u mund të restauroheshin.
@@ -8482,7 +8506,7 @@ Ju lutem kontrolloni koshën e riciklimit për t&apos;i restauruar manualisht.</
         <translation type="vanished">Asht një mace me gëzof :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-725"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-740"/>
         <source>&amp;Create instance</source>
         <translation>&amp;Krijo instancë</translation>
     </message>
@@ -8517,7 +8541,7 @@ Ju lutem kontrolloni koshën e riciklimit për t&apos;i restauruar manualisht.</
         <translation>Koha totale e lojës: 0s</translation>
     </message>
     <message>
-        <location line="+1761"/>
+        <location line="+1776"/>
         <source>Total playtime: %1</source>
         <translation>Koha totale e lojës: %1</translation>
     </message>
@@ -8751,7 +8775,7 @@ Sigurohu gjithashtu se u beson URL-së.
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+140"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>Ndërprerë</translation>
@@ -12416,7 +12440,7 @@ Vazhdo me shkurtim?</translation>
         <translation type="vanished">I panjohur</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1229"/>
         <source>%1 (in use)</source>
         <translation>%1 (në përdorim)</translation>
     </message>
@@ -13387,7 +13411,7 @@ Emri i ri: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14492,7 +14516,7 @@ Jeni i sigurt që doni ta bëni këtë?</translation>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+409"/>
         <source>Abort</source>
         <translation>Anulo</translation>
     </message>
@@ -15004,7 +15028,7 @@ Jeni i sigurt?</translation>
     </message>
     <message>
         <location line="+73"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+275"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
         <source>Select a skin</source>
         <translation>Zgjidh një skin</translation>
     </message>
@@ -15054,7 +15078,7 @@ Jeni i sigurt?</translation>
         <translation>Zbato këtë skin në llogarinë e zgjedhur</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-191"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
         <source>Looking for skins</source>
         <translation>Po kërkon skin-e</translation>
     </message>
@@ -15090,7 +15114,7 @@ Jeni i sigurt?</translation>
         <translation>Nuk u gjetën skin-e për %1</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+46"/>
         <source>Unnamed skin</source>
         <translation>Skin pa emër</translation>
     </message>
@@ -15204,7 +15228,7 @@ Jeni i sigurt?</translation>
         <translation>Shfleto dhe përdor skin-e të publikuara online</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+367"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+373"/>
         <source>You are about to delete &quot;%1&quot;.
 Are you sure?</source>
         <translation>Jeni gati të fshini &quot;%1&quot;.
@@ -15256,7 +15280,7 @@ Jeni i sigurt?</translation>
         <translation>Ngarkimi i skin-it dështoi!</translation>
     </message>
     <message>
-        <location line="-198"/>
+        <location line="-204"/>
         <location line="+8"/>
         <source>Skin Import</source>
         <translation>Importo Skin</translation>
@@ -15272,7 +15296,7 @@ Jeni i sigurt?</translation>
         <translation>Imazhi i shkarkuar nuk është skin i vlefshëm.</translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+148"/>
         <location line="+8"/>
         <source>Skin Save</source>
         <translation>Ruajje Lëkure</translation>
@@ -15318,7 +15342,7 @@ Jeni i sigurt?</translation>
         <translation>Gabim fshirjeje</translation>
     </message>
     <message>
-        <location line="-359"/>
+        <location line="-365"/>
         <source>Cancel</source>
         <translation>Anullo</translation>
     </message>
@@ -15328,7 +15352,7 @@ Jeni i sigurt?</translation>
         <translation>Hap dosjen</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+310"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+316"/>
         <source>Skin Delete</source>
         <translation>Fshirja e skin-it</translation>
     </message>
@@ -15373,12 +15397,12 @@ Jeni i sigurt?</translation>
         <translation>Importo nga URL</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-463"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-469"/>
         <source>Select Skin Texture</source>
         <translation>Zgjidh teksturën e skin-it</translation>
     </message>
     <message>
-        <location line="+305"/>
+        <location line="+311"/>
         <source>Confirm Deletion</source>
         <translation>Konfirmo fshirjen</translation>
     </message>
@@ -15464,12 +15488,12 @@ Jeni i sigurt?</translation>
         <translation>Riemërton skin-in e zgjedhur</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-206"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-212"/>
         <source>Selected file is not a valid skin</source>
         <translation>Skedari i zgjedhur nuk është skin i vlefshëm</translation>
     </message>
     <message>
-        <location line="+378"/>
+        <location line="+384"/>
         <source>Download user skin</source>
         <translation>Shkarko skin-in e përdoruesit</translation>
     </message>
@@ -15490,7 +15514,7 @@ Jeni i sigurt?</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>

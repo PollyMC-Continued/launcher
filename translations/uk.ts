@@ -1704,7 +1704,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
         <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
@@ -7250,27 +7250,46 @@ You&apos;ll have to correct this problem manually.</source>
 <context>
     <name>MMCZip::ExtractZipTask</name>
     <message>
-        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+108"/>
+        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+143"/>
         <source>Failed to parse file %1</source>
         <translation>Не вдалося проаналізувати файл %1</translation>
     </message>
     <message>
-        <location line="-15"/>
+        <location line="-20"/>
         <source>Extracting %1 was cancelled, because it was effectively outside of the target path %2</source>
         <translation>Розпаковку %1 було скасовано, оскільки вона фактично знаходилася за межами цільового шляху %2</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-89"/>
+        <source>%1 GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Failed to enumerate files in archive</source>
         <translation>Не вдалося перерахувати файли в архіві</translation>
     </message>
     <message>
-        <location line="+57"/>
-        <source>Failed to extract file %1 to %2</source>
-        <translation>Не вдалося розпакувати файл %1 до %2</translation>
+        <location line="+17"/>
+        <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="+60"/>
+        <source>Failed to extract file %1 to %2%3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to extract file %1 to %2</source>
+        <translation type="vanished">Не вдалося розпакувати файл %1 до %2</translation>
+    </message>
+    <message>
+        <location line="-74"/>
         <source>Extracting empty archives seems odd...</source>
         <translation>Розпаковування порожніх архівів здається дивним...</translation>
     </message>
@@ -7357,7 +7376,7 @@ You&apos;ll have to correct this problem manually.</source>
         <translation>Скопіювати код до буфера обміну</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+128"/>
+        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+130"/>
         <source>Open %1 or scan the QR and enter the above code if needed.</source>
         <translation>Відкрийте %1 або відскануйте QR-код та введіть наведений вище код, якщо потрібно.</translation>
     </message>
@@ -7591,7 +7610,7 @@ You&apos;ll have to correct this problem manually.</source>
         <translation>&amp;Вид</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1842"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1858"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -7619,8 +7638,8 @@ Are you sure?</source>
         <translation>Перервати</translation>
     </message>
     <message>
-        <location line="-261"/>
-        <location line="+129"/>
+        <location line="-262"/>
+        <location line="+130"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -8088,7 +8107,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Попередження</translation>
     </message>
     <message>
-        <location line="-905"/>
+        <location line="-920"/>
         <source>Show PollyMC</source>
         <translation>Показати PollyMC</translation>
     </message>
@@ -8113,7 +8132,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Поставити зірку на GitHub</translation>
     </message>
     <message>
-        <location line="+892"/>
+        <location line="+343"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+564"/>
         <source>Instance not editable</source>
         <translation>Збірка не підлягає редагуванню</translation>
     </message>
@@ -8123,7 +8147,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Не вдалося скасувати видалення збірки</translation>
     </message>
     <message>
-        <location line="-1067"/>
+        <location line="-1082"/>
         <location line="+150"/>
         <source>Update on your bug report</source>
         <translation type="unfinished"></translation>
@@ -8149,7 +8173,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+905"/>
+        <location line="+920"/>
         <source>Cannot rename group</source>
         <translation>Не вдається перейменувати групу</translation>
     </message>
@@ -8165,12 +8189,12 @@ Please create a new instance before attempting to install this resource again.</
     </message>
     <message>
         <location line="+623"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-517"/>
         <source>Accounts</source>
         <translation>Облікові записи</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+773"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 було успішно додано до вашого PATH. Тепер ви можете запустити його, виконавши `%2`.</translation>
     </message>
@@ -8194,7 +8218,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="vanished">Відкрити блог розробки, щоб прочитати більше новин про %1.</translation>
     </message>
     <message>
-        <location line="-1527"/>
+        <location line="-1542"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
@@ -8228,7 +8252,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>&amp;Тека</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+357"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+372"/>
         <source>Install modpack</source>
         <translation>Встановити збірку модів</translation>
     </message>
@@ -8299,7 +8323,7 @@ Please create a new instance before attempting to install this resource again.</
     </message>
     <message>
         <location line="+30"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-820"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-835"/>
         <location line="+136"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -8320,7 +8344,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Відкрити теку тем віджетів у переглядачеві файлів.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+888"/>
         <source>Group name</source>
         <translation>Назва групи</translation>
     </message>
@@ -8340,7 +8364,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Недійсне посилання для імпорту: відсутній параметр «url».</translation>
     </message>
     <message>
-        <location line="-452"/>
+        <location line="-467"/>
         <source>&amp;Rename group</source>
         <translation>&amp;Перейменувати групу</translation>
     </message>
@@ -8352,7 +8376,7 @@ Please create a new instance before attempting to install this resource again.</
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1572"/>
+        <location line="+1587"/>
         <source>No instance selected</source>
         <translation>Не обрана збірка</translation>
     </message>
@@ -8411,12 +8435,12 @@ To clear the metadata cache manually, press Folders -&gt; View Launcher Root Fol
         <translation>Видалити вибрану збірку.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1314"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Видалити групу</translation>
     </message>
     <message>
-        <location line="+711"/>
+        <location line="+726"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>Деякі збірки та ярлики не вдалося відновити.
@@ -8432,7 +8456,7 @@ Please check your trashbin to manually restore them.</source>
         <translation type="vanished">Це пухнастеньке кошеня :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-725"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-740"/>
         <source>&amp;Create instance</source>
         <translation>Створити &amp;збірку</translation>
     </message>
@@ -8467,7 +8491,7 @@ Please check your trashbin to manually restore them.</source>
         <translation>Загальний час гри: 0 с</translation>
     </message>
     <message>
-        <location line="+1761"/>
+        <location line="+1776"/>
         <source>Total playtime: %1</source>
         <translation>Загальний час гри: %1</translation>
     </message>
@@ -8701,7 +8725,7 @@ Make sure you also trust the URL.
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+140"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>Перервано</translation>
@@ -12372,7 +12396,7 @@ Proceed with truncation?</source>
         <translation type="vanished">Нерозпізнаний</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1229"/>
         <source>%1 (in use)</source>
         <translation>%1 (використовується)</translation>
     </message>
@@ -13340,7 +13364,7 @@ New name: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14442,7 +14466,7 @@ Are you sure you want to do this?</source>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+409"/>
         <source>Abort</source>
         <translation>Перервати</translation>
     </message>
@@ -14993,7 +15017,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="-72"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+275"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
         <source>Select a skin</source>
         <translation>Вибрати скін</translation>
     </message>
@@ -15012,7 +15036,7 @@ Are you sure?</source>
         <translation>Застосувати цей скін до обраного облікового запису</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-191"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
         <source>Looking for skins</source>
         <translation>Пошук скінів</translation>
     </message>
@@ -15048,7 +15072,7 @@ Are you sure?</source>
         <translation>Скінів для %1 не знайдено</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+46"/>
         <source>Unnamed skin</source>
         <translation>Скін без назви</translation>
     </message>
@@ -15166,7 +15190,7 @@ Are you sure?</source>
         <translation>Переглядайте та користуйтеся скінами, опублікованими в мережі</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+367"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+373"/>
         <source>You are about to delete &quot;%1&quot;.
 Are you sure?</source>
         <translation>Ви збираєтеся видалити &quot;%1&quot;.
@@ -15218,7 +15242,7 @@ Are you sure?</source>
         <translation>Не вдалося завантажити скін!</translation>
     </message>
     <message>
-        <location line="-198"/>
+        <location line="-204"/>
         <location line="+8"/>
         <source>Skin Import</source>
         <translation>Імпорт скіна</translation>
@@ -15234,7 +15258,7 @@ Are you sure?</source>
         <translation>Завантажене зображення не є дійсним скіном.</translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+148"/>
         <location line="+8"/>
         <source>Skin Save</source>
         <translation>Зберегти шкіру</translation>
@@ -15280,7 +15304,7 @@ Are you sure?</source>
         <translation>Видалити помилку</translation>
     </message>
     <message>
-        <location line="-359"/>
+        <location line="-365"/>
         <source>Cancel</source>
         <translation>Скасувати</translation>
     </message>
@@ -15290,7 +15314,7 @@ Are you sure?</source>
         <translation>Відкрити теку</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+310"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+316"/>
         <source>Skin Delete</source>
         <translation>Видалити скiн</translation>
     </message>
@@ -15335,12 +15359,12 @@ Are you sure?</source>
         <translation>Імпортувати посилання</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-463"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-469"/>
         <source>Select Skin Texture</source>
         <translation>Оберіть Текстуру Скіну</translation>
     </message>
     <message>
-        <location line="+305"/>
+        <location line="+311"/>
         <source>Confirm Deletion</source>
         <translation>Підтвердити видалення</translation>
     </message>
@@ -15426,12 +15450,12 @@ Are you sure?</source>
         <translation>Перейменувати обраний скін</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-206"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-212"/>
         <source>Selected file is not a valid skin</source>
         <translation>Вибраний файл не є дійсним скіном</translation>
     </message>
     <message>
-        <location line="+378"/>
+        <location line="+384"/>
         <source>Download user skin</source>
         <translation>Завантажити користувацький скін</translation>
     </message>
@@ -15452,7 +15476,7 @@ Are you sure?</source>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>

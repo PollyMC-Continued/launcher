@@ -1629,7 +1629,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
         <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
@@ -7098,27 +7098,46 @@ You&apos;ll have to correct this problem manually.</source>
 <context>
     <name>MMCZip::ExtractZipTask</name>
     <message>
-        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+108"/>
+        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+143"/>
         <source>Failed to parse file %1</source>
         <translation>Απέτυχε η ανάλυση του αρχείου %1</translation>
     </message>
     <message>
-        <location line="-15"/>
+        <location line="-20"/>
         <source>Extracting %1 was cancelled, because it was effectively outside of the target path %2</source>
         <translation>Η εξαγωγή %1 ακυρώθηκε, επειδή ήταν εκτός της διαδρομής %2</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-89"/>
+        <source>%1 GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Failed to enumerate files in archive</source>
         <translation>Απέτυχε η απαρίθμηση αρχείων στο αρχείο αρχειοθέτησης</translation>
     </message>
     <message>
-        <location line="+57"/>
-        <source>Failed to extract file %1 to %2</source>
-        <translation>Η εξαγωγή του αρχείου %1 στο %2 απέτυχε</translation>
+        <location line="+17"/>
+        <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="+60"/>
+        <source>Failed to extract file %1 to %2%3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to extract file %1 to %2</source>
+        <translation type="vanished">Η εξαγωγή του αρχείου %1 στο %2 απέτυχε</translation>
+    </message>
+    <message>
+        <location line="-74"/>
         <source>Extracting empty archives seems odd...</source>
         <translation>Η εξαγωγή άδειων αρχείων αρχειοθέτησης φαίνεται παράξενη...</translation>
     </message>
@@ -7201,7 +7220,7 @@ You&apos;ll have to correct this problem manually.</source>
         <translation>Αντιγραφή κώδικα στο πρόχειρο</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+128"/>
+        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+130"/>
         <source>Open %1 or scan the QR and enter the above code if needed.</source>
         <translation>Ανοίξτε το %1 ή σαρώστε το QR και εισαγάγετε τον παραπάνω κωδικό, αν χρειαστεί.</translation>
     </message>
@@ -7370,15 +7389,15 @@ You&apos;ll have to correct this problem manually.</source>
         <translation>Αντιγράφει την επιλεγμένη εγκατάσταση.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1091"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1107"/>
         <location line="+143"/>
         <location line="+106"/>
         <source>Abort</source>
         <translation>Ματαίωση</translation>
     </message>
     <message>
-        <location line="-261"/>
-        <location line="+129"/>
+        <location line="-262"/>
+        <location line="+130"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -7671,7 +7690,7 @@ You&apos;ll have to correct this problem manually.</source>
         <translation>Ανοίξτε το φάκελο «Java» σε ένα πρόγραμμα περιήγησης αρχείων. Διατίθεται μόνο αν χρησιμοποιείται το ενσωματωμένο πρόγραμμα λήψης «Java».</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1330"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1345"/>
         <source>Show PollyMC</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7741,7 +7760,12 @@ You&apos;ll have to correct this problem manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+465"/>
+        <location line="+466"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
         <source>The task has been aborted by the user.</source>
         <translation>Η διεργασία ματαιώθηκε από τον χρήστη.</translation>
     </message>
@@ -8033,7 +8057,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+30"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1672"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1687"/>
         <location line="+136"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -8112,7 +8136,7 @@ Are you sure?</source>
         <translation>Κλείδωμα γραμμών εργαλείων</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1218"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1233"/>
         <source>Confirm Deletion</source>
         <translation>Επιβεβαίωση Διαγραφής</translation>
     </message>
@@ -8158,7 +8182,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+623"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-58"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-73"/>
         <source>Accounts</source>
         <translation>Λογαριασμοί</translation>
     </message>
@@ -8192,7 +8216,7 @@ Are you sure?</source>
         <translation>&amp;Φάκελος</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+282"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+297"/>
         <source>Install modpack</source>
         <translation>Εγκατάσταση πακέτου τροποποιήσεων</translation>
     </message>
@@ -8242,9 +8266,9 @@ Are you sure?</source>
         <translation>Προβολή αρχείων καταγραφής</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1099"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1114"/>
         <location line="+125"/>
-        <location line="+1572"/>
+        <location line="+1587"/>
         <source>No instance selected</source>
         <translation>Δεν επιλέχθηκε κάποια εγκατάσταση</translation>
     </message>
@@ -8269,7 +8293,7 @@ Are you sure?</source>
         <translation>Διαγράψτε το επιλεγμένο στιγμιότυπο</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1266"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1281"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Διαγραφή ομάδας</translation>
     </message>
@@ -8308,7 +8332,7 @@ Are you sure?</source>
         <translation>Αλλαγή του εικονιδίου της επιλεγμένης εγκατάστασης.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1098"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1113"/>
         <location line="+22"/>
         <source>Enter a new group name.</source>
         <translation>Εισάγετε ένα νέο όνομα ομάδας.</translation>
@@ -8505,7 +8529,7 @@ Make sure you also trust the URL.
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+140"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>Ματαιώθηκε</translation>
@@ -11597,7 +11621,7 @@ Choose your name carefully:</source>
         <translation type="vanished">Μη αναγνωρίσημο</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1229"/>
         <source>%1 (in use)</source>
         <translation>%1 (σε χρήση)</translation>
     </message>
@@ -12515,7 +12539,7 @@ Error message: %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13587,7 +13611,7 @@ Are you sure?</source>
         <translation>Διαγραφή</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+419"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+421"/>
         <location line="+41"/>
         <source>The task has been aborted by the user.</source>
         <translation>Η διεργασία ματαιώθηκε από τον χρήστη.</translation>
@@ -14069,7 +14093,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+73"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+275"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
         <source>Select a skin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14119,7 +14143,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-191"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
         <source>Looking for skins</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14155,7 +14179,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+46"/>
         <source>Unnamed skin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14260,7 +14284,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+42"/>
+        <location line="+48"/>
         <source>Download capes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14414,7 +14438,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-525"/>
+        <location line="-531"/>
         <source>Cancel</source>
         <translation>Ακύρωση</translation>
     </message>
@@ -14504,7 +14528,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+310"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+316"/>
         <source>Skin Delete</source>
         <translation>Διαγραφή Εμφάνισης</translation>
     </message>
@@ -14527,7 +14551,7 @@ Are you sure?</source>
         <translation>Αποτυχία διαγραφής της τρέχουσας εμφάνισης!</translation>
     </message>
     <message>
-        <location line="-248"/>
+        <location line="-254"/>
         <source>Select Skin Texture</source>
         <translation>Επιλογή Υφής Εμφάνισης</translation>
     </message>
@@ -14537,7 +14561,7 @@ Are you sure?</source>
         <translation>&amp;Διαγραφή Εμφάνισης</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+164"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+170"/>
         <source>Skin file does not exist!</source>
         <translation>Το αρχείο εμφάνισης δεν υπάρχει!</translation>
     </message>
@@ -14553,7 +14577,7 @@ Are you sure?</source>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>

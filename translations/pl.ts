@@ -1706,7 +1706,7 @@ Aby usunąć tę blokadę i kontynuować, wybierz poniżej „Ignoruj”.</trans
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
         <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
@@ -7321,27 +7321,46 @@ Musisz naprawić ten błąd manualnie.</translation>
 <context>
     <name>MMCZip::ExtractZipTask</name>
     <message>
-        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+108"/>
+        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+143"/>
         <source>Failed to parse file %1</source>
         <translation>Nie udało się wczytać pliku %1</translation>
     </message>
     <message>
-        <location line="-15"/>
+        <location line="-20"/>
         <source>Extracting %1 was cancelled, because it was effectively outside of the target path %2</source>
         <translation>Wyodrębnianie %1 zostało anulowane, ponieważ znajdowało się poza docelową ścieżką %2</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-89"/>
+        <source>%1 GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Failed to enumerate files in archive</source>
         <translation>Nie udało się wyliczyć plików w archiwum</translation>
     </message>
     <message>
-        <location line="+57"/>
-        <source>Failed to extract file %1 to %2</source>
-        <translation>Nie udało się wyodrębnić pliku %1 do %2</translation>
+        <location line="+17"/>
+        <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="+60"/>
+        <source>Failed to extract file %1 to %2%3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to extract file %1 to %2</source>
+        <translation type="vanished">Nie udało się wyodrębnić pliku %1 do %2</translation>
+    </message>
+    <message>
+        <location line="-74"/>
         <source>Extracting empty archives seems odd...</source>
         <translation>Wyodrębnianie pustych archiwów wydaje się dziwne...</translation>
     </message>
@@ -7428,7 +7447,7 @@ Musisz naprawić ten błąd manualnie.</translation>
         <translation>Skopiuj kod do schowka</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+128"/>
+        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+130"/>
         <source>Open %1 or scan the QR and enter the above code if needed.</source>
         <translation>Otwórz %1 albo zeskanuj kod QR i w razie potrzeby wprowadź powyższy kod.</translation>
     </message>
@@ -7662,7 +7681,7 @@ Musisz naprawić ten błąd manualnie.</translation>
         <translation>&amp;Widok</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1842"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1858"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -7690,8 +7709,8 @@ Jesteś pewien?</translation>
         <translation>Przerwij</translation>
     </message>
     <message>
-        <location line="-261"/>
-        <location line="+129"/>
+        <location line="-262"/>
+        <location line="+130"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -8159,7 +8178,7 @@ Utwórz nową instancję przed ponowną próbą instalacji tego zasobu.</transla
         <translation>Uwagi</translation>
     </message>
     <message>
-        <location line="-905"/>
+        <location line="-920"/>
         <source>Show PollyMC</source>
         <translation>Pokaż PollyMC</translation>
     </message>
@@ -8184,7 +8203,12 @@ Utwórz nową instancję przed ponowną próbą instalacji tego zasobu.</transla
         <translation>Gwiazdka na GitHubie</translation>
     </message>
     <message>
-        <location line="+892"/>
+        <location line="+343"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+564"/>
         <source>Instance not editable</source>
         <translation>Instancja nie może zostać poddana edycji</translation>
     </message>
@@ -8194,7 +8218,7 @@ Utwórz nową instancję przed ponowną próbą instalacji tego zasobu.</transla
         <translation>Nieudane usuwanie instancji</translation>
     </message>
     <message>
-        <location line="-1067"/>
+        <location line="-1082"/>
         <location line="+150"/>
         <source>Update on your bug report</source>
         <translation type="unfinished"></translation>
@@ -8220,7 +8244,7 @@ Utwórz nową instancję przed ponowną próbą instalacji tego zasobu.</transla
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+905"/>
+        <location line="+920"/>
         <source>Cannot rename group</source>
         <translation>Nie można zmienić nazwy grupy</translation>
     </message>
@@ -8236,12 +8260,12 @@ Utwórz nową instancję przed ponowną próbą instalacji tego zasobu.</transla
     </message>
     <message>
         <location line="+623"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-517"/>
         <source>Accounts</source>
         <translation>Konta</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+773"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 został pomyślnie dodany do PATH. Możesz teraz uruchomić go, uruchamiając `%2`.</translation>
     </message>
@@ -8265,7 +8289,7 @@ Utwórz nową instancję przed ponowną próbą instalacji tego zasobu.</transla
         <translation type="vanished">Otwórz blog programistyczny, aby przeczytać więcej nowości o %1.</translation>
     </message>
     <message>
-        <location line="-1527"/>
+        <location line="-1542"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
@@ -8299,7 +8323,7 @@ Utwórz nową instancję przed ponowną próbą instalacji tego zasobu.</transla
         <translation>&amp;Folder</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+357"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+372"/>
         <source>Install modpack</source>
         <translation>Zainstaluj paczkę modyfikacji</translation>
     </message>
@@ -8370,7 +8394,7 @@ Utwórz nową instancję przed ponowną próbą instalacji tego zasobu.</transla
     </message>
     <message>
         <location line="+30"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-820"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-835"/>
         <location line="+136"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -8391,7 +8415,7 @@ Utwórz nową instancję przed ponowną próbą instalacji tego zasobu.</transla
         <translation>Otwórz folder z motywami widżetów w przeglądarce plików.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+888"/>
         <source>Group name</source>
         <translation>Nazwa grupy</translation>
     </message>
@@ -8411,7 +8435,7 @@ Utwórz nową instancję przed ponowną próbą instalacji tego zasobu.</transla
         <translation>Niepoprawny link importu: brakuje parametru &quot;url&quot;.</translation>
     </message>
     <message>
-        <location line="-452"/>
+        <location line="-467"/>
         <source>&amp;Rename group</source>
         <translation>&amp;Zmień nazwę grupy</translation>
     </message>
@@ -8423,7 +8447,7 @@ Utwórz nową instancję przed ponowną próbą instalacji tego zasobu.</transla
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1572"/>
+        <location line="+1587"/>
         <source>No instance selected</source>
         <translation>Nie wybrano instancji</translation>
     </message>
@@ -8482,12 +8506,12 @@ Aby wyczyścić pamięć podręczną metadanych ręcznie, wybierz Foldery -&gt; 
         <translation>Usuń wybraną instancję.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1314"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Usuń grupę</translation>
     </message>
     <message>
-        <location line="+711"/>
+        <location line="+726"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>Nie udało się przywrócić niektórych instancji i skrótów.
@@ -8503,7 +8527,7 @@ Sprawdź kosz w celu ich przywrócenia.</translation>
         <translation type="vanished">Puszysty kiciuś :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-725"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-740"/>
         <source>&amp;Create instance</source>
         <translation>&amp;Stwórz nową instancję</translation>
     </message>
@@ -8538,7 +8562,7 @@ Sprawdź kosz w celu ich przywrócenia.</translation>
         <translation>Całkowity czas gry: 0s</translation>
     </message>
     <message>
-        <location line="+1761"/>
+        <location line="+1776"/>
         <source>Total playtime: %1</source>
         <translation>Ogólny czas grania: %1</translation>
     </message>
@@ -8772,7 +8796,7 @@ Upewnij się też że ufasz adresowi URL
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+140"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>Przerwane</translation>
@@ -12463,7 +12487,7 @@ Kontynuować ze skracaniem?</translation>
         <translation type="vanished">Niezidentyfikowane</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1229"/>
         <source>%1 (in use)</source>
         <translation>%1 (w użyciu)</translation>
     </message>
@@ -13441,7 +13465,7 @@ Nowa nazwa: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14547,7 +14571,7 @@ Czy na pewno chcesz to zrobić?</translation>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+409"/>
         <source>Abort</source>
         <translation>Przerwij</translation>
     </message>
@@ -15059,7 +15083,7 @@ Czy chcesz kontynuować?</translation>
     </message>
     <message>
         <location line="+73"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+275"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
         <source>Select a skin</source>
         <translation>Wybierz skórkę</translation>
     </message>
@@ -15109,7 +15133,7 @@ Czy chcesz kontynuować?</translation>
         <translation>Zastosuj tę skórkę do wybranego konta</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-191"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
         <source>Looking for skins</source>
         <translation>Szukanie skórek</translation>
     </message>
@@ -15145,7 +15169,7 @@ Czy chcesz kontynuować?</translation>
         <translation>Nie znaleziono skórek dla %1</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+46"/>
         <source>Unnamed skin</source>
         <translation>Skórka bez nazwy</translation>
     </message>
@@ -15259,7 +15283,7 @@ Czy chcesz kontynuować?</translation>
         <translation>Przeglądaj i używaj skórek opublikowanych online</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+367"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+373"/>
         <source>You are about to delete &quot;%1&quot;.
 Are you sure?</source>
         <translation>Zaraz usuniesz &quot;%1&quot;.
@@ -15311,7 +15335,7 @@ Jesteś pewien?</translation>
         <translation>Nie udało się przesłać skórki!</translation>
     </message>
     <message>
-        <location line="-198"/>
+        <location line="-204"/>
         <location line="+8"/>
         <source>Skin Import</source>
         <translation>Importuj skórkę</translation>
@@ -15327,7 +15351,7 @@ Jesteś pewien?</translation>
         <translation>Pobrany obraz nie jest prawidłową skórką.</translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+148"/>
         <location line="+8"/>
         <source>Skin Save</source>
         <translation>Zapisz skórkę</translation>
@@ -15373,7 +15397,7 @@ Jesteś pewien?</translation>
         <translation>Błąd usuwania</translation>
     </message>
     <message>
-        <location line="-359"/>
+        <location line="-365"/>
         <source>Cancel</source>
         <translation>Anuluj</translation>
     </message>
@@ -15383,7 +15407,7 @@ Jesteś pewien?</translation>
         <translation>Otwórz folder</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+310"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+316"/>
         <source>Skin Delete</source>
         <translation>Usuń skórkę</translation>
     </message>
@@ -15428,12 +15452,12 @@ Jesteś pewien?</translation>
         <translation>Zaimportuj URL</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-463"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-469"/>
         <source>Select Skin Texture</source>
         <translation>Wybierz teksturę skórki</translation>
     </message>
     <message>
-        <location line="+305"/>
+        <location line="+311"/>
         <source>Confirm Deletion</source>
         <translation>Potwierdź chęć usunięcia</translation>
     </message>
@@ -15519,12 +15543,12 @@ Jesteś pewien?</translation>
         <translation>Zmień nazwę wybranej skórki</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-206"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-212"/>
         <source>Selected file is not a valid skin</source>
         <translation>Wybrany plik nie zawiera poprawnej skórki</translation>
     </message>
     <message>
-        <location line="+378"/>
+        <location line="+384"/>
         <source>Download user skin</source>
         <translation>Pobierz skórkę gracza</translation>
     </message>
@@ -15545,7 +15569,7 @@ Jesteś pewien?</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>

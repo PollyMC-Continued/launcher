@@ -1600,7 +1600,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
         <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
@@ -7021,7 +7021,17 @@ Põhjus:
 <context>
     <name>MMCZip::ExtractZipTask</name>
     <message>
-        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+42"/>
+        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+34"/>
+        <source>%1 GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Failed to enumerate files in archive</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7031,17 +7041,26 @@ Põhjus:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+48"/>
+        <location line="+14"/>
+        <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+51"/>
         <source>Extracting %1 was cancelled, because it was effectively outside of the target path %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>Failed to extract file %1 to %2</source>
-        <translation>Faili %1 ekstraktimine asukohta %2 ebaõnnestus</translation>
+        <location line="+9"/>
+        <source>Failed to extract file %1 to %2%3</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+9"/>
+        <source>Failed to extract file %1 to %2</source>
+        <translation type="vanished">Faili %1 ekstraktimine asukohta %2 ebaõnnestus</translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>Failed to parse file %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7103,7 +7122,7 @@ Põhjus:
         <translation>Tühista</translation>
     </message>
     <message>
-        <location line="+128"/>
+        <location line="+130"/>
         <source>Open %1 or scan the QR and enter the above code if needed.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7258,15 +7277,15 @@ Põhjus:
         <translation>Kopeeri valitud eksemplar.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1091"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1107"/>
         <location line="+143"/>
         <location line="+106"/>
         <source>Abort</source>
         <translation>Katkesta</translation>
     </message>
     <message>
-        <location line="-261"/>
-        <location line="+129"/>
+        <location line="-262"/>
+        <location line="+130"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -7715,7 +7734,7 @@ Are you sure?</source>
         <translation>Hoiatused</translation>
     </message>
     <message>
-        <location line="-905"/>
+        <location line="-920"/>
         <source>Show PollyMC</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7740,7 +7759,12 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+539"/>
+        <location line="+343"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+211"/>
         <source>Invalid import link: missing &apos;url&apos; parameter.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7807,12 +7831,12 @@ Please check your trashbin to manually restore them.</source>
     </message>
     <message>
         <location line="+623"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-517"/>
         <source>Accounts</source>
         <translation>Kontod</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+773"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 on edukalt PATH-i lisatud. Saad nüüd selle käivitada, kasutades `%2`.</translation>
     </message>
@@ -7831,7 +7855,7 @@ Please check your trashbin to manually restore them.</source>
         <translation type="vanished">Ava arendusblogi, et lugeda rohkem teavet %1 kohta.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1812"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1827"/>
         <source>Backspace</source>
         <translation>Tagasilüke</translation>
     </message>
@@ -8067,7 +8091,7 @@ Please check your trashbin to manually restore them.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+888"/>
         <source>Group name</source>
         <translation>Grupi nimi</translation>
     </message>
@@ -8077,7 +8101,7 @@ Please check your trashbin to manually restore them.</source>
         <translation>Vaata logisid</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-664"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-679"/>
         <source>&amp;Rename group</source>
         <translation>&amp;Nimeta grupp ümber</translation>
     </message>
@@ -8089,7 +8113,7 @@ Please check your trashbin to manually restore them.</source>
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1572"/>
+        <location line="+1587"/>
         <source>No instance selected</source>
         <translation>Ühtegi eksemplari pole valitud</translation>
     </message>
@@ -8139,7 +8163,7 @@ Please check your trashbin to manually restore them.</source>
         <translation>Kustuta valitud eksemplar.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1314"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Kustuta grupp</translation>
     </message>
@@ -8219,7 +8243,7 @@ Please check your trashbin to manually restore them.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1537"/>
+        <location line="+1552"/>
         <source>Total playtime: %1</source>
         <translation>Mänguaeg kokku: %1</translation>
     </message>
@@ -8444,7 +8468,7 @@ Make sure you also trust the URL.
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+140"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>Tühistatud</translation>
@@ -11721,7 +11745,7 @@ Choose your name carefully:</source>
         <translation type="vanished">Tuvastamata</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1353"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1368"/>
         <source>%1 (in use)</source>
         <translation>%1 (kasutuses)</translation>
     </message>
@@ -12671,7 +12695,7 @@ Uus nimi: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13739,7 +13763,7 @@ Are you sure?</source>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+409"/>
         <source>Abort</source>
         <translation>Tühista</translation>
     </message>
@@ -14240,7 +14264,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+73"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+275"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
         <source>Select a skin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14290,7 +14314,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-191"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
         <source>Looking for skins</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14326,7 +14350,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+46"/>
         <source>Unnamed skin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14430,7 +14454,7 @@ Are you sure?</source>
         <translation>Sale</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+367"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+373"/>
         <source>You are about to delete &quot;%1&quot;.
 Are you sure?</source>
         <translation>Oled kustutamas &quot;%1&quot;.
@@ -14472,7 +14496,7 @@ Kas oled kindel?</translation>
         <translation>Välimuse üleslaadimine ebaõnnestus!</translation>
     </message>
     <message>
-        <location line="-198"/>
+        <location line="-204"/>
         <location line="+8"/>
         <source>Skin Import</source>
         <translation type="unfinished"></translation>
@@ -14488,7 +14512,7 @@ Kas oled kindel?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+148"/>
         <location line="+8"/>
         <source>Skin Save</source>
         <translation type="unfinished"></translation>
@@ -14571,7 +14595,7 @@ Kas oled kindel?</translation>
         <translation>Kustutamise viga</translation>
     </message>
     <message>
-        <location line="-359"/>
+        <location line="-365"/>
         <source>Cancel</source>
         <translation>Tühista</translation>
     </message>
@@ -14581,7 +14605,7 @@ Kas oled kindel?</translation>
         <translation>Ava kaust</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+310"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+316"/>
         <source>Skin Delete</source>
         <translation>Välimuse kustutamine</translation>
     </message>
@@ -14609,12 +14633,12 @@ Kas oled kindel?</translation>
         <translation>Impordi URL</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-248"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-254"/>
         <source>Select Skin Texture</source>
         <translation>Vali välimuse tekstuur</translation>
     </message>
     <message>
-        <location line="+305"/>
+        <location line="+311"/>
         <source>Confirm Deletion</source>
         <translation>Kinnita kustutamist</translation>
     </message>
@@ -14699,12 +14723,12 @@ Kas oled kindel?</translation>
         <translation>Nimeta valitud välimus ümber</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-206"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-212"/>
         <source>Selected file is not a valid skin</source>
         <translation>Valitud fail ei ole kehtiv välimus</translation>
     </message>
     <message>
-        <location line="+332"/>
+        <location line="+338"/>
         <source>Unable to download the skin: &apos;%1&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14725,7 +14749,7 @@ Kas oled kindel?</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>

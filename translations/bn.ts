@@ -1694,7 +1694,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
         <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
@@ -7089,7 +7089,17 @@ Reason:
 <context>
     <name>MMCZip::ExtractZipTask</name>
     <message>
-        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+42"/>
+        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+34"/>
+        <source>%1 GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Failed to enumerate files in archive</source>
         <translation>আর্কাইভের ফাইলগুলি গোনতে ব্যর্থ হয়েছে</translation>
     </message>
@@ -7099,17 +7109,26 @@ Reason:
         <translation>খালি আর্কাইভ বের করা হচ্ছে, এটা অদ্ভুত লাগছে..।</translation>
     </message>
     <message>
-        <location line="+48"/>
+        <location line="+14"/>
+        <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+51"/>
         <source>Extracting %1 was cancelled, because it was effectively outside of the target path %2</source>
         <translation>%1 বের করা বাতিল করা হয়েছে, কারণ এটি আসলে %2 লক্ষ্য পাথের বাইরে ছিল</translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>Failed to extract file %1 to %2</source>
-        <translation>ফাইল %1 কে %2 এ বের করতে ব্যর্থ হয়েছে</translation>
+        <location line="+9"/>
+        <source>Failed to extract file %1 to %2%3</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+9"/>
+        <source>Failed to extract file %1 to %2</source>
+        <translation type="vanished">ফাইল %1 কে %2 এ বের করতে ব্যর্থ হয়েছে</translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>Failed to parse file %1</source>
         <translation>ফাইল %1 পার্স করতে ব্যর্থ হয়েছে</translation>
     </message>
@@ -7160,7 +7179,7 @@ Reason:
         <translation>বাতিল করুন</translation>
     </message>
     <message>
-        <location line="+128"/>
+        <location line="+130"/>
         <source>Open %1 or scan the QR and enter the above code if needed.</source>
         <translation>%1 খুলুন বা প্রয়োজনে QR স্ক্যান করে উপরের কোডটি লিখুন।</translation>
     </message>
@@ -7243,7 +7262,7 @@ Reason:
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+178"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+179"/>
         <source>Show PollyMC</source>
         <translation>PollyMC দেখান</translation>
     </message>
@@ -7260,12 +7279,12 @@ Reason:
     <message>
         <location line="+96"/>
         <location line="+125"/>
-        <location line="+1572"/>
+        <location line="+1587"/>
         <source>No instance selected</source>
         <translation>কোনো ইনস্ট্যান্স নির্বাচন করা হয়নি</translation>
     </message>
     <message>
-        <location line="-1696"/>
+        <location line="-1711"/>
         <source>Total playtime: 0s</source>
         <translation>মোট খেলার সময়: 0s</translation>
     </message>
@@ -7339,8 +7358,13 @@ Reason:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+457"/>
-        <location line="+129"/>
+        <location line="+466"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <location line="+130"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -8163,7 +8187,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1672"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1687"/>
         <location line="+136"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -8499,7 +8523,7 @@ Make sure you also trust the URL.
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+140"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>বাতিল করা হয়েছে</translation>
@@ -12975,7 +12999,7 @@ Proceed with truncation?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14040,7 +14064,7 @@ Are you sure?</source>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+384"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+386"/>
         <source>You are about to upload %1 screenshots to %2.
 You should double-check for personal information.
 
@@ -14591,7 +14615,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="-72"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+275"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
         <source>Select a skin</source>
         <translation>একটি স্কিন নির্বাচন করুন</translation>
     </message>
@@ -14610,7 +14634,7 @@ Are you sure?</source>
         <translation>এই স্কিনটি নির্বাচিত অ্যাকাউন্টে প্রয়োগ করুন</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-191"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
         <source>Looking for skins</source>
         <translation>স্কিন খোঁজা হচ্ছে</translation>
     </message>
@@ -14646,7 +14670,7 @@ Are you sure?</source>
         <translation>%1 এর জন্য কোনো স্কিন পাওয়া যায়নি</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+46"/>
         <source>Unnamed skin</source>
         <translation>নামহীন স্কিন</translation>
     </message>
@@ -14756,7 +14780,7 @@ Are you sure?</source>
         <translation>ডাউনলোড করা ছবিটি বৈধ স্কিন নয়।</translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+41"/>
         <source>No Cape</source>
         <translation>কোনো কেপ নেই</translation>
     </message>
@@ -14922,13 +14946,13 @@ Are you sure?</source>
  কারণ: %2।</translation>
     </message>
     <message>
-        <location line="-525"/>
+        <location line="-531"/>
         <source>Cancel</source>
         <translation>বাতিল করুন</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+14"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+226"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+232"/>
         <location line="+43"/>
         <location line="+16"/>
         <source>Skin Upload</source>
@@ -15050,7 +15074,7 @@ Are you sure?</source>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>

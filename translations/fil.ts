@@ -1641,7 +1641,7 @@ Para i-delete ang lock na ito at mag-patuloy, I-select ang &quot;Ignore&quot; sa
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
         <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
@@ -7034,27 +7034,46 @@ Kailangan mo i-correct ng sarili ang problema.</translation>
 <context>
     <name>MMCZip::ExtractZipTask</name>
     <message>
-        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+93"/>
+        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+34"/>
+        <source>%1 GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+37"/>
+        <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+51"/>
         <source>Extracting %1 was cancelled, because it was effectively outside of the target path %2</source>
         <translation>Ang pagextract ng %1 ay kinansel, dahil nasa labas na siya ng target path na %2</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="+9"/>
+        <source>Failed to extract file %1 to %2%3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-77"/>
         <source>Failed to enumerate files in archive</source>
         <translation>Hindi ma-enumerate ang files sa archive</translation>
     </message>
     <message>
-        <location line="+57"/>
         <source>Failed to extract file %1 to %2</source>
-        <translation>Hindi ma-extract ang file na %1 sa %2</translation>
+        <translation type="vanished">Hindi ma-extract ang file na %1 sa %2</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+88"/>
         <source>Failed to parse file %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-63"/>
+        <location line="-85"/>
         <source>Extracting empty archives seems odd...</source>
         <translation>Ang weird naman na ine-extract natin ang archive na wala namang laman...</translation>
     </message>
@@ -7116,7 +7135,7 @@ Kailangan mo i-correct ng sarili ang problema.</translation>
         <translation>Kanselahin</translation>
     </message>
     <message>
-        <location line="+128"/>
+        <location line="+130"/>
         <source>Open %1 or scan the QR and enter the above code if needed.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7271,15 +7290,15 @@ Kailangan mo i-correct ng sarili ang problema.</translation>
         <translation>Kopyahin ang selected na instance.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1091"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1107"/>
         <location line="+143"/>
         <location line="+106"/>
         <source>Abort</source>
         <translation>I-pigil</translation>
     </message>
     <message>
-        <location line="-261"/>
-        <location line="+129"/>
+        <location line="-262"/>
+        <location line="+130"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -7719,7 +7738,7 @@ Are you sure?</source>
         <translation>Mga Babala</translation>
     </message>
     <message>
-        <location line="-905"/>
+        <location line="-920"/>
         <source>Show PollyMC</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7744,7 +7763,12 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+539"/>
+        <location line="+343"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+211"/>
         <source>Invalid import link: missing &apos;url&apos; parameter.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7811,12 +7835,12 @@ Please check your trashbin to manually restore them.</source>
     </message>
     <message>
         <location line="+623"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-517"/>
         <source>Accounts</source>
         <translation>Mga Account</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+773"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>Na-add ng matagumpay ang %1 sa iyong PATH. Pwede mong i-start ito sa paraan ng pag-run ng `%2`.</translation>
     </message>
@@ -7835,7 +7859,7 @@ Please check your trashbin to manually restore them.</source>
         <translation type="vanished">Buksan ang development blog para maka-basa ng balita tungkol sa %1.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1812"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1827"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
@@ -8081,12 +8105,12 @@ Please check your trashbin to manually restore them.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+888"/>
         <source>Group name</source>
         <translation>Pangalan ng Grupo</translation>
     </message>
     <message>
-        <location line="-664"/>
+        <location line="-679"/>
         <source>&amp;Rename group</source>
         <translation>&amp;I-rename ang grupo</translation>
     </message>
@@ -8098,7 +8122,7 @@ Please check your trashbin to manually restore them.</source>
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1572"/>
+        <location line="+1587"/>
         <source>No instance selected</source>
         <translation>Walang naka-select na instance</translation>
     </message>
@@ -8148,7 +8172,7 @@ Please check your trashbin to manually restore them.</source>
         <translation>I-delete ang selected na instance.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1314"/>
         <source>&amp;Delete group</source>
         <translation>&amp;I-delete ang Grupo</translation>
     </message>
@@ -8228,7 +8252,7 @@ Please check your trashbin to manually restore them.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1537"/>
+        <location line="+1552"/>
         <source>Total playtime: %1</source>
         <translation>Kabuuang oras ng paglalaro: %1</translation>
     </message>
@@ -8445,7 +8469,7 @@ Make sure you also trust the URL.
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+140"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>Pinigil</translation>
@@ -11772,7 +11796,7 @@ Choose your name carefully:</source>
         <translation type="vanished">Hindi kinikilala</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1353"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1368"/>
         <source>%1 (in use)</source>
         <translation>%1 (ginagamit)</translation>
     </message>
@@ -12689,7 +12713,7 @@ Would you like to remove those existing saves as part of this update?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13746,7 +13770,7 @@ Are you sure?</source>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+384"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+386"/>
         <source>You are about to upload %1 screenshots to %2.
 You should double-check for personal information.
 
@@ -14238,7 +14262,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+73"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+275"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
         <source>Select a skin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14288,7 +14312,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-191"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
         <source>Looking for skins</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14324,7 +14348,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+46"/>
         <source>Unnamed skin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14409,7 +14433,7 @@ Are you sure?</source>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+14"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+225"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+231"/>
         <location line="+43"/>
         <location line="+16"/>
         <source>Skin Upload</source>
@@ -14516,7 +14540,7 @@ Are you sure?</source>
         <translation>Walang Cape</translation>
     </message>
     <message>
-        <location line="-130"/>
+        <location line="-136"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14542,7 +14566,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+42"/>
+        <location line="+48"/>
         <source>Download capes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14676,12 +14700,12 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-463"/>
+        <location line="-469"/>
         <source>Select Skin Texture</source>
         <translation>I-select ang texture ng Skin</translation>
     </message>
     <message>
-        <location line="+297"/>
+        <location line="+303"/>
         <source>Delete error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14722,7 +14746,7 @@ Are you sure?</source>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>

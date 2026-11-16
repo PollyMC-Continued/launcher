@@ -1700,7 +1700,7 @@ A zárolás törléséhez és a folytatáshoz válaszd az alábbi „Figyelmen k
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
         <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
@@ -7279,27 +7279,46 @@ Ezt a problémát kézzel kell javítanod.</translation>
 <context>
     <name>MMCZip::ExtractZipTask</name>
     <message>
-        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+108"/>
+        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+143"/>
         <source>Failed to parse file %1</source>
         <translation>%1 fájl feldolgozása sikertelen volt</translation>
     </message>
     <message>
-        <location line="-15"/>
+        <location line="-20"/>
         <source>Extracting %1 was cancelled, because it was effectively outside of the target path %2</source>
         <translation>A(z) %1 kibontása megszakadt, mert ténylegesen a(z) %2 célútvonalon kívül volt</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-89"/>
+        <source>%1 GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Failed to enumerate files in archive</source>
         <translation>Nem sikerült kiolvasni a fájlokat az archívumból</translation>
     </message>
     <message>
-        <location line="+57"/>
-        <source>Failed to extract file %1 to %2</source>
-        <translation>Nem sikerült kibontani a(z) %1 fájlt a(z) %2 fájlba</translation>
+        <location line="+17"/>
+        <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="+60"/>
+        <source>Failed to extract file %1 to %2%3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to extract file %1 to %2</source>
+        <translation type="vanished">Nem sikerült kibontani a(z) %1 fájlt a(z) %2 fájlba</translation>
+    </message>
+    <message>
+        <location line="-74"/>
         <source>Extracting empty archives seems odd...</source>
         <translation>Az üres archívumok kibontása furcsának tűnik…</translation>
     </message>
@@ -7386,7 +7405,7 @@ Ezt a problémát kézzel kell javítanod.</translation>
         <translation>Kód másolása a vágólapra</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+128"/>
+        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+130"/>
         <source>Open %1 or scan the QR and enter the above code if needed.</source>
         <translation>Nyisd meg a %1 linket, vagy szkenneld be a QR-kódot, és add meg a fenti kódot, ha szükséges.</translation>
     </message>
@@ -7620,7 +7639,7 @@ Ezt a problémát kézzel kell javítanod.</translation>
         <translation>&amp;Nézet</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1842"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1858"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -7648,8 +7667,8 @@ Biztos vagy ebben?</translation>
         <translation>Megszakítás</translation>
     </message>
     <message>
-        <location line="-261"/>
-        <location line="+129"/>
+        <location line="-262"/>
+        <location line="+130"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -8115,7 +8134,7 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>Figyelmeztetések</translation>
     </message>
     <message>
-        <location line="-905"/>
+        <location line="-920"/>
         <source>Show PollyMC</source>
         <translation>PollyMC megjelenítése</translation>
     </message>
@@ -8140,7 +8159,12 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>Csillag a GitHubon</translation>
     </message>
     <message>
-        <location line="+892"/>
+        <location line="+343"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+564"/>
         <source>Instance not editable</source>
         <translation>A példány nem szerkeszthető</translation>
     </message>
@@ -8150,7 +8174,7 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>Nem sikerült visszavonni a törlést</translation>
     </message>
     <message>
-        <location line="-1067"/>
+        <location line="-1082"/>
         <location line="+150"/>
         <source>Update on your bug report</source>
         <translation type="unfinished"></translation>
@@ -8176,7 +8200,7 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+905"/>
+        <location line="+920"/>
         <source>Cannot rename group</source>
         <translation>Nem lehet átnevezni a csoportot</translation>
     </message>
@@ -8192,12 +8216,12 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
     </message>
     <message>
         <location line="+623"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-517"/>
         <source>Accounts</source>
         <translation>Fiókok</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+773"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 sikeresen hozzáadva a PATH környezeti változóhoz. Most elindíthatod a(z) „%2” futtatásával.</translation>
     </message>
@@ -8221,7 +8245,7 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation type="vanished">A %1 fejlesztési blog megnyitása további hírekért.</translation>
     </message>
     <message>
-        <location line="-1527"/>
+        <location line="-1542"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
@@ -8255,7 +8279,7 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>&amp;Mappa</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+357"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+372"/>
         <source>Install modpack</source>
         <translation>Modcsomag telepítése</translation>
     </message>
@@ -8326,7 +8350,7 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
     </message>
     <message>
         <location line="+30"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-820"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-835"/>
         <location line="+136"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -8347,7 +8371,7 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>Widget témák mappájának megnyitása a fájlkezelőben.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+888"/>
         <source>Group name</source>
         <translation>Csoport név</translation>
     </message>
@@ -8367,7 +8391,7 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
         <translation>Érvénytelen import link: hiányzik az &apos;url&apos; paraméter.</translation>
     </message>
     <message>
-        <location line="-452"/>
+        <location line="-467"/>
         <source>&amp;Rename group</source>
         <translation>&amp;Csoport átnevezése</translation>
     </message>
@@ -8379,7 +8403,7 @@ Hozz létre egy új példányt, mielőtt újra megpróbálnád telepíteni ezt a
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1572"/>
+        <location line="+1587"/>
         <source>No instance selected</source>
         <translation>Nincs példány kiválasztva</translation>
     </message>
@@ -8438,12 +8462,12 @@ A metaadat gyorsítótár manuális törléséhez nyomd meg a Mappák -&gt; Laun
         <translation>A kiválasztott példány törlése.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1314"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Csoport törlése</translation>
     </message>
     <message>
-        <location line="+711"/>
+        <location line="+726"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>Egyes példányok és parancsikonok nem voltak visszaállíthatók.
@@ -8459,7 +8483,7 @@ Ellenőrizd a lomtárat, hogy manuálisan visszaállíthasd őket.</translation>
         <translation type="vanished">Ez egy bolyhos cica :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-725"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-740"/>
         <source>&amp;Create instance</source>
         <translation>&amp;Példány létrehozása</translation>
     </message>
@@ -8494,7 +8518,7 @@ Ellenőrizd a lomtárat, hogy manuálisan visszaállíthasd őket.</translation>
         <translation>Teljes játékidő: 0 mp</translation>
     </message>
     <message>
-        <location line="+1761"/>
+        <location line="+1776"/>
         <source>Total playtime: %1</source>
         <translation>Teljes játékidő: %1</translation>
     </message>
@@ -8728,7 +8752,7 @@ Győződj meg róla, hogy az URL megbízható.
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+140"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>Megszakítva</translation>
@@ -12375,7 +12399,7 @@ Folytatod a csonkolást?</translation>
         <translation>%1, ennek a komponensnek a függősége, problémákat jelentett</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1229"/>
         <source>%1 (in use)</source>
         <translation>%1 (használatban)</translation>
     </message>
@@ -13339,7 +13363,7 @@ Régi név: %1
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14443,7 +14467,7 @@ Biztosan ezt akarod csinálni?</translation>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+409"/>
         <source>Abort</source>
         <translation>Megszakítás</translation>
     </message>
@@ -14955,7 +14979,7 @@ Biztos vagy ebben?</translation>
     </message>
     <message>
         <location line="+73"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+275"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
         <source>Select a skin</source>
         <translation>Skin kiválasztása</translation>
     </message>
@@ -15005,7 +15029,7 @@ Biztos vagy ebben?</translation>
         <translation>Skin alkalmazása a kiválasztott fiókra</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-191"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
         <source>Looking for skins</source>
         <translation>Skinek keresése</translation>
     </message>
@@ -15041,7 +15065,7 @@ Biztos vagy ebben?</translation>
         <translation>Nem találhatók skinek ehhez: %1</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+46"/>
         <source>Unnamed skin</source>
         <translation>Névtelen skin</translation>
     </message>
@@ -15155,7 +15179,7 @@ Biztos vagy ebben?</translation>
         <translation>Online közzétett skinek böngészése és használata</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+367"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+373"/>
         <source>You are about to delete &quot;%1&quot;.
 Are you sure?</source>
         <translation>A(z) „%1” törlésére készülsz.
@@ -15207,7 +15231,7 @@ Biztos vagy ebben?</translation>
         <translation>Nem sikerült feltölteni a skint!</translation>
     </message>
     <message>
-        <location line="-198"/>
+        <location line="-204"/>
         <location line="+8"/>
         <source>Skin Import</source>
         <translation>Skin importálása</translation>
@@ -15223,7 +15247,7 @@ Biztos vagy ebben?</translation>
         <translation>A letöltött kép nem érvényes skin.</translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+148"/>
         <location line="+8"/>
         <source>Skin Save</source>
         <translation>Bőr mentése</translation>
@@ -15269,7 +15293,7 @@ Biztos vagy ebben?</translation>
         <translation>Törlési hiba</translation>
     </message>
     <message>
-        <location line="-359"/>
+        <location line="-365"/>
         <source>Cancel</source>
         <translation>Mégse</translation>
     </message>
@@ -15279,7 +15303,7 @@ Biztos vagy ebben?</translation>
         <translation>Mappa megnyitása</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+310"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+316"/>
         <source>Skin Delete</source>
         <translation>Skin törlés</translation>
     </message>
@@ -15324,12 +15348,12 @@ ok: %2.</translation>
         <translation>URL importálása</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-463"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-469"/>
         <source>Select Skin Texture</source>
         <translation>Válaszd ki a skin textúrát</translation>
     </message>
     <message>
-        <location line="+305"/>
+        <location line="+311"/>
         <source>Confirm Deletion</source>
         <translation>Törlés megerősítése</translation>
     </message>
@@ -15415,12 +15439,12 @@ ok: %2.</translation>
         <translation>Kiválasztott skin átnevezése</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-206"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-212"/>
         <source>Selected file is not a valid skin</source>
         <translation>A kiválasztott fájl nem érvényes skin</translation>
     </message>
     <message>
-        <location line="+378"/>
+        <location line="+384"/>
         <source>Download user skin</source>
         <translation>Felhasználói skin letöltése</translation>
     </message>
@@ -15441,7 +15465,7 @@ ok: %2.</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
