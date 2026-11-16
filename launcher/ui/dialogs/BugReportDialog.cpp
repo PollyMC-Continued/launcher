@@ -128,11 +128,15 @@ QSet<QString> s_sentThisSession;
 QByteArray encodeScreenshot(const QImage& source)
 {
     QImage image = source;
+    if (image.isNull())  // nothing to encode - and no null image to paint on
+        return {};
     if (image.width() > MaxScreenshotEdge || image.height() > MaxScreenshotEdge)
         image = image.scaled(MaxScreenshotEdge, MaxScreenshotEdge, Qt::KeepAspectRatio, Qt::SmoothTransformation);
 
     // JPEG has no alpha: flatten onto white
     QImage flat(image.size(), QImage::Format_RGB32);
+    if (flat.isNull())  // allocation failed
+        return {};
     flat.fill(Qt::white);
     {
         QPainter painter(&flat);

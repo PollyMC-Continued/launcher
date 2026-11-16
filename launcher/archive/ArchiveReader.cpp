@@ -24,10 +24,33 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QUrl>
+#include <cstring>
 #include <memory>
 #include <optional>
 
 namespace MMCZip {
+namespace {
+// libarchive's error string on its own is often just "Write failed"; the errno it stored
+// next to it says why ("No space left on device", "Permission denied", ...). Keep both.
+QString describeArchiveError(struct archive* a)
+{
+    if (!a)
+        return {};
+    QString result;
+    if (const char* message = archive_error_string(a))
+        result = QString::fromLocal8Bit(message);
+    const int errNo = archive_errno(a);
+    if (errNo != 0) {
+        if (const char* reason = std::strerror(errNo); reason && *reason) {
+            if (!result.isEmpty())
+                result += QStringLiteral(": ");
+            result += QString::fromLocal8Bit(reason);
+        }
+    }
+    return result;
+}
+}  // namespace
+
 QStringList ArchiveReader::getFiles()
 {
     return m_fileNames;
@@ -35,11 +58,26 @@ QStringList ArchiveReader::getFiles()
 
 bool ArchiveReader::collectFiles(bool onlyFiles)
 {
+    m_fileNames.clear();
+    m_fileSizes.clear();
     return parse([this, onlyFiles](File* f) {
-        if (!onlyFiles || f->isFile())
+        if (!onlyFiles || f->isFile()) {
             m_fileNames << f->filename();
+            const auto size = archive_entry_size(f->m_entry);
+            m_fileSizes << (size > 0 ? static_cast<qint64>(size) : 0);
+        }
         return f->skip();
     });
+}
+
+qint64 ArchiveReader::totalSizeOf(const QString& prefix) const
+{
+    qint64 total = 0;
+    for (int i = 0; i < m_fileNames.size(); ++i) {
+        if (m_fileNames.at(i).startsWith(prefix))
+            total += m_fileSizes.at(i);
+    }
+    return total;
 }
 
 QString ArchiveReader::File::filename()
@@ -103,7 +141,7 @@ auto ArchiveReader::goToFile(QString filename) -> std::unique_ptr<File>
     return nullptr;
 }
 
-static int copy_data(struct archive* ar, struct archive* aw, bool notBlock = false)
+static int copy_data(struct archive* ar, struct archive* aw, bool notBlock = false, QString* errorOut = nullptr)
 {
     int r;
     const void* buff;
@@ -116,6 +154,8 @@ static int copy_data(struct archive* ar, struct archive* aw, bool notBlock = fal
             return (ARCHIVE_OK);
         if (r < ARCHIVE_OK) {
             qCritical() << "Failed reading data block:" << archive_error_string(ar);
+            if (errorOut)
+                *errorOut = describeArchiveError(ar);
             return (r);
         }
         if (notBlock) {
@@ -125,6 +165,8 @@ static int copy_data(struct archive* ar, struct archive* aw, bool notBlock = fal
         }
         if (r < ARCHIVE_OK) {
             qCritical() << "Failed writing data block:" << archive_error_string(aw);
+            if (errorOut)
+                *errorOut = describeArchiveError(aw);
             return (r);
         }
     }
@@ -162,6 +204,7 @@ bool ArchiveReader::File::writeFile(archive* out, QString targetFileName, bool n
 
 bool ArchiveReader::File::writeFile(archive* out, QString targetFileName, std::optional<QDir> root, bool notBlock)
 {
+    m_lastError.clear();
     auto entry = m_entry;
     std::unique_ptr<archive_entry, decltype(&archive_entry_free)> entryClone(nullptr, &archive_entry_free);
     if (!targetFileName.isEmpty()) {
@@ -172,21 +215,25 @@ bool ArchiveReader::File::writeFile(archive* out, QString targetFileName, std::o
     }
     if (root.has_value() && willEscapeRoot(root.value(), entry)) {
         qCritical() << "Failed to write header to entry:" << filename() << "-" << "file outside root";
+        m_lastError = QStringLiteral("file outside the target folder");
         return false;
     }
     if (archive_write_header(out, entry) < ARCHIVE_OK) {
         qCritical() << "Failed to write header to entry:" << filename() << "-" << archive_error_string(out);
+        m_lastError = describeArchiveError(out);
         return false;
     } else if (archive_entry_size(m_entry) > 0) {
-        auto r = copy_data(m_archive.get(), out, notBlock);
+        auto r = copy_data(m_archive.get(), out, notBlock, &m_lastError);
         if (r < ARCHIVE_OK)
-            qCritical() << "Failed reading data block:" << archive_error_string(out);
+            qCritical() << "Failed copying data block:" << archive_error_string(out);
         if (r < ARCHIVE_WARN)
             return false;
     }
     auto r = archive_write_finish_entry(out);
-    if (r < ARCHIVE_OK)
+    if (r < ARCHIVE_OK) {
         qCritical() << "Failed to finish writing entry:" << archive_error_string(out);
+        m_lastError = describeArchiveError(out);
+    }
     return (r >= ARCHIVE_WARN);
 }
 

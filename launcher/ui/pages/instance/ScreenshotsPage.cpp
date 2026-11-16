@@ -112,6 +112,8 @@ class ThumbnailRunnable : public QRunnable {
         }
         const QPoint offset((256 - small.width()) / 2, (256 - small.height()) / 2);
         QImage square(QSize(256, 256), QImage::Format_ARGB32);
+        if (square.isNull())  // do not paint on a failed allocation
+            return;
         square.fill(Qt::transparent);
 
         QPainter painter(&square);

@@ -129,6 +129,10 @@ void SplashScreen::ensureBase()
         return;
     m_baseRatio = ratio;
     m_base = QPixmap(QSize(qCeil(Width * ratio), qCeil(Height * ratio)));
+    if (m_base.isNull()) {  // allocation failed - fall back to the plain background rather than paint on a null pixmap
+        m_baseRatio = 0;
+        return;
+    }
     m_base.setDevicePixelRatio(ratio);
     m_base.fill(QColor(0x17, 0x1A, 0x17));
 

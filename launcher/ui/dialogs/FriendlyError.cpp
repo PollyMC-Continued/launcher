@@ -42,6 +42,13 @@ Category categorize(const QString& errorText)
 
     // Most specific words first: an error that mentions certificates is an SSL problem even if
     // the connection also timed out, and a full disk is a disk problem even if a URL is quoted.
+    // A failed write while unpacking beats them all: "Write failed" can appear while downloading to a
+    // full cache too, but the advice (space, antivirus, shorter path) helps in both cases.
+    // Only real write failures match; a plain "Failed to extract ..." (a corrupt or unsafe archive)
+    // is not a user-side problem and must keep its "Report Bug" button.
+    if (containsAny(text, { u"write failed", u"file size could not be restored", u"not enough free space to extract" })) {
+        return Category::Extraction;
+    }
     if (containsAny(text, { u"ssl", u"tls", u"certificate", u"handshake failed" })) {
         return Category::Ssl;
     }
@@ -89,6 +96,8 @@ QString problemName(Category category)
             return FTR("secure connection");
         case Category::SystemShutdown:
             return FTR("system shutdown");
+        case Category::Extraction:
+            return FTR("disk space, security software or file path");
         case Category::None:
             break;
     }
@@ -146,6 +155,20 @@ Advice adviceFor(Category category, const QString& host)
             advice.title = FTR("The launcher closed because the computer was shut down");
             advice.explanation = FTR("The previous session ended with a system shutdown, restart or power loss. That is not a "
                                      "problem with the launcher, so there is nothing to report.");
+            break;
+        case Category::Extraction:
+            advice.title = FTR("The modpack could not be written to disk");
+            advice.explanation = FTR("While unpacking the modpack, one of its files could not be written. This is usually a full "
+                                     "disk, security software interfering with the newly created files, or a file path that is too "
+                                     "long for the system (on Windows, roughly 260 characters is the limit) - not a problem with "
+                                     "the launcher.");
+            advice.steps = {
+                FTR("Free up space on the drive where the launcher keeps its data (the drive your instances are stored on) and "
+                    "try again."),
+                FTR("Add the launcher's data folder to your antivirus exclusions, or temporarily turn the antivirus off, then "
+                    "try again."),
+                FTR("Move the launcher's data folder to a place with a shorter path (for example C:\\Games) and try again."),
+            };
             break;
         case Category::None:
             break;

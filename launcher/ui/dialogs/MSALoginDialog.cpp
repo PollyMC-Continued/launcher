@@ -194,10 +194,12 @@ void MSALoginDialog::authorizeWithBrowserWithExtra(QString url, QString code, [[
 
     auto size = QSize(150, 150);
     QPixmap pixmap(size);
-    pixmap.fill(Qt::white);
+    if (!pixmap.isNull()) {  // do not paint on a failed allocation
+        pixmap.fill(Qt::white);
 
-    QPainter painter(&pixmap);
-    paintQR(painter, size, url, Qt::black);
+        QPainter painter(&pixmap);
+        paintQR(painter, size, url, Qt::black);
+    }
 
     // Set the generated pixmap to the label
     ui->qr->setPixmap(pixmap);

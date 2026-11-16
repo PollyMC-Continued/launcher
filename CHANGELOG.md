@@ -1,5 +1,25 @@
 # Changelog
 
+## v10.0.4
+
+**Fixes the crash many Windows users hit while browsing mods, makes failed modpack imports explain what actually went wrong, and repairs the Nix build.**
+
+**Fixed:**
+
+- **Crash while browsing mods with the Windows 11 style ("The launcher closed unexpectedly")** — To pick a readable text colour for selected rows, the launcher painted each selected row into a picture in memory - for every selected row, on every refresh, at the row's full size. If that picture could not be created, the painting silently did nothing and the launcher went on to read from it anyway, which could close it; the "QPainter" warnings some of you found at the end of your logs are the sign of that. The colour is now measured from a small cached sample that is rendered correctly on high-resolution screens, the launcher checks that the sample could really be created before using it, and falls back to a safe colour when it could not. Lists with selected rows also refresh much faster now. Every other place that draws into a picture in memory (the sign-in QR code, the splash screen, skins and capes, screenshots, drag previews of instances) got the same safety net.
+- **Modpack imports failing with only "Failed to extract file ..."** — When a file could not be written while unpacking a pack (most often because the disk ran out of space, security software locked the file, or the path was too long), the error did not say which of these it was. The message now includes the real reason, for example "Write failed: No space left on device", and the half-written file and the temporary import folder are cleaned up after a failure instead of being left behind.
+- **Nix build broken on NixOS** — Building the launcher with Nix failed because the packaging had not kept up with the launcher's requirements: the Qt SVG component, the ONNX Runtime library, and the changelog that is shown inside the launcher were all missing from the package. All three are included again, so `nix build` and `nix profile add` work on NixOS once more.
+
+**Added:**
+
+- **Free space check before unpacking** — Before a modpack is extracted, the launcher now adds up the pack's unpacked size and compares it against the free space on the drive the launcher's data lives on. If it will not fit, you get a clear message with both numbers right away, instead of the import dying halfway through after minutes of unpacking.
+- **Install instructions for NixOS** — The README now has a NixOS section explaining how to install the launcher straight from its flake or add it to your system configuration, and noting that the AppImage and tarball releases do not work out of the box on NixOS.
+
+**Changed:**
+
+- **Helpful steps right in the error window for failed modpack imports** — When a modpack cannot be written to disk (a full disk, security software, a path that is too long), the error window now shows the practical steps right away, and the "Report Bug" button is hidden for that case because it is not a launcher bug. If the advice does not help, a report can still be sent from the launcher's menu.
+- **The Nix package is now built automatically** — Whenever the files that affect Nix packaging change, the launcher's CI builds the Nix package, so NixOS breakage is caught before it reaches a release.
+
 ## v10.0.3
 
 **No more "the launcher closed unexpectedly" after shutting down or restarting your computer, and clearer messages when something on your side - not the launcher - goes wrong.**

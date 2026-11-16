@@ -21,6 +21,7 @@
 
 #include "BuildConfig.h"
 #include "ui/dialogs/BugReportDialog.h"
+#include "ui/dialogs/FriendlyError.h"
 
 namespace CustomMessageBox {
 QMessageBox* selectable(QWidget* parent,
@@ -45,13 +46,19 @@ QMessageBox* selectable(QWidget* parent,
 
     // Plain "something went wrong" windows get a way to tell the developers. Boxes with other buttons (Yes/No, Retry, ...) are left
     // alone because their callers look at which standard button was pressed.
+    // A modpack that could not be written to disk (full disk, security software, long path) gets no
+    // button: the error window already explains what to do, and the report dialog stays reachable
+    // from the menu.
     if (reportable && icon == QMessageBox::Critical && buttons == QMessageBox::Ok && !BuildConfig.BUG_REPORT_API_URL.isEmpty()) {
-        auto* reportButton = messageBox->addButton(QObject::tr("Report Bug"), QMessageBox::ActionRole);
-        reportButton->setToolTip(QObject::tr("Send this error to the PollyMC developers"));
-        QObject::connect(reportButton, &QPushButton::clicked, messageBox, [parent = QPointer<QWidget>(parent), title, text] {
-            // wait for this message box to close first, then open the report form
-            QTimer::singleShot(0, [parent, title, text] { BugReportDialog::reportError(parent, title, text); });
-        });
+        const auto category = FriendlyError::categorize(title + QStringLiteral("\n") + text);
+        if (category != FriendlyError::Category::Extraction) {
+            auto* reportButton = messageBox->addButton(QObject::tr("Report Bug"), QMessageBox::ActionRole);
+            reportButton->setToolTip(QObject::tr("Send this error to the PollyMC developers"));
+            QObject::connect(reportButton, &QPushButton::clicked, messageBox, [parent = QPointer<QWidget>(parent), title, text] {
+                // wait for this message box to close first, then open the report form
+                QTimer::singleShot(0, [parent, title, text] { BugReportDialog::reportError(parent, title, text); });
+            });
+        }
     }
 
     return messageBox;

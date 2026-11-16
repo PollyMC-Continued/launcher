@@ -743,6 +743,8 @@ QPixmap InstanceView::renderToPixmap(const QModelIndexList& indices, QRect* r) c
         return QPixmap();
     }
     QPixmap pixmap(r->size());
+    if (pixmap.isNull())  // a failed allocation (e.g. dragging a huge selection) must not be painted on
+        return QPixmap();
     pixmap.fill(Qt::transparent);
     QPainter painter(&pixmap);
     QStyleOptionViewItem option;

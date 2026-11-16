@@ -219,11 +219,17 @@ void SkinManageDialog::on_viewOnlineBtn_clicked()
 
 QPixmap previewCape(QImage capeImage, bool elytra = false)
 {
+    if (capeImage.isNull())  // a corrupt or missing cape must not be painted on
+        return {};
     if (elytra) {
         auto wing = capeImage.copy(34, 2, 12, 20);
+        if (wing.isNull())  // cape too small to contain the elytra texture
+            return {};
         QImage mirrored = wing.mirrored(true, false);
 
         QImage combined(wing.width() * 2 + 1, wing.height() + 14, capeImage.format());
+        if (combined.isNull())  // allocation failed
+            return {};
         combined.fill(Qt::transparent);
 
         QPainter painter(&combined);

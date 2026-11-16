@@ -122,7 +122,14 @@ QPixmap MinecraftAccount::getFace(int width, int height) const
     if (!skinTexture.loadFromData(data.minecraftProfile.skin.data, "PNG")) {
         return QPixmap();
     }
+    // the face (8, 8, 8, 8) and the hat overlay (40, 8, 8, 8) must be inside the texture,
+    // otherwise the copies below are null and nothing can be painted
+    if (skinTexture.width() < 48 || skinTexture.height() < 16) {
+        return QPixmap();
+    }
     QPixmap skin = QPixmap(8, 8);
+    if (skin.isNull())  // do not paint on a failed allocation
+        return QPixmap();
     skin.fill(QColorConstants::Transparent);
     QPainter painter(&skin);
     painter.drawPixmap(0, 0, skinTexture.copy(8, 8, 8, 8));

@@ -9,9 +9,11 @@
   kdePackages,
   libnbtplusplus,
   ninja,
+  onnxruntime,
   qrencode,
   self,
   stripJavaArchivesHook,
+  symlinkJoin,
   tomlplusplus,
   zlib,
   msaClientID ? null,
@@ -35,6 +37,17 @@ let
       ]
     else
       "unknown";
+
+  # onnxruntime is split into outputs: the shared library lives in $out while
+  # the headers only exist in $dev. The launcher's CMake expects a single
+  # onnxruntime_ROOT containing both, so glue the outputs together.
+  onnxruntimeRoot = symlinkJoin {
+    name = "onnxruntime-root";
+    paths = [
+      onnxruntime.out
+      onnxruntime.dev
+    ];
+  };
 in
 
 stdenv.mkDerivation {
@@ -45,6 +58,7 @@ stdenv.mkDerivation {
     root = ../.;
     fileset = lib.fileset.unions [
       ../CMakeLists.txt
+      ../CHANGELOG.md
       ../COPYING.md
 
       ../buildconfig
@@ -73,6 +87,8 @@ stdenv.mkDerivation {
     cmark
     kdePackages.qtbase
     kdePackages.qtnetworkauth
+    kdePackages.qtsvg
+    onnxruntime
     qrencode
     libarchive
     tomlplusplus
@@ -83,6 +99,8 @@ stdenv.mkDerivation {
   cmakeFlags = [
     # downstream branding
     (lib.cmakeFeature "Launcher_BUILD_PLATFORM" "nixpkgs")
+    # headers from $dev and the library from $out, under one root
+    (lib.cmakeFeature "onnxruntime_ROOT" "${onnxruntimeRoot}")
   ]
   ++ lib.optionals (msaClientID != null) [
     (lib.cmakeFeature "Launcher_MSA_CLIENT_ID" (toString msaClientID))

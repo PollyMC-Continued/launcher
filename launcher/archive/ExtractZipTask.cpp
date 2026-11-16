@@ -16,12 +16,25 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 #include "ExtractZipTask.h"
+#include <QStorageInfo>
 #include <QtConcurrent>
 #include "FileSystem.h"
 #include "archive/ArchiveReader.h"
 #include "archive/ArchiveWriter.h"
 
 namespace MMCZip {
+
+namespace {
+// rounded to one decimal, e.g. "1.4 GiB" or "812 MiB"
+QString humanSize(qint64 bytes)
+{
+    constexpr qint64 MiB = 1024 * 1024;
+    constexpr qint64 GiB = 1024 * MiB;
+    if (bytes >= GiB)
+        return ExtractZipTask::tr("%1 GiB").arg(qreal(bytes) / GiB, 0, 'f', 1);
+    return ExtractZipTask::tr("%1 MiB").arg(qreal(bytes) / MiB, 0, 'f', 0);
+}
+}  // namespace
 
 void ExtractZipTask::executeTask()
 {
@@ -44,6 +57,23 @@ auto ExtractZipTask::extractZip() -> ZipResult
     if (m_input.getFiles().isEmpty()) {
         logWarning(tr("Extracting empty archives seems odd..."));
         return ZipResult();
+    }
+
+    // Fail before unpacking hundreds of files, not in the middle of it: the archive's
+    // uncompressed size (plus a margin for filesystem overhead and the files the launcher
+    // writes afterwards) has to fit on the drive the target folder lives on.
+    {
+        const QStorageInfo storage(target);
+        const qint64 needed = m_input.totalSizeOf(m_subdirectory);
+        // the bound also guards against archives whose headers lie about their sizes
+        if (needed > 0 && needed < (1LL << 62)) {
+            const qint64 margin = qMax<qint64>(needed / 10, 64LL * 1024 * 1024);
+            if (storage.isValid() && storage.bytesAvailable() >= 0 && needed + margin > storage.bytesAvailable()) {
+                return ZipResult(tr("Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.")
+                                     .arg(m_input.getZipName(), humanSize(needed + margin), humanSize(storage.bytesAvailable()),
+                                          storage.rootPath()));
+            }
+        }
     }
 
     auto extPtr = ArchiveWriter::createDiskWriter();
@@ -96,7 +126,12 @@ auto ExtractZipTask::extractZip() -> ZipResult
             }
 
             if (!f->writeFile(ext, target_file_path, target)) {
-                result = ZipResult(tr("Failed to extract file %1 to %2").arg(original_name, target_file_path));
+                // the half-written file has to go too, so no partial file is left behind
+                extracted.append(target_file_path);
+                const QString reason = f->lastError();
+                result = ZipResult(tr("Failed to extract file %1 to %2%3")
+                                       .arg(original_name, target_file_path,
+                                            reason.isEmpty() ? QString() : QStringLiteral(": %1").arg(reason)));
                 return false;
             }
             extracted.append(target_file_path);

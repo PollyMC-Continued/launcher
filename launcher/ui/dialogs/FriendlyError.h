@@ -32,6 +32,7 @@ enum class Category {
     DiskFull,           ///< no space, read-only folder, path too long
     Ssl,                ///< certificate / handshake problems (clock, intercepting proxy)
     SystemShutdown,     ///< the previous run ended with a reboot or power loss (info only, no dialog)
+    Extraction,         ///< a modpack (or other archive) could not be written while unpacking it
 };
 
 struct Advice {

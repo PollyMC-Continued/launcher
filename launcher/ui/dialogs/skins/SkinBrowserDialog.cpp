@@ -206,6 +206,8 @@ QPixmap SkinBrowserDialog::iconPixmap(const Crafty::SkinPtr& skin) const
         return QPixmap::fromImage(skin->preview).scaled(72, 72, Qt::KeepAspectRatio, Qt::FastTransformation);
     // a plain mannequin, so every row looks filled while its texture is still downloading
     QPixmap placeholder(72, 72);
+    if (placeholder.isNull())  // do not paint on a failed allocation
+        return {};
     placeholder.fill(Qt::transparent);
     QPainter painter(&placeholder);
     painter.setPen(Qt::NoPen);

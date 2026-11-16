@@ -37,6 +37,9 @@ class ArchiveReader {
     QString getZipName();
     bool collectFiles(bool onlyFiles = true);
     bool exists(const QString& filePath) const;
+    /// Total uncompressed size of the collected files whose names start with \a prefix.
+    /// Only meaningful after a successful collectFiles().
+    qint64 totalSizeOf(const QString& prefix = QString()) const;
 
     class File {
        public:
@@ -47,6 +50,9 @@ class ArchiveReader {
         bool isFile();
         QDateTime dateTime();
         const char* error();
+        /// The reason the last writeFile() failed, with the system error included
+        /// (e.g. "Write failed: No space left on device"). Empty when it did not fail.
+        QString lastError() const { return m_lastError; }
 
         QByteArray readAll(int* outStatus = nullptr);
         bool skip();
@@ -60,6 +66,7 @@ class ArchiveReader {
         friend ArchiveReader;
         ArchivePtr m_archive;
         archive_entry* m_entry;
+        QString m_lastError;
     };
 
     std::unique_ptr<File> goToFile(QString filename);
@@ -71,5 +78,6 @@ class ArchiveReader {
     size_t m_blockSize = 10240;
 
     QStringList m_fileNames = {};
+    QList<qint64> m_fileSizes = {};
 };
 }  // namespace MMCZip

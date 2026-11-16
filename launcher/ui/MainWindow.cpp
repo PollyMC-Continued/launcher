@@ -104,6 +104,7 @@
 #include "ui/dialogs/WhatsNewBrowserDialog.h"
 #include "ui/dialogs/WhatsNewDialog.h"
 #include "ui/dialogs/CommandPalette.h"
+#include "ui/dialogs/FriendlyError.h"
 #include "ui/dialogs/CommandRegistry.h"
 #include "ui/dialogs/CopyInstanceDialog.h"
 #include "ui/dialogs/CreateShortcutDialog.h"
@@ -1075,8 +1076,23 @@ QString intListToString(const QList<int>& list)
 
 void MainWindow::runModalTask(Task* task)
 {
-    connect(task, &Task::failed,
-            [this](QString reason) { CustomMessageBox::selectable(this, tr("Error"), reason, QMessageBox::Critical)->show(); });
+    connect(task, &Task::failed, [this](QString reason) {
+        // A full disk, security software, a bad connection and so on are user-side problems:
+        // say what to do about them right in the error window (the report button is hidden for
+        // these in CustomMessageBox; the report dialog keeps the same advice for the rest).
+        QString text = reason;
+        const auto category = FriendlyError::categorize(reason);
+        if (category == FriendlyError::Category::Extraction) {
+            const auto advice = FriendlyError::adviceFor(category);
+            QStringList lines;
+            lines << QString();
+            lines << tr("This looks like a %1 problem, not a launcher bug. Here is how to fix it:").arg(FriendlyError::problemName(category));
+            for (const QString& step : advice.steps)
+                lines << QStringLiteral("\u2022 ") + step;
+            text = text + QLatin1Char('\n') + lines.join(QLatin1Char('\n'));
+        }
+        CustomMessageBox::selectable(this, tr("Error"), text, QMessageBox::Critical)->show();
+    });
     connect(task, &Task::succeeded, [this, task]() {
         QStringList warnings = task->warnings();
         if (warnings.count()) {

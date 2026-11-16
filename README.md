@@ -54,6 +54,34 @@ PollyMC lives on. This revival is built on top of [Prism Launcher](https://githu
 - 100% free and open source
 - ...and everything Prism Launcher already does
 
+## Installing on NixOS
+
+The AppImage and tarball releases do not work out of the box on NixOS - use the flake instead. The simplest way is to install it directly:
+
+```shell
+nix profile add github:PollyMC-Continued/launcher
+```
+
+Or add it to your flake and include it in your system packages:
+
+```nix
+{
+  inputs = {
+    pollymc.url = "github:PollyMC-Continued/launcher";
+  };
+}
+```
+
+```nix
+# in a NixOS module
+{ pkgs, ... }:
+{
+  environment.systemPackages = [ pollymc.packages.${pkgs.stdenv.hostPlatform.system}.prismlauncher ];
+}
+```
+
+See [nix/README.md](nix/README.md) for the binary cache, the overlay and ways to customize the wrapped package.
+
 ## Star History
 
 <a href="https://www.star-history.com/?repos=pollymc-continued%2Flauncher&type=date&legend=bottom-right">
