@@ -1703,7 +1703,7 @@ Chun an glasáil seo a scriosadh agus leanúint ar aghaidh, roghnaigh &quot;Neam
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
         <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
@@ -7326,27 +7326,46 @@ Beidh ort an fhadhb seo a cheartú de láimh.</translation>
 <context>
     <name>MMCZip::ExtractZipTask</name>
     <message>
-        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+108"/>
+        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+143"/>
         <source>Failed to parse file %1</source>
         <translation>Theip ar chomhad %1 a pharsáil</translation>
     </message>
     <message>
-        <location line="-15"/>
+        <location line="-20"/>
         <source>Extracting %1 was cancelled, because it was effectively outside of the target path %2</source>
         <translation>Cuireadh deireadh le baint %1, mar bhí sé lasmuigh den chonair sprice %2 i ndáiríre</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-89"/>
+        <source>%1 GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Failed to enumerate files in archive</source>
         <translation>Theip ar chomhaid a liostú sa chartlann</translation>
     </message>
     <message>
-        <location line="+57"/>
-        <source>Failed to extract file %1 to %2</source>
-        <translation>Theip ar an gcomhad %1 a bhaint go %2</translation>
+        <location line="+17"/>
+        <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="+60"/>
+        <source>Failed to extract file %1 to %2%3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to extract file %1 to %2</source>
+        <translation type="vanished">Theip ar an gcomhad %1 a bhaint go %2</translation>
+    </message>
+    <message>
+        <location line="-74"/>
         <source>Extracting empty archives seems odd...</source>
         <translation>Is cosúil go bhfuil sé aisteach cartlanna folamha a bhaint amach...</translation>
     </message>
@@ -7433,7 +7452,7 @@ Beidh ort an fhadhb seo a cheartú de láimh.</translation>
         <translation>Cóipeáil an cód chuig an ghearrthaisce</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+128"/>
+        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+130"/>
         <source>Open %1 or scan the QR and enter the above code if needed.</source>
         <translation>Oscail %1 nó scan an QR agus cuir isteach an cód thuas más gá.</translation>
     </message>
@@ -7667,7 +7686,7 @@ Beidh ort an fhadhb seo a cheartú de láimh.</translation>
         <translation>&amp;Amharc ar</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1842"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1858"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -7695,8 +7714,8 @@ An bhfuil tú cinnte?</translation>
         <translation>Tobscoir</translation>
     </message>
     <message>
-        <location line="-261"/>
-        <location line="+129"/>
+        <location line="-262"/>
+        <location line="+130"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -8164,7 +8183,7 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
         <translation>Rabhaidh</translation>
     </message>
     <message>
-        <location line="-905"/>
+        <location line="-920"/>
         <source>Show PollyMC</source>
         <translation>Taispeáin PollyMC</translation>
     </message>
@@ -8189,7 +8208,12 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
         <translation>Réalta ar GitHub</translation>
     </message>
     <message>
-        <location line="+892"/>
+        <location line="+343"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+564"/>
         <source>Instance not editable</source>
         <translation>Ní féidir an sampla a chur in eagar</translation>
     </message>
@@ -8199,7 +8223,7 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
         <translation>Theip ar an gcás a chur sa bhruscar a chealú</translation>
     </message>
     <message>
-        <location line="-1067"/>
+        <location line="-1082"/>
         <location line="+150"/>
         <source>Update on your bug report</source>
         <translation type="unfinished"></translation>
@@ -8225,7 +8249,7 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+905"/>
+        <location line="+920"/>
         <source>Cannot rename group</source>
         <translation>Ní féidir an grúpa a athainmniú</translation>
     </message>
@@ -8241,12 +8265,12 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
     </message>
     <message>
         <location line="+623"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-517"/>
         <source>Accounts</source>
         <translation>Cuntais</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+773"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>Cuireadh %1 le do PATH go rathúil. Is féidir leat é a thosú anois trí `%2` a rith.</translation>
     </message>
@@ -8270,7 +8294,7 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
         <translation type="vanished">Oscail an blag forbartha chun tuilleadh nuachta faoi %1 a léamh.</translation>
     </message>
     <message>
-        <location line="-1527"/>
+        <location line="-1542"/>
         <source>Backspace</source>
         <translation>Cúlspáis</translation>
     </message>
@@ -8304,7 +8328,7 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
         <translation>&amp;Fillteán</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+357"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+372"/>
         <source>Install modpack</source>
         <translation>Suiteáil modpack</translation>
     </message>
@@ -8375,7 +8399,7 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
     </message>
     <message>
         <location line="+30"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-820"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-835"/>
         <location line="+136"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -8396,7 +8420,7 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
         <translation>Oscail fillteán téamaí na ngiuirléidí i mbrabhsálaí comhad.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+888"/>
         <source>Group name</source>
         <translation>Ainm an ghrúpa</translation>
     </message>
@@ -8416,7 +8440,7 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
         <translation>Nasc allmhairithe neamhbhailí: paraiméadar &apos;url&apos; ar iarraidh.</translation>
     </message>
     <message>
-        <location line="-452"/>
+        <location line="-467"/>
         <source>&amp;Rename group</source>
         <translation>Athainmnigh g&amp;rúpa</translation>
     </message>
@@ -8428,7 +8452,7 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1572"/>
+        <location line="+1587"/>
         <source>No instance selected</source>
         <translation>Níor roghnaíodh aon chás</translation>
     </message>
@@ -8487,12 +8511,12 @@ Chun an taisce meiteashonraí a ghlanadh de láimh, brúigh Fillteáin -&gt; Fé
         <translation>Scrios an sampla roghnaithe.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1314"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Scrios grúpa</translation>
     </message>
     <message>
-        <location line="+711"/>
+        <location line="+726"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>Níorbh fhéidir roinnt samplaí agus aicearraí a athchóiriú.
@@ -8508,7 +8532,7 @@ Seiceáil do bhruscar le do thoil chun iad a athchóiriú de láimh.</translatio
         <translation type="vanished">Is cat clúmhach é :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-725"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-740"/>
         <source>&amp;Create instance</source>
         <translation>&amp;Cruthaigh ásc</translation>
     </message>
@@ -8543,7 +8567,7 @@ Seiceáil do bhruscar le do thoil chun iad a athchóiriú de láimh.</translatio
         <translation>Am súgartha iomlán: 0s</translation>
     </message>
     <message>
-        <location line="+1761"/>
+        <location line="+1776"/>
         <source>Total playtime: %1</source>
         <translation>Am imeartha iomlán: %1</translation>
     </message>
@@ -8777,7 +8801,7 @@ Déan cinnte go bhfuil muinín agat as an URL freisin.
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+140"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>Tobscortha</translation>
@@ -12492,7 +12516,7 @@ Lean ar aghaidh leis an ngearradh?</translation>
         <translation type="vanished">Gan aitheantas</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1229"/>
         <source>%1 (in use)</source>
         <translation>%1 (in úsáid)</translation>
     </message>
@@ -13470,7 +13494,7 @@ Ainm nua: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14576,7 +14600,7 @@ An bhfuil tú cinnte gur mian leat é seo a dhéanamh?</translation>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+409"/>
         <source>Abort</source>
         <translation>Tobscoir</translation>
     </message>
@@ -15088,7 +15112,7 @@ An bhfuil tú cinnte?</translation>
     </message>
     <message>
         <location line="+73"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+275"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
         <source>Select a skin</source>
         <translation>Roghnaigh craiceann</translation>
     </message>
@@ -15138,7 +15162,7 @@ An bhfuil tú cinnte?</translation>
         <translation>Cuir an craiceann seo i bhfeidhm ar an gcuntas roghnaithe</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-191"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
         <source>Looking for skins</source>
         <translation>Ag cuardach craicne</translation>
     </message>
@@ -15174,7 +15198,7 @@ An bhfuil tú cinnte?</translation>
         <translation>Níor aimsíodh craicne do %1</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+46"/>
         <source>Unnamed skin</source>
         <translation>Craiceann gan ainm</translation>
     </message>
@@ -15288,7 +15312,7 @@ An bhfuil tú cinnte?</translation>
         <translation>Brabhsáil agus úsáid craicne foilsithe ar líne</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+367"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+373"/>
         <source>You are about to delete &quot;%1&quot;.
 Are you sure?</source>
         <translation>Tá tú ar tí &quot;%1% a scriosadh.
@@ -15340,7 +15364,7 @@ An bhfuil tú cinnte?</translation>
         <translation>Theip ar an gculaith seo a uaslódáil!</translation>
     </message>
     <message>
-        <location line="-198"/>
+        <location line="-204"/>
         <location line="+8"/>
         <source>Skin Import</source>
         <translation>Iompórtáil Craiceann</translation>
@@ -15356,7 +15380,7 @@ An bhfuil tú cinnte?</translation>
         <translation>Ní craiceann bailí í an íomhá íoslódáilte.</translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+148"/>
         <location line="+8"/>
         <source>Skin Save</source>
         <translation>Sábháil an Chraiceann</translation>
@@ -15402,7 +15426,7 @@ An bhfuil tú cinnte?</translation>
         <translation>Scriosearráid</translation>
     </message>
     <message>
-        <location line="-359"/>
+        <location line="-365"/>
         <source>Cancel</source>
         <translation>Cealaigh</translation>
     </message>
@@ -15412,7 +15436,7 @@ An bhfuil tú cinnte?</translation>
         <translation>Fillteán Oscailte</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+310"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+316"/>
         <source>Skin Delete</source>
         <translation>Scriosadh Craicinn</translation>
     </message>
@@ -15457,12 +15481,12 @@ An bhfuil tú cinnte?</translation>
         <translation>URL Iompórtála</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-463"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-469"/>
         <source>Select Skin Texture</source>
         <translation>Roghnaigh Uigeacht Craicinn</translation>
     </message>
     <message>
-        <location line="+305"/>
+        <location line="+311"/>
         <source>Confirm Deletion</source>
         <translation>Dearbhaigh Scrios</translation>
     </message>
@@ -15548,12 +15572,12 @@ An bhfuil tú cinnte?</translation>
         <translation>Athainmnigh culaith roghnaithe</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-206"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-212"/>
         <source>Selected file is not a valid skin</source>
         <translation>Ní craiceann bailí é an comhad roghnaithe</translation>
     </message>
     <message>
-        <location line="+378"/>
+        <location line="+384"/>
         <source>Download user skin</source>
         <translation>Íoslódáil culaith úsáideora</translation>
     </message>
@@ -15574,7 +15598,7 @@ An bhfuil tú cinnte?</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>

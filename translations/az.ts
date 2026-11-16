@@ -1699,7 +1699,7 @@ Bu kilidi silmək və davam etmək üçün aşağıdan &quot;Məhəl qoyma&quot;
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
         <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
@@ -7226,27 +7226,46 @@ Bu problemi əllə (manual olaraq) düzəltməli olacaqsınız.</translation>
 <context>
     <name>MMCZip::ExtractZipTask</name>
     <message>
-        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+108"/>
+        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+143"/>
         <source>Failed to parse file %1</source>
         <translation>%1 faylı təhlil edilə bilmədi</translation>
     </message>
     <message>
-        <location line="-15"/>
+        <location line="-20"/>
         <source>Extracting %1 was cancelled, because it was effectively outside of the target path %2</source>
         <translation>%1 çıxarılması ləğv edildi, çünki o, hədəf yolun %2 faktiki olaraq kənarında idi</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-89"/>
+        <source>%1 GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Failed to enumerate files in archive</source>
         <translation>Arxivdəki faylları sadalamaq mümkün olmadı</translation>
     </message>
     <message>
-        <location line="+57"/>
-        <source>Failed to extract file %1 to %2</source>
-        <translation>%1 faylını %2 yoluna çıxarmaq mümkün olmadı</translation>
+        <location line="+17"/>
+        <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="+60"/>
+        <source>Failed to extract file %1 to %2%3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to extract file %1 to %2</source>
+        <translation type="vanished">%1 faylını %2 yoluna çıxarmaq mümkün olmadı</translation>
+    </message>
+    <message>
+        <location line="-74"/>
         <source>Extracting empty archives seems odd...</source>
         <translation>Boş arxivlərin çıxarılması qəribə görünür...</translation>
     </message>
@@ -7333,7 +7352,7 @@ Bu problemi əllə (manual olaraq) düzəltməli olacaqsınız.</translation>
         <translation>Kodu mübadilə buferinə kopyalayın</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+128"/>
+        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+130"/>
         <source>Open %1 or scan the QR and enter the above code if needed.</source>
         <translation>%1 ünvanını açın və ya QR kodu skan edin, ehtiyac olarsa, yuxarıdakı kodu daxil edin.</translation>
     </message>
@@ -7567,7 +7586,7 @@ Bu problemi əllə (manual olaraq) düzəltməli olacaqsınız.</translation>
         <translation>&amp;Görünüş</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1842"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1858"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -7595,8 +7614,8 @@ Bu proses qalıcı ola bilər və profili tamamilə siləcəkdir.
         <translation>Yarımçıq kəs</translation>
     </message>
     <message>
-        <location line="-261"/>
-        <location line="+129"/>
+        <location line="-262"/>
+        <location line="+130"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -8059,7 +8078,7 @@ Lütfən, bu resursu yenidən quraşdırmağa cəhd etməzdən əvvəl yeni prof
         <translation>Xəbərdarlıqlar</translation>
     </message>
     <message>
-        <location line="-905"/>
+        <location line="-920"/>
         <source>Show PollyMC</source>
         <translation>PollyMC-ni göstər</translation>
     </message>
@@ -8084,7 +8103,12 @@ Lütfən, bu resursu yenidən quraşdırmağa cəhd etməzdən əvvəl yeni prof
         <translation>GitHub-da ulduz</translation>
     </message>
     <message>
-        <location line="+892"/>
+        <location line="+343"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+564"/>
         <source>Instance not editable</source>
         <translation>Profil redaktə edilə bilmir</translation>
     </message>
@@ -8094,7 +8118,7 @@ Lütfən, bu resursu yenidən quraşdırmağa cəhd etməzdən əvvəl yeni prof
         <translation>Profilin zibil qutusundan çıxarılması alınmadı</translation>
     </message>
     <message>
-        <location line="-1067"/>
+        <location line="-1082"/>
         <location line="+150"/>
         <source>Update on your bug report</source>
         <translation type="unfinished"></translation>
@@ -8120,7 +8144,7 @@ Lütfən, bu resursu yenidən quraşdırmağa cəhd etməzdən əvvəl yeni prof
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+905"/>
+        <location line="+920"/>
         <source>Cannot rename group</source>
         <translation>Qrupu yenidən adlandırmaq mümkün deyil</translation>
     </message>
@@ -8136,12 +8160,12 @@ Lütfən, bu resursu yenidən quraşdırmağa cəhd etməzdən əvvəl yeni prof
     </message>
     <message>
         <location line="+623"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-517"/>
         <source>Accounts</source>
         <translation>Hesablar</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+773"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 uğurla PATH-a əlavə edildi. İndi `%2` komandasını işlədərək onu başlada bilərsiniz.</translation>
     </message>
@@ -8165,7 +8189,7 @@ Lütfən, bu resursu yenidən quraşdırmağa cəhd etməzdən əvvəl yeni prof
         <translation type="vanished">%1 haqqında daha çox xəbər oxumaq üçün tərtibatçı bloqunu açın.</translation>
     </message>
     <message>
-        <location line="-1527"/>
+        <location line="-1542"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
@@ -8199,7 +8223,7 @@ Lütfən, bu resursu yenidən quraşdırmağa cəhd etməzdən əvvəl yeni prof
         <translation>&amp;Qovluq</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+357"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+372"/>
         <source>Install modpack</source>
         <translation>Modpaketini quraşdırın</translation>
     </message>
@@ -8270,7 +8294,7 @@ Lütfən, bu resursu yenidən quraşdırmağa cəhd etməzdən əvvəl yeni prof
     </message>
     <message>
         <location line="+30"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-820"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-835"/>
         <location line="+136"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -8291,7 +8315,7 @@ Lütfən, bu resursu yenidən quraşdırmağa cəhd etməzdən əvvəl yeni prof
         <translation>Widget temaları qovluğunu fayl bələdçisində açın.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+888"/>
         <source>Group name</source>
         <translation>Qrup adı</translation>
     </message>
@@ -8311,7 +8335,7 @@ Lütfən, bu resursu yenidən quraşdırmağa cəhd etməzdən əvvəl yeni prof
         <translation>Daxil etmə linki səhvdir: &apos;url&apos; parametri qeyd olunmayıb.</translation>
     </message>
     <message>
-        <location line="-452"/>
+        <location line="-467"/>
         <source>&amp;Rename group</source>
         <translation>&amp;Qrupu yenidən adlandır</translation>
     </message>
@@ -8323,7 +8347,7 @@ Lütfən, bu resursu yenidən quraşdırmağa cəhd etməzdən əvvəl yeni prof
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1572"/>
+        <location line="+1587"/>
         <source>No instance selected</source>
         <translation>Heç bir profil seçilməyib</translation>
     </message>
@@ -8382,12 +8406,12 @@ Meta-məlumat keşini əllə təmizləmək üçün Qovluqlar -&gt; Başlatıcın
         <translation>Seçilmiş profili sil.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1314"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Qrupu sil</translation>
     </message>
     <message>
-        <location line="+711"/>
+        <location line="+726"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>Bəzi profillər və qısayollar bərpa edilə bilmədi.
@@ -8403,7 +8427,7 @@ Lütfən, onları əllə bərpa etmək üçün zibil qutusunu yoxlayın.</transl
         <translation type="vanished">Çox şirin bir pişik balasıdır! :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-725"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-740"/>
         <source>&amp;Create instance</source>
         <translation>&amp;Profil yarat</translation>
     </message>
@@ -8438,7 +8462,7 @@ Lütfən, onları əllə bərpa etmək üçün zibil qutusunu yoxlayın.</transl
         <translation>Ümumi oyun müddəti: 0 s</translation>
     </message>
     <message>
-        <location line="+1761"/>
+        <location line="+1776"/>
         <source>Total playtime: %1</source>
         <translation>Ümumi oyun müddəti: %1</translation>
     </message>
@@ -8672,7 +8696,7 @@ Həmçinin URL-in etibarlı olduğundan əmin olun.
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+140"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>Dayandırıldı</translation>
@@ -12320,7 +12344,7 @@ Qısaldılma prosesi davam etdirilsin?</translation>
         <translation>%1, bu komponentdən asılılıq, problemlər barədə məlumat verdi</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1229"/>
         <source>%1 (in use)</source>
         <translation>%1 (istifadədədir)</translation>
     </message>
@@ -13285,7 +13309,7 @@ Yeni ad: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14378,7 +14402,7 @@ Bunu etmək istədiyinizdən əminsiniz?</translation>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+409"/>
         <source>Abort</source>
         <translation>Dayandır</translation>
     </message>
@@ -14890,7 +14914,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+73"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+275"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
         <source>Select a skin</source>
         <translation>Skin seç</translation>
     </message>
@@ -14940,7 +14964,7 @@ Are you sure?</source>
         <translation>Bu skini seçilmiş hesaba tətbiq et</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-191"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
         <source>Looking for skins</source>
         <translation>Skin axtarılır</translation>
     </message>
@@ -14976,7 +15000,7 @@ Are you sure?</source>
         <translation>%1 üçün skin tapılmadı</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+46"/>
         <source>Unnamed skin</source>
         <translation>Adsız skin</translation>
     </message>
@@ -15090,7 +15114,7 @@ Are you sure?</source>
         <translation>Onlayn dərc edilmiş skinlərə bax və istifadə et</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+367"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+373"/>
         <source>You are about to delete &quot;%1&quot;.
 Are you sure?</source>
         <translation>&quot;%1&quot; silinmək üzrədir.
@@ -15142,7 +15166,7 @@ Are you sure?</source>
         <translation>Görünüşü yükləmək alınmadı!</translation>
     </message>
     <message>
-        <location line="-198"/>
+        <location line="-204"/>
         <location line="+8"/>
         <source>Skin Import</source>
         <translation>Skini idxal et</translation>
@@ -15158,7 +15182,7 @@ Are you sure?</source>
         <translation>Endirilmiş şəkil keçərli skin deyil.</translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+148"/>
         <location line="+8"/>
         <source>Skin Save</source>
         <translation>Dəri Saxla</translation>
@@ -15204,7 +15228,7 @@ Are you sure?</source>
         <translation>Silinmə xətası</translation>
     </message>
     <message>
-        <location line="-359"/>
+        <location line="-365"/>
         <source>Cancel</source>
         <translation>Ləğv et</translation>
     </message>
@@ -15214,7 +15238,7 @@ Are you sure?</source>
         <translation>Qovluğu aç</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+310"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+316"/>
         <source>Skin Delete</source>
         <translation>Görünüşü sil</translation>
     </message>
@@ -15259,12 +15283,12 @@ Səbəb: %2.</translation>
         <translation>URL-i idxal et</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-463"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-469"/>
         <source>Select Skin Texture</source>
         <translation>Görünüş teksturasını seçin</translation>
     </message>
     <message>
-        <location line="+305"/>
+        <location line="+311"/>
         <source>Confirm Deletion</source>
         <translation>Silməyi Təsdiq edin</translation>
     </message>
@@ -15350,12 +15374,12 @@ Səbəb: %2.</translation>
         <translation>Seçilmiş görünüşün adını dəyişin</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-206"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-212"/>
         <source>Selected file is not a valid skin</source>
         <translation>Seçilmiş fayl düzgün görünüş deyil</translation>
     </message>
     <message>
-        <location line="+378"/>
+        <location line="+384"/>
         <source>Download user skin</source>
         <translation>İstifadəçi görünüşünü yüklə</translation>
     </message>
@@ -15376,7 +15400,7 @@ Səbəb: %2.</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>

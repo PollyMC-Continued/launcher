@@ -1700,7 +1700,7 @@ Kiểm tra tệp log cho việc cập nhật Prism Launcher ở:
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
         <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
@@ -7275,27 +7275,46 @@ Bạn phải khắc phục sự cố này bằng cách thủ công.</translation
 <context>
     <name>MMCZip::ExtractZipTask</name>
     <message>
-        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+108"/>
+        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+143"/>
         <source>Failed to parse file %1</source>
         <translation>Không phân tính được tệp%1</translation>
     </message>
     <message>
-        <location line="-15"/>
+        <location line="-20"/>
         <source>Extracting %1 was cancelled, because it was effectively outside of the target path %2</source>
         <translation>Việc trích xuất %1 đã bị hủy vì nó thực sự nằm ngoài đường dẫn đích %2</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-89"/>
+        <source>%1 GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Failed to enumerate files in archive</source>
         <translation>Thất bại khi liệt kê các tệp trong kho lưu trữ</translation>
     </message>
     <message>
-        <location line="+57"/>
-        <source>Failed to extract file %1 to %2</source>
-        <translation>Đã thất bại khi trích xuất tệp %1 qua %2</translation>
+        <location line="+17"/>
+        <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="+60"/>
+        <source>Failed to extract file %1 to %2%3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to extract file %1 to %2</source>
+        <translation type="vanished">Đã thất bại khi trích xuất tệp %1 qua %2</translation>
+    </message>
+    <message>
+        <location line="-74"/>
         <source>Extracting empty archives seems odd...</source>
         <translation>Trích xuất các kho lưu trữ trống có vẻ kỳ lạ...</translation>
     </message>
@@ -7382,7 +7401,7 @@ Bạn phải khắc phục sự cố này bằng cách thủ công.</translation
         <translation>Sao chép mã vào khay nhớ tạm</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+128"/>
+        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+130"/>
         <source>Open %1 or scan the QR and enter the above code if needed.</source>
         <translation>Mở %1 hoặc quét mã QR và nhập code tại trên nếu cần thiết.</translation>
     </message>
@@ -7616,7 +7635,7 @@ Bạn phải khắc phục sự cố này bằng cách thủ công.</translation
         <translation>&amp;Xem</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1842"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1858"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -7644,8 +7663,8 @@ Bạn có chắc chắn không ?</translation>
         <translation>Hủy bỏ</translation>
     </message>
     <message>
-        <location line="-261"/>
-        <location line="+129"/>
+        <location line="-262"/>
+        <location line="+130"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -8111,7 +8130,7 @@ Hãy tạo một phiên mới trước khi thử cài đặt tài nguyên này m
         <translation>Cảnh báo</translation>
     </message>
     <message>
-        <location line="-905"/>
+        <location line="-920"/>
         <source>Show PollyMC</source>
         <translation>Hiển thị PollyMC</translation>
     </message>
@@ -8136,7 +8155,12 @@ Hãy tạo một phiên mới trước khi thử cài đặt tài nguyên này m
         <translation>Gắn sao trên GitHub</translation>
     </message>
     <message>
-        <location line="+892"/>
+        <location line="+343"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+564"/>
         <source>Instance not editable</source>
         <translation>Không thể chỉnh sửa được phiên bản</translation>
     </message>
@@ -8146,7 +8170,7 @@ Hãy tạo một phiên mới trước khi thử cài đặt tài nguyên này m
         <translation>Phục hồi phiên thất bại</translation>
     </message>
     <message>
-        <location line="-1067"/>
+        <location line="-1082"/>
         <location line="+150"/>
         <source>Update on your bug report</source>
         <translation type="unfinished"></translation>
@@ -8172,7 +8196,7 @@ Hãy tạo một phiên mới trước khi thử cài đặt tài nguyên này m
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+905"/>
+        <location line="+920"/>
         <source>Cannot rename group</source>
         <translation>Không đổi được tên nhóm</translation>
     </message>
@@ -8188,12 +8212,12 @@ Hãy tạo một phiên mới trước khi thử cài đặt tài nguyên này m
     </message>
     <message>
         <location line="+623"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-517"/>
         <source>Accounts</source>
         <translation>Tài khoản</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+773"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 đã được ghi vô PATH thành công. Bạn có thể khởi chạy nó bằng cách chạy `%2`.</translation>
     </message>
@@ -8217,7 +8241,7 @@ Hãy tạo một phiên mới trước khi thử cài đặt tài nguyên này m
         <translation type="vanished">Đọc tin tức từ nhà phát triển %1.</translation>
     </message>
     <message>
-        <location line="-1527"/>
+        <location line="-1542"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
@@ -8251,7 +8275,7 @@ Hãy tạo một phiên mới trước khi thử cài đặt tài nguyên này m
         <translation>&amp;Thư mục</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+357"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+372"/>
         <source>Install modpack</source>
         <translation>Tải xuống modpack</translation>
     </message>
@@ -8322,7 +8346,7 @@ Hãy tạo một phiên mới trước khi thử cài đặt tài nguyên này m
     </message>
     <message>
         <location line="+30"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-820"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-835"/>
         <location line="+136"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -8343,7 +8367,7 @@ Hãy tạo một phiên mới trước khi thử cài đặt tài nguyên này m
         <translation>Mở thư mục chủ đề cho tiện ích trong Tệp Tin.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+888"/>
         <source>Group name</source>
         <translation>Tên nhóm</translation>
     </message>
@@ -8363,7 +8387,7 @@ Hãy tạo một phiên mới trước khi thử cài đặt tài nguyên này m
         <translation>Đường dẫn không hợp lệ: thiếu tham số &apos;url&apos;.</translation>
     </message>
     <message>
-        <location line="-452"/>
+        <location line="-467"/>
         <source>&amp;Rename group</source>
         <translation>&amp;Đổi tên nhóm</translation>
     </message>
@@ -8375,7 +8399,7 @@ Hãy tạo một phiên mới trước khi thử cài đặt tài nguyên này m
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1572"/>
+        <location line="+1587"/>
         <source>No instance selected</source>
         <translation>Không có phiên bản nào được chọn</translation>
     </message>
@@ -8434,12 +8458,12 @@ To clear the metadata cache manually, press Folders -&gt; View Launcher Root Fol
         <translation>Xóa phiên bản đang chọn.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1314"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Xóa nhóm</translation>
     </message>
     <message>
-        <location line="+711"/>
+        <location line="+726"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>Một vài phiên bản và lối tắt không thể được khôi phục
@@ -8455,7 +8479,7 @@ Vui lòng kiểm tra thùng rác để khôi phục các thư mục này.</trans
         <translation type="vanished">Mèo kitty :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-725"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-740"/>
         <source>&amp;Create instance</source>
         <translation>&amp;Tạo phiên bản</translation>
     </message>
@@ -8490,7 +8514,7 @@ Vui lòng kiểm tra thùng rác để khôi phục các thư mục này.</trans
         <translation>Tổng cộng thời gian chơi: 0 giây</translation>
     </message>
     <message>
-        <location line="+1761"/>
+        <location line="+1776"/>
         <source>Total playtime: %1</source>
         <translation>Tổng cộng giờ chơi: %1</translation>
     </message>
@@ -8724,7 +8748,7 @@ Hãy đảm bảo rằng bạn tin tưởng cái URL
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+140"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>Bị hủy bỏ</translation>
@@ -12379,7 +12403,7 @@ Xác nhận cắt bớt?</translation>
         <translation type="vanished">Không thể nhận dạng</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1229"/>
         <source>%1 (in use)</source>
         <translation>%1 (đang sử dụng)</translation>
     </message>
@@ -13337,7 +13361,7 @@ Tên mới: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14433,7 +14457,7 @@ Bạn có muốn tiếp tục?</translation>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+409"/>
         <source>Abort</source>
         <translation>Hủy bỏ</translation>
     </message>
@@ -14945,7 +14969,7 @@ Bạn có chắc?</translation>
     </message>
     <message>
         <location line="+73"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+275"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
         <source>Select a skin</source>
         <translation>Chọn skin</translation>
     </message>
@@ -14995,7 +15019,7 @@ Bạn có chắc?</translation>
         <translation>Áp dụng skin này cho tài khoản đã chọn</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-191"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
         <source>Looking for skins</source>
         <translation>Đang tìm skin</translation>
     </message>
@@ -15031,7 +15055,7 @@ Bạn có chắc?</translation>
         <translation>Không tìm thấy skin cho %1</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+46"/>
         <source>Unnamed skin</source>
         <translation>Skin không tên</translation>
     </message>
@@ -15145,7 +15169,7 @@ Bạn có chắc?</translation>
         <translation>Duyệt và dùng skin được đăng trực tuyến</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+367"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+373"/>
         <source>You are about to delete &quot;%1&quot;.
 Are you sure?</source>
         <translation>Bạn đang xóa &quot;%1&quot;.
@@ -15197,7 +15221,7 @@ Bạn có chắc?</translation>
         <translation>Tải lên file skin thất bại!</translation>
     </message>
     <message>
-        <location line="-198"/>
+        <location line="-204"/>
         <location line="+8"/>
         <source>Skin Import</source>
         <translation>Nhập Skin</translation>
@@ -15213,7 +15237,7 @@ Bạn có chắc?</translation>
         <translation>Ảnh đã tải không phải skin hợp lệ.</translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+148"/>
         <location line="+8"/>
         <source>Skin Save</source>
         <translation>Lưu Skin</translation>
@@ -15259,7 +15283,7 @@ Bạn có chắc?</translation>
         <translation>Xóa lỗi</translation>
     </message>
     <message>
-        <location line="-359"/>
+        <location line="-365"/>
         <source>Cancel</source>
         <translation>Hủy</translation>
     </message>
@@ -15269,7 +15293,7 @@ Bạn có chắc?</translation>
         <translation>Mở thư mục</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+310"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+316"/>
         <source>Skin Delete</source>
         <translation>Xóa skin</translation>
     </message>
@@ -15314,12 +15338,12 @@ Bạn có chắc?</translation>
         <translation>Nhập URL</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-463"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-469"/>
         <source>Select Skin Texture</source>
         <translation>Chọn ảnh skin</translation>
     </message>
     <message>
-        <location line="+305"/>
+        <location line="+311"/>
         <source>Confirm Deletion</source>
         <translation>Xác nhận xóa</translation>
     </message>
@@ -15405,12 +15429,12 @@ Bạn có chắc?</translation>
         <translation>Chỉnh tên skin được chọn</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-206"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-212"/>
         <source>Selected file is not a valid skin</source>
         <translation>File được chọn không phải là skin hợp lệ</translation>
     </message>
     <message>
-        <location line="+378"/>
+        <location line="+384"/>
         <source>Download user skin</source>
         <translation>Tải xuống skin người dùng</translation>
     </message>
@@ -15431,7 +15455,7 @@ Bạn có chắc?</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>

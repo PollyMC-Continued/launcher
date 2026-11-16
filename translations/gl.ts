@@ -1636,7 +1636,7 @@ Para borrar este bloqueo e proceder selecciona &quot;Ignorar&quot; abaixo.</tran
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
         <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
@@ -7093,7 +7093,17 @@ Tes que arranxar o problema manualmente.</translation>
 <context>
     <name>MMCZip::ExtractZipTask</name>
     <message>
-        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+42"/>
+        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+34"/>
+        <source>%1 GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Failed to enumerate files in archive</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7103,17 +7113,22 @@ Tes que arranxar o problema manualmente.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+48"/>
+        <location line="+14"/>
+        <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+51"/>
         <source>Extracting %1 was cancelled, because it was effectively outside of the target path %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>Failed to extract file %1 to %2</source>
+        <location line="+9"/>
+        <source>Failed to extract file %1 to %2%3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>Failed to parse file %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7180,7 +7195,7 @@ Tes que arranxar o problema manualmente.</translation>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location line="+128"/>
+        <location line="+130"/>
         <source>Open %1 or scan the QR and enter the above code if needed.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7291,15 +7306,15 @@ Tes que arranxar o problema manualmente.</translation>
         <translation>Copiar a instancia seleccionada.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1091"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1107"/>
         <location line="+143"/>
         <location line="+106"/>
         <source>Abort</source>
         <translation>Abortada</translation>
     </message>
     <message>
-        <location line="-261"/>
-        <location line="+129"/>
+        <location line="-262"/>
+        <location line="+130"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -7348,7 +7363,7 @@ Tes que arranxar o problema manualmente.</translation>
         <translation>Barra de ferramentas das instancias</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1922"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1937"/>
         <source>Show PollyMC</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7384,7 +7399,7 @@ Tes que arranxar o problema manualmente.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+465"/>
+        <location line="+480"/>
         <source>Task aborted</source>
         <translation>Tarefa abortada</translation>
     </message>
@@ -7665,7 +7680,7 @@ Please create a new instance before attempting to install this resource again.</
     </message>
     <message>
         <location line="+8"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-58"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-73"/>
         <source>Accounts</source>
         <translation>Contas</translation>
     </message>
@@ -7994,7 +8009,7 @@ Please create a new instance before attempting to install this resource again.</
     <message>
         <location line="-435"/>
         <location line="+125"/>
-        <location line="+1572"/>
+        <location line="+1587"/>
         <source>No instance selected</source>
         <translation>Ningunha instancia seleccionada</translation>
     </message>
@@ -8029,7 +8044,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Borrar a instancia seleccionada.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1266"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1281"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Borrar grupo</translation>
     </message>
@@ -8078,7 +8093,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+782"/>
+        <location line="+343"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+454"/>
         <source>Cannot rename group</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8476,7 +8496,7 @@ Make sure you also trust the URL.
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+140"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>Abortado</translation>
@@ -11698,7 +11718,7 @@ Escolle o teu nome coidadosamente:</translation>
         <translation type="vanished">Non recoñecido</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-2004"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-2019"/>
         <source>%1 (in use)</source>
         <translation>%1 (en uso)</translation>
     </message>
@@ -12580,7 +12600,7 @@ Error message: %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13649,7 +13669,7 @@ Are you sure?</source>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+409"/>
         <source>Abort</source>
         <translation>Abortar</translation>
     </message>
@@ -14144,7 +14164,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+73"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+275"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
         <source>Select a skin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14194,7 +14214,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-191"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
         <source>Looking for skins</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14230,7 +14250,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+46"/>
         <source>Unnamed skin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14339,7 +14359,7 @@ Are you sure?</source>
         <translation>Modelo</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+136"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+142"/>
         <source>Download capes</source>
         <translation>Descargar capas</translation>
     </message>
@@ -14354,7 +14374,7 @@ Are you sure?</source>
         <translation>Non se puido subir o aspecto!</translation>
     </message>
     <message>
-        <location line="-217"/>
+        <location line="-223"/>
         <source>Selected file is not a valid skin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14375,7 +14395,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+148"/>
         <location line="+8"/>
         <source>Skin Save</source>
         <translation type="unfinished"></translation>
@@ -14504,7 +14524,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-525"/>
+        <location line="-531"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
@@ -14514,7 +14534,7 @@ Are you sure?</source>
         <translation>Abrir cartafol</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+310"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+316"/>
         <source>Skin Delete</source>
         <translation>Borrar aspecto</translation>
     </message>
@@ -14542,12 +14562,12 @@ Are you sure?</source>
         <translation>Importar URL</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-248"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-254"/>
         <source>Select Skin Texture</source>
         <translation>Escoller textura da apariencia</translation>
     </message>
     <message>
-        <location line="+305"/>
+        <location line="+311"/>
         <source>Confirm Deletion</source>
         <translation>Confirmar eliminación</translation>
     </message>
@@ -14628,7 +14648,7 @@ Are you sure?</source>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>

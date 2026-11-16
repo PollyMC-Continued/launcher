@@ -1703,7 +1703,7 @@ Pro odstranění tohoto uzamčení a pokračování klikněte na „Ignorovat“
 <context>
     <name>BugReportDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+156"/>
+        <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
         <location line="+452"/>
         <location line="+11"/>
         <location line="+56"/>
@@ -7326,27 +7326,46 @@ Tento problém budete muset opravit ručně.</translation>
 <context>
     <name>MMCZip::ExtractZipTask</name>
     <message>
-        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+108"/>
+        <location filename="../launcher/archive/ExtractZipTask.cpp" line="+143"/>
         <source>Failed to parse file %1</source>
         <translation>Nepodařilo se analyzovat soubor %1</translation>
     </message>
     <message>
-        <location line="-15"/>
+        <location line="-20"/>
         <source>Extracting %1 was cancelled, because it was effectively outside of the target path %2</source>
         <translation>Rozbalování archivu %1 bylo zrušeno, protože se nachází mimo cílovou cestu %2</translation>
     </message>
     <message>
-        <location line="-51"/>
+        <location line="-89"/>
+        <source>%1 GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
         <source>Failed to enumerate files in archive</source>
         <translation>Nepodařilo se spočítat soubory v archivu</translation>
     </message>
     <message>
-        <location line="+57"/>
-        <source>Failed to extract file %1 to %2</source>
-        <translation>Nepodařilo se rozbalit soubor %1 do %2</translation>
+        <location line="+17"/>
+        <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="+60"/>
+        <source>Failed to extract file %1 to %2%3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to extract file %1 to %2</source>
+        <translation type="vanished">Nepodařilo se rozbalit soubor %1 do %2</translation>
+    </message>
+    <message>
+        <location line="-74"/>
         <source>Extracting empty archives seems odd...</source>
         <translation>Rozbalování prázdných archivů je zvláštní...</translation>
     </message>
@@ -7433,7 +7452,7 @@ Tento problém budete muset opravit ručně.</translation>
         <translation>Kopírovat kód do schránky</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+128"/>
+        <location filename="../launcher/ui/dialogs/MSALoginDialog.cpp" line="+130"/>
         <source>Open %1 or scan the QR and enter the above code if needed.</source>
         <translation>Otevřete %1 nebo naskenujte QR kód a v případě potřeby zadejte kód výše.</translation>
     </message>
@@ -7667,7 +7686,7 @@ Tento problém budete muset opravit ručně.</translation>
         <translation>&amp;Zobrazit</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1842"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1858"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -7695,8 +7714,8 @@ Opravdu?</translation>
         <translation>Přerušit</translation>
     </message>
     <message>
-        <location line="-261"/>
-        <location line="+129"/>
+        <location line="-262"/>
+        <location line="+130"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -8164,7 +8183,7 @@ Před opětovným pokusem o instalaci této modifikace prosím vytvořte novou i
         <translation>Varování</translation>
     </message>
     <message>
-        <location line="-905"/>
+        <location line="-920"/>
         <source>Show PollyMC</source>
         <translation>Zobrazit PollyMC</translation>
     </message>
@@ -8189,7 +8208,12 @@ Před opětovným pokusem o instalaci této modifikace prosím vytvořte novou i
         <translation>Hvězdička na GitHubu</translation>
     </message>
     <message>
-        <location line="+892"/>
+        <location line="+343"/>
+        <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+564"/>
         <source>Instance not editable</source>
         <translation>Instanci nelze upravit</translation>
     </message>
@@ -8199,7 +8223,7 @@ Před opětovným pokusem o instalaci této modifikace prosím vytvořte novou i
         <translation>Nepodařilo se obnovit instanci z koše</translation>
     </message>
     <message>
-        <location line="-1067"/>
+        <location line="-1082"/>
         <location line="+150"/>
         <source>Update on your bug report</source>
         <translation type="unfinished"></translation>
@@ -8225,7 +8249,7 @@ Před opětovným pokusem o instalaci této modifikace prosím vytvořte novou i
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+905"/>
+        <location line="+920"/>
         <source>Cannot rename group</source>
         <translation>Nepodařilo se přejmenovat skupinu</translation>
     </message>
@@ -8241,12 +8265,12 @@ Před opětovným pokusem o instalaci této modifikace prosím vytvořte novou i
     </message>
     <message>
         <location line="+623"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-502"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-517"/>
         <source>Accounts</source>
         <translation>Účty</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+758"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+773"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 byl úspěšně přidán do vaší PATH. Nyní jej můžete spustit zadáním `%2`.</translation>
     </message>
@@ -8270,7 +8294,7 @@ Před opětovným pokusem o instalaci této modifikace prosím vytvořte novou i
         <translation type="vanished">Otevřít vývojový blog a přečíst si další novinky o %1.</translation>
     </message>
     <message>
-        <location line="-1527"/>
+        <location line="-1542"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
@@ -8304,7 +8328,7 @@ Před opětovným pokusem o instalaci této modifikace prosím vytvořte novou i
         <translation>&amp;Složka</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+357"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+372"/>
         <source>Install modpack</source>
         <translation>Nainstalovat modpack</translation>
     </message>
@@ -8375,7 +8399,7 @@ Před opětovným pokusem o instalaci této modifikace prosím vytvořte novou i
     </message>
     <message>
         <location line="+30"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-820"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-835"/>
         <location line="+136"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -8396,7 +8420,7 @@ Před opětovným pokusem o instalaci této modifikace prosím vytvořte novou i
         <translation>Otevřít složku s motivy widgetů v prohlížeči souborů.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+873"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+888"/>
         <source>Group name</source>
         <translation>Název skupiny</translation>
     </message>
@@ -8416,7 +8440,7 @@ Před opětovným pokusem o instalaci této modifikace prosím vytvořte novou i
         <translation>Neplatný odkaz k importu: chybějící parametr „url“.</translation>
     </message>
     <message>
-        <location line="-452"/>
+        <location line="-467"/>
         <source>&amp;Rename group</source>
         <translation>&amp;Přejmenovat skupinu</translation>
     </message>
@@ -8428,7 +8452,7 @@ Před opětovným pokusem o instalaci této modifikace prosím vytvořte novou i
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1572"/>
+        <location line="+1587"/>
         <source>No instance selected</source>
         <translation>Nebyla vybrána žádná instance</translation>
     </message>
@@ -8487,12 +8511,12 @@ Pro ruční vymazání mezipaměti klikněte na Složky -&gt; Otevřít kořenov
         <translation>Odstranit vybranou instanci.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1299"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1314"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Odstranit skupinu</translation>
     </message>
     <message>
-        <location line="+711"/>
+        <location line="+726"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>Nepodařilo se obnovit některé instance a zástupce.
@@ -8508,7 +8532,7 @@ Podívejte se prosím do koše a ručně je obnovte.</translation>
         <translation type="vanished">Chlupatá kočička :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-725"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-740"/>
         <source>&amp;Create instance</source>
         <translation>&amp;Vytvořit instanci</translation>
     </message>
@@ -8543,7 +8567,7 @@ Podívejte se prosím do koše a ručně je obnovte.</translation>
         <translation>Celková doba hraní: 0s</translation>
     </message>
     <message>
-        <location line="+1761"/>
+        <location line="+1776"/>
         <source>Total playtime: %1</source>
         <translation>Celková doba hraní: %1</translation>
     </message>
@@ -8777,7 +8801,7 @@ Ujistěte se také, že důvěřujete adrese URL.
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+140"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>Přerušeno</translation>
@@ -12467,7 +12491,7 @@ Pokračovat se zkrácením?</translation>
         <translation type="vanished">Nerozpoznaný</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1214"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1229"/>
         <source>%1 (in use)</source>
         <translation>%1 (používáno)</translation>
     </message>
@@ -13445,7 +13469,7 @@ Nové jméno: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+49"/>
+        <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14551,7 +14575,7 @@ Jste si jisti, že to chcete udělat?</translation>
 <context>
     <name>ScreenshotsPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+407"/>
+        <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+409"/>
         <source>Abort</source>
         <translation>Přerušit</translation>
     </message>
@@ -15063,7 +15087,7 @@ Jste si jisti?</translation>
     </message>
     <message>
         <location line="+73"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+275"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
         <source>Select a skin</source>
         <translation>Vybrat skin</translation>
     </message>
@@ -15113,7 +15137,7 @@ Jste si jisti?</translation>
         <translation>Použít tento skin na vybraný účet</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-191"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
         <source>Looking for skins</source>
         <translation>Hledání skinů</translation>
     </message>
@@ -15149,7 +15173,7 @@ Jste si jisti?</translation>
         <translation>Pro %1 nebyly nalezeny žádné skiny</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+46"/>
         <source>Unnamed skin</source>
         <translation>Nepojmenovaný skin</translation>
     </message>
@@ -15263,7 +15287,7 @@ Jste si jisti?</translation>
         <translation>Procházet a používat skiny zveřejněné online</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+367"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+373"/>
         <source>You are about to delete &quot;%1&quot;.
 Are you sure?</source>
         <translation>Chystáte se odstranit „%1“.
@@ -15315,7 +15339,7 @@ Jste si jisti?</translation>
         <translation>Nepodařilo se nahrát skin!</translation>
     </message>
     <message>
-        <location line="-198"/>
+        <location line="-204"/>
         <location line="+8"/>
         <source>Skin Import</source>
         <translation>Importovat skin</translation>
@@ -15331,7 +15355,7 @@ Jste si jisti?</translation>
         <translation>Stažený obrázek není platný skin.</translation>
     </message>
     <message>
-        <location line="+142"/>
+        <location line="+148"/>
         <location line="+8"/>
         <source>Skin Save</source>
         <translation>Uložit skin</translation>
@@ -15377,7 +15401,7 @@ Jste si jisti?</translation>
         <translation>Chyba při odstraňování</translation>
     </message>
     <message>
-        <location line="-359"/>
+        <location line="-365"/>
         <source>Cancel</source>
         <translation>Zrušit</translation>
     </message>
@@ -15387,7 +15411,7 @@ Jste si jisti?</translation>
         <translation>Otevřít složku</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+310"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+316"/>
         <source>Skin Delete</source>
         <translation>Odstranění skinu</translation>
     </message>
@@ -15432,12 +15456,12 @@ Jste si jisti?</translation>
         <translation>Importovat URL</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-463"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-469"/>
         <source>Select Skin Texture</source>
         <translation>Vyberte texturu skinu</translation>
     </message>
     <message>
-        <location line="+305"/>
+        <location line="+311"/>
         <source>Confirm Deletion</source>
         <translation>Potvrdit odstranění</translation>
     </message>
@@ -15523,12 +15547,12 @@ Jste si jisti?</translation>
         <translation>Přejmenovat vybraný skin</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-206"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-212"/>
         <source>Selected file is not a valid skin</source>
         <translation>Vybraný soubor není platný skin</translation>
     </message>
     <message>
-        <location line="+378"/>
+        <location line="+384"/>
         <source>Download user skin</source>
         <translation>Stáhnout skin uživatele</translation>
     </message>
@@ -15549,7 +15573,7 @@ Jste si jisti?</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+269"/>
+        <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
