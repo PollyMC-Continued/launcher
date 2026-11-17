@@ -2261,9 +2261,14 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation>Die instansie het onopgeloste afhanklikhede terwyl dit gelaai/nagegaan word vir lansering.</translation>
     </message>
     <message>
-        <location line="+300"/>
+        <location line="+301"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>Kon nie metadata vir %1 %2 aflaai nie. Verander asseblief die weergawe of probeer later weer.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished">Rede: %1</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -12424,7 +12429,7 @@ Hierdie boodskap sal vertoon word totdat jy dit uit die JVM-argumente verwyder.<
         <translation>Die pleister is nog nie gelaai nie.</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="-189"/>
+        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="-193"/>
         <source>No compatible version of %1 found for %2 %3</source>
         <translation>Geen versoenbare weergawe van %1 vir %2 %3 gevind nie</translation>
     </message>

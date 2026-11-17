@@ -2178,9 +2178,14 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+323"/>
+        <location line="+324"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>Gat ekki sótt lýsigögn fyrir %1 %2. Vinsamlegast breyttu um útgáfu eða reyndu aftur síðar.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2189,7 +2194,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-313"/>
+        <location line="-317"/>
         <source>Instance has conflicting dependencies.</source>
         <translation>Þetta tilvik hefur misvísandi ósjálfstæði.</translation>
     </message>

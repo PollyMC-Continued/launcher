@@ -2192,8 +2192,13 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation>Примерот има спротивставени зависности.</translation>
     </message>
     <message>
-        <location line="+306"/>
+        <location line="+307"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Reason: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2213,7 +2218,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Некои задачи за вчитување метаподатоци не успеаја.</translation>
     </message>
     <message>
-        <location line="-307"/>
+        <location line="-311"/>
         <source>Instance has unresolved dependencies while loading/checking for launch.</source>
         <translation>Примерот има нерешени зависности додека се вчитува/проверува за вклучување.</translation>
     </message>

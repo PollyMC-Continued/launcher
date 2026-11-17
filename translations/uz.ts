@@ -2148,12 +2148,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Bekor qilingan</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+807"/>
+        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+808"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>%1 %2 uchun metamaʼlumotlarni yuklab boʻlmadi. Iltimos, versiyani o&apos;zgartiring yoki keyinroq qayta urinib ko&apos;ring.</translation>
     </message>
     <message>
-        <location line="-306"/>
+        <location line="-307"/>
         <source>Instance has conflicting dependencies.</source>
         <translation>Misolda qarama-qarshi bog&apos;liqliklar mavjud.</translation>
     </message>
@@ -2173,7 +2173,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+570"/>
+        <location line="+567"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Component metadata update failed during download:
 %1</source>
         <translation type="unfinished"></translation>
@@ -2189,7 +2194,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Ayrim komponent metamaʼlumotlarini yuklash boʻyicha topshiriqlar bajarilmadi.</translation>
     </message>
     <message>
-        <location line="-565"/>
+        <location line="-569"/>
         <source>Downloading metadata for %1 components</source>
         <translation>%1 komponent uchun metamaʼlumotlar yuklab olinmoqda</translation>
     </message>

@@ -2239,9 +2239,14 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+323"/>
+        <location line="+324"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>%1 %2 এর মেটাডেটা ডাউনলোড করা যায়নি।&#xa0;অনুগ্রহ করে ভার্সনটি পরিবর্তন করুন অথবা পরে আবার চেষ্টা করুন।</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished">কারণ: %1</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2250,7 +2255,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-313"/>
+        <location line="-317"/>
         <source>Instance has conflicting dependencies.</source>
         <translation>ইনস্ট্যান্স এর কনফ্লিক্টিং ডিপেন্ডেন্সিস আছে।</translation>
     </message>

@@ -2178,9 +2178,14 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+323"/>
+        <location line="+324"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>%1 %2 க்கு மெட்டாடேட்டாவை பதிவிறக்கம் செய்ய முடியவில்லை. பதிப்பை மாற்றவும் அல்லது பின்னர் மீண்டும் முயற்சிக்கவும்.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished">காரணம்: %1</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2189,7 +2194,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-313"/>
+        <location line="-317"/>
         <source>Instance has conflicting dependencies.</source>
         <translation>உதாரணமாக முரண்பட்ட சார்புகள் உள்ளன.</translation>
     </message>

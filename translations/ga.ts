@@ -2223,12 +2223,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Tobscortha</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+807"/>
+        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+808"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>Níorbh fhéidir meiteashonraí a íoslódáil le haghaidh %1 %2. Athraigh an leagan nó déan iarracht arís ar ball.</translation>
     </message>
     <message>
-        <location line="-306"/>
+        <location line="-307"/>
         <source>Instance has conflicting dependencies.</source>
         <translation>Tá spleáchais choimhlintí ag an gcás.</translation>
     </message>
@@ -2248,7 +2248,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+570"/>
+        <location line="+567"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished">Cúis: %1</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Component metadata update failed during download:
 %1</source>
         <translation type="unfinished"></translation>
@@ -2264,7 +2269,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Theip ar roinnt tascanna lódála meiteashonraí comhpháirte.</translation>
     </message>
     <message>
-        <location line="-565"/>
+        <location line="-569"/>
         <source>Downloading metadata for %1 components</source>
         <translation>Meiteashonraí á n-íoslódáil do chomhpháirteanna %1</translation>
     </message>

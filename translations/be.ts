@@ -2161,12 +2161,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Спынена</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+807"/>
+        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+808"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>Немагчыма загрузіць метададзеныя для %1 %2. Калі ласка, змяніце версію або паспрабуйце пазней.</translation>
     </message>
     <message>
-        <location line="-306"/>
+        <location line="-307"/>
         <source>Instance has conflicting dependencies.</source>
         <translation>Версія мае супярэчлівыя залежнасці.</translation>
     </message>
@@ -2186,7 +2186,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+570"/>
+        <location line="+567"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Component metadata update failed during download:
 %1</source>
         <translation type="unfinished"></translation>
@@ -2202,7 +2207,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Некаторыя задачы па загрузцы метаданых кампанента не выкананы.</translation>
     </message>
     <message>
-        <location line="-565"/>
+        <location line="-569"/>
         <source>Downloading metadata for %1 components</source>
         <translation>Спампоўваюцца метададзеныя для кампанентаў %1</translation>
     </message>

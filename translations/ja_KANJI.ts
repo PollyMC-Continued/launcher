@@ -2069,8 +2069,13 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation>構成実例の依存関係に競合があります。</translation>
     </message>
     <message>
-        <location line="+306"/>
+        <location line="+307"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Reason: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2090,7 +2095,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">一部の部品の上位数元の読込に失敗しました。</translation>
     </message>
     <message>
-        <location line="-729"/>
+        <location line="-733"/>
         <source>Loading components</source>
         <translation type="unfinished"></translation>
     </message>

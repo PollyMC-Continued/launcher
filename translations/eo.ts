@@ -2187,9 +2187,14 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation>Instanco havas konfliktajn devigajn partojn.</translation>
     </message>
     <message>
-        <location line="+306"/>
+        <location line="+307"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished">Kaŭzo: %1</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2208,7 +2213,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Kelkaj taskoj por ŝargi metadatumajn komponantojn malsukcesis.</translation>
     </message>
     <message>
-        <location line="-307"/>
+        <location line="-311"/>
         <source>Instance has unresolved dependencies while loading/checking for launch.</source>
         <translation>La instanco havas nesolvitajn dependecojn durante la sxargado/kontrolo antau lanco.</translation>
     </message>

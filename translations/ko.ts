@@ -2217,12 +2217,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">중단됨</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+807"/>
+        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+808"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>%1 %2의 메타데이터를 다운로드할 수 없습니다. 버전을 변경하거나 나중에 다시 시도하십시오.</translation>
     </message>
     <message>
-        <location line="-306"/>
+        <location line="-307"/>
         <source>Instance has conflicting dependencies.</source>
         <translation>인스턴스가 서로 충돌하는 요구 사항을 가지고 있습니다.</translation>
     </message>
@@ -2242,7 +2242,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+570"/>
+        <location line="+567"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished">이유: %1</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Component metadata update failed during download:
 %1</source>
         <translation type="unfinished"></translation>
@@ -2258,7 +2263,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">일부 구성 요소 메타데이터를 불러오지 못하였습니다.</translation>
     </message>
     <message>
-        <location line="-565"/>
+        <location line="-569"/>
         <source>Downloading metadata for %1 components</source>
         <translation>%1개 구성 요소에 대한 메타데이터 다운로드 중</translation>
     </message>

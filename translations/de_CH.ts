@@ -2180,8 +2180,13 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation>Die Instanz hat kollidierende Abhängigkeiten.</translation>
     </message>
     <message>
-        <location line="+306"/>
+        <location line="+307"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Reason: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2201,7 +2206,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Das Laden einiger Komponenten-Metadaten ist fehlgeschlagen.</translation>
     </message>
     <message>
-        <location line="-307"/>
+        <location line="-311"/>
         <source>Instance has unresolved dependencies while loading/checking for launch.</source>
         <translation>Die Instanz hat nicht aufgelöste Abhängigkeiten, die zum Starten / Prüfen der Startbereitschaft benötigt werden.</translation>
     </message>

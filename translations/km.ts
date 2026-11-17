@@ -2161,12 +2161,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">បោះបង់ចេញ</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+807"/>
+        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+808"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>មិនអាចទាញយកទិន្នន័យមេតាសម្រាប់ %1 %2 បានទេ។ សូមផ្លាស់ប្តូរកំណែ ឬព្យាយាមម្តងទៀតនៅពេលក្រោយ។</translation>
     </message>
     <message>
-        <location line="-306"/>
+        <location line="-307"/>
         <source>Instance has conflicting dependencies.</source>
         <translation>វត្ថុមានភាពអាស្រ័យផ្ទុយគ្នា។</translation>
     </message>
@@ -2186,7 +2186,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+570"/>
+        <location line="+567"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Component metadata update failed during download:
 %1</source>
         <translation type="unfinished"></translation>
@@ -2202,7 +2207,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">កិច្ចការផ្ទុកទិន្នន័យមេតានៃសមាសភាគមួយចំនួនបានបរាជ័យ។</translation>
     </message>
     <message>
-        <location line="-565"/>
+        <location line="-569"/>
         <source>Downloading metadata for %1 components</source>
         <translation>កំពុងទាញយកទិន្នន័យមេតាសម្រាប់សមាសធាតុ %1</translation>
     </message>
