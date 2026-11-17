@@ -2225,12 +2225,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Abgebrochen</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+807"/>
+        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+808"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>Metadaten für %1 %2 konnten nicht heruntergeladen werden. Bitte ändere die Version oder versuche es später noch einmal.</translation>
     </message>
     <message>
-        <location line="-306"/>
+        <location line="-307"/>
         <source>Instance has conflicting dependencies.</source>
         <translation>Die Instanz hat kollidierende Abhängigkeiten.</translation>
     </message>
@@ -2250,7 +2250,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+570"/>
+        <location line="+567"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished">Grund: %1</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Component metadata update failed during download:
 %1</source>
         <translation type="unfinished"></translation>
@@ -2266,7 +2271,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Das Laden der Komponenten-Metadaten ist fehlgeschlagen.</translation>
     </message>
     <message>
-        <location line="-565"/>
+        <location line="-569"/>
         <source>Downloading metadata for %1 components</source>
         <translation>Lade Metadaten für %1 Komponenten herunter</translation>
     </message>

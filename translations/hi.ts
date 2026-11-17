@@ -2243,9 +2243,14 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+323"/>
+        <location line="+324"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>%1 %2 का मेटाडेटा डाउनलोड नहीं किया जा सका। कृपया संस्करण बदलें या बाद में पुनः प्रयास करें।</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished">कारण: %1</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2264,7 +2269,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">कुछ घटक मेटाडेटा लोड करने के कार्य विफल रहे।</translation>
     </message>
     <message>
-        <location line="-565"/>
+        <location line="-569"/>
         <source>Downloading metadata for %1 components</source>
         <translation>डौंलोडिंग %1</translation>
     </message>

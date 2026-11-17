@@ -2219,12 +2219,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">已中止</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+807"/>
+        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+808"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>无法下载 %1 %2 的元数据。请更改版本或稍后重试。</translation>
     </message>
     <message>
-        <location line="-306"/>
+        <location line="-307"/>
         <source>Instance has conflicting dependencies.</source>
         <translation>实例包含冲突的前置项。</translation>
     </message>
@@ -2244,7 +2244,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+570"/>
+        <location line="+567"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished">原因：%1</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Component metadata update failed during download:
 %1</source>
         <translation type="unfinished"></translation>
@@ -2260,7 +2265,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">部分组件元数据加载失败。</translation>
     </message>
     <message>
-        <location line="-565"/>
+        <location line="-569"/>
         <source>Downloading metadata for %1 components</source>
         <translation>正在下载 %1 个组件的元数据</translation>
     </message>

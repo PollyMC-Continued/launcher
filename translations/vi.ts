@@ -2220,12 +2220,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Bị gián đoạn</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+807"/>
+        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+808"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>Không thể tải xuống dữ liệu cho %1 %2. Hãy đổi sang các phiên bản khác hoặc thử lại.</translation>
     </message>
     <message>
-        <location line="-306"/>
+        <location line="-307"/>
         <source>Instance has conflicting dependencies.</source>
         <translation>Phiên bản có các yêu cầu mâu thuẫn.</translation>
     </message>
@@ -2245,7 +2245,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+570"/>
+        <location line="+567"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished">Lý do: %1</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Component metadata update failed during download:
 %1</source>
         <translation type="unfinished"></translation>
@@ -2261,7 +2266,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Một số tác vụ tải metadata thất bại.</translation>
     </message>
     <message>
-        <location line="-565"/>
+        <location line="-569"/>
         <source>Downloading metadata for %1 components</source>
         <translation>Đang tải siêu dữ liệu cho %1 thành phần</translation>
     </message>

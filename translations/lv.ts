@@ -2161,12 +2161,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Pārtraukts</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+807"/>
+        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+808"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>Nespēja lejupielādēt metadatus priekš %1 %2. Lūdzu nomainiet versiju vai vēlāk mēģiniet vēlreiz.</translation>
     </message>
     <message>
-        <location line="-306"/>
+        <location line="-307"/>
         <source>Instance has conflicting dependencies.</source>
         <translation>Instancei ir pretrunīgas atkarības.</translation>
     </message>
@@ -2186,7 +2186,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+570"/>
+        <location line="+567"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Component metadata update failed during download:
 %1</source>
         <translation type="unfinished"></translation>
@@ -2202,7 +2207,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Dažu komponentu metadatu ielādes darbi neizdevās.</translation>
     </message>
     <message>
-        <location line="-565"/>
+        <location line="-569"/>
         <source>Downloading metadata for %1 components</source>
         <translation>Lejupielādē metadatus priekš %1 komponentiem</translation>
     </message>

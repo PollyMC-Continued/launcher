@@ -2160,12 +2160,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">בוטל</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+807"/>
+        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+808"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>לא היה ניתן להוריד את נתוני העל עבור %1 %2. נא לשנות את הגרסה ולנסות שוב מאוחר יותר.</translation>
     </message>
     <message>
-        <location line="-306"/>
+        <location line="-307"/>
         <source>Instance has conflicting dependencies.</source>
         <translation>לעותק יש תלויות מתנגשות.</translation>
     </message>
@@ -2185,7 +2185,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+570"/>
+        <location line="+567"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished">סיבה: %1</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Component metadata update failed during download:
 %1</source>
         <translation type="unfinished"></translation>
@@ -2201,7 +2206,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">משימות הטעינה של מטא נתונים של מספר רכיבים נכשלו.</translation>
     </message>
     <message>
-        <location line="-565"/>
+        <location line="-569"/>
         <source>Downloading metadata for %1 components</source>
         <translation>מתקבלים נתוני העל עבור %1 רכיבים</translation>
     </message>

@@ -2222,12 +2222,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Geannuleerd</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+807"/>
+        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="+808"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>Metadata voor %1 %2 kon niet worden gedownload. Wijzig de versie of probeer later opnieuw.</translation>
     </message>
     <message>
-        <location line="-306"/>
+        <location line="-307"/>
         <source>Instance has conflicting dependencies.</source>
         <translation>De instantie heeft botsende afhankelijkheden.</translation>
     </message>
@@ -2247,7 +2247,12 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+570"/>
+        <location line="+567"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished">Reden: %1</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Component metadata update failed during download:
 %1</source>
         <translation type="unfinished"></translation>
@@ -2263,7 +2268,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="vanished">Het laden van de metadata van enkele onderdelen is mislukt.</translation>
     </message>
     <message>
-        <location line="-565"/>
+        <location line="-569"/>
         <source>Downloading metadata for %1 components</source>
         <translation>Metadata downloaden voor %1 onderdelen</translation>
     </message>

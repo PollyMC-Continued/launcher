@@ -2178,9 +2178,14 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+323"/>
+        <location line="+324"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
         <translation>Impussibil discjariâ i metadâts par %1 %2. Par plasê, modifiche la version o prove di gnûf plui tart.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Reason: %1</source>
+        <translation type="unfinished">Motîf: %1</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2189,7 +2194,7 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-313"/>
+        <location line="-317"/>
         <source>Instance has conflicting dependencies.</source>
         <translation>La istance e à dipendencis in conflit.</translation>
     </message>

@@ -2150,8 +2150,13 @@ This launcher will tell you when the team has an update. You can also check any 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+300"/>
+        <location line="+301"/>
         <source>Could not download metadata for %1 %2. Please change the version or try again later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Reason: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -11768,7 +11773,7 @@ Would you like to remove those existing saves as part of this update?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="-189"/>
+        <location filename="../launcher/minecraft/ComponentUpdateTask.cpp" line="-193"/>
         <source>No compatible version of %1 found for %2 %3</source>
         <translation type="unfinished"></translation>
     </message>
