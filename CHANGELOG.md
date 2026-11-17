@@ -1,5 +1,15 @@
 # Changelog
 
+## v10.0.5
+
+**Fixes offline skins not updating after the first time, and makes "Could not download metadata" errors tell you what actually went wrong.**
+
+**Fixed:**
+
+- **Offline skins only applied the first time** — After you applied a skin to an offline account, later changes were ignored, and the only workaround was creating a new account. Minecraft keeps a saved copy of each skin it downloads, filed under the skin's address, and the launcher used the same address for an account's skin every time, so the game kept showing the old copy. The address now changes whenever the skin changes, so the new skin is picked up the next time you launch.
+- **"Could not download metadata" errors now explain why** — When the launcher could not download the version information for a component such as NeoForge, the error only said to try again later and never gave the reason. It now shows the actual reason, so you can tell a connection problem from a missing or damaged file.
+- **Wrong components listed in metadata download errors** — When one component failed to download, the error could list every component the launcher was fetching at the time, not just the one that failed. It now names only the components that actually failed.
+
 ## v10.0.4
 
 **Fixes the crash many Windows users hit while browsing mods, makes failed modpack imports explain what actually went wrong, and repairs the Nix build.**

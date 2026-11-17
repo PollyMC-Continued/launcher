@@ -752,7 +752,7 @@ void ComponentUpdateTask::remoteLoadSucceeded(size_t taskIndex)
         return;
     }
     qCDebug(instanceProfileResolveC) << "Remote task" << taskIndex << "succeeded";
-    taskSlot.succeeded = false;
+    taskSlot.succeeded = true;
     taskSlot.finished = true;
     d->remoteTasksInProgress--;
     // update the cached data of the component from the downloaded version file.
@@ -778,9 +778,10 @@ void ComponentUpdateTask::remoteLoadFailed(size_t taskIndex, const QString& msg)
         qCWarning(instanceProfileResolveC) << QString("Remote load task %1 returned multiple results").arg(taskIndex);
         return;
     }
-    qCDebug(instanceProfileResolveC) << "Remote task" << taskIndex << "failed:" << msg;
+    qCWarning(instanceProfileResolveC) << "Remote task" << taskIndex << "failed:" << msg;
     d->remoteLoadSuccessful = false;
     taskSlot.succeeded = false;
+    taskSlot.error = msg;
     taskSlot.finished = true;
     d->remoteTasksInProgress--;
     checkIfAllFinished();
@@ -804,8 +805,11 @@ void ComponentUpdateTask::checkIfAllFinished()
         for (auto& item : d->remoteLoadStatusList) {
             if (!item.succeeded) {
                 const ComponentPtr component = d->m_profile->getComponent(item.PackProfileIndex);
-                allErrorsList.append(tr("Could not download metadata for %1 %2. Please change the version or try again later.")
-                                         .arg(component->getName(), component->m_version));
+                auto line = tr("Could not download metadata for %1 %2. Please change the version or try again later.")
+                                .arg(component->getName(), component->m_version);
+                if (!item.error.isEmpty())
+                    line += "\n" + tr("Reason: %1").arg(item.error);
+                allErrorsList.append(line);
             }
         }
         d->remoteLoadStatusList.clear();

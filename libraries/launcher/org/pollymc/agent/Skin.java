@@ -33,6 +33,7 @@ import java.net.URLConnection;
 import java.net.URLStreamHandler;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.security.MessageDigest;
 import java.util.Base64;
 import java.util.Hashtable;
 
@@ -128,7 +129,11 @@ public final class Skin {
         } else if (TEXTURE_HOST.equals(host)) {
             String path = url.getPath();
             if (path != null && path.startsWith(SKIN_PATH_PREFIX)) {
-                String uuid = path.substring(SKIN_PATH_PREFIX.length()).replace(".png", "").replace("-", "");
+                // Texture file name is "<uuid>_<sha1 of skin.png>.png"; the hash only exists to bust
+                // Minecraft's on-disk skin cache, which is keyed by the URL's base name.
+                String name = path.substring(SKIN_PATH_PREFIX.length()).replace(".png", "");
+                int sep = name.indexOf('_');
+                String uuid = (sep >= 0 ? name.substring(0, sep) : name).replace("-", "");
                 String skinDir = findSkinDir(uuid);
                 if (skinDir != null) {
                     File skinFile = new File(skinDir, "skin.png");
@@ -163,6 +168,24 @@ public final class Skin {
             return (HttpURLConnection) ctor.newInstance(url, proxy != null ? proxy : Proxy.NO_PROXY);
         } catch (Exception e) {
             throw new IOException("Cannot create HTTPS connection to " + url + " - " + e.getMessage());
+        }
+    }
+
+    /**
+     * Hex SHA-1 of the skin file. Used as part of the texture URL so that a changed skin
+     * gets a new URL (and therefore a new Minecraft skin-cache key).
+     */
+    static String skinHash(File skinFile) {
+        try {
+            byte[] digest = MessageDigest.getInstance("SHA-1").digest(Files.readAllBytes(skinFile.toPath()));
+            StringBuilder sb = new StringBuilder(digest.length * 2);
+            for (byte b : digest) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (Exception e) {
+            // Fall back to something that still changes whenever the file is rewritten.
+            return Long.toHexString(skinFile.lastModified()) + Long.toHexString(skinFile.length());
         }
     }
 
@@ -274,7 +297,8 @@ class LocalSkinURLConnection extends HttpURLConnection {
             } catch (Exception ignored) {}
         }
 
-        String skinUrl = "https://" + Skin.TEXTURE_HOST + Skin.SKIN_PATH_PREFIX + uuid + ".png";
+        // The hash makes the URL (and Minecraft's skin cache key) change whenever the skin changes.
+        String skinUrl = "https://" + Skin.TEXTURE_HOST + Skin.SKIN_PATH_PREFIX + uuid + "_" + Skin.skinHash(skinFile) + ".png";
 
         String profileName = Skin.findAccountName(uuid);
         if (profileName == null) {
