@@ -124,7 +124,7 @@ stdenv.mkDerivation {
       their own mods, texture packs, saves, etc) and helps you manage them and
       their associated options with a simple interface.
     '';
-    homepage = "https://github.com/PollyMC-Continued/launcher";
+    homepage = "https://pollymc.vercel.app";
     license = lib.licenses.gpl3Only;
     maintainers = with lib.maintainers; [
       Scrumplex

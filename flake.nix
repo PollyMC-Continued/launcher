@@ -92,7 +92,7 @@
           packages' = self.packages.${system};
 
           welcomeMessage = ''
-            Welcome to the PollyMC-Continued repository! 🌈
+            Welcome to the PollyMC-Continued repository! 
 
             We just set some things up for you. To get building, you can run:
 
@@ -102,8 +102,9 @@
             $ ninjaInstallPhase
             ```
 
-            Feel free to ask any questions by opening an issue:
+            Feel free to ask any questions in our Discord server or by opening an issue:
               - https://github.com/PollyMC-Continued/launcher/issues
+	      - https://pollymc.vercel.app/discord
 
             And thanks for helping out :)
           '';
