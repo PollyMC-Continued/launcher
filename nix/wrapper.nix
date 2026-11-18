@@ -22,7 +22,7 @@
   openal,
   pciutils,
   pipewire,
-  prismlauncher-unwrapped,
+  pollymc-unwrapped,
   stdenv,
   symlinkJoin,
   udev,
@@ -51,13 +51,13 @@ assert lib.assertMsg (
 ) "textToSpeechSupport only has an effect on Linux.";
 
 let
-  prismlauncher' = prismlauncher-unwrapped.override { inherit msaClientID; };
+  pollymc' = pollymc-unwrapped.override { inherit msaClientID; };
 in
 
 symlinkJoin {
-  name = "prismlauncher-${prismlauncher'.version}";
+  name = "pollymc-${pollymc'.version}";
 
-  paths = [ prismlauncher' ];
+  paths = [ pollymc' ];
 
   nativeBuildInputs = [ kdePackages.wrapQtAppsHook ];
 
@@ -120,7 +120,7 @@ symlinkJoin {
     ];
 
   meta = {
-    inherit (prismlauncher'.meta)
+    inherit (pollymc'.meta)
       description
       longDescription
       homepage

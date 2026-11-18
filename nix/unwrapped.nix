@@ -51,7 +51,7 @@ let
 in
 
 stdenv.mkDerivation {
-  pname = "prismlauncher-unwrapped";
+  pname = "pollymc-unwrapped";
   version = "10.0-unstable-${date}";
 
   src = lib.fileset.toSource {
@@ -124,13 +124,13 @@ stdenv.mkDerivation {
       their own mods, texture packs, saves, etc) and helps you manage them and
       their associated options with a simple interface.
     '';
-    homepage = "https://prismlauncher.org/";
+    homepage = "https://github.com/PollyMC-Continued/launcher";
     license = lib.licenses.gpl3Only;
     maintainers = with lib.maintainers; [
       Scrumplex
       getchoo
     ];
-    mainProgram = "prismlauncher";
+    mainProgram = "pollymc";
     platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
 }
