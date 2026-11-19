@@ -559,6 +559,12 @@ elseif(UNIX)
 
     # Set RPATH
     SET(Launcher_BINARY_RPATH "$ORIGIN/")
+    # Keep a packager-provided RPATH too. The per-target INSTALL_RPATH set from this variable would
+    # otherwise replace -DCMAKE_INSTALL_RPATH, e.g. the Arch package's private /usr/lib/pollymc-continued
+    # where it ships libonnxruntime.so.1.
+    if(CMAKE_INSTALL_RPATH)
+        list(APPEND Launcher_BINARY_RPATH "${CMAKE_INSTALL_RPATH}")
+    endif()
 
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${Launcher_Desktop} DESTINATION ${KDE_INSTALL_APPDIR})
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${Launcher_MetaInfo} DESTINATION ${KDE_INSTALL_METAINFODIR})
