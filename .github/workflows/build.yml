@@ -392,6 +392,7 @@ jobs:
             -DLauncher_VERSION="${{ needs.skip-check.outputs.version }}" \
             -DLauncher_BUILD_NUMBER="${{ github.run_number }}" \
             -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
+            -DLauncher_GIT_COMMIT_OVERRIDE="${{ github.sha }}" \
             -S . -B build
 
       - name: Build
@@ -743,6 +744,7 @@ jobs:
             -DLauncher_VERSION="${{ needs.skip-check.outputs.version }}" \
             -DLauncher_BUILD_NUMBER="${{ github.run_number }}" \
             -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
+            -DLauncher_GIT_COMMIT_OVERRIDE="${{ github.sha }}" \
             -S . -B build
 
       - name: Build
@@ -771,6 +773,7 @@ jobs:
             -DLauncher_BUILD_NUMBER="${{ github.run_number }}" \
             -DLauncher_UPDATER_GITHUB_REPO="" \
             -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
+            -DLauncher_GIT_COMMIT_OVERRIDE="${{ github.sha }}" \
             -S . -B build-deb
           cmake --build build-deb -j$(nproc)
           cpack --config build-deb/CPackConfig.cmake -G DEB -B build-deb
@@ -1043,6 +1046,7 @@ jobs:
             -DLauncher_VERSION="${{ needs.skip-check.outputs.version }}" \
             -DLauncher_BUILD_NUMBER="${{ github.run_number }}" \
             -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
+            -DLauncher_GIT_COMMIT_OVERRIDE="${{ github.sha }}" \
             -S . -B build
 
       - name: Build
@@ -1427,6 +1431,7 @@ jobs:
             -DLauncher_BUILD_RELEASE=ON \
             -DLauncher_BUILD_PLATFORM="${{ runner.os }}" \
             -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
+            -DLauncher_GIT_COMMIT_OVERRIDE="${{ github.sha }}" \
             -DENABLE_LTO=ON \
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -1587,7 +1592,7 @@ jobs:
           bash scripts/fetch-onnxruntime.sh "$ORT_VERSION" manylinux_2_27_x86_64 \
             "packaging/arch/ort/onnxruntime-linux-x64-$ORT_VERSION" thirdparty/onnxruntime/include
           cd packaging/arch
-          su builder -c "CCACHE_DIR='$GITHUB_WORKSPACE/.ccache' CCACHE_MAXSIZE=400M makepkg --noconfirm --force"
+          su builder -c "GITHUB_SHA='${{ github.sha }}' CCACHE_DIR='$GITHUB_WORKSPACE/.ccache' CCACHE_MAXSIZE=400M makepkg --noconfirm --force"
           # Rename to the branded name and drop the -debug package.
           rm -f pollymc-continued-debug-*.pkg.tar.zst
           mv "pollymc-continued-${VERSION}-1-x86_64.pkg.tar.zst" "PollyMC-Continued-${VERSION}-1-x86_64.pkg.tar.zst"

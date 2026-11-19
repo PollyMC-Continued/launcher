@@ -94,6 +94,10 @@ Config::Config()
         GIT_COMMIT = "";
     }
 
+    if (GIT_COMMIT.contains(QStringLiteral("NOTFOUND"))) {
+        GIT_COMMIT = "";
+    }
+
     if (GIT_REFSPEC.startsWith("refs/heads/")) {
         VERSION_CHANNEL = GIT_REFSPEC;
         VERSION_CHANNEL.remove("refs/heads/");

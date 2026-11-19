@@ -290,6 +290,9 @@ void LauncherPage::loadSettings()
             const int idx = ui->updateBehaviorComboBox->findData(pollymcUpdater->getAutoUpdateMode());
             ui->updateBehaviorComboBox->setCurrentIndex(idx >= 0 ? idx : 1);  // default Ask
             ui->updateIntervalSpinBox->setEnabled(pollymcUpdater->getAutoUpdateMode() != "Never");
+            // Updates are mandatory and checked every 30 minutes, so these options are not configurable.
+            ui->updateSettingsBox->setEnabled(false);
+            ui->updateSettingsBox->setToolTip(tr("Updates are mandatory: the launcher checks at startup and every 30 minutes."));
         }
     }
 

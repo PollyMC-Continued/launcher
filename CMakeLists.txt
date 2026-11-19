@@ -199,7 +199,18 @@ set(Launcher_VERSION_NAME4_COMMA "${Launcher_VERSION_MAJOR},${Launcher_VERSION_M
 set(Launcher_BUILD_NUMBER "0" CACHE STRING "Build number (CI override)")
 
 # Build platform.
-set(Launcher_BUILD_PLATFORM "unknown" CACHE STRING "A short string identifying the platform that this build was built for. Only used to display in the about dialog.")
+set(Launcher_BUILD_PLATFORM "" CACHE STRING "A short string identifying the platform that this build was built for. Only used to display in the about dialog. Defaults to the host OS name.")
+if(Launcher_BUILD_PLATFORM STREQUAL "" OR Launcher_BUILD_PLATFORM STREQUAL "unknown")
+    if(WIN32)
+        set(Launcher_BUILD_PLATFORM "Windows")
+    elseif(APPLE)
+        set(Launcher_BUILD_PLATFORM "macOS")
+    elseif(CMAKE_SYSTEM_NAME)
+        set(Launcher_BUILD_PLATFORM "${CMAKE_SYSTEM_NAME}")
+    else()
+        set(Launcher_BUILD_PLATFORM "unknown")
+    endif()
+endif()
 
 # Github repo URL with releases for updater
 set(Launcher_UPDATER_GITHUB_REPO "https://github.com/PollyMC-Continued/launcher" CACHE STRING "Base github URL for the updater.")
@@ -294,6 +305,20 @@ set(Launcher_COMPILER_TARGET_PROCESSOR ${CMAKE_SYSTEM_PROCESSOR})
 include(GetGitRevisionDescription)
 git_get_exact_tag(Launcher_GIT_TAG)
 get_git_head_revision(Launcher_GIT_REFSPEC Launcher_GIT_COMMIT)
+
+# Source archives and tarballs have no .git directory, so the lookup above yields "GITDIR-NOTFOUND".
+# CI passes the real commit via Launcher_GIT_COMMIT_OVERRIDE (or the GITHUB_SHA environment variable).
+set(Launcher_GIT_COMMIT_OVERRIDE "" CACHE STRING "Commit hash to embed when the source tree has no .git directory.")
+if(Launcher_GIT_COMMIT_OVERRIDE STREQUAL "" AND DEFINED ENV{GITHUB_SHA})
+    set(Launcher_GIT_COMMIT_OVERRIDE "$ENV{GITHUB_SHA}")
+endif()
+if(NOT Launcher_GIT_COMMIT_OVERRIDE STREQUAL "")
+    set(Launcher_GIT_COMMIT "${Launcher_GIT_COMMIT_OVERRIDE}")
+endif()
+if(Launcher_GIT_COMMIT MATCHES "NOTFOUND")
+    # Unknown commit: leave it empty so the about dialog hides the line instead of printing GITDIR-NOTFOUND.
+    set(Launcher_GIT_COMMIT "")
+endif()
 
 if(Launcher_BUILD_RELEASE)
     # Use stable metadata in packaged builds.

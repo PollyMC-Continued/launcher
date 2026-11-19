@@ -46,6 +46,8 @@
 namespace {
 // Give the launcher time to paint and settle before the first background check.
 constexpr int startupCheckDelayMs = 5000;
+// Updates are mandatory: check on every startup and then every 30 minutes.
+constexpr int mandatoryCheckIntervalSec = 30 * 60;
 }  // namespace
 
 class PollyMCExternalUpdater::Private {
@@ -75,6 +77,8 @@ class PollyMCExternalUpdater::Private {
     bool checkWasDeferredRetry = false;
     // True when the running check only exists to preview the latest release in the update dialog.
     bool checkIsPreview = false;
+    // True while the mandatory "update required" dialog is open, so a timer-driven check can't stack a second one.
+    bool updatePromptOpen = false;
 };
 
 PollyMCExternalUpdater::PollyMCExternalUpdater(QWidget* parent, const QString& appDir, const QString& dataDir)
@@ -105,13 +109,15 @@ PollyMCExternalUpdater::PollyMCExternalUpdater(QWidget* parent, const QString& a
     if (parent) {
         connect(parent, &QObject::destroyed, this, [this] { priv->parent = nullptr; });
     }
+    // Updates are mandatory, so the user's old schedule and "Ask"/"Never" choices are ignored.
+    priv->autoCheck = true;
+    priv->autoUpdateMode = "Always";
+    priv->updateInterval = mandatoryCheckIntervalSec;
     connectTimer();
     resetAutoCheckTimer();
-    if (priv->updateInterval == 0) {  // "On Launch"
-        // Never run the check from inside the constructor: it is created while the
-        // main window is still being set up. Let startup finish first.
-        QTimer::singleShot(startupCheckDelayMs, this, [this]() { checkForUpdates(false); });
-    }
+    // Always check at startup, whatever last_check says. Never run the check from inside the
+    // constructor: it is created while the main window is still being set up. Let startup finish first.
+    QTimer::singleShot(startupCheckDelayMs, this, [this]() { checkForUpdates(false); });
 }
 
 PollyMCExternalUpdater::~PollyMCExternalUpdater()
@@ -399,20 +405,14 @@ bool PollyMCExternalUpdater::getBetaAllowed()
     return priv->allowBeta;
 }
 
-void PollyMCExternalUpdater::setAutomaticallyChecksForUpdates(bool check)
+void PollyMCExternalUpdater::setAutomaticallyChecksForUpdates(bool)
 {
-    priv->autoCheck = check;
-    priv->settings->setValue("auto_check", check);
-    priv->settings->sync();
-    resetAutoCheckTimer();
+    // Mandatory updates: automatic checks cannot be turned off.
 }
 
-void PollyMCExternalUpdater::setUpdateCheckInterval(double seconds)
+void PollyMCExternalUpdater::setUpdateCheckInterval(double)
 {
-    priv->updateInterval = seconds;
-    priv->settings->setValue("update_interval", seconds);
-    priv->settings->sync();
-    resetAutoCheckTimer();
+    // Mandatory updates: the interval is fixed at mandatoryCheckIntervalSec.
 }
 
 void PollyMCExternalUpdater::setBetaAllowed(bool allowed)
@@ -427,13 +427,9 @@ QString PollyMCExternalUpdater::getAutoUpdateMode()
     return priv->autoUpdateMode;
 }
 
-void PollyMCExternalUpdater::setAutoUpdateMode(const QString& mode)
+void PollyMCExternalUpdater::setAutoUpdateMode(const QString&)
 {
-    if (mode != "Always" && mode != "Ask" && mode != "Never")
-        return;
-    priv->autoUpdateMode = mode;
-    priv->settings->setValue("auto_update_mode", mode);
-    priv->settings->sync();
+    // Mandatory updates: always "Always".
 }
 
 void PollyMCExternalUpdater::resetAutoCheckTimer()
@@ -495,6 +491,7 @@ void PollyMCExternalUpdater::autoCheckTimerFired()
 void PollyMCExternalUpdater::offerUpdate(const QString& version_name, const QString& version_tag,
                                        const QString& release_notes, bool triggeredByUser, bool preview)
 {
+    Q_UNUSED(triggeredByUser);  // manual and automatic checks are treated the same: updates are mandatory
     // Developer preview: always show the regular dialog (ignoring skipped versions, the auto-update
     // mode and running games), but never install or record a skip.
     if (preview) {
@@ -502,56 +499,33 @@ void PollyMCExternalUpdater::offerUpdate(const QString& version_name, const QStr
         dlg.exec();
         return;
     }
-    // Silent path: auto check, mode Always. No UI at all (not even the
-    // per-version skip box); defer while a game runs, else install now.
-    if (!triggeredByUser && priv->autoUpdateMode == "Always") {
-        if (!APPLICATION->updatesAreAllowed()) {
-            qDebug() << "Auto-update deferred: a game is running";
-            armDeferredRetry();
-            return;
-        }
-        performUpdate(version_tag, true);
-        return;
-    }
-    // Never auto-prompt mid-game either: defer the dialog the same way.
-    if (!triggeredByUser && !APPLICATION->updatesAreAllowed()) {
-        qDebug() << "Update prompt deferred: a game is running";
+    // Updates are mandatory: no "skip" and no "later". Never interrupt a running game, though;
+    // retry in 5 minutes (the launcher restarts itself during an update).
+    if (!APPLICATION->updatesAreAllowed()) {
+        qDebug() << "Mandatory update deferred: a game is running";
+        quietNotify(tr("Update %1 will be installed once the game is closed").arg(version_name));
         armDeferredRetry();
         return;
     }
-    priv->settings->beginGroup("skip");
-    auto should_skip = priv->settings->value(version_tag, false).toBool();
-    priv->settings->endGroup();
-
-    if (should_skip) {
-        auto msgBox = QMessageBox(QMessageBox::Information, tr("No Update Available"), tr("There are no new updates available."),
-                                  QMessageBox::Ok, safeParent());
-        msgBox.setMinimumWidth(460);
-        msgBox.adjustSize();
-        msgBox.exec();
+    if (priv->updatePromptOpen)
         return;
-    }
+    priv->updatePromptOpen = true;
 
-    UpdateAvailableDialog dlg(BuildConfig.printableVersionString(), version_name, release_notes);
+    QMessageBox box(QMessageBox::Information, tr("Update required"),
+                    tr("Version %1 is available and must be installed.\n\nThe launcher will close, update, and start again.")
+                        .arg(version_name),
+                    QMessageBox::NoButton, safeParent());
+    auto* updateButton = box.addButton(tr("Update now"), QMessageBox::AcceptRole);
+    box.setDefaultButton(updateButton);
+    box.setEscapeButton(updateButton);  // closing the window also starts the update
+    if (!release_notes.trimmed().isEmpty())
+        box.setDetailedText(release_notes);
+    box.setMinimumWidth(460);
+    box.adjustSize();
+    box.exec();
 
-    auto result = dlg.exec();
-    qDebug() << "offer dlg result" << result;
-    switch (result) {
-        case UpdateAvailableDialog::Install: {
-            performUpdate(version_tag, false);
-            return;
-        }
-        case UpdateAvailableDialog::Skip: {
-            priv->settings->beginGroup("skip");
-            priv->settings->setValue(version_tag, true);
-            priv->settings->endGroup();
-            priv->settings->sync();
-            return;
-        }
-        default: {
-            return;
-        }
-    }
+    priv->updatePromptOpen = false;
+    performUpdate(version_tag, false);
 }
 
 void PollyMCExternalUpdater::performUpdate(const QString& version_tag, bool silent)
