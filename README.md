@@ -76,7 +76,7 @@ Or add it to your flake and include it in your system packages:
 # in a NixOS module
 { pkgs, ... }:
 {
-  environment.systemPackages = [ pollymc.packages.${pkgs.stdenv.hostPlatform.system}.prismlauncher ];
+  environment.systemPackages = [ pollymc.packages.${pkgs.stdenv.hostPlatform.system}.pollymc ];
 }
 ```
 
