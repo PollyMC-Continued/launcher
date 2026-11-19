@@ -2,7 +2,7 @@
 
 ## v10.0.7
 
-**Turns on the automatic Java download on every platform, makes updates mandatory with a check every 30 minutes, and fixes the Arch package not starting, the unknown platform and commit in the About dialog, and slow AppImage builds.**
+**Turns on the automatic Java download on every platform, makes updates mandatory with a check every 30 minutes, adds a way to rename offline accounts, and fixes the Arch package not starting, the unknown platform and commit in the About dialog, slow AppImage builds, and offline skins not appearing on newer Minecraft versions.**
 
 **Fixed:**
 
@@ -12,12 +12,13 @@
 - **Updates only checked once a day** — The launcher only looked for a new version once every 24 hours, and a startup check only happened if a day had passed since the last one. It now checks on every startup and every 30 minutes.
 - **Updates could be skipped** — The update window had a Skip option that hid that version for good. There is no skip option anymore.
 - **AppImage builds taking up to an hour to install dependencies** — A slow Ubuntu or Qt download could stall the AppImage build for most of an hour. Downloads now time out and retry, a faster mirror is used when available, and the downloaded Qt is kept for the next build even if a later step fails.
+- **Offline skins not appearing on newer Minecraft versions** — When you selected a skin for an offline account, the game ignored it and kept showing the default skin. Newer Minecraft versions check the address of every skin in your profile against a list of official addresses, and the launcher's addresses were not on that list, so the game silently threw them away. The launcher now uses addresses that pass the check; the old addresses keep working, so older game versions are not affected.
 
 **Added:**
 
 - **Automatic Java download on Linux** — The feature that downloads the right Java for each Minecraft version was switched off on Linux builds, including the AppImage and tarball. It is now built into every platform, and the Java settings show the auto-download option.
 - **Mandatory updates** — When a new version is found, an "Update required" window appears with a single **Update now** button, then the launcher closes, updates and starts again. If a game is running, the update waits and retries every 5 minutes. The updater options in Settings are now greyed out on Windows and Linux.
-
+- **Renaming offline accounts** — The Accounts page has a new **Edit Username** button. Before, the only way to change an offline account's name was to delete the account and add a new one, which meant starting over: the game treats the new account as a different player, and the skin selected for the old one no longer applies. When renaming, the account's UUID — the identity the game uses for your singleplayer progress and your selected skin — stays the same, so nothing is lost. The launcher refuses a name that another offline account already uses. Microsoft and authlib-injector accounts cannot be renamed, because their names belong to their login servers.
 ## v10.0.6
 
 **Fixes the Nix package so it installs under the PollyMC name, and keeps builds working after GitHub stopped serving ONNX Runtime.**

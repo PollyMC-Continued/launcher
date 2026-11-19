@@ -191,6 +191,48 @@ void AccountListPage::on_actionRefresh_triggered()
     }
 }
 
+void AccountListPage::on_actionEditUsername_triggered()
+{
+    QModelIndexList selection = ui->listView->selectionModel()->selectedIndexes();
+    if (selection.size() == 0) {
+        return;
+    }
+    QModelIndex selected = selection.first();
+    MinecraftAccountPtr account = selected.data(AccountList::PointerRole).value<MinecraftAccountPtr>();
+    if (!account || account->accountType() != AccountType::Offline) {
+        return;
+    }
+
+    ChooseOfflineNameDialog dialog(
+        tr("Enter the new username for the offline account '%1'.\n\n"
+           "The account UUID stays the same, so your singleplayer progress and your selected skin are kept.")
+            .arg(account->profileName()),
+        this);
+    dialog.setWindowTitle(tr("Edit Username"));
+    dialog.setUsername(account->profileName());
+    if (dialog.exec() != QDialog::Accepted) {
+        return;
+    }
+
+    const QString newName = dialog.getUsername();
+    if (newName == account->profileName()) {
+        return;
+    }
+
+    // refuse to create a duplicate name among offline accounts
+    for (int i = 0; i < m_accounts->count(); i++) {
+        auto other = m_accounts->at(i);
+        if (other != account && other->accountType() == AccountType::Offline && other->profileName() == newName) {
+            CustomMessageBox::selectable(this, tr("Username already in use"),
+                                         tr("Another offline account is already called '%1'.").arg(newName), QMessageBox::Warning)
+                ->exec();
+            return;
+        }
+    }
+
+    account->rename(newName);
+}
+
 void AccountListPage::on_actionSetDefault_triggered()
 {
     QModelIndexList selection = ui->listView->selectionModel()->selectedIndexes();
@@ -212,12 +254,14 @@ void AccountListPage::updateButtonStates()
     QModelIndexList selection = ui->listView->selectionModel()->selectedIndexes();
     bool hasSelection = !selection.empty();
     bool accountIsReady = false;
+    bool accountIsOffline = false;
     bool accountCanMoveUp = false;
     bool accountCanMoveDown = false;
     if (hasSelection) {
         QModelIndex selected = selection.first();
         MinecraftAccountPtr account = selected.data(AccountList::PointerRole).value<MinecraftAccountPtr>();
         accountIsReady = !account->isActive();
+        accountIsOffline = account->accountType() == AccountType::Offline;
 
         accountCanMoveUp = selected.row() > 0;
         int indexOfLast = m_accounts->count() - 1;
@@ -227,6 +271,8 @@ void AccountListPage::updateButtonStates()
     ui->actionSetDefault->setEnabled(accountIsReady);
     ui->actionManageSkins->setEnabled(accountIsReady);
     ui->actionRefresh->setEnabled(accountIsReady);
+    // only offline accounts can be renamed locally; MSA and authlib-injector names come from their servers
+    ui->actionEditUsername->setEnabled(accountIsReady && accountIsOffline);
     if (m_accounts->defaultAccount().get() == nullptr) {
         ui->actionNoDefault->setEnabled(false);
         ui->actionNoDefault->setChecked(true);

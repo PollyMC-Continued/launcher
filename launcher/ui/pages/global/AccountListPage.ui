@@ -56,6 +56,7 @@
    <addaction name="actionAddOffline"/>
    <addaction name="actionAddAuthlibInjector"/>
    <addaction name="actionRefresh"/>
+   <addaction name="actionEditUsername"/>
    <addaction name="actionRemove"/>
    <addaction name="actionSetDefault"/>
    <addaction name="actionNoDefault"/>
@@ -106,6 +107,14 @@
    </property>
    <property name="toolTip">
     <string>Refresh the account tokens</string>
+   </property>
+  </action>
+  <action name="actionEditUsername">
+   <property name="text">
+    <string>Edit &amp;Username</string>
+   </property>
+   <property name="toolTip">
+    <string>Change the username of an offline account</string>
    </property>
   </action>
   <action name="actionRemove">

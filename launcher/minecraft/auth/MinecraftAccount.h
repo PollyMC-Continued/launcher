@@ -102,6 +102,11 @@ class MinecraftAccount : public QObject, public Usable {
 
     shared_qobject_ptr<AuthFlow> currentTask();
 
+    //! Renames an offline account. Only the profile name changes; the account
+    //! UUID (and with it singleplayer progress and the selected skin) is kept.
+    //! Returns false for non-offline accounts, empty or unchanged names.
+    bool rename(const QString& username);
+
    public: /* queries */
     QString internalId() const { return data.internalId; }
 

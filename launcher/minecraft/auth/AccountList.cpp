@@ -234,6 +234,16 @@ void AccountList::setDefaultAccount(MinecraftAccountPtr newAccount)
 
 void AccountList::accountChanged()
 {
+    // refresh the row of the account that changed (e.g. after a rename)
+    MinecraftAccount* account = qobject_cast<MinecraftAccount*>(sender());
+    if (account != nullptr) {
+        for (int i = 0; i < count(); i++) {
+            if (at(i).get() == account) {
+                emit dataChanged(index(i), index(i, columnCount(QModelIndex()) - 1));
+                break;
+            }
+        }
+    }
     // the list changed. there is no doubt.
     onListChanged();
 }

@@ -294,6 +294,24 @@ void MinecraftAccount::fillSession(AuthSessionPtr session)
     }
 }
 
+bool MinecraftAccount::rename(const QString& username)
+{
+    if (data.type != AccountType::Offline) {
+        // MSA and authlib-injector profile names are owned by the respective
+        // authentication servers and cannot be changed locally.
+        return false;
+    }
+    if (username.isEmpty() || username == data.profileName()) {
+        return false;
+    }
+    data.minecraftProfile.name = username;
+    data.yggdrasilToken.extra["userName"] = username;
+    // The profile UUID is deliberately kept: singleplayer world data and the
+    // launcher's per-account offline skin are tied to the UUID, not the name.
+    emit changed();
+    return true;
+}
+
 void MinecraftAccount::decrementUses()
 {
     Usable::decrementUses();

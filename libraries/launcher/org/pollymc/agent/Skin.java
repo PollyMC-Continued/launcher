@@ -56,7 +56,15 @@ public final class Skin {
     static final String SESSION_HOST = "sessionserver.mojang.com";
     static final String PROFILE_PATH = "/session/minecraft/profile/";
     static final String TEXTURE_HOST = "textures.minecraft.net";
-    static final String SKIN_PATH_PREFIX = "/skin/";
+    // Texture URLs must be served under /texture/: authlib 10 (shipped with Minecraft 25.x+)
+    // validates every texture URL in a profile payload against the "validUris" whitelist of
+    // the discovery document (https://discovery.minecraftservices.com/minecraft/client), which
+    // only allows https://textures.minecraft.net/texture/{textureId}. Older authlib releases
+    // only checked the domain, so our old /skin/ path stopped working and offline skins
+    // silently fell back to the default skin. /skin/ is still *served* so game versions that
+    // cached the old URLs (and old authlib) keep working.
+    static final String TEXTURE_PATH_PREFIX = "/texture/";
+    static final String LEGACY_SKIN_PATH_PREFIX = "/skin/";
 
     private static volatile URLStreamHandler originalHttpsHandler;
 
@@ -128,10 +136,11 @@ public final class Skin {
             }
         } else if (TEXTURE_HOST.equals(host)) {
             String path = url.getPath();
-            if (path != null && path.startsWith(SKIN_PATH_PREFIX)) {
+            String prefix = texturePathPrefix(path);
+            if (prefix != null) {
                 // Texture file name is "<uuid>_<sha1 of skin.png>.png"; the hash only exists to bust
                 // Minecraft's on-disk skin cache, which is keyed by the URL's base name.
-                String name = path.substring(SKIN_PATH_PREFIX.length()).replace(".png", "");
+                String name = path.substring(prefix.length()).replace(".png", "");
                 int sep = name.indexOf('_');
                 String uuid = (sep >= 0 ? name.substring(0, sep) : name).replace("-", "");
                 String skinDir = findSkinDir(uuid);
@@ -169,6 +178,19 @@ public final class Skin {
         } catch (Exception e) {
             throw new IOException("Cannot create HTTPS connection to " + url + " - " + e.getMessage());
         }
+    }
+
+    private static String texturePathPrefix(String path) {
+        if (path == null) {
+            return null;
+        }
+        if (path.startsWith(TEXTURE_PATH_PREFIX)) {
+            return TEXTURE_PATH_PREFIX;
+        }
+        if (path.startsWith(LEGACY_SKIN_PATH_PREFIX)) {
+            return LEGACY_SKIN_PATH_PREFIX;
+        }
+        return null;
     }
 
     /**
@@ -298,7 +320,9 @@ class LocalSkinURLConnection extends HttpURLConnection {
         }
 
         // The hash makes the URL (and Minecraft's skin cache key) change whenever the skin changes.
-        String skinUrl = "https://" + Skin.TEXTURE_HOST + Skin.SKIN_PATH_PREFIX + uuid + "_" + Skin.skinHash(skinFile) + ".png";
+        // The /texture/ path is required by the authlib 10 discovery "validUris" whitelist; see
+        // the comment on TEXTURE_PATH_PREFIX above.
+        String skinUrl = "https://" + Skin.TEXTURE_HOST + Skin.TEXTURE_PATH_PREFIX + uuid + "_" + Skin.skinHash(skinFile) + ".png";
 
         String profileName = Skin.findAccountName(uuid);
         if (profileName == null) {
