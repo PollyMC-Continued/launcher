@@ -1,5 +1,19 @@
 # Changelog
 
+## v10.0.6
+
+**Fixes the Nix package so it installs under the PollyMC name, and keeps builds working after GitHub stopped serving ONNX Runtime.**
+
+**Fixed:**
+
+- **Nix package still named prismlauncher** — The Nix flake installed the program as `prismlauncher`. It is now `pollymc`, and `nix profile add github:PollyMC-Continued/launcher` gives you a `pollymc` command.
+- **Nix builds pulling from Prism's cache** — The flake now uses the PollyMC Cachix cache, so builds can be downloaded from there instead of compiled from scratch.
+- **Builds failing with "404" on ONNX Runtime** — GitHub stopped serving the ONNX Runtime repository, so every build that downloaded it failed. Builds now get ONNX Runtime 1.22.0 from the official PyPI package.
+
+**Added:**
+
+- **Nix build workflow** — A new CI workflow builds the Nix package on every push to `main` or `Nightly` and uploads it to the PollyMC Cachix cache.
+
 ## v10.0.5
 
 **Fixes offline skins not updating after the first time, and makes "Could not download metadata" errors tell you what actually went wrong.**
