@@ -380,7 +380,7 @@
         <translation type="vanished">Microsoft-konto</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/auth/AccountList.cpp" line="+344"/>
+        <location filename="../launcher/minecraft/auth/AccountList.cpp" line="+354"/>
         <source>MSA</source>
         <comment>Account type</comment>
         <translation type="unfinished">Microsoft-konto</translation>
@@ -453,7 +453,7 @@
         <translation type="vanished">Feil</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="+95"/>
+        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="+96"/>
         <source>Add &amp;Offline</source>
         <translation>Legg til &amp;frakoblet</translation>
     </message>
@@ -468,6 +468,16 @@
         <translation>Oppdater kontopolletter</translation>
     </message>
     <message>
+        <location line="+5"/>
+        <source>Edit &amp;Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Change the username of an offline account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+10"/>
         <source>Move &amp;Up</source>
         <translation>&amp;Gå opp</translation>
@@ -478,7 +488,7 @@
         <translation>&amp;Gå ned</translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="-62"/>
         <source>&amp;Set Default</source>
         <translation>&amp;Sett som standard</translation>
     </message>
@@ -493,7 +503,7 @@
         <translation>&amp;Oppdater</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+16"/>
         <source>Remo&amp;ve</source>
         <translation>Fjer&amp;n</translation>
     </message>
@@ -509,7 +519,7 @@ Hvis du er ny her, kan du trykke på «Legg til Microsoft-konto»-knappen for å
         <translation>Kontoer</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="-36"/>
+        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="-44"/>
         <source>&amp;No Default</source>
         <translation>&amp;Ingen standard</translation>
     </message>
@@ -553,6 +563,28 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <location line="+81"/>
         <source>Remove account?</source>
         <translation>Fjern konto?</translation>
+    </message>
+    <message>
+        <location line="+36"/>
+        <source>Enter the new username for the offline account &apos;%1&apos;.
+
+The account UUID stays the same, so your singleplayer progress and your selected skin are kept.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Edit Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Username already in use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Another offline account is already called &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You must add a Microsoft account that owns Minecraft before you can add an offline account.&lt;br&gt;&lt;br&gt;If you have lost your account you can contact Microsoft for support.</source>
@@ -6400,6 +6432,11 @@ Det kan hende at du må fikse modsene dine, siden spillet logger fortsatt til fi
         <translation>Java mappe</translation>
     </message>
     <message>
+        <location line="+114"/>
+        <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+32"/>
         <source>When enabled, in addition to the downloads folder, its sub folders will also be searched when looking for resources (e.g. when looking for blocked mods on CurseForge).</source>
         <translation>Når slått på, i tillegg til nedlastingsmappen, så vil undermappene også bli søkt gjennom når den ser etter ressurser (for eksempel når den ser etter blokkerte modifikasjoner i CurseForge).</translation>
@@ -6454,7 +6491,7 @@ Det kan hende at du må fikse modsene dine, siden spillet logger fortsatt til fi
         <translation>Sett til 0 for å bare sjekke ved oppstart</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-46"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-160"/>
         <source>Do you want to proceed anyway?</source>
         <translation>Ønsker du å fortsette uansett?</translation>
     </message>
@@ -10831,7 +10868,7 @@ Maximum performance for demanding setups</source>
 <context>
     <name>PollyMCExternalUpdater</name>
     <message>
-        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+154"/>
+        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+160"/>
         <location line="+129"/>
         <source>Update UI preview</source>
         <translation type="unfinished"></translation>
@@ -10879,12 +10916,11 @@ Reason: %1.</source>
     </message>
     <message>
         <location line="+6"/>
-        <location line="+237"/>
         <source>No Update Available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="+0"/>
         <source>You are running the latest version.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10922,8 +10958,25 @@ StdErr: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+194"/>
-        <source>There are no new updates available.</source>
+        <location line="+167"/>
+        <source>Update %1 will be installed once the game is closed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Update required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Version %1 is available and must be installed.
+
+The launcher will close, update, and start again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Update now</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

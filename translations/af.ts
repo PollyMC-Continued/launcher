@@ -381,7 +381,7 @@
         <translation type="vanished">MSA</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/auth/AccountList.cpp" line="+344"/>
+        <location filename="../launcher/minecraft/auth/AccountList.cpp" line="+354"/>
         <source>MSA</source>
         <comment>Account type</comment>
         <translation>MSA</translation>
@@ -454,7 +454,7 @@
         <translation type="vanished">Fout</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="+95"/>
+        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="+96"/>
         <source>Add &amp;Offline</source>
         <translation>Voeg by &amp;Vanlyn</translation>
     </message>
@@ -473,7 +473,7 @@
         <translation>Verfris die rekeningtokens</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+18"/>
         <source>Move &amp;Up</source>
         <translation>Skuif &amp;Op</translation>
     </message>
@@ -483,7 +483,7 @@
         <translation>Skuif &amp;Af</translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="-62"/>
         <source>&amp;Set Default</source>
         <translation>&amp;Stel Standaard</translation>
     </message>
@@ -499,6 +499,16 @@
     </message>
     <message>
         <location line="+8"/>
+        <source>Edit &amp;Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Change the username of an offline account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Remo&amp;ve</source>
         <translation>&amp;Verwyder</translation>
     </message>
@@ -514,7 +524,7 @@ As jy nuut hier is kan jy die &quot;Voeg Microsoft By&quot;-knoppie kies om jou 
         <translation>Rekeninge</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="-36"/>
+        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="-44"/>
         <source>&amp;No Default</source>
         <translation>&amp;Geen Standaard</translation>
     </message>
@@ -559,6 +569,28 @@ Jy kan ’n Microsoft-, vanlyn- of Yggdrasil-(authlib-injector) rekening byvoeg 
         <location line="+81"/>
         <source>Remove account?</source>
         <translation>Verwyder rekening?</translation>
+    </message>
+    <message>
+        <location line="+36"/>
+        <source>Enter the new username for the offline account &apos;%1&apos;.
+
+The account UUID stays the same, so your singleplayer progress and your selected skin are kept.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Edit Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Username already in use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Another offline account is already called &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You must add a Microsoft account that owns Minecraft before you can add an offline account.&lt;br&gt;&lt;br&gt;If you have lost your account you can contact Microsoft for support.</source>
@@ -6625,6 +6657,11 @@ Dit word aanbeveel om %1 toegang daartoe via Flatseal te gee.</translation>
         <source>Skins Folder</source>
         <translation>Velle-gids</translation>
     </message>
+    <message>
+        <location line="+104"/>
+        <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LauncherPartLaunch</name>
@@ -10967,7 +11004,7 @@ Maksimum prestasie vir veeleisende opstellings</translation>
 <context>
     <name>PollyMCExternalUpdater</name>
     <message>
-        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+154"/>
+        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+160"/>
         <location line="+129"/>
         <source>Update UI preview</source>
         <translation type="unfinished"></translation>
@@ -11015,12 +11052,11 @@ Reason: %1.</source>
     </message>
     <message>
         <location line="+6"/>
-        <location line="+237"/>
         <source>No Update Available</source>
         <translation type="unfinished">Geen Opdatering Beskikbaar</translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="+0"/>
         <source>You are running the latest version.</source>
         <translation type="unfinished">Jy hardloop die nuutste weergawe.</translation>
     </message>
@@ -11060,9 +11096,30 @@ StdErr: %2</source>
 StdErr: %2</translation>
     </message>
     <message>
-        <location line="+194"/>
+        <location line="+167"/>
+        <source>Update %1 will be installed once the game is closed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Update required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Version %1 is available and must be installed.
+
+The launcher will close, update, and start again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Update now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>There are no new updates available.</source>
-        <translation type="unfinished">Daar is geen nuwe opdaterings beskikbaar nie.</translation>
+        <translation type="obsolete">Daar is geen nuwe opdaterings beskikbaar nie.</translation>
     </message>
 </context>
 <context>
