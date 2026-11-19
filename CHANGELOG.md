@@ -2,14 +2,16 @@
 
 ## v10.0.7
 
-**Turns on the automatic Java download on every platform, makes updates mandatory with a check every 30 minutes, and fixes the unknown platform and commit shown in the About dialog.**
+**Turns on the automatic Java download on every platform, makes updates mandatory with a check every 30 minutes, and fixes the Arch package not starting, the unknown platform and commit in the About dialog, and slow AppImage builds.**
 
 **Fixed:**
 
+- **Arch package not starting** — The Arch package installed fine, but the launcher failed to start with "libonnxruntime.so.1: cannot open shared object file". The library was installed in a private folder that the launcher did not search. The launcher now looks there as well.
 - **Platform shown as "unknown"** — The About dialog printed `Platform: unknown` on Windows and Linux builds because only the macOS build set it. The platform is now filled in automatically as Windows, Linux or macOS.
 - **Commit shown as "GITDIR-NOTFOUND"** — Builds made from a source archive or tarball have no Git history, so the About dialog printed a placeholder instead of a commit. CI now passes the real commit, and the line is hidden when it is truly unknown.
 - **Updates only checked once a day** — The launcher only looked for a new version once every 24 hours, and a startup check only happened if a day had passed since the last one. It now checks on every startup and every 30 minutes.
 - **Updates could be skipped** — The update window had a Skip option that hid that version for good. There is no skip option anymore.
+- **AppImage builds taking up to an hour to install dependencies** — A slow Ubuntu or Qt download could stall the AppImage build for most of an hour. Downloads now time out and retry, a faster mirror is used when available, and the downloaded Qt is kept for the next build even if a later step fails.
 
 **Added:**
 
