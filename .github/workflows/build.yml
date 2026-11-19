@@ -902,10 +902,27 @@ jobs:
           fetch-depth: 0
 
       - name: Install Dependencies
+        # A slow Ubuntu mirror used to be able to stall this step for an hour; fail fast and retry instead.
+        timeout-minutes: 15
         run: |
           set -euo pipefail
           export DEBIAN_FRONTEND=noninteractive
-          apt-get update
+          cat > /etc/apt/apt.conf.d/80-ci-network <<'APTEOF'
+          Acquire::Retries "5";
+          Acquire::http::Timeout "30";
+          Acquire::https::Timeout "30";
+          APTEOF
+          # The runners live in Azure; its Ubuntu mirror is much faster than archive/security.ubuntu.com.
+          # curl is not installed yet, so probe with bash. Fall back to the default mirrors if it fails.
+          cp /etc/apt/sources.list /etc/apt/sources.list.orig
+          if timeout 5 bash -c 'exec 3<>/dev/tcp/azure.archive.ubuntu.com/80' 2>/dev/null; then
+            sed -i -E 's#https?://(archive|security)\.ubuntu\.com/ubuntu#http://azure.archive.ubuntu.com/ubuntu#g' /etc/apt/sources.list
+          fi
+          if ! apt-get update; then
+            echo "::warning::apt-get update failed on the mirror; falling back to the default Ubuntu mirrors"
+            cp /etc/apt/sources.list.orig /etc/apt/sources.list
+            apt-get update
+          fi
           # No Qt dev packages (jammy's 6.2 is too old; Qt comes from aqt). cmark needs both packages.
           apt-get install -y --no-install-recommends \
             build-essential cmake ninja-build pkg-config \
@@ -928,11 +945,12 @@ jobs:
           # libvulkan-dev (HardwareInfo), libgamemode0 (linking), file + squashfs-tools (appimagetool).
 
       - name: Install CMake
+        timeout-minutes: 10
         run: |
           set -euo pipefail
           # jammy's CMake 3.22 is too old (>= 3.25 needed); use the 24.04 runner's 3.28.3.
           CMAKE_VERSION=3.28.3
-          curl -fsSL --retry 3 \
+          curl -fsSL --retry 3 --connect-timeout 20 --max-time 300 \
             "https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-linux-x86_64.tar.gz" \
             -o /tmp/cmake.tar.gz
           mkdir -p /opt/cmake
@@ -941,11 +959,12 @@ jobs:
           echo "cmake $(/opt/cmake/bin/cmake --version | head -1)"
 
       - name: Install tomlplusplus
+        timeout-minutes: 10
         run: |
           set -euo pipefail
           # jammy has no toml++ package. It is header-only: copy the headers and write the .pc by hand.
           TOMLPP_VERSION=3.4.0
-          curl -fsSL --retry 3 -o /tmp/tomlplusplus.tar.gz \
+          curl -fsSL --retry 3 --connect-timeout 20 --max-time 300 -o /tmp/tomlplusplus.tar.gz \
             "https://github.com/marzer/tomlplusplus/archive/refs/tags/v${TOMLPP_VERSION}.tar.gz"
           rm -rf "/tmp/tomlplusplus-${TOMLPP_VERSION}"
           tar -xzf /tmp/tomlplusplus.tar.gz -C /tmp
@@ -966,13 +985,16 @@ jobs:
           pkg-config --modversion tomlplusplus
           pkg-config --cflags tomlplusplus
 
-      - name: Cache Qt
-        uses: actions/cache@v5
+      - name: Restore Qt cache
+        id: qt-cache
+        uses: actions/cache/restore@v5
         with:
           path: ${{ runner.temp }}/qt
           key: ${{ env.QT_CACHE_KEY }}
 
       - name: Install Qt
+        # 3 download attempts of 10 minutes each at most, plus pip.
+        timeout-minutes: 35
         run: |
           set -euo pipefail
           # Not install-qt-action: its Python needs glibc 2.38 and this container has 2.35.
@@ -986,12 +1008,23 @@ jobs:
           else
             apt-get install -y --no-install-recommends python3 python3-pip
             # Pinned so a new aqt release can't change the bundled Qt.
-            python3 -m pip install --no-cache-dir "aqtinstall==3.3.0"
-            mkdir -p "$RUNNER_TEMP/qt"
+            python3 -m pip install --no-cache-dir --retries 5 --timeout 30 "aqtinstall==3.3.0"
+            # download.qt.io is sometimes extremely slow: cap each attempt and retry instead of waiting an hour.
             # Qt 6.8.3 needs at most GLIBC_2.28, so it keeps the glibc floor.
-            python3 -m aqt install-qt linux desktop "$QT_VERSION" "$QT_ARCH" \
-              -m $QT_MODULES \
-              --outputdir "$RUNNER_TEMP/qt"
+            for attempt in 1 2 3; do
+              rm -rf "$RUNNER_TEMP/qt"
+              mkdir -p "$RUNNER_TEMP/qt"
+              if timeout 10m python3 -m aqt install-qt linux desktop "$QT_VERSION" "$QT_ARCH" \
+                   -m $QT_MODULES \
+                   --outputdir "$RUNNER_TEMP/qt"; then
+                break
+              fi
+              if [ "$attempt" = 3 ]; then
+                echo "::error::Qt download failed or timed out 3 times"
+                exit 1
+              fi
+              echo "::warning::Qt download attempt ${attempt} failed or timed out; retrying"
+            done
             QMAKE=$(find_qmake)
           fi
           if [ -z "$QMAKE" ]; then
@@ -1008,7 +1041,17 @@ jobs:
           echo "QT_PLUGIN_PATH=${QT_ROOT}/plugins" >> "$GITHUB_ENV"
           echo "QML2_IMPORT_PATH=${QT_ROOT}/qml" >> "$GITHUB_ENV"
 
+      # Saved right after a fresh install (not at the end of the job), so a later failure no longer
+      # throws the Qt download away and forces the next run to download it again.
+      - name: Save Qt cache
+        if: steps.qt-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v5
+        with:
+          path: ${{ runner.temp }}/qt
+          key: ${{ env.QT_CACHE_KEY }}
+
       - name: Download ONNX Runtime
+        timeout-minutes: 10
         run: |
           set -euo pipefail
           # PyPI wheel instead of GitHub releases (GitHub returned 404 for the repo).
@@ -1081,10 +1124,10 @@ jobs:
 
           # curl instead of wget: the ubuntu:22.04 container image ships no wget.
           if [ ! -f linuxdeploy-x86_64.AppImage ]; then
-            curl -fsSL --retry 3 "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage" -o linuxdeploy-x86_64.AppImage
+            curl -fsSL --retry 3 --connect-timeout 20 --max-time 300 "https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage" -o linuxdeploy-x86_64.AppImage
           fi
           if [ ! -f linuxdeploy-plugin-qt-x86_64.AppImage ]; then
-            curl -fsSL --retry 3 "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage" -o linuxdeploy-plugin-qt-x86_64.AppImage
+            curl -fsSL --retry 3 --connect-timeout 20 --max-time 300 "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage" -o linuxdeploy-plugin-qt-x86_64.AppImage
           fi
           chmod +x linuxdeploy-x86_64.AppImage linuxdeploy-plugin-qt-x86_64.AppImage
 
