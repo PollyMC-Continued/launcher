@@ -1,5 +1,21 @@
 # Changelog
 
+## v10.0.7
+
+**Turns on the automatic Java download on every platform, makes updates mandatory with a check every 30 minutes, and fixes the unknown platform and commit shown in the About dialog.**
+
+**Fixed:**
+
+- **Platform shown as "unknown"** — The About dialog printed `Platform: unknown` on Windows and Linux builds because only the macOS build set it. The platform is now filled in automatically as Windows, Linux or macOS.
+- **Commit shown as "GITDIR-NOTFOUND"** — Builds made from a source archive or tarball have no Git history, so the About dialog printed a placeholder instead of a commit. CI now passes the real commit, and the line is hidden when it is truly unknown.
+- **Updates only checked once a day** — The launcher only looked for a new version once every 24 hours, and a startup check only happened if a day had passed since the last one. It now checks on every startup and every 30 minutes.
+- **Updates could be skipped** — The update window had a Skip option that hid that version for good. There is no skip option anymore.
+
+**Added:**
+
+- **Automatic Java download on Linux** — The feature that downloads the right Java for each Minecraft version was switched off on Linux builds, including the AppImage and tarball. It is now built into every platform, and the Java settings show the auto-download option.
+- **Mandatory updates** — When a new version is found, an "Update required" window appears with a single **Update now** button, then the launcher closes, updates and starts again. If a game is running, the update waits and retries every 5 minutes. The updater options in Settings are now greyed out on Windows and Linux.
+
 ## v10.0.6
 
 **Fixes the Nix package so it installs under the PollyMC name, and keeps builds working after GitHub stopped serving ONNX Runtime.**
@@ -12,7 +28,7 @@
 
 **Added:**
 
-- **Nix build workflow** — A new CI workflow builds the Nix package on every push to `main` or `Nightly` and uploads it to the PollyMC Cachix cache.
+- **Nix build workflow** — A new CI workflow builds the Nix package and uploads it to the PollyMC Cachix cache.
 
 ## v10.0.5
 
