@@ -391,6 +391,7 @@ jobs:
             -DLauncher_BUILD_RELEASE=ON \
             -DLauncher_VERSION="${{ needs.skip-check.outputs.version }}" \
             -DLauncher_BUILD_NUMBER="${{ github.run_number }}" \
+            -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
             -S . -B build
 
       - name: Build
@@ -741,6 +742,7 @@ jobs:
             -DLauncher_BUILD_RELEASE=ON \
             -DLauncher_VERSION="${{ needs.skip-check.outputs.version }}" \
             -DLauncher_BUILD_NUMBER="${{ github.run_number }}" \
+            -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
             -S . -B build
 
       - name: Build
@@ -1040,6 +1042,7 @@ jobs:
             -DLauncher_BUILD_RELEASE=ON \
             -DLauncher_VERSION="${{ needs.skip-check.outputs.version }}" \
             -DLauncher_BUILD_NUMBER="${{ github.run_number }}" \
+            -DLauncher_ENABLE_JAVA_DOWNLOADER=ON \
             -S . -B build
 
       - name: Build
