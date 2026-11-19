@@ -171,37 +171,12 @@ jobs:
 
           echo "Found matching CHANGELOG.md section for ${EXPECTED_TAG}."
 
-  prepare-release:
-    name: Prepare release draft
-    needs: [skip-check]
-    if: needs.skip-check.outputs.skip != 'true' && needs.skip-check.outputs.skip_release != 'true'
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    permissions:
-      contents: write
-    steps:
-      # The build jobs attach their files to this draft instead of uploading artifacts.
-      # Creating it once here stops them racing to create duplicate drafts.
-      - name: Create release draft if missing
-        env:
-          GH_TOKEN: ${{ github.token }}
-          TAG: v${{ needs.skip-check.outputs.version }}
-        run: |
-          set -euo pipefail
-          if gh release list --repo "$GITHUB_REPOSITORY" --limit 100 --json tagName --jq '.[].tagName' | grep -qxF "$TAG"; then
-            echo "Release $TAG already exists."
-            exit 0
-          fi
-          gh release create "$TAG" --repo "$GITHUB_REPOSITORY" --draft --target "$GITHUB_SHA" --title "$TAG" --notes "Draft created by CI."
-
   build-windows:
     name: Windows (MinGW)
-    needs: [skip-check, prepare-release]
-    if: ${{ !cancelled() && needs.skip-check.outputs.skip != 'true' && needs.prepare-release.result != 'failure' }}
+    needs: [skip-check]
+    if: needs.skip-check.outputs.skip != 'true'
     runs-on: windows-latest
     timeout-minutes: 90
-    permissions:
-      contents: write   # attaches the build files to the release draft
     env:
       # Job-level so the Build step's ccache sees it.
       CCACHE_DIR: ${{ github.workspace }}/.ccache
@@ -686,38 +661,27 @@ jobs:
 
       - name: Upload artifacts
         id: upload
-        continue-on-error: true   # a full artifact quota must not fail the build
-        if: needs.skip-check.outputs.skip_release == 'true'   # releases get the files attached to the draft instead
+        # Non-release builds tolerate a full artifact quota; release builds must not ship without files.
+        continue-on-error: ${{ needs.skip-check.outputs.skip_release == 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: PollyMC-Continued-Windows
+          retention-days: ${{ needs.skip-check.outputs.skip_release != 'true' && 1 || 0 }}
           path: |
             PollyMC-Continued-*-Setup.exe
             PollyMC-Continued-*-Windows-portable.zip
           if-no-files-found: error
 
-      - name: Attach to release draft
-        if: needs.skip-check.outputs.skip_release != 'true'
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ needs.skip-check.outputs.version }}
-          target_commitish: ${{ github.sha }}
-          draft: true
-          files: |
-            PollyMC-Continued-*-Setup.exe
-            PollyMC-Continued-*-Windows-portable.zip
 
   build-linux:
     name: Linux (.deb + tarball)
-    needs: [skip-check, prepare-release]
+    needs: [skip-check]
     outputs:
       # false when the tarball artifact could not be stored; the cross-distro test then skips.
       artifact_ok: ${{ steps.upload_tar.outcome == 'success' }}
-    if: ${{ !cancelled() && needs.skip-check.outputs.skip != 'true' && needs.prepare-release.result != 'failure' }}
+    if: needs.skip-check.outputs.skip != 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 60
-    permissions:
-      contents: write   # attaches the build files to the release draft
     env:
       # Job-level so the Build step's ccache sees it; fixed path avoids the default dir.
       CCACHE_DIR: ${{ github.workspace }}/.ccache
@@ -821,11 +785,12 @@ jobs:
 
       - name: Upload .deb artifact
         id: upload_deb
-        continue-on-error: true   # a full artifact quota must not fail the build
-        if: needs.skip-check.outputs.skip_release == 'true'   # releases get the files attached to the draft instead
+        # Non-release builds tolerate a full artifact quota; release builds must not ship without files.
+        continue-on-error: ${{ needs.skip-check.outputs.skip_release == 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: PollyMC-Continued-Linux-DEB
+          retention-days: ${{ needs.skip-check.outputs.skip_release != 'true' && 1 || 0 }}
           path: build-deb/*.deb
           if-no-files-found: error
 
@@ -889,39 +854,28 @@ jobs:
 
       - name: Upload artifact
         id: upload_tar
-        continue-on-error: true   # a full artifact quota must not fail the build
+        # Non-release builds tolerate a full artifact quota; release builds must not ship without files.
+        continue-on-error: ${{ needs.skip-check.outputs.skip_release == 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: PollyMC-Continued-Linux
-          # Only the smoke-test job reads this when releasing; the release itself gets the file from the draft.
+          # Release builds only need it until the smoke test and the release job have run.
           retention-days: ${{ needs.skip-check.outputs.skip_release != 'true' && 1 || 0 }}
           path: PollyMC-Continued-${{ needs.skip-check.outputs.version }}-Linux-x86_64.tar.gz
           if-no-files-found: error
 
-      - name: Attach to release draft
-        if: needs.skip-check.outputs.skip_release != 'true'
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ needs.skip-check.outputs.version }}
-          target_commitish: ${{ github.sha }}
-          draft: true
-          files: |
-            build-deb/*.deb
-            PollyMC-Continued-*-Linux-x86_64.tar.gz
 
   build-appimage:
     name: Linux AppImage (glibc 2.35)
-    needs: [skip-check, prepare-release]
+    needs: [skip-check]
     outputs:
       # false when the AppImage artifact could not be stored; the smoke test then skips.
       artifact_ok: ${{ steps.upload.outcome == 'success' }}
-    if: ${{ !cancelled() && needs.skip-check.outputs.skip != 'true' && needs.prepare-release.result != 'failure' }}
+    if: needs.skip-check.outputs.skip != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     # 22.04 container, not the 24.04 runner: pins the glibc floor to 2.35 (24.04 needs >= 2.38).
     container: ubuntu:22.04
-    permissions:
-      contents: write   # attaches the build files to the release draft
     # Container jobs default to dash, which lacks pipefail: force bash.
     defaults:
       run:
@@ -1245,24 +1199,16 @@ jobs:
 
       - name: Upload AppImage artifact
         id: upload
-        continue-on-error: true   # a full artifact quota must not fail the build
+        # Non-release builds tolerate a full artifact quota; release builds must not ship without files.
+        continue-on-error: ${{ needs.skip-check.outputs.skip_release == 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: PollyMC-Continued-AppImage
-          # Only the smoke-test job reads this when releasing; the release itself gets the file from the draft.
+          # Release builds only need it until the smoke test and the release job have run.
           retention-days: ${{ needs.skip-check.outputs.skip_release != 'true' && 1 || 0 }}
           path: PollyMC-Continued-${{ needs.skip-check.outputs.version }}-x86_64.AppImage
           if-no-files-found: error
 
-      - name: Attach to release draft
-        if: needs.skip-check.outputs.skip_release != 'true'
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ needs.skip-check.outputs.version }}
-          target_commitish: ${{ github.sha }}
-          draft: true
-          files: |
-            PollyMC-Continued-*-x86_64.AppImage
 
   linux-appimage-smoke:
     name: Linux AppImage (Ubuntu 22.04 smoke test)
@@ -1406,12 +1352,10 @@ jobs:
 
   build-macos:
     name: macOS (arm64)
-    needs: [skip-check, prepare-release]
-    if: ${{ !cancelled() && needs.skip-check.outputs.skip != 'true' && needs.prepare-release.result != 'failure' }}
+    needs: [skip-check]
+    if: needs.skip-check.outputs.skip != 'true'
     runs-on: macos-15
     timeout-minutes: 90
-    permissions:
-      contents: write   # attaches the build files to the release draft
     env:
       BUILD_TYPE: Release
       MACOSX_DEPLOYMENT_TARGET: "13.0"
@@ -1561,28 +1505,18 @@ jobs:
 
       - name: Upload artifacts
         id: upload
-        continue-on-error: true   # a full artifact quota must not fail the build
-        if: needs.skip-check.outputs.skip_release == 'true'   # releases get the files attached to the draft instead
+        # Non-release builds tolerate a full artifact quota; release builds must not ship without files.
+        continue-on-error: ${{ needs.skip-check.outputs.skip_release == 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: PollyMC-Continued-macOS
+          retention-days: ${{ needs.skip-check.outputs.skip_release != 'true' && 1 || 0 }}
           path: |
             dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-arm64.zip
             dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-arm64.dmg
             dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-arm64.sha256
           if-no-files-found: error
 
-      - name: Attach to release draft
-        if: needs.skip-check.outputs.skip_release != 'true'
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ needs.skip-check.outputs.version }}
-          target_commitish: ${{ github.sha }}
-          draft: true
-          files: |
-            dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-arm64.zip
-            dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-arm64.dmg
-            dist-macos/PollyMC-Continued-${{ steps.version.outputs.version }}-macOS-arm64.sha256
 
       - name: Remove temporary signing keychain
         if: ${{ always() }}
@@ -1594,12 +1528,10 @@ jobs:
 
   build-arch:
     name: Arch package
-    needs: [skip-check, prepare-release]
-    if: ${{ !cancelled() && needs.skip-check.outputs.skip != 'true' && needs.prepare-release.result != 'failure' }}
+    needs: [skip-check]
+    if: needs.skip-check.outputs.skip != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 60
-    permissions:
-      contents: write   # attaches the build files to the release draft
     container: archlinux:latest
     steps:
       - name: Checkout
@@ -1666,23 +1598,15 @@ jobs:
 
       - name: Upload Arch package artifact
         id: upload
-        continue-on-error: true   # a full artifact quota must not fail the build
-        if: needs.skip-check.outputs.skip_release == 'true'   # releases get the files attached to the draft instead
+        # Non-release builds tolerate a full artifact quota; release builds must not ship without files.
+        continue-on-error: ${{ needs.skip-check.outputs.skip_release == 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: PollyMC-Continued-Arch
+          retention-days: ${{ needs.skip-check.outputs.skip_release != 'true' && 1 || 0 }}
           path: packaging/arch/PollyMC-Continued-*.pkg.tar.zst
           if-no-files-found: error
 
-      - name: Attach to release draft
-        if: needs.skip-check.outputs.skip_release != 'true'
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ needs.skip-check.outputs.version }}
-          target_commitish: ${{ github.sha }}
-          draft: true
-          files: |
-            packaging/arch/PollyMC-Continued-*.pkg.tar.zst
 
   release:
     name: Release
@@ -1755,6 +1679,22 @@ jobs:
           echo "--- release_notes.md ---"
           cat release_notes.md
 
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: PollyMC-Continued-*
+          path: dist
+          merge-multiple: true
+
+      - name: List release files
+        run: |
+          set -euo pipefail
+          ls -la dist
+          if [ -z "$(ls -A dist)" ]; then
+            echo "::error::No build artifacts were downloaded; refusing to publish an empty release."
+            exit 1
+          fi
+
       - name: Publish release
         uses: softprops/action-gh-release@v2
         with:
@@ -1765,7 +1705,9 @@ jobs:
           body_path: release_notes.md
           generate_release_notes: false
           prerelease: ${{ github.ref == 'refs/heads/develop' || github.event_name == 'workflow_dispatch' || contains(github.ref_name, '-rc') }}
-          # No `files:`: the build jobs already attached their files to this release's draft.
+          draft: false
+          fail_on_unmatched_files: true
+          files: dist/*
 
       - name: Trigger apt/pacman repo deploy
         # GITHUB_TOKEN releases don't fire `on: release`, so dispatch gh-pages.yml (stable only).
