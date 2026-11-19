@@ -19,6 +19,7 @@
 - **Automatic Java download on Linux** — The feature that downloads the right Java for each Minecraft version was switched off on Linux builds, including the AppImage and tarball. It is now built into every platform, and the Java settings show the auto-download option.
 - **Mandatory updates** — When a new version is found, an "Update required" window appears with a single **Update now** button, then the launcher closes, updates and starts again. If a game is running, the update waits and retries every 5 minutes. The updater options in Settings are now greyed out on Windows and Linux.
 - **Renaming offline accounts** — The Accounts page has a new **Edit Username** button. Before, the only way to change an offline account's name was to delete the account and add a new one, which meant starting over: the game treats the new account as a different player, and the skin selected for the old one no longer applies. When renaming, the account's UUID — the identity the game uses for your singleplayer progress and your selected skin — stays the same, so nothing is lost. The launcher refuses a name that another offline account already uses. Microsoft and authlib-injector accounts cannot be renamed, because their names belong to their login servers.
+  
 ## v10.0.6
 
 **Fixes the Nix package so it installs under the PollyMC name, and keeps builds working after GitHub stopped serving ONNX Runtime.**
