@@ -64,6 +64,12 @@ if [ -n "$SO" ]; then
   ln -sfn "$BASE" "$ROOT/lib/libonnxruntime.so"
 fi
 
+# macOS wheels ship only libonnxruntime.<version>.dylib; CMake's find_library wants libonnxruntime.dylib.
+DYLIB=$(find "$ROOT/lib" -maxdepth 1 -type f -name 'libonnxruntime.*.dylib' | head -n1 || true)
+if [ -n "$DYLIB" ]; then
+  ln -sfn "$(basename "$DYLIB")" "$ROOT/lib/libonnxruntime.dylib"
+fi
+
 test -n "$(find "$ROOT/include" -name onnxruntime_cxx_api.h | head -n1)"
 test -n "$(find "$ROOT/lib" -maxdepth 1 \( -name 'libonnxruntime*' -o -name 'onnxruntime*.dll' \) | head -n1)"
 rm -rf "$TMP"
