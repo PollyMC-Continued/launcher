@@ -88,6 +88,7 @@ stdenv.mkDerivation {
     kdePackages.qtbase
     kdePackages.qtnetworkauth
     kdePackages.qtsvg
+    kdePackages.qtwebsockets
     onnxruntime
     qrencode
     libarchive

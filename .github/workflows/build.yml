@@ -393,13 +393,14 @@ jobs:
           python-version: "3.12"
 
       - name: Download ONNX Runtime
-        env:
-          PYTHON: python
         run: |
           set -euo pipefail
+          # The MSYS2 python has no pip; use the Windows Python that setup-python installed.
+          export PYTHON="$(cygpath -u "$pythonLocation")/python.exe"
           # PyPI wheel instead of GitHub releases (GitHub returned 404 for the repo).
           bash scripts/fetch-onnxruntime.sh "$ORT_VERSION" win_amd64 \
             "$RUNNER_TEMP/ort/onnxruntime-win-x64-$ORT_VERSION" thirdparty/onnxruntime/include
+            
       - name: Configure
         run: |
           set -euo pipefail
