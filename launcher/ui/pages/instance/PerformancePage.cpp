@@ -251,7 +251,7 @@ ProcessStat queryProcessStat(qint64 pid)
     ProcessStat result;
 
     struct rusage_info_v4 usage = {};
-    if (proc_pid_rusage(static_cast<int>(pid), RUSAGE_INFO_V4, (rusage_info_t)&usage) != 0) {
+    if (proc_pid_rusage(static_cast<int>(pid), RUSAGE_INFO_V4, (rusage_info_t*)&usage) != 0) {
         return result;
     }
 
@@ -259,7 +259,7 @@ ProcessStat queryProcessStat(qint64 pid)
     // ri_user_time and ri_system_time are counted in microseconds
     result.cpuSeconds = (double(usage.ri_user_time) + double(usage.ri_system_time)) / 1000000.0;
     // ri_footprint is the resident memory footprint in bytes
-    result.ramMiB = double(usage.ri_footprint) / 1024.0 / 1024.0;
+    result.ramMiB = double(usage.ri_phys_footprint) / 1024.0 / 1024.0;
 
     struct proc_bsdinfo info = {};
     if (proc_pidinfo(static_cast<int>(pid), PROC_PIDTBSDINFO, 0, &info, sizeof(info)) > 0) {
