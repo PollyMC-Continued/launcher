@@ -24,6 +24,8 @@
 #include <QHash>
 #include <QImage>
 #include <QList>
+#include <QSet>
+#include <QStringList>
 
 #include "minecraft/skins/CraftySkinAPI.h"
 #include "minecraft/skins/SkinModel.h"
@@ -68,6 +70,7 @@ class CapeBrowserDialog : public QDialog, public SkinProvider {
     void importUrl();
     void useCape();
     void currentRowChanged(int row);
+    void loadMore();
 
    private:
     void setLoading(bool loading);
@@ -76,6 +79,14 @@ class CapeBrowserDialog : public QDialog, public SkinProvider {
     void showError(const QString& reason);
     QString displayName(const Crafty::CapePtr& cape) const;
     QPixmap thumbnail(const Crafty::CapePtr& cape) const;
+    // the grid fills itself the way the skin browser does: capes are looked up for the players of the
+    // skin catalog, one player at a time, and show up as they arrive
+    void discover(int page);
+    void lookupNext(int request, const QStringList& names, int index);
+    void finishDiscovery(const QString& error);
+    bool addCape(const Crafty::CapePtr& cape);
+    void appendItem(const Crafty::CapePtr& cape);
+    void setupFallbackSkin();
 
    private:
     Crafty::API* m_api;
@@ -83,6 +94,10 @@ class CapeBrowserDialog : public QDialog, public SkinProvider {
     Crafty::CapePtr m_current;
     QString m_player;
     int m_request = 0;
+    int m_discoverPage = 0;
+    bool m_discoverMore = false;
+    QSet<QString> m_scanned;   // players already looked up while discovering
+    QSet<QString> m_capeKeys;  // capes already in the grid, so a shared cape shows up once
 
     std::unique_ptr<SkinModel> m_skin;
     SkinOpenGLWindow* m_preview = nullptr;
@@ -90,13 +105,13 @@ class CapeBrowserDialog : public QDialog, public SkinProvider {
 
     QLineEdit* m_searchEdit = nullptr;
     QPushButton* m_searchBtn = nullptr;
-    QLineEdit* m_urlEdit = nullptr;
     QPushButton* m_importBtn = nullptr;
     QListWidget* m_capeList = nullptr;
     QCheckBox* m_elytraCB = nullptr;
     QLabel* m_nameLabel = nullptr;
     QLabel* m_sourceLabel = nullptr;
     QLabel* m_statusLabel = nullptr;
+    QPushButton* m_moreBtn = nullptr;
     QPushButton* m_useBtn = nullptr;
     QPushButton* m_closeBtn = nullptr;
 };

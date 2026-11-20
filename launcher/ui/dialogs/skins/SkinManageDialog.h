@@ -51,8 +51,8 @@ class SkinManageDialog : public QDialog, public SkinProvider {
     void delayed_scroll(QModelIndex);
     void on_fileBtn_clicked();
     void on_importBtn_clicked();
-    void importFromUrl();
-    void importFromUser();
+    void importFromUrl(const QString& urlText);
+    void importFromUser(const QString& user);
     void on_viewOnlineBtn_clicked();
     void accept() override;
     void on_capeCombo_currentIndexChanged(int index);

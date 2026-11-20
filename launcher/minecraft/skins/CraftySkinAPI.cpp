@@ -574,6 +574,30 @@ CapePtr makeCape(const QString& name, const QString& username, const QString& so
     return cape;
 }
 
+// crafty.gg's player profile carries every cape inline: the "texture" field of each entry is the
+// base64 PNG itself, with no image URL. Mojang capes come under "capes", OptiFine ones under "optifine_capes".
+QList<CapePtr> inlineCapes(const QJsonObject& profile, const QString& username)
+{
+    QList<CapePtr> result;
+    for (const auto& key : { QStringLiteral("capes"), QStringLiteral("optifine_capes") }) {
+        for (const auto& value : profile.value(key).toArray()) {
+            if (result.size() >= kMaxCapes)
+                return result;
+            const auto object = value.toObject();
+            const auto encoded = object.value(QStringLiteral("texture")).toString();
+            if (encoded.isEmpty())
+                continue;
+            const auto png = QByteArray::fromBase64(encoded.toLatin1());
+            auto source = object.value(QStringLiteral("type")).toObject().value(QStringLiteral("slug")).toString();
+            if (source.isEmpty())
+                source = key == QStringLiteral("optifine_capes") ? QStringLiteral("optifine") : QStringLiteral("crafty");
+            if (auto cape = makeCape(object.value(QStringLiteral("name")).toString(), username, source, QUrl(), png))
+                result << cape;
+        }
+    }
+    return result;
+}
+
 }  // namespace
 
 QString API::noCapesMessage()
@@ -608,6 +632,13 @@ NetJob::Ptr API::fetchPlayerCapes(const QString& username, CapeListCallback call
         const auto root = doc.object();
         if (root.contains(QStringLiteral("success")) && !root.value(QStringLiteral("success")).toBool()) {
             callback({}, root.value(QStringLiteral("message")).toString(QStringLiteral("crafty.gg rejected the request")));
+            return;
+        }
+
+        // the capes are inline in the profile, which is wrapped in {"success": ..., "data": {...}}
+        const auto profile = root.contains(QStringLiteral("data")) ? root.value(QStringLiteral("data")).toObject() : root;
+        if (auto inlined = inlineCapes(profile, username); !inlined.isEmpty()) {
+            callback(inlined, {});
             return;
         }
 

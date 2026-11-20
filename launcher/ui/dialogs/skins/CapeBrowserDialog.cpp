@@ -19,8 +19,11 @@
 #include "CapeBrowserDialog.h"
 
 #include <QCheckBox>
+#include <QColor>
+#include <QFileInfo>
 #include <QHBoxLayout>
 #include <QIcon>
+#include <QInputDialog>
 #include <QLabel>
 #include <QLineEdit>
 #include <QListWidget>
@@ -30,15 +33,18 @@
 #include <QPushButton>
 #include <QShowEvent>
 #include <QSplitter>
+#include <QTimer>
 #include <QUrl>
 #include <QVBoxLayout>
 
 #include "Application.h"
 #include "DiscordRichPresence.h"
+#include "FileSystem.h"
 #include "settings/SettingsObject.h"
 #include "ui/dialogs/CustomMessageBox.h"
 
 static const QLatin1String geometryKey("CapeBrowserGeometry");
+static constexpr int kPlayersPerPage = 12;
 
 // Vanilla capes are 2:1 (64x32, 512x256, ...) and the 3D preview maps its UVs onto that. OptiFine
 // capes are cropped to the used 46x22 area (and sometimes land a pixel or two off at HD sizes), so
@@ -70,6 +76,8 @@ CapeBrowserDialog::CapeBrowserDialog(const SkinModel* currentSkin, QWidget* pare
         m_skin = std::make_unique<SkinModel>(currentSkin->getPath());
         m_skin->setModel(currentSkin->getModel());
     }
+    if (!m_skin)
+        setupFallbackSkin();  // nothing selected in the skin manager: a plain mannequin instead of a black model
 
     auto geometry = APPLICATION->settings()->get(geometryKey).toString();
     if (geometry.isEmpty()) {
@@ -89,15 +97,11 @@ CapeBrowserDialog::CapeBrowserDialog(const SkinModel* currentSkin, QWidget* pare
                                 "where it tracks Mojang and OptiFine capes."));
     m_searchEdit->setClearButtonEnabled(true);
     m_searchBtn = new QPushButton(tr("Search"), this);
-    m_urlEdit = new QLineEdit(this);
-    m_urlEdit->setPlaceholderText(tr("...or paste a cape PNG URL"));
-    m_urlEdit->setToolTip(tr("Cape textures are typically 64x32, 512x256 or OptiFine 46x22 style PNG files."));
-    m_urlEdit->setClearButtonEnabled(true);
-    m_importBtn = new QPushButton(tr("Import"), this);
+    m_importBtn = new QPushButton(tr("Import URL..."), this);
+    m_importBtn->setToolTip(tr("Import a cape from a PNG link. Cape textures are typically 64x32, 512x256 or OptiFine 46x22 style PNG files."));
     topRow->addWidget(m_searchEdit, 1);
     topRow->addWidget(m_searchBtn);
     topRow->addSpacing(12);
-    topRow->addWidget(m_urlEdit, 1);
     topRow->addWidget(m_importBtn);
     rootLayout->addLayout(topRow);
 
@@ -151,11 +155,15 @@ CapeBrowserDialog::CapeBrowserDialog(const SkinModel* currentSkin, QWidget* pare
     m_closeBtn = new QPushButton(tr("Close"), this);
     bottomRow->addWidget(m_closeBtn);
     bottomRow->addStretch(1);
-    m_statusLabel = new QLabel(tr("Enter a player name to look up their capes."), this);
+    m_statusLabel = new QLabel(tr("Finding capes..."), this);
     m_statusLabel->setAlignment(Qt::AlignCenter);
     m_statusLabel->setWordWrap(true);
     bottomRow->addWidget(m_statusLabel, 3);
     bottomRow->addStretch(1);
+    m_moreBtn = new QPushButton(tr("Load more"), this);
+    m_moreBtn->setEnabled(false);
+    m_moreBtn->setToolTip(tr("Look through more players for capes"));
+    bottomRow->addWidget(m_moreBtn);
     m_useBtn = new QPushButton(tr("Use cape"), this);
     m_useBtn->setEnabled(false);
     m_useBtn->setToolTip(tr("Apply this cape to the selected account"));
@@ -165,7 +173,6 @@ CapeBrowserDialog::CapeBrowserDialog(const SkinModel* currentSkin, QWidget* pare
     connect(m_searchBtn, &QPushButton::clicked, this, &CapeBrowserDialog::search);
     connect(m_searchEdit, &QLineEdit::returnPressed, this, &CapeBrowserDialog::search);
     connect(m_importBtn, &QPushButton::clicked, this, &CapeBrowserDialog::importUrl);
-    connect(m_urlEdit, &QLineEdit::returnPressed, this, &CapeBrowserDialog::importUrl);
     connect(m_capeList, &QListWidget::currentRowChanged, this, &CapeBrowserDialog::currentRowChanged);
     connect(m_capeList, &QListWidget::itemDoubleClicked, this, [this](QListWidgetItem*) { useCape(); });
     connect(m_elytraCB, &QCheckBox::toggled, this, [this](bool checked) {
@@ -175,7 +182,10 @@ CapeBrowserDialog::CapeBrowserDialog(const SkinModel* currentSkin, QWidget* pare
             updateDetails();
     });
     connect(m_useBtn, &QPushButton::clicked, this, &CapeBrowserDialog::useCape);
+    connect(m_moreBtn, &QPushButton::clicked, this, &CapeBrowserDialog::loadMore);
     connect(m_closeBtn, &QPushButton::clicked, this, &CapeBrowserDialog::reject);
+
+    discover(1);
 }
 
 CapeBrowserDialog::~CapeBrowserDialog()
@@ -231,9 +241,19 @@ void CapeBrowserDialog::setLoading(bool loading)
 void CapeBrowserDialog::search()
 {
     auto name = m_searchEdit->text().trimmed();
-    if (name.isEmpty())
+    if (name.isEmpty()) {
+        // an empty search goes back to browsing, like the skin browser does
+        m_capes.clear();
+        m_scanned.clear();
+        m_capeKeys.clear();
+        m_player.clear();
+        fillList();
+        discover(1);
         return;
+    }
     m_player = name;
+    m_discoverMore = false;
+    m_moreBtn->hide();
 
     const int request = ++m_request;
     setLoading(true);
@@ -259,8 +279,9 @@ void CapeBrowserDialog::search()
 
 void CapeBrowserDialog::importUrl()
 {
-    auto urlText = m_urlEdit->text().trimmed();
-    if (urlText.isEmpty())
+    bool ok = false;
+    auto urlText = QInputDialog::getText(this, tr("Import cape from URL"), tr("URL of a cape PNG image:"), QLineEdit::Normal, QString(), &ok).trimmed();
+    if (!ok || urlText.isEmpty())
         return;
     auto url = QUrl::fromUserInput(urlText);
     if (!url.isValid() || (url.scheme() != QStringLiteral("https") && url.scheme() != QStringLiteral("http"))) {
@@ -269,6 +290,8 @@ void CapeBrowserDialog::importUrl()
     }
 
     const int request = ++m_request;
+    m_discoverMore = false;
+    m_moreBtn->hide();
     setLoading(true);
     m_statusLabel->setText(tr("Downloading the cape..."));
 
@@ -311,20 +334,24 @@ QPixmap CapeBrowserDialog::thumbnail(const Crafty::CapePtr& cape) const
     return QPixmap::fromImage(face.scaled(60, 96, Qt::IgnoreAspectRatio, Qt::FastTransformation));
 }
 
+void CapeBrowserDialog::appendItem(const Crafty::CapePtr& cape)
+{
+    auto item = new QListWidgetItem(m_capeList);
+    item->setText(displayName(cape));
+    item->setTextAlignment(Qt::AlignHCenter);
+    if (auto pixmap = thumbnail(cape); !pixmap.isNull())
+        item->setIcon(QIcon(pixmap));
+    item->setToolTip(cape->textureUrl.isEmpty() ? tr("Source: %1").arg(cape->source)
+                                                : tr("Source: %1\n%2").arg(cape->source, cape->textureUrl.toString()));
+}
+
 void CapeBrowserDialog::fillList()
 {
     m_capeList->clear();
     m_current.clear();
 
-    for (const auto& cape : m_capes) {
-        auto item = new QListWidgetItem(m_capeList);
-        item->setText(displayName(cape));
-        item->setTextAlignment(Qt::AlignHCenter);
-        if (auto pixmap = thumbnail(cape); !pixmap.isNull())
-            item->setIcon(QIcon(pixmap));
-        item->setToolTip(cape->textureUrl.isEmpty() ? tr("Source: %1").arg(cape->source)
-                                                    : tr("Source: %1\n%2").arg(cape->source, cape->textureUrl.toString()));
-    }
+    for (const auto& cape : m_capes)
+        appendItem(cape);
     if (!m_capes.isEmpty())
         m_capeList->setCurrentRow(0);
     updateDetails();
@@ -371,6 +398,110 @@ void CapeBrowserDialog::updateDetails()
             m_previewLabel->clear();
         }
     }
+}
+
+void CapeBrowserDialog::setupFallbackSkin()
+{
+    const auto path = FS::PathCombine(APPLICATION->dataRoot(), "cache", "capes", "preview-mannequin.png");
+    if (!QFileInfo::exists(path)) {
+        QImage image(64, 64, QImage::Format_ARGB32);
+        image.fill(QColor(160, 160, 160));
+        FS::ensureFolderPathExists(QFileInfo(path).absolutePath());
+        if (!image.save(path, "PNG"))
+            return;
+    }
+    auto skin = std::make_unique<SkinModel>(path);
+    if (skin->isValid())
+        m_skin = std::move(skin);
+}
+
+// crafty.gg has no cape catalog, so browsing means taking the players of the skin catalog and asking
+// for the capes each one has. At most a dozen players per page keeps this well inside the request
+// budget Crafty::API shares between all of its calls, and "Load more" continues with the next page.
+void CapeBrowserDialog::discover(int page)
+{
+    const int request = ++m_request;
+    m_moreBtn->show();
+    m_moreBtn->setEnabled(false);
+    m_statusLabel->setText(tr("Finding capes..."));
+
+    m_api->fetchSkins(page, QString(), [this, request](const Crafty::SkinPage& result, const QString& error) {
+        if (request != m_request)
+            return;
+        if (!error.isEmpty()) {
+            finishDiscovery(error);
+            return;
+        }
+        m_discoverPage = result.page;
+        m_discoverMore = result.hasMore;
+
+        QStringList names;
+        for (const auto& skin : result.skins) {
+            if (names.size() >= kPlayersPerPage)
+                break;
+            const auto name = skin->username.trimmed();
+            if (name.isEmpty() || m_scanned.contains(name.toLower()))
+                continue;
+            m_scanned.insert(name.toLower());
+            names << name;
+        }
+        lookupNext(request, names, 0);
+    });
+}
+
+void CapeBrowserDialog::lookupNext(int request, const QStringList& names, int index)
+{
+    if (request != m_request)
+        return;
+    if (index >= names.size()) {
+        finishDiscovery(QString());
+        return;
+    }
+    m_statusLabel->setText(tr("Looking for capes... (%1 of %2 players)").arg(index + 1).arg(names.size()));
+
+    m_api->fetchPlayerCapes(names.at(index), [this, request, names, index](const QList<Crafty::CapePtr>& capes, const QString&) {
+        if (request != m_request)
+            return;
+        for (const auto& cape : capes)
+            addCape(cape);
+        // players without capes and failed lookups are simply skipped. The next lookup starts from the
+        // event loop, not from inside the callback of the one that just finished
+        QTimer::singleShot(0, this, [this, request, names, index] { lookupNext(request, names, index + 1); });
+    });
+}
+
+void CapeBrowserDialog::finishDiscovery(const QString& error)
+{
+    m_moreBtn->setEnabled(m_discoverMore);
+    if (m_capes.isEmpty()) {
+        m_statusLabel->setText(error.isEmpty() ? tr("No capes found yet. Try Load more, or search for a player.") : error);
+    } else {
+        m_statusLabel->setText(tr("%1 capes found. Load more looks through more players, or search for one.").arg(m_capes.size()));
+    }
+}
+
+// adds one cape to the grid without disturbing the selection; a cape that is already there (several
+// players wear the same Mojang cape) is skipped
+bool CapeBrowserDialog::addCape(const Crafty::CapePtr& cape)
+{
+    if (!cape || cape->texture.isNull())
+        return false;
+    const auto key = cape->cachePath.isEmpty() ? cape->textureUrl.toString() : cape->cachePath;
+    if (!key.isEmpty()) {
+        if (m_capeKeys.contains(key))
+            return false;
+        m_capeKeys.insert(key);
+    }
+    m_capes << cape;
+    appendItem(cape);
+    if (m_capeList->currentRow() < 0)
+        m_capeList->setCurrentRow(0);
+    return true;
+}
+
+void CapeBrowserDialog::loadMore()
+{
+    discover(m_discoverPage + 1);
 }
 
 void CapeBrowserDialog::useCape()

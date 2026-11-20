@@ -682,9 +682,9 @@ void SkinManageDialog::on_action_Delete_Skin_triggered(bool)
     }
 }
 
-void SkinManageDialog::importFromUrl()
+void SkinManageDialog::importFromUrl(const QString& urlText)
 {
-    auto url = QUrl(m_ui->urlLine->text());
+    auto url = QUrl(urlText);
     if (!url.isValid()) {
         CustomMessageBox::selectable(this, tr("Invalid url"), tr("Invalid url"), QMessageBox::Critical)->show();
         return;
@@ -701,13 +701,12 @@ void SkinManageDialog::importFromUrl()
     if (!s.isValid()) {
         CustomMessageBox::selectable(this, tr("URL is not a valid skin"),
                                      QFileInfo::exists(path) ? tr("Skin images must be 64x64 or 64x32 pixel PNG files.")
-                                                             : tr("Unable to download the skin: '%1'.").arg(m_ui->urlLine->text()),
+                                                             : tr("Unable to download the skin: '%1'.").arg(urlText),
                                      QMessageBox::Critical)
             ->show();
         QFile::remove(path);
         return;
     }
-    m_ui->urlLine->setText("");
     if (QFileInfo(path).suffix().isEmpty()) {
         QFile::rename(path, path + ".png");
     }
@@ -740,19 +739,19 @@ class WaitTask : public Task {
 
 void SkinManageDialog::on_importBtn_clicked()
 {
-    const auto text = m_ui->urlLine->text().trimmed();
-    if (text.isEmpty())
+    bool ok = false;
+    const auto text = QInputDialog::getText(this, tr("Import skin"), tr("Skin URL or Minecraft username:"), QLineEdit::Normal, QString(), &ok)
+                          .trimmed();
+    if (!ok || text.isEmpty())
         return;
-    m_ui->urlLine->setText(text);
     if (text.startsWith("http://", Qt::CaseInsensitive) || text.startsWith("https://", Qt::CaseInsensitive))
-        importFromUrl();
+        importFromUrl(text);
     else
-        importFromUser();
+        importFromUser(text);
 }
 
-void SkinManageDialog::importFromUser()
+void SkinManageDialog::importFromUser(const QString& user)
 {
-    auto user = m_ui->urlLine->text();
     if (user.isEmpty()) {
         return;
     }
@@ -843,7 +842,6 @@ void SkinManageDialog::importFromUser()
         QFile::remove(path);
         return;
     }
-    m_ui->urlLine->setText("");
     s.setModel(mcProfile.skin.variant.toUpper() == "SLIM" ? SkinModel::SLIM : SkinModel::CLASSIC);
     s.setURL(mcProfile.skin.url);
     if (m_capes.contains(mcProfile.currentCape)) {
