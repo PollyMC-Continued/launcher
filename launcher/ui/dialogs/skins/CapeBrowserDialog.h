@@ -36,6 +36,7 @@ class QLabel;
 class QLineEdit;
 class QListWidget;
 class QPushButton;
+class QTimer;
 
 // Lets the user pick a cape: capes crafty.gg tracks for a player name, plus direct PNG URL
 // imports. Laid out like the skin browser (grid on the left, 3D preview on the right), and
@@ -70,7 +71,8 @@ class CapeBrowserDialog : public QDialog, public SkinProvider {
     void importUrl();
     void useCape();
     void currentRowChanged(int row);
-    void loadMore();
+    void previousPage();
+    void nextPage();
 
    private:
     void setLoading(bool loading);
@@ -80,13 +82,22 @@ class CapeBrowserDialog : public QDialog, public SkinProvider {
     QString displayName(const Crafty::CapePtr& cape) const;
     QPixmap thumbnail(const Crafty::CapePtr& cape) const;
     // the grid fills itself the way the skin browser does: capes are looked up for the players of the
-    // skin catalog, one player at a time, and show up as they arrive
-    void discover(int page);
+    // skin catalog, one player at a time, and show up as they arrive. A page of the pager is one
+    // batch of players; pages that were already loaded are kept, so going back is instant
+    void discover(int apiPage);
     void lookupNext(int request, const QStringList& names, int index);
     void finishDiscovery(const QString& error);
     bool addCape(const Crafty::CapePtr& cape);
-    void appendItem(const Crafty::CapePtr& cape);
+    void appendItem(const Crafty::CapePtr& cape, int row);
+    void showPage(int page);
+    void updatePager();
     void setupFallbackSkin();
+
+    // grey shimmering placeholders at the end of the grid while capes are being fetched
+    void startSkeleton(int count);
+    void stopSkeleton();
+    void tickSkeleton();
+    QPixmap skeletonPixmap(int slot) const;
 
    private:
     Crafty::API* m_api;
@@ -94,8 +105,14 @@ class CapeBrowserDialog : public QDialog, public SkinProvider {
     Crafty::CapePtr m_current;
     QString m_player;
     int m_request = 0;
-    int m_discoverPage = 0;
-    bool m_discoverMore = false;
+    int m_importRequest = 0;
+    int m_apiPage = 0;               // last catalog page that was requested
+    bool m_discoverMore = false;     // the catalog has pages after m_apiPage
+    bool m_discovering = false;      // a page is being filled right now
+    bool m_browsing = true;          // false while the grid shows a search or an import
+    int m_emptyPages = 0;            // consecutive catalog pages that gave no capes at all
+    int m_page = 1;                  // page shown in the pager (1-based)
+    QList<QList<Crafty::CapePtr>> m_pages;  // fully loaded pages
     QSet<QString> m_scanned;   // players already looked up while discovering
     QSet<QString> m_capeKeys;  // capes already in the grid, so a shared cape shows up once
 
@@ -111,7 +128,13 @@ class CapeBrowserDialog : public QDialog, public SkinProvider {
     QLabel* m_nameLabel = nullptr;
     QLabel* m_sourceLabel = nullptr;
     QLabel* m_statusLabel = nullptr;
-    QPushButton* m_moreBtn = nullptr;
+    QPushButton* m_prevBtn = nullptr;
+    QPushButton* m_nextBtn = nullptr;
+    QLabel* m_pageLabel = nullptr;
     QPushButton* m_useBtn = nullptr;
     QPushButton* m_closeBtn = nullptr;
+
+    QTimer* m_skeletonTimer = nullptr;
+    int m_skeletonCount = 0;
+    int m_skeletonTick = 0;
 };
