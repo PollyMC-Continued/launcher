@@ -187,7 +187,7 @@ void NewInstanceFromTemplateDialog::scanTemplates()
         QString created = info.created;
         const QDateTime createdAt = QDateTime::fromString(info.created, Qt::ISODate);
         if (createdAt.isValid()) {
-            created = createdAt.toString(Qt::SystemLocaleShortDate);
+            created = QLocale::system().toString(createdAt, QLocale::ShortFormat);
         }
 
         auto* item = new QTreeWidgetItem(m_templateTree);
