@@ -946,6 +946,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_settings->registerSetting("ShaderDownloadGeometry", "");
         m_settings->registerSetting("DataPackDownloadGeometry", "");
         m_settings->registerSetting("SkinBrowserGeometry", "");
+        m_settings->registerSetting("CapeBrowserGeometry", "");
 
         // further dialogs whose size is remembered between runs
         m_settings->registerSetting("AboutGeometry", "");

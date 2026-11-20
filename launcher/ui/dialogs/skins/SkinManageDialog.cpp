@@ -128,6 +128,11 @@ SkinManageDialog::SkinManageDialog(QWidget* parent, MinecraftAccountPtr acct)
 
     m_ui->listView->setCurrentIndex(m_list.index(m_list.getSelectedAccountSkin()));
 
+    auto moreMenu = new QMenu(this);
+    moreMenu->addAction(tr("Open skins folder"), this, &SkinManageDialog::openSkinsFolder);
+    moreMenu->addAction(tr("Reset skin"), this, &SkinManageDialog::resetSkin);
+    m_ui->moreBtn->setMenu(moreMenu);
+
     m_ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
     m_ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("OK"));
 
@@ -184,7 +189,7 @@ void SkinManageDialog::delayed_scroll(QModelIndex model_index)
     contentsWidget->scrollTo(model_index);
 }
 
-void SkinManageDialog::on_openDirBtn_clicked()
+void SkinManageDialog::openSkinsFolder()
 {
     DesktopServices::openPath(m_list.getDir(), true);
 }
@@ -406,7 +411,7 @@ void SkinManageDialog::applyOfflineCape(const QImage& cape, const QString& name)
 
 void SkinManageDialog::on_offlineBrowseBtn_clicked()
 {
-    CapeBrowserDialog dialog(this);
+    CapeBrowserDialog dialog(getSelectedSkin(), this);
     connect(&dialog, &CapeBrowserDialog::selected, this, [this](const QString& player, const Crafty::CapePtr& cape) {
         if (!cape || cape->texture.isNull())
             return;
@@ -589,7 +594,7 @@ void SkinManageDialog::accept()
     QDialog::accept();
 }
 
-void SkinManageDialog::on_resetBtn_clicked()
+void SkinManageDialog::resetSkin()
 {
     // For offline accounts, just delete local skin files
     if (m_acct->accountType() == AccountType::Offline) {
@@ -677,7 +682,7 @@ void SkinManageDialog::on_action_Delete_Skin_triggered(bool)
     }
 }
 
-void SkinManageDialog::on_urlBtn_clicked()
+void SkinManageDialog::importFromUrl()
 {
     auto url = QUrl(m_ui->urlLine->text());
     if (!url.isValid()) {
@@ -733,7 +738,19 @@ class WaitTask : public Task {
     bool m_done;
 };
 
-void SkinManageDialog::on_userBtn_clicked()
+void SkinManageDialog::on_importBtn_clicked()
+{
+    const auto text = m_ui->urlLine->text().trimmed();
+    if (text.isEmpty())
+        return;
+    m_ui->urlLine->setText(text);
+    if (text.startsWith("http://", Qt::CaseInsensitive) || text.startsWith("https://", Qt::CaseInsensitive))
+        importFromUrl();
+    else
+        importFromUser();
+}
+
+void SkinManageDialog::importFromUser()
 {
     auto user = m_ui->urlLine->text();
     if (user.isEmpty()) {

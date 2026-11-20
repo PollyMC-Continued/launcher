@@ -18,24 +18,39 @@
 
 #pragma once
 
+#include <memory>
+
 #include <QDialog>
+#include <QHash>
+#include <QImage>
+#include <QList>
 
 #include "minecraft/skins/CraftySkinAPI.h"
+#include "minecraft/skins/SkinModel.h"
+#include "ui/dialogs/skins/draw/SkinOpenGLWindow.h"
 
+class QCheckBox;
 class QLabel;
 class QLineEdit;
 class QListWidget;
 class QPushButton;
 
 // Lets the user pick a cape: capes crafty.gg tracks for a player name, plus direct PNG URL
-// imports. Built entirely in C++ (no .ui file), mirroring how the skin browser behaves:
-// rate-limited crafty.gg requests through Crafty::API and aborted when the dialog closes.
-class CapeBrowserDialog : public QDialog {
+// imports. Laid out like the skin browser (grid on the left, 3D preview on the right), and
+// the preview wears the picked cape on the skin that is currently selected in the skin
+// manager. Built entirely in C++ (no .ui file); crafty.gg requests are rate-limited through
+// Crafty::API and aborted when the dialog closes.
+class CapeBrowserDialog : public QDialog, public SkinProvider {
     Q_OBJECT
 
    public:
-    explicit CapeBrowserDialog(QWidget* parent = nullptr);
+    // currentSkin is the skin to dress up in the preview; it is copied, so it only has to
+    // outlive the constructor. nullptr shows the default (empty) model.
+    explicit CapeBrowserDialog(const SkinModel* currentSkin, QWidget* parent = nullptr);
     ~CapeBrowserDialog() override;
+
+    SkinModel* getSelectedSkin() override { return m_skin.get(); }
+    QHash<QString, QImage> capes() override;
 
    signals:
     // emitted by "Use cape" with the cape the user confirmed, together with the player it
@@ -60,6 +75,7 @@ class CapeBrowserDialog : public QDialog {
     void updateDetails();
     void showError(const QString& reason);
     QString displayName(const Crafty::CapePtr& cape) const;
+    QPixmap thumbnail(const Crafty::CapePtr& cape) const;
 
    private:
     Crafty::API* m_api;
@@ -68,14 +84,18 @@ class CapeBrowserDialog : public QDialog {
     QString m_player;
     int m_request = 0;
 
+    std::unique_ptr<SkinModel> m_skin;
+    SkinOpenGLWindow* m_preview = nullptr;
+    QLabel* m_previewLabel = nullptr;  // fallback when OpenGL is unavailable
+
     QLineEdit* m_searchEdit = nullptr;
     QPushButton* m_searchBtn = nullptr;
     QLineEdit* m_urlEdit = nullptr;
     QPushButton* m_importBtn = nullptr;
     QListWidget* m_capeList = nullptr;
-    QLabel* m_helpLabel = nullptr;
+    QCheckBox* m_elytraCB = nullptr;
+    QLabel* m_nameLabel = nullptr;
     QLabel* m_sourceLabel = nullptr;
-    QLabel* m_linkLabel = nullptr;
     QLabel* m_statusLabel = nullptr;
     QPushButton* m_useBtn = nullptr;
     QPushButton* m_closeBtn = nullptr;

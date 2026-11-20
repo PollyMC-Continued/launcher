@@ -18,15 +18,18 @@
 
 #include "CapeBrowserDialog.h"
 
+#include <QCheckBox>
 #include <QHBoxLayout>
 #include <QIcon>
 #include <QLabel>
 #include <QLineEdit>
 #include <QListWidget>
 #include <QListWidgetItem>
+#include <QPainter>
 #include <QPixmap>
 #include <QPushButton>
 #include <QShowEvent>
+#include <QSplitter>
 #include <QUrl>
 #include <QVBoxLayout>
 
@@ -37,72 +40,121 @@
 
 static const QLatin1String geometryKey("CapeBrowserGeometry");
 
-CapeBrowserDialog::CapeBrowserDialog(QWidget* parent) : QDialog(parent), m_api(new Crafty::API(this))
+// Vanilla capes are 2:1 (64x32, 512x256, ...) and the 3D preview maps its UVs onto that. OptiFine
+// capes are cropped to the used 46x22 area (and sometimes land a pixel or two off at HD sizes), so
+// they are pasted onto a transparent 2:1 canvas first, at the same pixel scale.
+static QImage normalizedCape(const QImage& cape)
+{
+    if (cape.isNull() || cape.width() == cape.height() * 2)
+        return cape;
+    const double ratio = double(cape.width()) / cape.height();
+    if (ratio < 2.05 || ratio > 2.2)
+        return cape;  // not a shape we know, hand it over untouched
+    const double unit = cape.width() / 46.0;
+    QImage canvas(qRound(unit * 64), qRound(unit * 32), QImage::Format_ARGB32);
+    if (canvas.isNull())
+        return cape;
+    canvas.fill(Qt::transparent);
+    QPainter painter(&canvas);
+    painter.drawImage(0, 0, cape);
+    painter.end();
+    return canvas;
+}
+
+CapeBrowserDialog::CapeBrowserDialog(const SkinModel* currentSkin, QWidget* parent) : QDialog(parent), m_api(new Crafty::API(this))
 {
     setWindowModality(Qt::WindowModal);
     setWindowTitle(tr("Browse capes"));
 
+    if (currentSkin && currentSkin->isValid()) {
+        m_skin = std::make_unique<SkinModel>(currentSkin->getPath());
+        m_skin->setModel(currentSkin->getModel());
+    }
+
     auto geometry = APPLICATION->settings()->get(geometryKey).toString();
     if (geometry.isEmpty()) {
         const auto base = parent ? parent->size() : QSize(1024, 768);
-        resize(qMax(qRound(base.width() * 0.5), 560), qMax(qRound(base.height() * 0.6), 420));
+        resize(qMax(qRound(base.width() * 0.6), 700), qMax(qRound(base.height() * 0.75), 480));
     } else {
         restoreGeometry(QByteArray::fromBase64(geometry.toUtf8()));
     }
 
     auto rootLayout = new QVBoxLayout(this);
 
-    // the honest description of what this dialog can do
-    m_helpLabel = new QLabel(tr("crafty.gg's public API does not document a cape catalog; capes are looked up from "
-                                "the player's profile where crafty.gg tracks Mojang and OptiFine capes. Cape "
-                                "textures are typically 462x217 or 512x256 pixel PNG files."),
-                             this);
-    m_helpLabel->setWordWrap(true);
-    rootLayout->addWidget(m_helpLabel);
-
-    auto searchRow = new QHBoxLayout();
+    // one compact row: look a player up, or paste a PNG link
+    auto topRow = new QHBoxLayout();
     m_searchEdit = new QLineEdit(this);
-    m_searchEdit->setPlaceholderText(tr("Player name on crafty.gg..."));
+    m_searchEdit->setPlaceholderText(tr("Search by player name..."));
+    m_searchEdit->setToolTip(tr("crafty.gg does not publish a cape catalog, so capes are looked up from a player's profile "
+                                "where it tracks Mojang and OptiFine capes."));
     m_searchEdit->setClearButtonEnabled(true);
     m_searchBtn = new QPushButton(tr("Search"), this);
-    searchRow->addWidget(m_searchEdit, 1);
-    searchRow->addWidget(m_searchBtn);
-    rootLayout->addLayout(searchRow);
-
-    m_capeList = new QListWidget(this);
-    m_capeList->setIconSize(QSize(128, 60));
-    m_capeList->setSelectionMode(QAbstractItemView::SingleSelection);
-    m_capeList->setSpacing(6);
-    rootLayout->addWidget(m_capeList, 1);
-
-    auto urlRow = new QHBoxLayout();
     m_urlEdit = new QLineEdit(this);
-    m_urlEdit->setPlaceholderText(tr("Import a cape directly from a PNG URL..."));
+    m_urlEdit->setPlaceholderText(tr("...or paste a cape PNG URL"));
+    m_urlEdit->setToolTip(tr("Cape textures are typically 64x32, 512x256 or OptiFine 46x22 style PNG files."));
     m_urlEdit->setClearButtonEnabled(true);
     m_importBtn = new QPushButton(tr("Import"), this);
-    urlRow->addWidget(m_urlEdit, 1);
-    urlRow->addWidget(m_importBtn);
-    rootLayout->addLayout(urlRow);
+    topRow->addWidget(m_searchEdit, 1);
+    topRow->addWidget(m_searchBtn);
+    topRow->addSpacing(12);
+    topRow->addWidget(m_urlEdit, 1);
+    topRow->addWidget(m_importBtn);
+    rootLayout->addLayout(topRow);
 
+    auto splitter = new QSplitter(Qt::Horizontal, this);
+
+    m_capeList = new QListWidget(this);
+    m_capeList->setViewMode(QListView::IconMode);
+    m_capeList->setMovement(QListView::Static);
+    m_capeList->setResizeMode(QListView::Adjust);
+    m_capeList->setSelectionMode(QAbstractItemView::SingleSelection);
+    m_capeList->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    m_capeList->setIconSize(QSize(60, 96));
+    m_capeList->setSpacing(8);
+    m_capeList->setWordWrap(true);
+    m_capeList->setTextElideMode(Qt::ElideRight);
+    m_capeList->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+
+    auto detail = new QWidget(this);
+    auto detailLayout = new QVBoxLayout(detail);
+    detailLayout->setContentsMargins(0, 0, 0, 0);
+
+    if (SkinOpenGLWindow::hasOpenGL()) {
+        m_preview = new SkinOpenGLWindow(this, palette().color(QPalette::Normal, QPalette::Base));
+        detailLayout->addWidget(QWidget::createWindowContainer(m_preview, this), 1);
+    } else {
+        m_previewLabel = new QLabel(this);
+        m_previewLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        m_previewLabel->setAlignment(Qt::AlignCenter);
+        detailLayout->addWidget(m_previewLabel, 1);
+    }
+
+    m_nameLabel = new QLabel(tr("Select a cape"), this);
+    m_nameLabel->setAlignment(Qt::AlignCenter);
     m_sourceLabel = new QLabel(this);
     m_sourceLabel->setAlignment(Qt::AlignCenter);
     m_sourceLabel->setWordWrap(true);
-    rootLayout->addWidget(m_sourceLabel);
+    m_sourceLabel->setOpenExternalLinks(true);
+    m_elytraCB = new QCheckBox(tr("Preview Elytra"), this);
+    detailLayout->addWidget(m_nameLabel);
+    detailLayout->addWidget(m_sourceLabel);
+    detailLayout->addWidget(m_elytraCB, 0, Qt::AlignHCenter);
 
-    m_linkLabel = new QLabel(this);
-    m_linkLabel->setOpenExternalLinks(true);
-    m_linkLabel->setAlignment(Qt::AlignCenter);
-    m_linkLabel->hide();
-    rootLayout->addWidget(m_linkLabel);
-
-    m_statusLabel = new QLabel(tr("Enter a player name to look up their capes."), this);
-    m_statusLabel->setAlignment(Qt::AlignCenter);
-    m_statusLabel->setWordWrap(true);
-    rootLayout->addWidget(m_statusLabel);
+    splitter->addWidget(m_capeList);
+    splitter->addWidget(detail);
+    splitter->setStretchFactor(0, 1);
+    splitter->setStretchFactor(1, 2);
+    splitter->setSizes({ 380, 520 });
+    rootLayout->addWidget(splitter, 1);
 
     auto bottomRow = new QHBoxLayout();
     m_closeBtn = new QPushButton(tr("Close"), this);
     bottomRow->addWidget(m_closeBtn);
+    bottomRow->addStretch(1);
+    m_statusLabel = new QLabel(tr("Enter a player name to look up their capes."), this);
+    m_statusLabel->setAlignment(Qt::AlignCenter);
+    m_statusLabel->setWordWrap(true);
+    bottomRow->addWidget(m_statusLabel, 3);
     bottomRow->addStretch(1);
     m_useBtn = new QPushButton(tr("Use cape"), this);
     m_useBtn->setEnabled(false);
@@ -116,6 +168,13 @@ CapeBrowserDialog::CapeBrowserDialog(QWidget* parent) : QDialog(parent), m_api(n
     connect(m_urlEdit, &QLineEdit::returnPressed, this, &CapeBrowserDialog::importUrl);
     connect(m_capeList, &QListWidget::currentRowChanged, this, &CapeBrowserDialog::currentRowChanged);
     connect(m_capeList, &QListWidget::itemDoubleClicked, this, [this](QListWidgetItem*) { useCape(); });
+    connect(m_elytraCB, &QCheckBox::toggled, this, [this](bool checked) {
+        if (m_preview)
+            m_preview->setElytraVisible(checked);
+        else
+            updateDetails();
+    });
+    connect(m_useBtn, &QPushButton::clicked, this, &CapeBrowserDialog::useCape);
     connect(m_closeBtn, &QPushButton::clicked, this, &CapeBrowserDialog::reject);
 }
 
@@ -124,6 +183,14 @@ CapeBrowserDialog::~CapeBrowserDialog()
     // invalidates every callback that is still in flight
     m_request++;
     m_api->abortAll();
+}
+
+QHash<QString, QImage> CapeBrowserDialog::capes()
+{
+    // asked by the preview when it first initializes: hand it the cape that is already picked
+    if (!m_skin || !m_current || m_current->texture.isNull())
+        return {};
+    return { { m_skin->getCapeId(), normalizedCape(m_current->texture) } };
 }
 
 void CapeBrowserDialog::showEvent(QShowEvent* event)
@@ -228,7 +295,20 @@ QString CapeBrowserDialog::displayName(const Crafty::CapePtr& cape) const
     auto title = cape->name;
     if (title.isEmpty())
         title = player.isEmpty() ? tr("Cape") : tr("%1's cape").arg(player);
-    return QStringLiteral("%1 (%2)").arg(title, cape->source);
+    return title;
+}
+
+// the visible face of the cape (10x16 units at 1,1 of the vanilla layout), enlarged without smoothing
+QPixmap CapeBrowserDialog::thumbnail(const Crafty::CapePtr& cape) const
+{
+    const auto image = normalizedCape(cape->texture);
+    if (image.isNull())
+        return {};
+    const double unit = image.width() / 64.0;
+    const auto face = image.copy(qRound(unit), qRound(unit), qRound(unit * 10), qRound(unit * 16));
+    if (face.isNull())
+        return {};
+    return QPixmap::fromImage(face.scaled(60, 96, Qt::IgnoreAspectRatio, Qt::FastTransformation));
 }
 
 void CapeBrowserDialog::fillList()
@@ -239,8 +319,9 @@ void CapeBrowserDialog::fillList()
     for (const auto& cape : m_capes) {
         auto item = new QListWidgetItem(m_capeList);
         item->setText(displayName(cape));
-        if (!cape->preview.isNull())
-            item->setIcon(QIcon(QPixmap::fromImage(cape->preview)));
+        item->setTextAlignment(Qt::AlignHCenter);
+        if (auto pixmap = thumbnail(cape); !pixmap.isNull())
+            item->setIcon(QIcon(pixmap));
         item->setToolTip(cape->textureUrl.isEmpty() ? tr("Source: %1").arg(cape->source)
                                                     : tr("Source: %1\n%2").arg(cape->source, cape->textureUrl.toString()));
     }
@@ -251,33 +332,44 @@ void CapeBrowserDialog::fillList()
 
 void CapeBrowserDialog::currentRowChanged(int row)
 {
-    if (row < 0 || row >= m_capes.size()) {
+    if (row < 0 || row >= m_capes.size())
         m_current.clear();
-        updateDetails();
-        return;
-    }
-    m_current = m_capes.at(row);
+    else
+        m_current = m_capes.at(row);
     updateDetails();
 }
 
 void CapeBrowserDialog::updateDetails()
 {
-    m_useBtn->setEnabled(m_current && !m_current->texture.isNull());
+    const bool hasCape = m_current && !m_current->texture.isNull();
+    m_useBtn->setEnabled(hasCape);
 
     if (!m_current) {
+        m_nameLabel->setText(tr("Select a cape"));
         m_sourceLabel->clear();
-        m_linkLabel->hide();
-        return;
+    } else {
+        m_nameLabel->setText(displayName(m_current));
+        QString source = tr("Source: %1").arg(m_current->source);
+        const auto player = m_current->username.isEmpty() ? m_player : m_current->username;
+        if (!player.isEmpty()) {
+            source += QStringLiteral(" · <a href=\"https://crafty.gg/@%1\">%2</a>")
+                          .arg(QString::fromUtf8(QUrl::toPercentEncoding(player)), tr("Open crafty.gg page"));
+        }
+        m_sourceLabel->setText(source);
     }
 
-    m_sourceLabel->setText(tr("Source: %1").arg(m_current->source));
-    const auto player = m_current->username.isEmpty() ? m_player : m_current->username;
-    if (player.isEmpty()) {
-        m_linkLabel->hide();
-    } else {
-        m_linkLabel->setText(QStringLiteral("<a href=\"https://crafty.gg/@%1\">%2</a>")
-                                 .arg(QString::fromUtf8(QUrl::toPercentEncoding(player)), tr("Open crafty.gg page")));
-        m_linkLabel->show();
+    // the cape goes onto the skin that is selected in the skin manager
+    const QImage cape = hasCape ? normalizedCape(m_current->texture) : QImage();
+    if (m_preview) {
+        m_preview->updateCape(cape);
+        m_preview->setElytraVisible(m_elytraCB->isChecked());
+    } else if (m_previewLabel) {
+        if (!cape.isNull()) {
+            const auto face = cape.copy(cape.width() / 64, cape.width() / 64, cape.width() * 10 / 64, cape.width() * 16 / 64);
+            m_previewLabel->setPixmap(QPixmap::fromImage(face.scaled(160, 256, Qt::IgnoreAspectRatio, Qt::FastTransformation)));
+        } else {
+            m_previewLabel->clear();
+        }
     }
 }
 
