@@ -39,6 +39,7 @@
 
 #include <QColor>
 #include <QCryptographicHash>
+#include <QImage>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -50,6 +51,8 @@
 
 #include <QPainter>
 
+#include "Application.h"
+#include "FileSystem.h"
 #include "minecraft/auth/AccountData.h"
 #include "minecraft/auth/AuthFlow.h"
 
@@ -116,25 +119,46 @@ AccountState MinecraftAccount::accountState() const
     return data.accountState;
 }
 
+// the head of a skin texture: the face (8, 8, 8, 8) with the hat overlay (40, 8, 8, 8) on top
+static QPixmap faceFromTexture(const QImage& texture, int width, int height)
+{
+    // the face and the hat overlay must be inside the texture, otherwise the copies below are null
+    if (texture.isNull() || texture.width() < 48 || texture.height() < 16) {
+        return QPixmap();
+    }
+    QPixmap face(8, 8);
+    if (face.isNull())  // do not paint on a failed allocation
+        return QPixmap();
+    face.fill(QColorConstants::Transparent);
+    QPainter painter(&face);
+    painter.drawImage(0, 0, texture.copy(8, 8, 8, 8));
+    painter.drawImage(0, 0, texture.copy(40, 8, 8, 8));
+    return face.scaled(width, height, Qt::KeepAspectRatio);
+}
+
+QPixmap MinecraftAccount::defaultSkinFace(int width, int height)
+{
+    // the launcher's default skin, embedded in the binary (resources/skins/default-skin.png)
+    return faceFromTexture(QImage(":/skins/default-skin.png"), width, height);
+}
+
 QPixmap MinecraftAccount::getFace(int width, int height) const
 {
-    QPixmap skinTexture;
-    if (!skinTexture.loadFromData(data.minecraftProfile.skin.data, "PNG")) {
-        return QPixmap();
+    // the skin the profile currently wears on the skin servers (online accounts)
+    QPixmap face = faceFromTexture(QImage::fromData(data.minecraftProfile.skin.data, "PNG"), width, height);
+
+    // the skin picked for this account in the skin manager, stored under the account's UUID and served
+    // to the game by the offline skin agent
+    if (face.isNull() && !data.profileId().isEmpty()) {
+        const auto path = FS::PathCombine(APPLICATION->dataRoot(), "skins", data.profileId(), "skin.png");
+        face = faceFromTexture(QImage(path), width, height);
     }
-    // the face (8, 8, 8, 8) and the hat overlay (40, 8, 8, 8) must be inside the texture,
-    // otherwise the copies below are null and nothing can be painted
-    if (skinTexture.width() < 48 || skinTexture.height() < 16) {
-        return QPixmap();
+
+    // no skin of its own: the head of the bundled default skin, in color
+    if (face.isNull()) {
+        face = defaultSkinFace(width, height);
     }
-    QPixmap skin = QPixmap(8, 8);
-    if (skin.isNull())  // do not paint on a failed allocation
-        return QPixmap();
-    skin.fill(QColorConstants::Transparent);
-    QPainter painter(&skin);
-    painter.drawPixmap(0, 0, skinTexture.copy(8, 8, 8, 8));
-    painter.drawPixmap(0, 0, skinTexture.copy(40, 8, 8, 8));
-    return skin.scaled(width, height, Qt::KeepAspectRatio);
+    return face;
 }
 
 shared_qobject_ptr<AuthFlow> MinecraftAccount::login(bool useDeviceCode)

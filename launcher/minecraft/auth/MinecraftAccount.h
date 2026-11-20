@@ -146,6 +146,9 @@ class MinecraftAccount : public QObject, public Usable {
 
     QPixmap getFace(int width = 64, int height = 64) const;
 
+    //! The head of the bundled default skin (:/skins/default-skin.png), for accounts without a skin of their own.
+    static QPixmap defaultSkinFace(int width, int height);
+
     //! Returns the current state of the account
     AccountState accountState() const;
 

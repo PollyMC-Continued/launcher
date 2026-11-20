@@ -1025,8 +1025,8 @@ void MainWindow::defaultAccountChanged()
         return;
     }
 
-    // Set the icon to the "no account" icon.
-    ui->actionAccountsButton->setIcon(QIcon::fromTheme("noaccount"));
+    // No account selected: the head of the bundled default skin.
+    ui->actionAccountsButton->setIcon(MinecraftAccount::defaultSkinFace(64, 64));
     ui->actionAccountsButton->setText(tr("Accounts"));
 }
 

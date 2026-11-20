@@ -557,6 +557,9 @@ void SkinManageDialog::accept()
         meta["uuid"] = uuid;
         Json::write(meta, FS::PathCombine(skinsDir, "skin.json"));
 
+        // the account's face follows the selected skin: let the account views know it changed
+        emit m_acct->changed();
+
         // Note: offline skins only work in singleplayer, not multiplayer
         CustomMessageBox::selectable(this, tr("Skin Saved"),
             tr("Skin saved for singleplayer. Note: other players in multiplayer will not see your skin unless the server has CustomSkinLoader installed."),
@@ -602,6 +605,8 @@ void SkinManageDialog::resetSkin()
         auto skinsDir = FS::PathCombine(APPLICATION->dataRoot(), "skins", uuid);
         QFile::remove(FS::PathCombine(skinsDir, "skin.png"));
         QFile::remove(FS::PathCombine(skinsDir, "skin.json"));
+        // the account's face falls back to the default skin now: let the account views know it changed
+        emit m_acct->changed();
         QDialog::accept();
         return;
     }
