@@ -274,6 +274,150 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="pageSet">
+      <layout class="QVBoxLayout" name="setLayout">
+       <item>
+        <widget class="QLabel" name="setNameLabel">
+         <property name="text">
+          <string>Variable name (letters, digits, _):</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="setNameEdit"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="setValueLabel">
+         <property name="text">
+          <string>Value (literal text):</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="setValueEdit"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="setError">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="pageInc">
+      <layout class="QVBoxLayout" name="incLayout">
+       <item>
+        <widget class="QLabel" name="incNameLabel">
+         <property name="text">
+          <string>Variable name (letters, digits, _):</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="incNameEdit"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="incValueLabel">
+         <property name="text">
+          <string>Value (integer, may be negative):</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="incValueEdit"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="incError">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="pageIf">
+      <layout class="QVBoxLayout" name="ifLayout">
+       <item>
+        <widget class="QLabel" name="condTypeLabel">
+         <property name="text">
+          <string>Condition:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="condTypeCombo"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="condValueLabel">
+         <property name="text">
+          <string>Value:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="condValueEdit"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="condVarLabel">
+         <property name="text">
+          <string>Variable:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="condVarEdit"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="condNumberLabel">
+         <property name="text">
+          <string>Number:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="condNumberSpin">
+         <property name="minimum">
+          <number>-1000000</number>
+         </property>
+         <property name="maximum">
+          <number>1000000</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="condTimeoutLabel">
+         <property name="text">
+          <string>Condition timeout seconds (0 = decide immediately):</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="condTimeoutSpin">
+         <property name="maximum">
+          <number>86400</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="branchHintLabel">
+         <property name="text">
+          <string>Branches: with this step selected, Add Step appends to the then branch; with an 'else:' row selected, Add Step appends to the else branch.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="ifError">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item>
@@ -299,6 +443,20 @@
       <widget class="QPushButton" name="revertBtn">
        <property name="text">
         <string>Revert</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="importBtn">
+       <property name="text">
+        <string>Import...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="exportBtn">
+       <property name="text">
+        <string>Export...</string>
        </property>
       </widget>
      </item>

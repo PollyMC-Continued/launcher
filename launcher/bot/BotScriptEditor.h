@@ -34,6 +34,8 @@ class BotScriptEditor : public QWidget {
     void onRun();
     void onStop();
     void onStoreChanged();
+    void onImport();
+    void onExport();
 
    private:
     void rebuildFromScript(const BotScript& script);
@@ -41,6 +43,8 @@ class BotScriptEditor : public QWidget {
     bool validate(QString& error) const;
     void refreshButtons();
     void showPropertiesFor();
+    // show/hide the 'if' operand fields that the selected condition type uses
+    void updateCondFieldVisibility();
     QModelIndex findFirstInvalidStep(const QModelIndex& parent, int depth, QString& error) const;
 
     BotManagerDialog* m_manager;

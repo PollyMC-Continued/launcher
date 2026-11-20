@@ -17,7 +17,7 @@
    <item>
     <layout class="QHBoxLayout" name="mainHlLayout" stretch="3,8">
      <item>
-      <layout class="QVBoxLayout" name="selectedVLayout" stretch="2,1,3">
+      <layout class="QVBoxLayout" name="selectedVLayout" stretch="2,1,3,0">
        <item>
         <layout class="QVBoxLayout" name="skinLayout"/>
        </item>
@@ -79,6 +79,75 @@
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="offlineCapeBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="title">
+          <string>Offline Cape</string>
+         </property>
+         <layout class="QVBoxLayout" name="offlineCapeLayout">
+          <item>
+           <widget class="QLabel" name="offlineCapeName">
+            <property name="text">
+             <string>No cape</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="offlineCapeImage">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="offlineBrowseBtn">
+            <property name="text">
+             <string>Browse crafty.gg capes...</string>
+            </property>
+            <property name="toolTip">
+             <string>Look up the capes crafty.gg tracks for a player</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="offlineFileBtn">
+            <property name="text">
+             <string>Import from file...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="offlineUrlBtn">
+            <property name="text">
+             <string>Import from URL...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="offlineRemoveBtn">
+            <property name="text">
+             <string>Remove cape</string>
             </property>
            </widget>
           </item>

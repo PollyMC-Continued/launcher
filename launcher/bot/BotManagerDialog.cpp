@@ -1,6 +1,7 @@
 #include "BotManagerDialog.h"
 
 #include "Application.h"
+#include "BotMapDialog.h"
 #include "BotScriptEditor.h"
 #include "FileSystem.h"
 
@@ -91,6 +92,7 @@ BotManagerDialog::BotManagerDialog(QWidget* parent)
     m_selectAllBtn = new QPushButton("Select All", this);
     m_stopAllBtn = new QPushButton("Stop", this);
     m_commandsBtn = new QPushButton("Commands", this);
+    m_mapBtn = new QPushButton("Map", this);
 
     m_editBtn->setEnabled(false);
     m_removeBtn->setEnabled(false);
@@ -103,6 +105,7 @@ BotManagerDialog::BotManagerDialog(QWidget* parent)
     toolbar->addWidget(m_stopAllBtn);
     toolbar->addWidget(m_selectAllBtn);
     toolbar->addWidget(m_commandsBtn);
+    toolbar->addWidget(m_mapBtn);
     toolbar->addStretch();
 
     m_statusLabel = new QLabel("Bot server: stopped", this);
@@ -200,6 +203,7 @@ BotManagerDialog::BotManagerDialog(QWidget* parent)
     connect(m_selectAllBtn, &QPushButton::clicked, this, &BotManagerDialog::onSelectAll);
     connect(m_stopAllBtn, &QPushButton::clicked, this, &BotManagerDialog::onStop);
     connect(m_commandsBtn, &QPushButton::clicked, this, &BotManagerDialog::showHelp);
+    connect(m_mapBtn, &QPushButton::clicked, this, &BotManagerDialog::onShowMap);
     connect(m_table, &QTableWidget::itemSelectionChanged, this, &BotManagerDialog::onSelectionChanged);
     connect(m_table, &QTableWidget::cellDoubleClicked, this, &BotManagerDialog::onTableDoubleClicked);
 
@@ -214,6 +218,7 @@ BotManagerDialog::BotManagerDialog(QWidget* parent)
     connect(m_bot, &BotProcess::ready, this, &BotManagerDialog::onBotReady);
     connect(m_bot, &BotProcess::botConnected, this, &BotManagerDialog::onBotConnected);
     connect(m_bot, &BotProcess::botChat, this, &BotManagerDialog::onBotChat);
+    connect(m_bot, &BotProcess::botPosition, this, &BotManagerDialog::onBotPosition);
     connect(m_bot, &BotProcess::processExited, this, &BotManagerDialog::onProcessExited);
     connect(m_bot, &BotProcess::dependenciesInstalled, this, &BotManagerDialog::onDependenciesInstalled);
     connect(m_bot, &BotProcess::scriptStarted, this, &BotManagerDialog::onScriptStarted);
@@ -296,6 +301,10 @@ bool BotManagerDialog::saveConfigs(QString& error)
         obj["port"] = e.config.port;
         obj["version"] = e.config.version;
         obj["autoStart"] = e.config.autoStart;
+        obj["autoReconnect"] = e.config.autoReconnect;
+        obj["autoRespawn"] = e.config.autoRespawn;
+        obj["antiAfkSeconds"] = e.config.antiAfkSeconds;
+        obj["startDelaySeconds"] = e.config.startDelaySeconds;
         obj["scriptName"] = e.scriptName;
         arr.append(obj);
     }
@@ -330,6 +339,11 @@ void BotManagerDialog::loadConfigs()
         e.config.port = obj["port"].toInt(25565);
         e.config.version = obj["version"].toString("1.20.4");
         e.config.autoStart = obj["autoStart"].toBool(true);
+        // older config files have no bot-behavior keys; defaults stay off/0
+        e.config.autoReconnect = obj["autoReconnect"].toBool(false);
+        e.config.autoRespawn = obj["autoRespawn"].toBool(false);
+        e.config.antiAfkSeconds = obj["antiAfkSeconds"].toInt(0);
+        e.config.startDelaySeconds = obj["startDelaySeconds"].toInt(0);
         e.scriptName = obj["scriptName"].toString();
         e.connected = false;
         e.colorIndex = m_bots.size() % 8;
@@ -475,6 +489,8 @@ void BotManagerDialog::onStop()
             if (m_editor)
                 m_editor->setConnected(e.config.name, false);
         }
+        if (m_map)
+            m_map->clearAll();
         refreshTable();
         return;
     }
@@ -486,6 +502,8 @@ void BotManagerDialog::onStop()
         e.connected = false;
         if (m_editor)
             m_editor->setConnected(e.config.name, false);
+        if (m_map)
+            m_map->clearBot(e.config.name);
     }
     refreshTable();
 }
@@ -518,6 +536,11 @@ void BotManagerDialog::connectBot(int index)
     p["port"] = e.config.port;
     p["username"] = e.config.name;
     p["version"] = e.config.version;
+    // bot behavior options, mirrored by bot-server createBot()
+    p["autoReconnect"] = e.config.autoReconnect;
+    p["autoRespawn"] = e.config.autoRespawn;
+    p["antiAfkSeconds"] = e.config.antiAfkSeconds;
+    p["startDelaySeconds"] = e.config.startDelaySeconds;
     m_bot->sendCommand("join", p);
 
     appendLog(QString("<span style='color:%1'>[%2] Connecting to %3...</span>")
@@ -536,6 +559,8 @@ void BotManagerDialog::disconnectBot(int index)
     e.connected = false;
     if (m_editor)
         m_editor->setConnected(e.config.name, false);
+    if (m_map)
+        m_map->clearBot(e.config.name);
     refreshTable();
 }
 
@@ -583,6 +608,8 @@ void BotManagerDialog::onSendCommand()
             entry->connected = false;
             if (m_editor)
                 m_editor->setConnected(entry->config.name, false);
+            if (m_map)
+                m_map->clearBot(entry->config.name);
         }
         refreshTable();
     } else if (cmd == "/list") {
@@ -807,6 +834,23 @@ void BotManagerDialog::onBotChat(const QString& bot, const QString& from, const 
         .arg(bot.toHtmlEscaped(), from.toHtmlEscaped(), message.toHtmlEscaped()));
 }
 
+void BotManagerDialog::onShowMap()
+{
+    // created on demand; kept alive so the trails survive close/reopen
+    if (!m_map)
+        m_map = new BotMapDialog(this);
+    m_map->show();
+    m_map->raise();
+    m_map->activateWindow();
+}
+
+void BotManagerDialog::onBotPosition(const QString& username, double x, double y, double z, double yaw, double health)
+{
+    // the map may not exist yet; positions arrive at most once per bot per second
+    if (m_map)
+        m_map->addPosition(username, x, y, z, yaw, health);
+}
+
 void BotManagerDialog::onProcessExited(int code)
 {
     m_statusLabel->setText("Bot server: exited (" + QString::number(code) + ")");
@@ -817,5 +861,7 @@ void BotManagerDialog::onProcessExited(int code)
         if (m_editor)
             m_editor->setConnected(e.config.name, false);
     }
+    if (m_map)
+        m_map->clearAll();
     refreshTable();
 }

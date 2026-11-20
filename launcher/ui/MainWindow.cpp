@@ -107,6 +107,9 @@
 #include "ui/dialogs/FriendlyError.h"
 #include "ui/dialogs/CommandRegistry.h"
 #include "ui/dialogs/CopyInstanceDialog.h"
+#include "ui/dialogs/BulkUpdateDialog.h"
+#include "ui/dialogs/NewInstanceFromTemplateDialog.h"
+#include "ui/dialogs/SaveTemplateDialog.h"
 #include "ui/dialogs/CreateShortcutDialog.h"
 #include "ui/dialogs/CustomMessageBox.h"
 #include "ui/dialogs/ExportInstanceDialog.h"
@@ -144,6 +147,7 @@
 
 #include "InstanceCopyTask.h"
 #include "InstanceDirUpdate.h"
+#include "InstanceTemplateTask.h"
 
 #include "Json.h"
 
@@ -1129,6 +1133,31 @@ void MainWindow::on_actionCopyInstance_triggered()
     copyTask->setIcon(copyInstDlg.iconKey());
     unique_qobject_ptr<Task> task(APPLICATION->instances()->wrapInstanceTask(copyTask));
     runModalTask(task.get());
+}
+
+void MainWindow::on_actionSaveInstanceAsTemplate_triggered()
+{
+    if (!m_selectedInstance)
+        return;
+
+    SaveTemplateDialog saveDlg(m_selectedInstance, this);
+    if (!saveDlg.exec())
+        return;
+
+    const SaveTemplateOptions options = saveDlg.getOptions();
+    auto saveTask = new SaveTemplateTask(m_selectedInstance, options.name, saveDlg.includeFolders(), options.iconKey, options.overwrite);
+    unique_qobject_ptr<Task> task(saveTask);
+    runModalTask(task.get());
+}
+
+void MainWindow::on_actionCreateInstanceFromTemplate_triggered()
+{
+    NewInstanceFromTemplateDialog::createFromTemplate(this);
+}
+
+void MainWindow::on_actionUpdateAllInstances_triggered()
+{
+    BulkUpdateDialog::checkAllInstances(this);
 }
 
 void MainWindow::addInstance(const QString& url, const QMap<QString, QString>& extra_info)

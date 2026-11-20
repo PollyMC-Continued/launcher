@@ -24,9 +24,15 @@
 #include <QAction>
 #include <QDialog>
 #include <QEventLoop>
+#include <QFile>
 #include <QFileDialog>
 #include <QFileInfo>
+#include <QImage>
+#include <QInputDialog>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QKeyEvent>
+#include <QLineEdit>
 #include <QListView>
 #include <QMenu>
 #include <QMimeDatabase>
@@ -41,6 +47,7 @@
 
 #include "minecraft/auth/Parsers.h"
 #include "minecraft/skins/CapeChange.h"
+#include "minecraft/skins/CraftySkinAPI.h"
 #include "minecraft/skins/SkinDelete.h"
 #include "minecraft/skins/SkinList.h"
 #include "minecraft/skins/SkinModel.h"
@@ -52,11 +59,12 @@
 
 #include "ui/dialogs/CustomMessageBox.h"
 #include "ui/dialogs/ProgressDialog.h"
+#include "ui/dialogs/skins/CapeBrowserDialog.h"
 #include "ui/dialogs/skins/SkinBrowserDialog.h"
 #include "ui/instanceview/InstanceDelegate.h"
 
 SkinManageDialog::SkinManageDialog(QWidget* parent, MinecraftAccountPtr acct)
-    : QDialog(parent), m_acct(acct), m_ui(new Ui::SkinManageDialog), m_list(this, APPLICATION->settings()->get("SkinsDir").toString(), acct)
+    : QDialog(parent), m_acct(acct), m_ui(new Ui::SkinManageDialog), m_list(this, APPLICATION->settings()->get("SkinsDir").toString(), acct), m_capeApi(new Crafty::API(this))
 {
     m_ui->setupUi(this);
 
@@ -108,6 +116,16 @@ SkinManageDialog::SkinManageDialog(QWidget* parent, MinecraftAccountPtr acct)
 
     setupCapes();
 
+    if (m_acct->accountType() == AccountType::Offline) {
+        // offline accounts keep their cape on disk instead of in the Mojang profile, so the
+        // cape combo above (which lists the account's Mojang capes) is replaced by the
+        // offline cape group for them
+        m_ui->capeBox->hide();
+        setupOfflineCape();
+    } else {
+        m_ui->offlineCapeBox->hide();
+    }
+
     m_ui->listView->setCurrentIndex(m_list.index(m_list.getSelectedAccountSkin()));
 
     m_ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
@@ -122,6 +140,8 @@ SkinManageDialog::SkinManageDialog(QWidget* parent, MinecraftAccountPtr acct)
 
 SkinManageDialog::~SkinManageDialog()
 {
+    // stop any cape download the URL import still has in flight
+    m_capeApi->abortAll();
     delete m_ui;
     if (m_skinPreview) {
         delete m_skinPreview;
@@ -241,6 +261,36 @@ QPixmap previewCape(QImage capeImage, bool elytra = false)
     return QPixmap::fromImage(capeImage.copy(1, 1, 10, 16).scaled(80, 128, Qt::IgnoreAspectRatio, Qt::FastTransformation));
 }
 
+// file name for a cape library entry: letters, digits, dashes and underscores only
+static QString safeCapeFileName(const QString& name)
+{
+    QString safe;
+    for (const QChar ch : name) {
+        if (ch.isLetterOrNumber() || ch == QLatin1Char('-') || ch == QLatin1Char('_')) {
+            safe += ch;
+        } else if (!safe.isEmpty() && !safe.endsWith(QLatin1Char('-'))) {
+            safe += QLatin1Char('-');
+        }
+    }
+    while (safe.endsWith(QLatin1Char('-')))
+        safe.chop(1);
+    if (safe.isEmpty())
+        safe = QStringLiteral("cape");
+    return safe.left(64);
+}
+
+// the informational name stored next to the cape texture
+static QString readCapeName(const QString& path)
+{
+    QFile file(path);
+    if (!file.open(QIODevice::ReadOnly))
+        return {};
+    auto doc = QJsonDocument::fromJson(file.readAll());
+    if (!doc.isObject())
+        return {};
+    return doc.object().value(QStringLiteral("name")).toString();
+}
+
 void SkinManageDialog::setupCapes()
 {
     // FIXME: add a model for this, download/refresh the capes on demand
@@ -293,6 +343,136 @@ void SkinManageDialog::setupCapes()
 
         m_capesIdx[cape.id] = index;
     }
+}
+
+void SkinManageDialog::setupOfflineCape()
+{
+    updateOfflineCapeUi();
+}
+
+void SkinManageDialog::updateOfflineCapeUi()
+{
+    auto uuid = m_acct->profileId();
+    auto capePath = FS::PathCombine(APPLICATION->dataRoot(), "skins", uuid, "cape.png");
+    QImage cape(capePath);
+    if (cape.isNull()) {
+        m_ui->offlineCapeName->setText(tr("No cape"));
+        m_ui->offlineCapeImage->clear();
+        m_ui->offlineRemoveBtn->setEnabled(false);
+        return;
+    }
+    auto name = readCapeName(FS::PathCombine(APPLICATION->dataRoot(), "skins", uuid, "cape.json"));
+    m_ui->offlineCapeName->setText(name.isEmpty() ? tr("Cape") : name);
+    auto pixmap = previewCape(cape, false);
+    if (pixmap.isNull())
+        m_ui->offlineCapeImage->clear();
+    else
+        m_ui->offlineCapeImage->setPixmap(pixmap.scaled(160, 160, Qt::KeepAspectRatio, Qt::FastTransformation));
+    m_ui->offlineRemoveBtn->setEnabled(true);
+}
+
+void SkinManageDialog::applyOfflineCape(const QImage& cape, const QString& name)
+{
+    if (cape.isNull())  // a corrupt cape must never overwrite the one on disk
+        return;
+    auto uuid = m_acct->profileId();
+    if (uuid.isEmpty())
+        return;
+
+    // library copy, shared between the accounts of this launcher
+    auto libraryDir = FS::PathCombine(APPLICATION->dataRoot(), "capes");
+    FS::ensureFolderPathExists(libraryDir);
+    cape.save(FS::PathCombine(libraryDir, safeCapeFileName(name) + ".png"), "PNG");
+
+    // the account-specific cape the offline skin agent serves, mirroring the skin.png/skin.json
+    // pattern: cape.json only carries the informational name, the agent reads cape.png alone
+    auto skinsDir = FS::PathCombine(APPLICATION->dataRoot(), "skins", uuid);
+    if (!FS::ensureFolderPathExists(skinsDir)) {
+        CustomMessageBox::selectable(this, tr("Cape Save"), tr("Failed to create skins directory!"), QMessageBox::Warning)->exec();
+        return;
+    }
+    auto capePath = FS::PathCombine(skinsDir, "cape.png");
+    QFile::remove(capePath);
+    if (!cape.save(capePath, "PNG")) {
+        CustomMessageBox::selectable(this, tr("Cape Save"), tr("Failed to save cape file!"), QMessageBox::Warning)->exec();
+        return;
+    }
+    QJsonObject meta;
+    meta["name"] = name;
+    Json::write(meta, FS::PathCombine(skinsDir, "cape.json"));
+
+    updateOfflineCapeUi();
+}
+
+void SkinManageDialog::on_offlineBrowseBtn_clicked()
+{
+    CapeBrowserDialog dialog(this);
+    connect(&dialog, &CapeBrowserDialog::selected, this, [this](const QString& player, const Crafty::CapePtr& cape) {
+        if (!cape || cape->texture.isNull())
+            return;
+        auto name = cape->name;
+        if (name.isEmpty())
+            name = player.isEmpty() ? tr("Custom cape") : tr("%1's cape").arg(player);
+        applyOfflineCape(cape->texture, name);
+    });
+    dialog.exec();
+}
+
+void SkinManageDialog::on_offlineFileBtn_clicked()
+{
+    auto filter = QMimeDatabase().mimeTypeForName("image/png").filterString();
+    QString raw_path = QFileDialog::getOpenFileName(this, tr("Select Cape Texture"), QString(), filter);
+    if (raw_path.isNull()) {
+        return;
+    }
+    QImage cape(raw_path);
+    if (cape.isNull()) {
+        CustomMessageBox::selectable(this, tr("Cape Import"), tr("The selected file is not a valid image."), QMessageBox::Critical)->show();
+        return;
+    }
+    applyOfflineCape(cape, QFileInfo(raw_path).completeBaseName());
+}
+
+void SkinManageDialog::on_offlineUrlBtn_clicked()
+{
+    bool ok = false;
+    auto urlText = QInputDialog::getText(this, tr("Import cape from URL"), tr("URL of a cape PNG image:"), QLineEdit::Normal, QString(), &ok);
+    if (!ok) {
+        return;
+    }
+    urlText = urlText.trimmed();
+    if (urlText.isEmpty()) {
+        return;
+    }
+    auto url = QUrl::fromUserInput(urlText);
+    if (!url.isValid() || (url.scheme() != QStringLiteral("https") && url.scheme() != QStringLiteral("http"))) {
+        CustomMessageBox::selectable(this, tr("Cape Import"), tr("Invalid URL"), QMessageBox::Critical)->show();
+        return;
+    }
+
+    m_ui->offlineUrlBtn->setEnabled(false);
+    m_capeApi->fetchCapeFromUrl(url, [this](const QList<Crafty::CapePtr>& capes, const QString& error) {
+        m_ui->offlineUrlBtn->setEnabled(true);
+        if (capes.isEmpty()) {
+            CustomMessageBox::selectable(this, tr("Cape Import"),
+                                          error.isEmpty() ? tr("The URL did not contain a valid cape image.")
+                                                          : tr("Unable to download the cape: %1").arg(error),
+                                          QMessageBox::Critical)
+                ->show();
+            return;
+        }
+        applyOfflineCape(capes.first()->texture, tr("Custom cape"));
+    });
+}
+
+void SkinManageDialog::on_offlineRemoveBtn_clicked()
+{
+    // only the account's own cape goes away, the library copy is kept
+    auto uuid = m_acct->profileId();
+    auto skinsDir = FS::PathCombine(APPLICATION->dataRoot(), "skins", uuid);
+    QFile::remove(FS::PathCombine(skinsDir, "cape.png"));
+    QFile::remove(FS::PathCombine(skinsDir, "cape.json"));
+    updateOfflineCapeUi();
 }
 
 void SkinManageDialog::on_capeCombo_currentIndexChanged(int index)

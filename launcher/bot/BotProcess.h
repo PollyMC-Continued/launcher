@@ -25,6 +25,7 @@ signals:
     void botConnected(const QString& username, const QString& server);
     void botChat(const QString& bot, const QString& from, const QString& message);
     void errorMessage(const QString& text);
+    void botPosition(const QString& username, double x, double y, double z, double yaw, double health);
     void scriptStarted(const QString& username, const QString& name);
     void scriptStep(const QString& username, int index, const QString& stepType);
     void scriptFinished(const QString& username, const QString& reason, const QString& error);

@@ -12,6 +12,10 @@ struct BotConfig {
     int port = 25565;
     QString version = "1.20.4";
     bool autoStart = true;
+    bool autoReconnect = false;
+    bool autoRespawn = false;
+    int antiAfkSeconds = 0;      // 0 = off, max 1 hour
+    int startDelaySeconds = 0;   // 0 = connect immediately
 };
 
 class AddBotDialog : public QDialog {
@@ -30,4 +34,8 @@ private:
     QSpinBox* m_port;
     QComboBox* m_version;
     QCheckBox* m_autoStart;
+    QCheckBox* m_autoReconnect;
+    QCheckBox* m_autoRespawn;
+    QSpinBox* m_antiAfk;
+    QSpinBox* m_startDelay;
 };

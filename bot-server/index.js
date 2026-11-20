@@ -5,28 +5,85 @@ const { createRunner } = require('./script-runner');
 
 const bots = {};
 const runners = {};
+// per-bot behavior options (autoReconnect, autoRespawn, antiAfk, startDelay)
+const botCfg = {};
+// startDelay timers: 'quit' during the delay window has to cancel them
+const pendingJoins = {};
+// autoReconnect backoff timers and attempt counters
+const reconnectTimers = {};
+const reconnectAttempts = {};
+// last script started per bot; restarted after an auto-reconnect
+const lastScripts = {};
+// deliberate disconnects are the only ones that suppress auto-reconnect
+const deliberateQuit = {};
+// anti-afk look-around intervals
+const antiAfkTimers = {};
+// 'kicked' is followed by 'end' for the same disconnect: handle it once
+const disconnectHandled = {};
 
 function send(event, data) {
   process.stdout.write(JSON.stringify({ event, ...data }) + '\n');
 }
 
-function createBot(username, server, port = 25565, version) {
-  if (bots[username]) {
+// clamp an integer option to [0, max]; garbage and undefined become 0
+function clampSeconds(v, max) {
+  const n = Math.floor(Number(v) || 0);
+  return Math.max(0, Math.min(max, n));
+}
+
+function createBot(username, server, port = 25565, version, opts = {}) {
+  if (bots[username] || pendingJoins[username] || reconnectTimers[username]) {
     send('error', { text: `Bot "${username}" already exists` });
     return;
   }
+  const cfg = {
+    autoReconnect: !!(opts && opts.autoReconnect),
+    autoRespawn: !!(opts && opts.autoRespawn),
+    antiAfkSeconds: clampSeconds(opts && opts.antiAfkSeconds, 3600),
+    startDelaySeconds: clampSeconds(opts && opts.startDelaySeconds, 86400),
+  };
+  if (cfg.startDelaySeconds > 0) {
+    send('log', { text: `${username} connecting to ${server}:${port} in ${cfg.startDelaySeconds}s...` });
+    pendingJoins[username] = setTimeout(() => {
+      delete pendingJoins[username];
+      spawnBot(username, server, port, version, cfg);
+    }, cfg.startDelaySeconds * 1000);
+    return;
+  }
+  spawnBot(username, server, port, version, cfg);
+}
+
+function spawnBot(username, server, port, version, cfg) {
   send('log', { text: `Connecting ${username} to ${server}:${port}...` });
   const options = { host: server, port, username };
   if (version) options.version = version;
   const bot = mineflayer.createBot(options);
   bots[username] = bot;
+  botCfg[username] = cfg;
+  // keep connection info on the config so auto-reconnect can re-spawn identically
+  cfg.server = server;
+  cfg.port = port;
+  cfg.version = version;
+  deliberateQuit[username] = false;
+  disconnectHandled[username] = false;
   bot.loadPlugin(pathfinder);
 
   bot.on('login', () => {
+    delete reconnectAttempts[username];
     send('connected', { username, server });
     send('log', { text: `${username} joined ${server}` });
     // movements need only bot.version, known at login; spawn may come later
     bot.pathfinder.setMovements(new Movements(bot));
+    startAntiAfk(username, cfg.antiAfkSeconds);
+    // A script cannot survive a lost socket: the mineflayer bot object is a
+    // single-connection thing, so a script that was running when the
+    // connection dropped restarts cleanly from its first step once we are
+    // back in (the runner itself reported 'disconnected' at that time).
+    const script = lastScripts[username];
+    if (script) {
+      send('log', { text: `${username}: restarting script "${script.name || ''}" after reconnect` });
+      runScript(username, script);
+    }
   });
 
   bot.on('chat', (who, message) => {
@@ -39,9 +96,7 @@ function createBot(username, server, port = 25565, version) {
 
   bot.on('end', (reason) => {
     send('log', { text: `${username} disconnected: ${reason}` });
-    // runner sees 'end' too and finishes with 'disconnected' on its own
-    delete runners[username];
-    delete bots[username];
+    botGone(username);
   });
 
   bot.on('error', (err) => {
@@ -50,17 +105,143 @@ function createBot(username, server, port = 25565, version) {
 
   bot.on('kicked', (reason) => {
     send('log', { text: `${username} was kicked: ${reason}` });
-    delete runners[username];
-    delete bots[username];
+    botGone(username);
   });
+
+  if (cfg.autoRespawn) {
+    bot.on('death', () => {
+      try {
+        if (typeof bot.respawn === 'function') {
+          bot.respawn();
+        } else {
+          // mineflayer builds without respawn(): vanilla "perform respawn" packet
+          bot._client.write('client_command', { actionId: 0 });
+        }
+      } catch (e) {
+        send('error', { text: `${username}: auto-respawn failed (${e.message})` });
+        return;
+      }
+      send('log', { text: `${username} died; auto-respawning` });
+    });
+  }
+
+  // Live position feed for the launcher map: at most one event per second.
+  // entity/yaw/health guards cover older server versions where any of them
+  // can be missing until spawn (or entirely).
+  let lastPositionAt = 0;
+  bot.on('move', () => {
+    const now = Date.now();
+    if (now - lastPositionAt < 1000) return;
+    const ent = bot.entity;
+    if (!ent || !ent.position) return;
+    lastPositionAt = now;
+    send('position', {
+      username,
+      x: ent.position.x,
+      y: ent.position.y,
+      z: ent.position.z,
+      yaw: typeof ent.yaw === 'number' ? ent.yaw : null,
+      health: typeof bot.health === 'number' ? bot.health : null,
+    });
+  });
+}
+
+// Shared 'end'/'kicked' cleanup. Schedules an auto-reconnect unless the
+// disconnect was deliberate (quit/quit_all) or the bot opted out.
+function botGone(username) {
+  if (disconnectHandled[username]) return;
+  disconnectHandled[username] = true;
+  const cfg = botCfg[username] || {};
+  delete bots[username];
+  delete botCfg[username];
+  stopAntiAfk(username);
+  // runner sees 'end'/'kicked' too and finishes with 'disconnected' on its own
+  if (cfg.autoReconnect && !deliberateQuit[username]) {
+    scheduleReconnect(username, cfg);
+  } else {
+    delete lastScripts[username];
+    delete deliberateQuit[username];
+  }
+}
+
+// Backoff after an unexpected disconnect: 5s, 10s, 20s, 40s, then capped at
+// 60s. Retries are unlimited; the attempt counter resets on a successful login.
+function scheduleReconnect(username, cfg) {
+  const state = reconnectAttempts[username] || (reconnectAttempts[username] = { count: 0 });
+  const delays = [5, 10, 20, 40];
+  const delay = state.count < delays.length ? delays[state.count] : 60;
+  state.count++;
+  send('log', { text: `${username}: reconnecting in ${delay}s (attempt ${state.count})` });
+  reconnectTimers[username] = setTimeout(() => {
+    delete reconnectTimers[username];
+    spawnBot(username, cfg.server, cfg.port, cfg.version, cfg);
+  }, delay * 1000);
+}
+
+// Small random look-around on a fixed interval. Never moves the bot, so the
+// pathfinder state stays untouched.
+function startAntiAfk(username, seconds) {
+  if (!(seconds > 0)) return;
+  antiAfkTimers[username] = setInterval(() => {
+    const bot = bots[username];
+    if (!bot || !bot.entity) return;  // not spawned yet or already gone
+    try {
+      const yaw = Math.random() * Math.PI * 2;
+      const pitch = (Math.random() * 2 - 1) * (Math.PI / 4);
+      bot.look(yaw, pitch);
+      if (Math.random() < 0.25) bot.swingArm();
+    } catch {
+      // look/swing can throw before spawn completes; skip this tick
+    }
+  }, seconds * 1000);
+}
+
+function stopAntiAfk(username) {
+  if (antiAfkTimers[username]) clearInterval(antiAfkTimers[username]);
+  delete antiAfkTimers[username];
 }
 
 function validScript(script) {
   if (!script || typeof script !== 'object' || !Array.isArray(script.steps) || script.steps.length === 0) return false;
-  const known = ['say', 'command', 'wait', 'wait_for_chat', 'wait_for_player', 'log', 'loop'];
+  const known = ['say', 'command', 'wait', 'wait_for_chat', 'wait_for_player', 'log', 'loop', 'set', 'inc', 'if'];
+  const conditions = ['chat_contains', 'chat_equals', 'var_equals', 'var_not_equals', 'var_gt', 'var_gte', 'player_joined', 'health_below'];
+  const vars = new Set();
+  const varOk = (name) => {
+    if (!/^[A-Za-z0-9_]{1,32}$/.test(name || '')) return false;
+    vars.add(name);
+    return vars.size <= 64;
+  };
   const check = (steps, depth) => {
     if (depth > 5 || !Array.isArray(steps)) return false;
-    return steps.every(s => s && known.includes(s.type) && (s.type !== 'loop' || check(s.steps, depth + 1)));
+    return steps.every(s => {
+      if (!s || !known.includes(s.type)) return false;
+      if (s.type === 'loop') return check(s.steps, depth + 1);
+      if (s.type === 'set' || s.type === 'inc') {
+        if (!varOk(s.name)) return false;
+        if (typeof s.value !== 'string' || s.value.length > 512) return false;
+        if (s.type === 'inc') {
+          if (!/^-?\d+$/.test(s.value)) return false;
+          if (Math.abs(parseInt(s.value, 10)) > 1000000) return false;
+        }
+        return true;
+      }
+      if (s.type === 'if') {
+        const cond = s.condition;
+        if (!cond || typeof cond !== 'object' || !conditions.includes(cond.type)) return false;
+        if (cond.timeout_seconds !== undefined &&
+            !(Number.isInteger(cond.timeout_seconds) && cond.timeout_seconds >= 0 && cond.timeout_seconds <= 86400)) return false;
+        if (['var_equals', 'var_not_equals', 'var_gt', 'var_gte'].includes(cond.type) && !varOk(cond.var)) return false;
+        if (typeof cond.value === 'string' && cond.value.length > 512) return false;
+        if (['var_gt', 'var_gte'].includes(cond.type) &&
+            !(Number.isInteger(cond.number) && Math.abs(cond.number) <= 1000000)) return false;
+        if (cond.type === 'health_below' &&
+            !(Number.isInteger(cond.number) && cond.number >= 0 && cond.number <= 1000)) return false;
+        if (!Array.isArray(s.steps)) return false;
+        const elseSteps = s.else_steps === undefined ? [] : s.else_steps;
+        return check(s.steps, depth + 1) && check(elseSteps, depth + 1);
+      }
+      return true;
+    });
   };
   return check(script.steps, 0);
 }
@@ -83,10 +264,15 @@ function runScript(username, script) {
     return;
   }
   if (runners[username]) stopRunner(username);
+  // remembered so auto-reconnect can restart it after the connection drops
+  lastScripts[username] = script;
   const runner = createRunner(bot, script, {
     onStep: (index, stepType) => send('script_step', { username, index, step_type: stepType }),
     onFinished: (reason, error) => {
       delete runners[username];
+      // keep the script for a reconnect restart only when the connection
+      // killed it; any other end (completed/stopped/error/timeout) forgets it
+      if (reason !== 'disconnected') delete lastScripts[username];
       const ev = { username, reason };
       if (error) ev.error = error;
       send('script_finished', ev);
@@ -100,6 +286,8 @@ function runScript(username, script) {
 
 function stopScript(username) {
   if (!getBot(username)) return;
+  // a deliberate stop must not restart on the next reconnect
+  delete lastScripts[username];
   if (!stopRunner(username)) {
     send('error', { text: `${username}: no script running` });
   }
@@ -269,9 +457,28 @@ function listPlayers(username) {
 function disconnectBot(username) {
   const bot = bots[username];
   if (!bot) {
+    // still waiting out a start delay? cancel it
+    if (pendingJoins[username]) {
+      clearTimeout(pendingJoins[username]);
+      delete pendingJoins[username];
+      send('log', { text: `${username} connect cancelled` });
+      return;
+    }
+    // reconnect already scheduled? cancel that too
+    if (reconnectTimers[username]) {
+      clearTimeout(reconnectTimers[username]);
+      delete reconnectTimers[username];
+      delete reconnectAttempts[username];
+      delete lastScripts[username];
+      send('log', { text: `${username} reconnect cancelled` });
+      return;
+    }
     send('error', { text: `No bot "${username}"` });
     return;
   }
+  deliberateQuit[username] = true;
+  stopAntiAfk(username);
+  delete lastScripts[username];
   bot.end();
   delete bots[username];
   send('log', { text: `${username} disconnected` });
@@ -280,6 +487,9 @@ function disconnectBot(username) {
 function disconnectAllBots() {
   const names = Object.keys(bots);
   for (const name of names) {
+    deliberateQuit[name] = true;
+    stopAntiAfk(name);
+    delete lastScripts[name];
     try {
       bots[name].end();
     } catch {
@@ -287,6 +497,18 @@ function disconnectAllBots() {
     }
     delete bots[name];
     send('log', { text: `${name} disconnected` });
+  }
+  // pending start-delay connects and scheduled reconnects die with them
+  for (const name of Object.keys(pendingJoins)) {
+    clearTimeout(pendingJoins[name]);
+    delete pendingJoins[name];
+    send('log', { text: `${name} connect cancelled` });
+  }
+  for (const name of Object.keys(reconnectTimers)) {
+    clearTimeout(reconnectTimers[name]);
+    delete reconnectTimers[name];
+    delete reconnectAttempts[name];
+    send('log', { text: `${name} reconnect cancelled` });
   }
 }
 
@@ -307,7 +529,12 @@ rl.on('line', (line) => {
   try {
     switch (msg.cmd) {
       case 'join':
-        createBot(msg.username, msg.server, msg.port || 25565, msg.version);
+        createBot(msg.username, msg.server, msg.port || 25565, msg.version, {
+          autoReconnect: msg.autoReconnect,
+          autoRespawn: msg.autoRespawn,
+          antiAfkSeconds: msg.antiAfkSeconds,
+          startDelaySeconds: msg.startDelaySeconds,
+        });
         break;
       case 'say':
         runCommand(msg.username, msg.message);

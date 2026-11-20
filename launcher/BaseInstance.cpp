@@ -88,6 +88,7 @@ BaseInstance::BaseInstance(SettingsObject* globalSettings, std::unique_ptr<Setti
     if (m_settings->get("totalTimePlayed").toLongLong() < 0)
         m_settings->reset("totalTimePlayed");
     m_settings->registerSetting("lastTimePlayed", 0);
+    m_settings->registerSetting("launchCount", 0);
 
     m_settings->registerSetting("linkedInstances", "[]");
     m_settings->registerSetting("shortcuts", QString());
@@ -297,8 +298,21 @@ void BaseInstance::setRunning(bool running)
         return;
 
     m_isRunning = running;
+    if (!running) {
+        // the launch task is over: stop exposing the game process PID
+        m_runningPid = 0;
+    }
 
     emit runningStatusChanged(running);
+}
+
+void BaseInstance::setRunningPid(qint64 pid)
+{
+    // values that do not identify a live process reset the stored PID
+    if (pid <= 0) {
+        pid = 0;
+    }
+    m_runningPid = pid;
 }
 
 void BaseInstance::setMinecraftRunning(bool running)
@@ -382,6 +396,8 @@ void BaseInstance::setLastLaunch(qint64 val)
 {
     // FIXME: if no change, do not set. setting involves saving a file.
     m_settings->set("lastLaunchTime", val);
+    // count this launch for the statistics pages
+    m_settings->set("launchCount", m_settings->get("launchCount").toInt() + 1);
     emit propertiesChanged(this);
 }
 

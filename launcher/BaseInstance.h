@@ -121,6 +121,18 @@ class BaseInstance : public QObject {
     void setMinecraftRunning(bool running);
     void setRunning(bool running);
     bool isRunning() const;
+
+    /*!
+     * \brief PID of the currently running game process, 0 when there is none.
+     *
+     * This is an advisory value for the live statistics pages: the launch task
+     * writes it from its own thread while the GUI reads it. A plain aligned
+     * integer store is atomic enough for this purpose on all supported
+     * platforms, so no further synchronization is done.
+     */
+    qint64 runningPid() const { return m_runningPid; }
+    void setRunningPid(qint64 pid);
+
     int64_t totalTimePlayed() const;
     int64_t lastTimePlayed() const;
     void resetTimePlayed();
@@ -316,6 +328,7 @@ class BaseInstance : public QObject {
     std::unique_ptr<SettingsObject> m_settings;
     // InstanceFlags m_flags;
     bool m_isRunning = false;
+    qint64 m_runningPid = 0;
     std::unique_ptr<LaunchTask> m_launchProcess;
     QDateTime m_timeStarted;
     RuntimeContext m_runtimeContext;

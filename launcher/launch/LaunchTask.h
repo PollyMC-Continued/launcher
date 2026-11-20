@@ -63,7 +63,14 @@ class LaunchTask : public Task {
 
     MinecraftInstance* instance() { return m_instance; }
 
-    void setPid(qint64 pid) { m_pid = pid; }
+    void setPid(qint64 pid)
+    {
+        m_pid = pid;
+        // forward the PID of the game process so live statistics pages can watch it
+        if (m_instance) {
+            m_instance->setRunningPid(pid);
+        }
+    }
 
     qint64 pid() { return m_pid; }
 

@@ -107,6 +107,13 @@ uint64_t HardwareInfo::availableRamMiB()
     return 0;
 }
 
+uint32_t HardwareInfo::cpuCores()
+{
+    SYSTEM_INFO info;
+    GetSystemInfo(&info);
+    return info.dwNumberOfProcessors;
+}
+
 QStringList HardwareInfo::gpuInfo()
 {
     ComPtr<IDXGIFactory6> factory;
@@ -136,6 +143,7 @@ QStringList HardwareInfo::gpuInfo()
 
 #elif defined(Q_OS_MACOS)
 #include "sys/sysctl.h"
+#include <unistd.h>
 
 QString HardwareInfo::cpuInfo()
 {
@@ -165,6 +173,12 @@ uint64_t HardwareInfo::totalRamMiB()
 uint64_t HardwareInfo::availableRamMiB()
 {
     return 0;
+}
+
+uint32_t HardwareInfo::cpuCores()
+{
+    const long cores = sysconf(_SC_NPROCESSORS_ONLN);
+    return cores > 0 ? uint32_t(cores) : 0;
 }
 
 MacOSHardwareInfo::MemoryPressureLevel MacOSHardwareInfo::memoryPressureLevel()
@@ -213,6 +227,7 @@ QStringList HardwareInfo::gpuInfo()
 
 #elif defined(Q_OS_LINUX)
 #include <fstream>
+#include <unistd.h>
 
 QString HardwareInfo::cpuInfo()
 {
@@ -260,6 +275,12 @@ uint64_t HardwareInfo::totalRamMiB()
 uint64_t HardwareInfo::availableRamMiB()
 {
     return readMemInfo("MemAvailable");
+}
+
+uint32_t HardwareInfo::cpuCores()
+{
+    const long cores = sysconf(_SC_NPROCESSORS_ONLN);
+    return cores > 0 ? uint32_t(cores) : 0;
 }
 
 QStringList HardwareInfo::gpuInfo()
@@ -312,6 +333,8 @@ QStringList HardwareInfo::gpuInfo()
 
 #else
 
+#include <unistd.h>
+
 QString HardwareInfo::cpuInfo()
 {
     return "unknown";
@@ -353,5 +376,11 @@ uint64_t HardwareInfo::availableRamMiB()
 QStringList HardwareInfo::gpuInfo()
 {
     return { "GPU discovery failed: not implemented for this OS" };
+}
+
+uint32_t HardwareInfo::cpuCores()
+{
+    const long cores = sysconf(_SC_NPROCESSORS_ONLN);
+    return cores > 0 ? uint32_t(cores) : 0;
 }
 #endif

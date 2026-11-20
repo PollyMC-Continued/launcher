@@ -143,8 +143,21 @@ public final class Skin {
                 String name = path.substring(prefix.length()).replace(".png", "");
                 int sep = name.indexOf('_');
                 String uuid = (sep >= 0 ? name.substring(0, sep) : name).replace("-", "");
+                String hash = sep >= 0 ? name.substring(sep + 1) : "";
                 String skinDir = findSkinDir(uuid);
                 if (skinDir != null) {
+                    // Cape URLs carry the SHA-1 of cape.png where skin URLs carry the SHA-1 of
+                    // skin.png. When the hash names the cape file, this request belongs to the
+                    // cape, and the cape image is served (Minecraft renders the cape texture on
+                    // the elytra automatically when a cape is equipped, so the elytra comes with
+                    // it). Anything else falls through to the skin, so the legacy /skin/ path
+                    // keeps serving skins only.
+                    if (TEXTURE_PATH_PREFIX.equals(prefix) && !hash.isEmpty()) {
+                        File capeFile = new File(skinDir, "cape.png");
+                        if (capeFile.exists() && skinHash(capeFile).equals(hash)) {
+                            return new LocalSkinTextureURLConnection(url, capeFile);
+                        }
+                    }
                     File skinFile = new File(skinDir, "skin.png");
                     if (skinFile.exists()) {
                         return new LocalSkinTextureURLConnection(url, skinFile);
@@ -324,6 +337,19 @@ class LocalSkinURLConnection extends HttpURLConnection {
         // the comment on TEXTURE_PATH_PREFIX above.
         String skinUrl = "https://" + Skin.TEXTURE_HOST + Skin.TEXTURE_PATH_PREFIX + uuid + "_" + Skin.skinHash(skinFile) + ".png";
 
+        // A cape entry, whenever the account has a cape on disk. Minecraft renders the cape
+        // texture on the elytra automatically when a cape is equipped, so serving the cape here
+        // gives the player a matching elytra for free. The cape URL uses the same trick as the
+        // skin URL: the SHA-1 of cape.png in the path busts Minecraft's texture cache whenever
+        // the cape changes, and the https://textures.minecraft.net/texture/ shape keeps the URL
+        // inside the authlib 10 "validUris" whitelist.
+        String capeEntry = "";
+        File capeFile = new File(skinFile.getParentFile(), "cape.png");
+        if (capeFile.exists()) {
+            String capeUrl = "https://" + Skin.TEXTURE_HOST + Skin.TEXTURE_PATH_PREFIX + uuid + "_" + Skin.skinHash(capeFile) + ".png";
+            capeEntry = ",\"CAPE\":{\"url\":\"" + capeUrl + "\"}";
+        }
+
         String profileName = Skin.findAccountName(uuid);
         if (profileName == null) {
             profileName = "Player";
@@ -334,7 +360,9 @@ class LocalSkinURLConnection extends HttpURLConnection {
             + ",\"profileName\":\"" + profileName + "\""
             + ",\"textures\":{\"SKIN\":{\"url\":\"" + skinUrl + "\""
             + (model.equals("slim") ? ",\"metadata\":{\"model\":\"slim\"}" : "")
-            + "}}}";
+            + "}"
+            + capeEntry
+            + "}}";
 
         String base64 = Base64.getEncoder().encodeToString(texturesJson.getBytes(StandardCharsets.UTF_8));
 

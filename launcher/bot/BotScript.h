@@ -9,6 +9,7 @@
 #include <QJsonObject>
 #include <QObject>
 #include <QString>
+#include <QStringList>
 
 struct BotScriptStep {
     QString type;
@@ -17,9 +18,16 @@ struct BotScriptStep {
     QString pattern;         // wait_for_chat
     bool caseSensitive = false;
     QString player;          // wait_for_player
-    int timeoutSeconds = 0;  // waits, 0 = forever
+    int timeoutSeconds = 0;  // waits, 0 = forever; if: condition timeout
     int times = 1;           // loop, -1 = forever
-    QList<BotScriptStep> steps;  // loop
+    QList<BotScriptStep> steps;      // loop / if then-branch
+    QString name;            // set / inc: variable name
+    QString value;           // set / inc: literal value (inc: integer string)
+    QString condType;        // if: condition type
+    QString condValue;       // if: string operand (chat text, player, expected var value)
+    QString condVar;         // if: variable name for var_* conditions
+    int condNumber = 0;      // if: numeric operand (var_gt, var_gte, health_below)
+    QList<BotScriptStep> elseSteps;  // if: else-branch
 };
 
 struct BotScript {
@@ -34,15 +42,23 @@ class BotScriptParser {
     static QJsonObject serialize(const BotScript& script);
     static QJsonArray serializeSteps(const QList<BotScriptStep>& steps);
     static bool isValidName(const QString& name);
+    // Variable names for set/inc/var_* conditions: shared by parser and editor.
+    static bool isValidVarName(const QString& name);
     // Single-step field rules, shared by parse() and the editor.
     static bool validateStep(const BotScriptStep& step, QString& error);
 
     static const int kMaxLoopDepth = 5;
     static const int kMaxWaitSeconds = 86400;
     static const int kMaxLoopTimes = 100000;
+    static const int kMaxValueLength = 512;  // set value / condition string operands
+    static const int kMaxVarNameLength = 32;
+    static const int kMaxVariables = 64;      // distinct variables per script
+    static const int kMaxIncValue = 1000000;  // inc delta magnitude
+    static const int kMaxCondNumber = 1000000;  // var_gt / var_gte threshold magnitude
+    static const int kMaxHealthBelow = 1000;    // health_below threshold (absorption-safe)
 
    private:
-    static bool parseSteps(const QJsonArray& arr, QList<BotScriptStep>& out, QString& error, int depth);
+    static bool parseSteps(const QJsonArray& arr, QList<BotScriptStep>& out, QString& error, int depth, QStringList& vars);
 };
 
 class BotScriptStore : public QObject {

@@ -39,6 +39,24 @@ AddBotDialog::AddBotDialog(QWidget* parent)
     m_autoStart->setChecked(true);
     form->addRow("", m_autoStart);
 
+    m_autoReconnect = new QCheckBox("Reconnect automatically", this);
+    form->addRow("", m_autoReconnect);
+
+    m_autoRespawn = new QCheckBox("Respawn automatically after death", this);
+    form->addRow("", m_autoRespawn);
+
+    m_antiAfk = new QSpinBox(this);
+    m_antiAfk->setRange(0, 3600);
+    m_antiAfk->setValue(0);
+    m_antiAfk->setSpecialValueText("Off");
+    form->addRow("Anti-AFK look interval (s):", m_antiAfk);
+
+    m_startDelay = new QSpinBox(this);
+    m_startDelay->setRange(0, 86400);
+    m_startDelay->setValue(0);
+    m_startDelay->setSpecialValueText("Immediate");
+    form->addRow("Connect delay (s):", m_startDelay);
+
     main->addLayout(form);
     main->addSpacing(12);
 
@@ -63,6 +81,10 @@ BotConfig AddBotDialog::config() const
     c.port = m_port->value();
     c.version = m_version->currentText().trimmed();
     c.autoStart = m_autoStart->isChecked();
+    c.autoReconnect = m_autoReconnect->isChecked();
+    c.autoRespawn = m_autoRespawn->isChecked();
+    c.antiAfkSeconds = m_antiAfk->value();
+    c.startDelaySeconds = m_startDelay->value();
     return c;
 }
 
@@ -73,6 +95,10 @@ void AddBotDialog::setConfig(const BotConfig& cfg)
     m_port->setValue(cfg.port);
     m_version->setCurrentText(cfg.version);
     m_autoStart->setChecked(cfg.autoStart);
+    m_autoReconnect->setChecked(cfg.autoReconnect);
+    m_autoRespawn->setChecked(cfg.autoRespawn);
+    m_antiAfk->setValue(cfg.antiAfkSeconds);
+    m_startDelay->setValue(cfg.startDelaySeconds);
 }
 
 BotConfig AddBotDialog::showDialog(QWidget* parent, const BotConfig& defaults, bool editing)

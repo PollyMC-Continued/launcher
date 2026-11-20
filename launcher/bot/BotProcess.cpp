@@ -221,6 +221,11 @@ void BotProcess::handleMessage(const QJsonObject& msg)
         emit botConnected(msg["username"].toString(), msg["server"].toString());
     else if (event == "chat")
         emit botChat(msg["username"].toString(), msg["from"].toString(), msg["message"].toString());
+    else if (event == "position")
+        // throttled to 1/s by the bot server; yaw/health can be null on
+        // older server versions and read as 0 there
+        emit botPosition(msg["username"].toString(), msg["x"].toDouble(), msg["y"].toDouble(), msg["z"].toDouble(),
+                         msg["yaw"].toDouble(), msg["health"].toDouble());
     else if (event == "error")
         emit errorMessage(msg["text"].toString());
     else if (event == "script_started")

@@ -8,11 +8,23 @@
 #include <QSaveFile>
 #include <QStandardPaths>
 
-static const QStringList kStepTypes = { "say", "command", "wait", "wait_for_chat", "wait_for_player", "log", "loop" };
+#include <cmath>
+
+static const QStringList kStepTypes = { "say", "command", "wait", "wait_for_chat", "wait_for_player", "log", "loop", "set", "inc", "if" };
+
+// Condition types accepted by 'if' steps (kept in sync with bot-server/script-runner.js).
+static const QStringList kConditionTypes = { "chat_contains", "chat_equals", "var_equals", "var_not_equals",
+                                             "var_gt", "var_gte", "player_joined", "health_below" };
 
 bool BotScriptParser::isValidName(const QString& name)
 {
     static const QRegularExpression re("^[a-zA-Z0-9_-]{1,64}$");
+    return re.match(name).hasMatch();
+}
+
+bool BotScriptParser::isValidVarName(const QString& name)
+{
+    static const QRegularExpression re("^[a-zA-Z0-9_]{1,32}$");
     return re.match(name).hasMatch();
 }
 
@@ -32,8 +44,13 @@ bool BotScriptParser::parse(const QJsonObject& obj, BotScript& out, QString& err
         return false;
     }
     QList<BotScriptStep> steps;
-    if (!parseSteps(obj["steps"].toArray(), steps, error, 0))
+    QStringList vars;
+    if (!parseSteps(obj["steps"].toArray(), steps, error, 0, vars))
         return false;
+    if (vars.size() > kMaxVariables) {
+        error = QString("Scripts may use at most %1 distinct variables.").arg(kMaxVariables);
+        return false;
+    }
     out.version = 1;
     out.name = name;
     out.steps = steps;
@@ -104,11 +121,80 @@ bool BotScriptParser::validateStep(const BotScriptStep& s, QString& error)
             error = "Step 'loop' needs a non-empty steps array.";
             return false;
         }
+    } else if (s.type == "set") {
+        if (!isValidVarName(s.name)) {
+            error = "Step 'set' needs a variable name of 1-32 letters, digits or '_' only.";
+            return false;
+        }
+        if (s.value.size() > kMaxValueLength) {
+            error = QString("Step 'set' value cannot exceed %1 characters.").arg(kMaxValueLength);
+            return false;
+        }
+    } else if (s.type == "inc") {
+        if (!isValidVarName(s.name)) {
+            error = "Step 'inc' needs a variable name of 1-32 letters, digits or '_' only.";
+            return false;
+        }
+        static const QRegularExpression intRe("^-?[0-9]{1,7}$");
+        if (!intRe.match(s.value).hasMatch()) {
+            error = QString("Step 'inc' needs an integer value between -%1 and %1.").arg(kMaxIncValue);
+            return false;
+        }
+        bool ok = false;
+        const int delta = s.value.toInt(&ok);
+        if (!ok || qAbs(delta) > kMaxIncValue) {
+            error = QString("Step 'inc' needs an integer value between -%1 and %1.").arg(kMaxIncValue);
+            return false;
+        }
+    } else if (s.type == "if") {
+        if (!kConditionTypes.contains(s.condType)) {
+            error = QString("Step 'if' condition type '%1' is not known.").arg(s.condType);
+            return false;
+        }
+        if (s.timeoutSeconds < 0 || s.timeoutSeconds > kMaxWaitSeconds) {
+            error = "Step 'if' needs timeout_seconds between 0 and 86400.";
+            return false;
+        }
+        if (s.condType == "chat_contains" || s.condType == "chat_equals" || s.condType == "player_joined") {
+            if (s.condValue.isEmpty()) {
+                error = QString("Condition '%1' needs a non-empty value.").arg(s.condType);
+                return false;
+            }
+            if (s.condValue.size() > kMaxValueLength) {
+                error = QString("Condition '%1' value cannot exceed %2 characters.").arg(s.condType).arg(kMaxValueLength);
+                return false;
+            }
+        } else if (s.condType == "var_equals" || s.condType == "var_not_equals") {
+            if (!isValidVarName(s.condVar)) {
+                error = QString("Condition '%1' needs a variable name of 1-32 letters, digits or '_' only.")
+                            .arg(s.condType);
+                return false;
+            }
+            if (s.condValue.size() > kMaxValueLength) {
+                error = QString("Condition '%1' value cannot exceed %2 characters.").arg(s.condType).arg(kMaxValueLength);
+                return false;
+            }
+        } else if (s.condType == "var_gt" || s.condType == "var_gte") {
+            if (!isValidVarName(s.condVar)) {
+                error = QString("Condition '%1' needs a variable name of 1-32 letters, digits or '_' only.")
+                            .arg(s.condType);
+                return false;
+            }
+            if (qAbs(s.condNumber) > kMaxCondNumber) {
+                error = QString("Condition '%1' number cannot exceed %2 in magnitude.").arg(s.condType).arg(kMaxCondNumber);
+                return false;
+            }
+        } else {  // health_below
+            if (s.condNumber < 0 || s.condNumber > kMaxHealthBelow) {
+                error = QString("Condition 'health_below' needs a number between 0 and %1.").arg(kMaxHealthBelow);
+                return false;
+            }
+        }
     }
     return true;
 }
 
-bool BotScriptParser::parseSteps(const QJsonArray& arr, QList<BotScriptStep>& out, QString& error, int depth)
+bool BotScriptParser::parseSteps(const QJsonArray& arr, QList<BotScriptStep>& out, QString& error, int depth, QStringList& vars)
 {
     for (const auto& v : arr) {
         if (!v.isObject()) {
@@ -154,11 +240,101 @@ bool BotScriptParser::parseSteps(const QJsonArray& arr, QList<BotScriptStep>& ou
                 error = "Step 'loop' needs a non-empty steps array.";
                 return false;
             }
-            if (!parseSteps(o["steps"].toArray(), s.steps, error, depth + 1))
+            if (!parseSteps(o["steps"].toArray(), s.steps, error, depth + 1, vars))
                 return false;
+        } else if (type == "set") {
+            if (!rejectKeys(o, { "type", "name", "value" }, error)) return false;
+            if (o.contains("name") && !o["name"].isString()) {
+                error = "Step 'set' name must be a string.";
+                return false;
+            }
+            if (o.contains("value") && !o["value"].isString()) {
+                error = "Step 'set' value must be a string.";
+                return false;
+            }
+            s.name = o["name"].toString();
+            s.value = o["value"].toString();
+        } else if (type == "inc") {
+            if (!rejectKeys(o, { "type", "name", "value" }, error)) return false;
+            if (o.contains("name") && !o["name"].isString()) {
+                error = "Step 'inc' name must be a string.";
+                return false;
+            }
+            if (o.contains("value") && !o["value"].isString()) {
+                error = "Step 'inc' value must be a string.";
+                return false;
+            }
+            s.name = o["name"].toString();
+            s.value = o["value"].toString();
+        } else if (type == "if") {
+            if (!rejectKeys(o, { "type", "condition", "steps", "else_steps" }, error)) return false;
+            if (depth >= kMaxLoopDepth) {
+                error = "Conditionals nested deeper than 5 levels are not allowed.";
+                return false;
+            }
+            if (!o["condition"].isObject()) {
+                error = "Step 'if' needs a condition object.";
+                return false;
+            }
+            const QJsonObject cond = o["condition"].toObject();
+            if (!rejectKeys(cond, { "type", "value", "var", "number", "timeout_seconds" }, error))
+                return false;
+            if (!cond["type"].isString()) {
+                error = "Step 'if' condition type must be a string.";
+                return false;
+            }
+            if (cond.contains("value") && !cond["value"].isString()) {
+                error = "Step 'if' condition value must be a string.";
+                return false;
+            }
+            if (cond.contains("var") && !cond["var"].isString()) {
+                error = "Step 'if' condition var must be a string.";
+                return false;
+            }
+            // numeric fields must be JSON numbers, and whole ones: toInt()
+            // silently returns the default for 4.5 or a string otherwise
+            for (const char* key : { "number", "timeout_seconds" }) {
+                if (cond.contains(key)) {
+                    const QJsonValue v = cond[key];
+                    if (!v.isDouble() || std::floor(v.toDouble()) != v.toDouble()) {
+                        error = QString("Step 'if' condition field '%1' must be a whole number.").arg(key);
+                        return false;
+                    }
+                }
+            }
+            s.condType = cond["type"].toString();
+            s.condValue = cond["value"].toString();
+            s.condVar = cond["var"].toString();
+            s.condNumber = cond["number"].toInt(0);
+            s.timeoutSeconds = cond["timeout_seconds"].toInt(0);
+            // the then-branch may be empty (a pure not-block); the key must exist
+            if (!o["steps"].isArray()) {
+                error = "Step 'if' needs a steps array.";
+                return false;
+            }
+            if (!parseSteps(o["steps"].toArray(), s.steps, error, depth + 1, vars))
+                return false;
+            if (o.contains("else_steps")) {
+                if (!o["else_steps"].isArray()) {
+                    error = "Step 'if' else_steps must be an array.";
+                    return false;
+                }
+                if (!parseSteps(o["else_steps"].toArray(), s.elseSteps, error, depth + 1, vars))
+                    return false;
+            }
         }
         if (!validateStep(s, error))
             return false;
+        // track variable usage for the distinct-variable cap
+        if (type == "set" || type == "inc") {
+            if (!vars.contains(s.name))
+                vars.append(s.name);
+        } else if (type == "if" &&
+                   (s.condType == "var_equals" || s.condType == "var_not_equals" ||
+                    s.condType == "var_gt" || s.condType == "var_gte")) {
+            if (!vars.contains(s.condVar))
+                vars.append(s.condVar);
+        }
         out.append(s);
     }
     return true;
@@ -182,6 +358,28 @@ static QJsonObject serializeStep(const BotScriptStep& s)
     } else if (s.type == "loop") {
         o["times"] = s.times;
         o["steps"] = BotScriptParser::serializeSteps(s.steps);
+    } else if (s.type == "set" || s.type == "inc") {
+        o["name"] = s.name;
+        o["value"] = s.value;
+    } else if (s.type == "if") {
+        QJsonObject cond;
+        cond["type"] = s.condType;
+        // only the operand fields the condition type uses are written
+        if (s.condType == "chat_contains" || s.condType == "chat_equals" || s.condType == "player_joined" ||
+            s.condType == "var_equals" || s.condType == "var_not_equals") {
+            cond["value"] = s.condValue;
+        }
+        if (s.condType == "var_equals" || s.condType == "var_not_equals" ||
+            s.condType == "var_gt" || s.condType == "var_gte") {
+            cond["var"] = s.condVar;
+        }
+        if (s.condType == "var_gt" || s.condType == "var_gte" || s.condType == "health_below") {
+            cond["number"] = s.condNumber;
+        }
+        cond["timeout_seconds"] = s.timeoutSeconds;
+        o["condition"] = cond;
+        o["steps"] = BotScriptParser::serializeSteps(s.steps);
+        o["else_steps"] = BotScriptParser::serializeSteps(s.elseSteps);
     }
     return o;
 }

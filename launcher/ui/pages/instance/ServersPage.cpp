@@ -323,6 +323,9 @@ class ServersModel : public QAbstractListModel {
             case Qt::DisplayRole:
                 switch (column) {
                     case 0:
+                        if (isAutoJoinTarget(row)) {
+                            return m_servers[row].m_name + " [auto-join]";
+                        }
                         return m_servers[row].m_name;
                     case 1:
                         return m_servers[row].m_address;
@@ -335,6 +338,11 @@ class ServersModel : public QAbstractListModel {
                     default:
                         return QVariant();
                 }
+            case Qt::ToolTipRole:
+                if (column == 0 && isAutoJoinTarget(row)) {
+                    return tr("This server is joined automatically on launch");
+                }
+                return QVariant();
             case ServerPtrRole:
                 if (column == 0)
                     return QVariant::fromValue<void*>((void*)&m_servers[row]);
@@ -354,6 +362,18 @@ class ServersModel : public QAbstractListModel {
             return nullptr;
         }
         return &m_servers[index];
+    }
+
+    // remember which address is the instance's auto-join launch target and refresh the row indicators
+    void refreshTarget(const QString& targetAddress)
+    {
+        if (m_autoJoinTarget == targetAddress) {
+            return;
+        }
+        m_autoJoinTarget = targetAddress;
+        if (!m_servers.isEmpty()) {
+            emit dataChanged(index(0, 0), index(m_servers.size() - 1, COLUMN_COUNT - 1));
+        }
     }
 
     void setName(int row, const QString& name)
@@ -489,6 +509,12 @@ class ServersModel : public QAbstractListModel {
     }
 
    private:
+    bool isAutoJoinTarget(int row) const
+    {
+        return !m_autoJoinTarget.isEmpty() && row >= 0 && row < m_servers.size() &&
+               m_servers[row].m_address == m_autoJoinTarget;
+    }
+
     void scheduleSave()
     {
         if (!m_loaded) {
@@ -542,6 +568,7 @@ class ServersModel : public QAbstractListModel {
     bool m_observed = false;
     bool m_dirty = false;
     QString m_path;
+    QString m_autoJoinTarget;
     QList<Server> m_servers;
     QFileSystemWatcher* m_watcher = nullptr;
     QTimer m_saveTimer;
@@ -677,6 +704,15 @@ void ServersPage::updateState()
     ui->actionMove_Up->setEnabled(serverEditEnabled);
     ui->actionRemove->setEnabled(serverEditEnabled);
     ui->actionJoin->setEnabled(serverEditEnabled);
+    ui->actionJoinOnLaunch->setEnabled(serverEditEnabled);
+
+    // the auto-join launch target is stored in the instance settings, not per selection
+    auto settings = m_inst->settings();
+    bool joinOnLaunch = settings->get("JoinServerOnLaunch").toBool();
+    auto launchTargetAddress = settings->get("JoinServerOnLaunchAddress").toString();
+    m_model->refreshTarget(joinOnLaunch ? launchTargetAddress : QString());
+
+    ui->actionJoinOnLaunch->setChecked(server && joinOnLaunch && server->m_address == launchTargetAddress);
 
     if (server) {
         ui->addressLine->setText(server->m_address);
@@ -702,6 +738,9 @@ void ServersPage::openedImpl()
 
     // ping servers
     m_model->queryServersStatus();
+
+    // refresh the auto-join launch target, it may have changed in the instance settings meanwhile
+    updateState();
 }
 
 void ServersPage::closedImpl()
@@ -758,6 +797,26 @@ void ServersPage::on_actionJoin_triggered()
 {
     const auto& address = m_model->at(currentServer)->m_address;
     APPLICATION->launch(m_inst, LaunchMode::Normal, std::make_shared<MinecraftTarget>(MinecraftTarget::parse(address, false)));
+}
+
+void ServersPage::on_actionJoinOnLaunch_triggered()
+{
+    auto server = m_model->at(currentServer);
+    if (server) {
+        auto settings = m_inst->settings();
+        if (ui->actionJoinOnLaunch->isChecked()) {
+            // target this server when the instance launches
+            settings->set("JoinServerOnLaunch", true);
+            settings->set("JoinServerOnLaunchAddress", server->m_address);
+            settings->reset("JoinWorldOnLaunch");
+        } else {
+            // forget the launch target entirely
+            settings->reset("JoinServerOnLaunch");
+            settings->reset("JoinServerOnLaunchAddress");
+            settings->reset("JoinWorldOnLaunch");
+        }
+    }
+    updateState();
 }
 
 void ServersPage::on_actionRefresh_triggered()

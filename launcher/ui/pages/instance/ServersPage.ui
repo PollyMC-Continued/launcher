@@ -152,6 +152,7 @@
    <addaction name="actionMove_Up"/>
    <addaction name="actionMove_Down"/>
    <addaction name="actionJoin"/>
+   <addaction name="actionJoinOnLaunch"/>
    <addaction name="separator"/>
    <addaction name="actionRefresh"/>
   </widget>
@@ -178,6 +179,14 @@
   <action name="actionJoin">
    <property name="text">
     <string>Join</string>
+   </property>
+  </action>
+  <action name="actionJoinOnLaunch">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Join on launch</string>
    </property>
   </action>
   <action name="actionRefresh">

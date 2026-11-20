@@ -19,6 +19,7 @@
 #pragma once
 
 #include <QDialog>
+#include <QImage>
 #include <QItemSelection>
 #include <QLabel>
 #include <QPixmap>
@@ -30,6 +31,9 @@
 
 namespace Ui {
 class SkinManageDialog;
+}
+namespace Crafty {
+class API;
 }
 class SkinManageDialog : public QDialog, public SkinProvider {
     Q_OBJECT
@@ -58,9 +62,16 @@ class SkinManageDialog : public QDialog, public SkinProvider {
     bool eventFilter(QObject* obj, QEvent* ev) override;
     void on_action_Rename_Skin_triggered(bool checked);
     void on_action_Delete_Skin_triggered(bool checked);
+    void on_offlineBrowseBtn_clicked();
+    void on_offlineFileBtn_clicked();
+    void on_offlineUrlBtn_clicked();
+    void on_offlineRemoveBtn_clicked();
 
    private:
     void setupCapes();
+    void setupOfflineCape();
+    void applyOfflineCape(const QImage& cape, const QString& name);
+    void updateOfflineCapeUi();
 
    private:
     MinecraftAccountPtr m_acct;
@@ -71,4 +82,5 @@ class SkinManageDialog : public QDialog, public SkinProvider {
     QHash<QString, int> m_capesIdx;
     SkinOpenGLWindow* m_skinPreview = nullptr;
     QLabel* m_skinPreviewLabel = nullptr;
+    Crafty::API* m_capeApi = nullptr;
 };

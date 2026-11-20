@@ -9,7 +9,6 @@ static QJsonObject parseJson(const char* text)
 {
     return QJsonDocument::fromJson(QByteArray(text)).object();
 }
-
 class TestBotScript : public QObject {
     Q_OBJECT
 
@@ -220,6 +219,216 @@ class TestBotScript : public QObject {
         QVERIFY(BotScriptParser::parse(parseJson(R"({"version":1,"name":"a","steps":[{"type":"command","text":"time query"}]})"),
                                        script, error));
         QVERIFY(script.steps[0].text.startsWith('/'));
+    }
+
+    void roundTripNewStepTypes()
+    {
+        // keys in alphabetical order: QJsonDocument sorts object keys on output
+        const QByteArray raw =
+            R"({"name":"rt2","steps":[)"
+            R"({"name":"count","type":"set","value":"0"},)"
+            R"({"name":"count","type":"inc","value":"1"},)"
+            R"({"condition":{"timeout_seconds":30,"type":"chat_contains","value":"ready"},)"
+            R"("else_steps":[{"text":"nope","type":"say"}],)"
+            R"("steps":[{"text":"go","type":"say"}],"type":"if"}],)"
+            R"("version":1})";
+        BotScript script;
+        QString error;
+        QVERIFY2(BotScriptParser::parse(QJsonDocument::fromJson(raw).object(), script, error), qPrintable(error));
+        const QByteArray out = QJsonDocument(BotScriptParser::serialize(script)).toJson(QJsonDocument::Compact);
+        QCOMPARE(out, raw);
+    }
+
+    void ifConditionFieldsParsed()
+    {
+        BotScript script;
+        QString error;
+        const bool ok = BotScriptParser::parse(
+            parseJson(R"({"version":1,"name":"c","steps":[
+                {"type":"if",
+                 "condition":{"type":"var_gt","var":"count","number":5,"timeout_seconds":120},
+                 "steps":[{"type":"say","text":"big"}],
+                 "else_steps":[{"type":"wait","seconds":5}]}
+            ]})"),
+            script, error);
+        QVERIFY2(ok, qPrintable(error));
+        QCOMPARE(script.steps[0].condType, QString("var_gt"));
+        QCOMPARE(script.steps[0].condVar, QString("count"));
+        QCOMPARE(script.steps[0].condNumber, 5);
+        QCOMPARE(script.steps[0].timeoutSeconds, 120);
+        QCOMPARE(script.steps[0].steps.size(), 1);
+        QCOMPARE(script.steps[0].steps[0].text, QString("big"));
+        QCOMPARE(script.steps[0].elseSteps.size(), 1);
+        QCOMPARE(script.steps[0].elseSteps[0].seconds, 5);
+    }
+
+    void ifWithoutElseDefaultsEmpty()
+    {
+        BotScript script;
+        QString error;
+        const bool ok = BotScriptParser::parse(
+            parseJson(R"({"version":1,"name":"e","steps":[
+                {"type":"if","condition":{"type":"health_below","number":10},
+                 "steps":[{"type":"say","text":"ow"}]}
+            ]})"),
+            script, error);
+        QVERIFY2(ok, qPrintable(error));
+        QCOMPARE(script.steps[0].elseSteps.size(), 0);
+        // serialization always writes the (empty) else_steps array
+        const QByteArray out = QJsonDocument(BotScriptParser::serialize(script)).toJson(QJsonDocument::Compact);
+        QVERIFY(out.contains("\"else_steps\":[]"));
+    }
+
+    void rejectUnknownConditionType()
+    {
+        BotScript script;
+        QString error;
+        QVERIFY(!BotScriptParser::parse(
+            parseJson(R"({"version":1,"name":"a","steps":[
+                {"type":"if","condition":{"type":"chat_smells","value":"x"},"steps":[{"type":"say","text":"y"}]}
+            ]})"),
+            script, error));
+    }
+
+    void rejectIfWithoutSteps()
+    {
+        BotScript script;
+        QString error;
+        QVERIFY(!BotScriptParser::parse(
+            parseJson(R"({"version":1,"name":"a","steps":[
+                {"type":"if","condition":{"type":"chat_contains","value":"x"}}
+            ]})"),
+            script, error));
+    }
+
+    void rejectDeepIfNesting()
+    {
+        const char* inner = R"({"type":"say","text":"x"})";
+        QString nested(inner);
+        for (int i = 0; i < 6; i++)
+            nested = QString(R"({"type":"if","condition":{"type":"var_gt","var":"v","number":1},"steps":[%1]})").arg(nested);
+        BotScript script;
+        QString error;
+        QVERIFY(!BotScriptParser::parse(parseJson(QString(R"({"version":1,"name":"a","steps":[%1]})").arg(nested).toUtf8().constData()),
+                                        script, error));
+    }
+
+    void rejectBadVariableName()
+    {
+        BotScript script;
+        QString error;
+        QVERIFY(!BotScriptParser::parse(
+            parseJson(R"({"version":1,"name":"a","steps":[{"type":"set","name":"has space","value":"0"}]})"),
+            script, error));
+        // 33 chars: one over the 32-char variable name limit
+        QVERIFY(!BotScriptParser::parse(
+            parseJson(R"({"version":1,"name":"a","steps":[{"type":"inc","name":"123456789012345678901234567890123","value":"1"}]})"),
+            script, error));
+    }
+
+    void rejectBadIncValue()
+    {
+        BotScript script;
+        QString error;
+        QVERIFY(!BotScriptParser::parse(
+            parseJson(R"({"version":1,"name":"a","steps":[{"type":"inc","name":"count","value":"abc"}]})"),
+            script, error));
+        QVERIFY(!BotScriptParser::parse(
+            parseJson(R"({"version":1,"name":"a","steps":[{"type":"inc","name":"count","value":""}]})"),
+            script, error));
+    }
+
+    void rejectOversizeSetValue()
+    {
+        const QString longValue(513, 'a');
+        const QString json = QString(R"({"version":1,"name":"a","steps":[{"type":"set","name":"count","value":"%1"}]})").arg(longValue);
+        BotScript script;
+        QString error;
+        QVERIFY(!BotScriptParser::parse(parseJson(json.toUtf8().constData()), script, error));
+    }
+
+    void rejectTooManyVariables()
+    {
+        QStringList steps;
+        for (int i = 0; i < 65; i++)
+            steps << QString(R"({"type":"set","name":"v%1","value":"0"})").arg(i);
+        const QString json = QString(R"({"version":1,"name":"a","steps":[%1]})").arg(steps.join(","));
+        BotScript script;
+        QString error;
+        QVERIFY(!BotScriptParser::parse(parseJson(json.toUtf8().constData()), script, error));
+        QVERIFY(error.contains("64"));
+    }
+
+    void exactly64VariablesOk()
+    {
+        QStringList steps;
+        for (int i = 0; i < 64; i++)
+            steps << QString(R"({"type":"set","name":"v%1","value":"0"})").arg(i);
+        const QString json = QString(R"({"version":1,"name":"a","steps":[%1]})").arg(steps.join(","));
+        BotScript script;
+        QString error;
+        QVERIFY2(BotScriptParser::parse(parseJson(json.toUtf8().constData()), script, error), qPrintable(error));
+        QCOMPARE(script.steps.size(), 64);
+    }
+
+    void validNewStepTypes()
+    {
+        QString error;
+        BotScriptStep s;
+        s.type = "set";
+        s.name = "count";
+        s.value = "0";
+        QVERIFY(BotScriptParser::validateStep(s, error));
+        s = BotScriptStep();
+        s.type = "inc";
+        s.name = "count";
+        s.value = "-7";
+        QVERIFY(BotScriptParser::validateStep(s, error));
+        s = BotScriptStep();
+        s.type = "if";
+        s.condType = "chat_contains";
+        s.condValue = "ready";
+        s.timeoutSeconds = 30;
+        s.steps.append(defaultSay());
+        QVERIFY(BotScriptParser::validateStep(s, error));
+        s = BotScriptStep();
+        s.type = "if";
+        s.condType = "var_gt";
+        s.condVar = "count";
+        s.condNumber = 5;
+        QVERIFY(BotScriptParser::validateStep(s, error));
+        s = BotScriptStep();
+        s.type = "if";
+        s.condType = "health_below";
+        s.condNumber = 10;
+        QVERIFY(BotScriptParser::validateStep(s, error));
+    }
+
+    void invalidNewStepTypes()
+    {
+        QString error;
+        BotScriptStep s;
+        s.type = "set";
+        s.name = "bad-name";
+        QVERIFY(!BotScriptParser::validateStep(s, error));
+        s = BotScriptStep();
+        s.type = "inc";
+        s.name = "count";
+        s.value = "1.5";
+        QVERIFY(!BotScriptParser::validateStep(s, error));
+        s = BotScriptStep();
+        s.type = "if";
+        s.condType = "var_equals";
+        s.condVar = "count";
+        QVERIFY(BotScriptParser::validateStep(s, error));  // empty expected value is allowed
+        s.condType = "var_gt";
+        s.condNumber = 2000000;
+        QVERIFY(!BotScriptParser::validateStep(s, error));
+        s = BotScriptStep();
+        s.type = "if";
+        s.condType = "health_below";
+        s.condNumber = -1;
+        QVERIFY(!BotScriptParser::validateStep(s, error));
     }
 
    private:

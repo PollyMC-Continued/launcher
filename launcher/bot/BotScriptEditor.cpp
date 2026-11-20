@@ -5,20 +5,35 @@
 #include "ui_BotScriptEditor.h"
 
 #include <QMenu>
+#include <QFileDialog>
+#include <QFile>
 #include <QHash>
 #include <QJsonDocument>
 #include <QMimeData>
+#include <QMessageBox>
 #include <QSignalBlocker>
 #include <QTimer>
 
 // Tree model over nested BotScriptStep lists. Structural edits reset
 // the model; field edits emit dataChanged. No cross-level drops.
+// 'if' steps show their then-branch rows first and their else-branch rows
+// (prefixed "else:") after them, so both branches are editable in-tree.
 class StepModel : public QAbstractItemModel {
    public:
     struct Node {
         QList<BotScriptStep>* list = nullptr;
-        int row = -1;
+        int row = -1;         // position within list
+        int viewRow = -1;     // position among the parent's child rows
+        bool elseBranch = false;
         Node* parent = nullptr;
+    };
+
+    // Maps a child view-row of a container step onto its branch list and
+    // local row. Then-branch rows come first; else-branch rows follow.
+    struct BranchRef {
+        QList<BotScriptStep>* list = nullptr;
+        int localRow = 0;
+        bool elseBranch = false;
     };
 
     explicit StepModel(QObject* parent = nullptr) : QAbstractItemModel(parent) {}
@@ -45,26 +60,40 @@ class StepModel : public QAbstractItemModel {
     {
         if (column != 0 || !m_root)
             return {};
-        QList<BotScriptStep>* list = m_root;
+        QList<BotScriptStep>* list = nullptr;
+        int localRow = 0;
+        bool elseBranch = false;
         Node* parentNode = nullptr;
         if (parent.isValid()) {
             parentNode = static_cast<Node*>(parent.internalPointer());
             if (!parentNode || parentNode->row < 0)
                 return {};
             BotScriptStep& step = (*parentNode->list)[parentNode->row];
-            if (step.type != "loop")
+            if (!isContainer(step))
                 return {};
-            list = &step.steps;
+            const BranchRef b = branchAt(step, row);
+            if (!b.list)
+                return {};
+            list = b.list;
+            localRow = b.localRow;
+            elseBranch = b.elseBranch;
+        } else {
+            if (row < 0 || row >= m_root->size())
+                return {};
+            list = m_root;
+            localRow = row;
         }
-        if (row < 0 || row >= list->size())
-            return {};
-        const auto key = qMakePair(static_cast<const void*>(list), row);
+        const auto key = qMakePair(static_cast<const void*>(list), localRow);
         auto it = m_nodeCache.find(key);
         if (it != m_nodeCache.end()) {
+            // refresh parent/position: a (list,row) pair can be reached
+            // through different parents after structural edits
             it.value()->parent = parentNode;
+            it.value()->viewRow = row;
+            it.value()->elseBranch = elseBranch;
             return createIndex(row, column, it.value());
         }
-        auto* node = new Node{ list, row, parentNode };
+        auto* node = new Node{ list, localRow, row, elseBranch, parentNode };
         m_nodeCache.insert(key, node);
         return createIndex(row, column, node);
     }
@@ -76,7 +105,7 @@ class StepModel : public QAbstractItemModel {
         auto* node = static_cast<Node*>(index.internalPointer());
         if (!node || !node->parent)
             return {};
-        return createIndex(node->parent->row, 0, node->parent);
+        return createIndex(node->parent->viewRow, 0, node->parent);
     }
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override
@@ -89,7 +118,11 @@ class StepModel : public QAbstractItemModel {
         if (!node || node->row < 0)
             return 0;
         const BotScriptStep& step = (*node->list)[node->row];
-        return step.type == "loop" ? step.steps.size() : 0;
+        if (step.type == "loop")
+            return step.steps.size();
+        if (step.type == "if")
+            return step.steps.size() + step.elseSteps.size();
+        return 0;
     }
 
     int columnCount(const QModelIndex& = QModelIndex()) const override { return 1; }
@@ -101,6 +134,9 @@ class StepModel : public QAbstractItemModel {
         const BotScriptStep* step = stepAt(index);
         if (!step)
             return {};
+        auto* node = static_cast<Node*>(index.internalPointer());
+        if (node && node->elseBranch)
+            return QStringLiteral("else: ") + displayText(*step);
         return displayText(*step);
     }
 
@@ -133,20 +169,61 @@ class StepModel : public QAbstractItemModel {
             return "wait for " + s.player;
         if (s.type == "loop")
             return s.times == -1 ? "loop ∞" : QString("loop ×%1").arg(s.times);
+        if (s.type == "set")
+            return QString("set %1 = \"%2\"").arg(s.name, s.value);
+        if (s.type == "inc")
+            return QString("inc %1 %2%3").arg(s.name, s.value.startsWith('-') ? "" : "+", s.value);
+        if (s.type == "if")
+            return QString("if %1").arg(conditionSummary(s));
         return s.type;
+    }
+
+    static QString conditionSummary(const BotScriptStep& s)
+    {
+        if (s.condType == "var_gt" || s.condType == "var_gte")
+            return QString("%1 %2 %3")
+                .arg(s.condVar, s.condType == "var_gt" ? ">" : ">=", QString::number(s.condNumber));
+        if (s.condType == "var_equals")
+            return QString("%1 == \"%2\"").arg(s.condVar, s.condValue);
+        if (s.condType == "var_not_equals")
+            return QString("%1 != \"%2\"").arg(s.condVar, s.condValue);
+        if (s.condType == "health_below")
+            return QString("health < %1").arg(s.condNumber);
+        return QString("\"%1\"").arg(s.condValue);
     }
 
     bool moveStep(const QModelIndex& parent, int from, int to)
     {
-        QList<BotScriptStep>* list = listOf(parent);
-        if (!list || from < 0 || from >= list->size() || to < 0 || to >= list->size() || from == to)
+        if (!m_root)
+            return false;
+        QList<BotScriptStep>* list = nullptr;
+        int fromLocal = -1;
+        int toLocal = -1;
+        if (parent.isValid()) {
+            BotScriptStep* owner = stepAt(parent);
+            if (!owner || !isContainer(*owner))
+                return false;
+            const BranchRef src = branchAt(*owner, from);
+            const BranchRef dst = branchAt(*owner, to);
+            // moves stay inside one branch; cross-branch edits are remove+add
+            if (!src.list || !dst.list || src.list != dst.list)
+                return false;
+            list = src.list;
+            fromLocal = src.localRow;
+            toLocal = dst.localRow;
+        } else {
+            list = m_root;
+            fromLocal = from;
+            toLocal = to;
+        }
+        if (fromLocal < 0 || fromLocal >= list->size() || toLocal < 0 || toLocal >= list->size() || fromLocal == toLocal)
             return false;
         if (from < to) {
             beginMoveRows(parent, from, from, parent, to + 1);
-            list->move(from, to);
+            list->move(fromLocal, toLocal);
         } else {
             beginMoveRows(parent, from, from, parent, to);
-            list->move(from, to);
+            list->move(fromLocal, toLocal);
         }
         endMoveRows();
         return true;
@@ -154,12 +231,33 @@ class StepModel : public QAbstractItemModel {
 
     void insertStep(const QModelIndex& parent, int row, const BotScriptStep& step)
     {
-        QList<BotScriptStep>* list = listOf(parent);
-        if (!list)
+        if (!m_root)
             return;
-        row = qBound(0, row, list->size());
+        QList<BotScriptStep>* list = nullptr;
+        int localRow = 0;
+        if (parent.isValid()) {
+            BotScriptStep* owner = stepAt(parent);
+            if (!owner || !isContainer(*owner))
+                return;
+            const int thenCount = owner->steps.size();
+            const int total = thenCount + (owner->type == "if" ? owner->elseSteps.size() : 0);
+            row = qBound(0, row, total);
+            // rows at or below the then-branch length land in the then
+            // branch; rows past it land in the else branch (if steps only)
+            if (row <= thenCount) {
+                list = &owner->steps;
+                localRow = row;
+            } else {
+                list = &owner->elseSteps;
+                localRow = row - thenCount;
+            }
+        } else {
+            list = m_root;
+            row = qBound(0, row, list->size());
+            localRow = row;
+        }
         beginInsertRows(parent, row, row);
-        list->insert(row, step);
+        list->insert(localRow, step);
         endInsertRows();
     }
 
@@ -168,7 +266,7 @@ class StepModel : public QAbstractItemModel {
         if (!index.isValid())
             return;
         auto* node = static_cast<Node*>(index.internalPointer());
-        beginRemoveRows(parent(index), node->row, node->row);
+        beginRemoveRows(parent(index), node->viewRow, node->viewRow);
         node->list->removeAt(node->row);
         endRemoveRows();
     }
@@ -209,17 +307,27 @@ class StepModel : public QAbstractItemModel {
     }
 
    private:
-    QList<BotScriptStep>* listOf(const QModelIndex& parent) const
+    static bool isContainer(const BotScriptStep& s) { return s.type == "loop" || s.type == "if"; }
+
+    static BranchRef branchAt(BotScriptStep& step, int viewRow)
     {
-        if (!m_root)
-            return nullptr;
-        if (!parent.isValid())
-            return m_root;
-        auto* node = static_cast<Node*>(parent.internalPointer());
-        if (!node || node->row < 0)
-            return nullptr;
-        BotScriptStep& step = (*node->list)[node->row];
-        return step.type == "loop" ? &step.steps : nullptr;
+        BranchRef r;
+        if (viewRow < 0)
+            return r;
+        if (viewRow < step.steps.size()) {
+            r.list = &step.steps;
+            r.localRow = viewRow;
+            return r;
+        }
+        if (step.type == "if") {
+            const int elseRow = viewRow - step.steps.size();
+            if (elseRow < step.elseSteps.size()) {
+                r.list = &step.elseSteps;
+                r.localRow = elseRow;
+                r.elseBranch = true;
+            }
+        }
+        return r;
     }
 
     QList<BotScriptStep>* m_root = nullptr;
@@ -246,10 +354,27 @@ static BotScriptStep defaultStep(const QString& type)
         s.timeoutSeconds = 600;
     else if (type == "loop")
         s.times = 10;
+    else if (type == "set") {
+        s.name = "count";
+        s.value = "0";
+    } else if (type == "inc") {
+        s.name = "count";
+        s.value = "1";
+    } else if (type == "if") {
+        s.condType = "chat_contains";
+        s.condValue = "ready";
+        s.timeoutSeconds = 30;
+    }
     return s;
 }
 
-static const char* STEP_TYPES[] = { "say", "command", "wait", "wait_for_chat", "wait_for_player", "log", "loop" };
+static const char* STEP_TYPES[] = { "say", "command", "wait", "wait_for_chat", "wait_for_player", "log", "loop", "set", "inc", "if" };
+
+// Condition types of 'if' steps, kept in sync with BotScript.cpp's kConditionTypes.
+static const char* CONDITION_TYPES[] = {
+    "chat_contains", "chat_equals", "var_equals", "var_not_equals",
+    "var_gt", "var_gte", "player_joined", "health_below"
+};
 
 BotScriptEditor::BotScriptEditor(BotManagerDialog* manager, QWidget* parent) : QWidget(parent), m_manager(manager), m_ui(new Ui::BotScriptEditor)
 {
@@ -260,8 +385,14 @@ BotScriptEditor::BotScriptEditor(BotManagerDialog* manager, QWidget* parent) : Q
     m_ui->stepsTree->setDragDropMode(QAbstractItemView::InternalMove);
     m_ui->stepsTree->setSelectionMode(QAbstractItemView::SingleSelection);
 
-    for (auto* label : { m_ui->textError, m_ui->waitError, m_ui->chatError, m_ui->playerError, m_ui->loopError })
+    for (auto* label : { m_ui->textError, m_ui->waitError, m_ui->chatError, m_ui->playerError, m_ui->loopError,
+                         m_ui->setError, m_ui->incError, m_ui->ifError })
         label->setStyleSheet("color: #f87171;");
+
+    for (const char* t : CONDITION_TYPES)
+        m_ui->condTypeCombo->addItem(QString(t));
+    m_ui->condNumberSpin->setRange(-BotScriptParser::kMaxCondNumber, BotScriptParser::kMaxCondNumber);
+    m_ui->condTimeoutSpin->setRange(0, BotScriptParser::kMaxWaitSeconds);
 
     connect(m_ui->stepsTree->selectionModel(), &QItemSelectionModel::currentChanged, this, &BotScriptEditor::onSelectionChanged);
     connect(m_ui->addBtn, &QPushButton::clicked, this, &BotScriptEditor::onAddStep);
@@ -278,13 +409,28 @@ BotScriptEditor::BotScriptEditor(BotManagerDialog* manager, QWidget* parent) : Q
     connect(m_ui->playerEdit, &QLineEdit::textEdited, this, &BotScriptEditor::onFieldEdited);
     connect(m_ui->timeoutSpin2, QOverload<int>::of(&QSpinBox::valueChanged), this, &BotScriptEditor::onFieldEdited);
     connect(m_ui->timesSpin, QOverload<int>::of(&QSpinBox::valueChanged), this, &BotScriptEditor::onFieldEdited);
+    connect(m_ui->setNameEdit, &QLineEdit::textEdited, this, &BotScriptEditor::onFieldEdited);
+    connect(m_ui->setValueEdit, &QLineEdit::textEdited, this, &BotScriptEditor::onFieldEdited);
+    connect(m_ui->incNameEdit, &QLineEdit::textEdited, this, &BotScriptEditor::onFieldEdited);
+    connect(m_ui->incValueEdit, &QLineEdit::textEdited, this, &BotScriptEditor::onFieldEdited);
+    connect(m_ui->condTypeCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this](int) {
+        updateCondFieldVisibility();
+        onFieldEdited();
+    });
+    connect(m_ui->condValueEdit, &QLineEdit::textEdited, this, &BotScriptEditor::onFieldEdited);
+    connect(m_ui->condVarEdit, &QLineEdit::textEdited, this, &BotScriptEditor::onFieldEdited);
+    connect(m_ui->condNumberSpin, QOverload<int>::of(&QSpinBox::valueChanged), this, &BotScriptEditor::onFieldEdited);
+    connect(m_ui->condTimeoutSpin, QOverload<int>::of(&QSpinBox::valueChanged), this, &BotScriptEditor::onFieldEdited);
     connect(m_ui->saveBtn, &QPushButton::clicked, this, &BotScriptEditor::onSave);
     connect(m_ui->revertBtn, &QPushButton::clicked, this, &BotScriptEditor::onRevert);
+    connect(m_ui->importBtn, &QPushButton::clicked, this, &BotScriptEditor::onImport);
+    connect(m_ui->exportBtn, &QPushButton::clicked, this, &BotScriptEditor::onExport);
     connect(m_ui->runBtn, &QPushButton::clicked, this, &BotScriptEditor::onRun);
     connect(m_ui->stopBtn, &QPushButton::clicked, this, &BotScriptEditor::onStop);
     connect(BotScriptStore::instance(), &BotScriptStore::changed, this, &BotScriptEditor::onStoreChanged);
 
     m_ui->propStack->setCurrentWidget(m_ui->pageEmpty);
+    updateCondFieldVisibility();
     refreshButtons();
 }
 
@@ -360,14 +506,18 @@ void BotScriptEditor::showPropertiesFor()
     const QModelIndex current = m_ui->stepsTree->currentIndex();
     BotScriptStep* step = treeModel(m_ui->stepsTree)->stepAt(current);
     // clear all error labels first
-    for (auto* label : { m_ui->textError, m_ui->waitError, m_ui->chatError, m_ui->playerError, m_ui->loopError })
+    for (auto* label : { m_ui->textError, m_ui->waitError, m_ui->chatError, m_ui->playerError, m_ui->loopError,
+                         m_ui->setError, m_ui->incError, m_ui->ifError })
         label->clear();
     if (!step) {
         m_ui->propStack->setCurrentWidget(m_ui->pageEmpty);
         return;
     }
     const QSignalBlocker b1(m_ui->textEdit), b2(m_ui->secondsSpin), b3(m_ui->patternEdit), b4(m_ui->caseCheck),
-          b5(m_ui->timeoutSpin), b6(m_ui->playerEdit), b7(m_ui->timeoutSpin2), b8(m_ui->timesSpin);
+          b5(m_ui->timeoutSpin), b6(m_ui->playerEdit), b7(m_ui->timeoutSpin2), b8(m_ui->timesSpin),
+          b9(m_ui->setNameEdit), b10(m_ui->setValueEdit), b11(m_ui->incNameEdit), b12(m_ui->incValueEdit),
+          b13(m_ui->condTypeCombo), b14(m_ui->condValueEdit), b15(m_ui->condVarEdit),
+          b16(m_ui->condNumberSpin), b17(m_ui->condTimeoutSpin);
     if (step->type == "say" || step->type == "command" || step->type == "log") {
         m_ui->propStack->setCurrentWidget(m_ui->pageText);
         m_ui->textEdit->setText(step->text);
@@ -386,7 +536,39 @@ void BotScriptEditor::showPropertiesFor()
     } else if (step->type == "loop") {
         m_ui->propStack->setCurrentWidget(m_ui->pageLoop);
         m_ui->timesSpin->setValue(step->times);
+    } else if (step->type == "set") {
+        m_ui->propStack->setCurrentWidget(m_ui->pageSet);
+        m_ui->setNameEdit->setText(step->name);
+        m_ui->setValueEdit->setText(step->value);
+    } else if (step->type == "inc") {
+        m_ui->propStack->setCurrentWidget(m_ui->pageInc);
+        m_ui->incNameEdit->setText(step->name);
+        m_ui->incValueEdit->setText(step->value);
+    } else if (step->type == "if") {
+        m_ui->propStack->setCurrentWidget(m_ui->pageIf);
+        m_ui->condTypeCombo->setCurrentText(step->condType.isEmpty() ? "chat_contains" : step->condType);
+        m_ui->condValueEdit->setText(step->condValue);
+        m_ui->condVarEdit->setText(step->condVar);
+        m_ui->condNumberSpin->setValue(step->condNumber);
+        m_ui->condTimeoutSpin->setValue(step->timeoutSeconds);
+        updateCondFieldVisibility();
     }
+}
+
+void BotScriptEditor::updateCondFieldVisibility()
+{
+    const QString t = m_ui->condTypeCombo->currentText();
+    // which operand fields the chosen condition type actually uses
+    const bool wantsValue = t == "chat_contains" || t == "chat_equals" || t == "player_joined" ||
+                            t == "var_equals" || t == "var_not_equals";
+    const bool wantsVar = t == "var_equals" || t == "var_not_equals" || t == "var_gt" || t == "var_gte";
+    const bool wantsNumber = t == "var_gt" || t == "var_gte" || t == "health_below";
+    m_ui->condValueLabel->setVisible(wantsValue);
+    m_ui->condValueEdit->setVisible(wantsValue);
+    m_ui->condVarLabel->setVisible(wantsVar);
+    m_ui->condVarEdit->setVisible(wantsVar);
+    m_ui->condNumberLabel->setVisible(wantsNumber);
+    m_ui->condNumberSpin->setVisible(wantsNumber);
 }
 
 void BotScriptEditor::onFieldEdited()
@@ -407,6 +589,19 @@ void BotScriptEditor::onFieldEdited()
             step->timeoutSeconds = m_ui->timeoutSpin2->value();
         } else if (step->type == "loop")
             step->times = m_ui->timesSpin->value();
+        else if (step->type == "set") {
+            step->name = m_ui->setNameEdit->text();
+            step->value = m_ui->setValueEdit->text();
+        } else if (step->type == "inc") {
+            step->name = m_ui->incNameEdit->text();
+            step->value = m_ui->incValueEdit->text();
+        } else if (step->type == "if") {
+            step->condType = m_ui->condTypeCombo->currentText();
+            step->condValue = m_ui->condValueEdit->text();
+            step->condVar = m_ui->condVarEdit->text();
+            step->condNumber = m_ui->condNumberSpin->value();
+            step->timeoutSeconds = m_ui->condTimeoutSpin->value();
+        }
         const QModelIndex idx = m_ui->stepsTree->currentIndex();
         emit treeModel(m_ui->stepsTree)->dataChanged(idx, idx);
     }
@@ -426,11 +621,21 @@ void BotScriptEditor::onAddStep()
     const QModelIndex current = m_ui->stepsTree->currentIndex();
     const QModelIndex parent = current.isValid() ? current.parent() : QModelIndex();
     int row = current.isValid() ? current.row() + 1 : model->rowCount(parent);
-    // loops accept children when expanded; otherwise insert beside selection
+    // loops and ifs accept children when expanded; otherwise insert beside selection
     if (current.isValid()) {
         BotScriptStep* sel = model->stepAt(current);
         if (sel && sel->type == "loop" && m_ui->stepsTree->isExpanded(current)) {
             model->insertStep(current, model->rowCount(current), defaultStep(chosen->text()));
+            m_ui->stepsTree->expand(current);
+            m_saved = false;
+            refreshButtons();
+            return;
+        }
+        // an expanded 'if' takes new steps at the end of its then branch;
+        // with an else row selected, the code below lands them in the else
+        // branch instead (row past the then-branch length)
+        if (sel && sel->type == "if" && m_ui->stepsTree->isExpanded(current)) {
+            model->insertStep(current, sel->steps.size(), defaultStep(chosen->text()));
             m_ui->stepsTree->expand(current);
             m_saved = false;
             refreshButtons();
@@ -571,6 +776,12 @@ void BotScriptEditor::refreshButtons()
         target = m_ui->playerError;
     else if (page == m_ui->pageLoop)
         target = m_ui->loopError;
+    else if (page == m_ui->pageSet)
+        target = m_ui->setError;
+    else if (page == m_ui->pageInc)
+        target = m_ui->incError;
+    else if (page == m_ui->pageIf)
+        target = m_ui->ifError;
     if (target)
         target->setText(valid ? QString() : error);
     const bool hasBot = !m_botName.isEmpty();
@@ -600,17 +811,99 @@ QModelIndex BotScriptEditor::findFirstInvalidStep(const QModelIndex& parent, int
         BotScriptStep* step = model->stepAt(idx);
         if (!step)
             continue;
-        if (step->type == "loop" && depth >= BotScriptParser::kMaxLoopDepth) {
-            error = "Loops nested deeper than 5 levels are not allowed.";
+        // both loops and conditionals occupy one nesting level
+        if ((step->type == "loop" || step->type == "if") && depth >= BotScriptParser::kMaxLoopDepth) {
+            error = step->type == "loop" ? "Loops nested deeper than 5 levels are not allowed."
+                                         : "Conditionals nested deeper than 5 levels are not allowed.";
             return idx;
         }
         if (!BotScriptParser::validateStep(*step, error))
             return idx;
-        if (step->type == "loop") {
+        if (step->type == "loop" || step->type == "if") {
+            // child rows cover the then branch and (for ifs) the else branch
             const QModelIndex nested = findFirstInvalidStep(idx, depth + 1, error);
             if (nested.isValid())
                 return nested;
         }
     }
     return {};
+}
+
+void BotScriptEditor::onImport()
+{
+    const QString path = QFileDialog::getOpenFileName(this, tr("Import Bot Script"), QString(),
+                                                      tr("Bot scripts (*.json);;All files (*)"));
+    if (path.isEmpty())
+        return;
+    QFile f(path);
+    if (!f.open(QIODevice::ReadOnly)) {
+        m_ui->saveStatusLabel->setText(tr("Import failed: cannot open %1").arg(path));
+        m_ui->saveStatusLabel->setStyleSheet("color: #f87171;");
+        m_ui->saveStatusLabel->setVisible(true);
+        return;
+    }
+    const QJsonDocument doc = QJsonDocument::fromJson(f.readAll());
+    if (!doc.isObject()) {
+        m_ui->saveStatusLabel->setText(tr("Import failed: %1 is not a JSON script").arg(path));
+        m_ui->saveStatusLabel->setStyleSheet("color: #f87171;");
+        m_ui->saveStatusLabel->setVisible(true);
+        return;
+    }
+    BotScript script;
+    QString error;
+    if (!BotScriptParser::parse(doc.object(), script, error)) {
+        m_ui->saveStatusLabel->setText(tr("Import failed: %1").arg(error));
+        m_ui->saveStatusLabel->setStyleSheet("color: #f87171;");
+        m_ui->saveStatusLabel->setVisible(true);
+        return;
+    }
+    auto* store = BotScriptStore::instance();
+    if (store->contains(script.name)) {
+        // saving would overwrite the stored script of the same name; ask first
+        const auto answer = QMessageBox::question(this, tr("Import Bot Script"),
+            tr("A script named '%1' already exists. Importing it will overwrite that script when you save. Continue?")
+                .arg(script.name),
+            QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
+        if (answer != QMessageBox::Yes)
+            return;
+    }
+    // load it into the editor as unsaved work, then offer to store it
+    rebuildFromScript(script);
+    m_saved = false;
+    refreshButtons();
+    if (QMessageBox::question(this, tr("Import Bot Script"),
+                              tr("Save the imported script to the script store now?"),
+                              QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::Yes)
+        onSave();
+}
+
+void BotScriptEditor::onExport()
+{
+    QString error;
+    if (!validate(error)) {
+        QMessageBox::warning(this, tr("Export Bot Script"), tr("The script is not valid: %1").arg(error));
+        return;
+    }
+    const QString path = QFileDialog::getSaveFileName(this, tr("Export Bot Script"), QString(),
+                                                      tr("Bot scripts (*.json);;All files (*)"));
+    if (path.isEmpty())
+        return;
+    QFile f(path);
+    if (!f.open(QIODevice::WriteOnly)) {
+        m_ui->saveStatusLabel->setText(tr("Export failed: %1").arg(f.errorString()));
+        m_ui->saveStatusLabel->setStyleSheet("color: #f87171;");
+        m_ui->saveStatusLabel->setVisible(true);
+        return;
+    }
+    const QByteArray data = QJsonDocument(BotScriptParser::serialize(currentScript())).toJson(QJsonDocument::Indented);
+    if (f.write(data) < 0) {
+        m_ui->saveStatusLabel->setText(tr("Export failed: %1").arg(f.errorString()));
+        m_ui->saveStatusLabel->setStyleSheet("color: #f87171;");
+        m_ui->saveStatusLabel->setVisible(true);
+        return;
+    }
+    m_ui->saveStatusLabel->setText(tr("Exported to %1").arg(path));
+    m_ui->saveStatusLabel->setStyleSheet("color: #6ee7b7;");
+    m_ui->saveStatusLabel->setVisible(true);
+    QTimer::singleShot(3000, m_ui->saveStatusLabel, [w = m_ui->saveStatusLabel] { w->setVisible(false); });
 }

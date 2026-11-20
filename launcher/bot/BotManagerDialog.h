@@ -23,6 +23,7 @@ struct BotEntry {
 };
 
 class BotScriptEditor;
+class BotMapDialog;
 
 class BotManagerDialog : public QWidget {
     Q_OBJECT
@@ -41,6 +42,7 @@ private slots:
     void onStart();
     void onSelectAll();
     void onStop();
+    void onShowMap();
     void onTableDoubleClicked(int row, int column);
     void onSelectionChanged();
     void onSendCommand();
@@ -49,6 +51,7 @@ private slots:
     void onBotReady();
     void onBotConnected(const QString& username, const QString& server);
     void onBotChat(const QString& bot, const QString& from, const QString& message);
+    void onBotPosition(const QString& username, double x, double y, double z, double yaw, double health);
     void onProcessExited(int code);
     void onDependenciesInstalled(bool ok);
     void onScriptStarted(const QString& username, const QString& name);
@@ -84,7 +87,9 @@ private:
     QPushButton* m_selectAllBtn;
     QPushButton* m_stopAllBtn;
     QPushButton* m_commandsBtn;
+    QPushButton* m_mapBtn;
     BotScriptEditor* m_editor = nullptr;
+    BotMapDialog* m_map = nullptr;
 
     QString m_configPath;
     QString m_legacyConfigPath;

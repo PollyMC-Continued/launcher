@@ -18,11 +18,14 @@
 
 #include "CraftySkinAPI.h"
 
+#include <QCryptographicHash>
 #include <QDir>
 #include <QElapsedTimer>
+#include <QFile>
 #include <QFileInfo>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonValue>
 #include <QSet>
 #include <QTimer>
 #include <QUrl>
@@ -451,6 +454,234 @@ NetJob::Ptr API::fetchTextures(const QList<SkinPtr>& skins, EachCallback each, D
     return job;
 }
 
+namespace {
+
+// --------------------------------------------------------------------- cape lookup
+//
+// crafty.gg does not document a cape catalog, so the player profile is scraped for anything
+// that looks like a cape texture URL. The walk is deliberately shape-agnostic: an explicit
+// "capes" array of {url, name} objects is found by the same rules as every other .png URL
+// anywhere in the document, and when the profile carries no cape URLs at all the result is
+// simply empty.
+
+struct CapeCandidate {
+    QUrl url;
+    QString name;
+    QString source;
+};
+
+constexpr int kMaxCapes = 8;
+
+QString capeSourceForHost(const QUrl& url)
+{
+    const auto host = url.host().toLower();
+    if (host.contains(QStringLiteral("optifine")))
+        return QStringLiteral("optifine");
+    if (host == QStringLiteral("textures.minecraft.net") || host.endsWith(QStringLiteral(".mojang.com")))
+        return QStringLiteral("mojang");
+    if (host.endsWith(QStringLiteral("crafty.gg")))
+        return QStringLiteral("crafty");
+    return QStringLiteral("url");
+}
+
+bool looksLikeCapeUrl(const QString& text)
+{
+    // only direct image URLs are considered; the .png suffix keeps avatars and web pages out
+    return (text.startsWith(QStringLiteral("https://"), Qt::CaseInsensitive) ||
+            text.startsWith(QStringLiteral("http://"), Qt::CaseInsensitive)) &&
+           text.endsWith(QStringLiteral(".png"), Qt::CaseInsensitive);
+}
+
+void walkForCapeCandidates(const QJsonValue& value, const QString& nameHint, QList<CapeCandidate>& found, QSet<QString>& seen)
+{
+    if (found.size() >= kMaxCapes)
+        return;
+    if (value.isString()) {
+        const auto text = value.toString();
+        if (looksLikeCapeUrl(text)) {
+            const auto url = QUrl(text);
+            if (url.isValid() && !url.host().isEmpty() && !seen.contains(url.toString())) {
+                seen.insert(url.toString());
+                found.append({ url, nameHint, capeSourceForHost(url) });
+            }
+        }
+        return;
+    }
+    if (value.isArray()) {
+        for (const auto& element : value.toArray())
+            walkForCapeCandidates(element, nameHint, found, seen);
+        return;
+    }
+    if (value.isObject()) {
+        const auto object = value.toObject();
+        // a cape object usually carries its display name next to the texture URL, so the
+        // object's own name (or the player behind the profile) labels the capes inside it
+        QString name = nameHint;
+        for (const auto& key : { QStringLiteral("name"), QStringLiteral("alias"), QStringLiteral("cape_name") }) {
+            const auto label = object.value(key).toString();
+            if (!label.isEmpty()) {
+                name = label;
+                break;
+            }
+        }
+        for (const auto& key : object.keys())
+            walkForCapeCandidates(object.value(key), name, found, seen);
+    }
+}
+
+QString contentSha1(const QByteArray& data)
+{
+    return QString::fromLatin1(QCryptographicHash::hash(data, QCryptographicHash::Sha1).toHex());
+}
+
+QString capeCachePath(const QString& sha1)
+{
+    return FS::PathCombine(APPLICATION->dataRoot(), "cache", "capes", sha1 + ".png");
+}
+
+// writes the cape PNG to the cache under its content hash, so the same image is stored (and
+// skipped on the next download) no matter which URL it was fetched from
+QString cacheCapePng(const QByteArray& png)
+{
+    const auto path = capeCachePath(contentSha1(png));
+    if (QFileInfo::exists(path))
+        return path;
+    FS::ensureFolderPathExists(QFileInfo(path).absolutePath());
+    QFile file(path);
+    if (!file.open(QIODevice::WriteOnly))
+        return {};
+    if (file.write(png) != png.size()) {
+        file.close();
+        QFile::remove(path);
+        return {};
+    }
+    return path;
+}
+
+CapePtr makeCape(const QString& name, const QString& username, const QString& source, const QUrl& url, const QByteArray& png)
+{
+    QImage texture;
+    if (!texture.loadFromData(png, "PNG") || texture.isNull())
+        return {};
+    auto cape = QSharedPointer<CapeEntry>::create();
+    cape->name = name;
+    cape->username = username;
+    cape->source = source;
+    cape->textureUrl = url;
+    cape->texture = texture;
+    cape->preview = texture.scaled(128, 60, Qt::KeepAspectRatio, Qt::FastTransformation);
+    cape->cachePath = cacheCapePng(png);
+    return cape;
+}
+
+}  // namespace
+
+QString API::noCapesMessage()
+{
+    return QStringLiteral("No capes found for this player on crafty.gg");
+}
+
+NetJob::Ptr API::fetchPlayerCapes(const QString& username, CapeListCallback callback)
+{
+    if (m_capeJob && m_capeJob->isRunning())
+        m_capeJob->abort();
+    // a new lookup invalidates the capes of the previous one, their downloads are stopped
+    for (const auto& job : m_capeTextureJobs)
+        if (job && job->isRunning())
+            job->abort();
+    m_capeJob = nullptr;
+
+    auto job = makeShared<NetJob>(tr("Find player capes"), APPLICATION->network());
+    job->setAskRetry(false);
+    auto request = PacedDownload::makeByteArray(QUrl(QStringLiteral("%1/players/%2").arg(baseUrl(), encode(username))));
+    auto action = request.first;
+    auto response = request.second;
+    job->addNetAction(action);
+
+    connect(job.get(), &NetJob::succeeded, this, [this, response, username, callback] {
+        QJsonParseError parseError{};
+        auto doc = QJsonDocument::fromJson(*response, &parseError);
+        if (parseError.error != QJsonParseError::NoError) {
+            callback({}, parseError.errorString());
+            return;
+        }
+        const auto root = doc.object();
+        if (root.contains(QStringLiteral("success")) && !root.value(QStringLiteral("success")).toBool()) {
+            callback({}, root.value(QStringLiteral("message")).toString(QStringLiteral("crafty.gg rejected the request")));
+            return;
+        }
+
+        QList<CapeCandidate> candidates;
+        QSet<QString> seen;
+        walkForCapeCandidates(doc.isArray() ? QJsonValue(doc.array()) : QJsonValue(root), username, candidates, seen);
+        if (candidates.isEmpty()) {
+            callback({}, noCapesMessage());
+            return;
+        }
+
+        m_capeTextureJobs.removeIf([](const NetJob::Ptr& job) { return job->isFinished(); });
+        auto textureJob = makeShared<NetJob>(tr("Download player capes"), APPLICATION->network());
+        textureJob->setAskRetry(false);
+        auto capes = std::make_shared<QList<CapePtr>>();
+        for (const auto& candidate : candidates) {
+            auto request = PacedDownload::makeByteArray(candidate.url);
+            auto action = request.first;
+            auto response = request.second;
+            textureJob->addNetAction(action);
+            connect(action.get(), &Task::succeeded, this, [candidate, response, username, capes] {
+                if (auto cape = makeCape(candidate.name, username, candidate.source, candidate.url, *response))
+                    *capes << cape;
+            });
+        }
+        connect(textureJob.get(), &NetJob::succeeded, this, [capes, callback] {
+            // every download finished, but some images may still have failed to decode
+            callback(*capes, capes->isEmpty() ? QStringLiteral("None of the cape textures could be decoded") : QString());
+        });
+        connect(textureJob.get(), &NetJob::failed, this, [capes, callback](const QString& reason) {
+            // the capes that did arrive are still handed over, the message tells what went wrong
+            callback(*capes, reason);
+        });
+        // an aborted job means the dialog went away, nobody is waiting for that answer anymore
+        connect(textureJob.get(), &NetJob::aborted, this, [] {});
+
+        m_capeTextureJobs << textureJob;
+        textureJob->start();
+    });
+    connect(job.get(), &NetJob::failed, this, [callback](const QString& reason) { callback({}, reason); });
+    connect(job.get(), &NetJob::aborted, this, [] {});
+
+    m_capeJob = job;
+    m_capeJob->start();
+    return m_capeJob;
+}
+
+NetJob::Ptr API::fetchCapeFromUrl(const QUrl& url, CapeListCallback callback)
+{
+    m_capeTextureJobs.removeIf([](const NetJob::Ptr& job) { return job->isFinished(); });
+
+    auto job = makeShared<NetJob>(tr("Download cape"), APPLICATION->network());
+    job->setAskRetry(false);
+    auto request = PacedDownload::makeByteArray(url);
+    auto action = request.first;
+    auto response = request.second;
+    job->addNetAction(action);
+
+    auto capeOut = std::make_shared<CapePtr>();
+    connect(action.get(), &Task::succeeded, this, [url, response, capeOut] { *capeOut = makeCape({}, {}, QStringLiteral("url"), url, *response); });
+    connect(job.get(), &NetJob::succeeded, this, [capeOut, callback] {
+        if (*capeOut)
+            callback({ *capeOut }, {});
+        else
+            callback({}, QStringLiteral("The URL did not contain a valid cape image"));
+    });
+    connect(job.get(), &NetJob::failed, this, [callback](const QString& reason) { callback({}, reason); });
+    connect(job.get(), &NetJob::aborted, this, [] {});
+
+    m_capeTextureJobs << job;
+    job->start();
+    return job;
+}
+
 void API::abortAll()
 {
     if (m_pageJob && m_pageJob->isRunning())
@@ -459,11 +690,17 @@ void API::abortAll()
         m_searchJob->abort();
     if (m_nestedJob && m_nestedJob->isRunning())
         m_nestedJob->abort();
+    if (m_capeJob && m_capeJob->isRunning())
+        m_capeJob->abort();
     for (const auto& job : m_textureJobs)
         if (job && job->isRunning())
             job->abort();
-    m_pageJob = m_nestedJob = m_searchJob = nullptr;
+    for (const auto& job : m_capeTextureJobs)
+        if (job && job->isRunning())
+            job->abort();
+    m_pageJob = m_nestedJob = m_searchJob = m_capeJob = nullptr;
     m_textureJobs.clear();
+    m_capeTextureJobs.clear();
 }
 
 }  // namespace Crafty

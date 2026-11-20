@@ -66,6 +66,9 @@ bool InstanceProxyModel::subSortLessThan(const QModelIndex& left, const QModelIn
     QString sortMode = APPLICATION->settings()->get("InstSortMode").toString();
     if (sortMode == "LastLaunch") {
         return pdataLeft->lastLaunch() > pdataRight->lastLaunch();
+    } else if (sortMode == "TimePlayed") {
+        // sort by the total time played, largest first
+        return pdataLeft->totalTimePlayed() > pdataRight->totalTimePlayed();
     } else {
         return m_naturalSort.compare(pdataLeft->name(), pdataRight->name()) < 0;
     }

@@ -47,6 +47,8 @@ set(CORE_SOURCES
     InstanceCopyPrefs.cpp
     InstanceCopyTask.h
     InstanceCopyTask.cpp
+    InstanceTemplateTask.h
+    InstanceTemplateTask.cpp
     InstanceImportTask.h
     InstanceImportTask.cpp
 
@@ -908,6 +910,8 @@ SET(LAUNCHER_SOURCES
     bot/AddBotDialog.cpp
     bot/BotManagerDialog.h
     bot/BotManagerDialog.cpp
+    bot/BotMapDialog.h
+    bot/BotMapDialog.cpp
 
     # Processes
     LaunchMode.h
@@ -954,6 +958,8 @@ SET(LAUNCHER_SOURCES
     ui/pages/instance/OtherLogsPage.h
     ui/pages/instance/ServersPage.cpp
     ui/pages/instance/ServersPage.h
+    ui/pages/instance/PerformancePage.cpp
+    ui/pages/instance/PerformancePage.h
     ui/pages/instance/WorldListPage.cpp
     ui/pages/instance/WorldListPage.h
     ui/pages/instance/McClient.cpp
@@ -1078,6 +1084,12 @@ SET(LAUNCHER_SOURCES
     ui/dialogs/ProfileSetupDialog.h
     ui/dialogs/CopyInstanceDialog.cpp
     ui/dialogs/CopyInstanceDialog.h
+    ui/dialogs/SaveTemplateDialog.cpp
+    ui/dialogs/SaveTemplateDialog.h
+    ui/dialogs/NewInstanceFromTemplateDialog.cpp
+    ui/dialogs/NewInstanceFromTemplateDialog.h
+    ui/dialogs/BulkUpdateDialog.cpp
+    ui/dialogs/BulkUpdateDialog.h
     ui/dialogs/CreateShortcutDialog.cpp
     ui/dialogs/CreateShortcutDialog.h
     ui/dialogs/CustomMessageBox.cpp
@@ -1145,6 +1157,8 @@ SET(LAUNCHER_SOURCES
     ui/dialogs/skins/SkinManageDialog.h
     ui/dialogs/skins/SkinBrowserDialog.cpp
     ui/dialogs/skins/SkinBrowserDialog.h
+    ui/dialogs/skins/CapeBrowserDialog.cpp
+    ui/dialogs/skins/CapeBrowserDialog.h
 
     ui/dialogs/skins/draw/SkinOpenGLWindow.h
     ui/dialogs/skins/draw/SkinOpenGLWindow.cpp
