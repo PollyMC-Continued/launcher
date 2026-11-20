@@ -377,7 +377,7 @@
         <translation type="vanished">எம்.எச்.ஏ.</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/auth/AccountList.cpp" line="+344"/>
+        <location filename="../launcher/minecraft/auth/AccountList.cpp" line="+354"/>
         <source>MSA</source>
         <comment>Account type</comment>
         <translation type="unfinished">எம்.எச்.ஏ.</translation>
@@ -450,7 +450,7 @@
         <translation type="vanished">பிழை</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="+95"/>
+        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="+96"/>
         <source>Add &amp;Offline</source>
         <translation>சேர் &amp; இணைப்பில்லாத</translation>
     </message>
@@ -481,6 +481,16 @@
     </message>
     <message>
         <location line="+8"/>
+        <source>Edit &amp;Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Change the username of an offline account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Remo&amp;ve</source>
         <translation>ரெமோ &amp; வெ</translation>
     </message>
@@ -506,7 +516,7 @@ If you&apos;re new here, you can select the &quot;Add Microsoft&quot; button to 
         <translation>கணக்குகள்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="-46"/>
+        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="-54"/>
         <source>&amp;No Default</source>
         <translation>&amp;இயல்புநிலை இல்லை</translation>
     </message>
@@ -550,6 +560,28 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <location line="+81"/>
         <source>Remove account?</source>
         <translation>கணக்கை அகற்றவா?</translation>
+    </message>
+    <message>
+        <location line="+36"/>
+        <source>Enter the new username for the offline account &apos;%1&apos;.
+
+The account UUID stays the same, so your singleplayer progress and your selected skin are kept.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Edit Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Username already in use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Another offline account is already called &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You must add a Microsoft account that owns Minecraft before you can add an offline account.&lt;br&gt;&lt;br&gt;If you have lost your account you can contact Microsoft for support.</source>
@@ -6398,6 +6430,11 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>சாவா கோப்புறை</translation>
     </message>
     <message>
+        <location line="+114"/>
+        <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+32"/>
         <source>When enabled, in addition to the downloads folder, its sub folders will also be searched when looking for resources (e.g. when looking for blocked mods on CurseForge).</source>
         <translation>இயக்கப்பட்டால், பதிவிறக்கங்கள் கோப்புறைக்கு கூடுதலாக, வளங்களைத் தேடும்போது அதன் துணை கோப்புறைகளும் தேடப்படும் (எ.கா. Curseforge இல் தடுக்கப்பட்ட மோட்களைத் தேடும்போது).</translation>
@@ -6452,7 +6489,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>துவக்கத்தை மட்டுமே சரிபார்க்க 0 என அமைக்கவும்</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-46"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-160"/>
         <source>Do you want to proceed anyway?</source>
         <translation>நீங்கள் எப்படியும் தொடர விரும்புகிறீர்களா?</translation>
     </message>
@@ -10872,7 +10909,7 @@ Maximum performance for demanding setups</source>
 <context>
     <name>PollyMCExternalUpdater</name>
     <message>
-        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+154"/>
+        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+160"/>
         <location line="+129"/>
         <source>Update UI preview</source>
         <translation type="unfinished"></translation>
@@ -10920,12 +10957,11 @@ Reason: %1.</source>
     </message>
     <message>
         <location line="+6"/>
-        <location line="+237"/>
         <source>No Update Available</source>
         <translation type="unfinished">புதுப்பிப்பு எதுவும் கிடைக்கவில்லை</translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="+0"/>
         <source>You are running the latest version.</source>
         <translation type="unfinished">நீங்கள் அண்மைக் கால பதிப்பை இயக்குகிறீர்கள்.</translation>
     </message>
@@ -10965,9 +11001,30 @@ StdErr: %2</source>
  Stderr: %2</translation>
     </message>
     <message>
-        <location line="+194"/>
+        <location line="+167"/>
+        <source>Update %1 will be installed once the game is closed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Update required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Version %1 is available and must be installed.
+
+The launcher will close, update, and start again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Update now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>There are no new updates available.</source>
-        <translation type="unfinished">புதிய புதுப்பிப்புகள் எதுவும் கிடைக்கவில்லை.</translation>
+        <translation type="obsolete">புதிய புதுப்பிப்புகள் எதுவும் கிடைக்கவில்லை.</translation>
     </message>
 </context>
 <context>

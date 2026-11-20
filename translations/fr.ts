@@ -381,7 +381,7 @@
         <translation type="vanished">MSA</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/auth/AccountList.cpp" line="+344"/>
+        <location filename="../launcher/minecraft/auth/AccountList.cpp" line="+354"/>
         <source>MSA</source>
         <comment>Account type</comment>
         <translation>MSA</translation>
@@ -454,7 +454,7 @@
         <translation type="vanished">Erreur</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="+95"/>
+        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="+96"/>
         <source>Add &amp;Offline</source>
         <translation>Ajouter un compte &amp;hors ligne</translation>
     </message>
@@ -473,7 +473,7 @@
         <translation>Actualiser les jetons du compte</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+18"/>
         <source>Move &amp;Up</source>
         <translation>&amp;Monter</translation>
     </message>
@@ -483,7 +483,7 @@
         <translation>&amp;Descendre</translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="-62"/>
         <source>&amp;Set Default</source>
         <translation>&amp;Définir par défaut</translation>
     </message>
@@ -499,6 +499,16 @@
     </message>
     <message>
         <location line="+8"/>
+        <source>Edit &amp;Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Change the username of an offline account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Remo&amp;ve</source>
         <translation>&amp;Retirer</translation>
     </message>
@@ -514,7 +524,7 @@ Si vous êtes nouveau ici, vous pouvez sélectionner le bouton &quot;Ajouter un 
         <translation>Comptes</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="-36"/>
+        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="-44"/>
         <source>&amp;No Default</source>
         <translation>&amp;Ne pas définir par défaut</translation>
     </message>
@@ -559,6 +569,28 @@ Vous pouvez ajouter un compte Microsoft, Hors ligne ou Yggdrasil (authlib-inject
         <location line="+81"/>
         <source>Remove account?</source>
         <translation>Supprimer le compte ?</translation>
+    </message>
+    <message>
+        <location line="+36"/>
+        <source>Enter the new username for the offline account &apos;%1&apos;.
+
+The account UUID stays the same, so your singleplayer progress and your selected skin are kept.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Edit Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Username already in use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Another offline account is already called &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You must add a Microsoft account that owns Minecraft before you can add an offline account.&lt;br&gt;&lt;br&gt;If you have lost your account you can contact Microsoft for support.</source>
@@ -6571,6 +6603,11 @@ Vous devrez peut-être réparer vos mods car le jeu est toujours en train de gé
         <translation>Dossier de Java</translation>
     </message>
     <message>
+        <location line="+114"/>
+        <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+32"/>
         <source>When enabled, in addition to the downloads folder, its sub folders will also be searched when looking for resources (e.g. when looking for blocked mods on CurseForge).</source>
         <translation>Si activé, en plus du dossier de téléchargements, ses sous-dossiers seront également recherchés lors de la recherche de ressources (par exemple lors de la recherche de mods bloqués sur CurseForge).</translation>
@@ -6634,7 +6671,7 @@ Vous devrez peut-être réparer vos mods car le jeu est toujours en train de gé
         <translation>Régler à 0 pour ne vérifier qu&apos;au lancement</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-46"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-160"/>
         <source>Do you want to proceed anyway?</source>
         <translation>Voulez-vous continuer quand même&#xa0;?</translation>
     </message>
@@ -11186,7 +11223,7 @@ Performance maximale pour les configurations exigeantes</translation>
 <context>
     <name>PollyMCExternalUpdater</name>
     <message>
-        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+154"/>
+        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+160"/>
         <location line="+129"/>
         <source>Update UI preview</source>
         <translation type="unfinished"></translation>
@@ -11234,12 +11271,11 @@ Reason: %1.</source>
     </message>
     <message>
         <location line="+6"/>
-        <location line="+237"/>
         <source>No Update Available</source>
         <translation type="unfinished">Aucune mise à jour disponible</translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="+0"/>
         <source>You are running the latest version.</source>
         <translation type="unfinished">Vous utilisez la dernière version.</translation>
     </message>
@@ -11279,9 +11315,30 @@ StdErr: %2</source>
 StdErr : %2</translation>
     </message>
     <message>
-        <location line="+194"/>
+        <location line="+167"/>
+        <source>Update %1 will be installed once the game is closed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Update required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Version %1 is available and must be installed.
+
+The launcher will close, update, and start again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Update now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>There are no new updates available.</source>
-        <translation type="unfinished">Il n&apos;y aucune nouvelle mise à jour disponible.</translation>
+        <translation type="obsolete">Il n&apos;y aucune nouvelle mise à jour disponible.</translation>
     </message>
 </context>
 <context>

@@ -381,7 +381,7 @@
         <translation type="vanished">MSA</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/auth/AccountList.cpp" line="+344"/>
+        <location filename="../launcher/minecraft/auth/AccountList.cpp" line="+354"/>
         <source>MSA</source>
         <comment>Account type</comment>
         <translation>MSA</translation>
@@ -454,7 +454,7 @@
         <translation type="vanished">Virhe</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="+95"/>
+        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="+96"/>
         <source>Add &amp;Offline</source>
         <translation>Lisää &amp;Offline</translation>
     </message>
@@ -473,7 +473,7 @@
         <translation>Päivitä tilin valtuutus</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+18"/>
         <source>Move &amp;Up</source>
         <translation>Siirrä &amp;Ylös</translation>
     </message>
@@ -483,7 +483,7 @@
         <translation>Siirrä &amp;Alas</translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="-62"/>
         <source>&amp;Set Default</source>
         <translation>&amp;Aseta oletukseksi</translation>
     </message>
@@ -499,6 +499,16 @@
     </message>
     <message>
         <location line="+8"/>
+        <source>Edit &amp;Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Change the username of an offline account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Remo&amp;ve</source>
         <translation>Pois&amp;ta</translation>
     </message>
@@ -514,7 +524,7 @@ Jos olet uusi täällä, voit painaa &quot;Lisää Microsoft&quot; -nappia lisä
         <translation>Tilit</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="-36"/>
+        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="-44"/>
         <source>&amp;No Default</source>
         <translation>&amp;Ei oletusta</translation>
     </message>
@@ -559,6 +569,28 @@ Voit lisätä Microsoft-, offline- tai Yggdrasil (authlib-injector) -tilin aloit
         <location line="+81"/>
         <source>Remove account?</source>
         <translation>Poista tili?</translation>
+    </message>
+    <message>
+        <location line="+36"/>
+        <source>Enter the new username for the offline account &apos;%1&apos;.
+
+The account UUID stays the same, so your singleplayer progress and your selected skin are kept.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Edit Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Username already in use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Another offline account is already called &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You must add a Microsoft account that owns Minecraft before you can add an offline account.&lt;br&gt;&lt;br&gt;If you have lost your account you can contact Microsoft for support.</source>
@@ -6569,6 +6601,11 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation>Java-kansio</translation>
     </message>
     <message>
+        <location line="+114"/>
+        <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+32"/>
         <source>When enabled, in addition to the downloads folder, its sub folders will also be searched when looking for resources (e.g. when looking for blocked mods on CurseForge).</source>
         <translation>Kun käytössä, sen lisäksi että latauskansio tarkistetaan, sen alikansiot tarkistetaan myös, kun etsitään resursseja (esim. kun etsitään estettyjä modeja CurseForge:sta).</translation>
@@ -6632,7 +6669,7 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation>Aseta 0 tarkistettavaksi vain käynnistyksen yhteydessä</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-46"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-160"/>
         <source>Do you want to proceed anyway?</source>
         <translation>Haluatko silti jatkaa?</translation>
     </message>
@@ -11180,7 +11217,7 @@ Maksimaalinen suorituskyky vaativille kokoonpanoille</translation>
 <context>
     <name>PollyMCExternalUpdater</name>
     <message>
-        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+154"/>
+        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+160"/>
         <location line="+129"/>
         <source>Update UI preview</source>
         <translation type="unfinished"></translation>
@@ -11228,12 +11265,11 @@ Reason: %1.</source>
     </message>
     <message>
         <location line="+6"/>
-        <location line="+237"/>
         <source>No Update Available</source>
         <translation type="unfinished">Ei päivitystä saatavilla</translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="+0"/>
         <source>You are running the latest version.</source>
         <translation type="unfinished">Sinulla on käytössä uusin versio.</translation>
     </message>
@@ -11273,9 +11309,30 @@ StdErr: %2</source>
 Standardivirhe (stderr): %2</translation>
     </message>
     <message>
-        <location line="+194"/>
+        <location line="+167"/>
+        <source>Update %1 will be installed once the game is closed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Update required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Version %1 is available and must be installed.
+
+The launcher will close, update, and start again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Update now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>There are no new updates available.</source>
-        <translation type="unfinished">Uusia päivityksiä ei ole saatavilla.</translation>
+        <translation type="obsolete">Uusia päivityksiä ei ole saatavilla.</translation>
     </message>
 </context>
 <context>

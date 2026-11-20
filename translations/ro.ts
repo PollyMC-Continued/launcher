@@ -381,7 +381,7 @@
         <translation type="vanished">MSA</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/auth/AccountList.cpp" line="+344"/>
+        <location filename="../launcher/minecraft/auth/AccountList.cpp" line="+354"/>
         <source>MSA</source>
         <comment>Account type</comment>
         <translation>MSA</translation>
@@ -454,7 +454,7 @@
         <translation type="vanished">Eroare</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="+95"/>
+        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="+96"/>
         <source>Add &amp;Offline</source>
         <translation>Adaugă cont &amp;Offline</translation>
     </message>
@@ -473,7 +473,7 @@
         <translation>Reîncarcă token-urile contului</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+18"/>
         <source>Move &amp;Up</source>
         <translation>Mută &amp;Sus</translation>
     </message>
@@ -483,7 +483,7 @@
         <translation>Mută &amp;Jos</translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="-62"/>
         <source>&amp;Set Default</source>
         <translation>&amp;Setează valoarea implicită</translation>
     </message>
@@ -499,6 +499,16 @@
     </message>
     <message>
         <location line="+8"/>
+        <source>Edit &amp;Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Change the username of an offline account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Remo&amp;ve</source>
         <translation>&amp;Elimină</translation>
     </message>
@@ -514,7 +524,7 @@ Dacă ești nou aici, poți alege butonul &quot;Adaugă Microsoft&quot; pentru a
         <translation>Conturi</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="-36"/>
+        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="-44"/>
         <source>&amp;No Default</source>
         <translation>Fără implicit (&amp;N)</translation>
     </message>
@@ -559,6 +569,28 @@ Puteți adăuga un cont Microsoft, offline sau Yggdrasil (authlib-injector) pent
         <location line="+81"/>
         <source>Remove account?</source>
         <translation>Ștergi contul?</translation>
+    </message>
+    <message>
+        <location line="+36"/>
+        <source>Enter the new username for the offline account &apos;%1&apos;.
+
+The account UUID stays the same, so your singleplayer progress and your selected skin are kept.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Edit Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Username already in use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Another offline account is already called &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You must add a Microsoft account that owns Minecraft before you can add an offline account.&lt;br&gt;&lt;br&gt;If you have lost your account you can contact Microsoft for support.</source>
@@ -6573,6 +6605,11 @@ Ar trebui să vă reparați mod-urile, deoarece jocul încă scrie în fișiere 
         <translation>Fișierul Java</translation>
     </message>
     <message>
+        <location line="+114"/>
+        <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+32"/>
         <source>When enabled, in addition to the downloads folder, its sub folders will also be searched when looking for resources (e.g. when looking for blocked mods on CurseForge).</source>
         <translation>Când este activată, pe lângă folderul de descărcări, sub folderele sale vor fi căutate și atunci când se caută resurse (de exemplu, când se caută mod-uri blocate pe CurseForge).</translation>
@@ -6636,7 +6673,7 @@ Ar trebui să vă reparați mod-urile, deoarece jocul încă scrie în fișiere 
         <translation>Setați la 0 pentru a verifica doar la lansare</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-46"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-160"/>
         <source>Do you want to proceed anyway?</source>
         <translation>Vrei să treci mai departe oricum?</translation>
     </message>
@@ -11203,7 +11240,7 @@ Performanță maximă pentru configurații exigente</translation>
 <context>
     <name>PollyMCExternalUpdater</name>
     <message>
-        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+154"/>
+        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+160"/>
         <location line="+129"/>
         <source>Update UI preview</source>
         <translation type="unfinished"></translation>
@@ -11251,12 +11288,11 @@ Reason: %1.</source>
     </message>
     <message>
         <location line="+6"/>
-        <location line="+237"/>
         <source>No Update Available</source>
         <translation type="unfinished">Nicio Actualizare Disponibilă</translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="+0"/>
         <source>You are running the latest version.</source>
         <translation type="unfinished">Utilizați cea mai nouă versiune.</translation>
     </message>
@@ -11296,9 +11332,30 @@ StdErr: %2</source>
 StdErr: %2</translation>
     </message>
     <message>
-        <location line="+194"/>
+        <location line="+167"/>
+        <source>Update %1 will be installed once the game is closed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Update required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Version %1 is available and must be installed.
+
+The launcher will close, update, and start again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Update now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>There are no new updates available.</source>
-        <translation type="unfinished">Nu există actualizări noi disponibile.</translation>
+        <translation type="obsolete">Nu există actualizări noi disponibile.</translation>
     </message>
 </context>
 <context>

@@ -356,7 +356,7 @@
         <translation type="vanished">MSA</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/auth/AccountList.cpp" line="+344"/>
+        <location filename="../launcher/minecraft/auth/AccountList.cpp" line="+354"/>
         <source>MSA</source>
         <comment>Account type</comment>
         <translation type="unfinished">MSA</translation>
@@ -413,7 +413,7 @@
 <context>
     <name>AccountListPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="+69"/>
+        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="+70"/>
         <source>&amp;Set Default</source>
         <translation type="unfinished"></translation>
     </message>
@@ -455,6 +455,16 @@
     <message>
         <location line="+3"/>
         <source>Refresh the account tokens</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Edit &amp;Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Change the username of an offline account</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -501,6 +511,28 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
     <message>
         <location line="+0"/>
         <source>Do you really want to delete this account?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+36"/>
+        <source>Enter the new username for the offline account &apos;%1&apos;.
+
+The account UUID stays the same, so your singleplayer progress and your selected skin are kept.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Edit Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Username already in use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Another offline account is already called &apos;%1&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6284,6 +6316,11 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <source>Skins Folder</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location line="+104"/>
+        <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LauncherPartLaunch</name>
@@ -10361,7 +10398,7 @@ Maximum performance for demanding setups</source>
 <context>
     <name>PollyMCExternalUpdater</name>
     <message>
-        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+154"/>
+        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+160"/>
         <location line="+129"/>
         <source>Update UI preview</source>
         <translation type="unfinished"></translation>
@@ -10409,12 +10446,11 @@ Reason: %1.</source>
     </message>
     <message>
         <location line="+6"/>
-        <location line="+237"/>
         <source>No Update Available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="+0"/>
         <source>You are running the latest version.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10452,8 +10488,25 @@ StdErr: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+194"/>
-        <source>There are no new updates available.</source>
+        <location line="+167"/>
+        <source>Update %1 will be installed once the game is closed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Update required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Version %1 is available and must be installed.
+
+The launcher will close, update, and start again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Update now</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

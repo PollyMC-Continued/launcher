@@ -381,7 +381,7 @@
         <translation type="vanished">MSA</translation>
     </message>
     <message>
-        <location filename="../launcher/minecraft/auth/AccountList.cpp" line="+344"/>
+        <location filename="../launcher/minecraft/auth/AccountList.cpp" line="+354"/>
         <source>MSA</source>
         <comment>Account type</comment>
         <translation>MSA</translation>
@@ -454,7 +454,7 @@
         <translation type="vanished">오류</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="+95"/>
+        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="+96"/>
         <source>Add &amp;Offline</source>
         <translation>오프라인 계정 추가(&amp;O)</translation>
     </message>
@@ -473,7 +473,7 @@
         <translation>계정 토큰 새로고침</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+18"/>
         <source>Move &amp;Up</source>
         <translation>위로 이동(&amp;U)</translation>
     </message>
@@ -483,7 +483,7 @@
         <translation>아래로 이동(&amp;D)</translation>
     </message>
     <message>
-        <location line="-54"/>
+        <location line="-62"/>
         <source>&amp;Set Default</source>
         <translation>기본 계정으로 설정(&amp;S)</translation>
     </message>
@@ -499,6 +499,16 @@
     </message>
     <message>
         <location line="+8"/>
+        <source>Edit &amp;Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Change the username of an offline account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Remo&amp;ve</source>
         <translation>제거(&amp;V)</translation>
     </message>
@@ -514,7 +524,7 @@ If you&apos;re new here, you can select the &quot;Add Microsoft&quot; button to 
         <translation>계정</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="-36"/>
+        <location filename="../launcher/ui/pages/global/AccountListPage.ui" line="-44"/>
         <source>&amp;No Default</source>
         <translation>기본 계정 해제(&amp;N)</translation>
     </message>
@@ -559,6 +569,28 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <location line="+81"/>
         <source>Remove account?</source>
         <translation>계정을 제거하시겠습니까?</translation>
+    </message>
+    <message>
+        <location line="+36"/>
+        <source>Enter the new username for the offline account &apos;%1&apos;.
+
+The account UUID stays the same, so your singleplayer progress and your selected skin are kept.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Edit Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Username already in use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Another offline account is already called &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You must add a Microsoft account that owns Minecraft before you can add an offline account.&lt;br&gt;&lt;br&gt;If you have lost your account you can contact Microsoft for support.</source>
@@ -6627,6 +6659,11 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Java 폴더</translation>
     </message>
     <message>
+        <location line="+114"/>
+        <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+32"/>
         <source>When enabled, in addition to the downloads folder, its sub folders will also be searched when looking for resources (e.g. when looking for blocked mods on CurseForge).</source>
         <translation>이 기능을 활성화하면 리소스를 찾을 때 다운로드 폴더 외에 해당 하위 폴더도 검색됩니다(예: CurseForge에서 차단된 모드를 찾을 때).</translation>
@@ -6690,7 +6727,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>실행 시에만 확인하려면 0으로 설정</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-46"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-160"/>
         <source>Do you want to proceed anyway?</source>
         <translation>그래도 계속하시겠습니까?</translation>
     </message>
@@ -11255,7 +11292,7 @@ Maximum performance for demanding setups</source>
 <context>
     <name>PollyMCExternalUpdater</name>
     <message>
-        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+154"/>
+        <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+160"/>
         <location line="+129"/>
         <source>Update UI preview</source>
         <translation type="unfinished"></translation>
@@ -11303,12 +11340,11 @@ Reason: %1.</source>
     </message>
     <message>
         <location line="+6"/>
-        <location line="+237"/>
         <source>No Update Available</source>
         <translation type="unfinished">최신 버전입니다</translation>
     </message>
     <message>
-        <location line="-237"/>
+        <location line="+0"/>
         <source>You are running the latest version.</source>
         <translation type="unfinished">최신 버전을 실행하고 있습니다.</translation>
     </message>
@@ -11348,9 +11384,30 @@ StdErr: %2</source>
 StdErr: %2</translation>
     </message>
     <message>
-        <location line="+194"/>
+        <location line="+167"/>
+        <source>Update %1 will be installed once the game is closed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Update required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Version %1 is available and must be installed.
+
+The launcher will close, update, and start again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Update now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>There are no new updates available.</source>
-        <translation type="unfinished">새로운 업데이트가 없습니다.</translation>
+        <translation type="obsolete">새로운 업데이트가 없습니다.</translation>
     </message>
 </context>
 <context>
