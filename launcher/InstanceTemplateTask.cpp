@@ -50,6 +50,7 @@
 #include "minecraft/MinecraftInstance.h"
 #include "minecraft/PackProfile.h"
 #include "settings/INISettingsObject.h"
+#include "icons/IconList.h"   
 
 namespace {
 /* Folders that never make it into a template. They live under the game root
