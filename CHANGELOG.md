@@ -23,6 +23,8 @@
 
 - **Old bot lists keep working** — Bot configs saved before this update simply have the new options off, and scripts written before run exactly as before; nothing has to be redone after updating.
 - **The performance presets window shows detected CPU cores** next to the RAM it already showed, so the detected line reads like "8 cores, 15.8 GB RAM".
+- **A tidier skin manager** — The button bar at the bottom of the skin manager is down from eight buttons to six. **Import URL** and **Import user** are now one **Import** button: paste a link and it downloads that skin, type a Minecraft username and it looks the skin up. **Open Folder** and **Reset Skin** moved into a **⋯** menu next to the buttons, and **Import File** and **Browse online skins** have shorter labels.
+- **Cape browser with a preview on your skin** — **Browse capes** now opens with a grid of capes, like the skin browser, and the 3D preview on the right shows the selected cape on the skin you have selected in the skin manager. **Preview Elytra** is a checkbox under the preview. The window remembers its size, and the **Use cape** button, which previously did nothing, now applies the cape.
 
 **Notes:**
 
