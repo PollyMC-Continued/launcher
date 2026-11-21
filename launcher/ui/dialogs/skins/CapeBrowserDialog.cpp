@@ -18,6 +18,7 @@
 
 #include "CapeBrowserDialog.h"
 
+#include <algorithm>
 #include <cmath>
 
 #include <QCheckBox>
@@ -51,6 +52,27 @@ static const QLatin1String geometryKey("CapeBrowserGeometry");
 static constexpr int kPlayersPerPage = 12;
 static constexpr int kSkeletonSlots = 8;   // placeholders shown while a page loads
 static constexpr int kMaxEmptyPages = 5;   // catalog pages skipped in a row before giving up on a page
+static constexpr int kMaxSearchPages = 4;  // extra catalog pages scanned for a cape-name search
+static constexpr int kEnoughMatches = 3;   // a cape-name search stops scanning once this many capes match
+
+namespace {
+// every cape seen while browsing or searching, kept for the whole session: crafty.gg has no cape
+// catalog, so a search by cape name is answered from what has been scanned so far and keeps
+// scanning more players while there is little to show
+struct CapeIndex {
+    QHash<QString, Crafty::CapePtr> capes;
+    QSet<QString> players;  // lowercase names of the players whose capes are in the index
+};
+CapeIndex& capeIndex()
+{
+    static CapeIndex s_index;
+    return s_index;
+}
+QString capeKey(const Crafty::CapePtr& cape)
+{
+    return cape->cachePath.isEmpty() ? cape->textureUrl.toString() : cape->cachePath;
+}
+}  // namespace
 
 // crafty.gg reports the source of a cape in lower case ("optifine"); show the brand name instead
 static QString prettySource(const QString& source)
@@ -115,9 +137,10 @@ CapeBrowserDialog::CapeBrowserDialog(const SkinModel* currentSkin, QWidget* pare
     // one compact row: look a player up, or paste a PNG link
     auto topRow = new QHBoxLayout();
     m_searchEdit = new QLineEdit(this);
-    m_searchEdit->setPlaceholderText(tr("Search by player name..."));
-    m_searchEdit->setToolTip(tr("crafty.gg does not publish a cape catalog, so capes are looked up from a player's profile "
-                                "where it tracks Mojang and OptiFine capes."));
+    m_searchEdit->setPlaceholderText(tr("Search by cape name or player name..."));
+    m_searchEdit->setToolTip(tr("Type a cape name (like Migrator or Pan) or a player name. crafty.gg does not publish a cape catalog, so "
+                                "capes are collected from the profiles of the players it tracks, and a cape search keeps looking "
+                                "through more players until it finds some matches."));
     m_searchEdit->setClearButtonEnabled(true);
     m_searchBtn = new QPushButton(tr("Search"), this);
     m_importBtn = new QPushButton(tr("Import URL..."), this);
@@ -295,6 +318,7 @@ void CapeBrowserDialog::search()
         m_scanned.clear();
         m_capeKeys.clear();
         m_player.clear();
+        m_filter.clear();
         m_apiPage = m_startPage - 1;
         m_page = 1;
         m_emptyPages = 0;
@@ -304,34 +328,51 @@ void CapeBrowserDialog::search()
         discover(m_startPage);
         return;
     }
+    // The text is a cape name ("nether") or a player name: capes seen so far whose name matches are shown
+    // at once, the player of that name is looked up, and if that leaves little to show more of the
+    // catalog's players are scanned for capes with a matching name
+    // continue after the catalog page the feed reached, or from the first page when it is exhausted
+    const int scanFrom = (m_apiPage > 0 && m_discoverMore) ? m_apiPage + 1 : (m_apiPage > 0 ? 1 : m_startPage);
     m_player = name;
+    m_filter = name;
     m_browsing = false;
     m_discovering = false;
     m_discoverMore = false;
+    m_emptyPages = 0;
 
     const int request = ++m_request;
     setLoading(true);
     m_capes.clear();
+    m_capeKeys.clear();
     fillList();
+
+    QList<Crafty::CapePtr> known;
+    for (const auto& cape : capeIndex().capes) {
+        if (matchesFilter(cape))
+            known << cape;
+    }
+    std::sort(known.begin(), known.end(),
+              [this](const Crafty::CapePtr& a, const Crafty::CapePtr& b) { return displayName(a).localeAwareCompare(displayName(b)) < 0; });
+    for (const auto& cape : known)
+        addCape(cape, true);
+
     startSkeleton(4);
     updatePager();
-    m_statusLabel->setText(tr("Looking up %1 on crafty.gg...").arg(name));
+    m_statusLabel->setText(tr("Searching capes for %1...").arg(name));
 
-    m_api->fetchPlayerCapes(name, [this, request, name](const QList<Crafty::CapePtr>& capes, const QString& message) {
+    m_api->fetchPlayerCapes(name, [this, request, scanFrom](const QList<Crafty::CapePtr>& capes, const QString&) {
         if (request != m_request)
             return;
         setLoading(false);
-        m_capes = capes;
-        fillList();
-
-        if (!message.isEmpty() && message != Crafty::API::noCapesMessage()) {
-            m_statusLabel->setText(message);
-            showError(message);
-        } else if (capes.isEmpty()) {
-            m_statusLabel->setText(tr("No capes found for %1 on crafty.gg.").arg(name));
-        } else {
-            m_statusLabel->setText(tr("Found %1 cape(s) for %2.").arg(capes.size()).arg(name));
+        // most searches are cape names, so "no such player" is not an error here
+        for (const auto& cape : capes)
+            addCape(cape, true);
+        if (m_capes.size() >= kEnoughMatches) {
+            finishDiscovery(QString());
+            return;
         }
+        m_discoverMore = true;
+        discover(scanFrom);
     });
 }
 
@@ -487,7 +528,7 @@ void CapeBrowserDialog::discover(int apiPage)
 {
     const int request = ++m_request;
     m_discovering = true;
-    if (m_emptyPages == 0) {
+    if (m_emptyPages == 0 && m_filter.isEmpty()) {
         // a fresh page of the pager: start from an empty grid full of placeholders
         m_capes.clear();
         m_page = m_pages.size() + 1;
@@ -495,12 +536,12 @@ void CapeBrowserDialog::discover(int apiPage)
         startSkeleton(kSkeletonSlots);
     }
     updatePager();
-    m_statusLabel->setText(tr("Finding capes..."));
+    m_statusLabel->setText(m_filter.isEmpty() ? tr("Finding capes...") : tr("Searching capes for %1...").arg(m_filter));
 
     m_api->fetchSkins(apiPage, QString(), [this, request, apiPage](const Crafty::SkinPage& result, const QString& error) {
         if (request != m_request)
             return;
-        if ((!error.isEmpty() || result.skins.isEmpty()) && apiPage == m_startPage && apiPage > 1 && m_pages.isEmpty()) {
+        if ((!error.isEmpty() || result.skins.isEmpty()) && apiPage == m_startPage && apiPage > 1 && m_pages.isEmpty() && m_filter.isEmpty()) {
             // the catalog has nothing that far in: start from its first page instead
             m_startPage = 1;
             m_apiPage = 0;
@@ -522,6 +563,8 @@ void CapeBrowserDialog::discover(int apiPage)
             const auto name = skin->username.trimmed();
             if (name.isEmpty() || m_scanned.contains(name.toLower()))
                 continue;
+            if (!m_filter.isEmpty() && capeIndex().players.contains(name.toLower()))
+                continue;  // its capes are in the index already, nothing to learn from asking again
             m_scanned.insert(name.toLower());
             names << name;
         }
@@ -539,9 +582,11 @@ void CapeBrowserDialog::lookupNext(int request, const QStringList& names, int in
     }
     m_statusLabel->setText(tr("Looking for capes... (%1 of %2 players)").arg(index + 1).arg(names.size()));
 
-    m_api->fetchPlayerCapes(names.at(index), [this, request, names, index](const QList<Crafty::CapePtr>& capes, const QString&) {
+    m_api->fetchPlayerCapes(names.at(index), [this, request, names, index](const QList<Crafty::CapePtr>& capes, const QString& message) {
         if (request != m_request)
             return;
+        if (message.isEmpty() || message == Crafty::API::noCapesMessage())
+            capeIndex().players.insert(names.at(index).toLower());
         for (const auto& cape : capes)
             addCape(cape);
         // players without capes and failed lookups are simply skipped. The next lookup starts from the
@@ -552,8 +597,11 @@ void CapeBrowserDialog::lookupNext(int request, const QStringList& names, int in
 
 void CapeBrowserDialog::finishDiscovery(const QString& error)
 {
-    // nothing on this batch of players: quietly move on to the next one instead of showing an empty page
-    if (error.isEmpty() && m_capes.isEmpty() && m_discoverMore && m_emptyPages < kMaxEmptyPages) {
+    const bool searching = !m_filter.isEmpty();
+    // nothing (or, searching by cape name, too little) on this batch of players: quietly move on to the next
+    // one instead of showing an empty page
+    const bool wantMore = searching ? m_capes.size() < kEnoughMatches : m_capes.isEmpty();
+    if (error.isEmpty() && wantMore && m_discoverMore && m_emptyPages < (searching ? kMaxSearchPages : kMaxEmptyPages)) {
         ++m_emptyPages;
         discover(m_apiPage + 1);
         return;
@@ -561,6 +609,15 @@ void CapeBrowserDialog::finishDiscovery(const QString& error)
     m_emptyPages = 0;
     m_discovering = false;
     stopSkeleton();
+    if (searching) {
+        m_statusLabel->setText(!error.isEmpty()       ? error
+                               : m_capes.isEmpty()    ? tr("No capes found for \"%1\". Try another cape name or a player name.").arg(m_filter)
+                                                      : tr("%1 capes found for \"%2\". Search again to look through more players.")
+                                                            .arg(m_capes.size())
+                                                            .arg(m_filter));
+        updatePager();
+        return;
+    }
     if (!error.isEmpty())
         m_discoverMore = true;  // lets the "next" button retry the page that failed
 
@@ -571,20 +628,24 @@ void CapeBrowserDialog::finishDiscovery(const QString& error)
     if (m_capes.isEmpty()) {
         m_statusLabel->setText(!error.isEmpty() ? error
                                : m_discoverMore ? tr("No capes found yet. Try the next page, or search for a player.")
-                                                : tr("No capes found. Try searching for a player."));
+                                                : tr("No capes found. Try searching by cape or player name."));
     } else {
-        m_statusLabel->setText(tr("%1 capes found. Search for a player to look for more.").arg(m_capes.size()));
+        m_statusLabel->setText(tr("%1 capes found. Search by cape or player name to look for more.").arg(m_capes.size()));
     }
     updatePager();
 }
 
 // adds one cape to the grid without disturbing the selection; a cape that is already there (several
 // players wear the same Mojang cape) is skipped
-bool CapeBrowserDialog::addCape(const Crafty::CapePtr& cape)
+bool CapeBrowserDialog::addCape(const Crafty::CapePtr& cape, bool force)
 {
     if (!cape || cape->texture.isNull())
         return false;
-    const auto key = cape->cachePath.isEmpty() ? cape->textureUrl.toString() : cape->cachePath;
+    const auto key = capeKey(cape);
+    if (!key.isEmpty())
+        capeIndex().capes.insert(key, cape);  // remembered for later cape-name searches, shown or not
+    if (!force && !m_filter.isEmpty() && !matchesFilter(cape))
+        return false;
     if (!key.isEmpty()) {
         if (m_capeKeys.contains(key))
             return false;
@@ -602,6 +663,12 @@ bool CapeBrowserDialog::addCape(const Crafty::CapePtr& cape)
     return true;
 }
 
+bool CapeBrowserDialog::matchesFilter(const Crafty::CapePtr& cape) const
+{
+    return m_filter.isEmpty() || displayName(cape).contains(m_filter, Qt::CaseInsensitive) ||
+           cape->username.contains(m_filter, Qt::CaseInsensitive);
+}
+
 void CapeBrowserDialog::showPage(int page)
 {
     if (page < 1 || page > m_pages.size())
@@ -612,7 +679,7 @@ void CapeBrowserDialog::showPage(int page)
     m_page = page;
     m_capes = m_pages.at(page - 1);
     fillList();
-    m_statusLabel->setText(tr("%1 capes found. Search for a player to look for more.").arg(m_capes.size()));
+    m_statusLabel->setText(tr("%1 capes found. Search by cape or player name to look for more.").arg(m_capes.size()));
     updatePager();
 }
 

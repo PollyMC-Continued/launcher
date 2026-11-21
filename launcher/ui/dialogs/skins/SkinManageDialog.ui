@@ -111,6 +111,19 @@
            </widget>
           </item>
           <item>
+           <widget class="QCheckBox" name="offlineElytraCB">
+            <property name="toolTip">
+             <string>Shows the cape as an elytra on the 3D preview</string>
+            </property>
+            <property name="text">
+             <string>Show Elytra</string>
+            </property>
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QPushButton" name="offlineBrowseBtn">
             <property name="text">
              <string>Browse capes online...</string>
