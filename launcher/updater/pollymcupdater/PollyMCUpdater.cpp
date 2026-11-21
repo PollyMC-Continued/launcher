@@ -933,11 +933,12 @@ void PollyMCUpdaterApp::performInstall(QFileInfo file)
         msgBox.setDefaultButton(QMessageBox::Cancel);
         msgBox.setMinimumWidth(460);
         msgBox.adjustSize();
+        // exec() returns a StandardButton, not a ButtonRole - comparing against roles made "Ignore" abort
         switch (msgBox.exec()) {
-            case QMessageBox::AcceptRole:
+            case QMessageBox::Ignore:
+                logUpdate(tr("Ignoring stale update lock file %1").arg(update_lock_path));
+                UpdaterNames::removeAll(m_dataPath, UpdaterNames::LockFile);
                 break;
-            case QMessageBox::RejectRole:
-                [[fallthrough]];
             default:
                 return showFatalErrorMessage(tr("Update Aborted"), tr("The update attempt was aborted"));
         }

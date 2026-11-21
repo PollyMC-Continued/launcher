@@ -1,5 +1,16 @@
 # Changelog
 
+## v10.1.1
+
+**Fixes for updating on Windows: the installer no longer deletes files before you confirm, it waits for locked files to be released, and the update prompts no longer abort or skip files by mistake.**
+
+**Fixed:**
+
+- **"Error opening file for writing" when updating on Windows** — The installer used to delete the old program files as soon as it opened, and it only closed `pollymc.exe`. The updater and filelink processes could still hold files, so the install failed partway. The installer now stops all three processes and only removes the old files after you confirm the upgrade. If a file is still locked, it retries for about 15 seconds before giving up.
+- **Cancelling an update no longer removes the installed launcher** — Cancelling the upgrade question at the start of the installer leaves the existing install untouched.
+- **Ignore no longer leaves a mixed install** — A locked file in the installer now offers Retry or Cancel instead of Ignore, so an update can't finish with some old and some new files.
+- **"Update interrupted" lock dialog** — Choosing **Ignore** now clears the stale lock file and continues the update. Before, it aborted, so the lock file was never removed and the same prompt came back on every attempt.
+
 ## v10.1.0
 
 **Six new features in one update: joining a server the moment the game starts, a much smarter bot manager (variables, conditions, auto-reconnect and a live map), offline capes from crafty.gg with a matching elytra, playtime and performance statistics for every instance, reusable instance templates, and updating every instance's mods in one go.**
