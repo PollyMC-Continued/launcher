@@ -19,6 +19,7 @@
 #pragma once
 
 #include <QDialog>
+#include <memory>
 #include <QImage>
 #include <QItemSelection>
 #include <QLabel>
@@ -73,6 +74,9 @@ class SkinManageDialog : public QDialog, public SkinProvider {
     void setupOfflineCape();
     void applyOfflineCape(const QImage& cape, const QString& name);
     void updateOfflineCapeUi();
+    bool applySkin();
+    int equippedSkinIndex();
+    void showPreview(SkinModel* skin);
 
    private:
     MinecraftAccountPtr m_acct;
@@ -81,6 +85,7 @@ class SkinManageDialog : public QDialog, public SkinProvider {
     QString m_selectedSkinKey;
     QHash<QString, QImage> m_capes;
     QHash<QString, int> m_capesIdx;
+    std::unique_ptr<SkinModel> m_defaultSkin;
     SkinOpenGLWindow* m_skinPreview = nullptr;
     QLabel* m_skinPreviewLabel = nullptr;
     Crafty::API* m_capeApi = nullptr;

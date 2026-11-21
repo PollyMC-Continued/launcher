@@ -68,6 +68,10 @@ SkinManageDialog::SkinManageDialog(QWidget* parent, MinecraftAccountPtr acct)
 {
     m_ui->setupUi(this);
 
+    // shown in the preview whenever no skin of the list is selected
+    m_defaultSkin = std::make_unique<SkinModel>(QStringLiteral(":/skins/default-skin.png"));
+    m_defaultSkin->setModel(SkinModel::CLASSIC);
+
     if (SkinOpenGLWindow::hasOpenGL()) {
         m_skinPreview = new SkinOpenGLWindow(this, palette().color(QPalette::Normal, QPalette::Base));
     } else {
@@ -126,20 +130,30 @@ SkinManageDialog::SkinManageDialog(QWidget* parent, MinecraftAccountPtr acct)
         m_ui->offlineCapeBox->hide();
     }
 
-    m_ui->listView->setCurrentIndex(m_list.index(m_list.getSelectedAccountSkin()));
+    // preselect the skin the account currently wears (nothing is selected if it is not in the list)
+    const bool hasEquippedSkin = equippedSkinIndex() >= 0;
+    if (hasEquippedSkin) {
+        m_ui->listView->setCurrentIndex(m_list.index(equippedSkinIndex()));
+    }
 
     auto moreMenu = new QMenu(this);
     moreMenu->addAction(tr("Open skins folder"), this, &SkinManageDialog::openSkinsFolder);
     moreMenu->addAction(tr("Reset skin"), this, &SkinManageDialog::resetSkin);
     m_ui->moreBtn->setMenu(moreMenu);
 
-    m_ui->buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
+    m_ui->buttonBox->button(QDialogButtonBox::Close)->setText(tr("Close"));
     m_ui->buttonBox->button(QDialogButtonBox::Ok)->setText(tr("OK"));
 
     if (m_skinPreview) {
         m_ui->skinLayout->insertWidget(0, QWidget::createWindowContainer(m_skinPreview, this));
     } else {
         m_ui->skinLayout->insertWidget(0, m_skinPreviewLabel);
+    }
+
+    if (!hasEquippedSkin) {
+        // nothing equipped/selected: show the default skin
+        m_ui->steveBtn->setChecked(true);
+        showPreview(getSelectedSkin());
     }
 }
 
@@ -519,17 +533,21 @@ void SkinManageDialog::on_steveBtn_toggled(bool checked)
 
 void SkinManageDialog::accept()
 {
+    // OK applies the selected skin but keeps the window open; the Close button (or Esc) closes it
+    applySkin();
+}
+
+bool SkinManageDialog::applySkin()
+{
     auto skin = m_list.skin(m_selectedSkinKey);
     if (!skin) {
-        reject();
-        return;
+        return false;
     }
     auto path = skin->getPath();
 
     if (!QFile::exists(path)) {
         CustomMessageBox::selectable(this, tr("Skin Upload"), tr("Skin file does not exist!"), QMessageBox::Warning)->exec();
-        reject();
-        return;
+        return false;
     }
 
     // For offline accounts, save skin locally instead of uploading to Mojang
@@ -539,16 +557,14 @@ void SkinManageDialog::accept()
 
         if (!FS::ensureFolderPathExists(skinsDir)) {
             CustomMessageBox::selectable(this, tr("Skin Save"), tr("Failed to create skins directory!"), QMessageBox::Warning)->exec();
-            reject();
-            return;
+            return false;
         }
 
         auto targetPath = FS::PathCombine(skinsDir, "skin.png");
         QFile::remove(targetPath);
         if (!QFile::copy(path, targetPath)) {
             CustomMessageBox::selectable(this, tr("Skin Save"), tr("Failed to copy skin file!"), QMessageBox::Warning)->exec();
-            reject();
-            return;
+            return false;
         }
 
         // Save skin metadata
@@ -565,8 +581,7 @@ void SkinManageDialog::accept()
             tr("Skin saved for singleplayer. Note: other players in multiplayer will not see your skin unless the server has CustomSkinLoader installed."),
             QMessageBox::Information)->exec();
 
-        QDialog::accept();
-        return;
+        return true;
     }
 
     ProgressDialog prog(this);
@@ -574,8 +589,7 @@ void SkinManageDialog::accept()
     // the 24 hour launcher token may already be expired, refresh it before building the upload
     if (m_acct->shouldRefresh() && prog.execWithTask(m_acct->refresh().get()) != QDialog::Accepted) {
         CustomMessageBox::selectable(this, tr("Skin Upload"), tr("Could not refresh the account login."), QMessageBox::Warning)->exec();
-        reject();
-        return;
+        return false;
     }
 
     NetJob::Ptr skinUpload{ new NetJob(tr("Change skin"), APPLICATION->network(), 1) };
@@ -590,11 +604,10 @@ void SkinManageDialog::accept()
     skinUpload->addTask(m_acct->refresh().staticCast<Task>());
     if (prog.execWithTask(skinUpload.get()) != QDialog::Accepted) {
         CustomMessageBox::selectable(this, tr("Skin Upload"), tr("Failed to upload skin!"), QMessageBox::Warning)->exec();
-        reject();
-        return;
+        return false;
     }
     skin->setURL(m_acct->accountData()->minecraftProfile.skin.url);
-    QDialog::accept();
+    return true;
 }
 
 void SkinManageDialog::resetSkin()
@@ -664,7 +677,7 @@ void SkinManageDialog::on_action_Delete_Skin_triggered(bool)
     if (m_selectedSkinKey.isEmpty())
         return;
 
-    if (m_list.getSkinIndex(m_selectedSkinKey) == m_list.getSelectedAccountSkin()) {
+    if (m_list.getSkinIndex(m_selectedSkinKey) == equippedSkinIndex()) {
         CustomMessageBox::selectable(this, tr("Delete error"), tr("Can not delete skin that is in use."), QMessageBox::Warning)->exec();
         return;
     }
@@ -878,7 +891,46 @@ SkinModel* SkinManageDialog::getSelectedSkin()
     if (auto skin = m_list.skin(m_selectedSkinKey); skin && skin->isValid()) {
         return skin;
     }
+    // no skin selected: fall back to the bundled default skin
+    if (m_defaultSkin && m_defaultSkin->isValid()) {
+        return m_defaultSkin.get();
+    }
     return nullptr;
+}
+
+void SkinManageDialog::showPreview(SkinModel* skin)
+{
+    if (!skin)
+        return;
+    if (m_skinPreview) {
+        m_skinPreview->updateScene(skin);
+    } else if (m_skinPreviewLabel) {
+        m_skinPreviewLabel->setPixmap(
+            QPixmap::fromImage(skin->getPreview()).scaled(m_skinPreviewLabel->size(), Qt::KeepAspectRatio, Qt::FastTransformation));
+    }
+}
+
+int SkinManageDialog::equippedSkinIndex()
+{
+    if (m_acct->accountType() != AccountType::Offline) {
+        // an account without a skin url must not match list entries that have no url either
+        if (m_acct->accountData()->minecraftProfile.skin.url.isEmpty())
+            return -1;
+        return m_list.getSelectedAccountSkin();
+    }
+
+    // offline accounts keep a copy of the equipped skin on disk: find the list entry with the same pixels
+    QImage equipped(FS::PathCombine(APPLICATION->dataRoot(), "skins", m_acct->profileId(), "skin.png"));
+    if (equipped.isNull())
+        return -1;
+    equipped = SkinModel::normalizeTexture(equipped).convertToFormat(QImage::Format_ARGB32);
+    for (int i = 0; i < m_list.rowCount(); i++) {
+        auto key = m_list.index(i).data(Qt::UserRole).toString();
+        auto skin = m_list.skin(key);
+        if (skin && skin->getTexture().convertToFormat(QImage::Format_ARGB32) == equipped)
+            return i;
+    }
+    return -1;
 }
 
 QHash<QString, QImage> SkinManageDialog::capes()
