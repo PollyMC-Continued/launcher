@@ -253,16 +253,22 @@ void SkinOpenGLWindow::paintGL()
 void SkinOpenGLWindow::updateScene(SkinModel* skin)
 {
     if (skin && m_scene) {
+        // the textures live in this window's context, which is not current while another window
+        // (a modal dialog with its own 3D preview, for one) was the last one to draw
+        makeCurrent();
         m_scene->setMode(skin->getModel() == SkinModel::SLIM);
         m_scene->setSkin(skin->getTexture());
+        doneCurrent();
         update();
     }
 }
 void SkinOpenGLWindow::updateCape(const QImage& cape)
 {
     if (m_scene) {
+        makeCurrent();
         m_scene->setCapeVisible(!cape.isNull());
         m_scene->setCape(cape);
+        doneCurrent();
         update();
     }
 }
@@ -325,8 +331,10 @@ void SkinOpenGLWindow::wheelEvent(QWheelEvent* event)
 }
 void SkinOpenGLWindow::setElytraVisible(bool visible)
 {
-    if (m_scene)
+    if (m_scene) {
         m_scene->setElytraVisible(visible);
+        update();  // nothing else triggers a repaint when only the elytra flag changes
+    }
 }
 
 bool SkinOpenGLWindow::hasOpenGL()

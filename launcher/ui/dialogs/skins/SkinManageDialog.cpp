@@ -17,6 +17,8 @@
  */
 
 #include "SkinManageDialog.h"
+
+#include <QSignalBlocker>
 #include "ui/dialogs/skins/draw/SkinOpenGLWindow.h"
 #include "ui_SkinManageDialog.h"
 
@@ -111,12 +113,19 @@ SkinManageDialog::SkinManageDialog(QWidget* parent, MinecraftAccountPtr acct)
 
     connect(contentsWidget->selectionModel(), &QItemSelectionModel::selectionChanged, this, &SkinManageDialog::selectionChanged);
     connect(m_ui->listView, &QListView::customContextMenuRequested, this, &SkinManageDialog::show_context_menu);
-    connect(m_ui->elytraCB, &QCheckBox::stateChanged, this, [this]() {
+    // the elytra checkbox of the Mojang cape group and the one of the offline cape group show the same setting
+    auto setElytra = [this](bool on) {
+        for (auto checkbox : { m_ui->elytraCB, m_ui->offlineElytraCB }) {
+            QSignalBlocker blocker(checkbox);
+            checkbox->setChecked(on);
+        }
         if (m_skinPreview) {
-            m_skinPreview->setElytraVisible(m_ui->elytraCB->isChecked());
+            m_skinPreview->setElytraVisible(on);
         }
         on_capeCombo_currentIndexChanged(0);
-    });
+    };
+    connect(m_ui->elytraCB, &QCheckBox::toggled, this, setElytra);
+    connect(m_ui->offlineElytraCB, &QCheckBox::toggled, this, setElytra);
 
     setupCapes();
 
@@ -377,6 +386,7 @@ void SkinManageDialog::updateOfflineCapeUi()
     if (cape.isNull()) {
         m_ui->offlineCapeName->setText(tr("No cape"));
         m_ui->offlineRemoveBtn->setEnabled(false);
+        m_ui->offlineElytraCB->setEnabled(false);  // an elytra needs a cape texture
         m_offlineCape = QImage();
         if (m_skinPreview)
             m_skinPreview->updateCape(m_offlineCape);
@@ -385,6 +395,7 @@ void SkinManageDialog::updateOfflineCapeUi()
     auto name = readCapeName(FS::PathCombine(APPLICATION->dataRoot(), "skins", uuid, "cape.json"));
     m_ui->offlineCapeName->setText(name.isEmpty() ? tr("Cape") : name);
     m_ui->offlineRemoveBtn->setEnabled(true);
+    m_ui->offlineElytraCB->setEnabled(true);
     // the cape is shown on the skin in the 3D preview
     m_offlineCape = normalizedCape(cape);
     if (m_skinPreview)

@@ -90,7 +90,9 @@ class CapeBrowserDialog : public QDialog, public SkinProvider {
     void discover(int apiPage);
     void lookupNext(int request, const QStringList& names, int index);
     void finishDiscovery(const QString& error);
-    bool addCape(const Crafty::CapePtr& cape);
+    // force: keep the cape even if it does not match the cape-name search (a player's own capes)
+    bool addCape(const Crafty::CapePtr& cape, bool force = false);
+    bool matchesFilter(const Crafty::CapePtr& cape) const;
     void appendItem(const Crafty::CapePtr& cape, int row);
     void showPage(int page);
     void updatePager();
@@ -117,6 +119,7 @@ class CapeBrowserDialog : public QDialog, public SkinProvider {
     int m_emptyPages = 0;            // consecutive catalog pages that gave no capes at all
     int m_page = 1;                  // page shown in the pager (1-based)
     QList<QList<Crafty::CapePtr>> m_pages;  // fully loaded pages
+    QString m_filter;          // cape-name search: while it is set, only matching capes are added to the grid
     QSet<QString> m_scanned;   // players already looked up while discovering
     QSet<QString> m_capeKeys;  // capes already in the grid, so a shared cape shows up once
 
