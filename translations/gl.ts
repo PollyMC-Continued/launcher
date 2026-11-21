@@ -750,7 +750,7 @@ The account UUID stays the same, so your singleplayer progress and your selected
         <translation type="vanished">Actualización Completada</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1364"/>
+        <location filename="../launcher/Application.cpp" line="+1365"/>
         <source>Incompatible system configuration</source>
         <translation>Configuración de systema incompatible</translation>
     </message>
@@ -790,12 +790,12 @@ Mire o log do actualizador de Prism Launcher en
 para detalles no último intento de actualización.</translation>
     </message>
     <message>
-        <location line="-1776"/>
+        <location line="-1777"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Non se pode mostrar este rexistro porque a súa lonxitude supera as %1 liñas.</translation>
     </message>
     <message>
-        <location line="+1598"/>
+        <location line="+1599"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Parece que usaches %1 en %2 antes. Queres migrar a túa información á nova localización de %3?</translation>
     </message>
@@ -809,7 +809,7 @@ para detalles no último intento de actualización.</translation>
         <translation type="vanished">Actualización Fallou</translation>
     </message>
     <message>
-        <location line="-1899"/>
+        <location line="-1900"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -845,7 +845,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+529"/>
+        <location line="+530"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1537,7 +1537,7 @@ Para borrar este bloqueo e proceder selecciona &quot;Ignorar&quot; abaixo.</tran
 <context>
     <name>BotManagerDialog</name>
     <message>
-        <location filename="../launcher/bot/BotManagerDialog.cpp" line="+188"/>
+        <location filename="../launcher/bot/BotManagerDialog.cpp" line="+191"/>
         <source>Bots</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1547,7 +1547,7 @@ Para borrar este bloqueo e proceder selecciona &quot;Ignorar&quot; abaixo.</tran
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+221"/>
+        <location line="+232"/>
         <location line="+19"/>
         <location line="+16"/>
         <source>Bot Manager</source>
@@ -1558,6 +1558,22 @@ Para borrar este bloqueo e proceder selecciona &quot;Ignorar&quot; abaixo.</tran
         <location line="+19"/>
         <location line="+16"/>
         <source>Could not save bot config to %1: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BotMapDialog</name>
+    <message>
+        <location filename="../launcher/bot/BotMapDialog.cpp" line="+128"/>
+        <source>Bot Map</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BotMapWidget</name>
+    <message>
+        <location line="-72"/>
+        <source>Waiting for bot positions...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1635,7 +1651,53 @@ Para borrar este bloqueo e proceder selecciona &quot;Ignorar&quot; abaixo.</tran
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+31"/>
+        <location line="+31"/>
+        <source>Variable name (letters, digits, _):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-21"/>
+        <source>Value (literal text):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>Value (integer, may be negative):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
+        <source>Condition:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Value:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Variable:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Number:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Condition timeout seconds (0 = decide immediately):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Branches: with this step selected, Add Step appends to the then branch; with an &apos;else:&apos; row selected, Add Step appends to the else branch.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+33"/>
         <source>Save</source>
         <translation type="unfinished">Gardar</translation>
     </message>
@@ -1643,6 +1705,16 @@ Para borrar este bloqueo e proceder selecciona &quot;Ignorar&quot; abaixo.</tran
         <location line="+7"/>
         <source>Revert</source>
         <translation type="unfinished">Reverter</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Import...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Export...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+20"/>
@@ -1655,13 +1727,73 @@ Para borrar este bloqueo e proceder selecciona &quot;Ignorar&quot; abaixo.</tran
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/bot/BotScriptEditor.cpp" line="+482"/>
+        <location filename="../launcher/bot/BotScriptEditor.cpp" line="+687"/>
         <source>Save failed: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Saved.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+141"/>
+        <location line="+29"/>
+        <location line="+11"/>
+        <source>Import Bot Script</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-39"/>
+        <location line="+53"/>
+        <source>Bot scripts (*.json);;All files (*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-48"/>
+        <source>Import failed: cannot open %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Import failed: %1 is not a JSON script</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Import failed: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>A script named &apos;%1&apos; already exists. Importing it will overwrite that script when you save. Continue?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Save the imported script to the script store now?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <location line="+3"/>
+        <source>Export Bot Script</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-3"/>
+        <source>The script is not valid: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <location line="+7"/>
+        <source>Export failed: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Exported to %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1994,6 +2126,361 @@ This launcher will tell you when the team has an update. You can also check any 
         <location line="+1"/>
         <source>Close</source>
         <translation type="unfinished">Pechar</translation>
+    </message>
+</context>
+<context>
+    <name>BulkUpdateDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/BulkUpdateDialog.cpp" line="+68"/>
+        <location line="+262"/>
+        <source>Update all instances</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-258"/>
+        <source>Check every selected instance for mod updates, then apply all found updates in one go.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Mods</source>
+        <translation type="unfinished">Mods</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Status</source>
+        <translation type="unfinished">Estado</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Check for updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Update all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Close</source>
+        <translation type="unfinished">Pechar</translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <location line="+91"/>
+        <source>No mods</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-91"/>
+        <source>Not checked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Instances with updates: %1
+Up to date: %2
+Could not be checked: %3
+Skipped: %4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <location line="+128"/>
+        <source>Error</source>
+        <translation type="unfinished">Erro</translation>
+    </message>
+    <message>
+        <location line="-128"/>
+        <source>Mod updates are unavailable when metadata is disabled!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Instances are running</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The following instances are currently running:
+%1
+
+Updating mods while the game is running may cause mod duplication and game crashes.
+The old files may not be deleted as they are in use.
+Running instances will be skipped.
+Do you want to continue?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+34"/>
+        <source>Skipped (running)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Checking...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <location line="+60"/>
+        <source>Aborted</source>
+        <translation type="unfinished">Abortado</translation>
+    </message>
+    <message>
+        <location line="-53"/>
+        <source>%1 could not be checked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Up to date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>%1 update(s) available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>Download updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Download stopped by user.</source>
+        <translation type="unfinished">Descarga parada polo usuario.</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Warnings</source>
+        <translation type="unfinished">Advertencias</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Abort</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Update failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Done.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>The downloads did not complete successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>%1
+Instances updated: %2
+Instances up to date: %3
+Instances that could not be checked: %4
+Instances skipped: %5</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CapeBrowserDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/skins/CapeBrowserDialog.cpp" line="+118"/>
+        <source>Browse capes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Search by cape name or player name...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Type a cape name (like Migrator or Pan) or a player name. crafty.gg does not publish a cape catalog, so capes are collected from the profiles of the players it tracks, and a cape search keeps looking through more players until it finds some matches.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Search</source>
+        <translation type="unfinished">Buscar</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Import URL...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Import a cape from a PNG link. Cape textures are typically 64x32, 512x256 or OptiFine 46x22 style PNG files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+35"/>
+        <location line="+301"/>
+        <source>Select a cape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-295"/>
+        <source>Preview Elytra</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <location line="+346"/>
+        <source>Finding capes...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-329"/>
+        <source>Close</source>
+        <translation type="unfinished">Pechar</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Previous page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location line="+488"/>
+        <source>Page %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-484"/>
+        <source>Next page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Use cape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Apply this cape to the selected account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+49"/>
+        <source>Looking for capes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>Cape lookup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+61"/>
+        <location line="+178"/>
+        <source>Searching capes for %1...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-157"/>
+        <source>Import cape from URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>URL of a cape PNG image:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>%1 is not a valid http(s) URL.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Downloading the cape...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>The URL did not contain a valid cape image.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Cape imported from URL.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Cape</source>
+        <translation type="unfinished">Capa</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>%1&apos;s cape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+24"/>
+        <location line="+38"/>
+        <source>Source: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-37"/>
+        <source>Source: %1
+%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+41"/>
+        <source>View %1 on crafty.gg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+92"/>
+        <source>Looking for capes... (%1 of %2 players)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>No capes found for &quot;%1&quot;. Try another cape name or a player name.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 capes found for &quot;%2&quot;. Search again to look through more players.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>No capes found yet. Try the next page, or search for a player.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>No capes found. Try searching by cape or player name.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location line="+49"/>
+        <source>%1 capes found. Search by cape or player name to look for more.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2504,7 +2991,7 @@ This launcher will tell you when the team has an update. You can also check any 
 <context>
     <name>Crafty::API</name>
     <message>
-        <location filename="../launcher/minecraft/skins/CraftySkinAPI.cpp" line="+246"/>
+        <location filename="../launcher/minecraft/skins/CraftySkinAPI.cpp" line="+249"/>
         <source>Browse skins</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2521,6 +3008,21 @@ This launcher will tell you when the team has an update. You can also check any 
     <message>
         <location line="+34"/>
         <source>Download skin textures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+196"/>
+        <source>Find player capes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+36"/>
+        <source>Download player capes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+39"/>
+        <source>Download cape</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4698,6 +5200,19 @@ Do you want to continue anyway?</source>
     </message>
 </context>
 <context>
+    <name>HistoryChart</name>
+    <message>
+        <location filename="../launcher/ui/pages/instance/PerformancePage.cpp" line="+342"/>
+        <source>min %1 %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>max %1 %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>IconPickerDialog</name>
     <message>
         <location filename="../launcher/ui/dialogs/IconPickerDialog.cpp" line="+78"/>
@@ -5355,7 +5870,7 @@ They may still work, but if the game crashes, update or remove them first.</sour
 <context>
     <name>InstancePageProvider</name>
     <message>
-        <location filename="../launcher/InstancePageProvider.h" line="+52"/>
+        <location filename="../launcher/InstancePageProvider.h" line="+54"/>
         <source>Edit Instance (%1)</source>
         <translation>Editar Instancia (%1)</translation>
     </message>
@@ -5459,6 +5974,29 @@ They may still work, but if the game crashes, update or remove them first.</sour
         <location line="+41"/>
         <source>Kill the running instance</source>
         <translation>Forzar o peche da instancia</translation>
+    </message>
+</context>
+<context>
+    <name>InstantiateTemplateTask</name>
+    <message>
+        <location filename="../launcher/InstanceTemplateTask.cpp" line="+271"/>
+        <source>The template folder %1 does not exist.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Creating instance %1 from template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>Template folder copy failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>Template folder copy has been aborted.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6258,7 +6796,7 @@ Quizais deba arranxar os seus mods porque o xogo aínda está accedendo ós arqu
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+680"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+690"/>
         <source>s</source>
         <translation>s</translation>
     </message>
@@ -6267,7 +6805,7 @@ Quizais deba arranxar os seus mods porque o xogo aínda está accedendo ós arqu
         <translation type="vanished">Cartafol onde Prism Launcher garda automáticamente versións descargadas de Java. NON estableza este coma o seu sistema de instalación de Java.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="+114"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="+117"/>
         <source>You&apos;re trying to specify an instance folder which&apos;s path contains at least one &apos;!&apos;. Java is known to cause problems if that is the case, your instances (probably) won&apos;t start!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6310,7 +6848,7 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+104"/>
+        <location line="+107"/>
         <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6370,7 +6908,7 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>Explorar</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-114"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-117"/>
         <source>Java Folder</source>
         <translation>Directorio de Java</translation>
     </message>
@@ -6464,7 +7002,7 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>&amp;Iconas:</translation>
     </message>
     <message>
-        <location line="-416"/>
+        <location line="-426"/>
         <source>User Interface</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6481,6 +7019,11 @@ Granting %1 access to it via Flatseal is recommended.</source>
     <message>
         <location line="+10"/>
         <source>&amp;By last launched</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>By &amp;time played</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7304,7 +7847,7 @@ Tes que arranxar o problema manualmente.</translation>
         <translation type="vanished">Axuda</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+845"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+883"/>
         <source>&amp;Widget Themes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7334,7 +7877,7 @@ Tes que arranxar o problema manualmente.</translation>
         <translation>Logs</translation>
     </message>
     <message>
-        <location line="-274"/>
+        <location line="-307"/>
         <source>&amp;Kill</source>
         <translation>&amp;Terminar</translation>
     </message>
@@ -7348,15 +7891,15 @@ Tes que arranxar o problema manualmente.</translation>
         <translation>Copiar a instancia seleccionada.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1107"/>
-        <location line="+143"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1111"/>
+        <location line="+168"/>
         <location line="+106"/>
         <source>Abort</source>
         <translation>Abortada</translation>
     </message>
     <message>
-        <location line="-262"/>
-        <location line="+130"/>
+        <location line="-287"/>
+        <location line="+155"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -7366,7 +7909,7 @@ Tes que arranxar o problema manualmente.</translation>
         <translation>Erro</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-456"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-461"/>
         <source>Main Toolbar</source>
         <translation>Barra de ferramentas principal</translation>
     </message>
@@ -7376,7 +7919,7 @@ Tes que arranxar o problema manualmente.</translation>
         <translation>Descarga do paquete de mods</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+392"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+397"/>
         <source>&amp;Change Group...</source>
         <translation>&amp;Cambiar grupo...</translation>
     </message>
@@ -7391,7 +7934,7 @@ Tes que arranxar o problema manualmente.</translation>
         <translation>&amp;Engadir instancia...</translation>
     </message>
     <message>
-        <location line="+456"/>
+        <location line="+489"/>
         <source>&amp;Matrix Space</source>
         <translation>Espazo &amp;Matrix</translation>
     </message>
@@ -7400,12 +7943,12 @@ Tes que arranxar o problema manualmente.</translation>
         <translation type="vanished">Máis novas…</translation>
     </message>
     <message>
-        <location line="-652"/>
+        <location line="-690"/>
         <source>Instance Toolbar</source>
         <translation>Barra de ferramentas das instancias</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1937"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1962"/>
         <source>Show PollyMC</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7446,7 +7989,7 @@ Tes que arranxar o problema manualmente.</translation>
         <translation>Tarefa abortada</translation>
     </message>
     <message>
-        <location line="+136"/>
+        <location line="+161"/>
         <source>The modpack, mod, or resource %1 is blocked for third-parties! Please download it manually.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7512,7 +8055,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Renomear grupo</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+534"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+572"/>
         <source>Open the central mods folder in a file browser.</source>
         <translation>Abrir o cartafol central de mods nun explorador de ficheiros.</translation>
     </message>
@@ -7521,27 +8064,27 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="vanished">Cargando novas...</translation>
     </message>
     <message>
-        <location line="-227"/>
+        <location line="-260"/>
         <source>Rename the selected instance.</source>
         <translation>Renomear a instancia seleccionada.</translation>
     </message>
     <message>
-        <location line="+180"/>
+        <location line="+213"/>
         <source>Ctrl+0</source>
         <translation>Ctrl+0</translation>
     </message>
     <message>
-        <location line="-83"/>
+        <location line="-116"/>
         <source>Ctrl+D</source>
         <translation>Ctrl+D</translation>
     </message>
     <message>
-        <location line="-351"/>
+        <location line="-355"/>
         <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+30"/>
         <source>&amp;Edit</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7636,17 +8179,17 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Ctrl+K</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-431"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-456"/>
         <source>The task has been aborted by the user.</source>
         <translation>A tarefa foi abortada polo usuario.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+429"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+462"/>
         <source>Open one of the folders shared between instances.</source>
         <translation>Abrir un dos cartafoles compartidos entre instancias.</translation>
     </message>
     <message>
-        <location line="-421"/>
+        <location line="-454"/>
         <source>Rename</source>
         <translation>Renomear</translation>
     </message>
@@ -7666,37 +8209,37 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Abrir o cartafol principal da instancia seleccionada nun explorador de ficheiros.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+754"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+779"/>
         <source>Confirm Deletion</source>
         <translation>Confirmar eliminación</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+36"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+69"/>
         <source>E&amp;xport...</source>
         <translation>E&amp;xportar...</translation>
     </message>
     <message>
-        <location line="-155"/>
+        <location line="-188"/>
         <source>&amp;Manage Accounts...</source>
         <translation>&amp;Xestionar contas...</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-758"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-783"/>
         <source>Warnings</source>
         <translation>Advertencias</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+417"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+450"/>
         <source>&amp;About %1</source>
         <translation>&amp;Acerca de %1</translation>
     </message>
     <message>
-        <location line="-553"/>
+        <location line="-586"/>
         <source>&amp;Accounts</source>
         <translation>&amp;Contas</translation>
     </message>
     <message>
-        <location line="+479"/>
+        <location line="+512"/>
         <source>Look for missing Java, broken or conflicting mods, a wrong loader version or too little memory/disk space before launching.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7727,7 +8270,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Contas</translation>
     </message>
     <message>
-        <location line="-545"/>
+        <location line="-578"/>
         <source>Add a new instance.</source>
         <translation>Engadir nova instancia.</translation>
     </message>
@@ -7737,7 +8280,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Retroceso</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+310"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+343"/>
         <source>&amp;Instances</source>
         <translation>&amp;Instancias</translation>
     </message>
@@ -7747,7 +8290,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Ctrl+%1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-125"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-158"/>
         <source>Dele&amp;te</source>
         <translation>Bor&amp;rar</translation>
     </message>
@@ -7757,32 +8300,32 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Carta&amp;fol</translation>
     </message>
     <message>
-        <location line="+194"/>
+        <location line="+227"/>
         <source>Open the logs folder in a file browser.</source>
         <translation>Abre o directorio de logs no explorador de arquivos.</translation>
     </message>
     <message>
-        <location line="-299"/>
+        <location line="-332"/>
         <source>&amp;Launch</source>
         <translation>&amp;Iniciar</translation>
     </message>
     <message>
-        <location line="+199"/>
+        <location line="+232"/>
         <source>No accounts added!</source>
         <translation>Non se engadiran contas!</translation>
     </message>
     <message>
-        <location line="-108"/>
+        <location line="-141"/>
         <source>&amp;Edit...</source>
         <translation>&amp;Editar...</translation>
     </message>
     <message>
-        <location line="-386"/>
+        <location line="-391"/>
         <source>What&apos;s New Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+195"/>
         <source>Status Bar</source>
         <translation>Barra de estado</translation>
     </message>
@@ -7822,7 +8365,37 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+155"/>
+        <location line="+152"/>
+        <source>Save as &amp;Template...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Save the selected instance (loader, mods, configs and settings) as a reusable template.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>New from &amp;Template...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Create a new instance from a saved template.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Update &amp;All Instances...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Check and install mod updates for every instance in one go.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>Export the selected instance to supported formats.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8051,27 +8624,27 @@ Please create a new instance before attempting to install this resource again.</
     <message>
         <location line="-435"/>
         <location line="+125"/>
-        <location line="+1587"/>
+        <location line="+1612"/>
         <source>No instance selected</source>
         <translation>Ningunha instancia seleccionada</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-443"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-476"/>
         <source>Change Icon</source>
         <translation>Cambiar icona</translation>
     </message>
     <message>
-        <location line="+293"/>
+        <location line="+326"/>
         <source>&amp;Discord Guild</source>
         <translation>Servidor de &amp;Discord</translation>
     </message>
     <message>
-        <location line="-540"/>
+        <location line="-573"/>
         <source>F&amp;olders</source>
         <translation>Cartaf&amp;oles</translation>
     </message>
     <message>
-        <location line="+621"/>
+        <location line="+654"/>
         <source>Folders</source>
         <translation>Cartafoles</translation>
     </message>
@@ -8081,12 +8654,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Sub&amp;reddit</translation>
     </message>
     <message>
-        <location line="-276"/>
+        <location line="-309"/>
         <source>Delete the selected instance.</source>
         <translation>Borrar a instancia seleccionada.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1281"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1306"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Borrar grupo</translation>
     </message>
@@ -8100,12 +8673,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation>&amp;Crear instancia</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+94"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+127"/>
         <source>No Default Account</source>
         <translation>Non hai ningunha conta predefinida</translation>
     </message>
     <message>
-        <location line="-210"/>
+        <location line="-243"/>
         <source>Launch the selected instance.</source>
         <translation>Iniciar a instancia seleccionada.</translation>
     </message>
@@ -8140,7 +8713,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+454"/>
+        <location line="+479"/>
         <source>Cannot rename group</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8538,7 +9111,7 @@ Make sure you also trust the URL.
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+171"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>Abortado</translation>
@@ -10317,6 +10890,113 @@ Please update %1!</source>
     </message>
 </context>
 <context>
+    <name>NewInstanceFromTemplateDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/NewInstanceFromTemplateDialog.cpp" line="+79"/>
+        <source>Create instance from template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Select a template to create a new instance from:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Name</source>
+        <translation type="unfinished">Nome</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Created</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Minecraft version</source>
+        <translation type="unfinished">Versión de Minecraft</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Instance name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Group:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Change the new instance&apos;s icon.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Icon:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Create instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancelar</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <location line="+199"/>
+        <source>Delete template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-190"/>
+        <source>No group</source>
+        <translation type="unfinished">Sen grupo</translation>
+    </message>
+    <message>
+        <location line="+78"/>
+        <source>No templates found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+54"/>
+        <location line="+72"/>
+        <source>Error</source>
+        <translation type="unfinished">Erro</translation>
+    </message>
+    <message>
+        <location line="-69"/>
+        <source>Task aborted</source>
+        <translation type="unfinished">Tarefa abortada</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>The task has been aborted by the user.</source>
+        <translation type="unfinished">A tarefa foi abortada polo usuario.</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Abort</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+52"/>
+        <source>Are you sure you want to delete the template %1?
+This cannot be undone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Could not delete the template folder:
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NewsChecker</name>
     <message>
         <location filename="../launcher/news/NewsChecker.cpp" line="+118"/>
@@ -10792,20 +11472,190 @@ Are you sure?</source>
     </message>
 </context>
 <context>
+    <name>PerformancePage</name>
+    <message>
+        <location filename="../launcher/ui/pages/instance/PerformancePage.cpp" line="+191"/>
+        <source>Playtime</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Total time played:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Last session:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Last launched:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Launch count:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Reset playtime</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Hardware</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>CPU:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Cores:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>RAM:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>GPUs:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Game process</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Launch the game to see live statistics.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>PID:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>CPU usage:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Memory usage:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Uptime:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>CPU usage is measured as a share of a single core and can exceed 100% on multi-core systems.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>CPU usage (%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Memory usage (MB)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+37"/>
+        <source>Confirm Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>You are about to reset the playtime statistics of this instance.
+The total time played, the last session and the launch count
+will be reset to zero.
+
+Are you sure you want to do this?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+26"/>
+        <source>never</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <location line="+3"/>
+        <location line="+11"/>
+        <location line="+4"/>
+        <location line="+53"/>
+        <source>unknown</source>
+        <translation type="unfinished">descoñecido</translation>
+    </message>
+    <message>
+        <location line="-63"/>
+        <source>%1 GB total</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>, %1 GB available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+33"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <source>not available on this platform</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <source>not running</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>%1%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/pages/instance/PerformancePage.h" line="+96"/>
+        <source>Performance</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PerformancePresetsDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/PerformancePresetsDialog.h" line="+21"/>
+        <location filename="../launcher/ui/dialogs/PerformancePresetsDialog.h" line="+22"/>
         <source>Performance Presets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+19"/>
         <source>System Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+4"/>
-        <source>Detected RAM: %1 GB</source>
+        <source>Detected: %1 cores, %2 GB RAM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -10835,6 +11685,11 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+21"/>
+        <source>Apply hardware-tuned JVM arguments (Aikar&apos;s flags)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>How it works</source>
         <translation type="unfinished"></translation>
     </message>
@@ -10847,37 +11702,44 @@ Are you sure?</source>
 - High: For gaming PCs with 16GB+ RAM. More memory = more chunks and mods.
 
 These are global defaults. You can override per-instance in instance settings.
-Minecraft will use this as -Xms (min) and -Xmx (max) JVM arguments.</source>
+Minecraft will use this as -Xms (min) and -Xmx (max) JVM arguments.
+
+Aikar&apos;s flags fully replace the global JVM arguments. Instances that use their
+own Java arguments (Java tab of the instance settings) are not affected.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+38"/>
+        <location line="+74"/>
         <source>Low Preset
 -Xms%1m -Xmx%2m
 
 Best for: Laptops, 4GB RAM PCs
 Recommended for: Vanilla Minecraft, small modpacks
-Warning: Large modpacks may crash with out-of-memory</source>
+Warning: Large modpacks may crash with out-of-memory
+JVM arguments: not modified (Aikar&apos;s flags need at least 3 GB)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+9"/>
         <source>Medium Preset
 -Xms%1m -Xmx%2m
 
 Best for: Desktop PCs, 8GB RAM
 Recommended for: Medium modpacks, shaders
-Good balance of performance and stability</source>
+Good balance of performance and stability
+JVM arguments: Aikar&apos;s flags with 8M heap regions (if enabled)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+9"/>
         <source>High Preset
 -Xms%1m -Xmx%2m
 
 Best for: Gaming PCs, 16GB+ RAM
 Recommended for: Large modpacks, heavy shaders
-Maximum performance for demanding setups</source>
+Maximum performance for demanding setups
+JVM arguments: Aikar&apos;s flags with 16M heap regions,
+string deduplication and AlwaysPreTouch (if enabled)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -11776,7 +12638,7 @@ Escolle o teu nome coidadosamente:</translation>
         <translation type="vanished">Non recoñecido</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-2019"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-2044"/>
         <source>%1 (in use)</source>
         <translation>%1 (en uso)</translation>
     </message>
@@ -12797,6 +13659,21 @@ Error message: %3</source>
         <source>Copied!</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../launcher/ui/pages/instance/PerformancePage.cpp" line="-603"/>
+        <source>%1h %2m</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>%1m %2s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>%1s</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Resource</name>
@@ -13725,6 +14602,129 @@ Are you sure?</source>
     </message>
 </context>
 <context>
+    <name>SaveTemplateDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/SaveTemplateDialog.cpp" line="+60"/>
+        <source>Save instance as template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Template name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Change the template&apos;s icon.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Mods (mods/)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Configs (config/, options.txt)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Resource packs (resourcepacks/)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Shader packs (shaderpacks/)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Servers list (servers.dat)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Worlds, logs, screenshots and crash reports are never included.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>OK</source>
+        <translation type="unfinished">OK</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Cancelar</translation>
+    </message>
+    <message>
+        <location line="+54"/>
+        <source>Template already exists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>A template named %1 already exists.
+Do you want to overwrite it?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+43"/>
+        <source>The template will be saved in:
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SaveTemplateTask</name>
+    <message>
+        <location filename="../launcher/InstanceTemplateTask.cpp" line="-150"/>
+        <source>The template name is empty after removing invalid characters.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Could not create the templates folder: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>A template named %1 already exists.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Removing existing template %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Could not remove the existing template: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Creating template %1 from instance %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>Template folder copy failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Could not write the template manifest.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Template folder copy has been aborted.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ScreenshotsPage</name>
     <message>
         <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+409"/>
@@ -13948,7 +14948,12 @@ Currently installed version: %1</source>
         <translation>Conectado</translation>
     </message>
     <message>
-        <location line="-2"/>
+        <location line="+54"/>
+        <source>This server is joined automatically on launch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-56"/>
         <source>Address</source>
         <translation>Enderezo</translation>
     </message>
@@ -13956,7 +14961,7 @@ Currently installed version: %1</source>
 <context>
     <name>ServersPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ServersPage.ui" line="+160"/>
+        <location filename="../launcher/ui/pages/instance/ServersPage.ui" line="+161"/>
         <source>Add</source>
         <translation>Engadir</translation>
     </message>
@@ -13966,7 +14971,7 @@ Currently installed version: %1</source>
         <translation>Unirse</translation>
     </message>
     <message>
-        <location line="-105"/>
+        <location line="-106"/>
         <source>&amp;Name</source>
         <translation>&amp;Nome</translation>
     </message>
@@ -13976,7 +14981,7 @@ Currently installed version: %1</source>
         <translation>Rec&amp;ursos</translation>
     </message>
     <message>
-        <location line="+69"/>
+        <location line="+70"/>
         <source>Move Up</source>
         <translation>Subir</translation>
     </message>
@@ -13986,7 +14991,7 @@ Currently installed version: %1</source>
         <translation>Eliminar</translation>
     </message>
     <message>
-        <location line="-32"/>
+        <location line="-33"/>
         <source>Actions</source>
         <translation>Accións</translation>
     </message>
@@ -13996,12 +15001,17 @@ Currently installed version: %1</source>
         <translation>Enderezo</translation>
     </message>
     <message>
-        <location line="+97"/>
+        <location line="+101"/>
+        <source>Join on launch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Refresh</source>
         <translation>Actualizar</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ServersPage.cpp" line="+443"/>
+        <location filename="../launcher/ui/pages/instance/ServersPage.cpp" line="+482"/>
         <source>You are about to remove &quot;%1&quot;.
 This is permanent and the server will be gone from your list forever (A LONG TIME).
 
@@ -14017,7 +15027,7 @@ Isto é permanente e o servidor desaparecerá da túa lista para sempre (POR MOI
         <translation>Servidores</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ServersPage.ui" line="-63"/>
+        <location filename="../launcher/ui/pages/instance/ServersPage.ui" line="-72"/>
         <source>Never download</source>
         <translation>Nunca descargar</translation>
     </message>
@@ -14032,17 +15042,17 @@ Isto é permanente e o servidor desaparecerá da túa lista para sempre (POR MOI
         <translation>Preguntar antes de descargar</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ServersPage.cpp" line="-132"/>
+        <location filename="../launcher/ui/pages/instance/ServersPage.cpp" line="-144"/>
         <source>Context menu</source>
         <translation>Menú contextual</translation>
     </message>
     <message>
-        <location line="+131"/>
+        <location line="+143"/>
         <source>Confirm Removal</source>
         <translation>Confirmar Eliminación</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ServersPage.ui" line="+63"/>
+        <location filename="../launcher/ui/pages/instance/ServersPage.ui" line="+64"/>
         <source>Move Down</source>
         <translation>Baixar</translation>
     </message>
@@ -14222,7 +15232,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+73"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+291"/>
         <source>Select a skin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14272,7 +15282,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-204"/>
         <source>Looking for skins</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14282,7 +15292,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+37"/>
         <source>The skin image could not be stored on disk.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14292,7 +15302,7 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+19"/>
         <location line="+7"/>
         <source>Page %1</source>
         <translation type="unfinished"></translation>
@@ -14387,12 +15397,12 @@ Are you sure?</source>
 <context>
     <name>SkinManageDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+194"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+267"/>
         <source>F2</source>
         <translation>F2</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+114"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+154"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -14402,7 +15412,8 @@ Are you sure?</source>
         <translation>Del</translation>
     </message>
     <message>
-        <location line="-124"/>
+        <location line="-197"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+242"/>
         <source>Cape</source>
         <translation>Capa</translation>
     </message>
@@ -14417,22 +15428,22 @@ Are you sure?</source>
         <translation>Modelo</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+142"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-62"/>
         <source>Download capes</source>
         <translation>Descargar capas</translation>
     </message>
     <message>
-        <location line="+248"/>
+        <location line="+386"/>
         <source>Invalid url</source>
         <translation>URL inválida</translation>
     </message>
     <message>
-        <location line="-100"/>
+        <location line="-101"/>
         <source>Failed to upload skin!</source>
         <translation>Non se puido subir o aspecto!</translation>
     </message>
     <message>
-        <location line="-223"/>
+        <location line="-390"/>
         <source>Selected file is not a valid skin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14453,23 +15464,24 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+148"/>
-        <location line="+8"/>
+        <location line="+316"/>
+        <location line="+7"/>
         <source>Skin Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-8"/>
+        <location line="-157"/>
+        <location line="+150"/>
         <source>Failed to create skins directory!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+7"/>
         <source>Failed to copy skin file!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+14"/>
         <source>Skin Saved</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14479,22 +15491,97 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+10"/>
         <source>Could not refresh the account login.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+4"/>
         <source>Change skin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="-458"/>
+        <location line="+491"/>
         <source>Reset skin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="-492"/>
+        <source>Open skins folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Close</source>
+        <translation type="unfinished">Pechar</translation>
+    </message>
+    <message>
+        <location line="+269"/>
+        <location line="+6"/>
+        <source>Cape Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Failed to save cape file!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+18"/>
+        <location line="+49"/>
+        <source>Custom cape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-49"/>
+        <source>%1&apos;s cape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Select Cape Texture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <location line="+19"/>
+        <location line="+8"/>
+        <source>Cape Import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-27"/>
+        <source>The selected file is not a valid image.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Import cape from URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>URL of a cape PNG image:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Invalid URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>The URL did not contain a valid cape image.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Unable to download the cape: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+204"/>
         <source>Delete error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14530,7 +15617,17 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+46"/>
+        <location line="+39"/>
+        <source>Import skin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Skin URL or Minecraft username:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+18"/>
         <source>Download user skin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14582,76 +15679,142 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-531"/>
         <source>Cancel</source>
-        <translation>Cancelar</translation>
+        <translation type="vanished">Cancelar</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+77"/>
         <source>Open Folder</source>
-        <translation>Abrir cartafol</translation>
+        <translation type="vanished">Abrir cartafol</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+316"/>
+        <location line="-226"/>
         <source>Skin Delete</source>
         <translation>Borrar aspecto</translation>
     </message>
     <message>
-        <location line="-180"/>
+        <location line="-318"/>
         <source>No Cape</source>
         <translation>Sen capa</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="-96"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+96"/>
-        <location line="+43"/>
-        <location line="+16"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="-19"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+235"/>
+        <location line="+42"/>
+        <location line="+15"/>
         <source>Skin Upload</source>
         <translation>Apariencia subida</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+25"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+26"/>
         <source>Failed to delete current skin!</source>
         <translation>Non se puido borrar o aspecto actual!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+117"/>
         <source>Import URL</source>
-        <translation>Importar URL</translation>
+        <translation type="vanished">Importar URL</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-254"/>
+        <location line="-422"/>
         <source>Select Skin Texture</source>
         <translation>Escoller textura da apariencia</translation>
     </message>
     <message>
-        <location line="+311"/>
+        <location line="+479"/>
         <source>Confirm Deletion</source>
         <translation>Confirmar eliminación</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+46"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+236"/>
         <source>&amp;Delete Skin</source>
         <translation>&amp;Eliminar aspecto</translation>
     </message>
     <message>
-        <location line="-32"/>
         <source>Import File</source>
-        <translation>Importar ficheiro</translation>
+        <translation type="vanished">Importar ficheiro</translation>
     </message>
     <message>
-        <location line="-80"/>
+        <location line="-185"/>
         <source>Preview Elytra</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+73"/>
         <source>Import user</source>
-        <translation>Importar usuario</translation>
+        <translation type="vanished">Importar usuario</translation>
     </message>
     <message>
-        <location line="+14"/>
-        <source>Browse online skins</source>
+        <location line="+32"/>
+        <source>Offline Cape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-315"/>
+        <source>No cape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Shows the cape as an elytra on the 3D preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Show Elytra</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Browse capes online...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Look up capes online by scrolling or searching player names.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Import from file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Import from URL...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Remove cape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>More actions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>Import...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Import a skin from a URL, or from a Minecraft username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Import file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Browse online...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -14675,22 +15838,21 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-152"/>
+        <location line="-225"/>
         <source>Classic</source>
         <translation>Clásico</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-48"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+267"/>
         <source>Context menu</source>
         <translation>Menú contextual</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+78"/>
         <source>Reset Skin</source>
-        <translation>Restablecer skin</translation>
+        <translation type="vanished">Restablecer skin</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-93"/>
+        <location line="-92"/>
         <source>Skin file does not exist!</source>
         <translation>O ficheiro do aspecto non existe!</translation>
     </message>
@@ -14729,7 +15891,7 @@ Are you sure?</source>
 <context>
     <name>StepModel</name>
     <message>
-        <location filename="../launcher/bot/BotScriptEditor.cpp" line="-378"/>
+        <location filename="../launcher/bot/BotScriptEditor.cpp" line="-759"/>
         <source>Step</source>
         <translation type="unfinished"></translation>
     </message>

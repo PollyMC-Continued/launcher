@@ -36,7 +36,7 @@
 
 #include <QLabel>
 #include <QVBoxLayout>
-
+#include "icons/IconList.h"   
 #include "Application.h"
 
 BedrockVersionPage::BedrockVersionPage(BedrockInstance* instance, QWidget* parent) : QWidget(parent), m_instance(instance)
