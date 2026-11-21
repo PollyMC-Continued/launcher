@@ -11937,12 +11937,12 @@ El actualizador no podrá continuar hasta que solucione este problema.</translat
     </message>
     <message>
         <location line="+57"/>
-        <location line="+485"/>
+        <location line="+486"/>
         <source>Reading manifest from %1</source>
         <translation type="unfinished">Leyendo manifiesto de %1</translation>
     </message>
     <message>
-        <location line="-473"/>
+        <location line="-474"/>
         <source>Manifest empty, making best guess of the directory contents of %1</source>
         <translation type="unfinished">Manifiesto vacío, haciendo la mejor estimación del contenido del directorio de %1</translation>
     </message>
@@ -11971,12 +11971,12 @@ El actualizador no podrá continuar hasta que solucione este problema.</translat
     </message>
     <message>
         <location line="+15"/>
-        <location line="+506"/>
+        <location line="+507"/>
         <source>File doesn&apos;t exist, ignoring: %1</source>
         <translation type="unfinished">El fichero no existe, ignorando: %1</translation>
     </message>
     <message>
-        <location line="-490"/>
+        <location line="-491"/>
         <source>There were errors installing the update.</source>
         <translation type="unfinished">Hubo errores al instalar la actualización.</translation>
     </message>
@@ -12002,18 +12002,18 @@ El actualizador no podrá continuar hasta que solucione este problema.</translat
     </message>
     <message>
         <location line="+0"/>
-        <location line="+178"/>
+        <location line="+179"/>
         <source>yes</source>
         <translation type="unfinished">si</translation>
     </message>
     <message>
-        <location line="-178"/>
-        <location line="+178"/>
+        <location line="-179"/>
+        <location line="+179"/>
         <source>no</source>
         <translation type="unfinished">no</translation>
     </message>
     <message>
-        <location line="-170"/>
+        <location line="-171"/>
         <source>No version selected.</source>
         <translation type="unfinished">No hay ninguna versión seleccionada.</translation>
     </message>
@@ -12039,12 +12039,12 @@ El actualizador no podrá continuar hasta que solucione este problema.</translat
     </message>
     <message>
         <location line="+1"/>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>Update Aborted</source>
         <translation type="unfinished">Actualización cancelada</translation>
     </message>
     <message>
-        <location line="-25"/>
+        <location line="-26"/>
         <source>A previous update lock file is present.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12071,7 +12071,12 @@ Updater log: %7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+11"/>
+        <source>Ignoring stale update lock file %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>The update attempt was aborted</source>
         <translation type="unfinished">El intento de actualización ha sido cancelada</translation>
     </message>
@@ -13713,7 +13718,7 @@ Nombre nuevo: %2</translation>
         <translation>texture pack</translation>
     </message>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1049"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1050"/>
         <source>An auto-updater for PollyMC-Continued</source>
         <translation>Un autoactualizador para PollyMC-Continued</translation>
     </message>

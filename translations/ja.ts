@@ -12406,12 +12406,12 @@ The updater cannot continue until you fix this problem.</source>
     </message>
     <message>
         <location line="+57"/>
-        <location line="+485"/>
+        <location line="+486"/>
         <source>Reading manifest from %1</source>
         <translation type="unfinished">%1からマニフェストを読込中</translation>
     </message>
     <message>
-        <location line="-473"/>
+        <location line="-474"/>
         <source>Manifest empty, making best guess of the directory contents of %1</source>
         <translation type="unfinished">マニフェストが空です。%1の内容を元に最適な内容を生成しています</translation>
     </message>
@@ -12440,12 +12440,12 @@ The updater cannot continue until you fix this problem.</source>
     </message>
     <message>
         <location line="+15"/>
-        <location line="+506"/>
+        <location line="+507"/>
         <source>File doesn&apos;t exist, ignoring: %1</source>
         <translation type="unfinished">ファイルが存在しないため無視します: %1</translation>
     </message>
     <message>
-        <location line="-490"/>
+        <location line="-491"/>
         <source>There were errors installing the update.</source>
         <translation type="unfinished">アップデートのインストール中にエラーが発生しました。</translation>
     </message>
@@ -12471,18 +12471,18 @@ The updater cannot continue until you fix this problem.</source>
     </message>
     <message>
         <location line="+0"/>
-        <location line="+178"/>
+        <location line="+179"/>
         <source>yes</source>
         <translation type="unfinished">はい</translation>
     </message>
     <message>
-        <location line="-178"/>
-        <location line="+178"/>
+        <location line="-179"/>
+        <location line="+179"/>
         <source>no</source>
         <translation type="unfinished">いいえ</translation>
     </message>
     <message>
-        <location line="-170"/>
+        <location line="-171"/>
         <source>No version selected.</source>
         <translation type="unfinished">バージョンが選択されていません。</translation>
     </message>
@@ -12508,12 +12508,12 @@ The updater cannot continue until you fix this problem.</source>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>Update Aborted</source>
         <translation type="unfinished">アップデートは中断されました</translation>
     </message>
     <message>
-        <location line="-25"/>
+        <location line="-26"/>
         <source>A previous update lock file is present.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12540,7 +12540,12 @@ Updater log: %7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+11"/>
+        <source>Ignoring stale update lock file %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>The update attempt was aborted</source>
         <translation type="unfinished">アップデートの試行は中断されました</translation>
     </message>
@@ -14294,7 +14299,7 @@ New name: %2</source>
         <translation type="vanished">Rory ID 11 (Ashtaka作)</translation>
     </message>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1049"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1050"/>
         <source>An auto-updater for PollyMC-Continued</source>
         <translation>PollyMC-Continued用の自動アップデーター</translation>
     </message>

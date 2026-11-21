@@ -12376,12 +12376,12 @@ De updater kan niet verdergaan totdat je dit probleem hebt opgelost.</translatio
     </message>
     <message>
         <location line="+57"/>
-        <location line="+485"/>
+        <location line="+486"/>
         <source>Reading manifest from %1</source>
         <translation type="unfinished">Manifest lezen van %1</translation>
     </message>
     <message>
-        <location line="-473"/>
+        <location line="-474"/>
         <source>Manifest empty, making best guess of the directory contents of %1</source>
         <translation type="unfinished">Manifest leeg, maken van beste schatting van de mapinhoud van %1</translation>
     </message>
@@ -12410,12 +12410,12 @@ De updater kan niet verdergaan totdat je dit probleem hebt opgelost.</translatio
     </message>
     <message>
         <location line="+15"/>
-        <location line="+506"/>
+        <location line="+507"/>
         <source>File doesn&apos;t exist, ignoring: %1</source>
         <translation type="unfinished">Bestand bestaat niet, negeren: %1</translation>
     </message>
     <message>
-        <location line="-490"/>
+        <location line="-491"/>
         <source>There were errors installing the update.</source>
         <translation type="unfinished">Er zijn fouten opgetreden bij het installeren van de update.</translation>
     </message>
@@ -12441,18 +12441,18 @@ De updater kan niet verdergaan totdat je dit probleem hebt opgelost.</translatio
     </message>
     <message>
         <location line="+0"/>
-        <location line="+178"/>
+        <location line="+179"/>
         <source>yes</source>
         <translation type="unfinished">ja</translation>
     </message>
     <message>
-        <location line="-178"/>
-        <location line="+178"/>
+        <location line="-179"/>
+        <location line="+179"/>
         <source>no</source>
         <translation type="unfinished">nee</translation>
     </message>
     <message>
-        <location line="-170"/>
+        <location line="-171"/>
         <source>No version selected.</source>
         <translation type="unfinished">Geen versie geselecteerd.</translation>
     </message>
@@ -12478,12 +12478,12 @@ De updater kan niet verdergaan totdat je dit probleem hebt opgelost.</translatio
     </message>
     <message>
         <location line="+1"/>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>Update Aborted</source>
         <translation type="unfinished">Update afgebroken</translation>
     </message>
     <message>
-        <location line="-25"/>
+        <location line="-26"/>
         <source>A previous update lock file is present.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12510,7 +12510,12 @@ Updater log: %7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+11"/>
+        <source>Ignoring stale update lock file %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>The update attempt was aborted</source>
         <translation type="unfinished">De updatepoging is afgebroken</translation>
     </message>
@@ -14270,7 +14275,7 @@ Nieuwe naam: %2</translation>
         <translation type="vanished">Rory ID 11 (getekend door Ashtaka)</translation>
     </message>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1049"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1050"/>
         <source>An auto-updater for PollyMC-Continued</source>
         <translation>Een auto-updater voor PollyMC-Continued</translation>
     </message>
