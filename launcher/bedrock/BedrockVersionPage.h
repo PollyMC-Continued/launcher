@@ -37,17 +37,25 @@
 #include <QWidget>
 
 #include "BedrockInstance.h"
+#include "BedrockVersionList.h"
 #include "ui/pages/BasePage.h"
 
+class QComboBox;
 class QLabel;
+class QListView;
+class QModelIndex;
+class QPushButton;
+class BedrockVersionFilterModel;
 
 /*
- * Minimal "Version" page for Bedrock instances.
+ * "Version" page for Bedrock instances.
  *
- * TODO(next steps): the version list (releases / previews / old versions with a
- * channel filter), the creation dialog entry and the install/update tasks are
- * implemented after the scaffolding step; this page then grows a version list
- * and buttons like the Java VersionPage.
+ * Shows the shared Bedrock version list with a channel filter (all versions,
+ * releases, previews, old legacy-UWP versions - the dead Beta channel is never
+ * offered), a Refresh button, and Select version to store the choice on the
+ * instance (instance.cfg, BedrockVersion setting). The game download / install
+ * pipeline is deliberately NOT on this page yet: it arrives with the Windows
+ * backend steps, and the page says so instead of pretending.
  */
 class BedrockVersionPage : public QWidget, public BasePage {
     Q_OBJECT
@@ -63,9 +71,24 @@ class BedrockVersionPage : public QWidget, public BasePage {
     void openedImpl() override;
 
    private:
-    void updateVersionInfo();
+    /* Stores the version selected in the list on the instance. */
+    void selectVersion();
+    /* Highlights (and scrolls to) the instance's currently selected version row. */
+    void highlightCurrentVersion();
+    BedrockVersion::Ptr selectedVersion() const;
+    void updateStatusLabels();
+    void updateSelectButton();
+    void updateNoteLabel();
 
     BedrockInstance* m_instance;
-    QLabel* m_versionLabel = nullptr;
+    BedrockVersionList* m_list = nullptr;
+    BedrockVersionFilterModel* m_proxy = nullptr;
+
+    QComboBox* m_channelFilter = nullptr;
+    QPushButton* m_refreshButton = nullptr;
+    QListView* m_versionList = nullptr;
+    QPushButton* m_selectButton = nullptr;
+    QLabel* m_currentLabel = nullptr;
+    QLabel* m_sourceLabel = nullptr;
     QLabel* m_noteLabel = nullptr;
 };

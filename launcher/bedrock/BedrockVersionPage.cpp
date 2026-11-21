@@ -34,26 +34,152 @@
 
 #include "BedrockVersionPage.h"
 
+#include <QComboBox>
+#include <QHBoxLayout>
+#include <QItemSelectionModel>
 #include <QLabel>
+#include <QListView>
+#include <QPushButton>
+#include <QSortFilterProxyModel>
 #include <QVBoxLayout>
-#include "icons/IconList.h"   
+#include "icons/IconList.h"
 #include "Application.h"
+
+namespace {
+
+/*
+ * Filter modes for the version list. "Old versions" are the legacy UWP-era
+ * packages (plain .Appx, the future extract-and-register pipeline); the dead
+ * Beta channel is never shown anywhere.
+ */
+enum class ChannelFilter { All = 0, Release = 1, Preview = 2, OldUwp = 3 };
+
+}  // namespace
+
+/*
+ * Channel filter in front of the shared version list. Filtering only: the
+ * source model already sorts newest-first, so no proxy-side sorting happens.
+ */
+class BedrockVersionFilterModel : public QSortFilterProxyModel {
+   public:
+    explicit BedrockVersionFilterModel(BedrockVersionList* list, QObject* parent = nullptr)
+        : QSortFilterProxyModel(parent), m_list(list)
+    {
+        setSourceModel(list);
+    }
+
+    void setChannelFilter(ChannelFilter filter)
+    {
+        m_filter = filter;
+        invalidateFilter();
+    }
+
+   protected:
+    bool filterAcceptsRow(int sourceRow, const QModelIndex& sourceParent) const override
+    {
+        Q_UNUSED(sourceParent)
+        if (m_filter == ChannelFilter::All) {
+            return true;
+        }
+        const BaseVersion::Ptr version = m_list->at(sourceRow);
+        auto bedrockVersion = std::dynamic_pointer_cast<BedrockVersion>(version);
+        if (!bedrockVersion) {
+            return false;
+        }
+        switch (m_filter) {
+            case ChannelFilter::Release:
+                return bedrockVersion->channel() == BedrockVersion::Channel::Release;
+            case ChannelFilter::Preview:
+                return bedrockVersion->channel() == BedrockVersion::Channel::Preview;
+            case ChannelFilter::OldUwp:
+                return bedrockVersion->isLegacyUwp();
+            case ChannelFilter::All:
+            default:
+                return true;
+        }
+    }
+
+   private:
+    BedrockVersionList* m_list;
+    ChannelFilter m_filter = ChannelFilter::All;
+};
 
 BedrockVersionPage::BedrockVersionPage(BedrockInstance* instance, QWidget* parent) : QWidget(parent), m_instance(instance)
 {
-    auto layout = new QVBoxLayout(this);
-    m_versionLabel = new QLabel(this);
-    m_versionLabel->setWordWrap(true);
-    layout->addWidget(m_versionLabel);
+    m_list = BedrockVersionList::get();
+
+    auto rootLayout = new QVBoxLayout(this);
+
+    auto controlLayout = new QHBoxLayout();
+    controlLayout->addWidget(new QLabel(tr("Channel:"), this));
+    m_channelFilter = new QComboBox(this);
+    // The item order matches the ChannelFilter enum.
+    m_channelFilter->addItem(tr("All versions"));
+    m_channelFilter->addItem(tr("Releases"));
+    m_channelFilter->addItem(tr("Previews"));
+    m_channelFilter->addItem(tr("Old versions (legacy UWP)"));
+    controlLayout->addWidget(m_channelFilter);
+    controlLayout->addStretch(1);
+    m_refreshButton = new QPushButton(tr("Refresh"), this);
+    m_refreshButton->setIcon(APPLICATION->icons()->getIcon("refresh"));
+    controlLayout->addWidget(m_refreshButton);
+    rootLayout->addLayout(controlLayout);
+
+    m_proxy = new BedrockVersionFilterModel(m_list, this);
+    m_versionList = new QListView(this);
+    m_versionList->setModel(m_proxy);
+    m_versionList->setSelectionMode(QAbstractItemView::SingleSelection);
+    rootLayout->addWidget(m_versionList, 1);
+
+    m_currentLabel = new QLabel(this);
+    m_currentLabel->setWordWrap(true);
+    rootLayout->addWidget(m_currentLabel);
+
+    m_sourceLabel = new QLabel(this);
+    m_sourceLabel->setWordWrap(true);
+    rootLayout->addWidget(m_sourceLabel);
 
     m_noteLabel = new QLabel(this);
     m_noteLabel->setWordWrap(true);
-    layout->addWidget(m_noteLabel);
+    rootLayout->addWidget(m_noteLabel);
 
-    layout->addStretch(1);
+    auto buttonLayout = new QHBoxLayout();
+    m_selectButton = new QPushButton(tr("Select version"), this);
+    m_selectButton->setEnabled(false);
+    buttonLayout->addWidget(m_selectButton);
+    buttonLayout->addStretch(1);
+    rootLayout->addLayout(buttonLayout);
+
+    connect(m_channelFilter, &QComboBox::currentIndexChanged, this, [this](int index) {
+        m_proxy->setChannelFilter(static_cast<ChannelFilter>(index));
+        updateSelectButton();
+    });
+    connect(m_refreshButton, &QPushButton::clicked, this, [this]() {
+        m_list->refresh(true);
+        updateStatusLabels();
+    });
+    connect(m_list, &BedrockVersionList::refreshSucceeded, this, [this]() {
+        updateStatusLabels();
+        highlightCurrentVersion();
+    });
+    connect(m_list, &BedrockVersionList::refreshFailed, this, [this](const QString& reason) {
+        Q_UNUSED(reason)
+        updateStatusLabels();
+    });
+    connect(m_versionList->selectionModel(), &QItemSelectionModel::selectionChanged, this, [this]() { updateSelectButton(); });
+    connect(m_versionList, &QListView::doubleClicked, this, [this](const QModelIndex& index) {
+        Q_UNUSED(index)
+        selectVersion();
+    });
+    connect(m_selectButton, &QPushButton::clicked, this, [this]() { selectVersion(); });
 
     retranslate();
-    updateVersionInfo();
+
+    /* Releases is the useful default view. */
+    m_channelFilter->setCurrentIndex(static_cast<int>(ChannelFilter::Release));
+    m_proxy->setChannelFilter(ChannelFilter::Release);
+
+    updateStatusLabels();
 }
 
 BedrockVersionPage::~BedrockVersionPage() {}
@@ -63,25 +189,129 @@ QIcon BedrockVersionPage::icon() const
     return APPLICATION->icons()->getIcon(m_instance->iconKey());
 }
 
-void BedrockVersionPage::updateVersionInfo()
+void BedrockVersionPage::selectVersion()
 {
-    const auto version = m_instance->bedrockVersion();
-    if (version.isEmpty()) {
-        m_versionLabel->setText(tr("No Bedrock version has been selected for this instance yet."));
-    } else {
-        m_versionLabel->setText(tr("Bedrock version: %1").arg(version));
+    const BedrockVersion::Ptr version = selectedVersion();
+    if (!version) {
+        return;
     }
+    m_instance->setBedrockVersion(version->versionId());
+    updateStatusLabels();
+}
+
+void BedrockVersionPage::highlightCurrentVersion()
+{
+    const QString versionId = m_instance->bedrockVersion();
+    if (versionId.isEmpty()) {
+        m_versionList->selectionModel()->clearSelection();
+        return;
+    }
+    const BedrockVersion::Ptr version = m_list->findBedrockVersion(versionId);
+    if (!version) {
+        return;
+    }
+    for (int row = 0; row < m_list->count(); row++) {
+        const BaseVersion::Ptr candidate = m_list->at(row);
+        auto bedrockCandidate = std::dynamic_pointer_cast<BedrockVersion>(candidate);
+        if (bedrockCandidate && bedrockCandidate->versionId() == versionId) {
+            const QModelIndex sourceIndex = m_list->index(row, 0);
+            const QModelIndex proxyIndex = m_proxy->mapFromSource(sourceIndex);
+            if (proxyIndex.isValid()) {
+                m_versionList->setCurrentIndex(proxyIndex);
+                m_versionList->scrollTo(proxyIndex);
+            }
+            return;
+        }
+    }
+}
+
+BedrockVersion::Ptr BedrockVersionPage::selectedVersion() const
+{
+    const QModelIndex proxyIndex = m_versionList->currentIndex();
+    if (!proxyIndex.isValid()) {
+        return nullptr;
+    }
+    const QModelIndex sourceIndex = m_proxy->mapToSource(proxyIndex);
+    if (!sourceIndex.isValid()) {
+        return nullptr;
+    }
+    auto version = std::dynamic_pointer_cast<BedrockVersion>(m_list->at(sourceIndex.row()));
+    return version;
+}
+
+void BedrockVersionPage::updateStatusLabels()
+{
+    const QString versionId = m_instance->bedrockVersion();
+    if (versionId.isEmpty()) {
+        m_currentLabel->setText(tr("No game version is selected for this instance yet. Pick one from the list and press Select version."));
+    } else {
+        const BedrockVersion::Ptr version = m_list->findBedrockVersion(versionId);
+        if (version) {
+            m_currentLabel->setText(tr("Selected version: %1 (%2)").arg(versionId, version->typeString()));
+        } else {
+            m_currentLabel->setText(tr("Selected version: %1 (not in the version list)").arg(versionId));
+        }
+    }
+
+    if (m_list->isLoaded()) {
+        QString sourceText = m_list->statusDescription();
+        if (m_list->loadedFromSnapshot()) {
+            sourceText += QStringLiteral("\n") + tr("No version source was reachable: this is the shipped snapshot. Press Refresh when online.");
+        }
+        m_sourceLabel->setText(sourceText);
+    } else {
+        m_sourceLabel->setText(tr("Loading the Bedrock version list..."));
+    }
+
+    updateSelectButton();
+}
+
+void BedrockVersionPage::updateSelectButton()
+{
+    m_selectButton->setEnabled(selectedVersion() != nullptr);
+}
+
+void BedrockVersionPage::updateNoteLabel()
+{
+#if defined(Q_OS_WIN)
+    m_noteLabel->setText(tr(
+        "Pick a version and press Select version: the choice is stored on the instance and shown in the launcher.\n"
+        "The download, install and launch pipeline for Windows (current GDK packages and, later, legacy UWP packages) "
+        "arrives with the next update of Bedrock support; until then, a launch attempt prints its pre-flight check in "
+        "the console and reports that the backend is missing.\n"
+        "On Windows only one GDK-era version can be installed at a time: switching an instance to another GDK version "
+        "reinstalls the shared game, and every Bedrock instance is the data profile (worlds, packs, settings) around it."));
+#elif defined(Q_OS_LINUX)
+    m_noteLabel->setText(tr(
+        "Pick a version and press Select version: the choice is stored on the instance and shown in the launcher.\n"
+        "The Linux backend (Proton-based, experimental) arrives with a later update of Bedrock support; until then, a "
+        "launch attempt prints its pre-flight check in the console and reports that the backend is missing."));
+#else
+    m_noteLabel->setText(tr("Bedrock Edition instances are not supported on this platform."));
+#endif
 }
 
 void BedrockVersionPage::retranslate()
 {
-    // TODO(next steps): this note goes away once the version list and install
-    // pipeline are wired up.
-    m_noteLabel->setText(tr("Version selection and installation for Bedrock instances are not enabled yet."));
-    updateVersionInfo();
+    // The combo box item order matches the ChannelFilter enum.
+    m_channelFilter->blockSignals(true);
+    m_channelFilter->setItemText(static_cast<int>(ChannelFilter::All), tr("All versions"));
+    m_channelFilter->setItemText(static_cast<int>(ChannelFilter::Release), tr("Releases"));
+    m_channelFilter->setItemText(static_cast<int>(ChannelFilter::Preview), tr("Previews"));
+    m_channelFilter->setItemText(static_cast<int>(ChannelFilter::OldUwp), tr("Old versions (legacy UWP)"));
+    m_channelFilter->blockSignals(false);
+
+    m_refreshButton->setText(tr("Refresh"));
+    m_selectButton->setText(tr("Select version"));
+    updateNoteLabel();
+    updateStatusLabels();
 }
 
 void BedrockVersionPage::openedImpl()
 {
-    updateVersionInfo();
+    if (!m_list->isLoaded()) {
+        m_list->refresh();
+    }
+    updateStatusLabels();
+    highlightCurrentVersion();
 }

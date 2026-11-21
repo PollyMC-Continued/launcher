@@ -41,9 +41,11 @@
  * Launch task for Bedrock instances.
  *
  * Runs behind the existing LaunchTask interface: the base class owns the step
- * queue, the log model and the running-state bookkeeping; this subclass will
- * append the real pipeline steps (Windows GDK/UWP, Linux Proton) in the later
- * steps of Bedrock support.
+ * queue, the log model and the running-state bookkeeping. The Bedrock pipeline
+ * steps are appended by BedrockInstance::createLaunchTask() - currently the
+ * pre-flight check (BedrockPreflightStep); the Windows GDK install/launch and
+ * the legacy UWP and Linux Proton backends arrive with the later steps of
+ * Bedrock support and slot in ahead of it.
  */
 class BedrockLaunchTask : public LaunchTask {
     Q_OBJECT
@@ -55,8 +57,6 @@ class BedrockLaunchTask : public LaunchTask {
 
    protected:
     explicit BedrockLaunchTask(BedrockInstance* instance);
-
-    void executeTask() override;
 
    private:
     BedrockInstance* m_bedrockInstance = nullptr;

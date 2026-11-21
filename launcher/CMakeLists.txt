@@ -400,16 +400,22 @@ set(MINECRAFT_SOURCES
 
     minecraft/Agent.h)
 
-# Bedrock Edition instance support (new instance type). The version list, the
-# Windows GDK/UWP install pipelines and the Linux Proton backend are added step by
-# step; this is the scaffolding set.
+# Bedrock Edition instance support (new instance type). The version list is
+# implemented; the Windows GDK/UWP install pipelines and the Linux Proton
+# backend are added step by step after it.
 set(BEDROCK_SOURCES
     bedrock/BedrockInstance.h
     bedrock/BedrockInstance.cpp
     bedrock/BedrockLaunchTask.h
     bedrock/BedrockLaunchTask.cpp
+    bedrock/BedrockPreflightStep.h
+    bedrock/BedrockPreflightStep.cpp
     bedrock/BedrockSettingsPage.h
     bedrock/BedrockSettingsPage.cpp
+    bedrock/BedrockVersion.h
+    bedrock/BedrockVersion.cpp
+    bedrock/BedrockVersionList.h
+    bedrock/BedrockVersionList.cpp
     bedrock/BedrockVersionPage.h
     bedrock/BedrockVersionPage.cpp
 )
@@ -1373,6 +1379,7 @@ endif()
 
 qt_add_resources(LAUNCHER_RESOURCES
     resources/backgrounds/backgrounds.qrc
+    resources/bedrock/bedrock.qrc
     resources/branding/branding.qrc
     resources/multimc/multimc.qrc
     resources/pe_dark/pe_dark.qrc

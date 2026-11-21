@@ -74,7 +74,8 @@ class BedrockInstance : public BaseInstance {
 
     /*
      * The Bedrock game version selected for this instance (e.g. "1.21.120.20").
-     * Empty until the version list / creation dialog (later steps) sets it.
+     * Empty until the instance's Version page (or, later, the creation dialog)
+     * sets it. Persisted in instance.cfg.
      */
     QString bedrockVersion();
     void setBedrockVersion(const QString& version);

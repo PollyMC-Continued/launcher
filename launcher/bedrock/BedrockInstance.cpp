@@ -38,6 +38,7 @@
 #include <QDir>
 
 #include "BedrockLaunchTask.h"
+#include "BedrockPreflightStep.h"
 #include "launch/LaunchTask.h"
 
 BedrockInstance::BedrockInstance(SettingsObject* globalSettings, std::unique_ptr<SettingsObject> settings, const QString& rootDir)
@@ -102,11 +103,16 @@ QString BedrockInstance::bedrockVersion()
 void BedrockInstance::setBedrockVersion(const QString& version)
 {
     settings()->set("BedrockVersion", version);
+    // The version is part of the instance's statusbar description, so the
+    // instance list needs to hear about the change.
+    emit propertiesChanged(this);
 }
 
 QList<Task::Ptr> BedrockInstance::createUpdateTask()
 {
-    // TODO(later steps): Bedrock version list download and game install/update tasks.
+    // TODO(install steps): the game install/update tasks for the selected Bedrock
+    // version (GDK, then legacy UWP). The version list load itself lives in
+    // BedrockVersionList and runs from the Version page / pre-flight step.
     return {};
 }
 
@@ -120,6 +126,13 @@ LaunchTask* BedrockInstance::createLaunchTask(AuthSessionPtr account, MinecraftT
     updateRuntimeContext();
 
     auto process = BedrockLaunchTask::create(this);
+    /*
+     * The pre-flight step prints what the launcher knows about the instance's
+     * Bedrock version into the instance console and (until the Windows install
+     * pipeline lands) fails the launch with an explicit reason. The install and
+     * launch steps of the GDK / legacy UWP backends slot in ahead of it.
+     */
+    process->appendStep(makeShared<BedrockPreflightStep>(process.get(), this));
     m_launchProcess = std::move(process);
     emit launchTaskChanged(m_launchProcess.get());
     return m_launchProcess.get();
@@ -175,6 +188,7 @@ QStringList BedrockInstance::verboseDescription(AuthSessionPtr session, Minecraf
     out << "  instance folder: " + instanceRoot();
     const auto version = bedrockVersion();
     out << "  game version: " + (version.isEmpty() ? QStringLiteral("(not set)") : version);
+    out << "  install/launch backend: not implemented yet (Windows GDK / legacy UWP pipelines: next update)";
     // TODO(Windows/Linux backend steps): backend-specific details (installed package,
     // pipeline used, Proton prefix, ...).
     return out;

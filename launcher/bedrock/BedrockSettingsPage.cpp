@@ -55,7 +55,13 @@ BedrockSettingsPage::~BedrockSettingsPage() {}
 
 void BedrockSettingsPage::retranslate()
 {
-    m_infoLabel->setText(tr("Bedrock instances do not have Bedrock-specific settings yet.\n\n"
-                            "The instance name, icon, group and notes can be changed from the launcher's instance menu.\n"
-                            "Java-related settings do not apply to Bedrock instances."));
+    m_infoLabel->setText(tr(
+        "A Bedrock instance is a data profile: on Windows the game itself is installed once per version and shared "
+        "by every Bedrock instance, and each instance keeps its own chosen game version and (with content support) "
+        "its own worlds, resource packs and behavior packs.\n\n"
+        "Bedrock-specific settings (game data folder handling on Windows, Proton engine and per-instance prefix "
+        "options on Linux) arrive together with the install and launch backends in the next updates of Bedrock "
+        "support. Until then, pick the game version on the instance's Version page.\n\n"
+        "The instance name, icon, group and notes can be changed from the launcher's instance menu. "
+        "Java-related settings do not apply to Bedrock instances."));
 }

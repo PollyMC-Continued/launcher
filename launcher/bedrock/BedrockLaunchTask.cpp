@@ -46,13 +46,3 @@ std::unique_ptr<BedrockLaunchTask> BedrockLaunchTask::create(BedrockInstance* in
 }
 
 BedrockLaunchTask::BedrockLaunchTask(BedrockInstance* instance) : LaunchTask(instance), m_bedrockInstance(instance) {}
-
-void BedrockLaunchTask::executeTask()
-{
-    // Scaffolding state: the task machinery (step queue, logging, ownership,
-    // running-state bookkeeping) is wired up, but no Windows GDK/UWP or Linux
-    // Proton backend exists yet. Fail cleanly instead of pretending to launch.
-    qWarning() << "BedrockLaunchTask: no Bedrock launch backend is implemented yet (instance"
-               << (m_bedrockInstance ? m_bedrockInstance->id() : QString()) << ")";
-    emitFailed(tr("Launching Bedrock instances is not implemented yet; the Windows and Linux backends arrive in the next steps of this update."));
-}
