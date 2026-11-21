@@ -50,6 +50,8 @@ class ImportPage;
 class FlamePage;
 class QHideEvent;
 class QShowEvent;
+class QStackedWidget;
+class BedrockCreationPage;
 
 class NewInstanceDialog : public QDialog, public BasePageProvider {
     Q_OBJECT
@@ -65,6 +67,13 @@ class NewInstanceDialog : public QDialog, public BasePageProvider {
 
     void setSuggestedPack(const QString& name = QString(), InstanceTask* task = nullptr);
     void setSuggestedPack(const QString& name, QString version, InstanceTask* task = nullptr);
+    /*
+     * The Bedrock edition's counterpart of setSuggestedPack(): the creation task
+     * suggested by the Bedrock page. Kept separate from the Java pages' suggestion
+     * so switching the Minecraft Edition back and forth never loses either side's
+     * choice.
+     */
+    void setBedrockSuggestedPack(const QString& name = QString(), InstanceTask* task = nullptr);
     void setSuggestedIconFromFile(const QString& path, const QString& name);
     void setSuggestedIcon(const QString& key);
 
@@ -93,11 +102,22 @@ class NewInstanceDialog : public QDialog, public BasePageProvider {
    private:
     Ui::NewInstanceDialog* ui = nullptr;
     PageContainer* m_container = nullptr;
+    /* Stack holding the Java page container and the Bedrock creation page;
+     * the Minecraft Edition selector switches between them. */
+    QStackedWidget* m_editionStack = nullptr;
+    BedrockCreationPage* m_bedrockPage = nullptr;
+    bool m_isBedrock = false;
     QDialogButtonBox* m_buttons = nullptr;
 
     QString InstIconKey;
     ImportPage* importPage = nullptr;
     std::unique_ptr<InstanceTask> creationTask;
+    /* The Bedrock page's suggestion, parallel to creationTask. */
+    std::unique_ptr<InstanceTask> m_bedrockCreationTask;
+    /* The last suggested instance names of both editions (they drive the name
+     * placeholder whenever their edition is the active one). */
+    QString m_javaSuggestedName;
+    QString m_bedrockSuggestedName;
 
     bool importIcon = false;
     QString importIconPath;
@@ -106,6 +126,9 @@ class NewInstanceDialog : public QDialog, public BasePageProvider {
     QString importVersion;
 
     QString m_searchTerm;
+
+    /* Switches the whole page area between the Java pages and the Bedrock page. */
+    void setEdition(bool bedrock);
 
     void importIconNow();
 };

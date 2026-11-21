@@ -400,10 +400,14 @@ set(MINECRAFT_SOURCES
 
     minecraft/Agent.h)
 
-# Bedrock Edition instance support (new instance type). The version list is
-# implemented; the Windows GDK/UWP install pipelines and the Linux Proton
-# backend are added step by step after it.
+# Bedrock Edition instance support (new instance type). The version list and the
+# creation page are implemented; the Windows GDK/UWP install pipelines and the
+# Linux Proton backend are added step by step after them.
 set(BEDROCK_SOURCES
+    bedrock/BedrockCreationPage.h
+    bedrock/BedrockCreationPage.cpp
+    bedrock/BedrockCreationTask.h
+    bedrock/BedrockCreationTask.cpp
     bedrock/BedrockInstance.h
     bedrock/BedrockInstance.cpp
     bedrock/BedrockLaunchTask.h

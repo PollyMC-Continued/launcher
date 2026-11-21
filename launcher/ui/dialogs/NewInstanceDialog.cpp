@@ -37,6 +37,7 @@
 #include "NewInstanceDialog.h"
 #include "Application.h"
 #include "DiscordRichPresence.h"
+#include "bedrock/BedrockCreationPage.h"
 #include "ui/pages/modplatform/ModpackProviderBasePage.h"
 #include "ui/pages/modplatform/import_ftb/ImportFTBPage.h"
 #include "ui_NewInstanceDialog.h"
@@ -57,6 +58,7 @@
 #include <QPushButton>
 #include <QScreen>
 #include <QShowEvent>
+#include <QStackedWidget>
 #include <QValidator>
 #include <utility>
 
@@ -102,11 +104,31 @@ NewInstanceDialog::NewInstanceDialog(const QString& initialGroup,
     m_container->useSidebarStyle(false);
     m_container->setSizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Expanding);
     m_container->layout()->setContentsMargins(0, 0, 0, 0);
-    ui->verticalLayout->insertWidget(2, m_container);
 
-    m_container->addButtons(m_buttons);
+    /*
+     * Minecraft Edition switch (Java / Bedrock). Java keeps its pages (version +
+     * mod loaders, import, Modrinth, CurseForge, ATL, FTB, Technic); Bedrock swaps
+     * the whole area for the Bedrock creation page: the Bedrock version list with
+     * its channel filter - no mod loaders, no modpack providers.
+     */
+    m_editionStack = new QStackedWidget(this);
+    m_editionStack->setObjectName(QStringLiteral("editionStack"));
+    m_editionStack->setSizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Expanding);
+    ui->verticalLayout->insertWidget(2, m_editionStack);
+    m_editionStack->addWidget(m_container);
+    m_bedrockPage = new BedrockCreationPage(this, m_editionStack);
+    m_editionStack->addWidget(m_bedrockPage);
+    m_editionStack->setCurrentIndex(0);
+    connect(ui->editionBox, &QComboBox::currentIndexChanged, this, [this](int index) { setEdition(index == 1); });
+
+    /* The dialog's buttons live below the edition switch rather than inside the
+     * page container, so they stay available in both editions (the container is
+     * hidden while the Bedrock page is shown). */
+    ui->verticalLayout->insertWidget(3, m_buttons);
     connect(m_container, &PageContainer::selectedPageChanged, this, [this](BasePage* previous, BasePage* selected) {
-        m_buttons->button(QDialogButtonBox::Ok)->setEnabled(creationTask && !instName().isEmpty());
+        Q_UNUSED(previous)
+        Q_UNUSED(selected)
+        updateDialogState();
     });
 
     // Bonk Qt over its stupid head and make sure it understands which button is the default one...
@@ -217,7 +239,10 @@ void NewInstanceDialog::setSuggestedPack(const QString& name, InstanceTask* task
 {
     creationTask.reset(task);
 
-    ui->instNameTextBox->setPlaceholderText(name);
+    m_javaSuggestedName = name;
+    if (!m_isBedrock) {
+        ui->instNameTextBox->setPlaceholderText(name);
+    }
     importVersion.clear();
 
     if (!task) {
@@ -225,15 +250,17 @@ void NewInstanceDialog::setSuggestedPack(const QString& name, InstanceTask* task
         importIcon = false;
     }
 
-    auto allowOK = task && !instName().isEmpty();
-    m_buttons->button(QDialogButtonBox::Ok)->setEnabled(allowOK);
+    updateDialogState();
 }
 
 void NewInstanceDialog::setSuggestedPack(const QString& name, QString version, InstanceTask* task)
 {
     creationTask.reset(task);
 
-    ui->instNameTextBox->setPlaceholderText(name);
+    m_javaSuggestedName = name;
+    if (!m_isBedrock) {
+        ui->instNameTextBox->setPlaceholderText(name);
+    }
     importVersion = std::move(version);
 
     if (!task) {
@@ -241,8 +268,24 @@ void NewInstanceDialog::setSuggestedPack(const QString& name, QString version, I
         importIcon = false;
     }
 
-    auto allowOK = task && !instName().isEmpty();
-    m_buttons->button(QDialogButtonBox::Ok)->setEnabled(allowOK);
+    updateDialogState();
+}
+
+void NewInstanceDialog::setBedrockSuggestedPack(const QString& name, InstanceTask* task)
+{
+    m_bedrockCreationTask.reset(task);
+
+    m_bedrockSuggestedName = name;
+    if (m_isBedrock) {
+        ui->instNameTextBox->setPlaceholderText(name);
+    }
+
+    if (!task) {
+        ui->iconButton->setIcon(APPLICATION->icons()->getIcon(InstIconKey));
+        importIcon = false;
+    }
+
+    updateDialogState();
 }
 
 void NewInstanceDialog::setSuggestedIconFromFile(const QString& path, const QString& name)
@@ -268,7 +311,15 @@ void NewInstanceDialog::setSuggestedIcon(const QString& key)
 
 InstanceTask* NewInstanceDialog::extractTask()
 {
-    InstanceTask* extracted = creationTask.release();
+    InstanceTask* extracted = nullptr;
+    if (m_isBedrock) {
+        extracted = m_bedrockCreationTask.release();
+    } else {
+        extracted = creationTask.release();
+    }
+    if (!extracted) {
+        return nullptr;
+    }
 
     InstanceName inst_name(ui->instNameTextBox->placeholderText().trimmed(), importVersion);
     inst_name.setName(ui->instNameTextBox->text().trimmed());
@@ -279,9 +330,31 @@ InstanceTask* NewInstanceDialog::extractTask()
     return extracted;
 }
 
+void NewInstanceDialog::setEdition(bool bedrock)
+{
+    if (m_isBedrock == bedrock) {
+        return;
+    }
+    m_isBedrock = bedrock;
+    m_editionStack->setCurrentIndex(bedrock ? 1 : 0);
+
+    /* Keep the name suggestion of the edition being switched to. */
+    ui->instNameTextBox->setPlaceholderText(bedrock ? m_bedrockSuggestedName : m_javaSuggestedName);
+
+    if (bedrock) {
+        /* Loads the Bedrock version list on first use; the preselected
+         * recommended version (once the list is there) suggests the creation
+         * task and re-enables OK. */
+        m_bedrockPage->opened();
+    }
+
+    updateDialogState();
+}
+
 void NewInstanceDialog::updateDialogState()
 {
-    auto allowOK = creationTask && !instName().isEmpty();
+    const InstanceTask* task = m_isBedrock ? m_bedrockCreationTask.get() : creationTask.get();
+    auto allowOK = task && !instName().isEmpty();
     auto OkButton = m_buttons->button(QDialogButtonBox::Ok);
     if (OkButton->isEnabled() != allowOK) {
         OkButton->setEnabled(allowOK);

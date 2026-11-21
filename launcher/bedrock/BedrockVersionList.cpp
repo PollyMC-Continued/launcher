@@ -561,10 +561,28 @@ QVariant BedrockVersionList::data(const QModelIndex& index, int role) const
             return QString("%1 \u2014 %2").arg(version->versionId(), version->typeString());
         case Qt::ToolTipRole:
             return tooltipForVersion(version);
+        case BaseVersionList::RecommendedRole:
+            /* Exactly one row (the recommended version) is flagged, so the shared
+             * version widgets that ask for this role preselect - and star - it. */
+            return version == getRecommended();
+        case BaseVersionList::SortRole:
+            /* Zero-padded dotted form, so plain string comparison is numeric order. */
+            return version->sortKey();
         default:
             break;
     }
     return BaseVersionList::data(index, role);
+}
+
+BaseVersionList::RoleList BedrockVersionList::providesRoles() const
+{
+    /* The base set plus the roles the shared version selection widgets
+     * (VersionSelectWidget with its VersionProxyModel) rely on: the sort key
+     * for ordering and the recommended flag for the preselection. */
+    auto roles = BaseVersionList::providesRoles();
+    roles.append(BaseVersionList::SortRole);
+    roles.append(BaseVersionList::RecommendedRole);
+    return roles;
 }
 
 void BedrockVersionList::updateListData(QList<BaseVersion::Ptr> versions)

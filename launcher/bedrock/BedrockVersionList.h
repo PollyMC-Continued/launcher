@@ -84,8 +84,11 @@ class BedrockVersionList : public BaseVersionList {
     /*
      * Display: "1.26.65.1 — Release (current GDK package)". Tooltip: the
      * package details (file name, hash, URLs, update ids) the sources know.
+     * The recommended-flag and the sort-key roles serve the shared version
+     * selection widgets (the New Instance dialog's Bedrock page).
      */
     QVariant data(const QModelIndex& index, int role) const override;
+    BaseVersionList::RoleList providesRoles() const override;
 
     ////// convenience //////
     /* Typed lookup by version id ("1.21.120.20"); nullptr when unknown. */
