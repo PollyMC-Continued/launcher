@@ -760,7 +760,7 @@ The account UUID stays the same, so your singleplayer progress and your selected
         <translation type="vanished">ອັບເດດສຳເລັດແລ້ວ</translation>
     </message>
     <message>
-        <location filename="../launcher/Application.cpp" line="+1364"/>
+        <location filename="../launcher/Application.cpp" line="+1365"/>
         <source>Incompatible system configuration</source>
         <translation>ການກຳນົດຄ່າລະບົບບໍ່ເຂົ້າກັນ</translation>
     </message>
@@ -800,12 +800,12 @@ for details on the last update attempt.</source>
 ສຳລັບລາຍລະອຽດ.</translation>
     </message>
     <message>
-        <location line="-1776"/>
+        <location line="-1777"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>ບໍ່ສາມາດສະແດງບັນທຶກ (log) ນີ້ໄດ້ ເນື່ອງຈາກຄວາມຍາວເກີນ %1 ແຖວ.</translation>
     </message>
     <message>
-        <location line="+1598"/>
+        <location line="+1599"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>ເບິ່ງຄືວ່າເຈົ້າເຄີຍໃຊ້ %1 ໃນ %2 ມາກ່ອນ. ເຈົ້າຕ້ອງການຍ້າຍຂໍ້ມູນໄປຍັງຕຳແໜ່ງໃໝ່ຂອງ %3 ຫຼື ບໍ່?</translation>
     </message>
@@ -873,7 +873,7 @@ for details.</source>
 ສຳລັບລາຍລະອຽດ.</translation>
     </message>
     <message>
-        <location line="-1899"/>
+        <location line="-1900"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -909,7 +909,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+529"/>
+        <location line="+530"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1603,7 +1603,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 <context>
     <name>BotManagerDialog</name>
     <message>
-        <location filename="../launcher/bot/BotManagerDialog.cpp" line="+188"/>
+        <location filename="../launcher/bot/BotManagerDialog.cpp" line="+191"/>
         <source>Bots</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1613,7 +1613,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+221"/>
+        <location line="+232"/>
         <location line="+19"/>
         <location line="+16"/>
         <source>Bot Manager</source>
@@ -1624,6 +1624,22 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <location line="+19"/>
         <location line="+16"/>
         <source>Could not save bot config to %1: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BotMapDialog</name>
+    <message>
+        <location filename="../launcher/bot/BotMapDialog.cpp" line="+128"/>
+        <source>Bot Map</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BotMapWidget</name>
+    <message>
+        <location line="-72"/>
+        <source>Waiting for bot positions...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1701,7 +1717,53 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+31"/>
+        <location line="+31"/>
+        <source>Variable name (letters, digits, _):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-21"/>
+        <source>Value (literal text):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>Value (integer, may be negative):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
+        <source>Condition:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Value:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Variable:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Number:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Condition timeout seconds (0 = decide immediately):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Branches: with this step selected, Add Step appends to the then branch; with an &apos;else:&apos; row selected, Add Step appends to the else branch.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+33"/>
         <source>Save</source>
         <translation type="unfinished">ບັນທຶກ</translation>
     </message>
@@ -1709,6 +1771,16 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <location line="+7"/>
         <source>Revert</source>
         <translation type="unfinished">ກັບຄືນຄ່າເດີມ</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Import...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Export...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+20"/>
@@ -1721,13 +1793,73 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/bot/BotScriptEditor.cpp" line="+482"/>
+        <location filename="../launcher/bot/BotScriptEditor.cpp" line="+687"/>
         <source>Save failed: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Saved.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+141"/>
+        <location line="+29"/>
+        <location line="+11"/>
+        <source>Import Bot Script</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-39"/>
+        <location line="+53"/>
+        <source>Bot scripts (*.json);;All files (*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-48"/>
+        <source>Import failed: cannot open %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Import failed: %1 is not a JSON script</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Import failed: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>A script named &apos;%1&apos; already exists. Importing it will overwrite that script when you save. Continue?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Save the imported script to the script store now?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <location line="+3"/>
+        <source>Export Bot Script</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-3"/>
+        <source>The script is not valid: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <location line="+7"/>
+        <source>Export failed: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Exported to %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2060,6 +2192,361 @@ This launcher will tell you when the team has an update. You can also check any 
         <location line="+1"/>
         <source>Close</source>
         <translation type="unfinished">ປິດ</translation>
+    </message>
+</context>
+<context>
+    <name>BulkUpdateDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/BulkUpdateDialog.cpp" line="+68"/>
+        <location line="+262"/>
+        <source>Update all instances</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-258"/>
+        <source>Check every selected instance for mod updates, then apply all found updates in one go.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Mods</source>
+        <translation type="unfinished">Mods</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Status</source>
+        <translation type="unfinished">ສະຖານະ</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Check for updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Update all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Close</source>
+        <translation type="unfinished">ປິດ</translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <location line="+91"/>
+        <source>No mods</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-91"/>
+        <source>Not checked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Instances with updates: %1
+Up to date: %2
+Could not be checked: %3
+Skipped: %4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <location line="+128"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-128"/>
+        <source>Mod updates are unavailable when metadata is disabled!</source>
+        <translation type="unfinished">ບໍ່ສາມາດອັບເດດ mod ໄດ້ເມື່ອປິດໃຊ້ຂໍ້ມູນເມຕາ!</translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Instances are running</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The following instances are currently running:
+%1
+
+Updating mods while the game is running may cause mod duplication and game crashes.
+The old files may not be deleted as they are in use.
+Running instances will be skipped.
+Do you want to continue?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+34"/>
+        <source>Skipped (running)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Checking...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <location line="+60"/>
+        <source>Aborted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-53"/>
+        <source>%1 could not be checked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Up to date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>%1 update(s) available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>Download updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Download stopped by user.</source>
+        <translation type="unfinished">ການດາວໂຫຼດຖືກຢຸດໂດຍຜູ້ໃຊ້.</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Warnings</source>
+        <translation type="unfinished">ຄຳເຕືອນ</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Abort</source>
+        <translation type="unfinished">ຍົກເລີກ</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Update failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Done.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>The downloads did not complete successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>%1
+Instances updated: %2
+Instances up to date: %3
+Instances that could not be checked: %4
+Instances skipped: %5</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CapeBrowserDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/skins/CapeBrowserDialog.cpp" line="+118"/>
+        <source>Browse capes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Search by cape name or player name...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Type a cape name (like Migrator or Pan) or a player name. crafty.gg does not publish a cape catalog, so capes are collected from the profiles of the players it tracks, and a cape search keeps looking through more players until it finds some matches.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Import URL...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Import a cape from a PNG link. Cape textures are typically 64x32, 512x256 or OptiFine 46x22 style PNG files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+35"/>
+        <location line="+301"/>
+        <source>Select a cape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-295"/>
+        <source>Preview Elytra</source>
+        <translation type="unfinished">ເບິ່ງຕົວຢ່າງປິກ Elytra</translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <location line="+346"/>
+        <source>Finding capes...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-329"/>
+        <source>Close</source>
+        <translation type="unfinished">ປິດ</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Previous page</source>
+        <translation type="unfinished">ໜ້າກ່ອນ</translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location line="+488"/>
+        <source>Page %1</source>
+        <translation type="unfinished">ໜ້າ %1</translation>
+    </message>
+    <message>
+        <location line="-484"/>
+        <source>Next page</source>
+        <translation type="unfinished">ໜ້າຕໍ່ໄປ</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Use cape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Apply this cape to the selected account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+49"/>
+        <source>Looking for capes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>Cape lookup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+61"/>
+        <location line="+178"/>
+        <source>Searching capes for %1...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-157"/>
+        <source>Import cape from URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>URL of a cape PNG image:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>%1 is not a valid http(s) URL.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Downloading the cape...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>The URL did not contain a valid cape image.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Cape imported from URL.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Cape</source>
+        <translation type="unfinished">ຜ້າຄຸມ</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>%1&apos;s cape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+24"/>
+        <location line="+38"/>
+        <source>Source: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-37"/>
+        <source>Source: %1
+%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+41"/>
+        <source>View %1 on crafty.gg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+92"/>
+        <source>Looking for capes... (%1 of %2 players)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>No capes found for &quot;%1&quot;. Try another cape name or a player name.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 capes found for &quot;%2&quot;. Search again to look through more players.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>No capes found yet. Try the next page, or search for a player.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>No capes found. Try searching by cape or player name.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location line="+49"/>
+        <source>%1 capes found. Search by cape or player name to look for more.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2570,7 +3057,7 @@ This launcher will tell you when the team has an update. You can also check any 
 <context>
     <name>Crafty::API</name>
     <message>
-        <location filename="../launcher/minecraft/skins/CraftySkinAPI.cpp" line="+246"/>
+        <location filename="../launcher/minecraft/skins/CraftySkinAPI.cpp" line="+249"/>
         <source>Browse skins</source>
         <translation>ຊອກຫາສະກິນ</translation>
     </message>
@@ -2588,6 +3075,21 @@ This launcher will tell you when the team has an update. You can also check any 
         <location line="+34"/>
         <source>Download skin textures</source>
         <translation>ດາວໂຫລດເນື້ອສະກິນ</translation>
+    </message>
+    <message>
+        <location line="+196"/>
+        <source>Find player capes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+36"/>
+        <source>Download player capes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+39"/>
+        <source>Download cape</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4766,6 +5268,19 @@ Do you want to continue anyway?</source>
     </message>
 </context>
 <context>
+    <name>HistoryChart</name>
+    <message>
+        <location filename="../launcher/ui/pages/instance/PerformancePage.cpp" line="+342"/>
+        <source>min %1 %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>max %1 %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>IconPickerDialog</name>
     <message>
         <location filename="../launcher/ui/dialogs/IconPickerDialog.cpp" line="+78"/>
@@ -5407,7 +5922,7 @@ They may still work, but if the game crashes, update or remove them first.</sour
 <context>
     <name>InstancePageProvider</name>
     <message>
-        <location filename="../launcher/InstancePageProvider.h" line="+52"/>
+        <location filename="../launcher/InstancePageProvider.h" line="+54"/>
         <source>Edit Instance (%1)</source>
         <translation>ແກ້ໄຂອິນສະແຕນຊ໌ (%1)</translation>
     </message>
@@ -5507,6 +6022,29 @@ They may still work, but if the game crashes, update or remove them first.</sour
         <location line="+41"/>
         <source>Kill the running instance</source>
         <translation>ປິດອິນສະແຕນຊ໌ທີ່ກຳລັງເຮັດວຽກຢູ່ທັນທີ</translation>
+    </message>
+</context>
+<context>
+    <name>InstantiateTemplateTask</name>
+    <message>
+        <location filename="../launcher/InstanceTemplateTask.cpp" line="+271"/>
+        <source>The template folder %1 does not exist.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Creating instance %1 from template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>Template folder copy failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>Template folder copy has been aborted.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6334,7 +6872,7 @@ You may have to fix your mods because the game is still logging to files and lik
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+680"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+690"/>
         <source>s</source>
         <translation>ວິນາທີ</translation>
     </message>
@@ -6353,7 +6891,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ຕິດຕັ້ງສ່ວນປະກອບທີ່ຈຳເປັນອັດຕະໂນມັດ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="+149"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="+152"/>
         <source>Icons Folder</source>
         <translation>ໂຟນເດີໄອຄອນ</translation>
     </message>
@@ -6427,12 +6965,17 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;ມອດ:</translation>
     </message>
     <message>
-        <location line="-343"/>
+        <location line="-353"/>
         <source>User Interface</source>
         <translation>ສ່ວນຕິດຕໍ່ຜູ້ໃຊ້</translation>
     </message>
     <message>
-        <location line="+130"/>
+        <location line="+33"/>
+        <source>By &amp;time played</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+107"/>
         <source>Update behavior</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6557,7 +7100,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ໂຟນເດີ Java</translation>
     </message>
     <message>
-        <location line="+114"/>
+        <location line="+117"/>
         <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6572,12 +7115,12 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ທຸກໆ </translation>
     </message>
     <message>
-        <location line="-204"/>
+        <location line="-214"/>
         <source>Instance Sorting</source>
         <translation>ການຮຽງລຳດັບອິນສະແຕນຊ໌</translation>
     </message>
     <message>
-        <location line="+459"/>
+        <location line="+469"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Disabling mod metadata may also disable some QoL features, such as mod updating!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;ຄຳເຕືອນ&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: ການປິດໃຊ້ງານ metadata ຂອງມອດອາດຈະເຮັດໃຫ້ຟີເຈີບາງຢ່າງໃຊ້ງານບໍ່ໄດ້ ເຊັ່ນ ການອັບເດດມອດ!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -6617,7 +7160,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ກຳນົດເປັນ 0 ເພື່ອກວດສອບສະເພາະຕອນເປີດລັນເຊີ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-160"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-163"/>
         <source>Do you want to proceed anyway?</source>
         <translation>ທ່ານຕ້ອງການດຳເນີນການຕໍ່ບໍ່?</translation>
     </message>
@@ -6642,12 +7185,12 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>ຂີດຈຳກັດວຽກງານພ້ອມກັນ:</translation>
     </message>
     <message>
-        <location line="-651"/>
+        <location line="-661"/>
         <source>&amp;By last launched</source>
         <translation>&amp;ຕາມການເປີດໃຊ້ຫຼ້າສຸດ</translation>
     </message>
     <message>
-        <location line="+353"/>
+        <location line="+363"/>
         <source>I&amp;nstances:</source>
         <translation>&amp;ອິນສະແຕນຊ໌:</translation>
     </message>
@@ -6667,12 +7210,12 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>&amp;ໄອຄອນ:</translation>
     </message>
     <message>
-        <location line="-403"/>
+        <location line="-413"/>
         <source>By &amp;name</source>
         <translation>&amp;ຕາມຊື່</translation>
     </message>
     <message>
-        <location line="+320"/>
+        <location line="+330"/>
         <source>&amp;Skins:</source>
         <translation>&amp;ສະກິນ:</translation>
     </message>
@@ -7401,7 +7944,7 @@ You&apos;ll have to correct this problem manually.</source>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+300"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+305"/>
         <source>Check for new updates for %1.</source>
         <translation>ກວດຫາການອັບເດດໃໝ່ສຳລັບ %1.</translation>
     </message>
@@ -7410,7 +7953,7 @@ You&apos;ll have to correct this problem manually.</source>
         <translation type="vanished">ຊ່ວຍເຫຼືອ</translation>
     </message>
     <message>
-        <location line="+567"/>
+        <location line="+600"/>
         <source>Java</source>
         <translation>Java</translation>
     </message>
@@ -7425,7 +7968,7 @@ You&apos;ll have to correct this problem manually.</source>
         <translation>ຮູບແບບໄອຄອນ (&amp;C)</translation>
     </message>
     <message>
-        <location line="-687"/>
+        <location line="-720"/>
         <source>&amp;Edit</source>
         <translation>ແກ້ໄຂ (&amp;E)</translation>
     </message>
@@ -7434,12 +7977,12 @@ You&apos;ll have to correct this problem manually.</source>
         <translation type="vanished">ແຖບເຄື່ອງມືຂ່າວສານ</translation>
     </message>
     <message>
-        <location line="-26"/>
+        <location line="-30"/>
         <source>&amp;File</source>
         <translation>ໄຟລ໌ (&amp;F)</translation>
     </message>
     <message>
-        <location line="+76"/>
+        <location line="+80"/>
         <source>&amp;Help</source>
         <translation>ຊ່ວຍເຫຼືອ (&amp;H)</translation>
     </message>
@@ -7504,7 +8047,37 @@ You&apos;ll have to correct this problem manually.</source>
         <translation>ບັງຄັບປິດ (&amp;K)</translation>
     </message>
     <message>
-        <location line="+136"/>
+        <location line="+122"/>
+        <source>Save as &amp;Template...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Save the selected instance (loader, mods, configs and settings) as a reusable template.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>New from &amp;Template...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Create a new instance from a saved template.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Update &amp;All Instances...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Check and install mod updates for every instance in one go.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
         <source>Export the instance as a plain zip you can re-import.</source>
         <translation>ສົ່ງອອກຊຸດເກມເປັນ zip ທຳມະດາທີ່ນຳເຂົ້າໃໝ່ໄດ້.</translation>
     </message>
@@ -7583,12 +8156,12 @@ You&apos;ll have to correct this problem manually.</source>
         <translation type="vanished">ມ້ຽວ (&amp;M)</translation>
     </message>
     <message>
-        <location line="-703"/>
+        <location line="-736"/>
         <source>&amp;View</source>
         <translation>ມຸມມອງ (&amp;V)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1858"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1887"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -7599,25 +8172,25 @@ Are you sure?</source>
 ທ່ານແນ່ໃຈບໍ່?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+681"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+714"/>
         <source>Open the icon theme folder in a file browser.</source>
         <translation>ເປີດໂຟນເດີຮູບແບບໄອຄອນໃນໂປຣແກຣມຈັດການໄຟລ໌.</translation>
     </message>
     <message>
-        <location line="-368"/>
+        <location line="-401"/>
         <source>Copy the selected instance.</source>
         <translation>ສຳເນົາຕົວຢ່າງທີ່ເລືອກ.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-751"/>
-        <location line="+143"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-776"/>
+        <location line="+168"/>
         <location line="+106"/>
         <source>Abort</source>
         <translation>ຍົກເລີກ</translation>
     </message>
     <message>
-        <location line="-262"/>
-        <location line="+130"/>
+        <location line="-287"/>
+        <location line="+155"/>
         <location line="+14"/>
         <location line="+61"/>
         <location line="+15"/>
@@ -7627,7 +8200,7 @@ Are you sure?</source>
         <translation>ຂໍ້ຜິດພາດ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-456"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-461"/>
         <source>Main Toolbar</source>
         <translation>ແຖບເຄື່ອງມືຫຼັກ</translation>
     </message>
@@ -7739,7 +8312,7 @@ Are you sure?</source>
         <translation>ໂຟນເດີຕົວຢ່າງຂອງທ່ານມີ &apos;!&apos; ແລະ ສິ່ງນີ້ອາດເຮັດໃຫ້ເກີດບັນຫາກັບ Java ໄດ້!</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+392"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+397"/>
         <source>&amp;Change Group...</source>
         <translation>ປ່ຽນກຸ່ມ... (&amp;C)</translation>
     </message>
@@ -7764,7 +8337,7 @@ Are you sure?</source>
         <translation>ເພີ່ມຕົວຢ່າງ... (&amp;E)</translation>
     </message>
     <message>
-        <location line="+456"/>
+        <location line="+489"/>
         <source>&amp;Matrix Space</source>
         <translation>ພື້ນທີ່ Matrix (&amp;M)</translation>
     </message>
@@ -7783,12 +8356,12 @@ Are you sure?</source>
         <translation>ຕິດຕັ້ງ symlink ຂອງ %1 ໄປທີ່ /usr/local/bin</translation>
     </message>
     <message>
-        <location line="-714"/>
+        <location line="-752"/>
         <source>Instance Toolbar</source>
         <translation>ແຖບເຄື່ອງມືຕົວຢ່າງ</translation>
     </message>
     <message>
-        <location line="+495"/>
+        <location line="+533"/>
         <source>Close &amp;Window</source>
         <translation>ປິດໜ້າຕ່າງ (&amp;W)</translation>
     </message>
@@ -7806,12 +8379,12 @@ Are you sure?</source>
         <translation>ເປີດຕົວຕິດຕາມຂໍ້ຜິດພາດເພື່ອລາຍງານຂໍ້ຜິດພາດກັບ %1.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-753"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-778"/>
         <source>Task aborted</source>
         <translation>ຍົກເລີກງານແລ້ວ</translation>
     </message>
     <message>
-        <location line="+221"/>
+        <location line="+246"/>
         <source>Do you want to download and import a modpack from:
 %1
 
@@ -7872,7 +8445,7 @@ URL:
         <translation>ມີກຸ່ມນີ້ແລ້ວ. :/</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-241"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-274"/>
         <source>Kill the running instance.</source>
         <translation>ບັງຄັບປິດຕົວຢ່າງທີ່ກຳລັງເຮັດວຽກຢູ່.</translation>
     </message>
@@ -7887,22 +8460,22 @@ URL:
         <translation>ບໍ່ສາມາດເພີ່ມ %1 ໃສ່ PATH ໄດ້</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+141"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+174"/>
         <source>Modrinth (mrpack)</source>
         <translation>Modrinth (mrpack)</translation>
     </message>
     <message>
-        <location line="-127"/>
+        <location line="-160"/>
         <source>Rename the selected instance.</source>
         <translation>ປ່ຽນຊື່ຕົວຢ່າງທີ່ເລືອກ.</translation>
     </message>
     <message>
-        <location line="+180"/>
+        <location line="+213"/>
         <source>Ctrl+0</source>
         <translation>Ctrl+0</translation>
     </message>
     <message>
-        <location line="-83"/>
+        <location line="-116"/>
         <source>Ctrl+D</source>
         <translation>Ctrl+D</translation>
     </message>
@@ -7927,7 +8500,7 @@ URL:
         <translation>ຕົວຢ່າງທີ່ເລືອກກຳລັງເຮັດວຽກຢູ່ ແລະ ບໍ່ສາມາດລຶບໄດ້. ກະລຸນາຢຸດຕົວຢ່າງກ່ອນທີ່ຈະພະຍາຍາມລຶບມັນ.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+484"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+517"/>
         <source>Open the Java folder in a file browser. Only available if the built-in Java downloader is used.</source>
         <translation>ເປີດໂຟນເດີ Java ໃນໂປຣແກຣມຈັດການໄຟລ໌. ມີໃຫ້ໃຊ້ສະເພາະເມື່ອໃຊ້ຕົວດາວໂຫຼດ Java ທີ່ມາພ້ອມກັບລະບົບເທົ່ານັ້ນ.</translation>
     </message>
@@ -7936,7 +8509,7 @@ URL:
         <translation type="vanished">ບໍ່ມີຂ່າວສານ.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-742"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-767"/>
         <source>The task has been aborted by the user.</source>
         <translation>ງານໄດ້ຖືກຍົກເລີກໂດຍຜູ້ໃຊ້.</translation>
     </message>
@@ -7946,12 +8519,12 @@ URL:
         <translation>ເປີດໜຶ່ງໃນໂຟນເດີທີ່ແບ່ງປັນລະຫວ່າງຕົວຢ່າງ.</translation>
     </message>
     <message>
-        <location line="-421"/>
+        <location line="-454"/>
         <source>Rename</source>
         <translation>ປ່ຽນຊື່</translation>
     </message>
     <message>
-        <location line="+268"/>
+        <location line="+301"/>
         <source>Themes</source>
         <translation>ຮູບແບບ</translation>
     </message>
@@ -7965,17 +8538,17 @@ URL:
         <translation>ເປີດ subreddit ຂອງ %1.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+136"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+161"/>
         <source>The modpack, mod, or resource %1 is blocked for third-parties! Please download it manually.</source>
         <translation>ຊຸດ mod, mod, ຫຼື ຊັບພະຍາກອນ %1 ຖືກບລັອກສຳລັບບຸກຄົນທີສາມ! ກະລຸນາດາວໂຫຼດດ້ວຍຕົນເອງ.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-268"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-301"/>
         <source>Cop&amp;y...</source>
         <translation>ສຳເນົາ... (&amp;Y)</translation>
     </message>
     <message>
-        <location line="+147"/>
+        <location line="+180"/>
         <source>Open the skins folder in a file browser.</source>
         <translation>ເປີດໂຟນເດີສະກິນໃນໂປຣແກຣມຈັດການໄຟລ໌.</translation>
     </message>
@@ -7991,7 +8564,7 @@ Please create a new instance before attempting to install this resource again.</
 ກະລຸນາສ້າງຕົວຢ່າງໃໝ່ກ່ອນທີ່ຈະພະຍາຍາມຕິດຕັ້ງຊັບພະຍາກອນນີ້ອີກຄັ້ງ.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-183"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-216"/>
         <source>Change the instance settings, mods and versions.</source>
         <translation>ປ່ຽນການຕັ້ງຄ່າ, mods ແລະ ເວີຊັນຂອງຕົວຢ່າງ.</translation>
     </message>
@@ -8005,22 +8578,22 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="vanished">Cat Packs</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+282"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+315"/>
         <source>Open %1 Discord guild.</source>
         <translation>ເປີດເຊີບເວີ Discord ຂອງ %1.</translation>
     </message>
     <message>
-        <location line="-268"/>
+        <location line="-301"/>
         <source>Open the selected instance&apos;s root folder in a file browser.</source>
         <translation>ເປີດໂຟນເດີຫຼັກຂອງຕົວຢ່າງທີ່ເລືອກໃນໂປຣແກຣມຈັດການໄຟລ໌.</translation>
     </message>
     <message>
-        <location line="+80"/>
+        <location line="+113"/>
         <source>Create Shortcut</source>
         <translation>ສ້າງທາງລັດ</translation>
     </message>
     <message>
-        <location line="-282"/>
+        <location line="-315"/>
         <source>Lock Toolbars</source>
         <translation>ລັອກແຖບເຄື່ອງມື</translation>
     </message>
@@ -8030,7 +8603,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>ຢືນຢັນການລຶບ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+238"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+271"/>
         <source>E&amp;xport...</source>
         <translation>ສົ່ງອອກ... (&amp;X)</translation>
     </message>
@@ -8050,12 +8623,12 @@ Please create a new instance before attempting to install this resource again.</
         <translation>ລາຍງານຂໍ້ຜິດພາດ ຫຼື ສະເໜີແນະຟີເຈີ</translation>
     </message>
     <message>
-        <location line="-362"/>
+        <location line="-395"/>
         <source>&amp;Manage Accounts...</source>
         <translation>ຈັດການບັນຊີ... (&amp;M)</translation>
     </message>
     <message>
-        <location line="+398"/>
+        <location line="+431"/>
         <source>Open %1 Matrix space.</source>
         <translation>ເປີດພື້ນທີ່ Matrix ຂອງ %1.</translation>
     </message>
@@ -8079,7 +8652,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>ບໍ່ສາມາດຕັ້ງຊື່ຫວ່າງເປົ່າໄດ້.</translation>
     </message>
     <message>
-        <location line="-444"/>
+        <location line="-469"/>
         <source>Warnings</source>
         <translation>ຄຳເຕືອນ</translation>
     </message>
@@ -8114,7 +8687,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+564"/>
+        <location line="+589"/>
         <source>Instance not editable</source>
         <translation>ບໍ່ສາມາດແກ້ໄຂຕົວຢ່າງນີ້ໄດ້</translation>
     </message>
@@ -8124,7 +8697,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>ບໍ່ສາມາດຍົກເລີກການຍ້າຍຕົວຢ່າງລົງຖັງຂີ້ເຫຍື້ອໄດ້</translation>
     </message>
     <message>
-        <location line="-1082"/>
+        <location line="-1107"/>
         <location line="+150"/>
         <source>Update on your bug report</source>
         <translation type="unfinished"></translation>
@@ -8150,7 +8723,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+920"/>
+        <location line="+945"/>
         <source>Cannot rename group</source>
         <translation>ບໍ່ສາມາດປ່ຽນຊື່ກຸ່ມໄດ້</translation>
     </message>
@@ -8160,18 +8733,18 @@ Please create a new instance before attempting to install this resource again.</
         <translation>ກ່ຽວກັບ %1 (&amp;A)</translation>
     </message>
     <message>
-        <location line="-553"/>
+        <location line="-586"/>
         <source>&amp;Accounts</source>
         <translation>ບັນຊີ (&amp;A)</translation>
     </message>
     <message>
-        <location line="+623"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-517"/>
+        <location line="+656"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-542"/>
         <source>Accounts</source>
         <translation>ບັນຊີ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+773"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+798"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>ເພີ່ມ %1 ໃສ່ PATH ຂອງທ່ານສຳເລັດແລ້ວ. ດຽວນີ້ທ່ານສາມາດເລີ່ມມັນໄດ້ໂດຍການແລ່ນ `%2`.</translation>
     </message>
@@ -8181,7 +8754,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>ຕອນນີ້ທ່ານມີສອງທາງເລືອກ: &lt;br/&gt; - ປ່ຽນໂຟນເດີຕົວຢ່າງໃນການຕັ້ງຄ່າ &lt;br/&gt; - ຍ້າຍການຕິດຕັ້ງ %1 ນີ້ໄປຍັງໂຟນເດີອື່ນ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-545"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-578"/>
         <source>Add a new instance.</source>
         <translation>ເພີ່ມຕົວຢ່າງໃໝ່.</translation>
     </message>
@@ -8195,7 +8768,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="vanished">ເປີດບລັອກການພັດທະນາເພື່ອອ່ານຂ່າວສານເພີ່ມເຕີມກ່ຽວກັບ %1.</translation>
     </message>
     <message>
-        <location line="-1542"/>
+        <location line="-1567"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
@@ -8204,7 +8777,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="vanished">ອັບເດດ... (&amp;U)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+310"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+343"/>
         <source>&amp;Instances</source>
         <translation>ຕົວຢ່າງທັງໝົດ (&amp;I)</translation>
     </message>
@@ -8214,7 +8787,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>Ctrl+%1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-125"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-158"/>
         <source>Dele&amp;te</source>
         <translation>ລຶບ (&amp;T)</translation>
     </message>
@@ -8229,22 +8802,22 @@ Please create a new instance before attempting to install this resource again.</
         <translation>ໂຟນເດີ (&amp;F)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+372"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+397"/>
         <source>Install modpack</source>
         <translation>ຕິດຕັ້ງຊຸດ mod</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+194"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+227"/>
         <source>Open the logs folder in a file browser.</source>
         <translation>ເປີດໂຟນເດີບັນທຶກໃນໂປຣແກຣມຈັດການໄຟລ໌.</translation>
     </message>
     <message>
-        <location line="-299"/>
+        <location line="-332"/>
         <source>&amp;Launch</source>
         <translation>ເປີດໃຊ້ (&amp;L)</translation>
     </message>
     <message>
-        <location line="+199"/>
+        <location line="+232"/>
         <source>No accounts added!</source>
         <translation>ບໍ່ມີບັນຊີຖືກເພີ່ມ!</translation>
     </message>
@@ -8254,17 +8827,17 @@ Please create a new instance before attempting to install this resource again.</
         <translation>ຕິດຕັ້ງໃສ່ &amp;PATH</translation>
     </message>
     <message>
-        <location line="-352"/>
+        <location line="-385"/>
         <source>&amp;Edit...</source>
         <translation>ແກ້ໄຂ... (&amp;E)</translation>
     </message>
     <message>
-        <location line="-386"/>
+        <location line="-391"/>
         <source>What&apos;s New Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+190"/>
+        <location line="+195"/>
         <source>Status Bar</source>
         <translation>ແຖບສະຖານະ</translation>
     </message>
@@ -8289,7 +8862,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>ເປີດໂຟນເດີ crash reports ສຳລັບ instance ທີ່ເລືອກ.</translation>
     </message>
     <message>
-        <location line="+94"/>
+        <location line="+127"/>
         <source>PollyMC-Continued (zip)</source>
         <translation>PollyMC-Continued (zip)</translation>
     </message>
@@ -8300,7 +8873,7 @@ Please create a new instance before attempting to install this resource again.</
     </message>
     <message>
         <location line="+30"/>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-835"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-860"/>
         <location line="+136"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -8321,7 +8894,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>ເປີດໂຟນເດີຮູບແບບວິດເຈັດໃນໂປຣແກຣມຈັດການໄຟລ໌.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+888"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+913"/>
         <source>Group name</source>
         <translation>ຊື່ກຸ່ມ</translation>
     </message>
@@ -8341,7 +8914,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>ລິ້ງການນຳເຂົ້າບໍ່ຖືກຕ້ອງ: ຂາດພາຣາມິເຕີ &apos;url&apos;.</translation>
     </message>
     <message>
-        <location line="-467"/>
+        <location line="-492"/>
         <source>&amp;Rename group</source>
         <translation>ປ່ຽນຊື່ກຸ່ມ (&amp;R)</translation>
     </message>
@@ -8353,17 +8926,17 @@ Please create a new instance before attempting to install this resource again.</
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1587"/>
+        <location line="+1612"/>
         <source>No instance selected</source>
         <translation>ບໍ່ໄດ້ເລືອກຕົວຢ່າງໃດ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-172"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-205"/>
         <source>Change Icon</source>
         <translation>ປ່ຽນໄອຄອນ</translation>
     </message>
     <message>
-        <location line="+293"/>
+        <location line="+326"/>
         <source>&amp;Discord Guild</source>
         <translation>ເຊີບເວີ Discord (&amp;D)</translation>
     </message>
@@ -8382,12 +8955,12 @@ To clear the metadata cache manually, press Folders -&gt; View Launcher Root Fol
         <translation>ລຶບແຄຊຂໍ້ມູນເມຕາ (&amp;C)</translation>
     </message>
     <message>
-        <location line="-587"/>
+        <location line="-620"/>
         <source>F&amp;olders</source>
         <translation>ໂຟນເດີ (&amp;O)</translation>
     </message>
     <message>
-        <location line="+621"/>
+        <location line="+654"/>
         <source>Folders</source>
         <translation>ໂຟນເດີ</translation>
     </message>
@@ -8407,24 +8980,24 @@ To clear the metadata cache manually, press Folders -&gt; View Launcher Root Fol
         <translation>Subreddit (&amp;R)</translation>
     </message>
     <message>
-        <location line="-276"/>
+        <location line="-309"/>
         <source>Delete the selected instance.</source>
         <translation>ລຶບຕົວຢ່າງທີ່ເລືອກ.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1314"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1339"/>
         <source>&amp;Delete group</source>
         <translation>ລຶບກຸ່ມ (&amp;D)</translation>
     </message>
     <message>
-        <location line="+726"/>
+        <location line="+751"/>
         <source>Some instances and shortcuts could not be restored.
 Please check your trashbin to manually restore them.</source>
         <translation>ບາງຕົວຢ່າງ ແລະ ທາງລັດບໍ່ສາມາດກູ້ຄືນໄດ້.
 ກະລຸນາກວດເບິ່ງຖັງຂີ້ເຫຍື້ອຂອງທ່ານເພື່ອກູ້ຄືນດ້ວຍຕົນເອງ.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="+28"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="+61"/>
         <source>Export the selected instance to supported formats.</source>
         <translation>ສົ່ງອອກຕົວຢ່າງທີ່ເລືອກເປັນຮູບແບບທີ່ຮອງຮັບ.</translation>
     </message>
@@ -8433,7 +9006,7 @@ Please check your trashbin to manually restore them.</source>
         <translation type="vanished">ມັນເປັນແມວນ້ອຍທີ່ມີຂົນຟູ :3</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-740"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-765"/>
         <source>&amp;Create instance</source>
         <translation>ສ້າງຕົວຢ່າງ (&amp;C)</translation>
     </message>
@@ -8443,7 +9016,7 @@ Please check your trashbin to manually restore them.</source>
         <translation>ບໍ່ມີບັນຊີເລີ່ມຕົ້ນ</translation>
     </message>
     <message>
-        <location line="-210"/>
+        <location line="-243"/>
         <source>Launch the selected instance.</source>
         <translation>ເປີດໃຊ້ຕົວຢ່າງທີ່ເລືອກໄວ້.</translation>
     </message>
@@ -8453,7 +9026,7 @@ Please check your trashbin to manually restore them.</source>
         <translation>ປ່ຽນກຸ່ມຂອງຕົວຢ່າງທີ່ເລືອກ.</translation>
     </message>
     <message>
-        <location line="+105"/>
+        <location line="+138"/>
         <source>CurseForge (zip)</source>
         <translation>CurseForge (zip)</translation>
     </message>
@@ -8468,12 +9041,12 @@ Please check your trashbin to manually restore them.</source>
         <translation>ເວລາຫຼິ້ນທັງໝົດ: 0 ວິນາທີ</translation>
     </message>
     <message>
-        <location line="+1776"/>
+        <location line="+1801"/>
         <source>Total playtime: %1</source>
         <translation>ເວລາຫຼິ້ນທັງໝົດ: %1</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.ui" line="-340"/>
+        <location filename="../launcher/ui/MainWindow.ui" line="-373"/>
         <source>Change the selected instance&apos;s icon.</source>
         <translation>ປ່ຽນໄອຄອນຂອງຕົວຢ່າງທີ່ເລືອກ.</translation>
     </message>
@@ -8504,7 +9077,7 @@ Please check your trashbin to manually restore them.</source>
         <translation>ປ່ຽນການຕັ້ງຄ່າ.</translation>
     </message>
     <message>
-        <location line="+277"/>
+        <location line="+310"/>
         <source>Open the instances folder in a file browser.</source>
         <translation>ເປີດໂຟນເດີຕົວຢ່າງໃນໂປຣແກຣມຈັດການໄຟລ໌.</translation>
     </message>
@@ -8702,7 +9275,7 @@ Make sure you also trust the URL.
 <context>
     <name>MinecraftAccount</name>
     <message>
-        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+147"/>
+        <location filename="../launcher/minecraft/auth/MinecraftAccount.cpp" line="+171"/>
         <location line="+15"/>
         <source>Aborted</source>
         <translation>ຍົກເລີກແລ້ວ</translation>
@@ -10540,6 +11113,113 @@ Please update %1!</source>
     </message>
 </context>
 <context>
+    <name>NewInstanceFromTemplateDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/NewInstanceFromTemplateDialog.cpp" line="+79"/>
+        <source>Create instance from template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Select a template to create a new instance from:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Name</source>
+        <translation type="unfinished">ຊື່</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Created</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Minecraft version</source>
+        <translation type="unfinished">ລຸ້ນ Minecraft</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Instance name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Group:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Change the new instance&apos;s icon.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Icon:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Create instance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Cancel</source>
+        <translation type="unfinished">ຍົກເລີກ</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <location line="+199"/>
+        <source>Delete template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-190"/>
+        <source>No group</source>
+        <translation type="unfinished">ບໍ່ມີກຸ່ມ</translation>
+    </message>
+    <message>
+        <location line="+78"/>
+        <source>No templates found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+54"/>
+        <location line="+72"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-69"/>
+        <source>Task aborted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>The task has been aborted by the user.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Abort</source>
+        <translation type="unfinished">ຍົກເລີກ</translation>
+    </message>
+    <message>
+        <location line="+52"/>
+        <source>Are you sure you want to delete the template %1?
+This cannot be undone.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Could not delete the template folder:
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NewsChecker</name>
     <message>
         <location filename="../launcher/news/NewsChecker.cpp" line="+118"/>
@@ -11000,21 +11680,195 @@ Are you sure?</source>
     </message>
 </context>
 <context>
+    <name>PerformancePage</name>
+    <message>
+        <location filename="../launcher/ui/pages/instance/PerformancePage.cpp" line="+191"/>
+        <source>Playtime</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Total time played:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Last session:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Last launched:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Launch count:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Reset playtime</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Hardware</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>CPU:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Cores:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>RAM:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>GPUs:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Game process</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Launch the game to see live statistics.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>PID:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>CPU usage:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Memory usage:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Uptime:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>CPU usage is measured as a share of a single core and can exceed 100% on multi-core systems.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>CPU usage (%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Memory usage (MB)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+37"/>
+        <source>Confirm Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>You are about to reset the playtime statistics of this instance.
+The total time played, the last session and the launch count
+will be reset to zero.
+
+Are you sure you want to do this?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+26"/>
+        <source>never</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <location line="+3"/>
+        <location line="+11"/>
+        <location line="+4"/>
+        <location line="+53"/>
+        <source>unknown</source>
+        <translation type="unfinished">ບໍ່ຮູ້ຈັກ</translation>
+    </message>
+    <message>
+        <location line="-63"/>
+        <source>%1 GB total</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>, %1 GB available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+33"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <source>not available on this platform</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <source>not running</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>%1%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>%1 MB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/ui/pages/instance/PerformancePage.h" line="+96"/>
+        <source>Performance</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PerformancePresetsDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/PerformancePresetsDialog.h" line="+21"/>
+        <location filename="../launcher/ui/dialogs/PerformancePresetsDialog.h" line="+22"/>
         <source>Performance Presets</source>
         <translation>Performance Presets</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+19"/>
         <source>System Info</source>
         <translation>ຂໍ້ມູນລະບົບ</translation>
     </message>
     <message>
-        <location line="+4"/>
         <source>Detected RAM: %1 GB</source>
-        <translation>ກວດພົບ RAM: %1 GB</translation>
+        <translation type="vanished">ກວດພົບ RAM: %1 GB</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Detected: %1 cores, %2 GB RAM</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
@@ -11043,6 +11897,11 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+21"/>
+        <source>Apply hardware-tuned JVM arguments (Aikar&apos;s flags)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>How it works</source>
         <translation>ມັນເຮັດວຽກແນວໃດ</translation>
     </message>
@@ -11055,8 +11914,56 @@ Are you sure?</source>
 - High: For gaming PCs with 16GB+ RAM. More memory = more chunks and mods.
 
 These are global defaults. You can override per-instance in instance settings.
+Minecraft will use this as -Xms (min) and -Xmx (max) JVM arguments.
+
+Aikar&apos;s flags fully replace the global JVM arguments. Instances that use their
+own Java arguments (Java tab of the instance settings) are not affected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+74"/>
+        <source>Low Preset
+-Xms%1m -Xmx%2m
+
+Best for: Laptops, 4GB RAM PCs
+Recommended for: Vanilla Minecraft, small modpacks
+Warning: Large modpacks may crash with out-of-memory
+JVM arguments: not modified (Aikar&apos;s flags need at least 3 GB)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Medium Preset
+-Xms%1m -Xmx%2m
+
+Best for: Desktop PCs, 8GB RAM
+Recommended for: Medium modpacks, shaders
+Good balance of performance and stability
+JVM arguments: Aikar&apos;s flags with 8M heap regions (if enabled)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>High Preset
+-Xms%1m -Xmx%2m
+
+Best for: Gaming PCs, 16GB+ RAM
+Recommended for: Large modpacks, heavy shaders
+Maximum performance for demanding setups
+JVM arguments: Aikar&apos;s flags with 16M heap regions,
+string deduplication and AlwaysPreTouch (if enabled)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Performance presets adjust how much RAM Minecraft can use.
+
+- Low: Best for laptops with 4GB RAM. Less memory = fewer chunks loaded.
+- Medium: Good for most PCs with 8GB RAM.
+- High: For gaming PCs with 16GB+ RAM. More memory = more chunks and mods.
+
+These are global defaults. You can override per-instance in instance settings.
 Minecraft will use this as -Xms (min) and -Xmx (max) JVM arguments.</source>
-        <translation>Performance presets ປັບປະລິມານ RAM ທີ່ Minecraft ສາມາດໃຊ້ໄດ້.
+        <translation type="vanished">Performance presets ປັບປະລິມານ RAM ທີ່ Minecraft ສາມາດໃຊ້ໄດ້.
 
 - ຕໍ່າ: ດີທີ່ສຸດສຳລັບຄອມພິວເຕີໂນດບຸກທີ່ມີ RAM 4GB. ຄວາມຈຳໜ້ອຍ = ມີ chunks ຖືກໂຫຼດໜ້ອຍລົງ.
 - ປານກາງ: ດີສຳລັບ PC ສ່ວນໃຫຍ່ທີ່ມີ RAM 8GB.
@@ -11066,14 +11973,13 @@ Minecraft will use this as -Xms (min) and -Xmx (max) JVM arguments.</source>
 Minecraft ຈະໃຊ້ອັນນີ້ເປັນອາກິວເມັນ JVM -Xms (ຕ່ຳສຸດ) ແລະ -Xmx (ສູງສຸດ).</translation>
     </message>
     <message>
-        <location line="+38"/>
         <source>Low Preset
 -Xms%1m -Xmx%2m
 
 Best for: Laptops, 4GB RAM PCs
 Recommended for: Vanilla Minecraft, small modpacks
 Warning: Large modpacks may crash with out-of-memory</source>
-        <translation>Low Preset
+        <translation type="vanished">Low Preset
 -Xms%1m -Xmx%2m
 
 ດີທີ່ສຸດສຳລັບ: ໂນດບຸກ, PC ທີ່ມີ RAM 4GB
@@ -11081,14 +11987,13 @@ Warning: Large modpacks may crash with out-of-memory</source>
 ຄຳເຕືອນ: modpacks ໃຫຍ່ອາດຕົກເພາະຄວາມຈຳໝົດ</translation>
     </message>
     <message>
-        <location line="+8"/>
         <source>Medium Preset
 -Xms%1m -Xmx%2m
 
 Best for: Desktop PCs, 8GB RAM
 Recommended for: Medium modpacks, shaders
 Good balance of performance and stability</source>
-        <translation>Medium Preset
+        <translation type="vanished">Medium Preset
 -Xms%1m -Xmx%2m
 
 ດີທີ່ສຸດສຳລັບ: PC ຕັ້ງໂຕະ, RAM 8GB
@@ -11096,14 +12001,13 @@ Good balance of performance and stability</source>
 ຄວາມສົມດຸນທີ່ດີລະຫວ່າງປະສິດທິພາບ ແລະ ຄວາມໝັ້ນຄົງ</translation>
     </message>
     <message>
-        <location line="+8"/>
         <source>High Preset
 -Xms%1m -Xmx%2m
 
 Best for: Gaming PCs, 16GB+ RAM
 Recommended for: Large modpacks, heavy shaders
 Maximum performance for demanding setups</source>
-        <translation>High Preset
+        <translation type="vanished">High Preset
 -Xms%1m -Xmx%2m
 
 ດີທີ່ສຸດສຳລັບ: PC ເກມ, RAM 16GB+
@@ -12345,7 +13249,7 @@ Launcher ສາມາດເກັບ %3 ແຖວທຳອິດ ແລະ %4 �
         <translation type="vanished">ບໍ່ຮູ້ຈັກ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1229"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1254"/>
         <source>%1 (in use)</source>
         <translation>%1 (ກຳລັງໃຊ້ງານ)</translation>
     </message>
@@ -13449,6 +14353,21 @@ New name: %2</source>
         <source>Copied!</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../launcher/ui/pages/instance/PerformancePage.cpp" line="-603"/>
+        <source>%1h %2m</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>%1m %2s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>%1s</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Resource</name>
@@ -14393,6 +15312,129 @@ Are you sure you want to do this?</source>
     </message>
 </context>
 <context>
+    <name>SaveTemplateDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/SaveTemplateDialog.cpp" line="+60"/>
+        <source>Save instance as template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Template name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Change the template&apos;s icon.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Mods (mods/)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Configs (config/, options.txt)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Resource packs (resourcepacks/)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Shader packs (shaderpacks/)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Servers list (servers.dat)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Worlds, logs, screenshots and crash reports are never included.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>OK</source>
+        <translation type="unfinished">ຕົກລົງ</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Cancel</source>
+        <translation type="unfinished">ຍົກເລີກ</translation>
+    </message>
+    <message>
+        <location line="+54"/>
+        <source>Template already exists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>A template named %1 already exists.
+Do you want to overwrite it?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+43"/>
+        <source>The template will be saved in:
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SaveTemplateTask</name>
+    <message>
+        <location filename="../launcher/InstanceTemplateTask.cpp" line="-150"/>
+        <source>The template name is empty after removing invalid characters.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Could not create the templates folder: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>A template named %1 already exists.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Removing existing template %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Could not remove the existing template: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Creating template %1 from instance %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>Template folder copy failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>Could not write the template manifest.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Template folder copy has been aborted.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ScreenshotsPage</name>
     <message>
         <location filename="../launcher/ui/pages/instance/ScreenshotsPage.cpp" line="+409"/>
@@ -14630,7 +15672,12 @@ Currently installed version: %1</source>
         <translation>ອອນລາຍ</translation>
     </message>
     <message>
-        <location line="-2"/>
+        <location line="+54"/>
+        <source>This server is joined automatically on launch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-56"/>
         <source>Address</source>
         <translation>ທີ່ຢູ່</translation>
     </message>
@@ -14638,7 +15685,7 @@ Currently installed version: %1</source>
 <context>
     <name>ServersPage</name>
     <message>
-        <location filename="../launcher/ui/pages/instance/ServersPage.ui" line="+160"/>
+        <location filename="../launcher/ui/pages/instance/ServersPage.ui" line="+161"/>
         <source>Add</source>
         <translation>ເພີ່ມ</translation>
     </message>
@@ -14648,7 +15695,7 @@ Currently installed version: %1</source>
         <translation>ເຂົ້າຮ່ວມ</translation>
     </message>
     <message>
-        <location line="-105"/>
+        <location line="-106"/>
         <source>&amp;Name</source>
         <translation>&amp;ຊື່</translation>
     </message>
@@ -14658,7 +15705,7 @@ Currently installed version: %1</source>
         <translation>&amp;ຊັບພະຍາກອນ</translation>
     </message>
     <message>
-        <location line="+69"/>
+        <location line="+70"/>
         <source>Move Up</source>
         <translation>ຍ້າຍຂຶ້ນ</translation>
     </message>
@@ -14668,7 +15715,7 @@ Currently installed version: %1</source>
         <translation>ເອົາອອກ</translation>
     </message>
     <message>
-        <location line="-32"/>
+        <location line="-33"/>
         <source>Actions</source>
         <translation>ການດຳເນີນການ</translation>
     </message>
@@ -14678,12 +15725,17 @@ Currently installed version: %1</source>
         <translation>ທີ່ຢູ່</translation>
     </message>
     <message>
-        <location line="+97"/>
+        <location line="+101"/>
+        <source>Join on launch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Refresh</source>
         <translation>ໂຫຼດຄືນໃໝ່</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ServersPage.cpp" line="+443"/>
+        <location filename="../launcher/ui/pages/instance/ServersPage.cpp" line="+482"/>
         <source>You are about to remove &quot;%1&quot;.
 This is permanent and the server will be gone from your list forever (A LONG TIME).
 
@@ -14699,7 +15751,7 @@ Are you sure?</source>
         <translation>ເຊີບເວີ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ServersPage.ui" line="-63"/>
+        <location filename="../launcher/ui/pages/instance/ServersPage.ui" line="-72"/>
         <source>Never download</source>
         <translation>ບໍ່ດາວໂຫຼດເລີຍ</translation>
     </message>
@@ -14714,17 +15766,17 @@ Are you sure?</source>
         <translation>ຖາມເພື່ອດາວໂຫຼດ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ServersPage.cpp" line="-132"/>
+        <location filename="../launcher/ui/pages/instance/ServersPage.cpp" line="-144"/>
         <source>Context menu</source>
         <translation>ເມນູບໍລິບົດ</translation>
     </message>
     <message>
-        <location line="+131"/>
+        <location line="+143"/>
         <source>Confirm Removal</source>
         <translation>ຢືນຢັນການເອົາອອກ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/instance/ServersPage.ui" line="+63"/>
+        <location filename="../launcher/ui/pages/instance/ServersPage.ui" line="+64"/>
         <source>Move Down</source>
         <translation>ຍ້າຍລົງ</translation>
     </message>
@@ -14907,7 +15959,7 @@ Are you sure?</source>
     </message>
     <message>
         <location line="+73"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+277"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="+291"/>
         <source>Select a skin</source>
         <translation>ເລືອກສະກິນ</translation>
     </message>
@@ -14957,7 +16009,7 @@ Are you sure?</source>
         <translation>ນຳໃຊ້ສະກິນນີ້ກັບບັນຊີທີ່ເລືອກ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-193"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinBrowserDialog.cpp" line="-204"/>
         <source>Looking for skins</source>
         <translation>ກຳລັງຊອກຫາສະກິນ</translation>
     </message>
@@ -14967,7 +16019,7 @@ Are you sure?</source>
         <translation>ລາຍການສະກິນ</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+37"/>
         <source>The skin image could not be stored on disk.</source>
         <translation>ບໍ່ສາມາດບັນທຶກຮູບສະກິນລົງດິສກ໌ໄດ້.</translation>
     </message>
@@ -14977,7 +16029,7 @@ Are you sure?</source>
         <translation>ກຳລັງໂຫຼດ…</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+19"/>
         <location line="+7"/>
         <source>Page %1</source>
         <translation>ໜ້າ %1</translation>
@@ -15072,12 +16124,12 @@ Are you sure?</source>
 <context>
     <name>SkinManageDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+194"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+267"/>
         <source>F2</source>
         <translation>F2</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+114"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+154"/>
         <source>OK</source>
         <translation>ຕົກລົງ</translation>
     </message>
@@ -15087,7 +16139,8 @@ Are you sure?</source>
         <translation>Del</translation>
     </message>
     <message>
-        <location line="-124"/>
+        <location line="-197"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+242"/>
         <source>Cape</source>
         <translation>ຜ້າຄຸມ</translation>
     </message>
@@ -15097,9 +16150,84 @@ Are you sure?</source>
         <translation>ສະລິມ</translation>
     </message>
     <message>
-        <location line="+103"/>
+        <location line="+48"/>
+        <source>Offline Cape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-9"/>
+        <source>No cape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Shows the cape as an elytra on the 3D preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Show Elytra</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Browse capes online...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Look up capes online by scrolling or searching player names.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Import from file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Import from URL...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Remove cape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>More actions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>Import...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Import a skin from a URL, or from a Minecraft username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Import file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Browse online...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Browse online skins</source>
-        <translation>ຊອກຫາສະກິນອອນລາຍ</translation>
+        <translation type="vanished">ຊອກຫາສະກິນອອນລາຍ</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -15107,34 +16235,34 @@ Are you sure?</source>
         <translation>ຊອກຫາແລະໃຊ້ສະກິນທີ່ເຜີຍແຜ່ອອນລາຍ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+373"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+316"/>
         <source>You are about to delete &quot;%1&quot;.
 Are you sure?</source>
         <translation>ທ່ານກຳລັງຈະລຶບ &quot;%1&quot;.
 ທ່ານແນ່ໃຈບໍ່?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="-122"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="-195"/>
         <source>Model</source>
         <translation>ໂມເດວ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-231"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-369"/>
         <source>Download capes</source>
         <translation>ດາວໂຫຼດຜ້າຄຸມ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+147"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+220"/>
         <source>Deletes selected skin</source>
         <translation>ລຶບສະກິນທີ່ເລືອກ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+354"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+503"/>
         <source>user id is empty</source>
         <translation>id ຜູ້ໃຊ້ວ່າງເປົ່າ</translation>
     </message>
     <message>
-        <location line="-91"/>
+        <location line="-102"/>
         <source>Unable to download the skin: &apos;%1&apos;.</source>
         <translation>ບໍ່ສາມາດດາວໂຫຼດສະກິນ: &apos;%1&apos; ໄດ້.</translation>
     </message>
@@ -15154,12 +16282,12 @@ Are you sure?</source>
         <translation>URL ບໍ່ຖືກຕ້ອງ</translation>
     </message>
     <message>
-        <location line="-100"/>
+        <location line="-101"/>
         <source>Failed to upload skin!</source>
         <translation>ອັບໂຫຼດສະກິນລົ້ມເຫຼວ!</translation>
     </message>
     <message>
-        <location line="-204"/>
+        <location line="-371"/>
         <location line="+8"/>
         <source>Skin Import</source>
         <translation>ນຳເຂົ້າສະກິນ</translation>
@@ -15175,23 +16303,98 @@ Are you sure?</source>
         <translation>ຮູບທີ່ດາວໂຫລດມາບໍ່ແມ່ນສະກິນທີ່ຖືກຕ້ອງ.</translation>
     </message>
     <message>
-        <location line="+148"/>
-        <location line="+8"/>
+        <location line="+316"/>
+        <location line="+7"/>
         <source>Skin Save</source>
         <translation>ບັນທຶກ Skin</translation>
     </message>
     <message>
-        <location line="-8"/>
+        <location line="-157"/>
+        <location line="+150"/>
         <source>Failed to create skins directory!</source>
         <translation>ການສ້າງໂຟນເດີ skins ລົ້ມເຫຼວ!</translation>
     </message>
     <message>
+        <location line="-423"/>
+        <source>Open skins folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Close</source>
+        <translation type="unfinished">ປິດ</translation>
+    </message>
+    <message>
+        <location line="+269"/>
+        <location line="+6"/>
+        <source>Cape Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Failed to save cape file!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+18"/>
+        <location line="+49"/>
+        <source>Custom cape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-49"/>
+        <source>%1&apos;s cape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Select Cape Texture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <location line="+19"/>
         <location line="+8"/>
+        <source>Cape Import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-27"/>
+        <source>The selected file is not a valid image.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Import cape from URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>URL of a cape PNG image:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Invalid URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>The URL did not contain a valid cape image.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Unable to download the cape: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+89"/>
         <source>Failed to copy skin file!</source>
         <translation>ການສຳເນົາໄຟລ໌ skin ລົ້ມເຫຼວ!</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+14"/>
         <source>Skin Saved</source>
         <translation>ບັນທຶກ Skin ແລ້ວ</translation>
     </message>
@@ -15201,7 +16404,7 @@ Are you sure?</source>
         <translation>ບັນທຶກ skin ສຳລັບຫຼິ້ນຄົນດຽວ. ໝາຍເຫດ: ຜູ້ຫຼິ້ນອື່ນໃນ multiplayer ຈະບໍ່ເຫັນ skin ຂອງເຈົ້າ ເວັ້ນເສຍແຕ່ເຊີບເວີມີ CustomSkinLoader ຕິດຕັ້ງ.</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+10"/>
         <source>Could not refresh the account login.</source>
         <translation>ບໍ່ສາມາດໂຫຼດການເຂົ້າສູ່ລະບົບບັນຊີໃໝ່ໄດ້.</translation>
     </message>
@@ -15211,94 +16414,99 @@ Are you sure?</source>
         <translation>ຮູບພາບສະກິນຕ້ອງເປັນໄຟລ໌ PNG ຂະໜາດ 64x64 ຫຼື 64x32 ພິກເຊລ.</translation>
     </message>
     <message>
-        <location line="+69"/>
+        <location line="+40"/>
+        <source>Import skin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Skin URL or Minecraft username:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+40"/>
         <source>failed to get user profile</source>
         <translation>ຮັບຄ່າໂປຣໄຟລ໌ຜູ້ໃຊ້ລົ້ມເຫຼວ</translation>
     </message>
     <message>
-        <location line="-109"/>
+        <location line="-120"/>
         <source>Delete error</source>
         <translation>ຂໍ້ຜິດພາດໃນການລຶບ</translation>
     </message>
     <message>
-        <location line="-365"/>
         <source>Cancel</source>
-        <translation>ຍົກເລີກ</translation>
+        <translation type="vanished">ຍົກເລີກ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="-78"/>
         <source>Open Folder</source>
-        <translation>ເປີດໂຟນເດີ</translation>
+        <translation type="vanished">ເປີດໂຟນເດີ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+316"/>
+        <location line="-49"/>
         <source>Skin Delete</source>
         <translation>ລຶບສະກິນ</translation>
     </message>
     <message>
-        <location line="+162"/>
+        <location line="+173"/>
         <source>failed to download skin</source>
         <translation>ດາວໂຫຼດສະກິນລົ້ມເຫຼວ</translation>
     </message>
     <message>
-        <location line="-342"/>
+        <location line="-491"/>
         <source>No Cape</source>
         <translation>ບໍ່ມີຜ້າຄຸມ</translation>
     </message>
     <message>
-        <location line="+394"/>
+        <location line="+543"/>
         <source>Username not found</source>
         <translation>ບໍ່ພົບຊື່ຜູ້ໃຊ້</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="-96"/>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-298"/>
-        <location line="+43"/>
-        <location line="+16"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="-247"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-308"/>
+        <location line="+42"/>
+        <location line="+15"/>
         <source>Skin Upload</source>
         <translation>ອັບໂຫຼດສະກິນ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+25"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+26"/>
         <source>Failed to delete current skin!</source>
         <translation>ລຶບສະກິນປັດຈຸບັນລົ້ມເຫຼວ!</translation>
     </message>
     <message>
-        <location line="+215"/>
+        <location line="+226"/>
         <source>Unable to find the skin for &apos;%1&apos;
  because: %2.</source>
         <translation>ບໍ່ສາມາດຊອກຫາສະກິນສຳລັບ &apos;%1&apos; ໄດ້
  ເນື່ອງຈາກ: %2.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+117"/>
         <source>Import URL</source>
-        <translation>ນຳເຂົ້າ URL</translation>
+        <translation type="vanished">ນຳເຂົ້າ URL</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-469"/>
+        <location line="-648"/>
         <source>Select Skin Texture</source>
         <translation>ເລືອກພື້ນຜິວສະກິນ</translation>
     </message>
     <message>
-        <location line="+311"/>
+        <location line="+479"/>
         <source>Confirm Deletion</source>
         <translation>ຢືນຢັນການລຶບ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+46"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+236"/>
         <source>&amp;Delete Skin</source>
         <translation>&amp;ລຶບສະກິນ</translation>
     </message>
     <message>
-        <location line="-32"/>
         <source>Import File</source>
-        <translation>ນຳເຂົ້າໄຟລ໌</translation>
+        <translation type="vanished">ນຳເຂົ້າໄຟລ໌</translation>
     </message>
     <message>
-        <location line="-7"/>
         <source>Import user</source>
-        <translation>ນຳເຂົ້າຜູ້ໃຊ້</translation>
+        <translation type="vanished">ນຳເຂົ້າຜູ້ໃຊ້</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+31"/>
@@ -15306,12 +16514,12 @@ Are you sure?</source>
         <translation>URL ບໍ່ແມ່ນສະກິນທີ່ຖືກຕ້ອງ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="-99"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="-211"/>
         <source>Classic</source>
         <translation>ຄລາສສິກ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+63"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="+74"/>
         <source>failed to get user UUID</source>
         <translation>ຮັບຄ່າ UUID ຂອງຜູ້ໃຊ້ລົ້ມເຫຼວ</translation>
     </message>
@@ -15327,7 +16535,7 @@ Are you sure?</source>
         <translation>ການແຍກວິເຄາະການຕອບກັບການຮັບ UUID ຜູ້ໃຊ້ລົ້ມເຫຼວ</translation>
     </message>
     <message>
-        <location line="-177"/>
+        <location line="-188"/>
         <source>Context menu</source>
         <translation>ເມນູບໍລິບົດ</translation>
     </message>
@@ -15337,42 +16545,42 @@ Are you sure?</source>
         <translation>ດາວໂຫຼດສະກິນ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+78"/>
         <source>Reset Skin</source>
-        <translation>ຣີເຊັດສະກິນ</translation>
+        <translation type="vanished">ຣີເຊັດສະກິນ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-83"/>
+        <location line="-574"/>
+        <location line="+491"/>
         <source>Reset skin</source>
         <translation>ຣີເຊັດສະກິນ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="-52"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+26"/>
         <source>Preview Elytra</source>
         <translation>ເບິ່ງຕົວຢ່າງປິກ Elytra</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-80"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-79"/>
         <source>Skin file does not exist!</source>
         <translation>ບໍ່ມີໄຟລ໌ສະກິນຢູ່!</translation>
     </message>
     <message>
-        <location line="+48"/>
+        <location line="+46"/>
         <source>Change skin</source>
         <translation>ປ່ຽນສະກິນ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+126"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.ui" line="+199"/>
         <source>Rename selected skin</source>
         <translation>ປ່ຽນຊື່ສະກິນທີ່ເລືອກ</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-212"/>
+        <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-379"/>
         <source>Selected file is not a valid skin</source>
         <translation>ໄຟລ໌ທີ່ເລືອກບໍ່ແມ່ນສະກິນທີ່ຖືກຕ້ອງ</translation>
     </message>
     <message>
-        <location line="+384"/>
+        <location line="+563"/>
         <source>Download user skin</source>
         <translation>ດາວໂຫຼດສະກິນຜູ້ໃຊ້</translation>
     </message>
@@ -15416,7 +16624,7 @@ Are you sure?</source>
 <context>
     <name>StepModel</name>
     <message>
-        <location filename="../launcher/bot/BotScriptEditor.cpp" line="-378"/>
+        <location filename="../launcher/bot/BotScriptEditor.cpp" line="-759"/>
         <source>Step</source>
         <translation type="unfinished"></translation>
     </message>
