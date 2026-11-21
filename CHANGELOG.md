@@ -1,5 +1,17 @@
 # Changelog
 
+## v10.2.0
+
+**The first step of Bedrock Edition support: a new "Bedrock" instance type that lives beside Java instances, with its own instance window and a launch path that skips the Java machinery.**
+
+**Added:**
+
+- **Bedrock Edition instances (groundwork)** — The launcher now understands a second instance type, "Bedrock", stored in `instance.cfg` next to the familiar "OneSix". A Bedrock instance is a data profile — its folder holds the chosen game version and, later, worlds, resource packs and behavior packs — and it deliberately shares nothing with the Java machinery: no PackProfile components, no Java checks, no Mojang account login. Creating, copying, renaming, grouping, notes, playtime tracking and the rest of the launcher's instance management all work on it unchanged. Its window opens with a minimal set of pages (game log, version, settings, notes and other logs; resource packs, behavior packs and worlds arrive with content support). Launching is wired through the same launch path as Java with the Java-specific parts — account selection and refresh, online/offline/demo modes, server status and profilers — skipped, and a Bedrock launch attempt for now reports that launching is not implemented; the Windows (GDK, then legacy UWP) and Linux (Proton) backends arrive in the next steps of this release. Bedrock instances cannot be created from the UI yet: the new-instance page comes with the version list. Java instances are launched exactly as before.
+
+**Notes:**
+
+- To try the scaffolding, make an instance folder whose `instance.cfg` contains `InstanceType=Bedrock` (plus `name=` and `iconKey=` if you like) and restart the launcher; a proper creation page arrives with the version list.
+
 ## v10.1.0
 
 **Six new features in one update: joining a server the moment the game starts, a much smarter bot manager (variables, conditions, auto-reconnect and a live map), offline capes from crafty.gg with a matching elytra, playtime and performance statistics for every instance, reusable instance templates, and updating every instance's mods in one go.**

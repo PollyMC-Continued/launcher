@@ -1,6 +1,9 @@
 #pragma once
 #include <FileSystem.h>
 #include <ui/pages/instance/DataPackPage.h>
+#include "bedrock/BedrockInstance.h"
+#include "bedrock/BedrockSettingsPage.h"
+#include "bedrock/BedrockVersionPage.h"
 #include "minecraft/MinecraftInstance.h"
 #include "ui/pages/BasePage.h"
 #include "ui/pages/BasePageProvider.h"
@@ -30,24 +33,38 @@ class InstancePageProvider : protected QObject, public BasePageProvider {
         QList<BasePage*> values;
         values.append(new LogPage(inst));
         MinecraftInstance* onesix = dynamic_cast<MinecraftInstance*>(inst);
-        values.append(new VersionPage(onesix));
-        values.append(ManagedPackPage::createPage(onesix));
-        auto modsPage = new ModFolderPage(onesix, onesix->loaderModList());
-        modsPage->setFilter("%1 (*.zip *.jar *.litemod *.nilmod)");
-        values.append(modsPage);
-        values.append(new CoreModFolderPage(onesix, onesix->coreModList()));
-        values.append(new NilModFolderPage(onesix, onesix->nilModList()));
-        values.append(new ResourcePackPage(onesix, onesix->resourcePackList()));
-        values.append(new GlobalDataPackPage(onesix));
-        values.append(new TexturePackPage(onesix, onesix->texturePackList()));
-        values.append(new ShaderPackPage(onesix, onesix->shaderPackList()));
-        values.append(new NotesPage(onesix));
-        values.append(new WorldListPage(onesix, onesix->worldList()));
-        values.append(new ServersPage(onesix));
-        values.append(new ScreenshotsPage(FS::PathCombine(onesix->gameRoot(), "screenshots")));
-        values.append(new InstanceSettingsPage(onesix));
-        values.append(new PerformancePage(onesix));
-        values.append(new OtherLogsPage("logs", tr("Other Logs"), "Other-Logs", inst));
+        if (onesix) {
+            values.append(new VersionPage(onesix));
+            values.append(ManagedPackPage::createPage(onesix));
+            auto modsPage = new ModFolderPage(onesix, onesix->loaderModList());
+            modsPage->setFilter("%1 (*.zip *.jar *.litemod *.nilmod)");
+            values.append(modsPage);
+            values.append(new CoreModFolderPage(onesix, onesix->coreModList()));
+            values.append(new NilModFolderPage(onesix, onesix->nilModList()));
+            values.append(new ResourcePackPage(onesix, onesix->resourcePackList()));
+            values.append(new GlobalDataPackPage(onesix));
+            values.append(new TexturePackPage(onesix, onesix->texturePackList()));
+            values.append(new ShaderPackPage(onesix, onesix->shaderPackList()));
+            values.append(new NotesPage(onesix));
+            values.append(new WorldListPage(onesix, onesix->worldList()));
+            values.append(new ServersPage(onesix));
+            values.append(new ScreenshotsPage(FS::PathCombine(onesix->gameRoot(), "screenshots")));
+            values.append(new InstanceSettingsPage(onesix));
+            values.append(new PerformancePage(onesix));
+            values.append(new OtherLogsPage("logs", tr("Other Logs"), "Other-Logs", inst));
+        } else if (auto bedrock = dynamic_cast<BedrockInstance*>(inst)) {
+            /*
+             * Minimal Bedrock page set (scaffolding step): Log, Version, Settings,
+             * Notes, Other Logs. The pack/world pages arrive with Phase 2 content
+             * support. ManagedPackPage stays included (hidden unless the instance is
+             * a managed pack) so the instance window's managed-pack lookup keeps working.
+             */
+            values.append(new BedrockVersionPage(bedrock));
+            values.append(ManagedPackPage::createPage(inst));
+            values.append(new BedrockSettingsPage(bedrock));
+            values.append(new NotesPage(inst));
+            values.append(new OtherLogsPage("logs", tr("Other Logs"), "Other-Logs", inst));
+        }
         return values;
     }
 

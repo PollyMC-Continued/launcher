@@ -1428,6 +1428,17 @@ void MainWindow::processURLs(QList<QUrl> urls)
         auto inst = APPLICATION->instances()->getInstanceById(dlg.selectedInstanceKey);
         auto minecraftInst = dynamic_cast<MinecraftInstance*>(inst);
 
+        if (!minecraftInst) {
+            // Bedrock (and other non-Minecraft) instances have no Java resource lists to
+            // install into; importing content into Bedrock instances arrives with Bedrock
+            // content support (Phase 2). This also fixes the same hazard for NullInstance.
+            CustomMessageBox::selectable(this, tr("Unsupported instance"),
+                                         tr("This kind of resource can only be imported into a Minecraft (Java) instance."),
+                                         QMessageBox::Information)
+                ->show();
+            continue;
+        }
+
         switch (type) {
             case ModPlatform::ResourceType::ResourcePack:
                 minecraftInst->resourcePackList()->installResourceWithFlameMetadata(localFileName, version);
