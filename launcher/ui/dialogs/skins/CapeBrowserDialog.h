@@ -31,6 +31,9 @@
 #include "minecraft/skins/SkinModel.h"
 #include "ui/dialogs/skins/draw/SkinOpenGLWindow.h"
 
+// 2:1 cape canvas the 3D preview expects (OptiFine capes are cropped to 46x22)
+QImage normalizedCape(const QImage& cape);
+
 class QCheckBox;
 class QLabel;
 class QLineEdit;
@@ -106,6 +109,7 @@ class CapeBrowserDialog : public QDialog, public SkinProvider {
     QString m_player;
     int m_request = 0;
     int m_importRequest = 0;
+    int m_startPage = 1;             // catalog page the feed opened on
     int m_apiPage = 0;               // last catalog page that was requested
     bool m_discoverMore = false;     // the catalog has pages after m_apiPage
     bool m_discovering = false;      // a page is being filled right now

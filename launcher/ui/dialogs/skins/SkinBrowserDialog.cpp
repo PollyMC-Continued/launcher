@@ -33,6 +33,7 @@
 #include "DiscordRichPresence.h"
 #include "settings/SettingsObject.h"
 #include "ui/dialogs/CustomMessageBox.h"
+#include "ui/dialogs/skins/FeedRotation.h"
 
 static const QLatin1String geometryKey("SkinBrowserGeometry");
 
@@ -67,7 +68,9 @@ SkinBrowserDialog::SkinBrowserDialog(QWidget* parent)
 
     connect(m_ui->skinList, &QListWidget::itemDoubleClicked, this, [this](QListWidgetItem*) { on_useSkinBtn_clicked(); });
 
-    loadPage(1);
+    // the feed changes every few minutes, so the first page is not always the same
+    m_startPage = FeedRotation::startPage(QStringLiteral("skins"));
+    loadPage(m_startPage);
 }
 
 SkinBrowserDialog::~SkinBrowserDialog()
@@ -110,7 +113,8 @@ void SkinBrowserDialog::showError(const QString& reason)
 void SkinBrowserDialog::on_searchBtn_clicked()
 {
     m_query = m_ui->searchEdit->text().trimmed();
-    loadPage(1);
+    // an empty search goes back to the feed, a real one starts at the first page of its results
+    loadPage(m_query.isEmpty() ? m_startPage : 1);
 }
 
 void SkinBrowserDialog::on_searchEdit_returnPressed()
@@ -161,6 +165,16 @@ void SkinBrowserDialog::loadPage(int page)
     m_api->fetchSkins(page, m_query, [this, request, page](const Crafty::SkinPage& result, const QString& error) {
         if (request != m_request)
             return;
+        if (m_firstLoad) {
+            m_firstLoad = false;
+            if ((!error.isEmpty() || result.skins.isEmpty()) && page > 1 && m_query.isEmpty()) {
+                // the catalog has nothing that far in: start from its first page instead
+                m_startPage = 1;
+                FeedRotation::fallBackToFirstPage(QStringLiteral("skins"));
+                loadPage(1);
+                return;
+            }
+        }
         if (!error.isEmpty()) {
             m_ui->pageLabel->setText(tr("Page %1").arg(page));
             m_ui->prevBtn->setEnabled(m_page > 1);

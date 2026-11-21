@@ -111,16 +111,6 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="offlineCapeImage">
-            <property name="text">
-             <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="QPushButton" name="offlineBrowseBtn">
             <property name="text">
              <string>Browse capes online...</string>

@@ -45,6 +45,7 @@
 #include "DiscordRichPresence.h"
 #include "settings/SettingsObject.h"
 #include "ui/dialogs/CustomMessageBox.h"
+#include "ui/dialogs/skins/FeedRotation.h"
 
 static const QLatin1String geometryKey("CapeBrowserGeometry");
 static constexpr int kPlayersPerPage = 12;
@@ -71,7 +72,7 @@ static QString prettySource(const QString& source)
 // Vanilla capes are 2:1 (64x32, 512x256, ...) and the 3D preview maps its UVs onto that. OptiFine
 // capes are cropped to the used 46x22 area (and sometimes land a pixel or two off at HD sizes), so
 // they are pasted onto a transparent 2:1 canvas first, at the same pixel scale.
-static QImage normalizedCape(const QImage& cape)
+QImage normalizedCape(const QImage& cape)
 {
     if (cape.isNull() || cape.width() == cape.height() * 2)
         return cape;
@@ -226,7 +227,10 @@ CapeBrowserDialog::CapeBrowserDialog(const SkinModel* currentSkin, QWidget* pare
     connect(m_skeletonTimer, &QTimer::timeout, this, &CapeBrowserDialog::tickSkeleton);
 
     updatePager();
-    discover(1);
+    // the feed changes every few minutes, so the first batch of players is not always the same
+    m_startPage = FeedRotation::startPage(QStringLiteral("capes"));
+    m_apiPage = m_startPage - 1;  // a failed first batch is retried from the same page
+    discover(m_startPage);
 }
 
 CapeBrowserDialog::~CapeBrowserDialog()
@@ -291,13 +295,13 @@ void CapeBrowserDialog::search()
         m_scanned.clear();
         m_capeKeys.clear();
         m_player.clear();
-        m_apiPage = 0;
+        m_apiPage = m_startPage - 1;
         m_page = 1;
         m_emptyPages = 0;
         m_browsing = true;
         m_discovering = false;
         fillList();
-        discover(1);
+        discover(m_startPage);
         return;
     }
     m_player = name;
@@ -496,6 +500,14 @@ void CapeBrowserDialog::discover(int apiPage)
     m_api->fetchSkins(apiPage, QString(), [this, request, apiPage](const Crafty::SkinPage& result, const QString& error) {
         if (request != m_request)
             return;
+        if ((!error.isEmpty() || result.skins.isEmpty()) && apiPage == m_startPage && apiPage > 1 && m_pages.isEmpty()) {
+            // the catalog has nothing that far in: start from its first page instead
+            m_startPage = 1;
+            m_apiPage = 0;
+            FeedRotation::fallBackToFirstPage(QStringLiteral("capes"));
+            discover(1);
+            return;
+        }
         if (!error.isEmpty()) {
             finishDiscovery(error);
             return;

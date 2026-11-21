@@ -376,18 +376,19 @@ void SkinManageDialog::updateOfflineCapeUi()
     QImage cape(capePath);
     if (cape.isNull()) {
         m_ui->offlineCapeName->setText(tr("No cape"));
-        m_ui->offlineCapeImage->clear();
         m_ui->offlineRemoveBtn->setEnabled(false);
+        m_offlineCape = QImage();
+        if (m_skinPreview)
+            m_skinPreview->updateCape(m_offlineCape);
         return;
     }
     auto name = readCapeName(FS::PathCombine(APPLICATION->dataRoot(), "skins", uuid, "cape.json"));
     m_ui->offlineCapeName->setText(name.isEmpty() ? tr("Cape") : name);
-    auto pixmap = previewCape(cape, false);
-    if (pixmap.isNull())
-        m_ui->offlineCapeImage->clear();
-    else
-        m_ui->offlineCapeImage->setPixmap(pixmap.scaled(160, 160, Qt::KeepAspectRatio, Qt::FastTransformation));
     m_ui->offlineRemoveBtn->setEnabled(true);
+    // the cape is shown on the skin in the 3D preview
+    m_offlineCape = normalizedCape(cape);
+    if (m_skinPreview)
+        m_skinPreview->updateCape(m_offlineCape);
 }
 
 void SkinManageDialog::applyOfflineCape(const QImage& cape, const QString& name)
@@ -505,7 +506,8 @@ void SkinManageDialog::on_capeCombo_currentIndexChanged(int index)
         m_ui->capeImage->clear();
     }
     if (m_skinPreview) {
-        m_skinPreview->updateCape(cape);
+        // offline accounts have no cape list: their cape is the one on disk
+        m_skinPreview->updateCape(m_acct->accountType() == AccountType::Offline ? m_offlineCape : cape);
     }
     if (auto skin = getSelectedSkin(); skin) {
         skin->setCapeId(id.toString());
@@ -935,5 +937,11 @@ int SkinManageDialog::equippedSkinIndex()
 
 QHash<QString, QImage> SkinManageDialog::capes()
 {
-    return m_capes;
+    auto result = m_capes;
+    // asked by the preview when it first initializes: an offline account's cape is not in the list above
+    if (m_acct->accountType() == AccountType::Offline && !m_offlineCape.isNull()) {
+        if (auto skin = getSelectedSkin())
+            result.insert(skin->getCapeId(), m_offlineCape);
+    }
+    return result;
 }

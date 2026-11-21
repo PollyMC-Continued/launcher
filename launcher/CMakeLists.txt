@@ -1159,6 +1159,7 @@ SET(LAUNCHER_SOURCES
     ui/dialogs/skins/SkinBrowserDialog.h
     ui/dialogs/skins/CapeBrowserDialog.cpp
     ui/dialogs/skins/CapeBrowserDialog.h
+    ui/dialogs/skins/FeedRotation.h
 
     ui/dialogs/skins/draw/SkinOpenGLWindow.h
     ui/dialogs/skins/draw/SkinOpenGLWindow.cpp

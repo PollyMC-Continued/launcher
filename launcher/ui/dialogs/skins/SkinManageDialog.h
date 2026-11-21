@@ -84,6 +84,7 @@ class SkinManageDialog : public QDialog, public SkinProvider {
     SkinList m_list;
     QString m_selectedSkinKey;
     QHash<QString, QImage> m_capes;
+    QImage m_offlineCape;  // the offline account's cape as the 3D preview wants it (null: no cape)
     QHash<QString, int> m_capesIdx;
     std::unique_ptr<SkinModel> m_defaultSkin;
     SkinOpenGLWindow* m_skinPreview = nullptr;

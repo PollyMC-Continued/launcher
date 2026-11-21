@@ -92,6 +92,8 @@ class SkinBrowserDialog : public QDialog, public SkinProvider {
     QLabel* m_skinPreviewLabel = nullptr;
     QString m_query;
     int m_page = 1;
+    int m_startPage = 1;     // catalog page the feed opened on
+    bool m_firstLoad = true;  // the next result is the one for the opening page
     int m_request = 0;
     bool m_hasMore = false;
     Choice m_choice;
