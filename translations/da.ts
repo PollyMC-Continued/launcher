@@ -12072,12 +12072,12 @@ The updater cannot continue until you fix this problem.</source>
     </message>
     <message>
         <location line="+57"/>
-        <location line="+485"/>
+        <location line="+486"/>
         <source>Reading manifest from %1</source>
         <translation type="unfinished">Læser manifest fra %1</translation>
     </message>
     <message>
-        <location line="-473"/>
+        <location line="-474"/>
         <source>Manifest empty, making best guess of the directory contents of %1</source>
         <translation type="unfinished">Manifest er tomt, hvilket giver det bedste bud på mappe indholdet i %1</translation>
     </message>
@@ -12106,12 +12106,12 @@ The updater cannot continue until you fix this problem.</source>
     </message>
     <message>
         <location line="+15"/>
-        <location line="+506"/>
+        <location line="+507"/>
         <source>File doesn&apos;t exist, ignoring: %1</source>
         <translation type="unfinished">Filen findes ikke, ignorerer: %1</translation>
     </message>
     <message>
-        <location line="-490"/>
+        <location line="-491"/>
         <source>There were errors installing the update.</source>
         <translation type="unfinished">Der opstod fejl under installation af opdateringen.</translation>
     </message>
@@ -12137,18 +12137,18 @@ The updater cannot continue until you fix this problem.</source>
     </message>
     <message>
         <location line="+0"/>
-        <location line="+178"/>
+        <location line="+179"/>
         <source>yes</source>
         <translation type="unfinished">ja</translation>
     </message>
     <message>
-        <location line="-178"/>
-        <location line="+178"/>
+        <location line="-179"/>
+        <location line="+179"/>
         <source>no</source>
         <translation type="unfinished">nej</translation>
     </message>
     <message>
-        <location line="-170"/>
+        <location line="-171"/>
         <source>No version selected.</source>
         <translation type="unfinished">Ingen version valgt.</translation>
     </message>
@@ -12174,12 +12174,12 @@ The updater cannot continue until you fix this problem.</source>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>Update Aborted</source>
         <translation type="unfinished">Opdatering Afbrudt</translation>
     </message>
     <message>
-        <location line="-25"/>
+        <location line="-26"/>
         <source>A previous update lock file is present.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12206,7 +12206,12 @@ Updater log: %7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+11"/>
+        <source>Ignoring stale update lock file %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>The update attempt was aborted</source>
         <translation type="unfinished">Opdaterings forsøget blev afbrudt</translation>
     </message>
@@ -13921,7 +13926,7 @@ Nyt navn: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1049"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1050"/>
         <source>An auto-updater for PollyMC-Continued</source>
         <translation type="unfinished"></translation>
     </message>

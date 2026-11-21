@@ -12522,12 +12522,12 @@ Ní féidir leis an nuashonraitheoir leanúint ar aghaidh go dtí go réiteoidh 
     </message>
     <message>
         <location line="+57"/>
-        <location line="+485"/>
+        <location line="+486"/>
         <source>Reading manifest from %1</source>
         <translation type="unfinished">Ag léamh an manuscript ó %1</translation>
     </message>
     <message>
-        <location line="-473"/>
+        <location line="-474"/>
         <source>Manifest empty, making best guess of the directory contents of %1</source>
         <translation type="unfinished">Folamh an manuscript, ag déanamh an buille faoi thuairim is fearr ar ábhar an eolaire de %1</translation>
     </message>
@@ -12556,12 +12556,12 @@ Ní féidir leis an nuashonraitheoir leanúint ar aghaidh go dtí go réiteoidh 
     </message>
     <message>
         <location line="+15"/>
-        <location line="+506"/>
+        <location line="+507"/>
         <source>File doesn&apos;t exist, ignoring: %1</source>
         <translation type="unfinished">Níl an comhad ann, ag déanamh neamhaird ar: %1</translation>
     </message>
     <message>
-        <location line="-490"/>
+        <location line="-491"/>
         <source>There were errors installing the update.</source>
         <translation type="unfinished">Tharla earráidí agus an nuashonrú á shuiteáil.</translation>
     </message>
@@ -12587,18 +12587,18 @@ Ní féidir leis an nuashonraitheoir leanúint ar aghaidh go dtí go réiteoidh 
     </message>
     <message>
         <location line="+0"/>
-        <location line="+178"/>
+        <location line="+179"/>
         <source>yes</source>
         <translation type="unfinished">tá</translation>
     </message>
     <message>
-        <location line="-178"/>
-        <location line="+178"/>
+        <location line="-179"/>
+        <location line="+179"/>
         <source>no</source>
         <translation type="unfinished">níl</translation>
     </message>
     <message>
-        <location line="-170"/>
+        <location line="-171"/>
         <source>No version selected.</source>
         <translation type="unfinished">Gan aon leagan roghnaithe.</translation>
     </message>
@@ -12624,12 +12624,12 @@ Ní féidir leis an nuashonraitheoir leanúint ar aghaidh go dtí go réiteoidh 
     </message>
     <message>
         <location line="+1"/>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>Update Aborted</source>
         <translation type="unfinished">Nuashonrú Curtha Ar Ceal</translation>
     </message>
     <message>
-        <location line="-25"/>
+        <location line="-26"/>
         <source>A previous update lock file is present.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12656,7 +12656,12 @@ Updater log: %7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+11"/>
+        <source>Ignoring stale update lock file %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>The update attempt was aborted</source>
         <translation type="unfinished">Cuireadh deireadh leis an iarracht nuashonraithe</translation>
     </message>
@@ -14425,7 +14430,7 @@ Ainm nua: %2</translation>
         <translation type="vanished">Rory ID 11 (tarraingthe ag Ashtaka)</translation>
     </message>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1049"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1050"/>
         <source>An auto-updater for PollyMC-Continued</source>
         <translation>Uath-nuashonraitheoir le haghaidis PollyMC-Continued</translation>
     </message>

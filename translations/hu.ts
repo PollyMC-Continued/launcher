@@ -12409,12 +12409,12 @@ A frissítő nem tud folytatódni, amíg meg nem oldod ezt a problémát.</trans
     </message>
     <message>
         <location line="+57"/>
-        <location line="+485"/>
+        <location line="+486"/>
         <source>Reading manifest from %1</source>
         <translation type="unfinished">Csomagleíró olvasása innen: %1</translation>
     </message>
     <message>
-        <location line="-473"/>
+        <location line="-474"/>
         <source>Manifest empty, making best guess of the directory contents of %1</source>
         <translation type="unfinished">A csomagleíró üres, megpróbáljuk kitalálni, mi van a(z) %1 könyvtárban</translation>
     </message>
@@ -12443,12 +12443,12 @@ A frissítő nem tud folytatódni, amíg meg nem oldod ezt a problémát.</trans
     </message>
     <message>
         <location line="+15"/>
-        <location line="+506"/>
+        <location line="+507"/>
         <source>File doesn&apos;t exist, ignoring: %1</source>
         <translation type="unfinished">A fájl nem létezik, figyelmen kívül hagyva: %1</translation>
     </message>
     <message>
-        <location line="-490"/>
+        <location line="-491"/>
         <source>There were errors installing the update.</source>
         <translation type="unfinished">A frissítés telepítése során hibák léptek fel.</translation>
     </message>
@@ -12474,18 +12474,18 @@ A frissítő nem tud folytatódni, amíg meg nem oldod ezt a problémát.</trans
     </message>
     <message>
         <location line="+0"/>
-        <location line="+178"/>
+        <location line="+179"/>
         <source>yes</source>
         <translation type="unfinished">igen</translation>
     </message>
     <message>
-        <location line="-178"/>
-        <location line="+178"/>
+        <location line="-179"/>
+        <location line="+179"/>
         <source>no</source>
         <translation type="unfinished">nem</translation>
     </message>
     <message>
-        <location line="-170"/>
+        <location line="-171"/>
         <source>No version selected.</source>
         <translation type="unfinished">Nincs kiválasztva verzió.</translation>
     </message>
@@ -12511,12 +12511,12 @@ A frissítő nem tud folytatódni, amíg meg nem oldod ezt a problémát.</trans
     </message>
     <message>
         <location line="+1"/>
-        <location line="+25"/>
+        <location line="+26"/>
         <source>Update Aborted</source>
         <translation type="unfinished">Frissítés megszakítva</translation>
     </message>
     <message>
-        <location line="-25"/>
+        <location line="-26"/>
         <source>A previous update lock file is present.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12543,7 +12543,12 @@ Updater log: %7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+11"/>
+        <source>Ignoring stale update lock file %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>The update attempt was aborted</source>
         <translation type="unfinished">A frissítési kísérlet megszakadt</translation>
     </message>
@@ -14294,7 +14299,7 @@ Régi név: %1
         <translation type="vanished">Rory ID 11 (rajzolta: Ashtaka)</translation>
     </message>
     <message>
-        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1049"/>
+        <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="-1050"/>
         <source>An auto-updater for PollyMC-Continued</source>
         <translation>Automatikus frissítő a PollyMC-Continued-hez</translation>
     </message>
