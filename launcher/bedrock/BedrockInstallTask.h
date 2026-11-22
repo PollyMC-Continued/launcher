@@ -107,6 +107,7 @@ class BedrockInstallTask : public Task {
     void tryFe3Resolution();
     void packageDownloadFinished();
     void runPlatformInstall();
+    void continueWindowsInstall(const QString& installed);
     void runLinuxExtraction();
     void linuxExtractionFinished(int exitCode, int exitStatus);
     void finishInstall(bool extracted);

@@ -58,5 +58,8 @@ class BedrockPreflightStep : public LaunchStep {
     bool abort() override;
 
    private:
+    void runChecks();
+
     BedrockInstance* m_instance = nullptr;
+    bool m_aborted = false;
 };

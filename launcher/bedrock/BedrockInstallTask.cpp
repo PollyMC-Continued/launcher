@@ -49,6 +49,7 @@
 
 #include "Application.h"
 #include "BedrockArtifactTask.h"
+#include "BedrockAsync.h"
 #include "BedrockInstance.h"
 #include "BedrockVersionList.h"
 #include "FileSystem.h"
@@ -312,37 +313,16 @@ void BedrockInstallTask::runPlatformInstall()
 #if defined(Q_OS_WIN)
 
     if (m_version->packaging() == BedrockVersion::Packaging::Msixvc) {
-        /*
-         * The Windows single-version constraint, made explicit before the shared
-         * game is replaced: every Bedrock instance shares the installed package.
-         */
-        const QString installed = GdkPackageInstaller::installedMinecraftPackageFullName();
-        const QString expected = expectedWindowsPackageVersion(m_version);
-        if (!installed.isEmpty() && !expected.isEmpty() && !installed.contains(expected)) {
-            if (m_interactive) {
-                const auto answer =
-                    QMessageBox::question(nullptr,
-                                           tr("Replace the installed Bedrock game?"),
-                                           tr("Bedrock %1 will replace the currently installed shared Bedrock game (%2).\n\n"
-                                              "Only one GDK-era version of the game can be installed at a time: every Bedrock instance "
-                                              "launches the installed one, and switching versions reinstalls it. Continue?")
-                                               .arg(m_version->versionId(), installed),
-                                           QMessageBox::Yes | QMessageBox::No,
-                                           QMessageBox::No);
-                if (answer != QMessageBox::Yes) {
-                    emitFailed(tr("The game install was cancelled: the currently installed Bedrock version was kept."));
-                    return;
-                }
-            }
-        }
-
-        setStatus(tr("Installing the game with Windows (this is the entitled install; the account must own the game)"));
-        QString error;
-        if (!GdkPackageInstaller::installPackageFile(m_finalPackagePath, &error)) {
-            emitFailed(tr("Windows refused to install the Bedrock %1 package: %2").arg(m_version->versionId(), error));
+        if (GdkPackageInstaller::isRunningUnderWine()) {
+            emitFailed(tr("Bedrock Edition cannot be installed under Wine (Winlator, Proton, ...): it needs real Windows package "
+                          "deployment and Gaming Services."));
             return;
         }
-        finishInstall(false);
+        /* The installed-package query runs off the UI thread; the rest continues in continueWindowsInstall(). */
+        setStatus(tr("Checking the installed Bedrock game"));
+        BedrockAsync::runOffThread<QString>(
+            this, []() { return GdkPackageInstaller::installedMinecraftPackageFullName(); },
+            [this](QString installed) { continueWindowsInstall(installed); });
         return;
     }
 
@@ -385,6 +365,53 @@ void BedrockInstallTask::runPlatformInstall()
 
     emitFailed(tr("Bedrock game installation is not supported on this platform (no macOS backend is planned)."));
 
+#endif
+}
+
+void BedrockInstallTask::continueWindowsInstall(const QString& installed)
+{
+#if defined(Q_OS_WIN)
+    /*
+     * The Windows single-version constraint, made explicit before the shared
+     * game is replaced: every Bedrock instance shares the installed package.
+     */
+    const QString expected = expectedWindowsPackageVersion(m_version);
+    if (!installed.isEmpty() && !expected.isEmpty() && !installed.contains(expected)) {
+        if (m_interactive) {
+            const auto answer =
+                QMessageBox::question(nullptr,
+                                       tr("Replace the installed Bedrock game?"),
+                                       tr("Bedrock %1 will replace the currently installed shared Bedrock game (%2).\n\n"
+                                          "Only one GDK-era version of the game can be installed at a time: every Bedrock instance "
+                                          "launches the installed one, and switching versions reinstalls it. Continue?")
+                                           .arg(m_version->versionId(), installed),
+                                       QMessageBox::Yes | QMessageBox::No,
+                                       QMessageBox::No);
+            if (answer != QMessageBox::Yes) {
+                emitFailed(tr("The game install was cancelled: the currently installed Bedrock version was kept."));
+                return;
+            }
+        }
+    }
+
+    setStatus(tr("Installing the game with Windows (this is the entitled install; the account must own the game)"));
+    const QString packagePath = m_finalPackagePath;
+    /* Add-AppxPackage can take minutes: never on the UI thread. */
+    BedrockAsync::runOffThread<QString>(
+        this,
+        [packagePath]() {
+            QString error;
+            return GdkPackageInstaller::installPackageFile(packagePath, &error) ? QString() : (error.isEmpty() ? QStringLiteral("unknown error") : error);
+        },
+        [this](QString error) {
+            if (!error.isEmpty()) {
+                emitFailed(tr("Windows refused to install the Bedrock %1 package: %2").arg(m_version->versionId(), error));
+                return;
+            }
+            finishInstall(false);
+        });
+#else
+    Q_UNUSED(installed)
 #endif
 }
 

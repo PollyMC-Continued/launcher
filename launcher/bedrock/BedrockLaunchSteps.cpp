@@ -46,6 +46,7 @@
 
 #include "Application.h"
 #include "BedrockArtifacts.h"
+#include "BedrockAsync.h"
 #include "BedrockInstallTask.h"
 #include "BedrockVersionList.h"
 #include "FileSystem.h"
@@ -132,26 +133,51 @@ void BedrockEnsureGameStep::executeTask()
         emitFailed(tr("This Bedrock instance has no game version selected. Pick one on the instance's Version page."));
         return;
     }
+    /* The version list loads itself here (cached, non-blocking); no Version page visit is needed. */
+    BedrockVersionList::get()->ensureLoaded(this, [this]() {
+        if (!m_aborted) {
+            resolveVersion();
+        }
+    });
+}
+
+void BedrockEnsureGameStep::resolveVersion()
+{
+    const QString versionId = m_bedrockInstance->bedrockVersion();
     const BedrockVersion::Ptr version = BedrockVersionList::get()->findBedrockVersion(versionId);
     if (!version) {
-        emitFailed(tr("Bedrock version %1 is not known to the version list. Open the instance's Version page once while online and "
-                      "try again.")
-                       .arg(versionId));
+        emitFailed(tr("Bedrock version %1 is not in the version list. Check your internet connection and try again.").arg(versionId));
         return;
     }
 
-    if (BedrockInstallTask::isGameInstalled(m_bedrockInstance->instanceRoot(), version)) {
-        emit logLine(tr("The Bedrock %1 game is already installed.").arg(versionId), MessageLevel::Launcher);
-        /* The Windows extras (legacy registration, helper) may still be pending. */
+    /*
+     * The installed-game check and the Windows extras query PowerShell and the
+     * file system, so they run off the UI thread; the launcher stays responsive.
+     */
+    BedrockAsync::runOffThread<bool>(
+        this,
+        [this, version, versionId]() {
+            if (!BedrockInstallTask::isGameInstalled(m_bedrockInstance->instanceRoot(), version)) {
+                return false;
+            }
+            emit logLine(tr("The Bedrock %1 game is already installed.").arg(versionId), MessageLevel::Launcher);
 #if defined(Q_OS_WIN)
-        registerLegacyUwpPackage(version);
-        deployWindowsLaunchHelper(version);
+            /* The Windows extras (legacy registration, helper) may still be pending. */
+            registerLegacyUwpPackage(version);
+            deployWindowsLaunchHelper(version);
 #endif
-        emitSucceeded();
-        return;
-    }
-
-    runInstall();
+            return true;
+        },
+        [this](bool installed) {
+            if (m_aborted) {
+                return;
+            }
+            if (installed) {
+                emitSucceeded();
+            } else {
+                runInstall();
+            }
+        });
 }
 
 bool BedrockEnsureGameStep::abort()
@@ -179,8 +205,19 @@ void BedrockEnsureGameStep::installSucceeded()
 #if defined(Q_OS_WIN)
     const BedrockVersion::Ptr version = BedrockVersionList::get()->findBedrockVersion(m_bedrockInstance->bedrockVersion());
     if (version) {
-        registerLegacyUwpPackage(version);
-        deployWindowsLaunchHelper(version);
+        BedrockAsync::runOffThread<bool>(
+            this,
+            [this, version]() {
+                registerLegacyUwpPackage(version);
+                deployWindowsLaunchHelper(version);
+                return true;
+            },
+            [this](bool) {
+                if (!m_aborted) {
+                    emitSucceeded();
+                }
+            });
+        return;
     }
 #endif
     emitSucceeded();
@@ -269,11 +306,31 @@ void BedrockWindowsLaunchStep::executeTask()
         emitFailed(tr("Bedrock version %1 is not known to the version list.").arg(m_bedrockInstance->bedrockVersion()));
         return;
     }
+    /* Package queries and activation block, so they run off the UI thread. */
+    BedrockAsync::runOffThread<QString>(
+        this, [this, version]() { return launchBlocking(version); },
+        [this](QString error) {
+            if (error.isEmpty()) {
+                emitSucceeded();
+            } else {
+                emitFailed(error);
+            }
+        });
+#else
+    emitFailed(tr("The Windows Bedrock backend is only available on Windows."));
+#endif
+}
+
+QString BedrockWindowsLaunchStep::launchBlocking(const BedrockVersion::Ptr& version)
+{
+#if defined(Q_OS_WIN)
+    auto postStatus = [this](const QString& text) {
+        QMetaObject::invokeMethod(this, [this, text]() { setStatus(text); }, Qt::QueuedConnection);
+    };
 
     const QString installed = GdkPackageInstaller::installedMinecraftPackageFullName();
     if (installed.isEmpty()) {
-        emitFailed(tr("No Bedrock game package is installed for this user. Launch failed before the game install could complete."));
-        return;
+        return tr("No Bedrock game package is installed for this user. Launch failed before the game install could complete.");
     }
 
     /* The data profile first: the launched instance's data folder becomes the game's active one. */
@@ -281,35 +338,32 @@ void BedrockWindowsLaunchStep::executeTask()
 
     if (version->packaging() == BedrockVersion::Packaging::Appx) {
         /* The legacy UWP pipeline: activation through the game's protocol. */
-        setStatus(tr("Launching Bedrock %1 through its protocol").arg(version->versionId()));
+        postStatus(tr("Launching Bedrock %1 through its protocol").arg(version->versionId()));
         QString error;
         if (!GdkPackageInstaller::activateProtocol(QStringLiteral("minecraft:"), &error)) {
-            emitFailed(tr("Could not activate the registered Bedrock game: %1").arg(error));
-            return;
+            return tr("Could not activate the registered Bedrock game: %1").arg(error);
         }
         emit logLine(tr("Requested the Bedrock %1 launch through the minecraft: protocol.").arg(version->versionId()),
                      MessageLevel::Launcher);
-        emitSucceeded();
-        return;
+        return QString();
     }
 
     /* The GDK pipeline: activation through the installed package's AppUserModelID. */
-    setStatus(tr("Launching the installed Bedrock game"));
+    postStatus(tr("Launching the installed Bedrock game"));
     const QString aumid = GdkPackageInstaller::aumidForPackage(installed);
     if (aumid.isEmpty()) {
-        emitFailed(tr("Could not determine the AppUserModelID of the installed Bedrock package (%1).").arg(installed));
-        return;
+        return tr("Could not determine the AppUserModelID of the installed Bedrock package (%1).").arg(installed);
     }
     QString error;
     const qint64 pid = GdkPackageInstaller::activateAumid(aumid, QString(), &error);
     if (pid < 0) {
-        emitFailed(tr("Could not activate the installed Bedrock game: %1").arg(error));
-        return;
+        return tr("Could not activate the installed Bedrock game: %1").arg(error);
     }
     emit logLine(tr("Activated the installed Bedrock game (PID %1).").arg(pid), MessageLevel::Launcher);
-    emitSucceeded();
+    return QString();
 #else
-    emitFailed(tr("The Windows Bedrock backend is only available on Windows."));
+    Q_UNUSED(version)
+    return tr("The Windows Bedrock backend is only available on Windows.");
 #endif
 }
 

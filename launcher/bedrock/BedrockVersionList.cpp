@@ -34,6 +34,8 @@
 
 #include "BedrockVersionList.h"
 
+#include <memory>
+
 #include <algorithm>
 
 #include <QCoreApplication>
@@ -494,6 +496,25 @@ Task::Ptr BedrockVersionList::refresh(bool force)
         task->start();
     }
     return task;
+}
+
+void BedrockVersionList::ensureLoaded(QObject* context, std::function<void()> done)
+{
+    if (m_loaded) {
+        done();
+        return;
+    }
+    auto fired = std::make_shared<bool>(false);
+    auto callback = [fired, done]() {
+        if (*fired) {
+            return;
+        }
+        *fired = true;
+        done();
+    };
+    connect(this, &BedrockVersionList::refreshSucceeded, context, callback);
+    connect(this, &BedrockVersionList::refreshFailed, context, [callback](const QString&) { callback(); });
+    refresh(false);
 }
 
 bool BedrockVersionList::isLoaded()

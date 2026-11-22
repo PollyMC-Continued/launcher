@@ -408,6 +408,7 @@ set(BEDROCK_SOURCES
     bedrock/BedrockArtifactTask.h
     bedrock/BedrockArtifactTask.cpp
     bedrock/BedrockArtifacts.h
+    bedrock/BedrockAsync.h
     bedrock/BedrockCreationPage.h
     bedrock/BedrockCreationPage.cpp
     bedrock/BedrockCreationTask.h

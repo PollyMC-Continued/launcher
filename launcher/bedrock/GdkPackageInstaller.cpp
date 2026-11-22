@@ -110,6 +110,12 @@ DeploymentOutcome runAddPackageAsync(const QString& packagePath, bool developmen
  */
 int runPowerShell(const QString& script, QString* standardOutput, QString* standardError, int timeoutMs = 20 * 60 * 1000)
 {
+    if (GdkPackageInstaller::isRunningUnderWine()) {
+        if (standardError) {
+            *standardError = QObject::tr("Windows package deployment is not available under Wine.");
+        }
+        return -1;
+    }
     QProcess process;
     process.setCreateProcessArgumentsModifier([](QProcess::CreateProcessArguments* arguments) { arguments->flags |= CREATE_NO_WINDOW; });
     const QString wrapped = QStringLiteral(
@@ -290,6 +296,15 @@ namespace GdkPackageInstaller {
 bool isSupported()
 {
     return true;
+}
+
+bool isRunningUnderWine()
+{
+    static const bool underWine = []() {
+        const HMODULE ntdll = GetModuleHandleW(L"ntdll.dll");
+        return ntdll && GetProcAddress(ntdll, "wine_get_version") != nullptr;
+    }();
+    return underWine;
 }
 
 bool installPackageFile(const QString& packageFilePath, QString* error)
@@ -514,6 +529,11 @@ bool activateProtocol(const QString& protocolUrl, QString* error)
 namespace GdkPackageInstaller {
 
 bool isSupported()
+{
+    return false;
+}
+
+bool isRunningUnderWine()
 {
     return false;
 }

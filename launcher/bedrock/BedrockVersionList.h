@@ -35,6 +35,7 @@
 #pragma once
 
 #include <QDateTime>
+#include <functional>
 #include <QList>
 
 #include "BedrockVersion.h"
@@ -99,6 +100,15 @@ class BedrockVersionList : public BaseVersionList {
      * refreshSucceeded / refreshFailed signals report the outcome.
      */
     Task::Ptr refresh(bool force = false);
+
+    /*
+     * Calls done() once the list is available: immediately when it is already
+     * loaded, otherwise after a (cached, non-blocking) load finishes. done()
+     * is also called when the load fails, so callers re-check the lookup.
+     * Lets the launch pipeline work without the Version page having been
+     * opened first.
+     */
+    void ensureLoaded(QObject* context, std::function<void()> done);
 
     /* Human-readable description of where the current data came from. */
     QString statusDescription() const;

@@ -35,6 +35,7 @@
 #include "BedrockPreflightStep.h"
 
 #include "BedrockVersionList.h"
+#include "GdkPackageInstaller.h"
 #include "MessageLevel.h"
 #include "launch/LaunchTask.h"
 
@@ -48,6 +49,16 @@ void BedrockPreflightStep::executeTask()
         emitFailed(tr("Internal error: the Bedrock pre-flight step has no instance."));
         return;
     }
+    /* Load the version list (cached, non-blocking) so the user never has to open the Version page first. */
+    BedrockVersionList::get()->ensureLoaded(this, [this]() {
+        if (!m_aborted) {
+            runChecks();
+        }
+    });
+}
+
+void BedrockPreflightStep::runChecks()
+{
 
     QStringList lines;
     lines << tr("Bedrock pre-flight check:");
@@ -70,12 +81,18 @@ void BedrockPreflightStep::executeTask()
         lines << tr("  Package URLs known: %1")
                      .arg(version->hasPackageUrls() ? tr("yes") : tr("no (resolved when the install pipeline runs)"));
     } else {
-        lines << tr("  Details unknown: the Bedrock version list is not loaded yet.");
-        lines << tr("  The next step will try to install the game anyway; open the instance's Version page once while online "
-                    "if this fails.");
+        lines << tr("  Details unknown: this version is not in the Bedrock version list.");
     }
 
 #if defined(Q_OS_WIN)
+    if (GdkPackageInstaller::isRunningUnderWine()) {
+        lines << tr("  The launcher is running under Wine.");
+        emit logLines(lines, MessageLevel::Error);
+        emitFailed(tr("Bedrock Edition cannot be installed or launched under Wine (Winlator, Proton, ...): it needs real Windows "
+                      "package deployment and Gaming Services, which Wine does not provide. Use Java Edition here, or run the "
+                      "launcher on Windows or Linux."));
+        return;
+    }
     if (version) {
         if (version->isLegacyUwp()) {
             lines << tr("  Windows pipeline: legacy UWP package (.appx) - download, hash check, extract, developer-mode "
@@ -109,6 +126,7 @@ void BedrockPreflightStep::executeTask()
 
 bool BedrockPreflightStep::abort()
 {
+    m_aborted = true;
     emitAborted();
     return true;
 }

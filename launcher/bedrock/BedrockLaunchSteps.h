@@ -65,6 +65,7 @@ class BedrockEnsureGameStep : public LaunchStep {
     bool abort() override;
 
    private:
+    void resolveVersion();
     void runInstall();
     void installSucceeded();
     void installFailed(const QString& reason);
@@ -83,6 +84,9 @@ class BedrockWindowsLaunchStep : public LaunchStep {
     void executeTask() override;
 
    private:
+    /* The blocking part of the launch (package queries, activation); returns an error text, empty on success. */
+    QString launchBlocking(const BedrockVersion::Ptr& version);
+
     /*
      * Links the game's data folder to this instance's own data folder (the
      * BedrockLauncher-proven model): the launched instance's data - worlds,

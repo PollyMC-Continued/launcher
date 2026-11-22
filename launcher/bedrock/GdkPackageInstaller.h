@@ -61,6 +61,14 @@ namespace GdkPackageInstaller {
 bool isSupported();
 
 /*
+ * True when the launcher itself runs under Wine (Winlator, Proton, ...). The
+ * Windows package backend needs real AppX deployment and Gaming Services,
+ * which Wine does not provide; calling PowerShell's Appx cmdlets there hangs
+ * or takes the whole container down, so the backend refuses to start.
+ */
+bool isRunningUnderWine();
+
+/*
  * Installs a package file (.msixvc of the current GDK era, or an .appx of the
  * legacy UWP era) for the current user. Returns false with the deployment
  * service's own error text in *error on failure.
