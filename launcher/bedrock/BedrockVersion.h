@@ -80,6 +80,8 @@ class BedrockVersion : public BaseVersion {
     Channel channel() const { return m_channel; }
     void setChannel(Channel channel) { m_channel = channel; }
     static QString channelToString(Channel channel);
+    /* Type column label of the legacy UWP versions. */
+    static QString legacyLabel();
 
     ////// packaging (Windows install pipeline) //////
     Packaging packaging() const { return m_packaging; }

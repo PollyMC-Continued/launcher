@@ -35,7 +35,6 @@
 #include "BedrockCreationPage.h"
 
 #include <QCheckBox>
-#include <QFrame>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QPushButton>
@@ -93,40 +92,16 @@ BedrockCreationPage::BedrockCreationPage(NewInstanceDialog* dialog, QWidget* par
     versionLayout->addLayout(filterColumn);
     rootLayout->addLayout(versionLayout, 1);
 
-    auto separator = new QFrame(this);
-    separator->setFrameShape(QFrame::HLine);
-    separator->setFrameShadow(QFrame::Sunken);
-    rootLayout->addWidget(separator);
-
     /*
-     * The package area, where the Java page has its mod loader panel: on the
-     * left the selected version's package details (plus the platform notes),
-     * on the right the "Download the game files on creation" switch. There
-     * are no mod loaders for Bedrock - packs are imported after creation -
-     * and no modpack providers in this phase.
+     * There are no mod loaders for Bedrock (packs are imported after creation),
+     * so the version list takes the whole page. Only the "download on
+     * creation" switch stays, as a single row below the list.
      */
-    auto packageLayout = new QHBoxLayout();
-
-    m_packageDetails = new QLabel(this);
-    m_packageDetails->setWordWrap(true);
-    m_packageDetails->setAlignment(Qt::AlignTop);
-    packageLayout->addWidget(m_packageDetails, 1);
-
-    auto packageColumn = new QVBoxLayout();
-    auto packageLabel = new QLabel(tr("Package"), this);
-    packageLabel->setAlignment(Qt::AlignCenter);
-    packageColumn->addWidget(packageLabel);
-
     m_downloadOnCreate = new QCheckBox(tr("Download the game files on creation"), this);
     m_downloadOnCreate->setChecked(true);
     m_downloadOnCreate->setToolTip(tr("When unchecked the instance is created with the chosen version preselected, and the game "
                                       "package is installed on the first launch instead."));
-    packageColumn->addWidget(m_downloadOnCreate);
-
-    packageColumn->addStretch(1);
-    packageLayout->addLayout(packageColumn);
-
-    rootLayout->addLayout(packageLayout);
+    rootLayout->addWidget(m_downloadOnCreate);
 
     connect(m_versionList, &VersionSelectWidget::selectedVersionChanged, this, &BedrockCreationPage::suggestCurrent);
     connect(m_releasesFilter, &QCheckBox::stateChanged, this, &BedrockCreationPage::filterChanged);
@@ -142,7 +117,6 @@ BedrockCreationPage::BedrockCreationPage(NewInstanceDialog* dialog, QWidget* par
     connect(m_downloadOnCreate, &QCheckBox::toggled, this, &BedrockCreationPage::suggestCurrent);
 
     filterChanged();
-    updatePackageDetails(nullptr);
 }
 
 void BedrockCreationPage::openedImpl()
@@ -171,67 +145,30 @@ void BedrockCreationPage::suggestCurrent()
     const BedrockVersion::Ptr version = std::dynamic_pointer_cast<BedrockVersion>(selected);
     if (!version || version->descriptor().isEmpty()) {
         m_dialog->setBedrockSuggestedPack();
-        updatePackageDetails(nullptr);
         return;
     }
     m_dialog->setBedrockSuggestedPack(version->versionId(), new BedrockCreationTask(version, m_downloadOnCreate->isChecked()));
-    updatePackageDetails(version);
 }
 
 void BedrockCreationPage::filterChanged()
 {
     /*
      * The three filters are disjoint, mirroring the Java page's
-     * releases/snapshots/old checkboxes: current GDK releases, previews, and
-     * the legacy UWP-era releases. Nothing checked shows everything.
+     * releases/snapshots/old checkboxes: releases, previews and the legacy
+     * UWP-era versions. Each pattern is matched against the whole type column
+     * so a checked filter never lets another category through. Nothing
+     * checked shows everything.
      */
     QStringList patterns;
     if (m_releasesFilter->isChecked()) {
-        patterns << QStringLiteral("current GDK package");
+        patterns << QRegularExpression::escape(BedrockVersion::channelToString(BedrockVersion::Channel::Release));
     }
     if (m_previewsFilter->isChecked()) {
-        patterns << QStringLiteral("^Preview");
+        patterns << QRegularExpression::escape(BedrockVersion::channelToString(BedrockVersion::Channel::Preview));
     }
     if (m_oldUwpFilter->isChecked()) {
-        patterns << QStringLiteral("old UWP package");
+        patterns << QRegularExpression::escape(BedrockVersion::legacyLabel());
     }
-    const QString pattern = patterns.isEmpty() ? QStringLiteral(".*") : patterns.join(QLatin1Char('|'));
+    const QString pattern = patterns.isEmpty() ? QStringLiteral(".*") : QStringLiteral("^(?:%1)$").arg(patterns.join(QLatin1Char('|')));
     m_versionList->setFilter(BaseVersionList::TypeRole, Filters::regexp(QRegularExpression(pattern)));
-}
-
-void BedrockCreationPage::updatePackageDetails(const BedrockVersion::Ptr& version)
-{
-    QStringList lines;
-
-    if (version) {
-        lines << tr("Packaging: %1").arg(version->typeString());
-        if (!version->fileName().isEmpty()) {
-            lines << tr("Package file: %1").arg(version->fileName());
-        }
-        lines << tr("SHA-256: %1").arg(version->hasSha256() ? tr("known - verified on download") : tr("unknown for this version"));
-    } else {
-        lines << tr("No Bedrock version is selected.");
-    }
-
-    lines << QString();
-#if defined(Q_OS_WIN)
-    lines << tr(
-        "Pressing OK downloads and installs the game package of the selected version. Current versions install as Windows GDK "
-        "packages through Windows itself, which requires a Microsoft account that owns the game; only one GDK version can be "
-        "installed at a time, and switching to another one reinstalls the shared game (the launcher asks first). Versions up "
-        "to 1.21.120.20 install as legacy UWP packages that need developer mode. Every Bedrock instance is the data profile "
-        "(worlds, packs, settings) around the shared game; resource and behavior packs are imported after creation.");
-#elif defined(Q_OS_LINUX)
-    lines << tr(
-        "Pressing OK stages the game package of the selected version. The first launch sets up the experimental GDK-Proton "
-        "backend (the engine, umu and the licensing client are downloaded on first use, hash-pinned) and then runs the game. "
-        "Requires a Vulkan 1.3-class driver, an internet connection at every game start, and a Microsoft account that owns the "
-        "game. Achievements do not unlock in this backend.");
-#else
-    lines << tr(
-        "Bedrock support is not available on this platform: the Windows backend needs Windows, the Linux backend needs Linux, "
-        "and no macOS backend is planned.");
-#endif
-
-    m_packageDetails->setText(lines.join(QLatin1Char('\n')));
 }

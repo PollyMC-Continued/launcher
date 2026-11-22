@@ -40,7 +40,6 @@
 #include "ui/pages/BasePage.h"
 
 class QCheckBox;
-class QLabel;
 class QPushButton;
 class NewInstanceDialog;
 class VersionSelectWidget;
@@ -80,8 +79,6 @@ class BedrockCreationPage : public QWidget, public BasePage {
     void suggestCurrent();
     /* Applies the filter checkboxes to the version list filter. */
     void filterChanged();
-    /* Refreshes the package details panel below the version list. */
-    void updatePackageDetails(const BedrockVersion::Ptr& version);
 
     NewInstanceDialog* m_dialog = nullptr;
     BedrockVersionList* m_list = nullptr;
@@ -91,7 +88,6 @@ class BedrockCreationPage : public QWidget, public BasePage {
     QCheckBox* m_oldUwpFilter = nullptr;
     QPushButton* m_refreshButton = nullptr;
     QCheckBox* m_downloadOnCreate = nullptr;
-    QLabel* m_packageDetails = nullptr;
 
     bool m_initialized = false;
 };

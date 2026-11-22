@@ -67,16 +67,16 @@ QString BedrockVersion::name() const
 
 QString BedrockVersion::typeString() const
 {
-    const QString channelName = channelToString(m_channel);
-    switch (m_packaging) {
-        case Packaging::Msixvc:
-            return QString("%1 (%2)").arg(channelName, QCoreApplication::translate("BedrockVersion", "current GDK package"));
-        case Packaging::Appx:
-            return QString("%1 (%2)").arg(channelName, QCoreApplication::translate("BedrockVersion", "old UWP package"));
-        case Packaging::Unknown:
-        default:
-            return channelName;
+    /* Legacy UWP versions are shown as "Old", everything else by its channel. */
+    if (m_packaging == Packaging::Appx) {
+        return legacyLabel();
     }
+    return channelToString(m_channel);
+}
+
+QString BedrockVersion::legacyLabel()
+{
+    return QCoreApplication::translate("BedrockVersion", "Old");
 }
 
 QString BedrockVersion::channelToString(Channel channel)
