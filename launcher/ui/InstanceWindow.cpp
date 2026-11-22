@@ -136,7 +136,10 @@ InstanceWindow::InstanceWindow(BaseInstance* instance, QWidget* parent) : QMainW
 
     // add ourself as the modpack page's instance window
     {
-        static_cast<ManagedPackPage*>(m_container->getPage("managed_pack"))->setInstanceWindow(this);
+        // The managed_pack page is hidden (but present) for Bedrock instances and does
+        // not exist at all for other non-Minecraft instance types, so look before casting.
+        if (auto managedPackPage = m_container->getPage("managed_pack"))
+            static_cast<ManagedPackPage*>(managedPackPage)->setInstanceWindow(this);
     }
 
     show();

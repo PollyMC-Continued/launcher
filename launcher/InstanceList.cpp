@@ -55,6 +55,7 @@
 #include "InstanceTask.h"
 #include "NullInstance.h"
 #include "WatchLock.h"
+#include "bedrock/BedrockInstance.h"
 #include "minecraft/MinecraftInstance.h"
 #include "settings/INISettingsObject.h"
 
@@ -672,6 +673,8 @@ std::unique_ptr<BaseInstance> InstanceList::loadInstance(const InstanceId& id)
     // OneSix instance
     if (inst_type == "OneSix" || inst_type.isEmpty()) {
         inst.reset(new MinecraftInstance(m_globalSettings, std::move(instanceSettings), instanceRoot));
+    } else if (inst_type == "Bedrock") {
+        inst.reset(new BedrockInstance(m_globalSettings, std::move(instanceSettings), instanceRoot));
     } else {
         inst.reset(new NullInstance(m_globalSettings, std::move(instanceSettings), instanceRoot));
     }

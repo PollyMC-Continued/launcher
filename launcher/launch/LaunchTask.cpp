@@ -58,7 +58,7 @@ std::unique_ptr<LaunchTask> LaunchTask::create(MinecraftInstance* inst)
     return task;
 }
 
-LaunchTask::LaunchTask(MinecraftInstance* instance) : m_instance(instance) {}
+LaunchTask::LaunchTask(BaseInstance* instance) : m_instance(instance) {}
 
 void LaunchTask::appendStep(shared_qobject_ptr<LaunchStep> step)
 {

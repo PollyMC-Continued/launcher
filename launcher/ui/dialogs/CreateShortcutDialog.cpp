@@ -67,9 +67,20 @@ CreateShortcutDialog::CreateShortcutDialog(BaseInstance* instance, QWidget* pare
 
     auto mInst = dynamic_cast<MinecraftInstance*>(instance);
     m_QuickJoinSupported = mInst && mInst->traits().contains("feature:is_quick_play_singleplayer");
-    auto worldList = mInst->worldList();
-    worldList->update();
-    if (!m_QuickJoinSupported || worldList->empty()) {
+    WorldList* worldList = nullptr;
+    if (mInst) {
+        worldList = mInst->worldList();
+        worldList->update();
+        if (!m_QuickJoinSupported || worldList->empty()) {
+            ui->worldTarget->hide();
+            ui->worldSelectionBox->hide();
+            ui->serverTarget->setChecked(true);
+            ui->serverTarget->hide();
+            ui->serverLabel->show();
+        }
+    } else {
+        // Bedrock (and other non-Minecraft) instances have no Java world list, so the
+        // quick-join shortcut options don't apply to them either.
         ui->worldTarget->hide();
         ui->worldSelectionBox->hide();
         ui->serverTarget->setChecked(true);

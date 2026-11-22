@@ -1087,6 +1087,9 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_metacache->addBase("meta", QDir("meta").absolutePath());
         m_metacache->addBase("java", QDir("cache/java").absolutePath());
         m_metacache->addBase("feed", QDir("cache/feed").absolutePath());
+        // Bedrock Edition version databases (GdkLinks / Metadata / Rayth Network
+        // mirror), kept as cache/bedrock/<source file name>.
+        m_metacache->addBase("bedrock", QDir("cache/bedrock").absolutePath());
         m_metacache->Load();
         qInfo() << "<> Cache initialized.";
         if (m_splash)

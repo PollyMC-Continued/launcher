@@ -1,0 +1,13 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <!--
+      Bedrock Edition support: the emergency version-list snapshot (last
+      resort when neither the network nor a cached copy of the version
+      databases is available). Generated from the MIT-licensed
+      MinecraftBedrockArchiver/GdkLinks and MinecraftBedrockArchiver/Metadata
+      data; see bedrock_version_snapshot.json.
+    -->
+    <qresource prefix="/bedrock">
+        <file>bedrock_version_snapshot.json</file>
+    </qresource>
+</RCC>

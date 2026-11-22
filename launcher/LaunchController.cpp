@@ -69,7 +69,11 @@ void LaunchController::executeTask()
         return;
     }
 
-    if (!JavaCommon::checkJVMArgs(m_instance->settings()->get("JvmArgs").toString(), m_parentWidget)) {
+    // Bedrock instances are not launched with Java, so the JVM argument check does not
+    // apply to them.
+    const bool isBedrock = m_instance->traits().contains(QStringLiteral("bedrock"));
+
+    if (!isBedrock && !JavaCommon::checkJVMArgs(m_instance->settings()->get("JvmArgs").toString(), m_parentWidget)) {
         emitFailed(tr("Invalid Java arguments specified. Please fix this first."));
         return;
     }
@@ -274,6 +278,16 @@ QString LaunchController::askOfflineName(QString playerName, bool* ok)
 
 void LaunchController::login()
 {
+    /*
+     * Bedrock instances do not use the launcher's Java/Microsoft account system: the
+     * game handles Xbox sign-in itself on Windows, and the Linux licensing client (a
+     * later step of Bedrock support) owns sign-in there. No Java session is created.
+     */
+    if (m_instance->traits().contains(QStringLiteral("bedrock"))) {
+        launchInstance();
+        return;
+    }
+
     decideAccount();
 
     LaunchDecision decision = decideLaunchMode();
@@ -364,8 +378,13 @@ bool LaunchController::reauthenticateAccount(MinecraftAccountPtr account, QStrin
 
 void LaunchController::launchInstance()
 {
+    const bool isBedrock = m_instance->traits().contains(QStringLiteral("bedrock"));
+
     Q_ASSERT_X(m_instance != nullptr, "launchInstance", "instance is NULL");
-    Q_ASSERT_X(m_session.get() != nullptr, "launchInstance", "session is NULL");
+    // Bedrock instances launch without a Java auth session.
+    if (!isBedrock) {
+        Q_ASSERT_X(m_session.get() != nullptr, "launchInstance", "session is NULL");
+    }
 
     if (!m_instance->reloadSettings()) {
         QMessageBox::critical(m_parentWidget, tr("Error!"), tr("Couldn't load the instance profile."));
@@ -390,19 +409,25 @@ void LaunchController::launchInstance()
     connect(m_launcher, &LaunchTask::requestProgress, this, &LaunchController::onProgressRequested);
 
     // Prepend Online and Auth Status
-    QString online_mode;
-    if (m_actualLaunchMode == LaunchMode::Normal) {
-        online_mode = "online";
-
-        // Prepend Server Status
-        QStringList servers = { "login.microsoftonline.com", "session.minecraft.net", "textures.minecraft.net", "api.mojang.com" };
-
-        m_launcher->prependStep(makeShared<PrintServers>(m_launcher, servers));
+    if (isBedrock) {
+        // Bedrock instances have no Java online/offline session; the game itself
+        // handles sign-in, so there is no Mojang server status to print either.
+        m_launcher->prependStep(makeShared<TextPrint>(m_launcher, tr("Launched Bedrock instance\n"), MessageLevel::Launcher));
     } else {
-        online_mode = m_actualLaunchMode == LaunchMode::Demo ? "demo" : "offline";
-    }
+        QString online_mode;
+        if (m_actualLaunchMode == LaunchMode::Normal) {
+            online_mode = "online";
 
-    m_launcher->prependStep(makeShared<TextPrint>(m_launcher, "Launched instance in " + online_mode + " mode\n", MessageLevel::Launcher));
+            // Prepend Server Status
+            QStringList servers = { "login.microsoftonline.com", "session.minecraft.net", "textures.minecraft.net", "api.mojang.com" };
+
+            m_launcher->prependStep(makeShared<PrintServers>(m_launcher, servers));
+        } else {
+            online_mode = m_actualLaunchMode == LaunchMode::Demo ? "demo" : "offline";
+        }
+
+        m_launcher->prependStep(makeShared<TextPrint>(m_launcher, "Launched instance in " + online_mode + " mode\n", MessageLevel::Launcher));
+    }
 
     // Prepend Version
     {
@@ -415,7 +440,8 @@ void LaunchController::launchInstance()
 
 void LaunchController::readyForLaunch()
 {
-    if (!m_profiler) {
+    // Bedrock instances cannot be profiled with the Java profilers.
+    if (!m_profiler || m_instance->traits().contains(QStringLiteral("bedrock"))) {
         m_launcher->proceed();
         return;
     }

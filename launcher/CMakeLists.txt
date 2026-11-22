@@ -400,6 +400,48 @@ set(MINECRAFT_SOURCES
 
     minecraft/Agent.h)
 
+# Bedrock Edition instance support (new instance type): the instance scaffolding,
+# the version list, the creation UI, and the platform install/launch backends
+# (Windows GDK install + legacy UWP extract-and-register + AUMID activation;
+# Linux GDK-Proton engine, umu and the Xodus licensing client).
+set(BEDROCK_SOURCES
+    bedrock/BedrockArtifactTask.h
+    bedrock/BedrockArtifactTask.cpp
+    bedrock/BedrockArtifacts.h
+    bedrock/BedrockCreationPage.h
+    bedrock/BedrockCreationPage.cpp
+    bedrock/BedrockCreationTask.h
+    bedrock/BedrockCreationTask.cpp
+    bedrock/BedrockInstance.h
+    bedrock/BedrockInstance.cpp
+    bedrock/BedrockInstallTask.h
+    bedrock/BedrockInstallTask.cpp
+    bedrock/BedrockLaunchSteps.h
+    bedrock/BedrockLaunchSteps.cpp
+    bedrock/BedrockLaunchTask.h
+    bedrock/BedrockLaunchTask.cpp
+    bedrock/BedrockPreflightStep.h
+    bedrock/BedrockPreflightStep.cpp
+    bedrock/BedrockSettingsPage.h
+    bedrock/BedrockSettingsPage.cpp
+    bedrock/BedrockVersion.h
+    bedrock/BedrockVersion.cpp
+    bedrock/BedrockVersionList.h
+    bedrock/BedrockVersionList.cpp
+    bedrock/BedrockVersionPage.h
+    bedrock/BedrockVersionPage.cpp
+    bedrock/EngineProvider.h
+    bedrock/GdkPackageInstaller.h
+    bedrock/GdkPackageInstaller.cpp
+    bedrock/GdkProtonEngineProvider.h
+    bedrock/GdkProtonEngineProvider.cpp
+    bedrock/LegacyUwpFe3Source.h
+    bedrock/LegacyUwpFe3Source.cpp
+    bedrock/LicensingClient.h
+    bedrock/XodusLicensingClient.h
+    bedrock/XodusLicensingClient.cpp
+)
+
 # the screenshots feature
 set(SCREENSHOTS_SOURCES
     screenshots/Screenshot.h
@@ -780,6 +822,7 @@ set(LOGIC_SOURCES
     ${UPDATE_SOURCES}
     ${NEWS_SOURCES}
     ${MINECRAFT_SOURCES}
+    ${BEDROCK_SOURCES}
     ${SCREENSHOTS_SOURCES}
     ${TASKS_SOURCES}
     ${SETTINGS_SOURCES}
@@ -1358,6 +1401,7 @@ endif()
 
 qt_add_resources(LAUNCHER_RESOURCES
     resources/backgrounds/backgrounds.qrc
+    resources/bedrock/bedrock.qrc
     resources/branding/branding.qrc
     resources/multimc/multimc.qrc
     resources/pe_dark/pe_dark.qrc
@@ -1466,6 +1510,10 @@ target_link_libraries(Launcher_logic
     LocalPeer
     Launcher_rainbow
 )
+if(WIN32)
+    # COM activation and ShellExecute in bedrock/GdkPackageInstaller.cpp; MinGW does not link these implicitly
+    target_link_libraries(Launcher_logic ole32 shell32)
+endif()
 if (TARGET ${Launcher_QT_DBUS})
     add_compile_definitions(WITH_QTDBUS)
 endif()

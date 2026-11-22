@@ -47,7 +47,14 @@
 class LaunchTask : public Task {
     Q_OBJECT
    protected:
-    explicit LaunchTask(MinecraftInstance* instance);
+    /*
+     * The task itself is instance-type agnostic (it only needs the BaseInstance-level
+     * APIs: running state, settings, environments). The guarded generalization from
+     * MinecraftInstance* to BaseInstance* lets non-Java instance types (Bedrock) run
+     * behind this interface without touching the Java paths: LaunchTask::create()
+     * below keeps its MinecraftInstance* signature.
+     */
+    explicit LaunchTask(BaseInstance* instance);
     void init();
 
    public:
@@ -61,7 +68,12 @@ class LaunchTask : public Task {
     void prependStep(shared_qobject_ptr<LaunchStep> step);
     void setCensorFilter(QMap<QString, QString> filter);
 
-    MinecraftInstance* instance() { return m_instance; }
+    /*
+     * The Java launch steps expect a MinecraftInstance. Java instances get the exact
+     * same pointer as before; non-Java instances get nullptr (no Java step ever runs
+     * on their tasks).
+     */
+    MinecraftInstance* instance() { return dynamic_cast<MinecraftInstance*>(m_instance); }
 
     void setPid(qint64 pid)
     {
@@ -125,7 +137,7 @@ class LaunchTask : public Task {
     bool parseXmlLogs(QString const& line, MessageLevel level);
 
    protected: /* data */
-    MinecraftInstance* m_instance;
+    BaseInstance* m_instance;
     shared_qobject_ptr<LogModel> m_logModel;
     QList<shared_qobject_ptr<LaunchStep>> m_steps;
     QMap<QString, QString> m_censorFilter;
