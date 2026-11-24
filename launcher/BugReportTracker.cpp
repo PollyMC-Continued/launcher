@@ -17,6 +17,7 @@
 
 #include "BugReportTracker.h"
 
+#include <QCryptographicHash>
 #include <QDateTime>
 #include <QDebug>
 #include <QFileInfo>
@@ -25,6 +26,8 @@
 #include <QJsonObject>
 #include <QNetworkReply>
 #include <QNetworkRequest>
+#include <QSettings>
+#include <QSysInfo>
 #include <QUrl>
 #include <QUrlQuery>
 #include <algorithm>
@@ -43,6 +46,83 @@ constexpr qint64 MaxAgeSeconds = 180LL * 24 * 60 * 60;
 QString filePath()
 {
     return QStringLiteral("my_reports.json");
+}
+
+// ---- cool-down storage -------------------------------------------------------------------------------------------
+// The state is {until, seen} in epoch milliseconds plus a signature bound to this computer. "seen" is the latest clock
+// reading we know of, so turning the system clock back does not shorten the cool-down.
+constexpr qint64 SeenWriteStepMs = 60 * 1000;
+
+QString cooldownFilePath()
+{
+    return QStringLiteral("report_cooldown.dat");
+}
+
+QByteArray cooldownSignature(qint64 until, qint64 seen)
+{
+    QByteArray data = QByteArray::number(until) + '|' + QByteArray::number(seen) + '|' + QSysInfo::machineUniqueId() + "|pmc-report-guard-1";
+    return QCryptographicHash::hash(data, QCryptographicHash::Sha256).toHex();
+}
+
+QByteArray encodeCooldown(qint64 until, qint64 seen)
+{
+    QJsonObject o;
+    o["u"] = QString::number(until);
+    o["s"] = QString::number(seen);
+    o["g"] = QString::fromLatin1(cooldownSignature(until, seen));
+    return QJsonDocument(o).toJson(QJsonDocument::Compact);
+}
+
+bool decodeCooldown(const QByteArray& raw, qint64& until, qint64& seen)
+{
+    const auto o = QJsonDocument::fromJson(raw).object();
+    bool okUntil = false;
+    bool okSeen = false;
+    const qint64 u = o.value("u").toString().toLongLong(&okUntil);
+    const qint64 s = o.value("s").toString().toLongLong(&okSeen);
+    if (!okUntil || !okSeen || o.value("g").toString().toLatin1() != cooldownSignature(u, s))
+        return false;  // missing or edited: ignored, the other copy (or the relay) still knows
+    until = u;
+    seen = s;
+    return true;
+}
+
+QSettings& cooldownMirror()
+{
+    static QSettings settings(QStringLiteral("PollyMC-Continued"), QStringLiteral("ReportGuard"));
+    return settings;
+}
+
+void readCooldown(qint64& until, qint64& seen)
+{
+    until = 0;
+    seen = 0;
+    qint64 u = 0;
+    qint64 s = 0;
+    if (QFileInfo::exists(cooldownFilePath())) {
+        try {
+            if (decodeCooldown(FS::read(cooldownFilePath()), u, s)) {
+                until = qMax(until, u);
+                seen = qMax(seen, s);
+            }
+        } catch ([[maybe_unused]] const Exception& e) {
+        }
+    }
+    if (decodeCooldown(cooldownMirror().value(QStringLiteral("state")).toByteArray(), u, s)) {
+        until = qMax(until, u);
+        seen = qMax(seen, s);
+    }
+}
+
+void writeCooldown(qint64 until, qint64 seen)
+{
+    const QByteArray data = encodeCooldown(until, seen);
+    try {
+        FS::write(cooldownFilePath(), data);
+    } catch ([[maybe_unused]] const Exception& e) {
+    }
+    cooldownMirror().setValue(QStringLiteral("state"), data);
+    cooldownMirror().sync();
 }
 
 // Reports whose current status the user has not been told about yet.
@@ -147,6 +227,46 @@ void markAnnounced(const QStringList& ids)
     save(list);
 }
 
+namespace Cooldown {
+
+qint64 remainingSeconds()
+{
+    qint64 until = 0;
+    qint64 seen = 0;
+    readCooldown(until, seen);
+    if (until <= 0)
+        return 0;
+
+    const qint64 wall = QDateTime::currentMSecsSinceEpoch();
+    const qint64 now = qMax(wall, seen);  // a clock turned back cannot make the time stand still
+    if (now >= until)
+        return 0;
+    if (wall - seen >= SeenWriteStepMs)
+        writeCooldown(until, wall);  // remember how far the clock has got
+    return (until - now + 999) / 1000;
+}
+
+void engage(qint64 untilEpochMs)
+{
+    qint64 until = 0;
+    qint64 seen = 0;
+    readCooldown(until, seen);
+    const qint64 wall = QDateTime::currentMSecsSinceEpoch();
+    if (untilEpochMs <= wall || untilEpochMs <= until)
+        return;  // already over, or the one we have lasts longer
+    // sanity limit: whatever the relay says, never more than a day
+    writeCooldown(qMin(untilEpochMs, wall + 24LL * 3600 * 1000), qMax(wall, seen));
+}
+
+QString message()
+{
+    const qint64 minutes = (remainingSeconds() + 59) / 60;
+    const QString wait = minutes >= 55 ? QObject::tr("1 hour") : QObject::tr("%n minute(s)", nullptr, int(qMax<qint64>(minutes, 1)));
+    return QObject::tr("You are sending way too many reports. Please slow down and try again in about %1.").arg(wait);
+}
+
+}  // namespace Cooldown
+
 bool isFinal(const QString& status)
 {
     return status == QLatin1String("fixed") || status == QLatin1String("wont_fix") || status == QLatin1String("duplicate") ||
@@ -200,9 +320,12 @@ void BugReportStatusChecker::check()
         return;  // already running; its finished() is still coming
 
     QStringList ids;
+    int index = 0;
     for (const auto& e : BugReportTracker::load()) {
-        if (!BugReportTracker::isFinal(e.status) && ids.size() < MaxLookupIds)
+        // unfinished reports, plus the few newest ones so a note from the team always has a way to arrive
+        if ((!BugReportTracker::isFinal(e.status) || index < 3) && ids.size() < MaxLookupIds)
             ids.append(e.id);
+        ++index;
     }
     if (ids.isEmpty() || BuildConfig.BUG_REPORT_STATUS_URL.isEmpty()) {
         emit finished(unseenOf(BugReportTracker::load()));
@@ -236,6 +359,7 @@ void BugReportStatusChecker::onReplyFinished()
         if (obj.value("ok").toBool()) {
             const auto statuses = obj.value("statuses").toObject();
             QList<BugReportTracker::Entry> kept;
+            qint64 cooldownUntil = 0;
             for (auto e : list) {
                 if (!statuses.contains(e.id)) {
                     kept.append(e);  // not asked about (finished) or sent after the request started
@@ -247,6 +371,7 @@ void BugReportStatusChecker::onReplyFinished()
                     continue;
                 }
                 const auto s = value.toObject();
+                cooldownUntil = qMax(cooldownUntil, static_cast<qint64>(s.value("cooldown").toDouble()));
                 const QString status = s.value("status").toString();
                 if (!status.isEmpty() && (status != e.status || s.value("version").toString() != e.version)) {
                     e.status = status;
@@ -257,6 +382,8 @@ void BugReportStatusChecker::onReplyFinished()
             }
             list = kept;
             BugReportTracker::save(list);
+            if (cooldownUntil > 0)
+                BugReportTracker::Cooldown::engage(cooldownUntil);
         }
     } else {
         qDebug() << "Bug report status check failed:" << reply->errorString();  // silent: it will be tried again next start

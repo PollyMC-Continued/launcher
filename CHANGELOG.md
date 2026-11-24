@@ -1,5 +1,19 @@
 # Changelog
 
+## v10.1.2
+
+**Gets rid of the "Launcher closed unexpectedly" window and helps PCs with old graphics run Minecraft.**
+
+**Fixed:**
+
+- **No more "Launcher closed unexpectedly" window** — After the launcher had closed without warning, the next start opened a window offering to send a crash report. That window is gone for good, along with its checkbox in the launcher settings, so a crash no longer greets you with a dialog at the next launch. You can still send a report whenever you like with **Report a Bug**.
+
+**Added:**
+
+- **Software rendering for PCs with old graphics (Windows)** — If Minecraft crashes right at startup because your graphics card or driver is too old or missing, you can now turn on **Use software rendering** in an instance's settings (Performance). The game then draws with your processor instead, which works on almost any PC but is slow. The renderer is downloaded once on the first launch.
+- **Graphics driver guide (Windows)** — A step by step guide for finding and installing the right Intel, AMD or NVIDIA driver for your graphics card, with direct links, from the same settings page.
+- **Graphics hardware warning (Windows)** — When the launcher detects graphics hardware that is probably too old for Minecraft, it now tells you before launching and offers the guide or software rendering instead of letting the game crash.
+
 ## v10.1.1
 
 **Fixes for updating on Windows: the installer no longer deletes files before you confirm, it waits for locked files to be released, and the update prompts no longer abort or skip files by mistake.**

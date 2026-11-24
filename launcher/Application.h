@@ -258,9 +258,6 @@ class Application : public QApplication {
     bool createSetupWizard();
     void performMainStartupAction();
 
-    /// After an unclean exit, offers to send a crash report with the previous session's log.
-    void offerCrashRecovery();
-
     // sets the fatal error message and m_status to Failed.
     void showFatalErrorMessage(const QString& title, const QString& content);
 
@@ -334,10 +331,6 @@ class Application : public QApplication {
 
     // main window, if any
     MainWindow* m_mainWindow = nullptr;
-
-    // true when the previous run ended unexpectedly while the machine stayed up (crash, kill,
-    // freeze): a leftover crash marker alone no longer decides this, see CrashMarker.
-    bool m_previousRunCrashed = false;
 
     // the crash marker of this session (path, heartbeat, session-end handling)
     CrashMarker* m_crashMarker = nullptr;

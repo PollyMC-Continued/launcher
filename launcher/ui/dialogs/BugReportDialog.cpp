@@ -549,6 +549,10 @@ void BugReportDialog::prefillError(const QString& title, const QString& details)
 
 void BugReportDialog::reportError(QWidget* parent, const QString& title, const QString& details)
 {
+    if (BugReportTracker::Cooldown::remainingSeconds() > 0) {
+        QMessageBox::information(parent, tr("Report a Bug"), BugReportTracker::Cooldown::message());
+        return;
+    }
     if (BuildConfig.BUG_REPORT_API_URL.isEmpty()) {
         if (!BuildConfig.BUG_TRACKER_URL.isEmpty())
             DesktopServices::openUrl(QUrl(BuildConfig.BUG_TRACKER_URL));
@@ -675,6 +679,11 @@ QByteArray BugReportDialog::buildPayload(qint64 powTime, quint64 powNonce) const
 
 void BugReportDialog::send()
 {
+    if (BugReportTracker::Cooldown::remainingSeconds() > 0) {
+        QMessageBox::information(this, tr("Report a Bug"), BugReportTracker::Cooldown::message());
+        return;
+    }
+
     if (s_lastSent.isValid() && s_lastSent.secsTo(QDateTime::currentDateTime()) < CooldownSeconds) {
         QMessageBox::information(this, tr("Report a Bug"), tr("You just sent a report. Please wait a minute before sending another one."));
         return;

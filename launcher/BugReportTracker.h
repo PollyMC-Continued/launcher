@@ -49,6 +49,18 @@ void add(const QString& id, const QString& type, const QString& title);
 /// The user has now seen these statuses (toast shown or "My Reports" opened). Empty list = all reports.
 void markAnnounced(const QStringList& ids = {});
 
+/// Anyone's reports can be put on a cool-down by the team (the relay tells the launcher together with the report
+/// statuses, no address of the user is ever involved). While it lasts, new reports are refused on this computer.
+/// Kept in two places and signed, so deleting one file or rolling the clock back does not lift it.
+namespace Cooldown {
+/// Seconds left, 0 when sending is allowed.
+qint64 remainingSeconds();
+/// Starts (or extends, never shortens) the cool-down until the given time, in epoch milliseconds.
+void engage(qint64 untilEpochMs);
+/// "You're sending way too many reports..." with the time left, ready to show.
+QString message();
+}  // namespace Cooldown
+
 bool isFinal(const QString& status);
 QString displayId(const QString& id);       // K7X9F-3QD2M
 QString statusText(const QString& status, const QString& version);

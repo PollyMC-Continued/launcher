@@ -1731,6 +1731,10 @@ void MainWindow::on_actionReportBug_triggered()
         DesktopServices::openUrl(QUrl(BuildConfig.BUG_TRACKER_URL));
         return;
     }
+    if (BugReportTracker::Cooldown::remainingSeconds() > 0) {
+        QMessageBox::information(this, tr("Report a Bug"), BugReportTracker::Cooldown::message());
+        return;
+    }
     BugReportDialog dialog(this);
     dialog.exec();
 }
