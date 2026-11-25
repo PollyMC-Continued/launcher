@@ -269,8 +269,10 @@ QString message()
 
 bool isFinal(const QString& status)
 {
+    // "cannot_reproduce", "planned" and "in_progress" are deliberately not final: more details can still arrive, or the
+    // report moves on to "fixed" / "added" later, so the launcher keeps asking about them.
     return status == QLatin1String("fixed") || status == QLatin1String("wont_fix") || status == QLatin1String("duplicate") ||
-           status == QLatin1String("not_a_bug");
+           status == QLatin1String("not_a_bug") || status == QLatin1String("not_launcher") || status == QLatin1String("added");
 }
 
 QString displayId(const QString& id)
@@ -286,6 +288,10 @@ QString statusText(const QString& status, const QString& version)
         return QObject::tr("Seen - the team is looking into it");
     if (status == QLatin1String("need_info"))
         return QObject::tr("The team needs more information - please reach out on Discord");
+    if (status == QLatin1String("in_progress"))
+        return QObject::tr("A fix is being worked on");
+    if (status == QLatin1String("cannot_reproduce"))
+        return QObject::tr("The team couldn't reproduce it - more details would help");
     if (status == QLatin1String("fixed_next"))
         return QObject::tr("Fixed - it will be in the next update");
     if (status == QLatin1String("fixed"))
@@ -296,6 +302,12 @@ QString statusText(const QString& status, const QString& version)
         return QObject::tr("Duplicate of another report");
     if (status == QLatin1String("not_a_bug"))
         return QObject::tr("Not a bug");
+    if (status == QLatin1String("not_launcher"))
+        return QObject::tr("Not caused by the launcher - most likely a mod, Java or the game");
+    if (status == QLatin1String("planned"))
+        return QObject::tr("Planned - it may come in a future update");
+    if (status == QLatin1String("added"))
+        return QObject::tr("Added - thanks for the suggestion");
     return QObject::tr("Updated");  // a status newer than this launcher knows about
 }
 

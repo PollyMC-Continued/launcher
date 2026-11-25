@@ -2,7 +2,7 @@
 
 ## v10.1.2
 
-**Gets rid of the "Launcher closed unexpectedly" window, helps PCs with old graphics run Minecraft, and makes offline skins work on old Minecraft versions.**
+**Gets rid of the "Launcher closed unexpectedly" window, helps PCs with old graphics run Minecraft, makes offline skins work on old Minecraft versions, and gives your bug reports five new answers.**
 
 **Fixed:**
 
@@ -14,6 +14,7 @@
 - **Software rendering for PCs with old graphics (Windows)** — If Minecraft crashes right at startup because your graphics card or driver is too old or missing, you can now turn on **Use software rendering** in an instance's settings (Performance). The game then draws with your processor instead, which works on almost any PC but is slow. The renderer is downloaded once on the first launch.
 - **Graphics driver guide (Windows)** — A step by step guide for finding and installing the right Intel, AMD or NVIDIA driver for your graphics card, with direct links, from the same settings page.
 - **Graphics hardware warning (Windows)** — When the launcher detects graphics hardware that is probably too old for Minecraft, it now tells you before launching and offers the guide or software rendering instead of letting the game crash.
+- **Five new answers for your bug reports** — **My Reports** can now tell you more precisely what happened to a report: *A fix is being worked on*, *The team couldn't reproduce it - more details would help*, and *Not caused by the launcher* (most likely a mod, Java or the game). Suggestions can now also be marked *Planned* and *Added*, instead of only "Fixed". Launchers older than this version show a new answer as a plain *Updated*.
 
 ## v10.1.1
 

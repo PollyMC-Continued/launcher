@@ -39,13 +39,14 @@ namespace {
 // Mid-tone colours that stay readable with white text on both light and dark themes.
 QString statusColor(const QString& status)
 {
-    if (status == QLatin1String("fixed") || status == QLatin1String("fixed_next"))
+    if (status == QLatin1String("fixed") || status == QLatin1String("fixed_next") || status == QLatin1String("added"))
         return QStringLiteral("#2e9e5b");  // green
-    if (status == QLatin1String("need_info"))
+    if (status == QLatin1String("need_info") || status == QLatin1String("cannot_reproduce"))
         return QStringLiteral("#c77c0e");  // amber: the user has to do something
-    if (status == QLatin1String("seen"))
+    if (status == QLatin1String("seen") || status == QLatin1String("in_progress") || status == QLatin1String("planned"))
         return QStringLiteral("#3b7dd8");  // blue
-    if (status == QLatin1String("wont_fix") || status == QLatin1String("not_a_bug") || status == QLatin1String("duplicate"))
+    if (status == QLatin1String("wont_fix") || status == QLatin1String("not_a_bug") || status == QLatin1String("duplicate") ||
+        status == QLatin1String("not_launcher"))
         return QStringLiteral("#7a828e");  // grey
     return QStringLiteral("#7a828e");      // received / unknown
 }
@@ -59,8 +60,18 @@ QString pillText(const QString& status)
         return QObject::tr("In review");
     if (status == QLatin1String("need_info"))
         return QObject::tr("Needs info");
+    if (status == QLatin1String("in_progress"))
+        return QObject::tr("In progress");
+    if (status == QLatin1String("cannot_reproduce"))
+        return QObject::tr("Can't reproduce");
     if (status == QLatin1String("fixed_next") || status == QLatin1String("fixed"))
         return QObject::tr("Fixed");
+    if (status == QLatin1String("planned"))
+        return QObject::tr("Planned");
+    if (status == QLatin1String("added"))
+        return QObject::tr("Added");
+    if (status == QLatin1String("not_launcher"))
+        return QObject::tr("Not the launcher");
     if (status == QLatin1String("wont_fix"))
         return QObject::tr("Won't be fixed");
     if (status == QLatin1String("duplicate"))
