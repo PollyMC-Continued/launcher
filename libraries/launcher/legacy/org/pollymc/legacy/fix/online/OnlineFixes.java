@@ -63,6 +63,9 @@ public final class OnlineFixes implements URLStreamHandlerFactory {
             return;
         }
 
+        // offline accounts: serve the account's own skin instead of the online skin of the same name
+        SkinFix.setLocalSkin(params.getString("userName", null), params.getString("offlineSkinDir", null));
+
         try {
             URL.setURLStreamHandlerFactory(new OnlineFixes());
         } catch (Error e) {

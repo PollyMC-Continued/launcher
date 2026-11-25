@@ -60,24 +60,55 @@ import org.pollymc.legacy.utils.url.UrlUtils;
 import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.Proxy;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 
 import javax.imageio.ImageIO;
 
 final class SkinFix {
+    // the offline account being played, and the launcher's skin folder for it (skin.png, skin.json, cape.png)
+    private static volatile String localOwner;
+    private static volatile File localDir;
+
+    static void setLocalSkin(String owner, String dir) {
+        if (owner == null || owner.isEmpty() || dir == null || dir.isEmpty()) {
+            localOwner = null;
+            localDir = null;
+            return;
+        }
+
+        localOwner = owner;
+        localDir = new File(dir);
+    }
+
     static URLConnection openConnection(URL address, Proxy proxy) throws IOException {
         String skinOwner = findSkinOwner(address);
-        if (skinOwner != null)
+        if (skinOwner != null) {
+            // an offline account's own skin comes from the launcher, not from the online player with that name
+            URLConnection local = getLocalSkinConnection(skinOwner);
+            if (local != null)
+                return local;
+
             // we need to correct the skin
             return getSkinConnection(skinOwner, proxy);
+        }
 
         String capeOwner = findCapeOwner(address);
         if (capeOwner != null) {
+            URLConnection local = getLocalCapeConnection(capeOwner);
+            if (local != null)
+                return local;
+
             // since we do not need to process the image, open a direct connection bypassing
             // Handler
             Texture texture = MojangApi.getTexture(MojangApi.getUuid(capeOwner), "CAPE");
@@ -90,6 +121,64 @@ final class SkinFix {
         return null;
     }
 
+    private static File localFile(String owner, String name) {
+        File dir = localDir;
+        String self = localOwner;
+
+        if (dir == null || self == null || !self.equalsIgnoreCase(owner))
+            return null;
+
+        File file = new File(dir, name);
+
+        return file.isFile() ? file : null;
+    }
+
+    private static URLConnection getLocalSkinConnection(String owner) {
+        File skin = localFile(owner, "skin.png");
+        if (skin == null)
+            return null;
+
+        try (InputStream in = new FileInputStream(skin)) {
+            byte[] converted = toLegacySkin(in, isSlim(new File(skin.getParentFile(), "skin.json")));
+            if (converted != null)
+                return new ByteArrayUrlConnection(converted);
+        } catch (Exception e) {
+            // unreadable local skin: fall back to the online one
+        }
+
+        return null;
+    }
+
+    private static URLConnection getLocalCapeConnection(String owner) {
+        File cape = localFile(owner, "cape.png");
+        if (cape == null)
+            return null;
+
+        try {
+            return new ByteArrayUrlConnection(Files.readAllBytes(cape.toPath()));
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
+    // the skin manager stores the model next to the skin as {"model": "SLIM"} or {"model": "CLASSIC"}
+    private static boolean isSlim(File meta) {
+        if (!meta.isFile())
+            return false;
+
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(meta), StandardCharsets.UTF_8))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.contains("\"model\"") && line.toUpperCase().contains("SLIM"))
+                    return true;
+            }
+        } catch (IOException e) {
+            // treat as classic
+        }
+
+        return false;
+    }
+
     private static URLConnection getSkinConnection(String owner, Proxy proxy) throws IOException {
         Texture texture = MojangApi.getTexture(MojangApi.getUuid(owner), "SKIN");
         if (texture == null)
@@ -97,42 +186,61 @@ final class SkinFix {
 
         URLConnection connection = UrlUtils.openConnection(texture.getUrl(), proxy);
         try (InputStream in = connection.getInputStream()) {
-            // thank you ahnewark!
-            // this is heavily based on
-            // https://github.com/ahnewark/MineOnline/blob/4f4f86f9d051e0a6fd7ff0b95b2a05f7437683d7/src/main/java/gg/codie/mineonline/gui/textures/TextureHelper.java#L17
-            BufferedImage image = ImageIO.read(in);
-            Graphics2D graphics = image.createGraphics();
-            graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
+            byte[] converted = toLegacySkin(in, texture.isSlim());
+            if (converted == null)
+                return null;
 
-            BufferedImage subimage;
-
-            if (image.getHeight() > 32) {
-                // flatten second layers
-                subimage = image.getSubimage(0, 32, 56, 16);
-                graphics.drawImage(subimage, 0, 16, null);
-            }
-
-            if (texture.isSlim()) {
-                // convert slim to classic
-                subimage = image.getSubimage(45, 16, 9, 16);
-                graphics.drawImage(subimage, 46, 16, null);
-
-                subimage = image.getSubimage(49, 16, 2, 4);
-                graphics.drawImage(subimage, 50, 16, null);
-
-                subimage = image.getSubimage(53, 20, 2, 12);
-                graphics.drawImage(subimage, 54, 20, null);
-            }
-
-            graphics.dispose();
-
-            // crop the image - old versions disregard all secondary layers besides the hat
-            ByteArrayOutputStream out = new ByteArrayOutputStream();
-            image = image.getSubimage(0, 0, 64, 32);
-            ImageIO.write(image, "png", out);
-
-            return new ByteArrayUrlConnection(out.toByteArray());
+            return new ByteArrayUrlConnection(converted);
         }
+    }
+
+    /**
+     * Converts a modern skin to the 64x32 classic layout that old versions understand.
+     *
+     * @return the PNG data, or <code>null</code> if the image can't be used
+     */
+    private static byte[] toLegacySkin(InputStream in, boolean slim) throws IOException {
+        BufferedImage source = ImageIO.read(in);
+        if (source == null || source.getWidth() < 64 || source.getHeight() < 32)
+            return null;
+
+        // draw onto a plain ARGB canvas so indexed or grayscale PNGs can be edited too
+        BufferedImage image = new BufferedImage(source.getWidth(), source.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D graphics = image.createGraphics();
+        graphics.drawImage(source, 0, 0, null);
+        graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
+
+        BufferedImage subimage;
+
+        // thank you ahnewark!
+        // this is heavily based on
+        // https://github.com/ahnewark/MineOnline/blob/4f4f86f9d051e0a6fd7ff0b95b2a05f7437683d7/src/main/java/gg/codie/mineonline/gui/textures/TextureHelper.java#L17
+        if (image.getHeight() > 32) {
+            // flatten second layers
+            subimage = image.getSubimage(0, 32, 56, 16);
+            graphics.drawImage(subimage, 0, 16, null);
+        }
+
+        if (slim) {
+            // convert slim to classic
+            subimage = image.getSubimage(45, 16, 9, 16);
+            graphics.drawImage(subimage, 46, 16, null);
+
+            subimage = image.getSubimage(49, 16, 2, 4);
+            graphics.drawImage(subimage, 50, 16, null);
+
+            subimage = image.getSubimage(53, 20, 2, 12);
+            graphics.drawImage(subimage, 54, 20, null);
+        }
+
+        graphics.dispose();
+
+        // crop the image - old versions disregard all secondary layers besides the hat
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        image = image.getSubimage(0, 0, 64, 32);
+        ImageIO.write(image, "png", out);
+
+        return out.toByteArray();
     }
 
     private static String findSkinOwner(URL address) {

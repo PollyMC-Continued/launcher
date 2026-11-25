@@ -2,11 +2,12 @@
 
 ## v10.1.2
 
-**Gets rid of the "Launcher closed unexpectedly" window and helps PCs with old graphics run Minecraft.**
+**Gets rid of the "Launcher closed unexpectedly" window, helps PCs with old graphics run Minecraft, and makes offline skins work on old Minecraft versions.**
 
 **Fixed:**
 
 - **No more "Launcher closed unexpectedly" window** — After the launcher had closed without warning, the next start opened a window offering to send a crash report. That window is gone for good, along with its checkbox in the launcher settings, so a crash no longer greets you with a dialog at the next launch. You can still send a report whenever you like with **Report a Bug**.
+- **Offline skins on old Minecraft versions** — With **legacy online tweaks** turned on, an offline account in an old Minecraft version got the skin of the online player with the same username instead of the skin you picked in the skin manager, because old versions ask for a skin by player name and the launcher looked that name up online. The launcher now gives the game your account's own skin first, with the right arm width, and your offline cape too. Other players' skins still come from the online lookup, and an account with no skin picked still falls back to it as before.
 
 **Added:**
 

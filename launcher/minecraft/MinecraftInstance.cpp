@@ -899,8 +899,16 @@ QString MinecraftInstance::createLaunchScript(AuthSessionPtr session, MinecraftT
         launchScript += "traits " + trait + "\n";
     }
 
-    if (shouldApplyOnlineFixes())
+    if (shouldApplyOnlineFixes()) {
         launchScript += "onlineFixes true\n";
+
+        // Offline accounts keep their skin and cape in the launcher's skin store, filed under the account's
+        // UUID. Legacy Minecraft asks for skins by player name, so hand the legacy skin fix the folder to serve
+        // the account's own skin from instead of looking the name up online.
+        if (session && session->user_type == "offline" && !session->uuid.isEmpty()) {
+            launchScript += "offlineSkinDir " + FS::PathCombine(APPLICATION->dataRoot(), "skins", session->uuid) + "\n";
+        }
+    }
 
     launchScript += "launcher " + getLauncher() + "\n";
 
