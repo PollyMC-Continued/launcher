@@ -1,108 +1,46 @@
 <div align="center">
 
-<p align="center">
-  <img width="600" height="160" src="/program_info/org.pollymc.PollyMC.svg" alt="PollyMC-Continued logo">
-</p>
+# QLauncher
 
-<p align="center">
-  <a href="https://pollymc.vercel.app/">
-    <img src="/program_info/launcher-logo-text.svg" alt="PollyMC-Continued" height="60">
-  </a>
-</p>
+**Play Minecraft your way.** A fast, open-source custom launcher based on [PollyMC-Continued](https://github.com) and [Prism Launcher](https://github.com).
 
-**Play Minecraft your way.** Offline accounts with no strings attached, a built-in skin browser, scriptable bots and a launcher that stays fast.
-
-PollyMC lives on. This revival is built on top of [Prism Launcher](https://github.com/PrismLauncher/PrismLauncher), not on fn2006's original repo.
-
-<div>
-
-[![GitHub Repo stars](https://img.shields.io/github/stars/PollyMC-Continued/launcher?label=Stars&style=for-the-badge&color=%23f5c2e7)](https://github.com/PollyMC-Continued/launcher/stargazers)
-[![GitHub release](https://img.shields.io/github/v/release/PollyMC-Continued/launcher?style=for-the-badge&color=%23f5c2e7)](https://github.com/PollyMC-Continued/launcher/releases)
-[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/FsM3JNTN9z)
-
-</div>
+[![GitHub Repo stars](https://shields.io)](https://github.com)
+[![GitHub release](https://shields.io)](https://github.com)
 
 </div>
 
 ## Features
 
-**Accounts**
-
-- Offline accounts that unlock the whole game, no Microsoft login needed
-- Authlib-injector support for third-party auth servers
-- A setup wizard that offers to create an offline account the first time you open the launcher
-
-**Skins**
-
-- Keep a local skin library and let the offline skin agent serve it to the game
-- Browse [crafty.gg](https://crafty.gg/) from inside the launcher, with search, paging and a 3D preview you can spin around
-
-**Tools**
-
-- Command palette on `Ctrl+Shift+P`: type to find any launcher action and hit Enter to run it
-- Bot manager: spawn Minecraft bots, join a server, drive them from a console, or script whole routines with chat, commands, waits and loops
-- Instance health check that understands NeoForge Jar-in-Jar, so bundled dependencies aren't flagged as missing
-- Report A Bug dialog, reachable straight from error windows
-
-**Polish**
-
-- Better settings search
-- Picks your language automatically, and the splash screen speaks it too
-- Automatic updates from GitHub releases on Windows and Linux
-- NSIS installer with in-place upgrades
-- apt and pacman repositories hosted on GitHub Pages
-- 100% free and open source
-- ...and everything Prism Launcher already does
+- **Accounts:** Offline accounts without Microsoft login requirements, authlib-injector support, and a first-run setup wizard.
+- **Skins:** Local skin library management and integrated [crafty.gg](https://crafty.gg) skin browser with 3D previews.
+- **Tools:** Command palette (`Ctrl+Shift+P`), bot manager for scripting and controlling Minecraft bots, NeoForge Jar-in-Jar instance health checks, and a built-in bug reporter.
+- **Polish:** Enhanced settings search, automatic language selection, GitHub releases auto-updates (Windows/Linux), and APT/Pacman repositories via GitHub Pages.
 
 ## Installing on NixOS
 
-The AppImage and tarball releases do not work out of the box on NixOS - use the flake instead. The simplest way is to install it directly:
+For NixOS, use the flake installation method:
 
 ```shell
-nix profile add github:PollyMC-Continued/launcher
+nix profile add github:shotti/launcher
 ```
 
-Or add it to your flake and include it in your system packages:
+Or add it to your flake's `inputs`:
 
 ```nix
 {
   inputs = {
-    pollymc.url = "github:PollyMC-Continued/launcher";
+    qlauncher.url = "github:shotti/launcher";
   };
 }
 ```
 
-```nix
-# in a NixOS module
-{ pkgs, ... }:
-{
-  environment.systemPackages = [ pollymc.packages.${pkgs.stdenv.hostPlatform.system}.pollymc ];
-}
-```
-
-See [nix/README.md](nix/README.md) for the binary cache, the overlay and ways to customize the wrapped package.
-
-## Star History
-
-<a href="https://www.star-history.com/?repos=pollymc-continued%2Flauncher&type=date&legend=bottom-right">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=pollymc-continued/launcher&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=pollymc-continued/launcher&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=pollymc-continued/launcher&type=date&legend=top-left" />
- </picture>
-</a>
+See [nix/README.md](nix/README.md) for custom packaging and binary cache details.
 
 ## Contributing
 
-Found a bug or have an idea? Open an [issue](https://github.com/PollyMC-Continued/launcher/issues) or use Report A Bug inside the launcher. Pull requests for code, docs and translations are always appreciated.
-
-## Good to know
-
-- Not affiliated with the Prism Launcher team
-- No tracking and no data collection, and the source is open if you want to verify that
-- Built for people who want to play Minecraft without being forced to buy it first
-- Contributions from anyone are welcome
+Open an [issue](https://github.com) or pull request on GitHub, or use the in-app bug reporter.
 
 ## License
 
-Released under the terms of the [LICENSE](https://github.com/PollyMC-Continued/launcher/blob/main/LICENSE) file.
+Open-source and released under the project [LICENSE](https://github.com).
+
