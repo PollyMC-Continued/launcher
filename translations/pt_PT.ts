@@ -765,7 +765,7 @@ The account UUID stays the same, so your singleplayer progress and your selected
         <translation>Configuracão de sistema incompatível</translation>
     </message>
     <message>
-        <location line="+1056"/>
+        <location line="+996"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -800,12 +800,12 @@ Verifica o registo do atualizador do Prism Launcher em:
 para ver os detalhes sobre a última tentativa de atualização.</translation>
     </message>
     <message>
-        <location line="-1777"/>
+        <location line="-1721"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Não é possível apresentar este registo porque o comprimento do registo ultrapassou %1 linhas.</translation>
     </message>
     <message>
-        <location line="+1599"/>
+        <location line="+1543"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Parece que usaste %1 em %2 anteriormente. Queres migrar os teus dados para a nova localização em %3?</translation>
     </message>
@@ -873,7 +873,7 @@ Verifique o registo do atualizador do PollyMC-Continued em:
 para detalhes.</translation>
     </message>
     <message>
-        <location line="-1900"/>
+        <location line="-1841"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -909,7 +909,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+530"/>
+        <location line="+531"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -993,42 +993,12 @@ Podes resolver este problema remontando /tmp como &apos;exec&apos; ou definindo 
 </translation>
     </message>
     <message>
-        <location line="+229"/>
+        <location line="+227"/>
         <source>Opening the launcher…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+487"/>
-        <location line="+20"/>
-        <source>Launcher closed unexpectedly</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-19"/>
-        <source>%1 did not shut down properly last time.
-
-If it crashed or froze on you, you can send us a crash report - the log from that session is attached automatically.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Report this crash</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Ignore</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+11"/>
-        <source>The launcher closed unexpectedly (crash or freeze). Last part of the log from that session:
-
-%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+362"/>
+        <location line="+809"/>
         <source>Instances were found at %1, but %2 is looking in %3. Do you want to migrate them to the new location?</source>
         <translation>Foram encontradas instâncias em %1, mas %2 está a procurar em %3. Queres migrá-las para a nova localização?</translation>
     </message>
@@ -1063,7 +1033,7 @@ Copiá-las para esta pasta portátil? As tuas contas, definições e lista de in
         <translation type="vanished">Atualização em progresso</translation>
     </message>
     <message>
-        <location line="-1500"/>
+        <location line="-1440"/>
         <source>Settings</source>
         <translation>configurações</translation>
     </message>
@@ -1094,7 +1064,7 @@ para obter detalhes sobre a última tentativa de atualização.
 Para eliminar este bloqueio e prosseguir, carrega em &quot;Ignorar&quot; abaixo.</translation>
     </message>
     <message>
-        <location line="+1344"/>
+        <location line="+1284"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>Foram encontrados dados antigos de %1, mas já tens dados existentes para %2. Infelizmente, precisarás de migrar-te sozinho. Queres ser lembrado da migração de dados pendente para a próxima vez que iniciares o %2?</translation>
     </message>
@@ -1867,16 +1837,18 @@ Para eliminar este bloqueio e prosseguir, carrega em &quot;Ignorar&quot; abaixo.
     <name>BugReportDialog</name>
     <message>
         <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
-        <location line="+452"/>
+        <location line="+393"/>
+        <location line="+63"/>
         <location line="+11"/>
         <location line="+56"/>
+        <location line="+5"/>
         <location line="+8"/>
         <location line="+9"/>
         <source>Report a Bug</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-518"/>
+        <location line="-527"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2066,7 +2038,7 @@ What I was doing when this happened:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+23"/>
         <source>Launcher: %1 (%2)
 System: %3
 CPU architecture: %4
@@ -2105,7 +2077,7 @@ Qt: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+61"/>
         <source>You just sent a report. Please wait a minute before sending another one.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3950,6 +3922,47 @@ Esta instância não pode iniciar porque algumas bibliotecas estão em falta ou 
     </message>
 </context>
 <context>
+    <name>EnsureSoftwareRenderer</name>
+    <message>
+        <location filename="../launcher/minecraft/launch/EnsureSoftwareRenderer.cpp" line="+40"/>
+        <source>Software rendering is turned on, but the software renderer is not installed and cannot be downloaded by this version.
+Copy the 64-bit Mesa files opengl32.dll, libgallium_wgl.dll and libglapi.dll into this folder, or turn software rendering off:
+  %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>The software renderer is not installed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Downloading the software renderer (needed once)...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Software renderer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Could not download the software renderer: %1
+Turn software rendering off or try again with a working Internet connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Could not install the software renderer: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Software renderer installed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EntitlementsStep</name>
     <message>
         <location filename="../launcher/minecraft/auth/steps/EntitlementsStep.cpp" line="+56"/>
@@ -5277,6 +5290,39 @@ Do you want to continue anyway?</source>
         <location line="+24"/>
         <source>Got skin</source>
         <translation>Skin obtida</translation>
+    </message>
+</context>
+<context>
+    <name>GpuDriverGuideDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/GpuDriverGuideDialog.cpp" line="+51"/>
+        <source>Graphics Driver Guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Your graphics card could not be detected automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>&lt;b&gt;Detected graphics:&lt;/b&gt; %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Windows is using its basic built-in display driver, so no real graphics driver is installed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>%1 drivers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>&lt;h3&gt;How to update your graphics driver&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;&lt;b&gt;Find your graphics card.&lt;/b&gt; Press &lt;i&gt;Win + R&lt;/i&gt;, type &lt;i&gt;dxdiag&lt;/i&gt; and press Enter, then open the &lt;i&gt;Display&lt;/i&gt; tab. Or open &lt;i&gt;Device Manager&lt;/i&gt; and expand &lt;i&gt;Display adapters&lt;/i&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Laptop or ready-made PC?&lt;/b&gt; Check the maker&apos;s support page for your exact model first (Dell, HP, Lenovo, ASUS, Acer...). Their drivers are tested for your machine. Otherwise use the buttons above:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Intel:&lt;/b&gt; run the &lt;i&gt;Intel Driver &amp;amp; Support Assistant&lt;/i&gt;, it finds the right driver for you.&lt;/li&gt;&lt;li&gt;&lt;b&gt;AMD:&lt;/b&gt; pick your product on the AMD page, or run the AMD auto-detect tool.&lt;/li&gt;&lt;li&gt;&lt;b&gt;NVIDIA:&lt;/b&gt; pick your product on the NVIDIA page, or use the NVIDIA app.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Install it and restart your PC.&lt;/b&gt; Choose a clean or standard install, both are fine.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Check it worked.&lt;/b&gt; In &lt;i&gt;dxdiag&lt;/i&gt; the Display tab should show your real card with a driver version, not &quot;Microsoft Basic Display Adapter&quot;.&lt;/li&gt;&lt;/ol&gt;&lt;h3&gt;Still not working?&lt;/h3&gt;&lt;p&gt;Very old graphics (for example Intel HD Graphics 2000/3000 and older, or cards from before about 2012) cannot run recent Minecraft versions even with the latest driver. In that case:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Play an older Minecraft version (1.16.5 or older work on much older hardware), or&lt;/li&gt;&lt;li&gt;turn on &lt;i&gt;Use software rendering&lt;/i&gt; in the instance&apos;s settings under Performance. It works on almost any PC but is slow, or&lt;/li&gt;&lt;li&gt;upgrade the graphics card.&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6658,8 +6704,8 @@ Podes alterar a versão do Java nas definições mais tarde.
 <context>
     <name>LaunchController</name>
     <message>
-        <location filename="../launcher/LaunchController.cpp" line="+165"/>
-        <location line="+309"/>
+        <location filename="../launcher/LaunchController.cpp" line="+168"/>
+        <location line="+355"/>
         <source>Abort</source>
         <translation>Cancelar</translation>
     </message>
@@ -6669,7 +6715,7 @@ Podes alterar a versão do Java nas definições mais tarde.
         <translation>Erro</translation>
     </message>
     <message>
-        <location line="-203"/>
+        <location line="-249"/>
         <source>Auth servers offline</source>
         <translation>Servidores de autenticação offline</translation>
     </message>
@@ -6714,7 +6760,7 @@ Podes alterar a versão do Java nas definições mais tarde.
     </message>
     <message>
         <location line="+153"/>
-        <location line="+56"/>
+        <location line="+102"/>
         <source>Error!</source>
         <translation>Erro!</translation>
     </message>
@@ -6724,7 +6770,7 @@ Podes alterar a versão do Java nas definições mais tarde.
         <translation>Não foi possível instanciar o launcher.</translation>
     </message>
     <message>
-        <location line="-133"/>
+        <location line="-179"/>
         <source>The Minecraft authentication servers are currently unavailable, launching in offline mode.
 
 </source>
@@ -6743,12 +6789,51 @@ Podes alterar a versão do Java nas definições mais tarde.
         <translation>%1. Queres reautenticar esta conta?</translation>
     </message>
     <message>
-        <location line="+101"/>
+        <location line="+45"/>
+        <source>Graphics hardware warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Your graphics card or driver may be too old for Minecraft.
+
+Detected: %1
+
+Recent Minecraft versions need a working OpenGL driver. Without one, the game usually crashes right after it starts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>You can update your graphics driver, or turn on software rendering, which works on almost any PC but is slow. If the game already runs fine for you, choose Launch Anyway.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Use Software Rendering</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Driver Guide...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Launch Anyway</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Don&apos;t show this again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+91"/>
         <source>Waiting.</source>
         <translation>À espera.</translation>
     </message>
     <message>
-        <location line="-67"/>
+        <location line="-113"/>
         <location line="+1"/>
         <source>Couldn&apos;t load the instance profile.</source>
         <translation>Não foi possível carregar o perfil da instância.</translation>
@@ -6764,7 +6849,7 @@ Podes alterar a versão do Java nas definições mais tarde.
         <translation>Iniciar Demonstração</translation>
     </message>
     <message>
-        <location line="+229"/>
+        <location line="+275"/>
         <source>Couldn&apos;t start the profiler: %1</source>
         <translation>Não foi possível iniciar o profiler: %1</translation>
     </message>
@@ -6774,7 +6859,7 @@ Podes alterar a versão do Java nas definições mais tarde.
         <translation>Forçar o Minecraft a encerrar?</translation>
     </message>
     <message>
-        <location line="-389"/>
+        <location line="-435"/>
         <source>No Accounts</source>
         <translation>Nenhuma conta</translation>
     </message>
@@ -6806,7 +6891,7 @@ Tens de comprar o jogo primeiro para poderes jogar a versão completa.</translat
         <translation>Não foi selecionada nenhuma conta para iniciar</translation>
     </message>
     <message>
-        <location line="+127"/>
+        <location line="+173"/>
         <source>Profiler check for %1 failed: %2</source>
         <translation>Verificador de perfil para %1 falhado: %2</translation>
     </message>
@@ -6816,7 +6901,7 @@ Tens de comprar o jogo primeiro para poderes jogar a versão completa.</translat
         <translation>&amp;Iniciar</translation>
     </message>
     <message>
-        <location line="-230"/>
+        <location line="-276"/>
         <source>Play demo?</source>
         <translation>Iniciar demonstração?</translation>
     </message>
@@ -6831,7 +6916,7 @@ Tens de comprar o jogo primeiro para poderes jogar a versão completa.</translat
         <translation>Nome do jogador</translation>
     </message>
     <message>
-        <location line="+197"/>
+        <location line="+243"/>
         <source>The game launch is delayed until you press the button. This is the right time to setup the profiler, as the profiler server is running now.
 
 %1</source>
@@ -6840,7 +6925,7 @@ Tens de comprar o jogo primeiro para poderes jogar a versão completa.</translat
 %1</translation>
     </message>
     <message>
-        <location line="-251"/>
+        <location line="-297"/>
         <source>An error occurred while refreshing &apos;%1&apos;</source>
         <translation>Ocorreu um erro ao recarregar &quot;%1&quot;</translation>
     </message>
@@ -6849,12 +6934,12 @@ Tens de comprar o jogo primeiro para poderes jogar a versão completa.</translat
         <translation type="vanished">Para jogar Minecraft, deve iniciar sessão com pelo menos uma conta Microsoft que possua Minecraft. Gostaria de abrir o gestor de contas para adicionar uma conta agora?</translation>
     </message>
     <message>
-        <location line="+305"/>
+        <location line="+351"/>
         <source>This can cause the instance to get corrupted and should only be used if Minecraft is frozen for some reason</source>
         <translation>Isto pode corromper a instância e só deve ser utilizado se o Minecraft estiver bloqueado por algum motivo</translation>
     </message>
     <message>
-        <location line="-274"/>
+        <location line="-320"/>
         <source>
 
 Do you want to play the demo?</source>
@@ -6910,7 +6995,7 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+690"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+680"/>
         <source>s</source>
         <translation>s</translation>
     </message>
@@ -6968,7 +7053,7 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation>Mover mods bloqueados ao invés de copiá-los</translation>
     </message>
     <message>
-        <location line="-372"/>
+        <location line="-362"/>
         <source>Never rename the folder</source>
         <translation>Nunca renomeie a pasta</translation>
     </message>
@@ -6983,7 +7068,7 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation> horas</translation>
     </message>
     <message>
-        <location line="+332"/>
+        <location line="+322"/>
         <source> lines</source>
         <translation> linhas</translation>
     </message>
@@ -7003,7 +7088,7 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation>&amp;Mods:</translation>
     </message>
     <message>
-        <location line="-353"/>
+        <location line="-343"/>
         <source>User Interface</source>
         <translation>Interface de Utilizador</translation>
     </message>
@@ -7012,7 +7097,7 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation type="vanished">Descargas requerem ficheiros do jogo enquanto criam a instância. Desative isto para pular a descarga inicial e buscar pelos ficheiros quando a instância for iniciada.</translation>
     </message>
     <message>
-        <location line="+439"/>
+        <location line="+429"/>
         <source>Mods and Modpacks</source>
         <translation>Mods e Modpacks</translation>
     </message>
@@ -7022,7 +7107,7 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation>Intervalo HTTP Esgotado:</translation>
     </message>
     <message>
-        <location line="-582"/>
+        <location line="-572"/>
         <source>Always rename the folder</source>
         <translation>Sempre renomear pasta</translation>
     </message>
@@ -7102,16 +7187,6 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
-        <source>When the launcher closes without warning while your computer keeps running, ask whether to send the log from that session. Unexpected restarts and power losses are never counted as crashes.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Offer to report a crash after an unexpected exit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+29"/>
         <source>Folder where PollyMC-Continued stores automatically downloaded Java versions. Do NOT set this to your system Java installation.</source>
         <translation>Pasta onde o PollyMC-Continued armazena versões do Java transferidas automaticamente. NÃO defina isto para a instalação do Java do seu sistema.</translation>
@@ -7142,7 +7217,7 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation>Pasta do Java</translation>
     </message>
     <message>
-        <location line="+117"/>
+        <location line="+116"/>
         <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7152,7 +7227,7 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation>Quando ativo, iremos procurar não só a pasta de transferências mas também pastas dentro desta (por exemplo, na procura de mods bloqueados no CurseForge).</translation>
     </message>
     <message>
-        <location line="-225"/>
+        <location line="-215"/>
         <source>Every </source>
         <translation>Todo </translation>
     </message>
@@ -7162,7 +7237,7 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation>Ordenação de Instâncias</translation>
     </message>
     <message>
-        <location line="+469"/>
+        <location line="+459"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Disabling mod metadata may also disable some QoL features, such as mod updating!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Aviso&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Desativar metadados dos mods pode desativar algumas funcionalidades como atualizações de mods!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -7172,7 +7247,7 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation>&amp;Transferências:</translation>
     </message>
     <message>
-        <location line="-156"/>
+        <location line="-146"/>
         <source>On Launch</source>
         <translation>Ao Iniciar</translation>
     </message>
@@ -7186,7 +7261,7 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation type="vanished">Remover</translation>
     </message>
     <message>
-        <location line="+457"/>
+        <location line="+447"/>
         <source>Seconds to wait until the requests are terminated</source>
         <translation>Segundos para aguardar até que os pedidos sejam terminados</translation>
     </message>
@@ -7205,17 +7280,17 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation type="vanished">Descarregar ficheiros do jogo durante a criação da instância</translation>
     </message>
     <message>
-        <location line="-357"/>
+        <location line="-347"/>
         <source>Set to 0 to only check on launch</source>
         <translation>Defina 0 para verificar apenas ao iniciar</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-163"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-162"/>
         <source>Do you want to proceed anyway?</source>
         <translation>Queres proceder de qualquer maneira?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+257"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+247"/>
         <source>Keep track of mod metadata</source>
         <translation>Acompanhar metadados do mod</translation>
     </message>
@@ -7225,22 +7300,22 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation>Detetar, instalar e atualizar automaticamente dependências de mods.</translation>
     </message>
     <message>
-        <location line="-373"/>
+        <location line="-363"/>
         <source>The menubar is more friendly for keyboard-driven interaction.</source>
         <translation>A barra de menu é mais amigável em interações baseadas em teclados.</translation>
     </message>
     <message>
-        <location line="+572"/>
+        <location line="+562"/>
         <source>Concurrent Task Limit:</source>
         <translation>Limite de Tarefas simultâneas:</translation>
     </message>
     <message>
-        <location line="-661"/>
+        <location line="-651"/>
         <source>&amp;By last launched</source>
         <translation>Por &amp;Último lançado</translation>
     </message>
     <message>
-        <location line="+363"/>
+        <location line="+353"/>
         <source>I&amp;nstances:</source>
         <translation>I&amp;nstâncias:</translation>
     </message>
@@ -7260,17 +7335,17 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation>&amp;Ícones:</translation>
     </message>
     <message>
-        <location line="-413"/>
+        <location line="-403"/>
         <source>By &amp;name</source>
         <translation>Por &amp;nome</translation>
     </message>
     <message>
-        <location line="+330"/>
+        <location line="+320"/>
         <source>&amp;Skins:</source>
         <translation>&amp;Skins:</translation>
     </message>
     <message>
-        <location line="-218"/>
+        <location line="-208"/>
         <source>Updater</source>
         <translation>Agente de Atualização</translation>
     </message>
@@ -7280,7 +7355,7 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation>&amp;Trocar barra de ferramentas por barra de menus</translation>
     </message>
     <message>
-        <location line="+192"/>
+        <location line="+182"/>
         <source>Folders</source>
         <translation>Pastas</translation>
     </message>
@@ -7289,7 +7364,7 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation type="vanished">Por tempo total &amp;jogado</translation>
     </message>
     <message>
-        <location line="-43"/>
+        <location line="-33"/>
         <location filename="../launcher/ui/pages/global/LauncherPage.h" line="+59"/>
         <source>General</source>
         <translation>Geral</translation>
@@ -7305,7 +7380,7 @@ Talvez tenhas que resolver problemas com os teus mods porque o jogo ainda está 
         <translation>Verificar se há atualizações ao iniciar</translation>
     </message>
     <message>
-        <location line="+192"/>
+        <location line="+182"/>
         <source>&amp;Auto Java Download:</source>
         <translation>&amp;Tranferência automática do Java:</translation>
     </message>
@@ -7336,7 +7411,7 @@ Garantindo %1 acesso a essa pasta por via de Flatseal é recomendado.</translati
         <translation>Guardar informação da versão dada pelos provedores de mods (como Modrinth ou CurseForge) para os mods.</translation>
     </message>
     <message>
-        <location line="-399"/>
+        <location line="-389"/>
         <source>Ask what to do</source>
         <translation>Perguntar o que fazer</translation>
     </message>
@@ -8215,7 +8290,7 @@ Isto vai ter que ser corrigido manualmente.</translation>
         <translation>&amp;Ver</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1887"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1891"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -8236,7 +8311,7 @@ Tem certeza?</translation>
         <translation>Copiar a instância selecionada.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-776"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-780"/>
         <location line="+168"/>
         <location line="+106"/>
         <source>Abort</source>
@@ -8249,7 +8324,7 @@ Tem certeza?</translation>
         <location line="+61"/>
         <location line="+15"/>
         <location line="+37"/>
-        <location line="+424"/>
+        <location line="+428"/>
         <source>Error</source>
         <translation>Erro</translation>
     </message>
@@ -8259,7 +8334,7 @@ Tem certeza?</translation>
         <translation>Barra de ferramentas principal</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-460"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-464"/>
         <source>Invalid import link: URL must be http(s).</source>
         <translation>Link de importação inválido: URL tem de ser http(s).</translation>
     </message>
@@ -8279,7 +8354,12 @@ Tem certeza?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+21"/>
+        <source>Report a Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
         <source> (commit %1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8433,7 +8513,7 @@ Tem certeza?</translation>
         <translation>Abrir o rastreador de erros para reportar um erro com %1.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-778"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-782"/>
         <source>Task aborted</source>
         <translation>Tarefa abortada</translation>
     </message>
@@ -8509,7 +8589,7 @@ URL:
         <translation>Apagar Grupo</translation>
     </message>
     <message>
-        <location line="+278"/>
+        <location line="+282"/>
         <source>Failed to add %1 to PATH</source>
         <translation>Erro ao adicionar %1 ao CAMINHO</translation>
     </message>
@@ -8563,7 +8643,7 @@ URL:
         <translation type="vanished">Sem novidades disponíveis.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-767"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-771"/>
         <source>The task has been aborted by the user.</source>
         <translation>Tarefa abortada pelo utilizador.</translation>
     </message>
@@ -8623,7 +8703,7 @@ Por favor crie uma nova instância antes de tentar instalar este recurso novamen
         <translation>Mudar as definições, mods e versões da instância.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+751"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+755"/>
         <source>This is a problem: &lt;br/&gt; - The launcher will likely be deleted without warning by the operating system &lt;br/&gt; - close the launcher now and extract it to a real location, not a temporary folder</source>
         <translation>Isto é um problema:&lt;br/&gt; - O launcher provávelmente irá ser apagado sem aviso pelo sistema operativo &lt;br/&gt; - fecha o launcher agora e extraí-o para uma localização real, não uma pasta temporária</translation>
     </message>
@@ -8701,7 +8781,7 @@ Por favor crie uma nova instância antes de tentar instalar este recurso novamen
         <translation>&amp;Widget Temas</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-314"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-318"/>
         <source>Cannot set empty name.</source>
         <translation>Não é possível definir nomes vazios.</translation>
     </message>
@@ -8798,7 +8878,7 @@ Por favor crie uma nova instância antes de tentar instalar este recurso novamen
         <translation>Contas</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+798"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+802"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 foi adicionado com sucesso ao teu CAMINHO. Agora já podes iniciá-lo utilizando `%2`.</translation>
     </message>
@@ -8822,7 +8902,7 @@ Por favor crie uma nova instância antes de tentar instalar este recurso novamen
         <translation type="vanished">Abre o blog de desenvolvimento para mais novidades sobre %1.</translation>
     </message>
     <message>
-        <location line="-1567"/>
+        <location line="-1571"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
@@ -8953,7 +9033,7 @@ Por favor crie uma nova instância antes de tentar instalar este recurso novamen
         <translation>Nome do Grupo</translation>
     </message>
     <message>
-        <location line="+356"/>
+        <location line="+360"/>
         <source>Deleting</source>
         <translation>Apagando</translation>
     </message>
@@ -8963,7 +9043,7 @@ Por favor crie uma nova instância antes de tentar instalar este recurso novamen
         <translation>Ver logs</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-568"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-572"/>
         <source>Invalid import link: missing &apos;url&apos; parameter.</source>
         <translation>Link de importação inválido: parâmetro &apos;url&apos; em falta.</translation>
     </message>
@@ -8980,7 +9060,7 @@ Por favor crie uma nova instância antes de tentar instalar este recurso novamen
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1612"/>
+        <location line="+1616"/>
         <source>No instance selected</source>
         <translation>Nenhuma instância selecionada</translation>
     </message>
@@ -9039,7 +9119,7 @@ Para limpar o cache de metadados manualmente, pressione Pastas -&gt; Exibir Past
         <translation>Apagar a instância selecionada.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1339"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1343"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Apagar grupo</translation>
     </message>
@@ -9095,7 +9175,7 @@ Por favor, verifique o seu lixo para restaurá-los manualmente.</translation>
         <translation>Tempo total de jogo: 0s</translation>
     </message>
     <message>
-        <location line="+1801"/>
+        <location line="+1805"/>
         <source>Total playtime: %1</source>
         <translation>Tempo de jogo total: %1</translation>
     </message>
@@ -9110,18 +9190,18 @@ Por favor, verifique o seu lixo para restaurá-los manualmente.</translation>
         <translation>Adicionado com sucesso %1 ao CAMINHO</translation>
     </message>
     <message>
-        <location line="-286"/>
+        <location line="-290"/>
         <location line="+22"/>
         <source>Enter a new group name.</source>
         <translation>Introduz um novo nome de grupo.</translation>
     </message>
     <message>
-        <location line="+269"/>
+        <location line="+273"/>
         <source>An error occurred while trying to add %1 to PATH</source>
         <translation>Um erro ocorreu durante a tentativa de adicionar %1 ao CAMINHO</translation>
     </message>
     <message>
-        <location line="-279"/>
+        <location line="-283"/>
         <source>Are you sure you want to delete the group &apos;%1&apos;?</source>
         <translation>Tem certeza que deseja apagar o grupo &apos;%1&apos;?</translation>
     </message>
@@ -9338,7 +9418,7 @@ Tenha a certeza de que confia no URL.
 <context>
     <name>MinecraftInstance</name>
     <message>
-        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1042"/>
+        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1070"/>
         <source>&lt;ACCESS TOKEN&gt;</source>
         <translation>&lt;TOKEN DE ACESSO&gt;</translation>
     </message>
@@ -9348,12 +9428,12 @@ Tenha a certeza de que confia no URL.
         <translation>, jogado em %1 por %2</translation>
     </message>
     <message>
-        <location line="-773"/>
+        <location line="-798"/>
         <source>Profilers</source>
         <translation>Profilers</translation>
     </message>
     <message>
-        <location line="+757"/>
+        <location line="+782"/>
         <source>broken</source>
         <translation>quebrado</translation>
     </message>
@@ -9363,12 +9443,12 @@ Tenha a certeza de que confia no URL.
         <translation>, foi jogado durante %1</translation>
     </message>
     <message>
-        <location line="-791"/>
+        <location line="-816"/>
         <source>Launch &amp;Offline</source>
         <translation>Iniciar &amp;Offline</translation>
     </message>
     <message>
-        <location line="+731"/>
+        <location line="+756"/>
         <source>&lt;PROFILE ID&gt;</source>
         <translation>&lt;ID DO PERFIL&gt;</translation>
     </message>
@@ -9378,7 +9458,7 @@ Tenha a certeza de que confia no URL.
         <translation>&lt;ID DA SESSÃO&gt;</translation>
     </message>
     <message>
-        <location line="-728"/>
+        <location line="-753"/>
         <source>&amp;Launch</source>
         <translation>&amp;Iniciar</translation>
     </message>
@@ -9388,22 +9468,22 @@ Tenha a certeza de que confia no URL.
         <translation>&amp;Não Profiler</translation>
     </message>
     <message>
-        <location line="+758"/>
+        <location line="+783"/>
         <source>Minecraft %1</source>
         <translation>Minecraft %1</translation>
     </message>
     <message>
-        <location line="-778"/>
+        <location line="-803"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location line="+795"/>
+        <location line="+820"/>
         <source>, has crashed.</source>
         <translation>, bloqueou.</translation>
     </message>
     <message>
-        <location line="-793"/>
+        <location line="-818"/>
         <source>Ctrl+Alt+O</source>
         <translation>Ctrl+Alt+O</translation>
     </message>
@@ -9483,12 +9563,12 @@ Tenha a certeza de que confia no URL.
         <translation>Iniciar o Minecraft maximizado</translation>
     </message>
     <message>
-        <location line="+707"/>
+        <location line="+724"/>
         <source>Custom Commands</source>
         <translation>Comandos personalizados</translation>
     </message>
     <message>
-        <location line="-721"/>
+        <location line="-738"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: The maximized option may not be fully supported on all Minecraft versions.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Aviso&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: A opção maximizada pode não ser totalmente suportada por todas as versões de Minecraft.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -9503,7 +9583,7 @@ Tenha a certeza de que confia no URL.
         <translation>Ativar MangoHud</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+58"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+60"/>
         <source>Custom</source>
         <translation>Personalizado</translation>
     </message>
@@ -9528,7 +9608,7 @@ Tenha a certeza de que confia no URL.
         <translation>&amp;Tamanho da Janela:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+340"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+348"/>
         <source>Select Global Data Packs Folder</source>
         <translation>Selecionar Pasta de Pacotes de Dados Global</translation>
     </message>
@@ -9610,7 +9690,7 @@ Será bem provável que deverá mudar o caminho do ficheiro ‐ por favor, leia 
         <translation>Abrir &amp;Definições Globais</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-493"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-501"/>
         <source>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: The maximized option is not fully supported on this Minecraft version.&lt;/span&gt;</source>
         <translation>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Aviso&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: A opção maximizada não é totalmente suportada nesta versão do Minecraft.&lt;/span&gt;</translation>
     </message>
@@ -9811,12 +9891,27 @@ Será bem provável que deverá mudar o caminho do ficheiro ‐ por favor, leia 
         <translation>Caminho da biblioteca &amp;OpenAL:</translation>
     </message>
     <message>
-        <location line="+127"/>
+        <location line="+96"/>
+        <source>Runs OpenGL on the CPU (Mesa llvmpipe). Use this only if Minecraft crashes at startup because your graphics hardware or driver is too old or missing. It works on almost any PC but is slow. The renderer (about 40 MB) is downloaded once on the first launch.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Use software rendering (slow, for PCs without a working graphics driver)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Graphics driver guide...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+38"/>
         <source>Environment Variables</source>
         <translation>Variáveis de ambiente</translation>
     </message>
     <message>
-        <location line="-468"/>
+        <location line="-485"/>
         <source>Show the &amp;total time played across instances</source>
         <translation>Mostrar o &amp;tempo total jogado entre instâncias</translation>
     </message>
@@ -10853,7 +10948,7 @@ Por favor atualiza %1!</translation>
 <context>
     <name>MyReportsDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+151"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+162"/>
         <location line="+4"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -14321,7 +14416,25 @@ Nome novo: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/BugReportTracker.cpp" line="+164"/>
+        <location filename="../launcher/BugReportTracker.cpp" line="+264"/>
+        <source>1 hour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+0"/>
+        <source>%n minute(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>You are sending way too many reports. Please slow down and try again in about %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
         <source>Waiting for a dev to check it</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14337,12 +14450,22 @@ Nome novo: %2</translation>
     </message>
     <message>
         <location line="+2"/>
+        <source>A fix is being worked on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The team couldn&apos;t reproduce it - more details would help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Fixed - it will be in the next update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-193"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-199"/>
         <source>Fixed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14353,7 +14476,7 @@ Nome novo: %2</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+8"/>
         <source>Won&apos;t be fixed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14366,6 +14489,21 @@ Nome novo: %2</translation>
         <location line="+2"/>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+4"/>
         <source>Not a bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Not caused by the launcher - most likely a mod, Java or the game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Planned - it may come in a future update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Added - thanks for the suggestion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -14395,7 +14533,7 @@ Nome novo: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-13"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-23"/>
         <source>Waiting</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14410,7 +14548,32 @@ Nome novo: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+2"/>
+        <source>In progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Can&apos;t reproduce</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Planned</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Added</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Not the launcher</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>Duplicate</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14463,6 +14626,36 @@ Nome novo: %2</translation>
     <message>
         <location line="+2"/>
         <source>%1s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/SoftwareRenderer.cpp" line="+82"/>
+        <source>The downloaded Mesa archive could not be read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Could not create the folder %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>The Mesa archive does not contain a 64-bit opengl32.dll.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Could not open %1 inside the Mesa archive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>%1 inside the Mesa archive is empty or damaged.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Could not write %1: %2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

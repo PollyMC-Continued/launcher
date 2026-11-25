@@ -765,7 +765,7 @@ The account UUID stays the same, so your singleplayer progress and your selected
         <translation>Cumraíocht córais neamh-chomhoiriúnach</translation>
     </message>
     <message>
-        <location line="+1056"/>
+        <location line="+996"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -800,12 +800,12 @@ Seiceáil log nuashonraithe Prism Launcher ag:
 le haghaidh sonraí faoin iarracht nuashonraithe dheireanach.</translation>
     </message>
     <message>
-        <location line="-1777"/>
+        <location line="-1721"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Ní féidir a thaispeáint an loga seo toisc gur sháraigh fad an loga %1 líne.</translation>
     </message>
     <message>
-        <location line="+1599"/>
+        <location line="+1543"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Is cosúil gur úsáid tú %1 ar %2 roimhe seo. Ar mhaith leat do chuid sonraí a aistriú go dtí an suíomh nua %3?</translation>
     </message>
@@ -872,7 +872,7 @@ Seiceáil an logchomhad nuashonraithe PollyMC-Continued ag:
 le haghaidh sonraí.</translation>
     </message>
     <message>
-        <location line="-1900"/>
+        <location line="-1841"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -908,7 +908,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+530"/>
+        <location line="+531"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -992,42 +992,12 @@ Is féidir leat an fhadhb seo a réiteach trí /tmp a athfheistiú mar &apos;exe
 </translation>
     </message>
     <message>
-        <location line="+229"/>
+        <location line="+227"/>
         <source>Opening the launcher…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+487"/>
-        <location line="+20"/>
-        <source>Launcher closed unexpectedly</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-19"/>
-        <source>%1 did not shut down properly last time.
-
-If it crashed or froze on you, you can send us a crash report - the log from that session is attached automatically.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Report this crash</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Ignore</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+11"/>
-        <source>The launcher closed unexpectedly (crash or freeze). Last part of the log from that session:
-
-%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+362"/>
+        <location line="+809"/>
         <source>Instances were found at %1, but %2 is looking in %3. Do you want to migrate them to the new location?</source>
         <translation>Fuarthas samplaí in %1, ach tá %2 ag féachaint in %3. Ar mhaith leat iad a aistriú go dtí an áit nua?</translation>
     </message>
@@ -1064,7 +1034,7 @@ Cóipeáil iad go dtí an fillteán iniompartha seo? Aistreofar do chuntais, do 
         <translation type="vanished">Nuashonrú Ar Siúl</translation>
     </message>
     <message>
-        <location line="-1500"/>
+        <location line="-1440"/>
         <source>Settings</source>
         <translation>Socruithe</translation>
     </message>
@@ -1095,7 +1065,7 @@ le haghaidh sonraí faoin iarracht nuashonraithe dheireanach.
 Chun an glasáil seo a scriosadh agus leanúint ar aghaidh, roghnaigh &quot;Neamhaird a dhéanamh&quot; thíos.</translation>
     </message>
     <message>
-        <location line="+1344"/>
+        <location line="+1284"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>Fuarthas seanshonraí ó %1, ach tá sonraí agat cheana féin do %2. Ar an drochuair, beidh ort aistriú tú féin. Ar mhaith leat meabhrúchán a fháil faoin aistriú sonraí atá ar feitheamh an chéad uair eile a thosóidh tú %2?</translation>
     </message>
@@ -1868,16 +1838,18 @@ Chun an glasáil seo a scriosadh agus leanúint ar aghaidh, roghnaigh &quot;Neam
     <name>BugReportDialog</name>
     <message>
         <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
-        <location line="+452"/>
+        <location line="+393"/>
+        <location line="+63"/>
         <location line="+11"/>
         <location line="+56"/>
+        <location line="+5"/>
         <location line="+8"/>
         <location line="+9"/>
         <source>Report a Bug</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-518"/>
+        <location line="-527"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2067,7 +2039,7 @@ What I was doing when this happened:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+23"/>
         <source>Launcher: %1 (%2)
 System: %3
 CPU architecture: %4
@@ -2106,7 +2078,7 @@ Qt: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+61"/>
         <source>You just sent a report. Please wait a minute before sending another one.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3973,6 +3945,47 @@ Ní féidir an sampla seo a sheoladh mar gheall ar easpa leabharlann nó nár í
     </message>
 </context>
 <context>
+    <name>EnsureSoftwareRenderer</name>
+    <message>
+        <location filename="../launcher/minecraft/launch/EnsureSoftwareRenderer.cpp" line="+40"/>
+        <source>Software rendering is turned on, but the software renderer is not installed and cannot be downloaded by this version.
+Copy the 64-bit Mesa files opengl32.dll, libgallium_wgl.dll and libglapi.dll into this folder, or turn software rendering off:
+  %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>The software renderer is not installed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Downloading the software renderer (needed once)...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Software renderer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Could not download the software renderer: %1
+Turn software rendering off or try again with a working Internet connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Could not install the software renderer: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Software renderer installed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EntitlementsStep</name>
     <message>
         <location filename="../launcher/minecraft/auth/steps/EntitlementsStep.cpp" line="+56"/>
@@ -5312,6 +5325,39 @@ Do you want to continue anyway?</source>
         <location line="+24"/>
         <source>Got skin</source>
         <translation>Culaith faighte</translation>
+    </message>
+</context>
+<context>
+    <name>GpuDriverGuideDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/GpuDriverGuideDialog.cpp" line="+51"/>
+        <source>Graphics Driver Guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Your graphics card could not be detected automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>&lt;b&gt;Detected graphics:&lt;/b&gt; %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Windows is using its basic built-in display driver, so no real graphics driver is installed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>%1 drivers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>&lt;h3&gt;How to update your graphics driver&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;&lt;b&gt;Find your graphics card.&lt;/b&gt; Press &lt;i&gt;Win + R&lt;/i&gt;, type &lt;i&gt;dxdiag&lt;/i&gt; and press Enter, then open the &lt;i&gt;Display&lt;/i&gt; tab. Or open &lt;i&gt;Device Manager&lt;/i&gt; and expand &lt;i&gt;Display adapters&lt;/i&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Laptop or ready-made PC?&lt;/b&gt; Check the maker&apos;s support page for your exact model first (Dell, HP, Lenovo, ASUS, Acer...). Their drivers are tested for your machine. Otherwise use the buttons above:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Intel:&lt;/b&gt; run the &lt;i&gt;Intel Driver &amp;amp; Support Assistant&lt;/i&gt;, it finds the right driver for you.&lt;/li&gt;&lt;li&gt;&lt;b&gt;AMD:&lt;/b&gt; pick your product on the AMD page, or run the AMD auto-detect tool.&lt;/li&gt;&lt;li&gt;&lt;b&gt;NVIDIA:&lt;/b&gt; pick your product on the NVIDIA page, or use the NVIDIA app.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Install it and restart your PC.&lt;/b&gt; Choose a clean or standard install, both are fine.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Check it worked.&lt;/b&gt; In &lt;i&gt;dxdiag&lt;/i&gt; the Display tab should show your real card with a driver version, not &quot;Microsoft Basic Display Adapter&quot;.&lt;/li&gt;&lt;/ol&gt;&lt;h3&gt;Still not working?&lt;/h3&gt;&lt;p&gt;Very old graphics (for example Intel HD Graphics 2000/3000 and older, or cards from before about 2012) cannot run recent Minecraft versions even with the latest driver. In that case:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Play an older Minecraft version (1.16.5 or older work on much older hardware), or&lt;/li&gt;&lt;li&gt;turn on &lt;i&gt;Use software rendering&lt;/i&gt; in the instance&apos;s settings under Performance. It works on almost any PC but is slow, or&lt;/li&gt;&lt;li&gt;upgrade the graphics card.&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6720,8 +6766,8 @@ Is féidir leat an leagan Java a athrú sna socruithe tamall amach anseo.
 <context>
     <name>LaunchController</name>
     <message>
-        <location filename="../launcher/LaunchController.cpp" line="+165"/>
-        <location line="+309"/>
+        <location filename="../launcher/LaunchController.cpp" line="+168"/>
+        <location line="+355"/>
         <source>Abort</source>
         <translation>Tobscoir</translation>
     </message>
@@ -6731,7 +6777,7 @@ Is féidir leat an leagan Java a athrú sna socruithe tamall amach anseo.
         <translation>Earráid</translation>
     </message>
     <message>
-        <location line="-203"/>
+        <location line="-249"/>
         <source>Auth servers offline</source>
         <translation>Údarú freastalaithe as líne</translation>
     </message>
@@ -6776,7 +6822,7 @@ Is féidir leat an leagan Java a athrú sna socruithe tamall amach anseo.
     </message>
     <message>
         <location line="+153"/>
-        <location line="+56"/>
+        <location line="+102"/>
         <source>Error!</source>
         <translation>Earráid!</translation>
     </message>
@@ -6786,7 +6832,7 @@ Is féidir leat an leagan Java a athrú sna socruithe tamall amach anseo.
         <translation>Níorbh fhéidir lainseálaí a chruthú.</translation>
     </message>
     <message>
-        <location line="-133"/>
+        <location line="-179"/>
         <source>The Minecraft authentication servers are currently unavailable, launching in offline mode.
 
 </source>
@@ -6805,12 +6851,51 @@ Is féidir leat an leagan Java a athrú sna socruithe tamall amach anseo.
         <translation>%1. Ar mhaith leat an cuntas seo a athfhíordheimhniú?</translation>
     </message>
     <message>
-        <location line="+101"/>
+        <location line="+45"/>
+        <source>Graphics hardware warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Your graphics card or driver may be too old for Minecraft.
+
+Detected: %1
+
+Recent Minecraft versions need a working OpenGL driver. Without one, the game usually crashes right after it starts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>You can update your graphics driver, or turn on software rendering, which works on almost any PC but is slow. If the game already runs fine for you, choose Launch Anyway.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Use Software Rendering</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Driver Guide...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Launch Anyway</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Don&apos;t show this again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+91"/>
         <source>Waiting.</source>
         <translation>Ag fanacht.</translation>
     </message>
     <message>
-        <location line="-67"/>
+        <location line="-113"/>
         <location line="+1"/>
         <source>Couldn&apos;t load the instance profile.</source>
         <translation>Níorbh fhéidir próifíl an sampla a lódáil.</translation>
@@ -6826,7 +6911,7 @@ Is féidir leat an leagan Java a athrú sna socruithe tamall amach anseo.
         <translation>Seinn Taispeántas</translation>
     </message>
     <message>
-        <location line="+229"/>
+        <location line="+275"/>
         <source>Couldn&apos;t start the profiler: %1</source>
         <translation>Níorbh fhéidir an próifíleoir a thosú: %1</translation>
     </message>
@@ -6836,7 +6921,7 @@ Is féidir leat an leagan Java a athrú sna socruithe tamall amach anseo.
         <translation>Maraigh Minecraft?</translation>
     </message>
     <message>
-        <location line="-389"/>
+        <location line="-435"/>
         <source>No Accounts</source>
         <translation>Gan Chuntais</translation>
     </message>
@@ -6868,7 +6953,7 @@ Ní mór duit an cluiche a cheannach ar dtús chun an leagan iomlán a imirt.</t
         <translation>Níl aon chuntas roghnaithe le seoladh</translation>
     </message>
     <message>
-        <location line="+127"/>
+        <location line="+173"/>
         <source>Profiler check for %1 failed: %2</source>
         <translation>Theip ar sheiceáil phróifílitheora le haghaidh %1: %2</translation>
     </message>
@@ -6878,7 +6963,7 @@ Ní mór duit an cluiche a cheannach ar dtús chun an leagan iomlán a imirt.</t
         <translation>&amp;Lainseáil</translation>
     </message>
     <message>
-        <location line="-230"/>
+        <location line="-276"/>
         <source>Play demo?</source>
         <translation>Seinn an taispeántas?</translation>
     </message>
@@ -6893,7 +6978,7 @@ Ní mór duit an cluiche a cheannach ar dtús chun an leagan iomlán a imirt.</t
         <translation>Ainm imreora</translation>
     </message>
     <message>
-        <location line="+197"/>
+        <location line="+243"/>
         <source>The game launch is delayed until you press the button. This is the right time to setup the profiler, as the profiler server is running now.
 
 %1</source>
@@ -6902,7 +6987,7 @@ Ní mór duit an cluiche a cheannach ar dtús chun an leagan iomlán a imirt.</t
 %1</translation>
     </message>
     <message>
-        <location line="-251"/>
+        <location line="-297"/>
         <source>An error occurred while refreshing &apos;%1&apos;</source>
         <translation>Tharla earráid agus &apos;%1&apos; á athnuachan</translation>
     </message>
@@ -6911,12 +6996,12 @@ Ní mór duit an cluiche a cheannach ar dtús chun an leagan iomlán a imirt.</t
         <translation type="vanished">Chun Minecraft a imirt, ní mór cuntas Microsoft amháin ar a laghad a bheith agat a bhfuil Minecraft aige agus tú logáilte isteach ann. Ar mhaith leat an bainisteoir cuntas a oscailt chun cuntas a chur leis anois?</translation>
     </message>
     <message>
-        <location line="+305"/>
+        <location line="+351"/>
         <source>This can cause the instance to get corrupted and should only be used if Minecraft is frozen for some reason</source>
         <translation>Is féidir leis seo an cás a thruailliú agus níor cheart é a úsáid ach amháin má tá Minecraft reoite ar chúis éigin</translation>
     </message>
     <message>
-        <location line="-274"/>
+        <location line="-320"/>
         <source>
 
 Do you want to play the demo?</source>
@@ -6972,7 +7057,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+690"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+680"/>
         <source>s</source>
         <translation>s</translation>
     </message>
@@ -7038,7 +7123,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation>Bog modhanna blocáilte in ionad iad a chóipeáil</translation>
     </message>
     <message>
-        <location line="-372"/>
+        <location line="-362"/>
         <source>Never rename the folder</source>
         <translation>Ná hathainmnigh an fillteán riamh</translation>
     </message>
@@ -7057,7 +7142,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation> uaireanta</translation>
     </message>
     <message>
-        <location line="+332"/>
+        <location line="+322"/>
         <source> lines</source>
         <translation> línte</translation>
     </message>
@@ -7077,7 +7162,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation>&amp;Leasuithe:</translation>
     </message>
     <message>
-        <location line="-353"/>
+        <location line="-343"/>
         <source>User Interface</source>
         <translation>Comhéadan Úsáideora</translation>
     </message>
@@ -7086,7 +7171,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation type="vanished">Íoslódálann sé comhaid chluiche riachtanacha agus an sampla á chruthú. Díchumasaigh é seo chun an íoslódáil tosaigh a scipeáil agus comhaid a fháil nuair a sheoltar an sampla ina ionad.</translation>
     </message>
     <message>
-        <location line="+439"/>
+        <location line="+429"/>
         <source>Mods and Modpacks</source>
         <translation>Modanna agus Modpacks</translation>
     </message>
@@ -7096,7 +7181,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation>Am Teorann HTTP:</translation>
     </message>
     <message>
-        <location line="-582"/>
+        <location line="-572"/>
         <source>Always rename the folder</source>
         <translation>Athainmnigh an fillteán i gcónaí</translation>
     </message>
@@ -7176,16 +7261,6 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
-        <source>When the launcher closes without warning while your computer keeps running, ask whether to send the log from that session. Unexpected restarts and power losses are never counted as crashes.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Offer to report a crash after an unexpected exit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+29"/>
         <source>Folder where PollyMC-Continued stores automatically downloaded Java versions. Do NOT set this to your system Java installation.</source>
         <translation>Fillteán ina stóráiltear leaganacha Java íoslódáilte go huathoibríoch ag PollyMC-Continued. Ná socraigh é seo go leor le do shuiteáil Java córais.</translation>
@@ -7216,7 +7291,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation>Fillteán Java</translation>
     </message>
     <message>
-        <location line="+117"/>
+        <location line="+116"/>
         <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7226,7 +7301,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation>Nuair a bheidh sé cumasaithe, chomh maith leis an bhfillteán íoslódálacha, déanfar cuardach ar a fho-fhillteáin freisin agus acmhainní á lorg (e.g. agus mods blocáilte á lorg ar CurseForge).</translation>
     </message>
     <message>
-        <location line="-225"/>
+        <location line="-215"/>
         <source>Every </source>
         <translation>Gach </translation>
     </message>
@@ -7236,7 +7311,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation>Sórtáil Cásanna</translation>
     </message>
     <message>
-        <location line="+469"/>
+        <location line="+459"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Disabling mod metadata may also disable some QoL features, such as mod updating!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Rabhadh&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: D’fhéadfadh sé go gcuirfí roinnt gnéithe QoL ar ceal freisin, amhail nuashonrú mod!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -7246,7 +7321,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation>Íosló&amp;dálacha:</translation>
     </message>
     <message>
-        <location line="-156"/>
+        <location line="-146"/>
         <source>On Launch</source>
         <translation>Ar an Seoladh</translation>
     </message>
@@ -7260,7 +7335,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation type="vanished">Bain</translation>
     </message>
     <message>
-        <location line="+457"/>
+        <location line="+447"/>
         <source>Seconds to wait until the requests are terminated</source>
         <translation>Soicindí le fanacht go dtí go mbeidh deireadh leis na hiarratais</translation>
     </message>
@@ -7279,17 +7354,17 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation type="vanished">Íoslódáil comhaid cluiche le linn chruthú samplaí</translation>
     </message>
     <message>
-        <location line="-357"/>
+        <location line="-347"/>
         <source>Set to 0 to only check on launch</source>
         <translation>Socraigh go 0 le seiceáil ar an seoladh amháin</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-163"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-162"/>
         <source>Do you want to proceed anyway?</source>
         <translation>Ar mhaith leat ar aghaidh a leanúint ar aon nós?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+257"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+247"/>
         <source>Keep track of mod metadata</source>
         <translation>Coinnigh súil ar mheiteashonraí an mhodha</translation>
     </message>
@@ -7299,22 +7374,22 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation>Braith, suiteáil agus nuashonraigh spleáchais mod go huathoibríoch.</translation>
     </message>
     <message>
-        <location line="-373"/>
+        <location line="-363"/>
         <source>The menubar is more friendly for keyboard-driven interaction.</source>
         <translation>Tá an barra roghchláir níos cairdiúla le haghaidh idirghníomhaíochta le méarchlár.</translation>
     </message>
     <message>
-        <location line="+572"/>
+        <location line="+562"/>
         <source>Concurrent Task Limit:</source>
         <translation>Teorainn Tascanna Comhuaineacha:</translation>
     </message>
     <message>
-        <location line="-661"/>
+        <location line="-651"/>
         <source>&amp;By last launched</source>
         <translation>&amp;De réir lainse is deireanaí</translation>
     </message>
     <message>
-        <location line="+363"/>
+        <location line="+353"/>
         <source>I&amp;nstances:</source>
         <translation>Á&amp;isc:</translation>
     </message>
@@ -7338,7 +7413,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation>De&amp;ilbhíní:</translation>
     </message>
     <message>
-        <location line="-413"/>
+        <location line="-403"/>
         <source>By &amp;name</source>
         <translation>De réir ai&amp;nm</translation>
     </message>
@@ -7347,7 +7422,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation type="vanished">Eolairí samplaí breise</translation>
     </message>
     <message>
-        <location line="+330"/>
+        <location line="+320"/>
         <source>&amp;Skins:</source>
         <translation>&amp;Cultacha:</translation>
     </message>
@@ -7356,7 +7431,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation type="vanished">Eolaire dúblach</translation>
     </message>
     <message>
-        <location line="-218"/>
+        <location line="-208"/>
         <source>Updater</source>
         <translation>Nuashonraitheoir</translation>
     </message>
@@ -7366,7 +7441,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation>&amp;In ionad barra uirlisí leis an mbarra roghchláir</translation>
     </message>
     <message>
-        <location line="+192"/>
+        <location line="+182"/>
         <source>Folders</source>
         <translation>Fillteáin</translation>
     </message>
@@ -7375,7 +7450,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation type="vanished">De réir an ama iomláin a &amp;imríodh</translation>
     </message>
     <message>
-        <location line="-43"/>
+        <location line="-33"/>
         <location filename="../launcher/ui/pages/global/LauncherPage.h" line="+59"/>
         <source>General</source>
         <translation>Ginearálta</translation>
@@ -7391,7 +7466,7 @@ B’fhéidir go mbeidh ort do mhodhanna a shocrú mar tá an cluiche fós ag log
         <translation>Seiceáil le haghaidh nuashonruithe go huathoibríoch</translation>
     </message>
     <message>
-        <location line="+192"/>
+        <location line="+182"/>
         <source>&amp;Auto Java Download:</source>
         <translation>&amp;Íoslódáil Uathoibríoch Java:</translation>
     </message>
@@ -7422,7 +7497,7 @@ Moltar rochtain a thabhairt do %1 air trí Flatseal.</translation>
         <translation>Stóráil faisnéis leagan arna soláthar ag soláthraithe mod (cosúil le Modrinth nó CurseForge) le haghaidh mods.</translation>
     </message>
     <message>
-        <location line="-399"/>
+        <location line="-389"/>
         <source>Ask what to do</source>
         <translation>Fiafraigh cad atá le déanamh</translation>
     </message>
@@ -8301,7 +8376,7 @@ Beidh ort an fhadhb seo a cheartú de láimh.</translation>
         <translation>&amp;Amharc ar</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1887"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1891"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -8322,7 +8397,7 @@ An bhfuil tú cinnte?</translation>
         <translation>Cóipeáil an sampla roghnaithe.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-776"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-780"/>
         <location line="+168"/>
         <location line="+106"/>
         <source>Abort</source>
@@ -8335,7 +8410,7 @@ An bhfuil tú cinnte?</translation>
         <location line="+61"/>
         <location line="+15"/>
         <location line="+37"/>
-        <location line="+424"/>
+        <location line="+428"/>
         <source>Error</source>
         <translation>Earráid</translation>
     </message>
@@ -8345,7 +8420,7 @@ An bhfuil tú cinnte?</translation>
         <translation>Príomhbharra Uirlisí</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-460"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-464"/>
         <source>Invalid import link: URL must be http(s).</source>
         <translation>Nasc allmhairithe neamhbhailí: ní mór don URL a bheith http(anna).</translation>
     </message>
@@ -8365,7 +8440,12 @@ An bhfuil tú cinnte?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+21"/>
+        <source>Report a Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
         <source> (commit %1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8520,7 +8600,7 @@ An bhfuil tú cinnte?</translation>
         <translation>Oscail an rianaitheoir fabhtanna chun fabht le %1 a thuairisciú.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-778"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-782"/>
         <source>Task aborted</source>
         <translation>Tasc tobscortha</translation>
     </message>
@@ -8596,7 +8676,7 @@ URL:
         <translation>Scrios grúpa</translation>
     </message>
     <message>
-        <location line="+278"/>
+        <location line="+282"/>
         <source>Failed to add %1 to PATH</source>
         <translation>Theip ar %1 a chur leis an PATH</translation>
     </message>
@@ -8650,7 +8730,7 @@ URL:
         <translation type="vanished">Níl aon nuacht ar fáil.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-767"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-771"/>
         <source>The task has been aborted by the user.</source>
         <translation>Tá an tasc curtha ar ceal ag an úsáideoir.</translation>
     </message>
@@ -8710,7 +8790,7 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
         <translation>Athraigh na socruithe samplach, na mods agus na leaganacha.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+751"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+755"/>
         <source>This is a problem: &lt;br/&gt; - The launcher will likely be deleted without warning by the operating system &lt;br/&gt; - close the launcher now and extract it to a real location, not a temporary folder</source>
         <translation>Is fadhb í seo: &lt;br/&gt; - Is dócha go scriosfaidh an córas oibriúcháin an lainseálaí gan rabhadh &lt;br/&gt; - dún an lainseálaí anois agus bain é chuig suíomh fíor, ní fillteán sealadach</translation>
     </message>
@@ -8788,7 +8868,7 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
         <translation>Téamaí &amp;Giuirléidí</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-314"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-318"/>
         <source>Cannot set empty name.</source>
         <translation>Ní féidir ainm folamh a shocrú.</translation>
     </message>
@@ -8885,7 +8965,7 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
         <translation>Cuntais</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+798"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+802"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>Cuireadh %1 le do PATH go rathúil. Is féidir leat é a thosú anois trí `%2` a rith.</translation>
     </message>
@@ -8909,7 +8989,7 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
         <translation type="vanished">Oscail an blag forbartha chun tuilleadh nuachta faoi %1 a léamh.</translation>
     </message>
     <message>
-        <location line="-1567"/>
+        <location line="-1571"/>
         <source>Backspace</source>
         <translation>Cúlspáis</translation>
     </message>
@@ -9040,7 +9120,7 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
         <translation>Ainm an ghrúpa</translation>
     </message>
     <message>
-        <location line="+356"/>
+        <location line="+360"/>
         <source>Deleting</source>
         <translation>Ag scriosadh</translation>
     </message>
@@ -9050,7 +9130,7 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
         <translation>Féach ar logaí</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-568"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-572"/>
         <source>Invalid import link: missing &apos;url&apos; parameter.</source>
         <translation>Nasc allmhairithe neamhbhailí: paraiméadar &apos;url&apos; ar iarraidh.</translation>
     </message>
@@ -9067,7 +9147,7 @@ Cruthaigh sampla nua sula ndéanann tú iarracht an acmhainn seo a shuiteáil ar
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1612"/>
+        <location line="+1616"/>
         <source>No instance selected</source>
         <translation>Níor roghnaíodh aon chás</translation>
     </message>
@@ -9126,7 +9206,7 @@ Chun an taisce meiteashonraí a ghlanadh de láimh, brúigh Fillteáin -&gt; Fé
         <translation>Scrios an sampla roghnaithe.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1339"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1343"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Scrios grúpa</translation>
     </message>
@@ -9182,7 +9262,7 @@ Seiceáil do bhruscar le do thoil chun iad a athchóiriú de láimh.</translatio
         <translation>Am súgartha iomlán: 0s</translation>
     </message>
     <message>
-        <location line="+1801"/>
+        <location line="+1805"/>
         <source>Total playtime: %1</source>
         <translation>Am imeartha iomlán: %1</translation>
     </message>
@@ -9197,18 +9277,18 @@ Seiceáil do bhruscar le do thoil chun iad a athchóiriú de láimh.</translatio
         <translation>Cuireadh %1 leis an PATH go rathúil</translation>
     </message>
     <message>
-        <location line="-286"/>
+        <location line="-290"/>
         <location line="+22"/>
         <source>Enter a new group name.</source>
         <translation>Cuir isteach ainm nua don ghrúpa.</translation>
     </message>
     <message>
-        <location line="+269"/>
+        <location line="+273"/>
         <source>An error occurred while trying to add %1 to PATH</source>
         <translation>Tharla earráid agus iarracht á déanamh %1 a chur leis an PATH</translation>
     </message>
     <message>
-        <location line="-279"/>
+        <location line="-283"/>
         <source>Are you sure you want to delete the group &apos;%1&apos;?</source>
         <translation>An bhfuil tú cinnte gur mian leat an grúpa &apos;%1&apos; a scriosadh?</translation>
     </message>
@@ -9425,7 +9505,7 @@ Déan cinnte go bhfuil muinín agat as an URL freisin.
 <context>
     <name>MinecraftInstance</name>
     <message>
-        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1042"/>
+        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1070"/>
         <source>&lt;ACCESS TOKEN&gt;</source>
         <translation>&lt;CEADCHOMHARTHA ROCHTANA&gt;</translation>
     </message>
@@ -9435,12 +9515,12 @@ Déan cinnte go bhfuil muinín agat as an URL freisin.
         <translation>, seinnte go deireanach ar %1 le haghaidh %2</translation>
     </message>
     <message>
-        <location line="-773"/>
+        <location line="-798"/>
         <source>Profilers</source>
         <translation>Próifíleoirí</translation>
     </message>
     <message>
-        <location line="+757"/>
+        <location line="+782"/>
         <source>broken</source>
         <translation>briste</translation>
     </message>
@@ -9450,12 +9530,12 @@ Déan cinnte go bhfuil muinín agat as an URL freisin.
         <translation>, iomlán imrithe do %1</translation>
     </message>
     <message>
-        <location line="-791"/>
+        <location line="-816"/>
         <source>Launch &amp;Offline</source>
         <translation>&amp;Lainseáil As Líne</translation>
     </message>
     <message>
-        <location line="+731"/>
+        <location line="+756"/>
         <source>&lt;PROFILE ID&gt;</source>
         <translation>&lt;ID PRÓIFÍLE&gt;</translation>
     </message>
@@ -9465,7 +9545,7 @@ Déan cinnte go bhfuil muinín agat as an URL freisin.
         <translation>&lt;ID SEISIÚIN&gt;</translation>
     </message>
     <message>
-        <location line="-728"/>
+        <location line="-753"/>
         <source>&amp;Launch</source>
         <translation>&amp;Lainseáil</translation>
     </message>
@@ -9475,22 +9555,22 @@ Déan cinnte go bhfuil muinín agat as an URL freisin.
         <translation>Ga&amp;n Próifíleoir</translation>
     </message>
     <message>
-        <location line="+758"/>
+        <location line="+783"/>
         <source>Minecraft %1</source>
         <translation>Minecraft %1</translation>
     </message>
     <message>
-        <location line="-778"/>
+        <location line="-803"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location line="+795"/>
+        <location line="+820"/>
         <source>, has crashed.</source>
         <translation>, tá tuairteáil déanta.</translation>
     </message>
     <message>
-        <location line="-793"/>
+        <location line="-818"/>
         <source>Ctrl+Alt+O</source>
         <translation>Ctrl+Alt+O</translation>
     </message>
@@ -9570,12 +9650,12 @@ Déan cinnte go bhfuil muinín agat as an URL freisin.
         <translation>Tosaigh Minecraft uasmhéadaithe</translation>
     </message>
     <message>
-        <location line="+707"/>
+        <location line="+724"/>
         <source>Custom Commands</source>
         <translation>Orduithe Oiriúnaithe</translation>
     </message>
     <message>
-        <location line="-721"/>
+        <location line="-738"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: The maximized option may not be fully supported on all Minecraft versions.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Rabhadh&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Seans nach dtacaítear go hiomlán leis an rogha uasmhéadaithe ar gach leagan de Minecraft.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -9594,7 +9674,7 @@ Déan cinnte go bhfuil muinín agat as an URL freisin.
         <translation>Cumasaigh MangoHud</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+58"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+60"/>
         <source>Custom</source>
         <translation>Saincheaptha</translation>
     </message>
@@ -9619,7 +9699,7 @@ Déan cinnte go bhfuil muinín agat as an URL freisin.
         <translation>&amp;Méid Fuinneoige:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+340"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+348"/>
         <source>Select Global Data Packs Folder</source>
         <translation>Roghnaigh Fillteán Pacáistí Sonraí Domhanda</translation>
     </message>
@@ -9701,7 +9781,7 @@ Is dóichí go mbeidh ort an cosán a athrú - féach ar shuíomh Gréasáin an 
         <translation>&amp;Oscail Socruithe Domhanda</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-493"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-501"/>
         <source>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: The maximized option is not fully supported on this Minecraft version.&lt;/span&gt;</source>
         <translation>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Rabhadh&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Ní thacaítear go hiomlán leis an rogha uasmhéadaithe ar an leagan seo de Minecraft.&lt;/span&gt;</translation>
     </message>
@@ -9910,12 +9990,27 @@ Is dóichí go mbeidh ort an cosán a athrú - féach ar shuíomh Gréasáin an 
         <translation>Cosán leabharlainne &amp;OpenAL:</translation>
     </message>
     <message>
-        <location line="+127"/>
+        <location line="+96"/>
+        <source>Runs OpenGL on the CPU (Mesa llvmpipe). Use this only if Minecraft crashes at startup because your graphics hardware or driver is too old or missing. It works on almost any PC but is slow. The renderer (about 40 MB) is downloaded once on the first launch.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Use software rendering (slow, for PCs without a working graphics driver)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Graphics driver guide...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+38"/>
         <source>Environment Variables</source>
         <translation>Athróga Timpeallachta</translation>
     </message>
     <message>
-        <location line="-468"/>
+        <location line="-485"/>
         <source>Show the &amp;total time played across instances</source>
         <translation>&amp;Taispeáin an t-am iomlán a imríodh trasna cásanna</translation>
     </message>
@@ -10973,7 +11068,7 @@ Nuashonraigh %1 le do thoil!</translation>
 <context>
     <name>MyReportsDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+151"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+162"/>
         <location line="+4"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -14475,7 +14570,26 @@ Ainm nua: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/BugReportTracker.cpp" line="+164"/>
+        <location filename="../launcher/BugReportTracker.cpp" line="+264"/>
+        <source>1 hour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+0"/>
+        <source>%n minute(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>You are sending way too many reports. Please slow down and try again in about %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
         <source>Waiting for a dev to check it</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14491,12 +14605,22 @@ Ainm nua: %2</translation>
     </message>
     <message>
         <location line="+2"/>
+        <source>A fix is being worked on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The team couldn&apos;t reproduce it - more details would help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Fixed - it will be in the next update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-193"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-199"/>
         <source>Fixed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14507,7 +14631,7 @@ Ainm nua: %2</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+8"/>
         <source>Won&apos;t be fixed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14520,6 +14644,21 @@ Ainm nua: %2</translation>
         <location line="+2"/>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+4"/>
         <source>Not a bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Not caused by the launcher - most likely a mod, Java or the game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Planned - it may come in a future update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Added - thanks for the suggestion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -14549,7 +14688,7 @@ Ainm nua: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-13"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-23"/>
         <source>Waiting</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14564,7 +14703,32 @@ Ainm nua: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+2"/>
+        <source>In progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Can&apos;t reproduce</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Planned</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Added</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Not the launcher</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>Duplicate</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14617,6 +14781,36 @@ Ainm nua: %2</translation>
     <message>
         <location line="+2"/>
         <source>%1s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/SoftwareRenderer.cpp" line="+82"/>
+        <source>The downloaded Mesa archive could not be read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Could not create the folder %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>The Mesa archive does not contain a 64-bit opengl32.dll.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Could not open %1 inside the Mesa archive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>%1 inside the Mesa archive is empty or damaged.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Could not write %1: %2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
