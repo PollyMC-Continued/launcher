@@ -52,6 +52,7 @@ class LanguagePage : public QWidget, public BasePage {
     QString displayName() const override { return tr("Language"); }
     QIcon icon() const override { return QIcon::fromTheme("language"); }
     QString id() const override { return "language-settings"; }
+    QString sectionName() const override { return tr("Launcher"); }
     QString helpPage() const override { return "Language-settings"; }
     bool apply() override;
 

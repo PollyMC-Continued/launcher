@@ -976,6 +976,15 @@ SET(LAUNCHER_SOURCES
     # GUI - global settings pages
     ui/pages/global/AccountListPage.cpp
     ui/pages/global/AccountListPage.h
+    ui/pages/global/AdvancedPage.cpp
+    ui/pages/global/AdvancedPage.h
+    ui/pages/global/FoldersPage.cpp
+    ui/pages/global/FoldersPage.h
+    ui/pages/global/InstancesPage.cpp
+    ui/pages/global/InstancesPage.h
+    ui/pages/global/ModsPage.cpp
+    ui/pages/global/ModsPage.h
+    ui/pages/global/SettingDescription.h
     ui/pages/global/ExternalToolsPage.cpp
     ui/pages/global/ExternalToolsPage.h
     ui/pages/global/DeveloperPage.cpp
@@ -1212,6 +1221,8 @@ SET(LAUNCHER_SOURCES
     ui/widgets/PageContainer.cpp
     ui/widgets/PageContainer.h
     ui/widgets/PageContainer_p.h
+    ui/widgets/ToggleSwitch.cpp
+    ui/widgets/ToggleSwitch.h
     ui/widgets/ProjectDescriptionPage.h
     ui/widgets/ProjectDescriptionPage.cpp
     ui/widgets/VariableSizedImageObject.h
@@ -1292,8 +1303,12 @@ qt_wrap_ui(LAUNCHER_UI
     ui/setupwizard/AutoJavaWizardPage.ui
     ui/setupwizard/LoginWizardPage.ui
     ui/pages/global/AccountListPage.ui
+    ui/pages/global/AdvancedPage.ui
+    ui/pages/global/FoldersPage.ui
+    ui/pages/global/InstancesPage.ui
     ui/pages/global/JavaPage.ui
     ui/pages/global/LauncherPage.ui
+    ui/pages/global/ModsPage.ui
     ui/pages/global/APIPage.ui
     ui/pages/global/ProxyPage.ui
     ui/pages/global/ExternalToolsPage.ui

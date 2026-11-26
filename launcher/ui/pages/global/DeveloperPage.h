@@ -11,6 +11,7 @@ public:
     QString displayName() const override { return tr("Developer"); }
     QIcon icon() const override { return QIcon::fromTheme("applications-development"); }
     QString id() const override { return "developer-settings"; }
+    QString sectionName() const override { return tr("Advanced"); }
     bool shouldDisplay() const override;
 private:
     void refreshStatus();

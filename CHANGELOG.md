@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased
+
+**A tidier settings window: the long General page is now split into short pages, grouped under headings in the sidebar.**
+
+**Changed:**
+
+- **Settings are split into pages** — The General page used to hold everything in one long scroll. It now only has startup, updater, interface and integration options. Instance sorting and renaming moved to **Instances**, folder paths to **Folders**, mod options to **Mods and modpacks**, and the log and task limits to **Tasks and console**. Every option is still there, and search (Ctrl+F) finds them on their new pages.
+- **Headings in the settings sidebar** — The pages are grouped under **Launcher**, **Minecraft**, **Network and accounts** and **Advanced**.
+- **Short explanations under settings** — Options whose name wasn't self-explanatory, like *Always rename the folder*, now have a one-line description underneath.
+- **On/off switches** — The tick boxes in the settings are now sliding on/off switches, and the whole row is clickable.
+- **Rounder sidebar** — Settings pages in the sidebar are rounded buttons with some padding, and only the button is highlighted, not the whole row. The search box is bigger and has more room around it.
+- **Blocked mod options moved** — *Check subfolders for blocked mods* and *Move blocked mods instead of copying them* now sit with the downloads folder, on the **Folders** page.
+
 ## v10.1.2
 
 **Gets rid of the "Launcher closed unexpectedly" window, helps PCs with old graphics run Minecraft, makes offline skins work on old Minecraft versions, and gives your bug reports five new answers.**

@@ -62,15 +62,19 @@
 
 #include "ui/pages/BasePageProvider.h"
 #include "ui/pages/global/APIPage.h"
+#include "ui/pages/global/AdvancedPage.h"
 #include "ui/pages/global/AccountListPage.h"
 #include "ui/pages/global/AppearancePage.h"
 #include "ui/pages/global/ExternalToolsPage.h"
+#include "ui/pages/global/FoldersPage.h"
+#include "ui/pages/global/InstancesPage.h"
 #include "ui/pages/global/DeveloperPage.h"
 #include "ui/pages/global/JavaPage.h"
 #include "ui/pages/global/LanguagePage.h"
 #include "ui/widgets/SplashScreen.h"
 #include "ui/pages/global/LauncherPage.h"
 #include "ui/pages/global/MinecraftPage.h"
+#include "ui/pages/global/ModsPage.h"
 #include "ui/pages/global/ProxyPage.h"
 
 #include "ui/setupwizard/AutoJavaWizardPage.h"
@@ -1034,16 +1038,26 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         // Init page provider
         {
             m_globalSettingsProvider = std::make_unique<GenericPageProvider>(tr("Settings"));
+            // The order matters: pages with the same sectionName() must be next to each other, the sidebar
+            // shows a heading above each group.
+            // Launcher
             m_globalSettingsProvider->addPage<LauncherPage>();
-            m_globalSettingsProvider->addPage<LanguagePage>();
+            m_globalSettingsProvider->addPage<InstancesPage>();
+            m_globalSettingsProvider->addPage<FoldersPage>();
             m_globalSettingsProvider->addPage<AppearancePage>();
+            m_globalSettingsProvider->addPage<LanguagePage>();
+            // Minecraft
             m_globalSettingsProvider->addPage<MinecraftPage>();
             m_globalSettingsProvider->addPage<JavaPage>();
+            m_globalSettingsProvider->addPage<ModsPage>();
+            // Network and accounts
             m_globalSettingsProvider->addPage<AccountListPage>();
             m_globalSettingsProvider->addPage<APIPage>();
+            m_globalSettingsProvider->addPage<ProxyPage>();
+            // Advanced
+            m_globalSettingsProvider->addPage<AdvancedPage>();
             m_globalSettingsProvider->addPage<ExternalToolsPage>();
             m_globalSettingsProvider->addPage<DeveloperPage>();
-            m_globalSettingsProvider->addPage<ProxyPage>();
         }
 
         PixmapCache::setInstance(new PixmapCache(this));

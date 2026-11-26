@@ -16,21 +16,97 @@
 #pragma once
 
 #include <QEvent>
+#include <QFont>
+#include <QFontMetrics>
 #include <QListView>
+#include <QPainter>
+#include <QPalette>
 #include <QScrollBar>
 #include <QStyledItemDelegate>
 
 class BasePage;
 const int pageIconSize = 24;
+// Custom model role: the sidebar heading a page belongs to (BasePage::sectionName()).
+const int pageSectionRole = Qt::UserRole + 20;
 
 class PageViewDelegate : public QStyledItemDelegate {
    public:
     PageViewDelegate(QObject* parent) : QStyledItemDelegate(parent) {}
-    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
+
+    QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const override
     {
-        QSize size = QStyledItemDelegate::sizeHint(option, index);
-        size.setHeight(qMax(size.height(), 32));
-        return size;
+        const QFontMetrics fm(option.font);
+        const int textWidth = fm.horizontalAdvance(index.data(Qt::DisplayRole).toString());
+        return QSize(textWidth + pageIconSize + 2 * SideMargin + 2 * PillPadding + IconGap, EntryHeight + sectionHeaderHeight(option, index));
+    }
+
+    void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const override
+    {
+        QStyleOptionViewItem opt = option;
+        initStyleOption(&opt, index);
+
+        painter->save();
+        painter->setRenderHint(QPainter::Antialiasing);
+        painter->setRenderHint(QPainter::SmoothPixmapTransform);
+
+        // section heading (only above the first page of a section)
+        const int headerHeight = sectionHeaderHeight(option, index);
+        if (headerHeight > 0) {
+            QFont font = option.font;
+            if (font.pointSizeF() > 1)
+                font.setPointSizeF(font.pointSizeF() - 1);
+            painter->setFont(font);
+            painter->setPen(option.palette.color(QPalette::PlaceholderText));
+            const QRect headerRect(option.rect.left() + SideMargin + PillPadding, option.rect.top(), option.rect.width() - 2 * SideMargin - 2 * PillPadding,
+                                   headerHeight - 4);
+            painter->drawText(headerRect, Qt::AlignLeft | Qt::AlignBottom, index.data(pageSectionRole).toString());
+        }
+
+        // the page entry: a rounded pill inset from the edges. Only the pill is highlighted, not the whole row.
+        QRect entry = option.rect;
+        entry.setTop(entry.top() + headerHeight);
+        const QRect pill = entry.adjusted(SideMargin, 2, -SideMargin, -2);
+        const bool selected = opt.state & QStyle::State_Selected;
+        const bool hovered = opt.state & QStyle::State_MouseOver;
+        // always the "active" colours: the sidebar should not turn grey when the list loses focus
+        const QPalette& pal = opt.palette;
+        if (selected || hovered) {
+            QColor fill = selected ? pal.color(QPalette::Active, QPalette::Highlight) : pal.color(QPalette::Active, QPalette::Text);
+            if (!selected)
+                fill.setAlpha(26);
+            painter->setPen(Qt::NoPen);
+            painter->setBrush(fill);
+            painter->drawRoundedRect(pill, PillRadius, PillRadius);
+        }
+
+        const QRect iconRect(pill.left() + PillPadding, pill.center().y() - pageIconSize / 2 + 1, pageIconSize, pageIconSize);
+        if (!opt.icon.isNull())
+            opt.icon.paint(painter, iconRect, Qt::AlignCenter, QIcon::Normal, QIcon::Off);
+
+        const QRect textRect(iconRect.right() + 1 + IconGap, pill.top(), pill.right() - iconRect.right() - IconGap - PillPadding, pill.height());
+        painter->setFont(option.font);
+        painter->setPen(pal.color(QPalette::Active, selected ? QPalette::HighlightedText : QPalette::Text));
+        painter->drawText(textRect, Qt::AlignVCenter | Qt::AlignLeft | Qt::TextSingleLine,
+                          QFontMetrics(option.font).elidedText(opt.text, Qt::ElideRight, textRect.width()));
+        painter->restore();
+    }
+
+   private:
+    static constexpr int EntryHeight = 38;   // one page entry, including the gap between pills
+    static constexpr int SideMargin = 8;     // space between the sidebar edge and the pill
+    static constexpr int PillPadding = 10;   // space between the pill edge and its icon / text
+    static constexpr int IconGap = 10;       // space between icon and text
+    static constexpr int PillRadius = 8;
+
+    // Extra height for the heading, only on the first visible page of each section.
+    static int sectionHeaderHeight(const QStyleOptionViewItem& option, const QModelIndex& index)
+    {
+        const QString section = index.data(pageSectionRole).toString();
+        if (section.isEmpty())
+            return 0;
+        if (index.row() > 0 && index.sibling(index.row() - 1, 0).data(pageSectionRole).toString() == section)
+            return 0;
+        return QFontMetrics(option.font).height() + 14;
     }
 };
 
@@ -50,6 +126,8 @@ class PageModel : public QAbstractListModel {
         switch (role) {
             case Qt::DisplayRole:
                 return m_pages.at(index.row())->displayName();
+            case pageSectionRole:
+                return m_pages.at(index.row())->sectionName();
             case Qt::DecorationRole: {
                 QIcon icon = m_pages.at(index.row())->icon();
                 if (icon.isNull())
@@ -89,6 +167,7 @@ class PageView : public QListView {
         setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
         setItemDelegate(new PageViewDelegate(this));
         setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        setMouseTracking(true);  // hover highlight of the sidebar pills
     }
 
     virtual QSize sizeHint() const

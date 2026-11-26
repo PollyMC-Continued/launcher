@@ -59,6 +59,7 @@ class LauncherPage : public QWidget, public BasePage {
     QString displayName() const override { return tr("General"); }
     QIcon icon() const override { return QIcon::fromTheme("settings"); }
     QString id() const override { return "launcher-settings"; }
+    QString sectionName() const override { return tr("Launcher"); }
     QString helpPage() const override { return "Launcher-settings"; }
     bool apply() override;
     void retranslate() override;
@@ -68,13 +69,6 @@ class LauncherPage : public QWidget, public BasePage {
     void loadSettings();
 
    private slots:
-    void on_instDirBrowseBtn_clicked();
-    void on_modsDirBrowseBtn_clicked();
-    void on_iconsDirBrowseBtn_clicked();
-    void on_downloadsDirBrowseBtn_clicked();
-    void on_javaDirBrowseBtn_clicked();
-    void on_skinsDirBrowseBtn_clicked();
-    void on_metadataEnableBtn_clicked();
     void on_discordRPEnabledCheckBox_stateChanged(int state);
 
    private:

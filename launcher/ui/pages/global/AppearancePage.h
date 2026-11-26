@@ -54,6 +54,7 @@ class AppearancePage : public AppearanceWidget, public BasePage {
     QString displayName() const override { return tr("Appearance"); }
     QIcon icon() const override { return QIcon::fromTheme("appearance"); }
     QString id() const override { return "appearance-settings"; }
+    QString sectionName() const override { return tr("Launcher"); }
     QString helpPage() const override { return "Launcher-settings"; }
 
     bool apply() override

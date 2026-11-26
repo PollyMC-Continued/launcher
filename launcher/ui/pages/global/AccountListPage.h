@@ -65,6 +65,7 @@ class AccountListPage : public QMainWindow, public BasePage {
         return icon;
     }
     QString id() const override { return "accounts"; }
+    QString sectionName() const override { return tr("Network and accounts"); }
     QString helpPage() const override { return "getting-started/adding-an-account"; }
     void retranslate() override;
 

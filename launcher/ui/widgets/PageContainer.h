@@ -97,7 +97,9 @@ class PageContainer : public QWidget, public BasePageContainer {
     void hidePageList()
     {
         m_pageList->hide();
-        if (m_searchBox)
+        if (m_searchHolder)
+            m_searchHolder->hide();
+        else if (m_searchBox)
             m_searchBox->hide();
         if (m_searchResults)
             m_searchResults->hide();
@@ -151,6 +153,7 @@ class PageContainer : public QWidget, public BasePageContainer {
         bool control = false;      // a real control (checkbox, labelled field, button) rather than loose text
         bool flash = true;
     };
+    QWidget* m_searchHolder = nullptr;  // gives the search box its padding
     QLineEdit* m_searchBox = nullptr;
     QListView* m_searchResults = nullptr;
     QStandardItemModel* m_searchResultsModel = nullptr;

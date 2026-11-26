@@ -47,6 +47,7 @@
 #include <QDialogButtonBox>
 #include <QEvent>
 #include <QGridLayout>
+#include <QHBoxLayout>
 #include <QGroupBox>
 #include <QHash>
 #include <QKeyEvent>
@@ -387,7 +388,12 @@ void PageContainer::createUI()
     m_searchBox->setClearButtonEnabled(true);
     m_searchBox->setPlaceholderText(tr("Search settings…"));
     m_searchBox->setToolTip(tr("Search all settings (Ctrl+F). Several words narrow the results down."));
+    m_searchBox->setMinimumHeight(34);
     m_searchBox->installEventFilter(this);
+    m_searchHolder = new QWidget(this);
+    auto* searchHolderLayout = new QHBoxLayout(m_searchHolder);
+    searchHolderLayout->setContentsMargins(10, 10, 10, 6);
+    searchHolderLayout->addWidget(m_searchBox);
     connect(m_searchBox, &QLineEdit::textChanged, this, &PageContainer::searchTextChanged);
     connect(m_searchBox, &QLineEdit::returnPressed, this, &PageContainer::searchReturnPressed);
 
@@ -406,7 +412,7 @@ void PageContainer::createUI()
     m_layout = new QGridLayout;
     m_layout->addLayout(headerHLayout, 0, 1, 1, 1);
     // the search box sits at the top of the left column, level with the page header
-    m_layout->addWidget(m_searchBox, 0, 0, 1, 1);
+    m_layout->addWidget(m_searchHolder, 0, 0, 1, 1);
     m_layout->addWidget(m_pageList, 1, 0, 2, 1);
     // results live in the same cell as the page list; only one is visible at a time
     m_layout->addWidget(m_searchResults, 1, 0, 2, 1);
@@ -584,6 +590,8 @@ void PageContainer::buildSearchIndex()
         // Field captions point at their field through the buddy: search finds the field itself, with its
         // tooltip and choices as extra keywords.
         for (auto* label : pageWidget->findChildren<QLabel*>()) {
+            if (label->property("settingDescription").toBool())
+                continue;  // the explanation line under a setting is not a setting itself
             SearchEntry entry;
             entry.label = usableText(label->text());
             QWidget* buddy = label->buddy();

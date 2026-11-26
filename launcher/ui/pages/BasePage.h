@@ -49,6 +49,8 @@ class BasePage {
     virtual QString id() const = 0;
     virtual QString displayName() const = 0;
     virtual QIcon icon() const = 0;
+    // Heading shown above this page (and the ones after it with the same name) in the sidebar. Empty = no heading.
+    virtual QString sectionName() const { return QString(); }
     virtual bool apply() { return true; }
     virtual bool shouldDisplay() const { return true; }
     virtual QString helpPage() const { return QString(); }
