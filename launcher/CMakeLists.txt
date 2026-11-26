@@ -291,6 +291,8 @@ set(MINECRAFT_SOURCES
     minecraft/launch/VerifyJavaInstall.h
     minecraft/launch/AutoInstallJava.cpp
     minecraft/launch/AutoInstallJava.h
+    minecraft/launch/EnsureSoftwareRenderer.cpp
+    minecraft/launch/EnsureSoftwareRenderer.h
 
     minecraft/GradleSpecifier.h
     minecraft/MinecraftInstance.cpp
@@ -862,6 +864,8 @@ SET(LAUNCHER_SOURCES
     SysInfo.cpp
     HardwareInfo.cpp
     HardwareInfo.h
+    SoftwareRenderer.cpp
+    SoftwareRenderer.h
 
     # console utils
     console/Console.h
@@ -1182,6 +1186,8 @@ SET(LAUNCHER_SOURCES
     ui/dialogs/BlockedModsDialog.h
     ui/dialogs/ChooseProviderDialog.h
     ui/dialogs/ChooseProviderDialog.cpp
+    ui/dialogs/GpuDriverGuideDialog.cpp
+    ui/dialogs/GpuDriverGuideDialog.h
     ui/dialogs/ResourceUpdateDialog.cpp
     ui/dialogs/ResourceUpdateDialog.h
     ui/dialogs/InstanceHealthCheckDialog.cpp

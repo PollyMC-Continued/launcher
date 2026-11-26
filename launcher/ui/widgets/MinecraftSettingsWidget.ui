@@ -782,6 +782,23 @@ It is most likely you will need to change the path - please refer to the mod's w
                 </property>
                </widget>
               </item>
+              <item>
+               <widget class="QCheckBox" name="useSoftwareRendering">
+                <property name="toolTip">
+                 <string>Runs OpenGL on the CPU (Mesa llvmpipe). Use this only if Minecraft crashes at startup because your graphics hardware or driver is too old or missing. It works on almost any PC but is slow. The renderer (about 40 MB) is downloaded once on the first launch.</string>
+                </property>
+                <property name="text">
+                 <string>Use software rendering (slow, for PCs without a working graphics driver)</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="gpuDriverGuideButton">
+                <property name="text">
+                 <string>Graphics driver guide...</string>
+                </property>
+               </widget>
+              </item>
              </layout>
             </widget>
            </item>

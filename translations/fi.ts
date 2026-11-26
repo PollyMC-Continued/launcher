@@ -765,7 +765,7 @@ The account UUID stays the same, so your singleplayer progress and your selected
         <translation>Yhteensopimaton laitekonfiguraatio</translation>
     </message>
     <message>
-        <location line="+1056"/>
+        <location line="+996"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -800,12 +800,12 @@ Tutki Prism Launcher -päivityslokia sijainnissa:
 saadaksesi tarkempia tietoja viimeisimmästä päivitysyrityksestä.</translation>
     </message>
     <message>
-        <location line="-1777"/>
+        <location line="-1721"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>Tätä lokia ei voida näyttää sillä sen pituus on ylittänyt %1 riviä.</translation>
     </message>
     <message>
-        <location line="+1599"/>
+        <location line="+1543"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>Näyttää siltä, että olet käyttänyt %1:tä aikaisemmin päivämäärällä %2. Haluatko tuoda tiedot uuteen %3:in sijaintiin?</translation>
     </message>
@@ -873,7 +873,7 @@ Katso PollyMC-Continuedin päivitysloki osoitteesta:
 lisätietoja.</translation>
     </message>
     <message>
-        <location line="-1900"/>
+        <location line="-1841"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -909,7 +909,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+530"/>
+        <location line="+531"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -993,42 +993,12 @@ Voit ratkaista tämän ongelman uudelleenliittämällä /tmp:n &apos;exec&apos; 
 </translation>
     </message>
     <message>
-        <location line="+229"/>
+        <location line="+227"/>
         <source>Opening the launcher…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+487"/>
-        <location line="+20"/>
-        <source>Launcher closed unexpectedly</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-19"/>
-        <source>%1 did not shut down properly last time.
-
-If it crashed or froze on you, you can send us a crash report - the log from that session is attached automatically.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Report this crash</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Ignore</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+11"/>
-        <source>The launcher closed unexpectedly (crash or freeze). Last part of the log from that session:
-
-%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+362"/>
+        <location line="+809"/>
         <source>Instances were found at %1, but %2 is looking in %3. Do you want to migrate them to the new location?</source>
         <translation>Instansseja löytyi kohteesta %1, mutta %2 etsii kohteesta %3. Haluatko siirtää ne uuteen sijaintiin?</translation>
     </message>
@@ -1063,7 +1033,7 @@ Kopioidaanko ne tähän kannettavaan kansioon? Tilisi, asetuksesi ja instanssili
         <translation type="vanished">Päivitys meneillään</translation>
     </message>
     <message>
-        <location line="-1500"/>
+        <location line="-1440"/>
         <source>Settings</source>
         <translation>Asetukset</translation>
     </message>
@@ -1094,7 +1064,7 @@ saadaksesi tarkempia tietoja viimeisimmästä päivitysyrityksestä.
 Poistaaksesi tämän lukituksen ja jatkaaksesi, valitse alempaa &quot;Sivuuta&quot;.</translation>
     </message>
     <message>
-        <location line="+1344"/>
+        <location line="+1284"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>Vanhoja tietoja %1:stä löydettiin, mutta sinulla on jo olemassa olevia tietoja %2:ille. Valitettavasti sinun on siirrettävä ne itse. Haluatko että sinua muistutetaan odottavasta tiedonsiirrosta seuraavan kerran, kun käynnistät %2:in?</translation>
     </message>
@@ -1867,16 +1837,18 @@ Poistaaksesi tämän lukituksen ja jatkaaksesi, valitse alempaa &quot;Sivuuta&qu
     <name>BugReportDialog</name>
     <message>
         <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
-        <location line="+452"/>
+        <location line="+393"/>
+        <location line="+63"/>
         <location line="+11"/>
         <location line="+56"/>
+        <location line="+5"/>
         <location line="+8"/>
         <location line="+9"/>
         <source>Report a Bug</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-518"/>
+        <location line="-527"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2066,7 +2038,7 @@ What I was doing when this happened:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+23"/>
         <source>Launcher: %1 (%2)
 System: %3
 CPU architecture: %4
@@ -2105,7 +2077,7 @@ Qt: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+61"/>
         <source>You just sent a report. Please wait a minute before sending another one.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3950,6 +3922,47 @@ Pelipakettia ei voitu käynnistää koska jotkin kirjastot puuttuvat tai niitä 
     </message>
 </context>
 <context>
+    <name>EnsureSoftwareRenderer</name>
+    <message>
+        <location filename="../launcher/minecraft/launch/EnsureSoftwareRenderer.cpp" line="+40"/>
+        <source>Software rendering is turned on, but the software renderer is not installed and cannot be downloaded by this version.
+Copy the 64-bit Mesa files opengl32.dll, libgallium_wgl.dll and libglapi.dll into this folder, or turn software rendering off:
+  %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>The software renderer is not installed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Downloading the software renderer (needed once)...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Software renderer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Could not download the software renderer: %1
+Turn software rendering off or try again with a working Internet connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Could not install the software renderer: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Software renderer installed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EntitlementsStep</name>
     <message>
         <location filename="../launcher/minecraft/auth/steps/EntitlementsStep.cpp" line="+56"/>
@@ -5277,6 +5290,39 @@ Do you want to continue anyway?</source>
         <location line="+24"/>
         <source>Got skin</source>
         <translation>Skini haettu</translation>
+    </message>
+</context>
+<context>
+    <name>GpuDriverGuideDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/GpuDriverGuideDialog.cpp" line="+51"/>
+        <source>Graphics Driver Guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Your graphics card could not be detected automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>&lt;b&gt;Detected graphics:&lt;/b&gt; %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Windows is using its basic built-in display driver, so no real graphics driver is installed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>%1 drivers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>&lt;h3&gt;How to update your graphics driver&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;&lt;b&gt;Find your graphics card.&lt;/b&gt; Press &lt;i&gt;Win + R&lt;/i&gt;, type &lt;i&gt;dxdiag&lt;/i&gt; and press Enter, then open the &lt;i&gt;Display&lt;/i&gt; tab. Or open &lt;i&gt;Device Manager&lt;/i&gt; and expand &lt;i&gt;Display adapters&lt;/i&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Laptop or ready-made PC?&lt;/b&gt; Check the maker&apos;s support page for your exact model first (Dell, HP, Lenovo, ASUS, Acer...). Their drivers are tested for your machine. Otherwise use the buttons above:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Intel:&lt;/b&gt; run the &lt;i&gt;Intel Driver &amp;amp; Support Assistant&lt;/i&gt;, it finds the right driver for you.&lt;/li&gt;&lt;li&gt;&lt;b&gt;AMD:&lt;/b&gt; pick your product on the AMD page, or run the AMD auto-detect tool.&lt;/li&gt;&lt;li&gt;&lt;b&gt;NVIDIA:&lt;/b&gt; pick your product on the NVIDIA page, or use the NVIDIA app.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Install it and restart your PC.&lt;/b&gt; Choose a clean or standard install, both are fine.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Check it worked.&lt;/b&gt; In &lt;i&gt;dxdiag&lt;/i&gt; the Display tab should show your real card with a driver version, not &quot;Microsoft Basic Display Adapter&quot;.&lt;/li&gt;&lt;/ol&gt;&lt;h3&gt;Still not working?&lt;/h3&gt;&lt;p&gt;Very old graphics (for example Intel HD Graphics 2000/3000 and older, or cards from before about 2012) cannot run recent Minecraft versions even with the latest driver. In that case:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Play an older Minecraft version (1.16.5 or older work on much older hardware), or&lt;/li&gt;&lt;li&gt;turn on &lt;i&gt;Use software rendering&lt;/i&gt; in the instance&apos;s settings under Performance. It works on almost any PC but is slow, or&lt;/li&gt;&lt;li&gt;upgrade the graphics card.&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6662,8 +6708,8 @@ Voit muuttaa Java-version myöhemmin asetuksista.
 <context>
     <name>LaunchController</name>
     <message>
-        <location filename="../launcher/LaunchController.cpp" line="+165"/>
-        <location line="+309"/>
+        <location filename="../launcher/LaunchController.cpp" line="+168"/>
+        <location line="+355"/>
         <source>Abort</source>
         <translation>Keskeytä</translation>
     </message>
@@ -6673,7 +6719,7 @@ Voit muuttaa Java-version myöhemmin asetuksista.
         <translation>Virhe</translation>
     </message>
     <message>
-        <location line="-379"/>
+        <location line="-425"/>
         <source>No instance specified!</source>
         <translation>Pelipakettia ei ole määritetty!</translation>
     </message>
@@ -6730,17 +6776,56 @@ Voit muuttaa Java-version myöhemmin asetuksista.
     </message>
     <message>
         <location line="+123"/>
-        <location line="+56"/>
+        <location line="+102"/>
         <source>Error!</source>
         <translation>Virhe!</translation>
     </message>
     <message>
-        <location line="-49"/>
+        <location line="-91"/>
+        <source>Graphics hardware warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Your graphics card or driver may be too old for Minecraft.
+
+Detected: %1
+
+Recent Minecraft versions need a working OpenGL driver. Without one, the game usually crashes right after it starts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>You can update your graphics driver, or turn on software rendering, which works on almost any PC but is slow. If the game already runs fine for you, choose Launch Anyway.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Use Software Rendering</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Driver Guide...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Launch Anyway</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Don&apos;t show this again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
         <source>Couldn&apos;t instantiate a launcher.</source>
         <translation>Ei voitu instantioida käynnistintä.</translation>
     </message>
     <message>
-        <location line="-305"/>
+        <location line="-351"/>
         <source>Invalid Java arguments specified. Please fix this first.</source>
         <translation>Määritetyt Java-argumentit ovat virheellisiä. Korjaa ne ensin.</translation>
     </message>
@@ -6750,12 +6835,12 @@ Voit muuttaa Java-version myöhemmin asetuksista.
         <translation>%1. Haluatko uudelleen todentaa tämän käyttäjän?</translation>
     </message>
     <message>
-        <location line="+101"/>
+        <location line="+147"/>
         <source>Waiting.</source>
         <translation>Odottaa.</translation>
     </message>
     <message>
-        <location line="-67"/>
+        <location line="-113"/>
         <location line="+1"/>
         <source>Couldn&apos;t load the instance profile.</source>
         <translation>Ei voitu ladata pelipaketin profiilia.</translation>
@@ -6766,7 +6851,7 @@ Voit muuttaa Java-version myöhemmin asetuksista.
         <translation>Pelaa demoa</translation>
     </message>
     <message>
-        <location line="+229"/>
+        <location line="+275"/>
         <source>Couldn&apos;t start the profiler: %1</source>
         <translation>Ei voitu käynnistää profiloijaa: %1</translation>
     </message>
@@ -6776,7 +6861,7 @@ Voit muuttaa Java-version myöhemmin asetuksista.
         <translation>Tapa Minecraft?</translation>
     </message>
     <message>
-        <location line="-389"/>
+        <location line="-435"/>
         <source>No Accounts</source>
         <translation>Ei tilejä</translation>
     </message>
@@ -6808,7 +6893,7 @@ Sinun pitää ostaa Minecraft pelataksesi koko versiota.</translation>
         <translation>Käyttäjää käynnistämiseen ei valittu</translation>
     </message>
     <message>
-        <location line="+127"/>
+        <location line="+173"/>
         <source>Profiler check for %1 failed: %2</source>
         <translation>Profiloijan tarkastus %1:lle epäonnistui: %2</translation>
     </message>
@@ -6818,7 +6903,7 @@ Sinun pitää ostaa Minecraft pelataksesi koko versiota.</translation>
         <translation>&amp;Käynnistä</translation>
     </message>
     <message>
-        <location line="-230"/>
+        <location line="-276"/>
         <source>Play demo?</source>
         <translation>Pelaa demoa?</translation>
     </message>
@@ -6833,7 +6918,7 @@ Sinun pitää ostaa Minecraft pelataksesi koko versiota.</translation>
         <translation>Pelaajan nimi</translation>
     </message>
     <message>
-        <location line="+197"/>
+        <location line="+243"/>
         <source>The game launch is delayed until you press the button. This is the right time to setup the profiler, as the profiler server is running now.
 
 %1</source>
@@ -6842,7 +6927,7 @@ Sinun pitää ostaa Minecraft pelataksesi koko versiota.</translation>
 %1</translation>
     </message>
     <message>
-        <location line="-251"/>
+        <location line="-297"/>
         <source>An error occurred while refreshing &apos;%1&apos;</source>
         <translation>%1:n päivityksessä tapahtui virhe</translation>
     </message>
@@ -6851,12 +6936,12 @@ Sinun pitää ostaa Minecraft pelataksesi koko versiota.</translation>
         <translation type="vanished">Jotta voit pelata Minecraft:ia, sinun on oltava kirjautuneena vähintään yhdelle Microsoft-tilille, joka omistaa Minecraft:in. Haluatko avata tilien hallinnan lisätäksesi tilin nyt?</translation>
     </message>
     <message>
-        <location line="+305"/>
+        <location line="+351"/>
         <source>This can cause the instance to get corrupted and should only be used if Minecraft is frozen for some reason</source>
         <translation>Tämä voi korruptoida pelipaketin ja sitä tulisi käyttää vain jos Minecraft jostain syystä jäätyy</translation>
     </message>
     <message>
-        <location line="-274"/>
+        <location line="-320"/>
         <source>
 
 Do you want to play the demo?</source>
@@ -6912,7 +6997,7 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+690"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+680"/>
         <source>s</source>
         <translation>sec</translation>
     </message>
@@ -6970,7 +7055,7 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation>Siirrä estettyjä modeja kopioimisen sijasta</translation>
     </message>
     <message>
-        <location line="-372"/>
+        <location line="-362"/>
         <source>Never rename the folder</source>
         <translation>Älä koskaan nimeä kansiota uudelleen</translation>
     </message>
@@ -6985,7 +7070,7 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation> tuntia</translation>
     </message>
     <message>
-        <location line="+332"/>
+        <location line="+322"/>
         <source> lines</source>
         <translation> riviä</translation>
     </message>
@@ -7005,7 +7090,7 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation>&amp;Modit:</translation>
     </message>
     <message>
-        <location line="-353"/>
+        <location line="-343"/>
         <source>User Interface</source>
         <translation>Käyttöliittymä</translation>
     </message>
@@ -7014,7 +7099,7 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation type="vanished">Lataa vaaditut pelitiedostot kun paketti luodaan. Poista tämä käytöstä ohittaaksesi esilatauksen ja noutaaksesi tiedostot vasta kun paketti käynnistetään.</translation>
     </message>
     <message>
-        <location line="+439"/>
+        <location line="+429"/>
         <source>Mods and Modpacks</source>
         <translation>Modit ja Modipaketit</translation>
     </message>
@@ -7024,7 +7109,7 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation>HTTP-aikakatkaisu:</translation>
     </message>
     <message>
-        <location line="-582"/>
+        <location line="-572"/>
         <source>Always rename the folder</source>
         <translation>Nimeä kansio aina uudelleen</translation>
     </message>
@@ -7104,16 +7189,6 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
-        <source>When the launcher closes without warning while your computer keeps running, ask whether to send the log from that session. Unexpected restarts and power losses are never counted as crashes.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Offer to report a crash after an unexpected exit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+29"/>
         <source>Folder where PollyMC-Continued stores automatically downloaded Java versions. Do NOT set this to your system Java installation.</source>
         <translation>Kansio, johon PollyMC-Continued tallentaa automaattisesti ladatut Java-versiot. ÄLÄ aseta tätä järjestelmän Java-asennukseesi.</translation>
@@ -7144,7 +7219,7 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation>Java-kansio</translation>
     </message>
     <message>
-        <location line="+117"/>
+        <location line="+116"/>
         <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7154,7 +7229,7 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation>Kun käytössä, sen lisäksi että latauskansio tarkistetaan, sen alikansiot tarkistetaan myös, kun etsitään resursseja (esim. kun etsitään estettyjä modeja CurseForge:sta).</translation>
     </message>
     <message>
-        <location line="-225"/>
+        <location line="-215"/>
         <source>Every </source>
         <translation>Joka </translation>
     </message>
@@ -7164,7 +7239,7 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation>Pakettien lajittelu</translation>
     </message>
     <message>
-        <location line="+469"/>
+        <location line="+459"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Disabling mod metadata may also disable some QoL features, such as mod updating!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Varoitus&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Metatietojen ottaminen pois käytöstä saattaa myös poistaa käytöstä joitakin QoL-ominaisuuksia, kuten modien päivittämisen!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -7174,7 +7249,7 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation>&amp;Lataukset:</translation>
     </message>
     <message>
-        <location line="-156"/>
+        <location line="-146"/>
         <source>On Launch</source>
         <translation>Käynnistyksen yhteydessä</translation>
     </message>
@@ -7188,7 +7263,7 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation type="vanished">Poista</translation>
     </message>
     <message>
-        <location line="+457"/>
+        <location line="+447"/>
         <source>Seconds to wait until the requests are terminated</source>
         <translation>Monta sekuntia odotetaan, kunnes pyynnöt hylätään</translation>
     </message>
@@ -7207,17 +7282,17 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation type="vanished">Lataa pelitiedostot paketin luomisen aikana</translation>
     </message>
     <message>
-        <location line="-357"/>
+        <location line="-347"/>
         <source>Set to 0 to only check on launch</source>
         <translation>Aseta 0 tarkistettavaksi vain käynnistyksen yhteydessä</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-163"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-162"/>
         <source>Do you want to proceed anyway?</source>
         <translation>Haluatko silti jatkaa?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+257"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+247"/>
         <source>Keep track of mod metadata</source>
         <translation>Pidä kirjaa modien metatiedoista</translation>
     </message>
@@ -7227,22 +7302,22 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation>Tunnista, asenna ja päivitä modien riippuvuudet automaattisesti.</translation>
     </message>
     <message>
-        <location line="-373"/>
+        <location line="-363"/>
         <source>The menubar is more friendly for keyboard-driven interaction.</source>
         <translation>Valikkopalkki on soveliaampi näppäimistö-ohjausta varten.</translation>
     </message>
     <message>
-        <location line="+572"/>
+        <location line="+562"/>
         <source>Concurrent Task Limit:</source>
         <translation>Samanaikaisten tehtävien raja:</translation>
     </message>
     <message>
-        <location line="-661"/>
+        <location line="-651"/>
         <source>&amp;By last launched</source>
         <translation>&amp;Viimeksi käynnistetty</translation>
     </message>
     <message>
-        <location line="+363"/>
+        <location line="+353"/>
         <source>I&amp;nstances:</source>
         <translation>P&amp;elipaketit:</translation>
     </message>
@@ -7262,17 +7337,17 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation>&amp;Kuvakkeet:</translation>
     </message>
     <message>
-        <location line="-413"/>
+        <location line="-403"/>
         <source>By &amp;name</source>
         <translation>&amp;Nimen mukaan</translation>
     </message>
     <message>
-        <location line="+330"/>
+        <location line="+320"/>
         <source>&amp;Skins:</source>
         <translation>&amp;Skinit:</translation>
     </message>
     <message>
-        <location line="-218"/>
+        <location line="-208"/>
         <source>Updater</source>
         <translation>Päivittäjä</translation>
     </message>
@@ -7282,12 +7357,12 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation>&amp;Korvaa työkalupalkki valikkopalkilla</translation>
     </message>
     <message>
-        <location line="+192"/>
+        <location line="+182"/>
         <source>Folders</source>
         <translation>Kansiot</translation>
     </message>
     <message>
-        <location line="-43"/>
+        <location line="-33"/>
         <location filename="../launcher/ui/pages/global/LauncherPage.h" line="+59"/>
         <source>General</source>
         <translation>Yleiset</translation>
@@ -7303,7 +7378,7 @@ Sinun tarvitsee ehkä korjata modisi, koska peli jatkaa silti lokin kirjoittamis
         <translation>Tarkista päivitykset automaattisesti</translation>
     </message>
     <message>
-        <location line="+192"/>
+        <location line="+182"/>
         <source>&amp;Auto Java Download:</source>
         <translation>&amp;Automaattinen Java Lataus:</translation>
     </message>
@@ -7334,7 +7409,7 @@ Luvan myöntäminen %1:lle Flatseal:illa on suositeltua.</translation>
         <translation>Kaupan modien versiotiedot tulevat modien tarjoajilta (kuten Modrinth tai CurseForge).</translation>
     </message>
     <message>
-        <location line="-399"/>
+        <location line="-389"/>
         <source>Ask what to do</source>
         <translation>Kysy, mitä tehdä</translation>
     </message>
@@ -8213,7 +8288,7 @@ Tämä on korjattava manuaalisesti.</translation>
         <translation>&amp;Näytä</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1887"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1891"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -8234,7 +8309,7 @@ Oletko varma?</translation>
         <translation>Kopioi valittu pelipaketti.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-776"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-780"/>
         <location line="+168"/>
         <location line="+106"/>
         <source>Abort</source>
@@ -8247,7 +8322,7 @@ Oletko varma?</translation>
         <location line="+61"/>
         <location line="+15"/>
         <location line="+37"/>
-        <location line="+424"/>
+        <location line="+428"/>
         <source>Error</source>
         <translation>Virhe</translation>
     </message>
@@ -8257,7 +8332,7 @@ Oletko varma?</translation>
         <translation>Päätyökalupalkki</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-460"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-464"/>
         <source>Invalid import link: URL must be http(s).</source>
         <translation>Väärä tuontilinkki: URL:än täytyy olla http(s).</translation>
     </message>
@@ -8277,7 +8352,12 @@ Oletko varma?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+21"/>
+        <source>Report a Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
         <source> (commit %1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8431,7 +8511,7 @@ Oletko varma?</translation>
         <translation>Avaa bugienseurantasivu ilmoittaaksesi bugin %1:ssa.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-778"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-782"/>
         <source>Task aborted</source>
         <translation>Tehtävä peruttu</translation>
     </message>
@@ -8507,7 +8587,7 @@ URL:
         <translation>Poista ryhmä</translation>
     </message>
     <message>
-        <location line="+278"/>
+        <location line="+282"/>
         <source>Failed to add %1 to PATH</source>
         <translation>Ei voitu lisätä %1 PATH:iin</translation>
     </message>
@@ -8561,7 +8641,7 @@ URL:
         <translation type="vanished">Uutisia ei ole saatavilla.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-767"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-771"/>
         <source>The task has been aborted by the user.</source>
         <translation>Käyttäjä perui tehtävän.</translation>
     </message>
@@ -8621,7 +8701,7 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
         <translation>Muuta pelipaketin asetuksia, modeja ja versioita.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+751"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+755"/>
         <source>This is a problem: &lt;br/&gt; - The launcher will likely be deleted without warning by the operating system &lt;br/&gt; - close the launcher now and extract it to a real location, not a temporary folder</source>
         <translation>Tämä on ongelma: &lt;br/&gt; - Käyttöjärjestelmä todennäköisesti poistaa käynnistimen ilman varoitusta &lt;br/&gt; - Sulje käynnistin nyt ja pura se oikeaan sijaintiin, eikä väliaikaistiedostojen kansioon</translation>
     </message>
@@ -8699,7 +8779,7 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
         <translation>&amp;Widgettiteemat</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-314"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-318"/>
         <source>Cannot set empty name.</source>
         <translation>Ei voi asettaa tyhjää nimeä.</translation>
     </message>
@@ -8796,7 +8876,7 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
         <translation>Tilit</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+798"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+802"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 lisättiin onnistuneesti PATH:iin. Voit nyt käynnistää sen suorittamalla `%2`.</translation>
     </message>
@@ -8820,7 +8900,7 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
         <translation type="vanished">Avaa kehittäjäblogi lukeaksesi lisää uutisia %1:sta.</translation>
     </message>
     <message>
-        <location line="-1567"/>
+        <location line="-1571"/>
         <source>Backspace</source>
         <translation>Askelpalautin</translation>
     </message>
@@ -8951,7 +9031,7 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
         <translation>Ryhmän nimi</translation>
     </message>
     <message>
-        <location line="+356"/>
+        <location line="+360"/>
         <source>Deleting</source>
         <translation>Poistetaan</translation>
     </message>
@@ -8961,7 +9041,7 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
         <translation>Näytä lokit</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-568"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-572"/>
         <source>Invalid import link: missing &apos;url&apos; parameter.</source>
         <translation>Väärä tuontilinkki: url-parametri puuttuu.</translation>
     </message>
@@ -8978,7 +9058,7 @@ Luo uusi pelipaketti ennen kuin yrität asentaa tätä resurssia uudelleen.</tra
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1612"/>
+        <location line="+1616"/>
         <source>No instance selected</source>
         <translation>Pelipakettia ei ole valittu</translation>
     </message>
@@ -9037,7 +9117,7 @@ Tyhjentääksesi metadata-välimuistin manuaalisesti, valitse Kansiot -&gt; Näy
         <translation>Poista valittu pelipaketti.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1339"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1343"/>
         <source>&amp;Delete group</source>
         <translation>&amp;Poista ryhmä</translation>
     </message>
@@ -9093,7 +9173,7 @@ Tarkista roskakorisi palauttaaksesi ne käsin.</translation>
         <translation>Kokonaispeliaika: 0s</translation>
     </message>
     <message>
-        <location line="+1801"/>
+        <location line="+1805"/>
         <source>Total playtime: %1</source>
         <translation>Kokonaispeliaika: %1</translation>
     </message>
@@ -9108,18 +9188,18 @@ Tarkista roskakorisi palauttaaksesi ne käsin.</translation>
         <translation>Lisättiin %1 PATH:iin onnistuneesti</translation>
     </message>
     <message>
-        <location line="-286"/>
+        <location line="-290"/>
         <location line="+22"/>
         <source>Enter a new group name.</source>
         <translation>Syötä uusi nimi ryhmälle.</translation>
     </message>
     <message>
-        <location line="+269"/>
+        <location line="+273"/>
         <source>An error occurred while trying to add %1 to PATH</source>
         <translation>Virhe lisättäessä %1 PATH:iin</translation>
     </message>
     <message>
-        <location line="-279"/>
+        <location line="-283"/>
         <source>Are you sure you want to delete the group &apos;%1&apos;?</source>
         <translation>Haluatko varmasti poistaa ryhmän &quot;%1&quot;?</translation>
     </message>
@@ -9336,7 +9416,7 @@ Varmista luottamuksesi URL:ään.
 <context>
     <name>MinecraftInstance</name>
     <message>
-        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1042"/>
+        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1070"/>
         <source>&lt;ACCESS TOKEN&gt;</source>
         <translation>&lt;PÄÄSYTUNNUS&gt;</translation>
     </message>
@@ -9346,12 +9426,12 @@ Varmista luottamuksesi URL:ään.
         <translation>, viimeksi pelattu %1 %2 ajan</translation>
     </message>
     <message>
-        <location line="-773"/>
+        <location line="-798"/>
         <source>Profilers</source>
         <translation>Profiloijat</translation>
     </message>
     <message>
-        <location line="+757"/>
+        <location line="+782"/>
         <source>broken</source>
         <translation>viallinen</translation>
     </message>
@@ -9361,12 +9441,12 @@ Varmista luottamuksesi URL:ään.
         <translation>, pelattu yhteensä %1</translation>
     </message>
     <message>
-        <location line="-791"/>
+        <location line="-816"/>
         <source>Launch &amp;Offline</source>
         <translation>Käynnistä &amp;offline-tilassa</translation>
     </message>
     <message>
-        <location line="+731"/>
+        <location line="+756"/>
         <source>&lt;PROFILE ID&gt;</source>
         <translation>&lt;PROFIILITUNNUS&gt;</translation>
     </message>
@@ -9376,7 +9456,7 @@ Varmista luottamuksesi URL:ään.
         <translation>&lt;ISTUNTOTUNNUS&gt;</translation>
     </message>
     <message>
-        <location line="-728"/>
+        <location line="-753"/>
         <source>&amp;Launch</source>
         <translation>&amp;Käynnistä</translation>
     </message>
@@ -9386,22 +9466,22 @@ Varmista luottamuksesi URL:ään.
         <translation>&amp;Ei profiloijaa</translation>
     </message>
     <message>
-        <location line="+758"/>
+        <location line="+783"/>
         <source>Minecraft %1</source>
         <translation>Minecraft %1</translation>
     </message>
     <message>
-        <location line="-778"/>
+        <location line="-803"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location line="+795"/>
+        <location line="+820"/>
         <source>, has crashed.</source>
         <translation>, on kaatunut.</translation>
     </message>
     <message>
-        <location line="-793"/>
+        <location line="-818"/>
         <source>Ctrl+Alt+O</source>
         <translation>Ctrl+Alt+O</translation>
     </message>
@@ -9481,12 +9561,12 @@ Varmista luottamuksesi URL:ään.
         <translation>Käynnistä Minecraft suurennettuna</translation>
     </message>
     <message>
-        <location line="+707"/>
+        <location line="+724"/>
         <source>Custom Commands</source>
         <translation>Omat komennot</translation>
     </message>
     <message>
-        <location line="-721"/>
+        <location line="-738"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: The maximized option may not be fully supported on all Minecraft versions.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Varoitus&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: &quot;Käynnistä Minecraft suurennettuna&quot;-valinta saattaa olla epätuettu joissain Minecraft-versioissa.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -9501,7 +9581,7 @@ Varmista luottamuksesi URL:ään.
         <translation>Käytä MangoHudia</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+58"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+60"/>
         <source>Custom</source>
         <translation>Mukautettu</translation>
     </message>
@@ -9526,7 +9606,7 @@ Varmista luottamuksesi URL:ään.
         <translation>&amp;Ikkunan koko:</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+340"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+348"/>
         <source>Select Global Data Packs Folder</source>
         <translation>Valitse Globaalien Datapakettien Kansio</translation>
     </message>
@@ -9608,7 +9688,7 @@ Sinun on myös todennäköisesti vaihdettava polkua - saat lisätietoja modin ne
         <translation>Avaa &amp;yleisasetukset</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-493"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-501"/>
         <source>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: The maximized option is not fully supported on this Minecraft version.&lt;/span&gt;</source>
         <translation>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Varoitus&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: &quot;Käynnistä Minecraft suurennettuna&quot;-valinta ei ole täysin tuettu tässä Minecraft-versiossa.&lt;/span&gt;</translation>
     </message>
@@ -9809,12 +9889,27 @@ Sinun on myös todennäköisesti vaihdettava polkua - saat lisätietoja modin ne
         <translation>&amp;OpenAL-kirjaston polku:</translation>
     </message>
     <message>
-        <location line="+127"/>
+        <location line="+96"/>
+        <source>Runs OpenGL on the CPU (Mesa llvmpipe). Use this only if Minecraft crashes at startup because your graphics hardware or driver is too old or missing. It works on almost any PC but is slow. The renderer (about 40 MB) is downloaded once on the first launch.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Use software rendering (slow, for PCs without a working graphics driver)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Graphics driver guide...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+38"/>
         <source>Environment Variables</source>
         <translation>Ympäristömuuttujat</translation>
     </message>
     <message>
-        <location line="-468"/>
+        <location line="-485"/>
         <source>Show the &amp;total time played across instances</source>
         <translation>Näytä pelattu aika &amp;kaikkien pelipakettien välillä</translation>
     </message>
@@ -10851,7 +10946,7 @@ Päivitä %1!</translation>
 <context>
     <name>MyReportsDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+151"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+162"/>
         <location line="+4"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -14307,7 +14402,25 @@ Uusi nimi: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/BugReportTracker.cpp" line="+164"/>
+        <location filename="../launcher/BugReportTracker.cpp" line="+264"/>
+        <source>1 hour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+0"/>
+        <source>%n minute(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>You are sending way too many reports. Please slow down and try again in about %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
         <source>Waiting for a dev to check it</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14323,12 +14436,22 @@ Uusi nimi: %2</translation>
     </message>
     <message>
         <location line="+2"/>
+        <source>A fix is being worked on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The team couldn&apos;t reproduce it - more details would help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Fixed - it will be in the next update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-193"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-199"/>
         <source>Fixed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14339,7 +14462,7 @@ Uusi nimi: %2</translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+8"/>
         <source>Won&apos;t be fixed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14352,6 +14475,21 @@ Uusi nimi: %2</translation>
         <location line="+2"/>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+4"/>
         <source>Not a bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Not caused by the launcher - most likely a mod, Java or the game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Planned - it may come in a future update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Added - thanks for the suggestion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -14381,7 +14519,7 @@ Uusi nimi: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-13"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-23"/>
         <source>Waiting</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14396,7 +14534,32 @@ Uusi nimi: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+2"/>
+        <source>In progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Can&apos;t reproduce</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Planned</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Added</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Not the launcher</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>Duplicate</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14449,6 +14612,36 @@ Uusi nimi: %2</translation>
     <message>
         <location line="+2"/>
         <source>%1s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/SoftwareRenderer.cpp" line="+82"/>
+        <source>The downloaded Mesa archive could not be read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Could not create the folder %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>The Mesa archive does not contain a 64-bit opengl32.dll.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Could not open %1 inside the Mesa archive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>%1 inside the Mesa archive is empty or damaged.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Could not write %1: %2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

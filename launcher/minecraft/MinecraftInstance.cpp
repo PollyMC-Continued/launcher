@@ -61,6 +61,8 @@
 #include "minecraft/launch/CreateGameFolders.h"
 #include "minecraft/launch/EnsureAvailableMemory.h"
 #include "minecraft/launch/EnsureOfflineLibraries.h"
+#include "minecraft/launch/EnsureSoftwareRenderer.h"
+#include "SoftwareRenderer.h"
 #include "minecraft/launch/ExtractNatives.h"
 #include "minecraft/launch/LauncherPartLaunch.h"
 #include "minecraft/launch/ModMinecraftJar.h"
@@ -225,6 +227,7 @@ void MinecraftInstance::loadSpecificSettings()
         m_settings->registerOverride(global_settings->getSetting("EnableMangoHud"), performanceOverride);
         m_settings->registerOverride(global_settings->getSetting("UseDiscreteGpu"), performanceOverride);
         m_settings->registerOverride(global_settings->getSetting("UseZink"), performanceOverride);
+        m_settings->registerOverride(global_settings->getSetting("SoftwareRendering"), performanceOverride);
 
         // Miscellaneous
         auto miscellaneousOverride = m_settings->registerSetting("OverrideMiscellaneous", false);
@@ -540,6 +543,13 @@ QStringList MinecraftInstance::extraArguments()
         list.append("-javaagent:" + jar[0] + (agent.argument.isEmpty() ? "" : "=" + agent.argument));
     }
 
+#ifdef Q_OS_WIN
+    if (SoftwareRenderer::active(settings()->get("SoftwareRendering").toBool(), settings()->get("JavaRealArchitecture").toString())) {
+        // LWJGL loads its OpenGL functions from Mesa instead of the (missing or too old) system driver
+        list.append("-Dorg.lwjgl.opengl.libname=" + SoftwareRenderer::openGlLibrary());
+    }
+#endif
+
     {
         QString openALPath;
         QString glfwPath;
@@ -744,6 +754,16 @@ QProcessEnvironment MinecraftInstance::createLaunchEnvironment()
         env.insert("LIBGL_KOPPER_DRI2", "1");
     }
 #endif
+
+#ifdef Q_OS_WIN
+    if (SoftwareRenderer::active(settings()->get("SoftwareRendering").toBool(), settings()->get("JavaRealArchitecture").toString())) {
+        // SDL (which creates the game's OpenGL context) is pointed at Mesa, Mesa is told to use its CPU renderer, and the
+        // Mesa folder joins PATH so its helper DLLs are found next to it.
+        env.insert("SDL_OPENGL_LIBRARY", SoftwareRenderer::openGlLibrary());
+        env.insert("GALLIUM_DRIVER", "llvmpipe");
+        env.insert("PATH", QDir::toNativeSeparators(SoftwareRenderer::folder()) + ";" + env.value("PATH"));
+    }
+#endif
     return env;
 }
 
@@ -879,8 +899,16 @@ QString MinecraftInstance::createLaunchScript(AuthSessionPtr session, MinecraftT
         launchScript += "traits " + trait + "\n";
     }
 
-    if (shouldApplyOnlineFixes())
+    if (shouldApplyOnlineFixes()) {
         launchScript += "onlineFixes true\n";
+
+        // Offline accounts keep their skin and cape in the launcher's skin store, filed under the account's
+        // UUID. Legacy Minecraft asks for skins by player name, so hand the legacy skin fix the folder to serve
+        // the account's own skin from instead of looking the name up online.
+        if (session && session->user_type == "offline" && !session->uuid.isEmpty()) {
+            launchScript += "offlineSkinDir " + FS::PathCombine(APPLICATION->dataRoot(), "skins", session->uuid) + "\n";
+        }
+    }
 
     launchScript += "launcher " + getLauncher() + "\n";
 
@@ -1176,6 +1204,9 @@ LaunchTask* MinecraftInstance::createLaunchTask(AuthSessionPtr session, Minecraf
         // verify that minimum Java requirements are met
         process->appendStep(makeShared<VerifyJavaInstall>(pptr));
     }
+
+    // download the software OpenGL renderer when this instance asks for it (Windows only, no-op elsewhere)
+    process->appendStep(makeShared<EnsureSoftwareRenderer>(pptr, this));
 
     // run pre-launch command if that's needed
     if (getPreLaunchCommand().size()) {

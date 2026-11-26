@@ -44,6 +44,7 @@
 #include "BuildConfig.h"
 #include "Json.h"
 #include "minecraft/PackProfile.h"
+#include "ui/dialogs/GpuDriverGuideDialog.h"
 #include "minecraft/WorldList.h"
 #include "minecraft/auth/AccountList.h"
 #include "settings/Setting.h"
@@ -52,6 +53,7 @@ MinecraftSettingsWidget::MinecraftSettingsWidget(MinecraftInstance* instance, QW
     : QWidget(parent), m_instance(std::move(instance)), m_ui(new Ui::MinecraftSettingsWidget)
 {
     m_ui->setupUi(this);
+    connect(m_ui->gpuDriverGuideButton, &QPushButton::clicked, this, [this] { GpuDriverGuideDialog(this).exec(); });
 
     // Add resolution presets
     m_resolutionPresets = new QComboBox(this);
@@ -247,6 +249,12 @@ void MinecraftSettingsWidget::loadSettings()
                                              "using the same javaw.exe."));
 #endif
     m_ui->useZink->setChecked(settings->get("UseZink").toBool());
+    m_ui->useSoftwareRendering->setChecked(settings->get("SoftwareRendering").toBool());
+#ifndef Q_OS_WIN
+    // software rendering and the driver guide are Windows features
+    m_ui->useSoftwareRendering->setVisible(false);
+    m_ui->gpuDriverGuideButton->setVisible(false);
+#endif
 
     if (m_instance != nullptr) {
         // HACK: if we change enable state of child widgets while it's unchecked this creates inconsistency
@@ -434,11 +442,13 @@ void MinecraftSettingsWidget::saveSettings()
         settings->set("EnableMangoHud", m_ui->enableMangoHud->isChecked());
         settings->set("UseDiscreteGpu", m_ui->useDiscreteGpuCheck->isChecked());
         settings->set("UseZink", m_ui->useZink->isChecked());
+        settings->set("SoftwareRendering", m_ui->useSoftwareRendering->isChecked());
     } else {
         settings->reset("EnableFeralGamemode");
         settings->reset("EnableMangoHud");
         settings->reset("UseDiscreteGpu");
         settings->reset("UseZink");
+        settings->reset("SoftwareRendering");
     }
 
     // Game time

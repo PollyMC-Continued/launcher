@@ -765,7 +765,7 @@ The account UUID stays the same, so your singleplayer progress and your selected
         <translation>系统配置不兼容</translation>
     </message>
     <message>
-        <location line="+1056"/>
+        <location line="+996"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -799,12 +799,12 @@ for details on the last update attempt.</source>
 以了解上次更新的详情。</translation>
     </message>
     <message>
-        <location line="-1777"/>
+        <location line="-1721"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>无法显示此日志，因为日志长度超过了 %1 行。</translation>
     </message>
     <message>
-        <location line="+1599"/>
+        <location line="+1543"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>你似乎曾经在 %2 上使用过 %1。是否需要将数据迁移到 %3 的新位置？</translation>
     </message>
@@ -872,7 +872,7 @@ for details.</source>
 以获取详细信息。</translation>
     </message>
     <message>
-        <location line="-1900"/>
+        <location line="-1841"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -908,7 +908,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+530"/>
+        <location line="+531"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -992,42 +992,12 @@ You may solve this issue by remounting /tmp as &apos;exec&apos; or setting the j
 </translation>
     </message>
     <message>
-        <location line="+229"/>
+        <location line="+227"/>
         <source>Opening the launcher…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+487"/>
-        <location line="+20"/>
-        <source>Launcher closed unexpectedly</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-19"/>
-        <source>%1 did not shut down properly last time.
-
-If it crashed or froze on you, you can send us a crash report - the log from that session is attached automatically.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Report this crash</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Ignore</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+11"/>
-        <source>The launcher closed unexpectedly (crash or freeze). Last part of the log from that session:
-
-%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+362"/>
+        <location line="+809"/>
         <source>Instances were found at %1, but %2 is looking in %3. Do you want to migrate them to the new location?</source>
         <translation>在 %1 中发现了实例，但 %2 正在 %3 中查找。是否将其迁移到新位置？</translation>
     </message>
@@ -1060,7 +1030,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">更新中</translation>
     </message>
     <message>
-        <location line="-1500"/>
+        <location line="-1440"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
@@ -1091,7 +1061,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 点击下面的“忽略”按钮以删除此锁定文件并继续。</translation>
     </message>
     <message>
-        <location line="+1344"/>
+        <location line="+1284"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>找到了来自 %1 的旧数据，但 %2 已存在数据。很遗憾，你需要自行迁移数据。是否需要在下次启动 %2 时再次提醒你进行数据迁移？</translation>
     </message>
@@ -1864,16 +1834,18 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
     <name>BugReportDialog</name>
     <message>
         <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
-        <location line="+452"/>
+        <location line="+393"/>
+        <location line="+63"/>
         <location line="+11"/>
         <location line="+56"/>
+        <location line="+5"/>
         <location line="+8"/>
         <location line="+9"/>
         <source>Report a Bug</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-518"/>
+        <location line="-527"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2063,7 +2035,7 @@ What I was doing when this happened:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+23"/>
         <source>Launcher: %1 (%2)
 System: %3
 CPU architecture: %4
@@ -2102,7 +2074,7 @@ Qt: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+61"/>
         <source>You just sent a report. Please wait a minute before sending another one.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3969,6 +3941,47 @@ This instance cannot be launched because some libraries are missing or have not 
     </message>
 </context>
 <context>
+    <name>EnsureSoftwareRenderer</name>
+    <message>
+        <location filename="../launcher/minecraft/launch/EnsureSoftwareRenderer.cpp" line="+40"/>
+        <source>Software rendering is turned on, but the software renderer is not installed and cannot be downloaded by this version.
+Copy the 64-bit Mesa files opengl32.dll, libgallium_wgl.dll and libglapi.dll into this folder, or turn software rendering off:
+  %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>The software renderer is not installed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Downloading the software renderer (needed once)...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Software renderer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Could not download the software renderer: %1
+Turn software rendering off or try again with a working Internet connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Could not install the software renderer: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Software renderer installed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EntitlementsStep</name>
     <message>
         <location filename="../launcher/minecraft/auth/steps/EntitlementsStep.cpp" line="+56"/>
@@ -5308,6 +5321,39 @@ Do you want to continue anyway?</source>
         <location line="+24"/>
         <source>Got skin</source>
         <translation>成功获取皮肤</translation>
+    </message>
+</context>
+<context>
+    <name>GpuDriverGuideDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/GpuDriverGuideDialog.cpp" line="+51"/>
+        <source>Graphics Driver Guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Your graphics card could not be detected automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>&lt;b&gt;Detected graphics:&lt;/b&gt; %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Windows is using its basic built-in display driver, so no real graphics driver is installed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>%1 drivers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>&lt;h3&gt;How to update your graphics driver&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;&lt;b&gt;Find your graphics card.&lt;/b&gt; Press &lt;i&gt;Win + R&lt;/i&gt;, type &lt;i&gt;dxdiag&lt;/i&gt; and press Enter, then open the &lt;i&gt;Display&lt;/i&gt; tab. Or open &lt;i&gt;Device Manager&lt;/i&gt; and expand &lt;i&gt;Display adapters&lt;/i&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Laptop or ready-made PC?&lt;/b&gt; Check the maker&apos;s support page for your exact model first (Dell, HP, Lenovo, ASUS, Acer...). Their drivers are tested for your machine. Otherwise use the buttons above:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Intel:&lt;/b&gt; run the &lt;i&gt;Intel Driver &amp;amp; Support Assistant&lt;/i&gt;, it finds the right driver for you.&lt;/li&gt;&lt;li&gt;&lt;b&gt;AMD:&lt;/b&gt; pick your product on the AMD page, or run the AMD auto-detect tool.&lt;/li&gt;&lt;li&gt;&lt;b&gt;NVIDIA:&lt;/b&gt; pick your product on the NVIDIA page, or use the NVIDIA app.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Install it and restart your PC.&lt;/b&gt; Choose a clean or standard install, both are fine.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Check it worked.&lt;/b&gt; In &lt;i&gt;dxdiag&lt;/i&gt; the Display tab should show your real card with a driver version, not &quot;Microsoft Basic Display Adapter&quot;.&lt;/li&gt;&lt;/ol&gt;&lt;h3&gt;Still not working?&lt;/h3&gt;&lt;p&gt;Very old graphics (for example Intel HD Graphics 2000/3000 and older, or cards from before about 2012) cannot run recent Minecraft versions even with the latest driver. In that case:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Play an older Minecraft version (1.16.5 or older work on much older hardware), or&lt;/li&gt;&lt;li&gt;turn on &lt;i&gt;Use software rendering&lt;/i&gt; in the instance&apos;s settings under Performance. It works on almost any PC but is slow, or&lt;/li&gt;&lt;li&gt;upgrade the graphics card.&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6708,8 +6754,8 @@ You can change the Java version in the settings later.
 <context>
     <name>LaunchController</name>
     <message>
-        <location filename="../launcher/LaunchController.cpp" line="+165"/>
-        <location line="+309"/>
+        <location filename="../launcher/LaunchController.cpp" line="+168"/>
+        <location line="+355"/>
         <source>Abort</source>
         <translation>中止</translation>
     </message>
@@ -6719,7 +6765,7 @@ You can change the Java version in the settings later.
         <translation>错误</translation>
     </message>
     <message>
-        <location line="-203"/>
+        <location line="-249"/>
         <source>Auth servers offline</source>
         <translation>认证服务器离线</translation>
     </message>
@@ -6764,7 +6810,7 @@ You can change the Java version in the settings later.
     </message>
     <message>
         <location line="+153"/>
-        <location line="+56"/>
+        <location line="+102"/>
         <source>Error!</source>
         <translation>错误！</translation>
     </message>
@@ -6774,7 +6820,7 @@ You can change the Java version in the settings later.
         <translation>无法实例化一个启动器。</translation>
     </message>
     <message>
-        <location line="-133"/>
+        <location line="-179"/>
         <source>The Minecraft authentication servers are currently unavailable, launching in offline mode.
 
 </source>
@@ -6793,12 +6839,51 @@ You can change the Java version in the settings later.
         <translation>%1。是否需要重新认证此账户？</translation>
     </message>
     <message>
-        <location line="+101"/>
+        <location line="+45"/>
+        <source>Graphics hardware warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Your graphics card or driver may be too old for Minecraft.
+
+Detected: %1
+
+Recent Minecraft versions need a working OpenGL driver. Without one, the game usually crashes right after it starts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>You can update your graphics driver, or turn on software rendering, which works on almost any PC but is slow. If the game already runs fine for you, choose Launch Anyway.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Use Software Rendering</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Driver Guide...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Launch Anyway</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Don&apos;t show this again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+91"/>
         <source>Waiting.</source>
         <translation>请稍候。</translation>
     </message>
     <message>
-        <location line="-67"/>
+        <location line="-113"/>
         <location line="+1"/>
         <source>Couldn&apos;t load the instance profile.</source>
         <translation>无法加载实例配置文件。</translation>
@@ -6814,7 +6899,7 @@ You can change the Java version in the settings later.
         <translation>游玩演示</translation>
     </message>
     <message>
-        <location line="+229"/>
+        <location line="+275"/>
         <source>Couldn&apos;t start the profiler: %1</source>
         <translation>无法启动 Profiler：%1</translation>
     </message>
@@ -6824,7 +6909,7 @@ You can change the Java version in the settings later.
         <translation>强行退出 Minecraft？</translation>
     </message>
     <message>
-        <location line="-389"/>
+        <location line="-435"/>
         <source>No Accounts</source>
         <translation>无账户</translation>
     </message>
@@ -6856,7 +6941,7 @@ You need to purchase the game first to play the full version.</source>
         <translation>没有选中用于启动游戏的账户</translation>
     </message>
     <message>
-        <location line="+127"/>
+        <location line="+173"/>
         <source>Profiler check for %1 failed: %2</source>
         <translation>分析器检查 %1 时发生错误：%2</translation>
     </message>
@@ -6866,7 +6951,7 @@ You need to purchase the game first to play the full version.</source>
         <translation>启动 (&amp;L)</translation>
     </message>
     <message>
-        <location line="-230"/>
+        <location line="-276"/>
         <source>Play demo?</source>
         <translation>是否游玩演示模式？</translation>
     </message>
@@ -6881,7 +6966,7 @@ You need to purchase the game first to play the full version.</source>
         <translation>玩家名称</translation>
     </message>
     <message>
-        <location line="+197"/>
+        <location line="+243"/>
         <source>The game launch is delayed until you press the button. This is the right time to setup the profiler, as the profiler server is running now.
 
 %1</source>
@@ -6890,7 +6975,7 @@ You need to purchase the game first to play the full version.</source>
 %1</translation>
     </message>
     <message>
-        <location line="-251"/>
+        <location line="-297"/>
         <source>An error occurred while refreshing &apos;%1&apos;</source>
         <translation>刷新“%1”时发生错误</translation>
     </message>
@@ -6899,12 +6984,12 @@ You need to purchase the game first to play the full version.</source>
         <translation type="vanished">在畅玩 Minecraft 之前，你至少需要链接一个拥有 Minecraft 的 Microsoft 账户。你想现在打开账户管理添加账户吗？</translation>
     </message>
     <message>
-        <location line="+305"/>
+        <location line="+351"/>
         <source>This can cause the instance to get corrupted and should only be used if Minecraft is frozen for some reason</source>
         <translation>这可能导致实例出现错误，这应该只在 Minecraft 由于一些原因冻结的时候使用</translation>
     </message>
     <message>
-        <location line="-274"/>
+        <location line="-320"/>
         <source>
 
 Do you want to play the demo?</source>
@@ -6960,7 +7045,7 @@ You may have to fix your mods because the game is still logging to files and lik
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+690"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+680"/>
         <source>s</source>
         <translation>秒</translation>
     </message>
@@ -7026,7 +7111,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>移动被屏蔽的 Mod 而非复制</translation>
     </message>
     <message>
-        <location line="-372"/>
+        <location line="-362"/>
         <source>Never rename the folder</source>
         <translation>从不重命名文件夹</translation>
     </message>
@@ -7045,7 +7130,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation> 小时</translation>
     </message>
     <message>
-        <location line="+332"/>
+        <location line="+322"/>
         <source> lines</source>
         <translation> 行</translation>
     </message>
@@ -7065,7 +7150,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Mod (&amp;M)：</translation>
     </message>
     <message>
-        <location line="-353"/>
+        <location line="-343"/>
         <source>User Interface</source>
         <translation>用户界面</translation>
     </message>
@@ -7074,7 +7159,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">创建实例时下载所需的游戏文件。禁用此项会跳过初始的下载步骤，改为启动实例时获取文件。</translation>
     </message>
     <message>
-        <location line="+439"/>
+        <location line="+429"/>
         <source>Mods and Modpacks</source>
         <translation>Mod 和整合包</translation>
     </message>
@@ -7084,7 +7169,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>HTTP 超时：</translation>
     </message>
     <message>
-        <location line="-582"/>
+        <location line="-572"/>
         <source>Always rename the folder</source>
         <translation>总是重命名文件夹</translation>
     </message>
@@ -7164,16 +7249,6 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
-        <source>When the launcher closes without warning while your computer keeps running, ask whether to send the log from that session. Unexpected restarts and power losses are never counted as crashes.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Offer to report a crash after an unexpected exit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+29"/>
         <source>Folder where PollyMC-Continued stores automatically downloaded Java versions. Do NOT set this to your system Java installation.</source>
         <translation>PollyMC-Continued 存储自动下载的 Java 版本的文件夹。不要将其设置为您系统的 Java 安装目录。</translation>
@@ -7204,7 +7279,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Java 文件夹</translation>
     </message>
     <message>
-        <location line="+117"/>
+        <location line="+116"/>
         <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7214,7 +7289,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>启用后，在查找资源时除了搜索下载文件夹本身，还会搜索其子文件夹（例如：在寻找 CurseForge 上被屏蔽的 Mod 时）。</translation>
     </message>
     <message>
-        <location line="-225"/>
+        <location line="-215"/>
         <source>Every </source>
         <translation>每 </translation>
     </message>
@@ -7224,7 +7299,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>实例排序</translation>
     </message>
     <message>
-        <location line="+469"/>
+        <location line="+459"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Disabling mod metadata may also disable some QoL features, such as mod updating!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;警告&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;： 禁用 Mod 元数据可能也会禁用部分易用功能，例如 Mod 更新！&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -7234,7 +7309,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>下载 (&amp;D)：</translation>
     </message>
     <message>
-        <location line="-156"/>
+        <location line="-146"/>
         <source>On Launch</source>
         <translation>启动时</translation>
     </message>
@@ -7248,7 +7323,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">删除</translation>
     </message>
     <message>
-        <location line="+457"/>
+        <location line="+447"/>
         <source>Seconds to wait until the requests are terminated</source>
         <translation>等待请求终止的秒数</translation>
     </message>
@@ -7267,17 +7342,17 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">创建实例时下载游戏文件</translation>
     </message>
     <message>
-        <location line="-357"/>
+        <location line="-347"/>
         <source>Set to 0 to only check on launch</source>
         <translation>将其设置为 0 以仅在启动时进行检查</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-163"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-162"/>
         <source>Do you want to proceed anyway?</source>
         <translation>你还想继续吗？</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+257"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+247"/>
         <source>Keep track of mod metadata</source>
         <translation>跟踪 Mod 元数据</translation>
     </message>
@@ -7287,22 +7362,22 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>自动检测、安装和更新 Mod 前置项。</translation>
     </message>
     <message>
-        <location line="-373"/>
+        <location line="-363"/>
         <source>The menubar is more friendly for keyboard-driven interaction.</source>
         <translation>菜单栏对于键盘交互更加友好。</translation>
     </message>
     <message>
-        <location line="+572"/>
+        <location line="+562"/>
         <source>Concurrent Task Limit:</source>
         <translation>并发任务上限：</translation>
     </message>
     <message>
-        <location line="-661"/>
+        <location line="-651"/>
         <source>&amp;By last launched</source>
         <translation>按最后启动时间 (&amp;B)</translation>
     </message>
     <message>
-        <location line="+363"/>
+        <location line="+353"/>
         <source>I&amp;nstances:</source>
         <translation>实例 (&amp;N)：</translation>
     </message>
@@ -7326,7 +7401,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>图标 (&amp;I)：</translation>
     </message>
     <message>
-        <location line="-413"/>
+        <location line="-403"/>
         <source>By &amp;name</source>
         <translation>按名称 (&amp;N)</translation>
     </message>
@@ -7335,7 +7410,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">额外实例目录</translation>
     </message>
     <message>
-        <location line="+330"/>
+        <location line="+320"/>
         <source>&amp;Skins:</source>
         <translation>皮肤 (&amp;S)：</translation>
     </message>
@@ -7344,7 +7419,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">复制目录</translation>
     </message>
     <message>
-        <location line="-218"/>
+        <location line="-208"/>
         <source>Updater</source>
         <translation>更新程序</translation>
     </message>
@@ -7354,7 +7429,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>用菜单栏代替工具栏 (&amp;R)</translation>
     </message>
     <message>
-        <location line="+192"/>
+        <location line="+182"/>
         <source>Folders</source>
         <translation>公共文件夹</translation>
     </message>
@@ -7363,7 +7438,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">根据总游戏时间 (&amp;P)</translation>
     </message>
     <message>
-        <location line="-43"/>
+        <location line="-33"/>
         <location filename="../launcher/ui/pages/global/LauncherPage.h" line="+59"/>
         <source>General</source>
         <translation>常规</translation>
@@ -7379,7 +7454,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>启动时检查更新</translation>
     </message>
     <message>
-        <location line="+192"/>
+        <location line="+182"/>
         <source>&amp;Auto Java Download:</source>
         <translation>自动下载的 Java (&amp;A):</translation>
     </message>
@@ -7410,7 +7485,7 @@ Granting %1 access to it via Flatseal is recommended.</source>
         <translation>存储由 Mod 托管平台（如 Modrinth 或 CurseForge）提供的 Mod 版本信息。</translation>
     </message>
     <message>
-        <location line="-399"/>
+        <location line="-389"/>
         <source>Ask what to do</source>
         <translation>询问要怎么做</translation>
     </message>
@@ -8289,7 +8364,7 @@ You&apos;ll have to correct this problem manually.</source>
         <translation>查看 (&amp;V)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1887"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1891"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -8310,7 +8385,7 @@ Are you sure?</source>
         <translation>复制选中实例。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-776"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-780"/>
         <location line="+168"/>
         <location line="+106"/>
         <source>Abort</source>
@@ -8323,7 +8398,7 @@ Are you sure?</source>
         <location line="+61"/>
         <location line="+15"/>
         <location line="+37"/>
-        <location line="+424"/>
+        <location line="+428"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
@@ -8333,7 +8408,7 @@ Are you sure?</source>
         <translation>主工具栏</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-460"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-464"/>
         <source>Invalid import link: URL must be http(s).</source>
         <translation>无效导入链接：URL 必须是 http(s) 链接。</translation>
     </message>
@@ -8353,7 +8428,12 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+21"/>
+        <source>Report a Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
         <source> (commit %1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8506,7 +8586,7 @@ Are you sure?</source>
         <translation>打开漏洞追踪器来报告 %1 的漏洞。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-778"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-782"/>
         <source>Task aborted</source>
         <translation>任务已中止</translation>
     </message>
@@ -8582,7 +8662,7 @@ URL：
         <translation>删除群组</translation>
     </message>
     <message>
-        <location line="+278"/>
+        <location line="+282"/>
         <source>Failed to add %1 to PATH</source>
         <translation>无法把 %1 添加至 PATH</translation>
     </message>
@@ -8636,7 +8716,7 @@ URL：
         <translation type="vanished">暂无新闻。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-767"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-771"/>
         <source>The task has been aborted by the user.</source>
         <translation>任务已被用户中止。</translation>
     </message>
@@ -8696,7 +8776,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>修改实例的设置、Mod 和版本。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+751"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+755"/>
         <source>This is a problem: &lt;br/&gt; - The launcher will likely be deleted without warning by the operating system &lt;br/&gt; - close the launcher now and extract it to a real location, not a temporary folder</source>
         <translation>发现一个问题：&lt;br/&gt; - 操作系统可能会在没有事先警告的情况下自动删除此启动器 &lt;br/&gt; - 马上关闭启动器并将启动器解压至其他目录，而非临时文件夹</translation>
     </message>
@@ -8774,7 +8854,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>控件主题 (&amp;W)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-314"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-318"/>
         <source>Cannot set empty name.</source>
         <translation>名称不能为空。</translation>
     </message>
@@ -8871,7 +8951,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>账户</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+798"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+802"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1 已成功添加至你的 PATH 环境变量。现在可以运行 `%2` 来启动它。</translation>
     </message>
@@ -8895,7 +8975,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="vanished">打开开发日志以阅读有关 %1 的更多新闻。</translation>
     </message>
     <message>
-        <location line="-1567"/>
+        <location line="-1571"/>
         <source>Backspace</source>
         <translation>空格</translation>
     </message>
@@ -9026,7 +9106,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>群组名</translation>
     </message>
     <message>
-        <location line="+356"/>
+        <location line="+360"/>
         <source>Deleting</source>
         <translation>正在删除</translation>
     </message>
@@ -9036,7 +9116,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>查看日志</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-568"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-572"/>
         <source>Invalid import link: missing &apos;url&apos; parameter.</source>
         <translation>无效导入链接：缺少“URL”参数。</translation>
     </message>
@@ -9053,7 +9133,7 @@ Please create a new instance before attempting to install this resource again.</
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1612"/>
+        <location line="+1616"/>
         <source>No instance selected</source>
         <translation>未选择实例</translation>
     </message>
@@ -9112,7 +9192,7 @@ To clear the metadata cache manually, press Folders -&gt; View Launcher Root Fol
         <translation>删除所选实例。</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1339"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1343"/>
         <source>&amp;Delete group</source>
         <translation>删除分组 (&amp;D)</translation>
     </message>
@@ -9168,7 +9248,7 @@ Please check your trashbin to manually restore them.</source>
         <translation>总游玩时长：0 秒</translation>
     </message>
     <message>
-        <location line="+1801"/>
+        <location line="+1805"/>
         <source>Total playtime: %1</source>
         <translation>总游戏时长：%1</translation>
     </message>
@@ -9183,18 +9263,18 @@ Please check your trashbin to manually restore them.</source>
         <translation>成功把 %1 添加至 PATH</translation>
     </message>
     <message>
-        <location line="-286"/>
+        <location line="-290"/>
         <location line="+22"/>
         <source>Enter a new group name.</source>
         <translation>输入或选择新群组。</translation>
     </message>
     <message>
-        <location line="+269"/>
+        <location line="+273"/>
         <source>An error occurred while trying to add %1 to PATH</source>
         <translation>在把 %1 添加到 PATH 时发生了一个错误</translation>
     </message>
     <message>
-        <location line="-279"/>
+        <location line="-283"/>
         <source>Are you sure you want to delete the group &apos;%1&apos;?</source>
         <translation>你确定要删除分组“%1”吗？</translation>
     </message>
@@ -9411,7 +9491,7 @@ Make sure you also trust the URL.
 <context>
     <name>MinecraftInstance</name>
     <message>
-        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1042"/>
+        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1070"/>
         <source>&lt;ACCESS TOKEN&gt;</source>
         <translation>&lt;ACCESS TOKEN&gt;</translation>
     </message>
@@ -9421,12 +9501,12 @@ Make sure you also trust the URL.
         <translation>，上一次是在 %1 时游玩了 %2</translation>
     </message>
     <message>
-        <location line="-773"/>
+        <location line="-798"/>
         <source>Profilers</source>
         <translation>分析器</translation>
     </message>
     <message>
-        <location line="+757"/>
+        <location line="+782"/>
         <source>broken</source>
         <translation>损坏</translation>
     </message>
@@ -9436,12 +9516,12 @@ Make sure you also trust the URL.
         <translation>，此实例总游玩时长：%1</translation>
     </message>
     <message>
-        <location line="-791"/>
+        <location line="-816"/>
         <source>Launch &amp;Offline</source>
         <translation>离线启动 (&amp;O)</translation>
     </message>
     <message>
-        <location line="+731"/>
+        <location line="+756"/>
         <source>&lt;PROFILE ID&gt;</source>
         <translation>&lt;PROFILE ID&gt;</translation>
     </message>
@@ -9451,7 +9531,7 @@ Make sure you also trust the URL.
         <translation>&lt;SESSION ID&gt;</translation>
     </message>
     <message>
-        <location line="-728"/>
+        <location line="-753"/>
         <source>&amp;Launch</source>
         <translation>启动 (&amp;L)</translation>
     </message>
@@ -9461,22 +9541,22 @@ Make sure you also trust the URL.
         <translation>不使用分析器 (&amp;N)</translation>
     </message>
     <message>
-        <location line="+758"/>
+        <location line="+783"/>
         <source>Minecraft %1</source>
         <translation>Minecraft %1</translation>
     </message>
     <message>
-        <location line="-778"/>
+        <location line="-803"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location line="+795"/>
+        <location line="+820"/>
         <source>, has crashed.</source>
         <translation>，最后一次运行发生崩溃。</translation>
     </message>
     <message>
-        <location line="-793"/>
+        <location line="-818"/>
         <source>Ctrl+Alt+O</source>
         <translation>Ctrl+Alt+O</translation>
     </message>
@@ -9556,12 +9636,12 @@ Make sure you also trust the URL.
         <translation>在启动时将 Minecraft 窗口最大化</translation>
     </message>
     <message>
-        <location line="+707"/>
+        <location line="+724"/>
         <source>Custom Commands</source>
         <translation>自定义命令</translation>
     </message>
     <message>
-        <location line="-721"/>
+        <location line="-738"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: The maximized option may not be fully supported on all Minecraft versions.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;警告&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;：所有的 Minecraft 版本可能不完全支持最大化选项。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -9576,7 +9656,7 @@ Make sure you also trust the URL.
         <translation>启用 MangoHud</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+58"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+60"/>
         <source>Custom</source>
         <translation>自定义</translation>
     </message>
@@ -9601,7 +9681,7 @@ Make sure you also trust the URL.
         <translation>窗口大小 (&amp;W)：</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+340"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+348"/>
         <source>Select Global Data Packs Folder</source>
         <translation>选择全局数据包文件夹</translation>
     </message>
@@ -9683,7 +9763,7 @@ It is most likely you will need to change the path - please refer to the mod&apo
         <translation>打开全局设置 (&amp;G)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-493"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-501"/>
         <source>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: The maximized option is not fully supported on this Minecraft version.&lt;/span&gt;</source>
         <translation>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;警告&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;：该 Minecraft 版本不完全支持最大化选项。&lt;/span&gt;</translation>
     </message>
@@ -9888,12 +9968,27 @@ It is most likely you will need to change the path - please refer to the mod&apo
         <translation>OpenAL 库路径 (&amp;O)：</translation>
     </message>
     <message>
-        <location line="+127"/>
+        <location line="+96"/>
+        <source>Runs OpenGL on the CPU (Mesa llvmpipe). Use this only if Minecraft crashes at startup because your graphics hardware or driver is too old or missing. It works on almost any PC but is slow. The renderer (about 40 MB) is downloaded once on the first launch.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Use software rendering (slow, for PCs without a working graphics driver)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Graphics driver guide...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+38"/>
         <source>Environment Variables</source>
         <translation>环境变量</translation>
     </message>
     <message>
-        <location line="-468"/>
+        <location line="-485"/>
         <source>Show the &amp;total time played across instances</source>
         <translation>显示游玩所有实例的总时长 (&amp;T)</translation>
     </message>
@@ -10933,7 +11028,7 @@ Please update %1!</source>
 <context>
     <name>MyReportsDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+151"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+162"/>
         <location line="+4"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -14394,7 +14489,24 @@ New name: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/BugReportTracker.cpp" line="+164"/>
+        <location filename="../launcher/BugReportTracker.cpp" line="+264"/>
+        <source>1 hour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+0"/>
+        <source>%n minute(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>You are sending way too many reports. Please slow down and try again in about %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
         <source>Waiting for a dev to check it</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14410,12 +14522,22 @@ New name: %2</source>
     </message>
     <message>
         <location line="+2"/>
+        <source>A fix is being worked on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The team couldn&apos;t reproduce it - more details would help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Fixed - it will be in the next update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-193"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-199"/>
         <source>Fixed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14426,7 +14548,7 @@ New name: %2</source>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+8"/>
         <source>Won&apos;t be fixed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14439,6 +14561,21 @@ New name: %2</source>
         <location line="+2"/>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+4"/>
         <source>Not a bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Not caused by the launcher - most likely a mod, Java or the game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Planned - it may come in a future update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Added - thanks for the suggestion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -14468,7 +14605,7 @@ New name: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-13"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-23"/>
         <source>Waiting</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14483,7 +14620,32 @@ New name: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+2"/>
+        <source>In progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Can&apos;t reproduce</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Planned</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Added</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Not the launcher</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>Duplicate</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14536,6 +14698,36 @@ New name: %2</source>
     <message>
         <location line="+2"/>
         <source>%1s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/SoftwareRenderer.cpp" line="+82"/>
+        <source>The downloaded Mesa archive could not be read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Could not create the folder %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>The Mesa archive does not contain a 64-bit opengl32.dll.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Could not open %1 inside the Mesa archive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>%1 inside the Mesa archive is empty or damaged.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Could not write %1: %2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

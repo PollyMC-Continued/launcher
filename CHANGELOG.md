@@ -18,6 +18,22 @@
 
 - To try Bedrock support, open **Add Instance**, pick **Bedrock Edition** under Minecraft Edition, choose a version and press OK — no more hand-written `instance.cfg`. (An existing folder whose `instance.cfg` contains `InstanceType=Bedrock` still works too.) The version list needs internet the first time it opens; afterwards a cached copy is used and Refresh fetches it fresh. On Windows the install runs on first launch (or right on creation when the box is ticked); on Linux the first launch downloads the experimental backend's engine, licensing client and helpers before the game runs. A manual test checklist for both platforms ships with the source (`launcher/bedrock/TESTING.md`).
 
+## v10.1.2
+
+**Gets rid of the "Launcher closed unexpectedly" window, helps PCs with old graphics run Minecraft, makes offline skins work on old Minecraft versions, and gives your bug reports five new answers.**
+
+**Fixed:**
+
+- **No more "Launcher closed unexpectedly" window** — After the launcher had closed without warning, the next start opened a window offering to send a crash report. That window is gone for good, along with its checkbox in the launcher settings, so a crash no longer greets you with a dialog at the next launch. You can still send a report whenever you like with **Report a Bug**.
+- **Offline skins on old Minecraft versions** — With **legacy online tweaks** turned on, an offline account in an old Minecraft version got the skin of the online player with the same username instead of the skin you picked in the skin manager, because old versions ask for a skin by player name and the launcher looked that name up online. The launcher now gives the game your account's own skin first, with the right arm width, and your offline cape too. Other players' skins still come from the online lookup, and an account with no skin picked still falls back to it as before.
+
+**Added:**
+
+- **Software rendering for PCs with old graphics (Windows)** — If Minecraft crashes right at startup because your graphics card or driver is too old or missing, you can now turn on **Use software rendering** in an instance's settings (Performance). The game then draws with your processor instead, which works on almost any PC but is slow. The renderer is downloaded once on the first launch.
+- **Graphics driver guide (Windows)** — A step by step guide for finding and installing the right Intel, AMD or NVIDIA driver for your graphics card, with direct links, from the same settings page.
+- **Graphics hardware warning (Windows)** — When the launcher detects graphics hardware that is probably too old for Minecraft, it now tells you before launching and offers the guide or software rendering instead of letting the game crash.
+- **Five new answers for your bug reports** — **My Reports** can now tell you more precisely what happened to a report: *A fix is being worked on*, *The team couldn't reproduce it - more details would help*, and *Not caused by the launcher* (most likely a mod, Java or the game). Suggestions can now also be marked *Planned* and *Added*, instead of only "Fixed". Launchers older than this version show a new answer as a plain *Updated*.
+
 ## v10.1.1
 
 **Fixes for updating on Windows: the installer no longer deletes files before you confirm, it waits for locked files to be released, and the update prompts no longer abort or skip files by mistake.**

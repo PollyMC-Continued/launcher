@@ -765,7 +765,7 @@ The account UUID stays the same, so your singleplayer progress and your selected
         <translation>호환되지 않는 시스템 구성</translation>
     </message>
     <message>
-        <location line="+1056"/>
+        <location line="+996"/>
         <location line="+52"/>
         <location line="+95"/>
         <source>Migration failed! Reason: %1</source>
@@ -800,12 +800,12 @@ for details on the last update attempt.</source>
 에서 Prism Launcher 업데이터 로그를 볼 수 있습니다.</translation>
     </message>
     <message>
-        <location line="-1777"/>
+        <location line="-1721"/>
         <source>Cannot display this log since the log length surpassed %1 lines.</source>
         <translation>로그 길이가 %1 줄을 초과하였기 때문에 이 로그를 표시할 수 없습니다.</translation>
     </message>
     <message>
-        <location line="+1599"/>
+        <location line="+1543"/>
         <source>It looks like you used %1 on %2 before. Do you want to migrate your data to the new location of %3?</source>
         <translation>이전에 %2에서 %1을 사용한 것 같습니다. 데이터를 %3의 새 위치로 마이그레이션하시겠습니까?</translation>
     </message>
@@ -870,7 +870,7 @@ for details.</source>
 %2</translation>
     </message>
     <message>
-        <location line="-1900"/>
+        <location line="-1841"/>
         <source>Could not create data folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -906,7 +906,7 @@ Check that you have write permission for the data folder at %2. The launcher can
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+530"/>
+        <location line="+531"/>
         <source>Loading icons…</source>
         <translation type="unfinished"></translation>
     </message>
@@ -990,42 +990,12 @@ You may solve this issue by remounting /tmp as &apos;exec&apos; or setting the j
 </translation>
     </message>
     <message>
-        <location line="+229"/>
+        <location line="+227"/>
         <source>Opening the launcher…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+487"/>
-        <location line="+20"/>
-        <source>Launcher closed unexpectedly</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-19"/>
-        <source>%1 did not shut down properly last time.
-
-If it crashed or froze on you, you can send us a crash report - the log from that session is attached automatically.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <source>Report this crash</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Ignore</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+11"/>
-        <source>The launcher closed unexpectedly (crash or freeze). Last part of the log from that session:
-
-%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+362"/>
+        <location line="+809"/>
         <source>Instances were found at %1, but %2 is looking in %3. Do you want to migrate them to the new location?</source>
         <translation>%1에서 instance를 찾았지만 %2이(가) %3을(를) 보고 있습니다. 새 위치로 옮기시겠습니까？</translation>
     </message>
@@ -1058,7 +1028,7 @@ Copy them into this portable folder? This will move your accounts, settings, and
         <translation type="vanished">업데이트 진행 중</translation>
     </message>
     <message>
-        <location line="-1500"/>
+        <location line="-1440"/>
         <source>Settings</source>
         <translation>설정</translation>
     </message>
@@ -1089,7 +1059,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 잠금 파일을 삭제하고 진행하려면 아래에 있는 &quot;무시&quot; 버튼을 누르십시오.</translation>
     </message>
     <message>
-        <location line="+1344"/>
+        <location line="+1284"/>
         <source>Old data from %1 was found, but you already have existing data for %2. Sadly you will need to migrate yourself. Do you want to be reminded of the pending data migration next time you start %2?</source>
         <translation>%1에서 이전 데이터를 찾았지만 %2에 대한 기존 데이터가 이미 있습니다. 안타깝게도 직접 마이그레이션해야 합니다. 다음에 %2를 시작할 때 보류 중인 데이터 마이그레이션에 대한 알림을 받으시겠습니까?</translation>
     </message>
@@ -1862,16 +1832,18 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
     <name>BugReportDialog</name>
     <message>
         <location filename="../launcher/ui/dialogs/BugReportDialog.cpp" line="+160"/>
-        <location line="+452"/>
+        <location line="+393"/>
+        <location line="+63"/>
         <location line="+11"/>
         <location line="+56"/>
+        <location line="+5"/>
         <location line="+8"/>
         <location line="+9"/>
         <source>Report a Bug</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-518"/>
+        <location line="-527"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2061,7 +2033,7 @@ What I was doing when this happened:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+23"/>
         <source>Launcher: %1 (%2)
 System: %3
 CPU architecture: %4
@@ -2100,7 +2072,7 @@ Qt: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+56"/>
+        <location line="+61"/>
         <source>You just sent a report. Please wait a minute before sending another one.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3967,6 +3939,47 @@ This instance cannot be launched because some libraries are missing or have not 
     </message>
 </context>
 <context>
+    <name>EnsureSoftwareRenderer</name>
+    <message>
+        <location filename="../launcher/minecraft/launch/EnsureSoftwareRenderer.cpp" line="+40"/>
+        <source>Software rendering is turned on, but the software renderer is not installed and cannot be downloaded by this version.
+Copy the 64-bit Mesa files opengl32.dll, libgallium_wgl.dll and libglapi.dll into this folder, or turn software rendering off:
+  %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>The software renderer is not installed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Downloading the software renderer (needed once)...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Software renderer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Could not download the software renderer: %1
+Turn software rendering off or try again with a working Internet connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Could not install the software renderer: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Software renderer installed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EntitlementsStep</name>
     <message>
         <location filename="../launcher/minecraft/auth/steps/EntitlementsStep.cpp" line="+56"/>
@@ -5306,6 +5319,39 @@ Do you want to continue anyway?</source>
         <location line="+24"/>
         <source>Got skin</source>
         <translation>스킨 가져옴</translation>
+    </message>
+</context>
+<context>
+    <name>GpuDriverGuideDialog</name>
+    <message>
+        <location filename="../launcher/ui/dialogs/GpuDriverGuideDialog.cpp" line="+51"/>
+        <source>Graphics Driver Guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Your graphics card could not be detected automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>&lt;b&gt;Detected graphics:&lt;/b&gt; %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Windows is using its basic built-in display driver, so no real graphics driver is installed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>%1 drivers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>&lt;h3&gt;How to update your graphics driver&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;&lt;b&gt;Find your graphics card.&lt;/b&gt; Press &lt;i&gt;Win + R&lt;/i&gt;, type &lt;i&gt;dxdiag&lt;/i&gt; and press Enter, then open the &lt;i&gt;Display&lt;/i&gt; tab. Or open &lt;i&gt;Device Manager&lt;/i&gt; and expand &lt;i&gt;Display adapters&lt;/i&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Laptop or ready-made PC?&lt;/b&gt; Check the maker&apos;s support page for your exact model first (Dell, HP, Lenovo, ASUS, Acer...). Their drivers are tested for your machine. Otherwise use the buttons above:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Intel:&lt;/b&gt; run the &lt;i&gt;Intel Driver &amp;amp; Support Assistant&lt;/i&gt;, it finds the right driver for you.&lt;/li&gt;&lt;li&gt;&lt;b&gt;AMD:&lt;/b&gt; pick your product on the AMD page, or run the AMD auto-detect tool.&lt;/li&gt;&lt;li&gt;&lt;b&gt;NVIDIA:&lt;/b&gt; pick your product on the NVIDIA page, or use the NVIDIA app.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Install it and restart your PC.&lt;/b&gt; Choose a clean or standard install, both are fine.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Check it worked.&lt;/b&gt; In &lt;i&gt;dxdiag&lt;/i&gt; the Display tab should show your real card with a driver version, not &quot;Microsoft Basic Display Adapter&quot;.&lt;/li&gt;&lt;/ol&gt;&lt;h3&gt;Still not working?&lt;/h3&gt;&lt;p&gt;Very old graphics (for example Intel HD Graphics 2000/3000 and older, or cards from before about 2012) cannot run recent Minecraft versions even with the latest driver. In that case:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Play an older Minecraft version (1.16.5 or older work on much older hardware), or&lt;/li&gt;&lt;li&gt;turn on &lt;i&gt;Use software rendering&lt;/i&gt; in the instance&apos;s settings under Performance. It works on almost any PC but is slow, or&lt;/li&gt;&lt;li&gt;upgrade the graphics card.&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6706,8 +6752,8 @@ You can change the Java version in the settings later.
 <context>
     <name>LaunchController</name>
     <message>
-        <location filename="../launcher/LaunchController.cpp" line="+165"/>
-        <location line="+309"/>
+        <location filename="../launcher/LaunchController.cpp" line="+168"/>
+        <location line="+355"/>
         <source>Abort</source>
         <translation>중단</translation>
     </message>
@@ -6717,7 +6763,7 @@ You can change the Java version in the settings later.
         <translation>오류</translation>
     </message>
     <message>
-        <location line="-203"/>
+        <location line="-249"/>
         <source>Auth servers offline</source>
         <translation>인증 서버가 오프라인 상태임</translation>
     </message>
@@ -6762,7 +6808,7 @@ You can change the Java version in the settings later.
     </message>
     <message>
         <location line="+153"/>
-        <location line="+56"/>
+        <location line="+102"/>
         <source>Error!</source>
         <translation>오류!</translation>
     </message>
@@ -6772,7 +6818,7 @@ You can change the Java version in the settings later.
         <translation>런처를 인스턴스화하지 못하였습니다.</translation>
     </message>
     <message>
-        <location line="-133"/>
+        <location line="-179"/>
         <source>The Minecraft authentication servers are currently unavailable, launching in offline mode.
 
 </source>
@@ -6791,12 +6837,51 @@ You can change the Java version in the settings later.
         <translation>%1. 이 계정을 다시 인증하시겠습니까?</translation>
     </message>
     <message>
-        <location line="+101"/>
+        <location line="+45"/>
+        <source>Graphics hardware warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Your graphics card or driver may be too old for Minecraft.
+
+Detected: %1
+
+Recent Minecraft versions need a working OpenGL driver. Without one, the game usually crashes right after it starts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>You can update your graphics driver, or turn on software rendering, which works on almost any PC but is slow. If the game already runs fine for you, choose Launch Anyway.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Use Software Rendering</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Driver Guide...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Launch Anyway</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Don&apos;t show this again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+91"/>
         <source>Waiting.</source>
         <translation>대기하는 중입니다.</translation>
     </message>
     <message>
-        <location line="-67"/>
+        <location line="-113"/>
         <location line="+1"/>
         <source>Couldn&apos;t load the instance profile.</source>
         <translation>인스턴스 프로필을 불러오지 못하였습니다.</translation>
@@ -6812,7 +6897,7 @@ You can change the Java version in the settings later.
         <translation>데모 플레이</translation>
     </message>
     <message>
-        <location line="+229"/>
+        <location line="+275"/>
         <source>Couldn&apos;t start the profiler: %1</source>
         <translation>프로파일러를 시작할 수 없었습니다: %1</translation>
     </message>
@@ -6822,7 +6907,7 @@ You can change the Java version in the settings later.
         <translation>마인크래프트를 강제 종료하시겠습니까?</translation>
     </message>
     <message>
-        <location line="-389"/>
+        <location line="-435"/>
         <source>No Accounts</source>
         <translation>계정 없음</translation>
     </message>
@@ -6854,7 +6939,7 @@ You need to purchase the game first to play the full version.</source>
         <translation>실행할 계정이 선택되지 않음</translation>
     </message>
     <message>
-        <location line="+127"/>
+        <location line="+173"/>
         <source>Profiler check for %1 failed: %2</source>
         <translation>%1의 프로파일러를 확인하지 못함: %2</translation>
     </message>
@@ -6864,7 +6949,7 @@ You need to purchase the game first to play the full version.</source>
         <translation>실행(&amp;L)</translation>
     </message>
     <message>
-        <location line="-230"/>
+        <location line="-276"/>
         <source>Play demo?</source>
         <translation>데모를 플레이하시겠습니까?</translation>
     </message>
@@ -6879,7 +6964,7 @@ You need to purchase the game first to play the full version.</source>
         <translation>플레이어 이름</translation>
     </message>
     <message>
-        <location line="+197"/>
+        <location line="+243"/>
         <source>The game launch is delayed until you press the button. This is the right time to setup the profiler, as the profiler server is running now.
 
 %1</source>
@@ -6888,7 +6973,7 @@ You need to purchase the game first to play the full version.</source>
 %1</translation>
     </message>
     <message>
-        <location line="-251"/>
+        <location line="-297"/>
         <source>An error occurred while refreshing &apos;%1&apos;</source>
         <translation>&apos;%1&apos;을 새로 고치는 동안 오류가 발생함</translation>
     </message>
@@ -6897,12 +6982,12 @@ You need to purchase the game first to play the full version.</source>
         <translation type="vanished">마인크래프트를 플레이하려면 마인크래프트를 소유하고 있는 하나 이상의 Microsoft 계정에 로그인되어 있어야 합니다. 지금 계정 관리를 열어 계정을 추가하시겠습니까?</translation>
     </message>
     <message>
-        <location line="+305"/>
+        <location line="+351"/>
         <source>This can cause the instance to get corrupted and should only be used if Minecraft is frozen for some reason</source>
         <translation>이로 인해 인스턴스가 손상될 수 있습니다. 마인크래프트가 어떤 이유로 응답하지 않는 경우에만 사용하여야 합니다.</translation>
     </message>
     <message>
-        <location line="-274"/>
+        <location line="-320"/>
         <source>
 
 Do you want to play the demo?</source>
@@ -6958,7 +7043,7 @@ You may have to fix your mods because the game is still logging to files and lik
 <context>
     <name>LauncherPage</name>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+690"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+680"/>
         <source>s</source>
         <translation>초</translation>
     </message>
@@ -7024,7 +7109,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>차단된 모드를 복사하는 대신 이동</translation>
     </message>
     <message>
-        <location line="-372"/>
+        <location line="-362"/>
         <source>Never rename the folder</source>
         <translation>절대 폴더 이름 바꾸지 않기</translation>
     </message>
@@ -7043,7 +7128,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation> 시간마다</translation>
     </message>
     <message>
-        <location line="+332"/>
+        <location line="+322"/>
         <source> lines</source>
         <translation> 줄</translation>
     </message>
@@ -7063,7 +7148,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>모드(&amp;M):</translation>
     </message>
     <message>
-        <location line="-353"/>
+        <location line="-343"/>
         <source>User Interface</source>
         <translation>사용자 인터페이스</translation>
     </message>
@@ -7072,7 +7157,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">인스턴스를 생성하는 동안 게임 파일을 다운로드합니다. 이 옵션을 비활성화하면 초기 다운로드를 건너뛰고, 대신 인스턴스가 실행될 때 파일을 가져옵니다.</translation>
     </message>
     <message>
-        <location line="+439"/>
+        <location line="+429"/>
         <source>Mods and Modpacks</source>
         <translation>모드 및 모드 팩</translation>
     </message>
@@ -7082,7 +7167,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>HTTP 타임아웃:</translation>
     </message>
     <message>
-        <location line="-582"/>
+        <location line="-572"/>
         <source>Always rename the folder</source>
         <translation>항상 폴더 이름 바꾸기</translation>
     </message>
@@ -7162,16 +7247,6 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
-        <source>When the launcher closes without warning while your computer keeps running, ask whether to send the log from that session. Unexpected restarts and power losses are never counted as crashes.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Offer to report a crash after an unexpected exit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+29"/>
         <source>Folder where PollyMC-Continued stores automatically downloaded Java versions. Do NOT set this to your system Java installation.</source>
         <translation>PollyMC-Continued가 자동으로 다운로드한 Java 버전을 저장하는 폴더입니다. 시스템 Java 설치 위치로 설정하지 마십시오.</translation>
@@ -7202,7 +7277,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>Java 폴더</translation>
     </message>
     <message>
-        <location line="+117"/>
+        <location line="+116"/>
         <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7212,7 +7287,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>이 기능을 활성화하면 리소스를 찾을 때 다운로드 폴더 외에 해당 하위 폴더도 검색됩니다(예: CurseForge에서 차단된 모드를 찾을 때).</translation>
     </message>
     <message>
-        <location line="-225"/>
+        <location line="-215"/>
         <source>Every </source>
         <translation>매 </translation>
     </message>
@@ -7222,7 +7297,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>인스턴스 정렬</translation>
     </message>
     <message>
-        <location line="+469"/>
+        <location line="+459"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: Disabling mod metadata may also disable some QoL features, such as mod updating!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;경고&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: 모드 메타데이터를 비활성화하면 곧 추가될 모드 업데이트 같은 편리한 기능을 사용하지 못합니다! &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -7232,7 +7307,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>다운로드(&amp;D):</translation>
     </message>
     <message>
-        <location line="-156"/>
+        <location line="-146"/>
         <source>On Launch</source>
         <translation>실행 시</translation>
     </message>
@@ -7246,7 +7321,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">제거</translation>
     </message>
     <message>
-        <location line="+457"/>
+        <location line="+447"/>
         <source>Seconds to wait until the requests are terminated</source>
         <translation>요청을 종료할 때까지 기다리는 시간(초)</translation>
     </message>
@@ -7265,17 +7340,17 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">인스턴스 생성 시 게임 파일 다운로드</translation>
     </message>
     <message>
-        <location line="-357"/>
+        <location line="-347"/>
         <source>Set to 0 to only check on launch</source>
         <translation>실행 시에만 확인하려면 0으로 설정</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-163"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.cpp" line="-162"/>
         <source>Do you want to proceed anyway?</source>
         <translation>그래도 계속하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+257"/>
+        <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+247"/>
         <source>Keep track of mod metadata</source>
         <translation>모드 메타데이터 추적</translation>
     </message>
@@ -7285,22 +7360,22 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>모드 종속성을 자동으로 감지, 설치 및 업데이트합니다.</translation>
     </message>
     <message>
-        <location line="-373"/>
+        <location line="-363"/>
         <source>The menubar is more friendly for keyboard-driven interaction.</source>
         <translation>메뉴 바는 키보드 기반 상호작용에 친화적입니다.</translation>
     </message>
     <message>
-        <location line="+572"/>
+        <location line="+562"/>
         <source>Concurrent Task Limit:</source>
         <translation>동시 작업 제한:</translation>
     </message>
     <message>
-        <location line="-661"/>
+        <location line="-651"/>
         <source>&amp;By last launched</source>
         <translation>최근 실행순(&amp;B)</translation>
     </message>
     <message>
-        <location line="+363"/>
+        <location line="+353"/>
         <source>I&amp;nstances:</source>
         <translation>인스턴스(&amp;N):</translation>
     </message>
@@ -7324,7 +7399,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>아이콘(&amp;I):</translation>
     </message>
     <message>
-        <location line="-413"/>
+        <location line="-403"/>
         <source>By &amp;name</source>
         <translation>이름순(&amp;N)</translation>
     </message>
@@ -7333,7 +7408,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">추가 인스턴스 디렉터리</translation>
     </message>
     <message>
-        <location line="+330"/>
+        <location line="+320"/>
         <source>&amp;Skins:</source>
         <translation>스킨(&amp;S):</translation>
     </message>
@@ -7342,7 +7417,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">중복된 디렉터리</translation>
     </message>
     <message>
-        <location line="-218"/>
+        <location line="-208"/>
         <source>Updater</source>
         <translation>업데이터</translation>
     </message>
@@ -7352,7 +7427,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>도구 모음을 메뉴 바로 변경(&amp;R)</translation>
     </message>
     <message>
-        <location line="+192"/>
+        <location line="+182"/>
         <source>Folders</source>
         <translation>폴더</translation>
     </message>
@@ -7361,7 +7436,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation type="vanished">총 플레이 시간 기준(&amp;P)</translation>
     </message>
     <message>
-        <location line="-43"/>
+        <location line="-33"/>
         <location filename="../launcher/ui/pages/global/LauncherPage.h" line="+59"/>
         <source>General</source>
         <translation>일반</translation>
@@ -7377,7 +7452,7 @@ You may have to fix your mods because the game is still logging to files and lik
         <translation>자동으로 업데이트 확인</translation>
     </message>
     <message>
-        <location line="+192"/>
+        <location line="+182"/>
         <source>&amp;Auto Java Download:</source>
         <translation>자동 다운로드 Java 위치(&amp;A):</translation>
     </message>
@@ -7408,7 +7483,7 @@ Flatseal을 통해 %1에 접근 권한을 부여하는 것이 좋습니다.</tra
         <translation>모드 제공자(예: Modrinth 또는 CurseForge)가 모드를 위하여 제공한 버전 정보를 저장합니다.</translation>
     </message>
     <message>
-        <location line="-399"/>
+        <location line="-389"/>
         <source>Ask what to do</source>
         <translation>어떻게 할지 물어보기</translation>
     </message>
@@ -8287,7 +8362,7 @@ You&apos;ll have to correct this problem manually.</source>
         <translation>보기(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+1887"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+1891"/>
         <source>You are about to delete &quot;%1&quot;%2.
 This may be permanent and will completely delete the instance.
 
@@ -8308,7 +8383,7 @@ Are you sure?</source>
         <translation>선택한 인스턴스를 복사합니다.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-776"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-780"/>
         <location line="+168"/>
         <location line="+106"/>
         <source>Abort</source>
@@ -8321,7 +8396,7 @@ Are you sure?</source>
         <location line="+61"/>
         <location line="+15"/>
         <location line="+37"/>
-        <location line="+424"/>
+        <location line="+428"/>
         <source>Error</source>
         <translation>오류</translation>
     </message>
@@ -8331,7 +8406,7 @@ Are you sure?</source>
         <translation>주요 도구 모음</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-460"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-464"/>
         <source>Invalid import link: URL must be http(s).</source>
         <translation>유효하지 않은 가져오기 링크: URL은 http(s)여야 합니다.</translation>
     </message>
@@ -8351,7 +8426,12 @@ Are you sure?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+21"/>
+        <source>Report a Bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
         <source> (commit %1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8504,7 +8584,7 @@ Are you sure?</source>
         <translation>%1의 버그 보고를 위해 버그 트래커를 엽니다.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-778"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-782"/>
         <source>Task aborted</source>
         <translation>작업이 중단됨</translation>
     </message>
@@ -8580,7 +8660,7 @@ URL:
         <translation>그룹 삭제</translation>
     </message>
     <message>
-        <location line="+278"/>
+        <location line="+282"/>
         <source>Failed to add %1 to PATH</source>
         <translation>%1을 PATH에 추가하지 못함</translation>
     </message>
@@ -8634,7 +8714,7 @@ URL:
         <translation type="vanished">소식이 없습니다.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-767"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-771"/>
         <source>The task has been aborted by the user.</source>
         <translation>사용자가 작업을 중단하였습니다.</translation>
     </message>
@@ -8694,7 +8774,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>인스턴스의 설정, 모드, 그리고 버전을 편집합니다.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+751"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+755"/>
         <source>This is a problem: &lt;br/&gt; - The launcher will likely be deleted without warning by the operating system &lt;br/&gt; - close the launcher now and extract it to a real location, not a temporary folder</source>
         <translation>문제가 있습니다: &lt;br/&gt; - 운영체제에 의해 런처가 경고 없이 삭제될 수 있습니다 &lt;br/&gt; - 지금 런처를 닫고 임시 폴더가 아닌 실제 위치로 추출하십시오</translation>
     </message>
@@ -8772,7 +8852,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>위젯 테마(&amp;W)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-314"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-318"/>
         <source>Cannot set empty name.</source>
         <translation>빈 이름은 사용할 수 없습니다.</translation>
     </message>
@@ -8869,7 +8949,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>계정</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="+798"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="+802"/>
         <source>%1 was successfully added to your PATH. You can now start it by running `%2`.</source>
         <translation>%1을 PATH에 추가했습니다. 이제 `%2`을 실행해서 시작할 수 있습니다.</translation>
     </message>
@@ -8893,7 +8973,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation type="vanished">개발 블로그를 열어 %1에 대한 더 많은 소식을 볼 수 있습니다.</translation>
     </message>
     <message>
-        <location line="-1567"/>
+        <location line="-1571"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
@@ -9024,7 +9104,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>그룹 이름</translation>
     </message>
     <message>
-        <location line="+356"/>
+        <location line="+360"/>
         <source>Deleting</source>
         <translation>삭제 중</translation>
     </message>
@@ -9034,7 +9114,7 @@ Please create a new instance before attempting to install this resource again.</
         <translation>로그 보기</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-568"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-572"/>
         <source>Invalid import link: missing &apos;url&apos; parameter.</source>
         <translation>유효하지 않은 가져오기 링크: &apos;url&apos; 인수가 누락되었습니다.</translation>
     </message>
@@ -9051,7 +9131,7 @@ Please create a new instance before attempting to install this resource again.</
     <message>
         <location filename="../launcher/ui/MainWindow.cpp" line="-435"/>
         <location line="+125"/>
-        <location line="+1612"/>
+        <location line="+1616"/>
         <source>No instance selected</source>
         <translation>선택한 인스턴스 없음</translation>
     </message>
@@ -9110,7 +9190,7 @@ To clear the metadata cache manually, press Folders -&gt; View Launcher Root Fol
         <translation>선택한 인스턴스를 삭제합니다.</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/MainWindow.cpp" line="-1339"/>
+        <location filename="../launcher/ui/MainWindow.cpp" line="-1343"/>
         <source>&amp;Delete group</source>
         <translation>그룹 삭제(&amp;D)</translation>
     </message>
@@ -9166,7 +9246,7 @@ Please check your trashbin to manually restore them.</source>
         <translation>총 플레이 시간: 0초</translation>
     </message>
     <message>
-        <location line="+1801"/>
+        <location line="+1805"/>
         <source>Total playtime: %1</source>
         <translation>총 플레이 시간: %1</translation>
     </message>
@@ -9181,18 +9261,18 @@ Please check your trashbin to manually restore them.</source>
         <translation>%1을 PATH에 추가함</translation>
     </message>
     <message>
-        <location line="-286"/>
+        <location line="-290"/>
         <location line="+22"/>
         <source>Enter a new group name.</source>
         <translation>새 그룹 이름을 입력합니다.</translation>
     </message>
     <message>
-        <location line="+269"/>
+        <location line="+273"/>
         <source>An error occurred while trying to add %1 to PATH</source>
         <translation>%1을 PATH에 추가하는 동안 오류가 발생함</translation>
     </message>
     <message>
-        <location line="-279"/>
+        <location line="-283"/>
         <source>Are you sure you want to delete the group &apos;%1&apos;?</source>
         <translation>그룹 &apos;%1&apos;을 삭제하시겠습니까?</translation>
     </message>
@@ -9409,7 +9489,7 @@ URL 또한 신뢰할 수 있는지 반드시 확인하십시오.
 <context>
     <name>MinecraftInstance</name>
     <message>
-        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1042"/>
+        <location filename="../launcher/minecraft/MinecraftInstance.cpp" line="+1070"/>
         <source>&lt;ACCESS TOKEN&gt;</source>
         <translation>&lt;ACCESS TOKEN&gt;</translation>
     </message>
@@ -9419,12 +9499,12 @@ URL 또한 신뢰할 수 있는지 반드시 확인하십시오.
         <translation>, 마지막으로 %1에 %2 동안 플레이함</translation>
     </message>
     <message>
-        <location line="-773"/>
+        <location line="-798"/>
         <source>Profilers</source>
         <translation>프로파일러</translation>
     </message>
     <message>
-        <location line="+757"/>
+        <location line="+782"/>
         <source>broken</source>
         <translation>손상됨</translation>
     </message>
@@ -9434,12 +9514,12 @@ URL 또한 신뢰할 수 있는지 반드시 확인하십시오.
         <translation>, 총 %1 동안 플레이함</translation>
     </message>
     <message>
-        <location line="-791"/>
+        <location line="-816"/>
         <source>Launch &amp;Offline</source>
         <translation>오프라인으로 실행(&amp;O)</translation>
     </message>
     <message>
-        <location line="+731"/>
+        <location line="+756"/>
         <source>&lt;PROFILE ID&gt;</source>
         <translation>&lt;PROFILE ID&gt;</translation>
     </message>
@@ -9449,7 +9529,7 @@ URL 또한 신뢰할 수 있는지 반드시 확인하십시오.
         <translation>&lt;SESSION ID&gt;</translation>
     </message>
     <message>
-        <location line="-728"/>
+        <location line="-753"/>
         <source>&amp;Launch</source>
         <translation>실행(&amp;L)</translation>
     </message>
@@ -9459,22 +9539,22 @@ URL 또한 신뢰할 수 있는지 반드시 확인하십시오.
         <translation>프로파일러 없음(&amp;N)</translation>
     </message>
     <message>
-        <location line="+758"/>
+        <location line="+783"/>
         <source>Minecraft %1</source>
         <translation>마인크래프트 %1</translation>
     </message>
     <message>
-        <location line="-778"/>
+        <location line="-803"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location line="+795"/>
+        <location line="+820"/>
         <source>, has crashed.</source>
         <translation>, 충돌함.</translation>
     </message>
     <message>
-        <location line="-793"/>
+        <location line="-818"/>
         <source>Ctrl+Alt+O</source>
         <translation>Ctrl+Alt+O</translation>
     </message>
@@ -9554,12 +9634,12 @@ URL 또한 신뢰할 수 있는지 반드시 확인하십시오.
         <translation>마인크래프트를 최대화된 상태로 시작하기</translation>
     </message>
     <message>
-        <location line="+707"/>
+        <location line="+724"/>
         <source>Custom Commands</source>
         <translation>사용자 지정 명령어</translation>
     </message>
     <message>
-        <location line="-721"/>
+        <location line="-738"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: The maximized option may not be fully supported on all Minecraft versions.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;경고&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: 최대화 옵션은 일부 마인크래프트 버전에서 완전히 지원되지 않을 수 있습니다.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -9574,7 +9654,7 @@ URL 또한 신뢰할 수 있는지 반드시 확인하십시오.
         <translation>MangoHud 활성화</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+58"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+60"/>
         <source>Custom</source>
         <translation>사용자 정의</translation>
     </message>
@@ -9599,7 +9679,7 @@ URL 또한 신뢰할 수 있는지 반드시 확인하십시오.
         <translation>창 크기(&amp;W):</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+340"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="+348"/>
         <source>Select Global Data Packs Folder</source>
         <translation>전역 데이터 팩 폴더 선택</translation>
     </message>
@@ -9681,7 +9761,7 @@ It is most likely you will need to change the path - please refer to the mod&apo
         <translation>전역 설정 열기(&amp;G)</translation>
     </message>
     <message>
-        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-493"/>
+        <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.cpp" line="-501"/>
         <source>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;Warning&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: The maximized option is not fully supported on this Minecraft version.&lt;/span&gt;</source>
         <translation>&lt;span style=&quot; font-weight:600; color:#f5c211;&quot;&gt;경고&lt;/span&gt;&lt;span style=&quot; color:#f5c211;&quot;&gt;: 이 마인크래프트 버전에서는 최대화 옵션이 완전히 지원되지 않습니다.&lt;/span&gt;</translation>
     </message>
@@ -9886,12 +9966,27 @@ It is most likely you will need to change the path - please refer to the mod&apo
         <translation>OpenAL 라이브러리 경로(&amp;O):</translation>
     </message>
     <message>
-        <location line="+127"/>
+        <location line="+96"/>
+        <source>Runs OpenGL on the CPU (Mesa llvmpipe). Use this only if Minecraft crashes at startup because your graphics hardware or driver is too old or missing. It works on almost any PC but is slow. The renderer (about 40 MB) is downloaded once on the first launch.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Use software rendering (slow, for PCs without a working graphics driver)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Graphics driver guide...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+38"/>
         <source>Environment Variables</source>
         <translation>환경 변수</translation>
     </message>
     <message>
-        <location line="-468"/>
+        <location line="-485"/>
         <source>Show the &amp;total time played across instances</source>
         <translation>모든 인스턴스에서 플레이한 총 시간 표시(&amp;T)</translation>
     </message>
@@ -10931,7 +11026,7 @@ Please update %1!</source>
 <context>
     <name>MyReportsDialog</name>
     <message>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+151"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+162"/>
         <location line="+4"/>
         <source>My Reports</source>
         <translation type="unfinished"></translation>
@@ -14392,7 +14487,24 @@ New name: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/BugReportTracker.cpp" line="+164"/>
+        <location filename="../launcher/BugReportTracker.cpp" line="+264"/>
+        <source>1 hour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+0"/>
+        <source>%n minute(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>You are sending way too many reports. Please slow down and try again in about %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
         <source>Waiting for a dev to check it</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14408,12 +14520,22 @@ New name: %2</source>
     </message>
     <message>
         <location line="+2"/>
+        <source>A fix is being worked on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>The team couldn&apos;t reproduce it - more details would help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Fixed - it will be in the next update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-193"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-199"/>
         <source>Fixed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14424,7 +14546,7 @@ New name: %2</source>
     </message>
     <message>
         <location line="+2"/>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+2"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+8"/>
         <source>Won&apos;t be fixed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14437,6 +14559,21 @@ New name: %2</source>
         <location line="+2"/>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+4"/>
         <source>Not a bug</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Not caused by the launcher - most likely a mod, Java or the game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Planned - it may come in a future update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Added - thanks for the suggestion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -14466,7 +14603,7 @@ New name: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-13"/>
+        <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-23"/>
         <source>Waiting</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14481,7 +14618,32 @@ New name: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+2"/>
+        <source>In progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Can&apos;t reproduce</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Planned</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Added</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Not the launcher</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>Duplicate</source>
         <translation type="unfinished"></translation>
     </message>
@@ -14534,6 +14696,36 @@ New name: %2</source>
     <message>
         <location line="+2"/>
         <source>%1s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../launcher/SoftwareRenderer.cpp" line="+82"/>
+        <source>The downloaded Mesa archive could not be read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Could not create the folder %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>The Mesa archive does not contain a 64-bit opengl32.dll.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Could not open %1 inside the Mesa archive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>%1 inside the Mesa archive is empty or damaged.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Could not write %1: %2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

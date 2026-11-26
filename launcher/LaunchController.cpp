@@ -43,12 +43,15 @@
 #include "net/NetUtils.h"
 
 #include "ui/InstanceWindow.h"
+#include "SoftwareRenderer.h"
 #include "ui/dialogs/CustomMessageBox.h"
+#include "ui/dialogs/GpuDriverGuideDialog.h"
 #include "ui/dialogs/MSALoginDialog.h"
 #include "ui/dialogs/ProfileSelectDialog.h"
 #include "ui/dialogs/ProfileSetupDialog.h"
 #include "ui/dialogs/ProgressDialog.h"
 
+#include <QCheckBox>
 #include <QInputDialog>
 #include <QList>
 #include <QPushButton>
@@ -391,6 +394,52 @@ void LaunchController::launchInstance()
         emitFailed(tr("Couldn't load the instance profile."));
         return;
     }
+
+#ifdef Q_OS_WIN
+    // Graphics hardware that is probably too old for Minecraft: offer a way out before it crashes at startup.
+    if (!m_instance->settings()->get("SoftwareRendering").toBool() && APPLICATION->settings()->get("AskSoftwareRendering").toBool() &&
+        SoftwareRenderer::gpuLooksUnsupported()) {
+        QMessageBox box(m_parentWidget);
+        box.setIcon(QMessageBox::Warning);
+        box.setWindowTitle(tr("Graphics hardware warning"));
+        box.setText(tr("Your graphics card or driver may be too old for Minecraft.\n\nDetected: %1\n\nRecent Minecraft versions need a "
+                       "working OpenGL driver. Without one, the game usually crashes right after it starts.")
+                        .arg(SoftwareRenderer::detectedGpus().join(", ")));
+        box.setInformativeText(tr("You can update your graphics driver, or turn on software rendering, which works on almost any PC but "
+                                  "is slow. If the game already runs fine for you, choose Launch Anyway."));
+        auto* softwareButton = box.addButton(tr("Use Software Rendering"), QMessageBox::AcceptRole);
+        auto* guideButton = box.addButton(tr("Driver Guide..."), QMessageBox::HelpRole);
+        auto* launchButton = box.addButton(tr("Launch Anyway"), QMessageBox::ActionRole);
+        box.addButton(QMessageBox::Cancel);
+        box.setDefaultButton(launchButton);
+        auto* dontAsk = new QCheckBox(tr("Don't show this again"), &box);
+        box.setCheckBox(dontAsk);
+        box.exec();
+
+        if (dontAsk->isChecked())
+            APPLICATION->settings()->set("AskSoftwareRendering", false);
+
+        if (box.clickedButton() == softwareButton) {
+            // Pin the current performance values on the instance first, so switching its override on changes nothing else.
+            auto instanceSettings = m_instance->settings();
+            const QStringList keys = { "EnableFeralGamemode", "EnableMangoHud", "UseDiscreteGpu", "UseZink" };
+            QList<QVariant> values;
+            for (const auto& key : keys)
+                values << instanceSettings->get(key);
+            instanceSettings->set("OverridePerformance", true);
+            for (int i = 0; i < keys.size(); ++i)
+                instanceSettings->set(keys[i], values[i]);
+            instanceSettings->set("SoftwareRendering", true);
+        } else if (box.clickedButton() == guideButton) {
+            GpuDriverGuideDialog(m_parentWidget).exec();
+            emitAborted();
+            return;
+        } else if (box.clickedButton() != launchButton) {
+            emitAborted();
+            return;
+        }
+    }
+#endif
 
     m_launcher = m_instance->createLaunchTask(m_session, m_targetToJoin);
     if (!m_launcher) {
