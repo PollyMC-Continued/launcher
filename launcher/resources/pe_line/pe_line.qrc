@@ -1,0 +1,19 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/icons/pe_line">
+        <file>index.theme</file>
+        <file>scalable/accounts.svg</file>
+        <file>scalable/appearance.svg</file>
+        <file>scalable/externaltools.svg</file>
+        <file>scalable/instance-settings.svg</file>
+        <file>scalable/java.svg</file>
+        <file>scalable/language.svg</file>
+        <file>scalable/loadermods.svg</file>
+        <file>scalable/log.svg</file>
+        <file>scalable/minecraft.svg</file>
+        <file>scalable/proxy.svg</file>
+        <file>scalable/settings.svg</file>
+        <file>scalable/viewfolder.svg</file>
+        <file>scalable/worlds.svg</file>
+    </qresource>
+</RCC>

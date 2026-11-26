@@ -1384,6 +1384,7 @@ qt_add_resources(LAUNCHER_RESOURCES
     resources/pe_dark/pe_dark.qrc
     resources/pe_light/pe_light.qrc
     resources/pe_colored/pe_colored.qrc
+    resources/pe_line/pe_line.qrc
     resources/pe_blue/pe_blue.qrc
     resources/breeze_dark/breeze_dark.qrc
     resources/breeze_light/breeze_light.qrc

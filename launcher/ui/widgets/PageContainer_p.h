@@ -22,6 +22,7 @@
 #include <QPainter>
 #include <QPalette>
 #include <QScrollBar>
+#include <QPixmap>
 #include <QStyledItemDelegate>
 
 class BasePage;
@@ -80,8 +81,26 @@ class PageViewDelegate : public QStyledItemDelegate {
         }
 
         const QRect iconRect(pill.left() + PillPadding, pill.center().y() - pageIconSize / 2 + 1, pageIconSize, pageIconSize);
-        if (!opt.icon.isNull())
-            opt.icon.paint(painter, iconRect, Qt::AlignCenter, QIcon::Normal, QIcon::Off);
+        if (!opt.icon.isNull()) {
+            if (QIcon::themeName() == QLatin1String("pe_line")) {
+                // monochrome theme: only the shape (alpha) of the SVG matters, the colour comes from the palette
+                const bool darkUi = pal.color(QPalette::Window).lightness() < 128;
+                QColor tint = darkUi ? QColor("#dfdfdf") : QColor("#2b2b2b");
+                if (selected) {
+                    // icon on the highlighted pill: dark on bright highlights (your green), white on dark ones
+                    const bool brightHighlight = pal.color(QPalette::Active, QPalette::Highlight).lightness() > 128;
+                    tint = brightHighlight ? QColor("#191919") : QColor("#ffffff");
+                }
+                QPixmap pixmap = opt.icon.pixmap(iconRect.size(), painter->device()->devicePixelRatioF());
+                QPainter tinter(&pixmap);
+                tinter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+                tinter.fillRect(pixmap.rect(), tint);
+                tinter.end();
+                painter->drawPixmap(iconRect, pixmap);
+            } else {
+                opt.icon.paint(painter, iconRect, Qt::AlignCenter, QIcon::Normal, QIcon::Off);
+            }
+        }
 
         const QRect textRect(iconRect.right() + 1 + IconGap, pill.top(), pill.right() - iconRect.right() - IconGap - PillPadding, pill.height());
         painter->setFont(option.font);
