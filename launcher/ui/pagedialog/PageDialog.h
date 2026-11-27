@@ -16,9 +16,11 @@
 #pragma once
 
 #include <QDialog>
+#include <QElapsedTimer>
 #include "ui/pages/BasePageProvider.h"
 
 class PageContainer;
+class QPushButton;
 class PageDialog : public QDialog {
     Q_OBJECT
    public:
@@ -28,11 +30,27 @@ class PageDialog : public QDialog {
    signals:
     void applied();
 
+   protected:
+    void changeEvent(QEvent* event) override;
+
    private:
     void accept() override;
     void closeEvent(QCloseEvent* event) override;
     bool handleClose();
 
+    // "OK" turns into "Apply" as soon as something was changed; applying turns it back into "OK".
+    void watchPageWidgets();
+    void markDirty();
+    void setDirty(bool dirty);
+    void updateButtonTexts();
+    void applyChanges();
+    void okClicked();
+
    private:
     PageContainer* m_container;
+    QPushButton* m_okButton = nullptr;
+    QPushButton* m_cancelButton = nullptr;
+    QPushButton* m_helpButton = nullptr;
+    bool m_dirty = false;
+    QElapsedTimer m_lastButtonClick;  // a Browse-style button was clicked: text it fills in afterwards is a user edit
 };

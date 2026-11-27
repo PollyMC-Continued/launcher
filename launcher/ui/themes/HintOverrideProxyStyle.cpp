@@ -20,6 +20,7 @@
 
 #include <QApplication>
 #include <QAbstractItemView>
+#include <QAbstractScrollArea>
 #include <QDebug>
 #include <QGuiApplication>
 #include <QIcon>
@@ -27,6 +28,7 @@
 #include <QPainter>
 #include <QStyleFactory>
 #include <QStyleHints>
+#include <QStyleOptionSlider>
 #include <QStyleOptionViewItem>
 
 #include <array>
@@ -277,11 +279,132 @@ void HintOverrideProxyStyle::drawControl(ControlElement element,
     QProxyStyle::drawControl(element, option, painter, widget);
 }
 
+namespace {
+// Scroll bar geometry: the bar itself is ScrollBarExtent wide; the pill drawn inside it is thinner
+// while idle and grows a little when the mouse is over the bar.
+constexpr int ScrollBarExtent = 12;
+constexpr int ScrollBarSliderMin = 36;
+constexpr int ScrollBarPillIdle = 6;
+constexpr int ScrollBarPillActive = 8;
+
+void drawPillScrollBar(const QStyle* style, const QStyleOptionSlider* sb, QPainter* painter, const QWidget* widget)
+{
+    // Paint the same colour the scrolled view uses, so the bar blends in instead of showing a strip.
+    for (const QWidget* p = widget ? widget->parentWidget() : nullptr; p; p = p->parentWidget()) {
+        if (const auto* area = qobject_cast<const QAbstractScrollArea*>(p)) {
+            const QWidget* viewport = area->viewport();
+            painter->fillRect(sb->rect, viewport->palette().color(viewport->backgroundRole()));
+            break;
+        }
+    }
+
+    if (sb->maximum == sb->minimum)
+        return;  // nothing to scroll
+
+    const QRect slider = style->subControlRect(QStyle::CC_ScrollBar, sb, QStyle::SC_ScrollBarSlider, widget);
+    if (!slider.isValid())
+        return;
+
+    const bool enabled = sb->state & QStyle::State_Enabled;
+    const bool hovered = enabled && (sb->state & QStyle::State_MouseOver);
+    const bool pressed = enabled && (sb->state & QStyle::State_Sunken) && (sb->activeSubControls & QStyle::SC_ScrollBarSlider);
+
+    const int thickness = (hovered || pressed) ? ScrollBarPillActive : ScrollBarPillIdle;
+    const bool horizontal = sb->orientation == Qt::Horizontal;
+    QRectF pill(slider);
+    if (horizontal) {
+        pill.setHeight(thickness);
+        pill.moveTop(slider.top() + (slider.height() - thickness) / 2.0);
+        pill.adjust(1, 0, -1, 0);
+    } else {
+        pill.setWidth(thickness);
+        pill.moveLeft(slider.left() + (slider.width() - thickness) / 2.0);
+        pill.adjust(0, 1, 0, -1);
+    }
+
+    QColor color = pressed ? sb->palette.color(QPalette::Active, QPalette::Highlight) : sb->palette.color(QPalette::Active, QPalette::WindowText);
+    if (!pressed)
+        color.setAlpha(!enabled ? 40 : hovered ? 150 : 85);
+
+    painter->save();
+    painter->setRenderHint(QPainter::Antialiasing);
+    painter->setPen(Qt::NoPen);
+    painter->setBrush(color);
+    painter->drawRoundedRect(pill, thickness / 2.0, thickness / 2.0);
+    painter->restore();
+}
+}  // namespace
+
+int HintOverrideProxyStyle::pixelMetric(PixelMetric metric, const QStyleOption* option, const QWidget* widget) const
+{
+    switch (metric) {
+        case PM_ScrollBarExtent:
+            return ScrollBarExtent;
+        case PM_ScrollBarSliderMin:
+            return ScrollBarSliderMin;
+        default:
+            return QProxyStyle::pixelMetric(metric, option, widget);
+    }
+}
+
+QRect HintOverrideProxyStyle::subControlRect(ComplexControl control,
+                                             const QStyleOptionComplex* option,
+                                             SubControl subControl,
+                                             const QWidget* widget) const
+{
+    if (control == CC_ScrollBar) {
+        if (const auto* sb = qstyleoption_cast<const QStyleOptionSlider*>(option)) {
+            const bool horizontal = sb->orientation == Qt::Horizontal;
+            const int length = horizontal ? sb->rect.width() : sb->rect.height();
+
+            // same maths as QCommonStyle, minus the arrow buttons: the groove is the whole bar
+            int sliderLength = length;
+            if (sb->maximum != sb->minimum) {
+                const qint64 range = qint64(sb->maximum) - sb->minimum;
+                sliderLength = int((qint64(sb->pageStep) * length) / (range + sb->pageStep));
+                sliderLength = qBound(qMin(ScrollBarSliderMin, length), sliderLength, length);
+            }
+            const int sliderStart = sliderPositionFromValue(sb->minimum, sb->maximum, sb->sliderPosition, length - sliderLength, sb->upsideDown);
+
+            const auto span = [&](int start, int len) {
+                return horizontal ? QRect(sb->rect.x() + start, sb->rect.y(), len, sb->rect.height())
+                                  : QRect(sb->rect.x(), sb->rect.y() + start, sb->rect.width(), len);
+            };
+
+            QRect rect;
+            switch (subControl) {
+                case SC_ScrollBarGroove:
+                    rect = sb->rect;
+                    break;
+                case SC_ScrollBarSlider:
+                    rect = span(sliderStart, sliderLength);
+                    break;
+                case SC_ScrollBarSubPage:
+                    rect = span(0, sliderStart);
+                    break;
+                case SC_ScrollBarAddPage:
+                    rect = span(sliderStart + sliderLength, length - sliderStart - sliderLength);
+                    break;
+                default:  // arrow buttons, first / last: gone
+                    return QRect();
+            }
+            return visualRect(sb->direction, sb->rect, rect);
+        }
+    }
+    return QProxyStyle::subControlRect(control, option, subControl, widget);
+}
+
 void HintOverrideProxyStyle::drawComplexControl(ComplexControl control,
                                                 const QStyleOptionComplex* option,
                                                 QPainter* painter,
                                                 const QWidget* widget) const
 {
+    if (control == CC_ScrollBar) {
+        if (const auto* sb = qstyleoption_cast<const QStyleOptionSlider*>(option)) {
+            drawPillScrollBar(this, sb, painter, widget);
+            return;
+        }
+    }
     if (!ThemeManager::windows11StyleIsUsable() && (control == CC_SpinBox || control == CC_ComboBox)) {
         if (QStyle* fallback = fluentFallbackStyle()) {
             fallback->drawComplexControl(control, option, painter, widget);
