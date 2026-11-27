@@ -36,6 +36,7 @@
 #pragma once
 
 #include <QDialog>
+#include <QModelIndex>
 
 #include "InstanceTask.h"
 #include "ui/pages/BasePageProvider.h"
@@ -45,11 +46,19 @@ class NewInstanceDialog;
 }
 
 class PageContainer;
-class QDialogButtonBox;
+class DialogButton;
 class ImportPage;
+class ModrinthPage;
 class FlamePage;
+class ModpackSearchBox;
+class QDragEnterEvent;
+class QDragLeaveEvent;
+class QDropEvent;
 class QHideEvent;
+class QLabel;
+class QMenu;
 class QShowEvent;
+class QToolButton;
 
 class NewInstanceDialog : public QDialog, public BasePageProvider {
     Q_OBJECT
@@ -85,18 +94,45 @@ class NewInstanceDialog : public QDialog, public BasePageProvider {
     void showEvent(QShowEvent* event) override;
     void hideEvent(QHideEvent* event) override;
 
+    void dragEnterEvent(QDragEnterEvent* event) override;
+    void dragLeaveEvent(QDragLeaveEvent* event) override;
+    void dropEvent(QDropEvent* event) override;
+
    private slots:
     void on_iconButton_clicked();
     void on_instNameTextBox_textChanged(const QString& arg1);
     void selectedPageChanged(BasePage* previous, BasePage* selected);
+    void groupChosen(QAction* action);
+    void newGroupRequested();
+
+    void modpackSearchRequested(const QString& term);
+    void modpackSearchResultActivated(const QString& sourceId, const QModelIndex& sourceIndex);
 
    private:
+    void buildGroupMenu();
+    void setCurrentGroup(const QString& group);
+    void updatePrimaryAction();
+    QString pageActionText(BasePage* page) const;
+    QString pageHintText(BasePage* page) const;
+    void rememberState();
+
     Ui::NewInstanceDialog* ui = nullptr;
     PageContainer* m_container = nullptr;
-    QDialogButtonBox* m_buttons = nullptr;
+    ModpackSearchBox* m_searchBox = nullptr;
+    DialogButton* m_helpButton = nullptr;
+    DialogButton* m_cancelButton = nullptr;
+    DialogButton* m_primaryButton = nullptr;
+    QLabel* m_hintLabel = nullptr;
+
+    QMenu* m_groupMenu = nullptr;
+    QToolButton* m_groupChip = nullptr;
+    QString m_currentGroup;
+    QStringList m_groups;
 
     QString InstIconKey;
     ImportPage* importPage = nullptr;
+    ModrinthPage* modrinthPage = nullptr;
+    FlamePage* flamePage = nullptr;
     std::unique_ptr<InstanceTask> creationTask;
 
     bool importIcon = false;

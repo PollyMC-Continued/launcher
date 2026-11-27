@@ -36,7 +36,6 @@
 #pragma once
 
 #include <QTextBrowser>
-#include <QTreeView>
 #include <QWidget>
 
 #include "QObjectPtr.h"
@@ -45,6 +44,7 @@
 #include "ui/pages/modplatform/ModpackProviderBasePage.h"
 
 class NewInstanceDialog;
+class ModpackListView;
 
 namespace LegacyFTB {
 
@@ -69,6 +69,7 @@ class Page : public QWidget, public ModpackProviderBasePage {
     bool shouldDisplay() const override;
     void openedImpl() override;
     void retranslate() override;
+    bool eventFilter(QObject* watched, QEvent* event) override;
 
     /** Programatically set the term in the search bar. */
     virtual void setSearchTerm(QString) override;
@@ -103,7 +104,7 @@ class Page : public QWidget, public ModpackProviderBasePage {
 
    private:
     FilterModel* currentModel = nullptr;
-    QTreeView* currentList = nullptr;
+    ModpackListView* currentList = nullptr;
     QTextBrowser* currentModpackInfo = nullptr;
 
     bool initialized = false;

@@ -19,7 +19,9 @@
 #include "Application.h"
 #include "BuildConfig.h"
 #include "Json.h"
+#include "ui/widgets/ProjectItem.h"
 
+#include <QLocale>
 #include <QPainter>
 
 namespace Ftb {
@@ -51,27 +53,31 @@ QVariant ListModel::data(const QModelIndex& index, int role) const
     } else if (role == Qt::ToolTipRole) {
         return pack.synopsis;
     } else if (role == Qt::DecorationRole) {
-        QIcon placeholder = QIcon::fromTheme("screenshot-placeholder");
-
         auto iter = m_logoMap.find(pack.safeName);
         if (iter != m_logoMap.end()) {
-            auto& logo = *iter;
-            if (!logo.result.isNull()) {
-                return logo.result;
-            }
-            return placeholder;
+            // found: either loaded, or a request is already in flight
+            return iter->result;
         }
-
+        // no placeholder icon: while the logo is missing, the delegate draws a coloured
+        // initial tile instead of the camera placeholder
         for (auto art : pack.art) {
             if (art.type == "square") {
                 ((ListModel*)this)->requestLogo(pack.safeName, art.url);
             }
         }
-        return placeholder;
+        return {};
     } else if (role == Qt::UserRole) {
         QVariant v;
         v.setValue(pack);
         return v;
+    } else if (role == Qt::SizeHintRole) {
+        return QSize(0, 58);
+    } else if (role == UserDataTypes::TITLE) {
+        return pack.name;
+    } else if (role == UserDataTypes::DESCRIPTION) {
+        return pack.synopsis;
+    } else if (role == UserDataTypes::METADATA) {
+        return tr("%1 plays").arg(QLocale().toString(pack.plays));
     }
 
     return QVariant();

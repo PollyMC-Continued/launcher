@@ -35,6 +35,7 @@
 
 #pragma once
 
+#include <QAbstractItemModel>
 #include <QWidget>
 
 #include <QTimer>
@@ -71,6 +72,15 @@ class FlamePage : public QWidget, public ModpackProviderBasePage {
     void openedImpl() override;
 
     bool eventFilter(QObject* watched, QEvent* event) override;
+
+    QString sectionName() const override { return "Browse modpacks"; }
+
+    /** The modpacks of the last search, for the dialog-wide "Search all modpacks" box. */
+    QAbstractItemModel* searchModel() const;
+    /** Runs a search as if the term was typed into this page's search box. */
+    void searchModpacks(const QString& term);
+    /** Selects a result row, as if the user clicked it (used by the dialog-wide modpack search). */
+    void setCurrentIndex(const QModelIndex& index);
 
     /** Programatically set the term in the search bar. */
     virtual void setSearchTerm(QString) override;

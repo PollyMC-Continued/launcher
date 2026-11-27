@@ -36,10 +36,12 @@
 
 #include "Page.h"
 #include "StringUtils.h"
+#include "ui/widgets/ModpackItemDelegate.h"
 #include "ui/widgets/ProjectItem.h"
 #include "ui_Page.h"
 
 #include <QInputDialog>
+#include <QKeyEvent>
 
 #include "Application.h"
 
@@ -66,10 +68,9 @@ Page::Page(NewInstanceDialog* dialog, QWidget* parent) : QWidget(parent), dialog
         publicFilterModel->setSourceModel(publicListModel);
 
         ui->publicPackList->setModel(publicFilterModel);
-        ui->publicPackList->setSortingEnabled(true);
-        ui->publicPackList->header()->hide();
-        ui->publicPackList->setIndentation(0);
         ui->publicPackList->setIconSize(QSize(42, 42));
+        ui->publicPackList->setItemDelegate(new ModpackItemDelegate(this));
+        ui->publicPackList->setEmptyText(tr("No modpacks found"));
 
         for (int i = 0; i < publicFilterModel->getAvailableSortings().size(); i++) {
             ui->sortByBox->addItem(publicFilterModel->getAvailableSortings().keys().at(i));
@@ -84,10 +85,9 @@ Page::Page(NewInstanceDialog* dialog, QWidget* parent) : QWidget(parent), dialog
         thirdPartyFilterModel->setSourceModel(thirdPartyModel);
 
         ui->thirdPartyPackList->setModel(thirdPartyFilterModel);
-        ui->thirdPartyPackList->setSortingEnabled(true);
-        ui->thirdPartyPackList->header()->hide();
-        ui->thirdPartyPackList->setIndentation(0);
         ui->thirdPartyPackList->setIconSize(QSize(42, 42));
+        ui->thirdPartyPackList->setItemDelegate(new ModpackItemDelegate(this));
+        ui->thirdPartyPackList->setEmptyText(tr("No modpacks found"));
 
         thirdPartyFilterModel->setSorting(publicFilterModel->getCurrentSorting());
     }
@@ -98,10 +98,9 @@ Page::Page(NewInstanceDialog* dialog, QWidget* parent) : QWidget(parent), dialog
         privateFilterModel->setSourceModel(privateListModel);
 
         ui->privatePackList->setModel(privateFilterModel);
-        ui->privatePackList->setSortingEnabled(true);
-        ui->privatePackList->header()->hide();
-        ui->privatePackList->setIndentation(0);
         ui->privatePackList->setIconSize(QSize(42, 42));
+        ui->privatePackList->setItemDelegate(new ModpackItemDelegate(this));
+        ui->privatePackList->setEmptyText(tr("No modpacks found"));
 
         privateFilterModel->setSorting(publicFilterModel->getCurrentSorting());
     }
@@ -124,15 +123,15 @@ Page::Page(NewInstanceDialog* dialog, QWidget* parent) : QWidget(parent), dialog
 
     connect(ui->tabWidget, &QTabWidget::currentChanged, this, &Page::onTabChanged);
 
-    // ui->modpackInfo->setOpenExternalLinks(true);
+    // Enter on a selected pack installs it, like double clicking
+    ui->publicPackList->installEventFilter(this);
+    ui->thirdPartyPackList->installEventFilter(this);
+    ui->privatePackList->installEventFilter(this);
 
     ui->publicPackList->selectionModel()->reset();
     ui->thirdPartyPackList->selectionModel()->reset();
     ui->privatePackList->selectionModel()->reset();
 
-    ui->publicPackList->setItemDelegate(new ProjectItemDelegate(this));
-    ui->thirdPartyPackList->setItemDelegate(new ProjectItemDelegate(this));
-    ui->privatePackList->setItemDelegate(new ProjectItemDelegate(this));
     onTabChanged(ui->tabWidget->currentIndex());
 }
 
@@ -160,6 +159,8 @@ void Page::openedImpl()
         ftbPrivatePacks->load();
         ftbFetchTask->fetchPrivate(ftbPrivatePacks->getCurrentPackCodes().values());
         initialized = true;
+        ui->publicPackList->setLoading(true);
+        ui->thirdPartyPackList->setLoading(true);
     }
     suggestCurrent();
 }
@@ -268,9 +269,11 @@ void Page::onPackSelectionChanged(Modpack* pack)
 {
     ui->versionSelectionBox->clear();
     if (pack) {
-        currentModpackInfo->setHtml(StringUtils::htmlListPatch("Pack by <b>" + pack->author + "</b>" + "<br>Minecraft " + pack->mcVersion +
-                                                               "<br>" + "<br>" + pack->description + "<ul><li>" +
-                                                               pack->mods.replace(";", "</li><li>") + "</li></ul>"));
+        ui->packNameLabel->setText(pack->name);
+        // the feed is plain text with stray HTML in it - strip the tags instead of showing literal "<br>"
+        currentModpackInfo->setHtml(StringUtils::htmlListPatch("Pack by <b>" + pack->author.toHtmlEscaped() + "</b>" + "<br>Minecraft " +
+                                                                   pack->mcVersion + "<br>" + "<br>" + stripHtml(pack->description) + "<ul><li>" +
+                                                                   stripHtml(pack->mods).replace(";", "</li><li>") + "</li></ul>"));
         bool currentAdded = false;
 
         for (int i = 0; i < pack->oldVersions.size(); i++) {
@@ -285,6 +288,7 @@ void Page::onPackSelectionChanged(Modpack* pack)
         }
         selected = *pack;
     } else {
+        ui->packNameLabel->setText(QString());
         currentModpackInfo->setHtml("");
         ui->versionSelectionBox->clear();
         if (isOpened) {
@@ -371,6 +375,25 @@ void Page::onRemovePackClicked()
     ftbPrivatePacks->remove(pack.packCode);
     privateListModel->remove(row);
     onPackSelectionChanged();
+}
+
+bool Page::eventFilter(QObject* watched, QEvent* event)
+{
+    // Enter on a selected pack installs it, like double clicking
+    if (event->type() == QEvent::KeyPress) {
+        QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
+        if (keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter) {
+            const auto views = { ui->publicPackList, ui->thirdPartyPackList, ui->privatePackList };
+            for (auto* view : views) {
+                if (watched == view && view->currentIndex().isValid()) {
+                    dialog->accept();
+                    keyEvent->accept();
+                    return true;
+                }
+            }
+        }
+    }
+    return QWidget::eventFilter(watched, event);
 }
 
 void Page::triggerSearch()

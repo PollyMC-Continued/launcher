@@ -35,6 +35,7 @@
 
 #include "TechnicPage.h"
 #include "ui/dialogs/CustomMessageBox.h"
+#include "ui/widgets/ModpackItemDelegate.h"
 #include "ui/widgets/ProjectItem.h"
 #include "ui_TechnicPage.h"
 
@@ -59,8 +60,18 @@ TechnicPage::TechnicPage(NewInstanceDialog* dialog, QWidget* parent)
 {
     ui->setupUi(this);
     ui->searchEdit->installEventFilter(this);
+    ui->packView->installEventFilter(this);
     model = new Technic::ListModel(this);
     ui->packView->setModel(model);
+    ui->packView->setItemDelegate(new ModpackItemDelegate(this));
+    ui->packView->setEmptyText(tr("No modpacks found"));
+    ui->splitter->setStretchFactor(0, 1);
+    ui->splitter->setStretchFactor(1, 1);
+
+    // don't let the description pane swallow drag and drop meant for the dialog
+    ui->packDescription->setAcceptDrops(false);
+    ui->packDescription->viewport()->setAcceptDrops(false);
+
     ui->versionSelectionBox->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     ui->versionSelectionBox->view()->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
     ui->versionSelectionBox->view()->parentWidget()->setMaximumHeight(300);
@@ -78,8 +89,6 @@ TechnicPage::TechnicPage(NewInstanceDialog* dialog, QWidget* parent)
 
     connect(ui->packView->selectionModel(), &QItemSelectionModel::currentChanged, this, &TechnicPage::onSelectionChanged);
     connect(ui->versionSelectionBox, &QComboBox::currentTextChanged, this, &TechnicPage::onVersionSelectionChanged);
-
-    ui->packView->setItemDelegate(new ProjectItemDelegate(this));
 }
 
 bool TechnicPage::eventFilter(QObject* watched, QEvent* event)
@@ -95,6 +104,15 @@ bool TechnicPage::eventFilter(QObject* watched, QEvent* event)
                 m_search_timer.stop();
 
             m_search_timer.start(350);
+        }
+    }
+    // Enter on a selected pack installs it, like double clicking
+    if (watched == ui->packView && event->type() == QEvent::KeyPress) {
+        QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
+        if ((keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter) && ui->packView->currentIndex().isValid()) {
+            dialog->accept();
+            keyEvent->accept();
+            return true;
         }
     }
     return QWidget::eventFilter(watched, event);
@@ -123,6 +141,7 @@ void TechnicPage::openedImpl()
 
 void TechnicPage::triggerSearch()
 {
+    ui->packView->setLoading(true);
     model->searchWithTerm(ui->searchEdit->text());
     m_fetch_progress.watch(model->activeSearchJob().get());
 }
@@ -135,12 +154,14 @@ void TechnicPage::onSelectionChanged(QModelIndex first, [[maybe_unused]] QModelI
         if (isOpened) {
             dialog->setSuggestedPack();
         }
+        ui->packNameLabel->setText(QString());
         return;
     }
 
     QVariant raw = model->data(first, Qt::UserRole);
     Q_ASSERT(raw.canConvert<Technic::Modpack>());
     current = raw.value<Technic::Modpack>();
+    ui->packNameLabel->setText(current.name);
     suggestCurrent();
 }
 

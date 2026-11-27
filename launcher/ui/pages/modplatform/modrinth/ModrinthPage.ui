@@ -12,20 +12,19 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="searchRowLayout">
      <item>
-      <widget class="QPushButton" name="filterButton">
-       <property name="text">
-        <string>Filter options</string>
+      <widget class="QLineEdit" name="searchEdit">
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+       <property name="placeholderText">
+        <string>Search modpacks</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="searchEdit">
-       <property name="placeholderText">
-        <string>Search and filter...</string>
-       </property>
-      </widget>
+      <widget class="QComboBox" name="sortByBox"/>
      </item>
     </layout>
    </item>
@@ -40,53 +39,64 @@
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <widget class="QWidget" name="widget" native="true"/>
-     <widget class="QListView" name="packView">
-      <property name="horizontalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
-      </property>
-      <property name="alternatingRowColors">
-       <bool>true</bool>
-      </property>
+     <widget class="ModpackListView" name="packView">
       <property name="iconSize">
        <size>
         <width>48</width>
         <height>48</height>
        </size>
       </property>
-      <property name="verticalScrollMode">
-       <enum>QAbstractItemView::ScrollPerPixel</enum>
-      </property>
      </widget>
-     <widget class="ProjectDescriptionPage" name="packDescription">
-      <property name="openExternalLinks">
-       <bool>true</bool>
-      </property>
-      <property name="openLinks">
-       <bool>true</bool>
-      </property>
+     <widget class="QWidget" name="detailsPane" native="true">
+      <layout class="QVBoxLayout" name="detailsLayout">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="packHeaderLayout">
+         <item>
+          <widget class="ElidedLabel" name="packNameLabel">
+           <property name="font">
+            <font>
+             <bold>true</bold>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="versionSelectionBox">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="ProjectDescriptionPage" name="packDescription">
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+         <property name="openLinks">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
-   </item>
-   <item>
-    <layout class="QHBoxLayout">
-     <item>
-      <widget class="QComboBox" name="sortByBox"/>
-     </item>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Version selected:</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="versionSelectionBox"/>
-     </item>
-    </layout>
    </item>
   </layout>
  </widget>
@@ -96,11 +106,22 @@
    <extends>QTextBrowser</extends>
    <header>ui/widgets/ProjectDescriptionPage.h</header>
   </customwidget>
+  <customwidget>
+   <class>ModpackListView</class>
+   <extends>QListView</extends>
+   <header>ui/widgets/ModpackListView.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ElidedLabel</class>
+   <extends>QLabel</extends>
+   <header>ui/widgets/ElidedLabel.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>searchEdit</tabstop>
+  <tabstop>sortByBox</tabstop>
   <tabstop>packView</tabstop>
   <tabstop>packDescription</tabstop>
-  <tabstop>sortByBox</tabstop>
   <tabstop>versionSelectionBox</tabstop>
  </tabstops>
  <resources/>

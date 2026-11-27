@@ -309,8 +309,17 @@ PageContainer::PageContainer(BasePageProvider* pageProvider, QString defaultId, 
     // Ctrl+F jumps to the search box, like the command palette shortcut in the main window.
     auto* findShortcut = new QShortcut(QKeySequence(QKeySequence::Find), this);
     connect(findShortcut, &QShortcut::activated, this, [this] {
-        m_searchBox->setFocus();
-        m_searchBox->selectAll();
+        if (m_customSearchWidget) {
+            if (auto* edit = m_customSearchWidget->findChild<QLineEdit*>()) {
+                edit->setFocus();
+                edit->selectAll();
+            } else {
+                m_customSearchWidget->setFocus();
+            }
+        } else {
+            m_searchBox->setFocus();
+            m_searchBox->selectAll();
+        }
     });
 }
 
@@ -452,6 +461,22 @@ void PageContainer::addButtons(QLayout* buttons)
 void PageContainer::useSidebarStyle(bool sidebar)
 {
     m_pageList->setProperty("_kde_side_panel_view", sidebar);
+}
+
+void PageContainer::setSearchWidget(QWidget* widget)
+{
+    if (m_customSearchWidget == widget)
+        return;
+    m_customSearchWidget = widget;
+    if (!widget)
+        return;
+
+    // the built-in settings search must not react to anything while the custom box is there
+    m_searchBox->disconnect(this);
+    m_searchHolder->hide();
+    m_layout->removeWidget(m_searchHolder);
+
+    m_layout->addWidget(widget, 0, 0, 1, 1);
 }
 
 void PageContainer::showPage(int row)

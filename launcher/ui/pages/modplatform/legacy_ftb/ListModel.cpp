@@ -174,9 +174,10 @@ QVariant ListModel::data(const QModelIndex& index, int role) const
             if (m_logoMap.contains(pack.logo)) {
                 return (m_logoMap.value(pack.logo));
             }
-            QIcon icon = QIcon::fromTheme("screenshot-placeholder");
+            // no placeholder icon: while the logo is missing, the delegate draws a coloured
+            // initial tile instead of the camera placeholder
             ((ListModel*)this)->requestLogo(pack.logo);
-            return icon;
+            return {};
         }
         case Qt::UserRole: {
             QVariant v;
@@ -205,6 +206,8 @@ QVariant ListModel::data(const QModelIndex& index, int role) const
             return pack.description;
         case UserDataTypes::INSTALLED:
             return false;
+        case UserDataTypes::METADATA:
+            return tr("by %1 · Minecraft %2").arg(pack.author, pack.mcVersion);
         default:
             break;
     }

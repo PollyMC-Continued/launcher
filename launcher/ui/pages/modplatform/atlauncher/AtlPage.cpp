@@ -35,6 +35,7 @@
  */
 
 #include "AtlPage.h"
+#include "ui/widgets/ModpackItemDelegate.h"
 #include "ui/widgets/ProjectItem.h"
 #include "ui_AtlPage.h"
 
@@ -45,6 +46,7 @@
 #include "modplatform/atlauncher/ATLPackInstallTask.h"
 #include "ui/dialogs/NewInstanceDialog.h"
 
+#include <QKeyEvent>
 #include <QMessageBox>
 
 AtlPage::AtlPage(NewInstanceDialog* dialog, QWidget* parent) : QWidget(parent), ui(new Ui::AtlPage), dialog(dialog)
@@ -55,10 +57,14 @@ AtlPage::AtlPage(NewInstanceDialog* dialog, QWidget* parent) : QWidget(parent), 
     listModel = new Atl::ListModel(this);
     filterModel->setSourceModel(listModel);
     ui->packView->setModel(filterModel);
-    ui->packView->setSortingEnabled(true);
+    ui->packView->setItemDelegate(new ModpackItemDelegate(this));
+    ui->packView->setEmptyText(tr("No modpacks found"));
+    ui->splitter->setStretchFactor(0, 1);
+    ui->splitter->setStretchFactor(1, 1);
 
-    ui->packView->header()->hide();
-    ui->packView->setIndentation(0);
+    // don't let the description pane swallow drag and drop meant for the dialog
+    ui->packDescription->setAcceptDrops(false);
+    ui->packDescription->viewport()->setAcceptDrops(false);
 
     ui->versionSelectionBox->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     ui->versionSelectionBox->view()->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
@@ -74,7 +80,8 @@ AtlPage::AtlPage(NewInstanceDialog* dialog, QWidget* parent) : QWidget(parent), 
     connect(ui->packView->selectionModel(), &QItemSelectionModel::currentChanged, this, &AtlPage::onSelectionChanged);
     connect(ui->versionSelectionBox, &QComboBox::currentTextChanged, this, &AtlPage::onVersionSelectionChanged);
 
-    ui->packView->setItemDelegate(new ProjectItemDelegate(this));
+    ui->packView->installEventFilter(this);
+    ui->packView->setLoading(true);
 }
 
 AtlPage::~AtlPage()
@@ -90,6 +97,20 @@ bool AtlPage::shouldDisplay() const
 void AtlPage::retranslate()
 {
     ui->retranslateUi(this);
+}
+
+bool AtlPage::eventFilter(QObject* watched, QEvent* event)
+{
+    // Enter on a selected pack installs it, like double clicking
+    if (watched == ui->packView && event->type() == QEvent::KeyPress) {
+        QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
+        if ((keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter) && ui->packView->currentIndex().isValid()) {
+            dialog->accept();
+            keyEvent->accept();
+            return true;
+        }
+    }
+    return QWidget::eventFilter(watched, event);
 }
 
 void AtlPage::openedImpl()
@@ -141,6 +162,7 @@ void AtlPage::onSelectionChanged(QModelIndex first, [[maybe_unused]] QModelIndex
         if (isOpened) {
             dialog->setSuggestedPack();
         }
+        ui->packNameLabel->setText(QString());
         return;
     }
 
@@ -148,7 +170,8 @@ void AtlPage::onSelectionChanged(QModelIndex first, [[maybe_unused]] QModelIndex
     Q_ASSERT(raw.canConvert<ATLauncher::IndexedPack>());
     selected = raw.value<ATLauncher::IndexedPack>();
 
-    ui->packDescription->setHtml(StringUtils::htmlListPatch(selected.description.replace("\n", "<br>")));
+    ui->packNameLabel->setText(selected.name);
+    ui->packDescription->setHtml(StringUtils::htmlListPatch(stripHtml(selected.description)));
 
     for (const auto& version : selected.versions) {
         ui->versionSelectionBox->addItem(version.version);

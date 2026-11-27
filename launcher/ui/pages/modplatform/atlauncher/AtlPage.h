@@ -62,7 +62,11 @@ class AtlPage : public QWidget, public ModpackProviderBasePage {
     virtual bool shouldDisplay() const override;
     void retranslate() override;
 
+    QString sectionName() const override { return "Browse modpacks"; }
+
     void openedImpl() override;
+
+    bool eventFilter(QObject* watched, QEvent* event) override;
 
     /** Programatically set the term in the search bar. */
     virtual void setSearchTerm(QString) override;

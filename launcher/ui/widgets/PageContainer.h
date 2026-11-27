@@ -68,6 +68,13 @@ class PageContainer : public QWidget, public BasePageContainer {
 
     void useSidebarStyle(bool sidebar);
 
+    /**
+     * Replace the built-in "Search settings…" box with a custom widget in the same spot (the
+     * "Search all modpacks" box of NewInstanceDialog). The settings search is disabled while
+     * a custom widget is installed, and Ctrl+F focuses the custom widget instead.
+     */
+    void setSearchWidget(QWidget* widget);
+
     /*
      * Save any unsaved state and prepare to be closed.
      * @return true if everything can be saved, false if there is something that requires attention
@@ -103,6 +110,8 @@ class PageContainer : public QWidget, public BasePageContainer {
             m_searchBox->hide();
         if (m_searchResults)
             m_searchResults->hide();
+        if (m_customSearchWidget)
+            m_customSearchWidget->hide();
     }
 
    private:
@@ -155,6 +164,7 @@ class PageContainer : public QWidget, public BasePageContainer {
     };
     QWidget* m_searchHolder = nullptr;  // gives the search box its padding
     QLineEdit* m_searchBox = nullptr;
+    QWidget* m_customSearchWidget = nullptr;  // replaces the search box when installed (see setSearchWidget)
     QListView* m_searchResults = nullptr;
     QStandardItemModel* m_searchResultsModel = nullptr;
     QStringList m_queryTokens;  // lower-cased words of the current query, also used to highlight matches

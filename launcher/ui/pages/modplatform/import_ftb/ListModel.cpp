@@ -127,6 +127,11 @@ QVariant ListModel::data(const QModelIndex& index, int role) const
             return tr("Minecraft %1").arg(pack.mcVersion);
         case UserDataTypes::INSTALLED:
             return false;
+        case UserDataTypes::METADATA: {
+            if (pack.loaderType)
+                return tr("%1 · Minecraft %2").arg(ModPlatform::getModLoaderAsString(*pack.loaderType), pack.mcVersion);
+            return tr("Minecraft %1").arg(pack.mcVersion);
+        }
         default:
             break;
     }

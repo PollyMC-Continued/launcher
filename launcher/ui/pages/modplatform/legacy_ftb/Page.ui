@@ -12,14 +12,40 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="searchRowLayout">
      <item>
       <widget class="QLineEdit" name="searchEdit">
-       <property name="placeholderText">
-        <string>Search and filter...</string>
-       </property>
        <property name="clearButtonEnabled">
         <bool>true</bool>
+       </property>
+       <property name="placeholderText">
+        <string>Search modpacks</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="sortByBox"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="packHeaderLayout">
+     <item>
+      <widget class="ElidedLabel" name="packNameLabel">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="versionSelectionBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
       </widget>
      </item>
@@ -36,18 +62,12 @@
       </attribute>
       <layout class="QGridLayout" name="gridLayout">
        <item row="0" column="0">
-        <widget class="QTreeView" name="publicPackList">
-         <property name="maximumSize">
+        <widget class="ModpackListView" name="publicPackList">
+         <property name="iconSize">
           <size>
-           <width>16777215</width>
-           <height>16777215</height>
+           <width>42</width>
+           <height>42</height>
           </size>
-         </property>
-         <property name="alternatingRowColors">
-          <bool>true</bool>
-         </property>
-         <property name="verticalScrollMode">
-          <enum>QAbstractItemView::ScrollPerPixel</enum>
          </property>
         </widget>
        </item>
@@ -73,18 +93,12 @@
         </widget>
        </item>
        <item row="0" column="0">
-        <widget class="QTreeView" name="thirdPartyPackList">
-         <property name="maximumSize">
+        <widget class="ModpackListView" name="thirdPartyPackList">
+         <property name="iconSize">
           <size>
-           <width>16777215</width>
-           <height>16777215</height>
+           <width>42</width>
+           <height>42</height>
           </size>
-         </property>
-         <property name="alternatingRowColors">
-          <bool>true</bool>
-         </property>
-         <property name="verticalScrollMode">
-          <enum>QAbstractItemView::ScrollPerPixel</enum>
          </property>
         </widget>
        </item>
@@ -96,18 +110,12 @@
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="0">
-        <widget class="QTreeView" name="privatePackList">
-         <property name="maximumSize">
+        <widget class="ModpackListView" name="privatePackList">
+         <property name="iconSize">
           <size>
-           <width>16777215</width>
-           <height>16777215</height>
+           <width>42</width>
+           <height>42</height>
           </size>
-         </property>
-         <property name="alternatingRowColors">
-          <bool>true</bool>
-         </property>
-         <property name="verticalScrollMode">
-          <enum>QAbstractItemView::ScrollPerPixel</enum>
          </property>
         </widget>
        </item>
@@ -136,35 +144,28 @@
      </widget>
     </widget>
    </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QComboBox" name="sortByBox">
-       <property name="minimumSize">
-        <size>
-         <width>265</width>
-         <height>0</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Version selected:</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="versionSelectionBox"/>
-     </item>
-    </layout>
-   </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ModpackListView</class>
+   <extends>QListView</extends>
+   <header>ui/widgets/ModpackListView.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ElidedLabel</class>
+   <extends>QLabel</extends>
+   <header>ui/widgets/ElidedLabel.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>searchEdit</tabstop>
+  <tabstop>sortByBox</tabstop>
+  <tabstop>publicPackList</tabstop>
+  <tabstop>thirdPartyPackList</tabstop>
+  <tabstop>privatePackList</tabstop>
+  <tabstop>versionSelectionBox</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

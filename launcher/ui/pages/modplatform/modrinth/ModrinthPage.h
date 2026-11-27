@@ -44,6 +44,7 @@
 #include "ui/widgets/ModFilterWidget.h"
 #include "ui/widgets/ProgressWidget.h"
 
+#include <QAbstractItemModel>
 #include <QTimer>
 #include <QWidget>
 
@@ -75,9 +76,18 @@ class ModrinthPage : public QWidget, public ModpackProviderBasePage {
 
     void updateUI();
 
+    /** The modpacks of the last search, for the dialog-wide "Search all modpacks" box. */
+    QAbstractItemModel* searchModel() const;
+    /** Runs a search as if the term was typed into this page's search box. */
+    void searchModpacks(const QString& term);
+    /** Selects a result row, as if the user clicked it (used by the dialog-wide modpack search). */
+    void setCurrentIndex(const QModelIndex& index);
+
     void retranslate() override;
     void openedImpl() override;
     bool eventFilter(QObject* watched, QEvent* event) override;
+
+    QString sectionName() const override { return tr("Browse modpacks"); }
 
     /** Programatically set the term in the search bar. */
     virtual void setSearchTerm(QString) override;

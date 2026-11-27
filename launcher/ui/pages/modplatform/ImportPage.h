@@ -40,6 +40,9 @@
 #include "tasks/Task.h"
 #include "ui/pages/BasePage.h"
 
+class QDragEnterEvent;
+class QDropEvent;
+
 namespace Ui {
 class ImportPage;
 }
@@ -62,6 +65,16 @@ class ImportPage : public QWidget, public BasePage {
     void setUrl(const QString& url);
     void openedImpl() override;
     void setExtraInfo(const QMap<QString, QString>& extra_info);
+
+    QString sectionName() const override { return tr("Create"); }
+
+    /** Highlights the drop zone while a drag hovers over the whole dialog (see NewInstanceDialog). */
+    void setDragActive(bool active);
+
+   protected:
+    void dragEnterEvent(QDragEnterEvent* event) override;
+    void dropEvent(QDropEvent* event) override;
+
    private slots:
     void on_modpackBtn_clicked();
     void updateState();

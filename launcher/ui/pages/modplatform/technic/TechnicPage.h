@@ -66,6 +66,8 @@ class TechnicPage : public QWidget, public ModpackProviderBasePage {
     virtual bool shouldDisplay() const override;
     void retranslate() override;
 
+    QString sectionName() const override { return "Browse modpacks"; }
+
     void openedImpl() override;
 
     bool eventFilter(QObject* watched, QEvent* event) override;

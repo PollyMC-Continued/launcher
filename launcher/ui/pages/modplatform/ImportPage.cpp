@@ -39,8 +39,14 @@
 #include "ui/dialogs/ProgressDialog.h"
 #include "ui_ImportPage.h"
 
+#include <QDragEnterEvent>
+#include <QDropEvent>
 #include <QFileDialog>
+#include <QGraphicsOpacityEffect>
+#include <QIcon>
+#include <QMimeData>
 #include <QMimeDatabase>
+#include <QStyle>
 #include <QValidator>
 #include <utility>
 
@@ -76,6 +82,23 @@ ImportPage::ImportPage(NewInstanceDialog* dialog, QWidget* parent) : QWidget(par
     ui->setupUi(this);
     ui->modpackEdit->setValidator(new UrlValidator(ui->modpackEdit));
     connect(ui->modpackEdit, &QLineEdit::textChanged, this, &ImportPage::updateState);
+
+    // the drop zone accepts modpack files dropped on it; the dialog handles drops anywhere else
+    setAcceptDrops(true);
+    ui->dropZone->setAcceptDrops(true);
+    setStyleSheet(QStringLiteral("QFrame#dropZone { border: 1px solid palette(mid); border-radius: 8px; }\n"
+                                 "ImportPage[dragHover=\"true\"] QFrame#dropZone { border-color: palette(highlight); }"));
+
+    ui->dropZoneIcon->setPixmap(QIcon::fromTheme("viewfolder").pixmap(32, 32));
+
+    // the supported-format list is small helper text, not loud UI
+    auto* muted = new QGraphicsOpacityEffect(ui->formatsLabel);
+    muted->setOpacity(0.65);
+    ui->formatsLabel->setGraphicsEffect(muted);
+    QFont small = ui->formatsLabel->font();
+    if (small.pointSizeF() > 2.)
+        small.setPointSizeF(small.pointSizeF() - 1.);
+    ui->formatsLabel->setFont(small);
 }
 
 ImportPage::~ImportPage()
@@ -195,6 +218,34 @@ void ImportPage::setUrl(const QString& url)
 {
     ui->modpackEdit->setText(url);
     updateState();
+}
+
+void ImportPage::setDragActive(bool active)
+{
+    if (property("dragHover").toBool() == active)
+        return;
+    setProperty("dragHover", active);
+    style()->unpolish(this);
+    style()->polish(this);
+}
+
+void ImportPage::dragEnterEvent(QDragEnterEvent* event)
+{
+    if (event->mimeData()->hasUrls()) {
+        event->acceptProposedAction();
+        setDragActive(true);
+    }
+}
+
+void ImportPage::dropEvent(QDropEvent* event)
+{
+    setDragActive(false);
+    const auto urls = event->mimeData()->urls();
+    if (urls.isEmpty())
+        return;
+    const QUrl url = urls.first();
+    setUrl(url.isLocalFile() ? url.toLocalFile() : url.toString());
+    event->acceptProposedAction();
 }
 
 void ImportPage::setExtraInfo(const QMap<QString, QString>& extra_info)

@@ -60,6 +60,8 @@ class CustomPage : public QWidget, public BasePage {
     virtual bool shouldDisplay() const override;
     void retranslate() override;
 
+    QString sectionName() const override { return tr("Create"); }
+
     void openedImpl() override;
 
     BaseVersion::Ptr selectedVersion() const;

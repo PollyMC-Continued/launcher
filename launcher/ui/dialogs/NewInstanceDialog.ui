@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>730</width>
-    <height>127</height>
+    <width>900</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,67 +24,61 @@
    <bool>true</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>8</number>
+   </property>
    <item>
-    <layout class="QGridLayout" name="gridLayout_2">
-     <item row="1" column="2">
-      <widget class="QComboBox" name="groupBox">
-       <property name="editable">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLabel" name="groupLabel">
-       <property name="text">
-        <string>&amp;Group:</string>
-       </property>
-       <property name="buddy">
-        <cstring>groupBox</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <widget class="QLineEdit" name="instNameTextBox">
-       <property name="maxLength">
-        <number>128</number>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLabel" name="nameLabel">
-       <property name="text">
-        <string>&amp;Name:</string>
-       </property>
-       <property name="buddy">
-        <cstring>instNameTextBox</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0" rowspan="2">
+    <layout class="QHBoxLayout" name="headerLayout">
+     <property name="spacing">
+      <number>8</number>
+     </property>
+     <item>
       <widget class="QToolButton" name="iconButton">
+       <property name="toolTip">
+        <string>Choose an icon for the new instance</string>
+       </property>
        <property name="iconSize">
         <size>
-         <width>80</width>
-         <height>80</height>
+         <width>48</width>
+         <height>48</height>
         </size>
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QLineEdit" name="instNameTextBox">
+       <property name="toolTip">
+        <string>Leave empty to use the modpack's name</string>
+       </property>
+       <property name="maxLength">
+        <number>128</number>
+       </property>
+       <property name="placeholderText">
+        <string>Instance name</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="groupButton">
+       <property name="toolTip">
+        <string>Add the new instance to a group</string>
+       </property>
+       <property name="text">
+        <string>No group</string>
+       </property>
+       <property name="popupMode">
+        <enum>QToolButton::InstantPopup</enum>
+       </property>
+      </widget>
+     </item>
     </layout>
-   </item>
-   <item>
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>iconButton</tabstop>
   <tabstop>instNameTextBox</tabstop>
-  <tabstop>groupBox</tabstop>
+  <tabstop>groupButton</tabstop>
  </tabstops>
  <resources/>
  <connections/>

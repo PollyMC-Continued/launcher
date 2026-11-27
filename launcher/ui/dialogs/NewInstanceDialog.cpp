@@ -50,13 +50,22 @@
 #include "ProgressDialog.h"
 #include "VersionSelectDialog.h"
 
-#include <QDialogButtonBox>
+#include <QDragEnterEvent>
+#include <QDragLeaveEvent>
+#include <QDropEvent>
 #include <QFileDialog>
+#include <QFileInfo>
+#include <QGraphicsOpacityEffect>
+#include <QHBoxLayout>
 #include <QHideEvent>
+#include <QInputDialog>
 #include <QLayout>
-#include <QPushButton>
+#include <QMenu>
+#include <QMimeData>
 #include <QScreen>
 #include <QShowEvent>
+#include <QToolButton>
+#include <QUrl>
 #include <QValidator>
 #include <utility>
 
@@ -64,11 +73,30 @@
 #include "ui/pages/modplatform/ImportPage.h"
 #include "ui/pages/modplatform/atlauncher/AtlPage.h"
 #include "ui/pages/modplatform/flame/FlamePage.h"
-#include "ui/pages/modplatform/ftb/FtbPage.h"
-#include "ui/pages/modplatform/legacy_ftb/Page.h"
+#include "ui/pages/modplatform/ftb/FtbModpacksPage.h"
 #include "ui/pages/modplatform/modrinth/ModrinthPage.h"
 #include "ui/pages/modplatform/technic/TechnicPage.h"
+#include "ui/widgets/DialogButton.h"
+#include "ui/widgets/ModpackSearchBox.h"
 #include "ui/widgets/PageContainer.h"
+
+namespace {
+/** True for drops the Import page can handle: .zip / .mrpack files and modpack links. */
+bool isModpackDrop(const QList<QUrl>& urls)
+{
+    for (const QUrl& url : urls) {
+        if (url.isLocalFile()) {
+            const QString suffix = QFileInfo(url.toLocalFile()).suffix().toLower();
+            if (suffix == "zip" || suffix == "mrpack")
+                return true;
+        } else if (const QString scheme = url.scheme();
+                   scheme == "http" || scheme == "https" || scheme == "curseforge") {
+            return true;
+        }
+    }
+    return false;
+}
+}  // namespace
 
 NewInstanceDialog::NewInstanceDialog(const QString& initialGroup,
                                      const QString& url,
@@ -79,55 +107,78 @@ NewInstanceDialog::NewInstanceDialog(const QString& initialGroup,
     ui->setupUi(this);
 
     setWindowIcon(QIcon::fromTheme("new"));
+    setAcceptDrops(true);
 
     InstIconKey = "default";
     ui->iconButton->setIcon(APPLICATION->icons()->getIcon(InstIconKey));
+    ui->iconButton->setStyleSheet(QStringLiteral("QToolButton { border-radius: 8px; }"));
 
-    QStringList groups = APPLICATION->instances()->getGroups();
-    groups.prepend("");
-    int index = groups.indexOf(initialGroup);
-    if (index == -1) {
-        index = 1;
-        groups.insert(index, initialGroup);
-    }
-    ui->groupBox->addItems(groups);
-    ui->groupBox->setCurrentIndex(index);
-    ui->groupBox->lineEdit()->setPlaceholderText(tr("No group"));
+    // the group chip: a menu of existing groups plus "New group…", like the old combo box
+    m_groupChip = ui->groupButton;
+    m_groups = APPLICATION->instances()->getGroups();
+    m_groups.removeAll("");
+    m_groups.prepend("");
+    m_currentGroup = m_groups.contains(initialGroup) ? initialGroup : QString();
+    if (!initialGroup.isEmpty() && !m_groups.contains(initialGroup))
+        m_groups.append(initialGroup);
+    buildGroupMenu();
+    setCurrentGroup(m_currentGroup);
 
-    // NOTE: m_buttons must be initialized before PageContainer, because it indirectly accesses m_buttons through setSuggestedPack! Do not
-    // move this below.
-    m_buttons = new QDialogButtonBox(QDialogButtonBox::Help | QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+    // NOTE: the buttons must be initialized before PageContainer, because the pages indirectly
+    // access them through setSuggestedPack! Do not move this below.
+    m_helpButton = new DialogButton(tr("Help"), DialogButtonRole::Ghost, this);
+    m_cancelButton = new DialogButton(tr("Cancel"), DialogButtonRole::Secondary, this);
+    m_primaryButton = new DialogButton(tr("Create instance"), DialogButtonRole::Primary, this);
 
-    m_container = new PageContainer(this, {}, this);
+    m_hintLabel = new QLabel(this);
+    m_hintLabel->setWordWrap(false);
+    auto* mutedHint = new QGraphicsOpacityEffect(m_hintLabel);
+    mutedHint->setOpacity(0.7);
+    m_hintLabel->setGraphicsEffect(mutedHint);
+    QFont hintFont = m_hintLabel->font();
+    if (hintFont.pointSizeF() > 2.)
+        hintFont.setPointSizeF(hintFont.pointSizeF() - 1.);
+    m_hintLabel->setFont(hintFont);
+
+    // open on the last used page (Custom on first run); a URL deep link goes to Import
+    QString initialPage = APPLICATION->settings()->get("NewInstanceLastPage").toString();
+    if (!url.isEmpty())
+        initialPage = "import";
+    m_container = new PageContainer(this, initialPage, this);
     m_container->useSidebarStyle(false);
     m_container->setSizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Expanding);
     m_container->layout()->setContentsMargins(0, 0, 0, 0);
-    ui->verticalLayout->insertWidget(2, m_container);
+    ui->verticalLayout->insertWidget(1, m_container);
 
-    m_container->addButtons(m_buttons);
-    connect(m_container, &PageContainer::selectedPageChanged, this, [this](BasePage* previous, BasePage* selected) {
-        m_buttons->button(QDialogButtonBox::Ok)->setEnabled(creationTask && !instName().isEmpty());
-    });
+    // the sidebar search box becomes the "Search all modpacks" box (Modrinth + CurseForge)
+    m_searchBox = new ModpackSearchBox(this);
+    m_searchBox->addSource("modrinth", tr("Modrinth"), modrinthPage->searchModel());
+    if (flamePage)
+        m_searchBox->addSource("flame", tr("CurseForge"), flamePage->searchModel());
+    connect(m_searchBox, &ModpackSearchBox::searchRequested, this, &NewInstanceDialog::modpackSearchRequested);
+    connect(m_searchBox, &ModpackSearchBox::resultActivated, this, &NewInstanceDialog::modpackSearchResultActivated);
+    m_container->setSearchWidget(m_searchBox);
+
+    // [hint][Help] .............. [Cancel] [primary]
+    auto* buttonRow = new QHBoxLayout;
+    buttonRow->setContentsMargins(0, 8, 0, 0);
+    buttonRow->setSpacing(8);
+    buttonRow->addWidget(m_hintLabel, 1);
+    buttonRow->addWidget(m_helpButton);
+    buttonRow->addStretch(1);
+    buttonRow->addWidget(m_cancelButton);
+    buttonRow->addWidget(m_primaryButton);
+    m_container->addButtons(buttonRow);
 
     // Bonk Qt over its stupid head and make sure it understands which button is the default one...
     // See: https://stackoverflow.com/questions/24556831/qbuttonbox-set-default-button
-    auto OkButton = m_buttons->button(QDialogButtonBox::Ok);
-    OkButton->setDefault(true);
-    OkButton->setAutoDefault(true);
-    OkButton->setText(tr("OK"));
-    connect(OkButton, &QPushButton::clicked, this, &NewInstanceDialog::accept);
-
-    auto CancelButton = m_buttons->button(QDialogButtonBox::Cancel);
-    CancelButton->setDefault(false);
-    CancelButton->setAutoDefault(false);
-    CancelButton->setText(tr("Cancel"));
-    connect(CancelButton, &QPushButton::clicked, this, &NewInstanceDialog::reject);
-
-    auto HelpButton = m_buttons->button(QDialogButtonBox::Help);
-    HelpButton->setDefault(false);
-    HelpButton->setAutoDefault(false);
-    HelpButton->setText(tr("Help"));
-    connect(HelpButton, &QPushButton::clicked, m_container, &PageContainer::help);
+    m_primaryButton->setDefault(true);
+    m_primaryButton->setAutoDefault(true);
+    m_cancelButton->setDefault(false);
+    m_cancelButton->setAutoDefault(false);
+    connect(m_primaryButton, &QPushButton::clicked, this, &NewInstanceDialog::accept);
+    connect(m_cancelButton, &QPushButton::clicked, this, &NewInstanceDialog::reject);
+    connect(m_helpButton, &QPushButton::clicked, m_container, &PageContainer::help);
 
     if (!url.isEmpty()) {
         QUrl actualUrl(url);
@@ -151,7 +202,7 @@ NewInstanceDialog::NewInstanceDialog(const QString& initialGroup,
 
 void NewInstanceDialog::reject()
 {
-    APPLICATION->settings()->set("NewInstanceGeometry", QString::fromUtf8(saveGeometry().toBase64()));
+    rememberState();
 
     // This is just so that the pages get the close() call and can react to it, if needed.
     m_container->prepareToClose();
@@ -161,7 +212,11 @@ void NewInstanceDialog::reject()
 
 void NewInstanceDialog::accept()
 {
-    APPLICATION->settings()->set("NewInstanceGeometry", QString::fromUtf8(saveGeometry().toBase64()));
+    // Enter on a selected pack lands here even without a task - don't close without one
+    if (!creationTask)
+        return;
+
+    rememberState();
     importIconNow();
 
     // This is just so that the pages get the close() call and can react to it, if needed.
@@ -187,18 +242,21 @@ QList<BasePage*> NewInstanceDialog::getPages()
     QList<BasePage*> pages;
 
     importPage = new ImportPage(this);
+    modrinthPage = new ModrinthPage(this);
 
-    // Order: Custom, Import, Modrinth, CurseForge, ATLauncher, FTB, then the rest.
+    // Order: the sidebar groups pages by BasePage::sectionName() - "Create": Custom, Import;
+    // "Browse modpacks": Modrinth, CurseForge, ATLauncher, FTB, Technic; "From other launchers": FTB App.
     pages.append(new CustomPage(this));
     pages.append(importPage);
-    pages.append(new ModrinthPage(this));
-    if (APPLICATION->capabilities() & Application::SupportsFlame)
-        pages.append(new FlamePage(this));
+    pages.append(modrinthPage);
+    if (APPLICATION->capabilities() & Application::SupportsFlame) {
+        flamePage = new FlamePage(this);
+        pages.append(flamePage);
+    }
     pages.append(new AtlPage(this));
-    pages.append(new FtbPage(this));
-    pages.append(new LegacyFTB::Page(this));
-    pages.append(new FTBImportAPP::ImportFTBPage(this));
+    pages.append(new FtbModpacksPage(this));
     pages.append(new TechnicPage(this));
+    pages.append(new FTBImportAPP::ImportFTBPage(this));
 
     return pages;
 }
@@ -225,8 +283,7 @@ void NewInstanceDialog::setSuggestedPack(const QString& name, InstanceTask* task
         importIcon = false;
     }
 
-    auto allowOK = task && !instName().isEmpty();
-    m_buttons->button(QDialogButtonBox::Ok)->setEnabled(allowOK);
+    updateDialogState();
 }
 
 void NewInstanceDialog::setSuggestedPack(const QString& name, QString version, InstanceTask* task)
@@ -241,8 +298,7 @@ void NewInstanceDialog::setSuggestedPack(const QString& name, QString version, I
         importIcon = false;
     }
 
-    auto allowOK = task && !instName().isEmpty();
-    m_buttons->button(QDialogButtonBox::Ok)->setEnabled(allowOK);
+    updateDialogState();
 }
 
 void NewInstanceDialog::setSuggestedIconFromFile(const QString& path, const QString& name)
@@ -281,11 +337,50 @@ InstanceTask* NewInstanceDialog::extractTask()
 
 void NewInstanceDialog::updateDialogState()
 {
-    auto allowOK = creationTask && !instName().isEmpty();
-    auto OkButton = m_buttons->button(QDialogButtonBox::Ok);
-    if (OkButton->isEnabled() != allowOK) {
-        OkButton->setEnabled(allowOK);
+    const bool allowPrimary = creationTask && !instName().isEmpty();
+    if (m_primaryButton->isEnabled() != allowPrimary) {
+        m_primaryButton->setEnabled(allowPrimary);
     }
+    updatePrimaryAction();
+}
+
+void NewInstanceDialog::updatePrimaryAction()
+{
+    // can run before the container is finished constructing (pages call setSuggestedPack early)
+    if (!m_container)
+        return;
+    m_primaryButton->setText(pageActionText(m_container->selectedPage()));
+    m_hintLabel->setText(pageHintText(m_container->selectedPage()));
+}
+
+QString NewInstanceDialog::pageActionText(BasePage* page) const
+{
+    if (!page)
+        return tr("Create instance");
+    const QString id = page->id();
+    if (id == "vanilla")
+        return tr("Create instance");
+    if (id == "import" || id == "import_ftb")
+        return tr("Import");
+    return tr("Install modpack");
+}
+
+QString NewInstanceDialog::pageHintText(BasePage* page) const
+{
+    if (creationTask && !instName().isEmpty())
+        return QString();
+
+    if (creationTask && instName().isEmpty())
+        return tr("Enter an instance name");
+
+    if (!page)
+        return QString();
+    const QString id = page->id();
+    if (id == "vanilla")
+        return tr("Select a Minecraft version");
+    if (id == "import")
+        return tr("Paste a link or choose a file");
+    return tr("Select a modpack");
 }
 
 QString NewInstanceDialog::instName() const
@@ -303,8 +398,9 @@ QString NewInstanceDialog::instName() const
 
 QString NewInstanceDialog::instGroup() const
 {
-    return ui->groupBox->currentText();
+    return m_currentGroup;
 }
+
 QString NewInstanceDialog::iconKey() const
 {
     return InstIconKey;
@@ -338,6 +434,13 @@ void NewInstanceDialog::importIconNow()
     APPLICATION->settings()->set("NewInstanceGeometry", QString::fromUtf8(saveGeometry().toBase64()));
 }
 
+void NewInstanceDialog::rememberState()
+{
+    APPLICATION->settings()->set("NewInstanceGeometry", QString::fromUtf8(saveGeometry().toBase64()));
+    if (auto* page = m_container->selectedPage())
+        APPLICATION->settings()->set("NewInstanceLastPage", page->id());
+}
+
 void NewInstanceDialog::selectedPageChanged(BasePage* previous, BasePage* selected)
 {
     auto prevPage = dynamic_cast<ModpackProviderBasePage*>(previous);
@@ -349,4 +452,109 @@ void NewInstanceDialog::selectedPageChanged(BasePage* previous, BasePage* select
     if (nextPage) {
         nextPage->setSearchTerm(m_searchTerm);
     }
+
+    updateDialogState();
+}
+
+void NewInstanceDialog::buildGroupMenu()
+{
+    m_groupMenu = new QMenu(m_groupChip);
+    for (const QString& group : m_groups) {
+        if (group.isEmpty())
+            continue;
+        auto* action = m_groupMenu->addAction(group);
+        action->setCheckable(true);
+        connect(action, &QAction::triggered, this, [this, action] { groupChosen(action); });
+    }
+    m_groupMenu->addSeparator();
+    auto* newGroup = m_groupMenu->addAction(tr("New group…"));
+    connect(newGroup, &QAction::triggered, this, &NewInstanceDialog::newGroupRequested);
+    m_groupChip->setMenu(m_groupMenu);
+}
+
+void NewInstanceDialog::groupChosen(QAction* action)
+{
+    setCurrentGroup(action->text());
+}
+
+void NewInstanceDialog::newGroupRequested()
+{
+    bool ok = false;
+    const QString name = QInputDialog::getText(this, tr("New group"), tr("Group name:"), QLineEdit::Normal, QString(), &ok);
+    if (ok && !name.trimmed().isEmpty()) {
+        const QString group = name.trimmed();
+        if (!m_groups.contains(group)) {
+            m_groups.append(group);
+            // keep the new group with the other groups, above the separator
+            QAction* before = nullptr;
+            for (auto* action : m_groupMenu->actions()) {
+                if (action->isSeparator()) {
+                    before = action;
+                    break;
+                }
+            }
+            auto* action = new QAction(group, m_groupMenu);
+            action->setCheckable(true);
+            m_groupMenu->insertAction(before, action);
+            connect(action, &QAction::triggered, this, [this, action] { groupChosen(action); });
+        }
+        setCurrentGroup(group);
+    }
+}
+
+void NewInstanceDialog::setCurrentGroup(const QString& group)
+{
+    m_currentGroup = group;
+    m_groupChip->setText(group.isEmpty() ? tr("No group") : group);
+    for (auto* action : m_groupMenu->actions()) {
+        if (action->isSeparator())
+            continue;
+        action->setChecked(action->text() == group);
+    }
+}
+
+void NewInstanceDialog::modpackSearchRequested(const QString& term)
+{
+    // one clearly separated step per platform: the pages' own search does the work
+    modrinthPage->searchModpacks(term);
+    if (flamePage)
+        flamePage->searchModpacks(term);
+}
+
+void NewInstanceDialog::modpackSearchResultActivated(const QString& sourceId, const QModelIndex& sourceIndex)
+{
+    if (sourceId == "flame" && flamePage) {
+        m_container->selectPage("flame");
+        flamePage->setCurrentIndex(sourceIndex);
+    } else {
+        m_container->selectPage("modrinth");
+        modrinthPage->setCurrentIndex(sourceIndex);
+    }
+}
+
+void NewInstanceDialog::dragEnterEvent(QDragEnterEvent* event)
+{
+    if (event->mimeData()->hasUrls() && isModpackDrop(event->mimeData()->urls())) {
+        event->acceptProposedAction();
+        importPage->setDragActive(true);
+    }
+}
+
+void NewInstanceDialog::dragLeaveEvent(QDragLeaveEvent* event)
+{
+    importPage->setDragActive(false);
+    QDialog::dragLeaveEvent(event);
+}
+
+void NewInstanceDialog::dropEvent(QDropEvent* event)
+{
+    importPage->setDragActive(false);
+    const auto urls = event->mimeData()->urls();
+    if (!isModpackDrop(urls))
+        return;
+
+    const QUrl url = urls.first();
+    m_container->selectPage("import");
+    importPage->setUrl(url.isLocalFile() ? url.toLocalFile() : url.toString());
+    event->acceptProposedAction();
 }

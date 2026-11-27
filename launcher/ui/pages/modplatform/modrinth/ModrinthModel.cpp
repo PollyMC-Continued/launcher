@@ -92,10 +92,10 @@ auto ModpackListModel::data(const QModelIndex& index, int role) const -> QVarian
         case Qt::DecorationRole: {
             if (m_logoMap.contains(pack->logoName))
                 return m_logoMap.value(pack->logoName);
-
-            QIcon icon = QIcon::fromTheme("screenshot-placeholder");
+            // no placeholder icon: while the logo is missing, the delegate draws a coloured
+            // initial tile instead of the camera placeholder
             ((ModpackListModel*)this)->requestLogo(pack->logoName, pack->logoUrl);
-            return icon;
+            return {};
         }
         case Qt::UserRole: {
             QVariant v;
@@ -111,6 +111,12 @@ auto ModpackListModel::data(const QModelIndex& index, int role) const -> QVarian
             return pack->description;
         case UserDataTypes::INSTALLED:
             return false;
+        case UserDataTypes::METADATA: {
+            // the search results carry the author, but not downloads / versions
+            if (!pack->authors.isEmpty())
+                return tr("by %1").arg(pack->authors.constFirst().name);
+            return {};
+        }
         default:
             break;
     }

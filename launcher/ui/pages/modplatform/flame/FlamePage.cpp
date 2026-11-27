@@ -49,6 +49,8 @@
 #include "StringUtils.h"
 #include "modplatform/flame/FlameAPI.h"
 #include "ui/dialogs/NewInstanceDialog.h"
+#include "ui/widgets/ModpackFilterBar.h"
+#include "ui/widgets/ModpackItemDelegate.h"
 #include "ui/widgets/ProjectItem.h"
 
 static FlameAPI api;
@@ -58,8 +60,17 @@ FlamePage::FlamePage(NewInstanceDialog* dialog, QWidget* parent)
 {
     m_ui->setupUi(this);
     m_ui->searchEdit->installEventFilter(this);
+    m_ui->packView->installEventFilter(this);
     m_listModel = new Flame::ListModel(this);
     m_ui->packView->setModel(m_listModel);
+    m_ui->packView->setItemDelegate(new ModpackItemDelegate(this));
+    m_ui->packView->setEmptyText(tr("No modpacks found"));
+    m_ui->splitter->setStretchFactor(0, 1);
+    m_ui->splitter->setStretchFactor(1, 1);
+
+    // don't let the description pane swallow drag and drop meant for the dialog
+    m_ui->packDescription->setAcceptDrops(false);
+    m_ui->packDescription->viewport()->setAcceptDrops(false);
 
     m_ui->versionSelectionBox->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     m_ui->versionSelectionBox->view()->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
@@ -74,7 +85,7 @@ FlamePage::FlamePage(NewInstanceDialog* dialog, QWidget* parent)
     m_fetch_progress.setFixedHeight(24);
     m_fetch_progress.progressFormat("");
 
-    m_ui->verticalLayout->insertWidget(2, &m_fetch_progress);
+    m_ui->verticalLayout->insertWidget(3, &m_fetch_progress);
 
     // index is used to set the sorting with the curseforge api
     m_ui->sortByBox->addItem(tr("Sort by Featured"));
@@ -88,7 +99,6 @@ FlamePage::FlamePage(NewInstanceDialog* dialog, QWidget* parent)
     connect(m_ui->packView->selectionModel(), &QItemSelectionModel::currentChanged, this, &FlamePage::onSelectionChanged);
     connect(m_ui->versionSelectionBox, &QComboBox::currentIndexChanged, this, &FlamePage::onVersionSelectionChanged);
 
-    m_ui->packView->setItemDelegate(new ProjectItemDelegate(this));
     m_ui->packDescription->setMetaEntry("FlamePacks");
     createFilterWidget();
 }
@@ -111,6 +121,15 @@ bool FlamePage::eventFilter(QObject* watched, QEvent* event)
                 m_search_timer.stop();
 
             m_search_timer.start(350);
+        }
+    }
+    // Enter on a selected pack installs it, like double clicking
+    if (watched == m_ui->packView && event->type() == QEvent::KeyPress) {
+        QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
+        if ((keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter) && m_ui->packView->currentIndex().isValid()) {
+            m_dialog->accept();
+            keyEvent->accept();
+            return true;
         }
     }
     return QWidget::eventFilter(watched, event);
@@ -137,10 +156,28 @@ void FlamePage::triggerSearch()
     m_ui->packView->selectionModel()->setCurrentIndex({}, QItemSelectionModel::SelectionFlag::ClearAndSelect);
     m_ui->packView->clearSelection();
     m_ui->packDescription->clear();
+    m_ui->packNameLabel->setText(QString());
     m_ui->versionSelectionBox->clear();
+    m_ui->packView->setLoading(true);
     bool filterChanged = m_filterWidget->changed();
     m_listModel->searchWithTerm(m_ui->searchEdit->text(), m_ui->sortByBox->currentIndex(), m_filterWidget->getFilter(), filterChanged);
     m_fetch_progress.watch(m_listModel->activeSearchJob().get());
+}
+
+QAbstractItemModel* FlamePage::searchModel() const
+{
+    return m_listModel;
+}
+
+void FlamePage::searchModpacks(const QString& term)
+{
+    m_ui->searchEdit->setText(term);
+    triggerSearch();
+}
+
+void FlamePage::setCurrentIndex(const QModelIndex& index)
+{
+    m_ui->packView->setCurrentIndex(index);
 }
 
 void FlamePage::onSelectionChanged(QModelIndex curr, [[maybe_unused]] QModelIndex prev)
@@ -151,10 +188,12 @@ void FlamePage::onSelectionChanged(QModelIndex curr, [[maybe_unused]] QModelInde
         if (isOpened) {
             m_dialog->setSuggestedPack();
         }
+        m_ui->packNameLabel->setText(QString());
         return;
     }
 
     m_current = m_listModel->data(curr, Qt::UserRole).value<ModPlatform::IndexedPack::Ptr>();
+    m_ui->packNameLabel->setText(m_current->name);
 
     if (!m_current->versionsLoaded || m_filterWidget->changed()) {
         qDebug() << "Loading flame modpack versions";
@@ -321,13 +360,10 @@ void FlamePage::createFilterWidget()
 {
     auto widget = ModFilterWidget::create(nullptr, false);
     m_filterWidget.swap(widget);
-    auto old = m_ui->splitter->replaceWidget(0, m_filterWidget.get());
-    // because we replaced the widget we also need to delete it
-    if (old) {
-        delete old;
-    }
 
-    connect(m_ui->filterButton, &QPushButton::clicked, this, [this] { m_filterWidget->setHidden(!m_filterWidget->isHidden()); });
+    // the quick loader chips and the "More filters…" popup hosting the full filter widget
+    auto* filterBar = new ModpackFilterBar(m_filterWidget.get(), this);
+    m_ui->verticalLayout->insertWidget(2, filterBar);
 
     connect(m_filterWidget.get(), &ModFilterWidget::filterChanged, this, &FlamePage::triggerSearch);
     auto [task, response] = FlameAPI::getCategories(ModPlatform::ResourceType::Modpack);

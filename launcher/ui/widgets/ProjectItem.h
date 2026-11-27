@@ -6,7 +6,8 @@
 enum UserDataTypes {
     TITLE = 257,        // QString
     DESCRIPTION = 258,  // QString
-    INSTALLED = 259     // bool
+    INSTALLED = 259,   // bool
+    METADATA = 260,    // QString: small extra line for modpack rows (downloads, loader, game version)
 };
 
 /** This is an item delegate composed of:

@@ -20,7 +20,6 @@
 
 #include <QDialog>
 #include <QTextBrowser>
-#include <QTreeView>
 #include <QWidget>
 
 #include "modplatform/import_ftb/PackHelpers.h"
@@ -47,6 +46,9 @@ class ImportFTBPage : public QWidget, public ModpackProviderBasePage {
     bool shouldDisplay() const override { return true; }
     void openedImpl() override;
     void retranslate() override;
+    bool eventFilter(QObject* watched, QEvent* event) override;
+
+    QString sectionName() const override { return tr("From other launchers"); }
 
     /** Programatically set the term in the search bar. */
     virtual void setSearchTerm(QString) override;

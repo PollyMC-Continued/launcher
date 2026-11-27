@@ -44,6 +44,8 @@
 #include "ui/dialogs/NewInstanceDialog.h"
 
 #include "Markdown.h"
+#include "ui/widgets/ModpackItemDelegate.h"
+#include "ui/widgets/ProjectItem.h"
 
 FtbPage::FtbPage(NewInstanceDialog* dialog, QWidget* parent) : QWidget(parent), m_ui(new Ui::FtbPage), m_dialog(dialog)
 {
@@ -53,11 +55,17 @@ FtbPage::FtbPage(NewInstanceDialog* dialog, QWidget* parent) : QWidget(parent), 
     m_listModel = new Ftb::ListModel(this);
     m_filterModel->setSourceModel(m_listModel);
     m_ui->packView->setModel(m_filterModel);
-    m_ui->packView->setSortingEnabled(true);
-    m_ui->packView->header()->hide();
-    m_ui->packView->setIndentation(0);
+    m_ui->packView->setItemDelegate(new ModpackItemDelegate(this));
+    m_ui->packView->setEmptyText(tr("No modpacks found"));
+    m_ui->splitter->setStretchFactor(0, 1);
+    m_ui->splitter->setStretchFactor(1, 1);
+
+    // don't let the description pane swallow drag and drop meant for the dialog
+    m_ui->packDescription->setAcceptDrops(false);
+    m_ui->packDescription->viewport()->setAcceptDrops(false);
 
     m_ui->searchEdit->installEventFilter(this);
+    m_ui->packView->installEventFilter(this);
 
     m_ui->versionSelectionBox->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     m_ui->versionSelectionBox->view()->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
@@ -74,6 +82,7 @@ FtbPage::FtbPage(NewInstanceDialog* dialog, QWidget* parent) : QWidget(parent), 
     connect(m_ui->versionSelectionBox, &QComboBox::currentTextChanged, this, &FtbPage::onVersionSelectionChanged);
 
     m_ui->packDescription->setMetaEntry("FTBPacks");
+    m_ui->packView->setLoading(true);
 }
 
 FtbPage::~FtbPage()
@@ -87,6 +96,15 @@ bool FtbPage::eventFilter(QObject* watched, QEvent* event)
         QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
         if (keyEvent->key() == Qt::Key_Return) {
             triggerSearch();
+            keyEvent->accept();
+            return true;
+        }
+    }
+    // Enter on a selected pack installs it, like double clicking
+    if (watched == m_ui->packView && event->type() == QEvent::KeyPress) {
+        QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
+        if ((keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter) && m_ui->packView->currentIndex().isValid()) {
+            m_dialog->accept();
             keyEvent->accept();
             return true;
         }
@@ -109,6 +127,7 @@ void FtbPage::openedImpl()
     if (!m_initialised || m_listModel->wasAborted()) {
         m_listModel->request();
         m_initialised = true;
+        m_ui->packView->setLoading(true);
     }
 
     suggestCurrent();
@@ -160,10 +179,12 @@ void FtbPage::onSelectionChanged(QModelIndex first, QModelIndex /*second*/)
         if (isOpened) {
             m_dialog->setSuggestedPack();
         }
+        m_ui->packNameLabel->setText(QString());
         return;
     }
 
     m_selected = m_filterModel->data(first, Qt::UserRole).value<FTB::Modpack>();
+    m_ui->packNameLabel->setText(m_selected.name);
 
     QString output = markdownToHTML(m_selected.description.toUtf8());
     m_ui->packDescription->setHtml(output);

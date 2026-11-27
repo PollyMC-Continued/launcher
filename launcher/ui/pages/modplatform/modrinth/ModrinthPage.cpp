@@ -49,6 +49,8 @@
 #include "Markdown.h"
 #include "StringUtils.h"
 
+#include "ui/widgets/ModpackFilterBar.h"
+#include "ui/widgets/ModpackItemDelegate.h"
 #include "ui/widgets/ProjectItem.h"
 
 #include "net/ApiDownload.h"
@@ -64,8 +66,17 @@ ModrinthPage::ModrinthPage(NewInstanceDialog* dialog, QWidget* parent)
     createFilterWidget();
 
     m_ui->searchEdit->installEventFilter(this);
+    m_ui->packView->installEventFilter(this);
     m_model = new Modrinth::ModpackListModel(this);
     m_ui->packView->setModel(m_model);
+    m_ui->packView->setItemDelegate(new ModpackItemDelegate(this));
+    m_ui->packView->setEmptyText(tr("No modpacks found"));
+    m_ui->splitter->setStretchFactor(0, 1);
+    m_ui->splitter->setStretchFactor(1, 1);
+
+    // don't let the description pane swallow drag and drop meant for the dialog
+    m_ui->packDescription->setAcceptDrops(false);
+    m_ui->packDescription->viewport()->setAcceptDrops(false);
 
     m_ui->versionSelectionBox->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     m_ui->versionSelectionBox->view()->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
@@ -80,7 +91,7 @@ ModrinthPage::ModrinthPage(NewInstanceDialog* dialog, QWidget* parent)
     m_fetch_progress.setFixedHeight(24);
     m_fetch_progress.progressFormat("");
 
-    m_ui->verticalLayout->insertWidget(1, &m_fetch_progress);
+    m_ui->verticalLayout->insertWidget(2, &m_fetch_progress);
 
     m_ui->sortByBox->addItem(tr("Sort by Relevance"));
     m_ui->sortByBox->addItem(tr("Sort by Total Downloads"));
@@ -92,7 +103,6 @@ ModrinthPage::ModrinthPage(NewInstanceDialog* dialog, QWidget* parent)
     connect(m_ui->packView->selectionModel(), &QItemSelectionModel::currentChanged, this, &ModrinthPage::onSelectionChanged);
     connect(m_ui->versionSelectionBox, &QComboBox::currentIndexChanged, this, &ModrinthPage::onVersionSelectionChanged);
 
-    m_ui->packView->setItemDelegate(new ProjectItemDelegate(this));
     m_ui->packDescription->setMetaEntry(metaEntryBase());
 }
 
@@ -128,6 +138,15 @@ bool ModrinthPage::eventFilter(QObject* watched, QEvent* event)
             m_search_timer.start(350);
         }
     }
+    // Enter on a selected pack installs it, like double clicking
+    if (watched == m_ui->packView && event->type() == QEvent::KeyPress) {
+        auto* keyEvent = reinterpret_cast<QKeyEvent*>(event);
+        if ((keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter) && m_ui->packView->currentIndex().isValid()) {
+            m_dialog->accept();
+            keyEvent->accept();
+            return true;
+        }
+    }
     return QObject::eventFilter(watched, event);
 }
 
@@ -139,11 +158,13 @@ void ModrinthPage::onSelectionChanged(QModelIndex curr, [[maybe_unused]] QModelI
         if (isOpened) {
             m_dialog->setSuggestedPack();
         }
+        m_ui->packNameLabel->setText(QString());
         return;
     }
 
     m_current = m_model->data(curr, Qt::UserRole).value<ModPlatform::IndexedPack::Ptr>();
     auto name = m_current->name;
+    m_ui->packNameLabel->setText(name);
 
     if (!m_current->extraDataLoaded) {
         qDebug() << "Loading modrinth modpack information";
@@ -334,10 +355,28 @@ void ModrinthPage::triggerSearch()
     m_ui->packView->selectionModel()->setCurrentIndex({}, QItemSelectionModel::SelectionFlag::ClearAndSelect);
     m_ui->packView->clearSelection();
     m_ui->packDescription->clear();
+    m_ui->packNameLabel->setText(QString());
     m_ui->versionSelectionBox->clear();
+    m_ui->packView->setLoading(true);
     bool filterChanged = m_filterWidget->changed();
     m_model->searchWithTerm(m_ui->searchEdit->text(), m_ui->sortByBox->currentIndex(), m_filterWidget->getFilter(), filterChanged);
     m_fetch_progress.watch(m_model->activeSearchJob().get());
+}
+
+QAbstractItemModel* ModrinthPage::searchModel() const
+{
+    return m_model;
+}
+
+void ModrinthPage::searchModpacks(const QString& term)
+{
+    m_ui->searchEdit->setText(term);
+    triggerSearch();
+}
+
+void ModrinthPage::setCurrentIndex(const QModelIndex& index)
+{
+    m_ui->packView->setCurrentIndex(index);
 }
 
 void ModrinthPage::onVersionSelectionChanged(int index)
@@ -364,13 +403,10 @@ void ModrinthPage::createFilterWidget()
 {
     auto widget = ModFilterWidget::create(nullptr, true);
     m_filterWidget.swap(widget);
-    auto old = m_ui->splitter->replaceWidget(0, m_filterWidget.get());
-    // because we replaced the widget we also need to delete it
-    if (old) {
-        delete old;
-    }
 
-    connect(m_ui->filterButton, &QPushButton::clicked, this, [this] { m_filterWidget->setHidden(!m_filterWidget->isHidden()); });
+    // the quick loader chips and the "More filters…" popup hosting the full filter widget
+    auto* filterBar = new ModpackFilterBar(m_filterWidget.get(), this);
+    m_ui->verticalLayout->insertWidget(1, filterBar);
 
     connect(m_filterWidget.get(), &ModFilterWidget::filterChanged, this, &ModrinthPage::triggerSearch);
     auto [categoriesTask, response] = ModrinthAPI::getModCategories();

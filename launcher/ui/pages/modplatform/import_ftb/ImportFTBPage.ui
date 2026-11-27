@@ -30,24 +30,24 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="searchRowLayout">
      <item>
       <widget class="QLineEdit" name="searchEdit">
-       <property name="placeholderText">
-        <string>Search and filter...</string>
-       </property>
        <property name="clearButtonEnabled">
         <bool>true</bool>
        </property>
+       <property name="placeholderText">
+        <string>Search modpacks</string>
+       </property>
       </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="sortByBox"/>
      </item>
      <item>
       <widget class="QPushButton" name="browseButton">
        <property name="toolTip">
         <string>Select FTBApp instances directory</string>
-       </property>
-       <property name="text">
-        <string/>
        </property>
        <property name="icon">
         <iconset theme="viewfolder"/>
@@ -60,47 +60,30 @@
     </layout>
    </item>
    <item>
-    <widget class="QTreeView" name="modpackList">
-     <property name="verticalScrollMode">
-      <enum>QAbstractItemView::ScrollPerPixel</enum>
-     </property>
-     <property name="maximumSize">
+    <widget class="ModpackListView" name="modpackList">
+     <property name="iconSize">
       <size>
-       <width>16777215</width>
-       <height>16777215</height>
+       <width>42</width>
+       <height>42</height>
       </size>
      </property>
     </widget>
    </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QComboBox" name="sortByBox">
-       <property name="minimumSize">
-        <size>
-         <width>265</width>
-         <height>0</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ModpackListView</class>
+   <extends>QListView</extends>
+   <header>ui/widgets/ModpackListView.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>searchEdit</tabstop>
+  <tabstop>sortByBox</tabstop>
+  <tabstop>browseButton</tabstop>
+  <tabstop>modpackList</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

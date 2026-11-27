@@ -929,6 +929,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_settings->registerSetting("BugReportGeometry", "");
 
         m_settings->registerSetting("NewInstanceGeometry", "");
+        // the "Add Instance" dialog: the page (Custom, Import, Modrinth, ...) it was last used on
+        m_settings->registerSetting("NewInstanceLastPage", "");
 
         m_settings->registerSetting("UpdateDialogGeometry", "");
         // "What's New" window after an update: the version that ran last (empty on a fresh install),

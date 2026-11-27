@@ -17,11 +17,13 @@
  */
 
 #include "ImportFTBPage.h"
+#include "ui/widgets/ModpackItemDelegate.h"
 #include "ui/widgets/ProjectItem.h"
 #include "ui_ImportFTBPage.h"
 
 #include <QFileDialog>
 #include <QFileInfo>
+#include <QKeyEvent>
 #include <QTemporaryFile>
 #include <QWidget>
 #include "FileSystem.h"
@@ -41,10 +43,10 @@ ImportFTBPage::ImportFTBPage(NewInstanceDialog* dialog, QWidget* parent) : QWidg
         currentModel->setSourceModel(listModel);
 
         ui->modpackList->setModel(currentModel);
-        ui->modpackList->setSortingEnabled(true);
-        ui->modpackList->header()->hide();
-        ui->modpackList->setIndentation(0);
         ui->modpackList->setIconSize(QSize(42, 42));
+        ui->modpackList->setItemDelegate(new ModpackItemDelegate(this));
+        ui->modpackList->setEmptyText(tr("No FTB App instances found"));
+        ui->modpackList->installEventFilter(this);
 
         for (int i = 0; i < currentModel->getAvailableSortings().size(); i++) {
             ui->sortByBox->addItem(currentModel->getAvailableSortings().keys().at(i));
@@ -66,7 +68,6 @@ ImportFTBPage::ImportFTBPage(NewInstanceDialog* dialog, QWidget* parent) : QWidg
             listModel->setPath(dir);
     });
 
-    ui->modpackList->setItemDelegate(new ProjectItemDelegate(this));
     ui->modpackList->selectionModel()->reset();
 }
 
@@ -79,6 +80,7 @@ void ImportFTBPage::openedImpl()
 {
     if (!initialized) {
         listModel->update();
+        ui->modpackList->setLoading(true);
         initialized = true;
     }
     suggestCurrent();
@@ -161,6 +163,20 @@ void ImportFTBPage::onPackSelectionChanged(Modpack* pack)
     }
     if (isOpened)
         dialog->setSuggestedPack();
+}
+
+bool ImportFTBPage::eventFilter(QObject* watched, QEvent* event)
+{
+    // Enter on a selected pack installs it, like double clicking
+    if (watched == ui->modpackList && event->type() == QEvent::KeyPress) {
+        QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
+        if ((keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter) && ui->modpackList->currentIndex().isValid()) {
+            dialog->accept();
+            keyEvent->accept();
+            return true;
+        }
+    }
+    return QWidget::eventFilter(watched, event);
 }
 
 void ImportFTBPage::onSortingSelectionChanged(QString sort)

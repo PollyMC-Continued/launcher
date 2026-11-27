@@ -187,6 +187,48 @@ auto ModFilterWidget::getFilter() -> std::shared_ptr<Filter>
     return m_filter;
 }
 
+void ModFilterWidget::setLoaderChecked(ModPlatform::ModLoaderType loader, bool checked)
+{
+    QCheckBox* box = nullptr;
+    switch (loader) {
+        case ModPlatform::ModLoaderType::NeoForge:
+            box = ui->neoForge;
+            break;
+        case ModPlatform::ModLoaderType::Forge:
+            box = ui->forge;
+            break;
+        case ModPlatform::ModLoaderType::Fabric:
+            box = ui->fabric;
+            break;
+        case ModPlatform::ModLoaderType::Quilt:
+            box = ui->quilt;
+            break;
+        case ModPlatform::ModLoaderType::LiteLoader:
+            box = ui->liteLoader;
+            break;
+        case ModPlatform::ModLoaderType::Babric:
+            box = ui->babric;
+            break;
+        case ModPlatform::ModLoaderType::BTA:
+            box = ui->btaBabric;
+            break;
+        case ModPlatform::ModLoaderType::LegacyFabric:
+            box = ui->legacyFabric;
+            break;
+        case ModPlatform::ModLoaderType::Ornithe:
+            box = ui->ornithe;
+            break;
+        case ModPlatform::ModLoaderType::Rift:
+            box = ui->rift;
+            break;
+        default:
+            return;
+    }
+    // setChecked triggers the existing stateChanged chain: the filter updates and
+    // filterChanged() is emitted, exactly as when the checkbox is clicked by hand.
+    box->setChecked(checked);
+}
+
 ModFilterWidget::~ModFilterWidget()
 {
     delete ui;

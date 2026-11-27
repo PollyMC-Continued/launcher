@@ -1048,6 +1048,8 @@ SET(LAUNCHER_SOURCES
     ui/pages/modplatform/ftb/FtbListModel.h
     ui/pages/modplatform/ftb/FtbPage.cpp
     ui/pages/modplatform/ftb/FtbPage.h
+    ui/pages/modplatform/ftb/FtbModpacksPage.cpp
+    ui/pages/modplatform/ftb/FtbModpacksPage.h
 
     ui/pages/modplatform/legacy_ftb/Page.cpp
     ui/pages/modplatform/legacy_ftb/Page.h
@@ -1190,8 +1192,12 @@ SET(LAUNCHER_SOURCES
     ui/widgets/Common.h
     ui/widgets/CustomCommands.cpp
     ui/widgets/CustomCommands.h
+    ui/widgets/DialogButton.h
+    ui/widgets/ElidedLabel.h
     ui/widgets/EnvironmentVariables.cpp
     ui/widgets/EnvironmentVariables.h
+    ui/widgets/FlowLayout.cpp
+    ui/widgets/FlowLayout.h
     ui/widgets/IconLabel.cpp
     ui/widgets/IconLabel.h
     ui/widgets/JavaWizardWidget.cpp
@@ -1216,11 +1222,20 @@ SET(LAUNCHER_SOURCES
     voice/ModelDownloader.h
     ui/widgets/ModFilterWidget.cpp
     ui/widgets/ModFilterWidget.h
+    ui/widgets/ModpackFilterBar.cpp
+    ui/widgets/ModpackFilterBar.h
+    ui/widgets/ModpackItemDelegate.cpp
+    ui/widgets/ModpackItemDelegate.h
+    ui/widgets/ModpackListView.cpp
+    ui/widgets/ModpackListView.h
+    ui/widgets/ModpackSearchBox.cpp
+    ui/widgets/ModpackSearchBox.h
     ui/widgets/ModListView.cpp
     ui/widgets/ModListView.h
     ui/widgets/PageContainer.cpp
     ui/widgets/PageContainer.h
     ui/widgets/PageContainer_p.h
+    ui/widgets/PillButton.h
     ui/widgets/ToggleSwitch.cpp
     ui/widgets/ToggleSwitch.h
     ui/widgets/ProjectDescriptionPage.h

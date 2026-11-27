@@ -97,6 +97,12 @@ class ModFilterWidget : public QTabWidget {
     auto getFilter() -> std::shared_ptr<Filter>;
     auto changed() const -> bool { return m_filter_changed; }
 
+    /** Read-only view of the current filter (unlike getFilter, does not reset the changed flag). */
+    const Filter& currentFilter() const { return *m_filter; }
+
+    /** Quick-filter hook used by the chip rows on the modpack pages: checks/unchecks the matching loader control. */
+    void setLoaderChecked(ModPlatform::ModLoaderType loader, bool checked);
+
    signals:
     void filterChanged();
 

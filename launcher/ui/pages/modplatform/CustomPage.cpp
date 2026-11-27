@@ -36,8 +36,6 @@
 #include "CustomPage.h"
 #include "ui_CustomPage.h"
 
-#include <QTabBar>
-
 #include "Application.h"
 #include "Filter.h"
 #include "Version.h"
@@ -51,20 +49,24 @@ CustomPage::CustomPage(NewInstanceDialog* dialog, QWidget* parent) : QWidget(par
     ui->setupUi(this);
     connect(ui->versionList, &VersionSelectWidget::selectedVersionChanged, this, &CustomPage::setSelectedVersion);
     filterChanged();
-    connect(ui->alphaFilter, &QCheckBox::stateChanged, this, &CustomPage::filterChanged);
-    connect(ui->betaFilter, &QCheckBox::stateChanged, this, &CustomPage::filterChanged);
-    connect(ui->snapshotFilter, &QCheckBox::stateChanged, this, &CustomPage::filterChanged);
-    connect(ui->releaseFilter, &QCheckBox::stateChanged, this, &CustomPage::filterChanged);
-    connect(ui->experimentsFilter, &QCheckBox::stateChanged, this, &CustomPage::filterChanged);
+    connect(ui->alphaFilter, &PillButton::toggled, this, &CustomPage::filterChanged);
+    connect(ui->betaFilter, &PillButton::toggled, this, &CustomPage::filterChanged);
+    connect(ui->snapshotFilter, &PillButton::toggled, this, &CustomPage::filterChanged);
+    connect(ui->releaseFilter, &PillButton::toggled, this, &CustomPage::filterChanged);
+    connect(ui->experimentsFilter, &PillButton::toggled, this, &CustomPage::filterChanged);
     connect(ui->refreshBtn, &QPushButton::clicked, this, &CustomPage::refresh);
 
     connect(ui->loaderVersionList, &VersionSelectWidget::selectedVersionChanged, this, &CustomPage::setSelectedLoaderVersion);
-    connect(ui->noneFilter, &QRadioButton::toggled, this, &CustomPage::loaderFilterChanged);
-    connect(ui->forgeFilter, &QRadioButton::toggled, this, &CustomPage::loaderFilterChanged);
-    connect(ui->fabricFilter, &QRadioButton::toggled, this, &CustomPage::loaderFilterChanged);
-    connect(ui->quiltFilter, &QRadioButton::toggled, this, &CustomPage::loaderFilterChanged);
-    connect(ui->liteLoaderFilter, &QRadioButton::toggled, this, &CustomPage::loaderFilterChanged);
+    connect(ui->noneFilter, &PillButton::toggled, this, &CustomPage::loaderFilterChanged);
+    connect(ui->neoForgeFilter, &PillButton::toggled, this, &CustomPage::loaderFilterChanged);
+    connect(ui->forgeFilter, &PillButton::toggled, this, &CustomPage::loaderFilterChanged);
+    connect(ui->fabricFilter, &PillButton::toggled, this, &CustomPage::loaderFilterChanged);
+    connect(ui->quiltFilter, &PillButton::toggled, this, &CustomPage::loaderFilterChanged);
+    connect(ui->liteLoaderFilter, &PillButton::toggled, this, &CustomPage::loaderFilterChanged);
     connect(ui->loaderRefreshBtn, &QPushButton::clicked, this, &CustomPage::loaderRefresh);
+
+    // no loader selected yet: only show the loader versions once a loader is chosen
+    loaderFilterChanged();
 }
 
 void CustomPage::openedImpl()
@@ -119,11 +121,16 @@ void CustomPage::loaderFilterChanged()
         return;
     }
     if (ui->noneFilter->isChecked()) {
+        // no mod loader: nothing to select from, so the list only shows up once a loader is chosen
+        m_selectedLoader.clear();
         ui->loaderVersionList->setExactFilter(BaseVersionList::ParentVersionRole, "AAA");  // empty list
-        ui->loaderVersionList->setEmptyString(tr("No mod loader is selected."));
-        ui->loaderVersionList->setEmptyMode(VersionListView::String);
+        ui->loaderVersionList->setVisible(false);
+        ui->loaderRefreshBtn->setVisible(false);
         return;
-    } else if (ui->neoForgeFilter->isChecked()) {
+    }
+    ui->loaderVersionList->setVisible(true);
+    ui->loaderRefreshBtn->setVisible(true);
+    if (ui->neoForgeFilter->isChecked()) {
         ui->loaderVersionList->setExactFilter(BaseVersionList::ParentVersionRole, minecraftVersion);
         m_selectedLoader = "net.neoforged";
     } else if (ui->forgeFilter->isChecked()) {

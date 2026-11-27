@@ -61,12 +61,12 @@ QVariant ListModel::data(const QModelIndex& index, int role) const
             if (m_logoMap.contains(pack.safeName)) {
                 return (m_logoMap.value(pack.safeName));
             }
-            auto icon = QIcon::fromTheme("atlauncher-placeholder");
-
+            // no placeholder icon: while the logo is missing, the delegate draws a coloured
+            // initial tile instead of the camera placeholder
             auto url = QString(BuildConfig.ATL_DOWNLOAD_SERVER_URL + "launcher/images/%1").arg(pack.safeName);
             ((ListModel*)this)->requestLogo(pack.safeName, url);
 
-            return icon;
+            return {};
         }
         case Qt::UserRole: {
             QVariant v;
@@ -84,6 +84,11 @@ QVariant ListModel::data(const QModelIndex& index, int role) const
             return pack.description;
         case UserDataTypes::INSTALLED:
             return false;
+        case UserDataTypes::METADATA: {
+            if (!pack.versions.isEmpty())
+                return tr("Minecraft %1").arg(pack.versions.constFirst().minecraft);
+            return {};
+        }
         default:
             break;
     }
