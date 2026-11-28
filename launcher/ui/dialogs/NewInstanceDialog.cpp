@@ -159,13 +159,13 @@ NewInstanceDialog::NewInstanceDialog(const QString& initialGroup,
     connect(m_searchBox, &ModpackSearchBox::resultActivated, this, &NewInstanceDialog::modpackSearchResultActivated);
     m_container->setSearchWidget(m_searchBox);
 
-    // [hint][Help] .............. [Cancel] [primary]
+    // [Help] ............ hint  [Cancel] [primary]
     auto* buttonRow = new QHBoxLayout;
     buttonRow->setContentsMargins(0, 8, 0, 0);
     buttonRow->setSpacing(8);
-    buttonRow->addWidget(m_hintLabel, 1);
+    m_hintLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
     buttonRow->addWidget(m_helpButton);
-    buttonRow->addStretch(1);
+    buttonRow->addWidget(m_hintLabel, 1);
     buttonRow->addWidget(m_cancelButton);
     buttonRow->addWidget(m_primaryButton);
     m_container->addButtons(buttonRow);
