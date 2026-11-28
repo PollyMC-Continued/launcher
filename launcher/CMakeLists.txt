@@ -1198,6 +1198,7 @@ SET(LAUNCHER_SOURCES
     ui/widgets/EnvironmentVariables.h
     ui/widgets/FlowLayout.cpp
     ui/widgets/FlowLayout.h
+    ui/widgets/GroupPillButton.h
     ui/widgets/IconLabel.cpp
     ui/widgets/IconLabel.h
     ui/widgets/JavaWizardWidget.cpp
@@ -1224,6 +1225,8 @@ SET(LAUNCHER_SOURCES
     ui/widgets/ModFilterWidget.h
     ui/widgets/ModpackFilterBar.cpp
     ui/widgets/ModpackFilterBar.h
+    ui/widgets/ModpackDetailsHeader.cpp
+    ui/widgets/ModpackDetailsHeader.h
     ui/widgets/ModpackItemDelegate.cpp
     ui/widgets/ModpackItemDelegate.h
     ui/widgets/ModpackListView.cpp

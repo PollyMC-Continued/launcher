@@ -15,39 +15,70 @@
 
 #include "ModpackFilterBar.h"
 
-#include <QPair>
+#include <QFont>
 #include <QVBoxLayout>
 
 #include "ui/widgets/FlowLayout.h"
 #include "ui/widgets/ModFilterWidget.h"
 #include "ui/widgets/PillButton.h"
 
+namespace {
+// The small filter chip: 26px tall with 12px text and a 13px radius - a real pill, but
+// visibly smaller than the dialog's action buttons.
+class FilterChip : public PillButton {
+   public:
+    explicit FilterChip(const QString& text, QWidget* parent = nullptr) : PillButton(text, parent)
+    {
+        m_height = 26;
+        m_radius = 13;
+        QFont chipFont = font();
+        chipFont.setPixelSize(12);
+        setFont(chipFont);
+        setCursor(Qt::PointingHandCursor);
+    }
+};
+
+QString loaderName(ModPlatform::ModLoaderType loader)
+{
+    switch (loader) {
+        case ModPlatform::ModLoaderType::NeoForge:
+            return QObject::tr("NeoForge");
+        case ModPlatform::ModLoaderType::Forge:
+            return QObject::tr("Forge");
+        case ModPlatform::ModLoaderType::Fabric:
+            return QObject::tr("Fabric");
+        case ModPlatform::ModLoaderType::Quilt:
+            return QObject::tr("Quilt");
+        case ModPlatform::ModLoaderType::LiteLoader:
+            return QObject::tr("LiteLoader");
+        case ModPlatform::ModLoaderType::Babric:
+            return QObject::tr("Babric");
+        case ModPlatform::ModLoaderType::BTA:
+            return QObject::tr("BTA");
+        case ModPlatform::ModLoaderType::LegacyFabric:
+            return QObject::tr("Legacy Fabric");
+        case ModPlatform::ModLoaderType::Ornithe:
+            return QObject::tr("Ornithe");
+        case ModPlatform::ModLoaderType::Rift:
+            return QObject::tr("Rift");
+        default:
+            return {};
+    }
+}
+}  // namespace
+
 ModpackFilterBar::ModpackFilterBar(ModFilterWidget* filterWidget, QWidget* parent) : QWidget(parent), m_filterWidget(filterWidget)
 {
     setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 
-    auto* layout = new FlowLayout(this, 0, 6, 4);
+    m_layout = new FlowLayout(this, 0, 6, 4);
 
-    const QList<QPair<ModPlatform::ModLoaderType, QString>> loaders = {
-        { ModPlatform::ModLoaderType::NeoForge, tr("NeoForge") }, { ModPlatform::ModLoaderType::Forge, tr("Forge") },
-        { ModPlatform::ModLoaderType::Fabric, tr("Fabric") },    { ModPlatform::ModLoaderType::Quilt, tr("Quilt") },
-        { ModPlatform::ModLoaderType::LiteLoader, tr("LiteLoader") },
-    };
-    for (const auto& loader : loaders) {
-        auto* pill = new PillButton(loader.second, this);
-        pill->setCheckable(true);
-        layout->addWidget(pill);
-        m_loaderPills.insert(int(loader.first), pill);
-        connect(pill, &PillButton::toggled, this, [this, loader](bool checked) {
-            m_filterWidget->setLoaderChecked(loader.first, checked);
-        });
-    }
-
-    m_moreButton = new PillButton(tr("More filters…"), this);
-    layout->addWidget(m_moreButton);
+    m_moreButton = new FilterChip(tr("+ Filters"), this);
+    m_moreButton->setToolTip(tr("Choose filters (versions, loaders, categories…)"));
+    m_layout->addWidget(m_moreButton);
     connect(m_moreButton, &PillButton::clicked, this, &ModpackFilterBar::showMoreFilters);
 
-    // the full filter widget lives in a popup below "More filters…" - it keeps every existing
+    // the full filter widget lives in a popup below "+ Filters" - it keeps every existing
     // filter (versions, categories, open source, side, extended loaders)
     m_popup = new QWidget(this, Qt::Popup);
     auto* popupLayout = new QVBoxLayout(m_popup);
@@ -57,18 +88,58 @@ ModpackFilterBar::ModpackFilterBar(ModFilterWidget* filterWidget, QWidget* paren
     popupLayout->addWidget(m_filterWidget);
     m_popup->setMinimumWidth(420);
 
-    // the popup can change the same filters, so keep the chips in sync
-    connect(m_filterWidget, &ModFilterWidget::filterChanged, this, &ModpackFilterBar::syncPills);
-    syncPills();
+    // the chips always mirror the active filters - only the popup sets them in bulk
+    connect(m_filterWidget, &ModFilterWidget::filterChanged, this, &ModpackFilterBar::rebuildChips);
+    rebuildChips();
 }
 
-void ModpackFilterBar::syncPills()
+void ModpackFilterBar::rebuildChips()
 {
-    const auto& filter = m_filterWidget->currentFilter();
-    for (auto it = m_loaderPills.constBegin(); it != m_loaderPills.constEnd(); ++it) {
-        const bool checked = filter.loaders.testFlag(ModPlatform::ModLoaderType(it.key()));
-        it.value()->setChecked(checked);
+    // drop the old chips, but keep the "+ Filters" pill (it is re-added last below)
+    QList<QWidget*> old;
+    while (m_layout->count()) {
+        QLayoutItem* item = m_layout->takeAt(0);
+        if (item->widget())
+            old.append(item->widget());
+        delete item;
     }
+    for (auto* widget : old) {
+        if (widget != m_moreButton)
+            widget->deleteLater();
+    }
+
+    const auto& filter = m_filterWidget->currentFilter();
+
+    // Minecraft versions
+    for (const auto& version : filter.versions) {
+        const QString label = version.toString();
+        addChip(label, [this, label] { m_filterWidget->clearVersion(label); });
+    }
+
+    // mod loaders
+    for (auto loader : ModPlatform::modLoaderTypesToList(filter.loaders)) {
+        const QString label = loaderName(loader);
+        if (label.isEmpty())
+            continue;
+        addChip(label, [this, loader] { m_filterWidget->setLoaderChecked(loader, false); });
+    }
+
+    // categories
+    for (const auto& category : m_filterWidget->checkedCategories()) {
+        addChip(category.first, [this, id = category.second] { m_filterWidget->clearCategory(id); });
+    }
+
+    m_layout->addWidget(m_moreButton);
+}
+
+void ModpackFilterBar::addChip(const QString& label, const std::function<void()>& clear)
+{
+    auto* chip = new FilterChip(label, this);
+    chip->setToolTip(tr("Remove this filter"));
+    // clear() writes the change through to the filter widget, which emits filterChanged,
+    // which rebuilds the chips - no manual refresh needed here
+    connect(chip, &PillButton::clicked, this, clear);
+    m_layout->addWidget(chip);
 }
 
 void ModpackFilterBar::showMoreFilters()

@@ -50,6 +50,7 @@
 #include "StringUtils.h"
 
 #include "ui/widgets/ModpackFilterBar.h"
+#include "ui/widgets/ModpackDetailsHeader.h"
 #include "ui/widgets/ModpackItemDelegate.h"
 #include "ui/widgets/ProjectItem.h"
 
@@ -104,6 +105,10 @@ ModrinthPage::ModrinthPage(NewInstanceDialog* dialog, QWidget* parent)
     connect(m_ui->versionSelectionBox, &QComboBox::currentIndexChanged, this, &ModrinthPage::onVersionSelectionChanged);
 
     m_ui->packDescription->setMetaEntry(metaEntryBase());
+
+    // the empty details state: a centred muted placeholder, not a blank description area
+    ModpackDetailsHeader::stylePlaceholder(m_ui->selectPackLabel);
+    m_ui->detailsStack->setCurrentWidget(m_ui->emptyPage);
 }
 
 ModrinthPage::~ModrinthPage()
@@ -158,13 +163,24 @@ void ModrinthPage::onSelectionChanged(QModelIndex curr, [[maybe_unused]] QModelI
         if (isOpened) {
             m_dialog->setSuggestedPack();
         }
-        m_ui->packNameLabel->setText(QString());
+        m_ui->packHeader->clearPack();
+        m_ui->detailsStack->setCurrentWidget(m_ui->emptyPage);
         return;
     }
 
     m_current = m_model->data(curr, Qt::UserRole).value<ModPlatform::IndexedPack::Ptr>();
     auto name = m_current->name;
-    m_ui->packNameLabel->setText(name);
+
+    QStringList authorNames;
+    for (const auto& author : m_current->authors)
+        authorNames << author.name;
+    m_ui->detailsStack->setCurrentWidget(m_ui->detailsPage);
+    m_ui->packHeader->setPack(name, authorNames.join(QStringLiteral(", ")), tr("Modrinth"));
+    m_model->getLogo(m_current->logoName, m_current->logoUrl, [this, name](const QString& logo) {
+        // late logo callback: only apply it while the same pack is still shown
+        if (m_ui->packHeader->name() == name)
+            m_ui->packHeader->setIcon(QIcon(logo));
+    });
 
     if (!m_current->extraDataLoaded) {
         qDebug() << "Loading modrinth modpack information";
@@ -261,34 +277,19 @@ void ModrinthPage::onSelectionChanged(QModelIndex curr, [[maybe_unused]] QModelI
 void ModrinthPage::updateUI()
 {
     QString text = "";
-
-    if (m_current->websiteUrl.isEmpty())
-        text = m_current->name;
-    else
-        text = "<a href=\"" + m_current->websiteUrl + "\">" + m_current->name + "</a>";
-
-    if (!m_current->authors.empty()) {
-        auto authorToStr = [](ModPlatform::ModpackAuthor& author) {
-            if (author.url.isEmpty()) {
-                return author.name;
-            }
-            return QString("<a href=\"%1\">%2</a>").arg(author.url, author.name);
-        };
-        QStringList authorStrs;
-        for (auto& author : m_current->authors) {
-            authorStrs.push_back(authorToStr(author));
-        }
-        text += "<br>" + tr(" by ") + authorStrs.join(", ");
-    }
+    // blocks are separated afterwards, so the first one does not start with a blank line
+    const auto addBlock = [&text](const QString& block) {
+        if (!block.isEmpty())
+            text += (text.isEmpty() ? "" : "<br><br>") + block;
+    };
 
     if (m_current->extraDataLoaded) {
         if (m_current->extraData.status == "archived") {
-            text += "<br><br>" + tr("<b>This project has been archived. It will not receive any further updates unless the author decides "
-                                    "to unarchive the project.</b>");
+            addBlock(tr("<b>This project has been archived. It will not receive any further updates unless the author decides "
+                        "to unarchive the project.</b>"));
         }
 
         if (!m_current->extraData.donate.isEmpty()) {
-            text += "<br><br>" + tr("Donate information: ");
             auto donateToStr = [](ModPlatform::DonationData& donate) -> QString {
                 return QString("<a href=\"%1\">%2</a>").arg(donate.url, donate.platform);
             };
@@ -296,22 +297,20 @@ void ModrinthPage::updateUI()
             for (auto& donate : m_current->extraData.donate) {
                 donates.append(donateToStr(donate));
             }
-            text += donates.join(", ");
+            addBlock(tr("Donate information: ") + donates.join(", "));
         }
 
-        if (!m_current->extraData.issuesUrl.isEmpty() || !m_current->extraData.sourceUrl.isEmpty() ||
-            !m_current->extraData.wikiUrl.isEmpty() || !m_current->extraData.discordUrl.isEmpty()) {
-            text += "<br><br>" + tr("External links:") + "<br>";
-        }
-
+        QString links;
         if (!m_current->extraData.issuesUrl.isEmpty())
-            text += "- " + tr("Issues: <a href=%1>%1</a>").arg(m_current->extraData.issuesUrl) + "<br>";
+            links += "- " + tr("Issues: <a href=%1>%1</a>").arg(m_current->extraData.issuesUrl) + "<br>";
         if (!m_current->extraData.wikiUrl.isEmpty())
-            text += "- " + tr("Wiki: <a href=%1>%1</a>").arg(m_current->extraData.wikiUrl) + "<br>";
+            links += "- " + tr("Wiki: <a href=%1>%1</a>").arg(m_current->extraData.wikiUrl) + "<br>";
         if (!m_current->extraData.sourceUrl.isEmpty())
-            text += "- " + tr("Source code: <a href=%1>%1</a>").arg(m_current->extraData.sourceUrl) + "<br>";
+            links += "- " + tr("Source code: <a href=%1>%1</a>").arg(m_current->extraData.sourceUrl) + "<br>";
         if (!m_current->extraData.discordUrl.isEmpty())
-            text += "- " + tr("Discord: <a href=%1>%1</a>").arg(m_current->extraData.discordUrl) + "<br>";
+            links += "- " + tr("Discord: <a href=%1>%1</a>").arg(m_current->extraData.discordUrl) + "<br>";
+        if (!links.isEmpty())
+            addBlock(tr("External links:") + "<br>" + links);
     }
 
     text += "<hr>";
@@ -355,7 +354,6 @@ void ModrinthPage::triggerSearch()
     m_ui->packView->selectionModel()->setCurrentIndex({}, QItemSelectionModel::SelectionFlag::ClearAndSelect);
     m_ui->packView->clearSelection();
     m_ui->packDescription->clear();
-    m_ui->packNameLabel->setText(QString());
     m_ui->versionSelectionBox->clear();
     m_ui->packView->setLoading(true);
     bool filterChanged = m_filterWidget->changed();

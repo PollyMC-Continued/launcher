@@ -111,7 +111,27 @@ NewInstanceDialog::NewInstanceDialog(const QString& initialGroup,
 
     InstIconKey = "default";
     ui->iconButton->setIcon(APPLICATION->icons()->getIcon(InstIconKey));
-    ui->iconButton->setStyleSheet(QStringLiteral("QToolButton { border-radius: 8px; }"));
+    // a rounded 44px tile: the normal palette border, radius 8 like the other buttons
+    ui->iconButton->setFixedSize(44, 44);
+    ui->iconButton->setStyleSheet(QStringLiteral(
+        "QToolButton {"
+        " background-color: palette(base);"
+        " border: 1px solid palette(mid);"
+        " border-radius: 8px;"
+        " padding: 3px;"
+        "}"
+        "QToolButton:hover { background-color: palette(mid); }"));
+
+    // the name field: the normal palette border, the accent only on focus and only 1px
+    ui->instNameTextBox->setStyleSheet(QStringLiteral(
+        "QLineEdit {"
+        " background-color: palette(base);"
+        " border: 1px solid palette(mid);"
+        " border-radius: 8px;"
+        " padding: 4px 10px;"
+        " selection-background-color: palette(highlight);"
+        "}"
+        "QLineEdit:focus { border: 1px solid palette(highlight); }"));
 
     // the group chip: a menu of existing groups plus "New group…", like the old combo box
     m_groupChip = ui->groupButton;
@@ -146,6 +166,8 @@ NewInstanceDialog::NewInstanceDialog(const QString& initialGroup,
         initialPage = "import";
     m_container = new PageContainer(this, initialPage, this);
     m_container->useSidebarStyle(false);
+    // no big page title, and a sidebar panel that hugs its items instead of stretching
+    m_container->useCompactMode(true);
     m_container->setSizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Expanding);
     m_container->layout()->setContentsMargins(0, 0, 0, 0);
     ui->verticalLayout->insertWidget(1, m_container);

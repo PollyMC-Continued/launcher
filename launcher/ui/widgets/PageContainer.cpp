@@ -425,9 +425,9 @@ void PageContainer::createUI()
     m_layout->addLayout(headerHLayout, 0, 1, 1, 1);
     // the search box sits at the top of the left column, level with the page header
     m_layout->addWidget(m_searchHolder, 0, 0, 1, 1);
-    m_layout->addWidget(m_pageList, 1, 0, 2, 1);
+    m_layout->addWidget(m_pageList, 1, 0, 2, 1, Qt::AlignTop);
     // results live in the same cell as the page list; only one is visible at a time
-    m_layout->addWidget(m_searchResults, 1, 0, 2, 1);
+    m_layout->addWidget(m_searchResults, 1, 0, 2, 1, Qt::AlignTop);
     m_layout->addLayout(m_pageStack, 1, 1, 1, 1);
     m_layout->setColumnStretch(1, 4);
     m_layout->setContentsMargins(0, 0, 0, 0);
@@ -454,15 +454,34 @@ void PageContainer::applySidebarStyle()
     };
 
     const QString listStyle = QStringLiteral(
-        "QListView#%1 { background-color: %2; border: none; border-radius: 10px; padding: 6px 2px 6px 4px; margin: 0px 12px 12px 12px; outline: 0; }"
+        "QListView#%1 { background-color: %2; border: none; border-radius: 10px; %5 padding: 6px 2px 6px 4px; margin: 0px 12px 12px 12px; outline: 0; }"
         "QListView#%1 QScrollBar:vertical { background: transparent; width: 6px; margin: 6px 2px 6px 0px; border: none; }"
         "QListView#%1 QScrollBar::handle:vertical { background: %3; border-radius: 3px; min-height: 28px; }"
         "QListView#%1 QScrollBar::handle:vertical:hover { background: %4; }"
         "QListView#%1 QScrollBar::add-line:vertical, QListView#%1 QScrollBar::sub-line:vertical { height: 0px; background: none; border: none; }"
         "QListView#%1 QScrollBar::add-page:vertical, QListView#%1 QScrollBar::sub-page:vertical { background: none; }");
 
-    m_pageList->setStyleSheet(listStyle.arg(QStringLiteral("settingsPageList"), rgba(panel), rgba(handle), rgba(handleHover)));
-    m_searchResults->setStyleSheet(listStyle.arg(QStringLiteral("settingsSearchResults"), rgba(panel), rgba(handle), rgba(handleHover)));
+    // while a custom search box is installed it forms the top of the same panel, so the list
+    // below it must not round its top corners
+    const QString mergeCorners =
+        m_customSearchWidget ? QStringLiteral("border-top-left-radius: 0px; border-top-right-radius: 0px;") : QString();
+
+    m_pageList->setStyleSheet(
+        listStyle.arg(QStringLiteral("settingsPageList"), rgba(panel), rgba(handle), rgba(handleHover), mergeCorners));
+    m_searchResults->setStyleSheet(listStyle.arg(QStringLiteral("settingsSearchResults"), rgba(panel), rgba(handle),
+                                                 rgba(handleHover), mergeCorners));
+
+    if (m_customSearchWidget) {
+        // the custom search box lives inside the sidebar panel: the same background, rounded
+        // only on the top corners, flush with the list below it
+        m_customSearchWidget->setStyleSheet(QStringLiteral(
+                                                "background-color: %1;"
+                                                "border: none;"
+                                                "border-top-left-radius: 10px;"
+                                                "border-top-right-radius: 10px;"
+                                                "QLineEdit { background-color: %2; border: 1px solid %3; border-radius: 8px; padding: 0px 10px; }")
+                                                .arg(rgba(panel), rgba(pal.color(QPalette::Base)), rgba(pal.color(QPalette::Mid))));
+    }
 
     m_searchBox->setStyleSheet(
         QStringLiteral("QLineEdit#settingsSearchBox { background-color: %1; border: none; border-radius: 8px; padding: 0px 10px 0px 14px; }")
@@ -514,7 +533,32 @@ void PageContainer::setSearchWidget(QWidget* widget)
     m_searchHolder->hide();
     m_layout->removeWidget(m_searchHolder);
 
-    m_layout->addWidget(widget, 0, 0, 1, 1);
+    // the custom box is the top of the sidebar panel: the panel's own margins around it, so
+    // its background merges with the list below - the same panel, no gap, no floating box
+    m_customSearchPanel = new QWidget(this);
+    auto* panelLayout = new QVBoxLayout(m_customSearchPanel);
+    panelLayout->setContentsMargins(12, 12, 12, 0);
+    panelLayout->setSpacing(0);
+    panelLayout->addWidget(widget);
+    m_customSearchPanel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+    m_layout->addWidget(m_customSearchPanel, 0, 0, 1, 1, Qt::AlignTop);
+
+    applySidebarStyle();
+}
+
+void PageContainer::useCompactMode(bool compact)
+{
+    if (m_compactMode == compact)
+        return;
+    m_compactMode = compact;
+
+    // the sidebar pills already name the page - no big title on top of the content
+    m_header->setVisible(!compact);
+
+    // the panel hugs its items and stays top-aligned instead of stretching below the last one
+    if (auto* view = qobject_cast<PageView*>(m_pageList))
+        view->setHugContent(compact);
+    m_pageList->setSizePolicy(QSizePolicy::MinimumExpanding, compact ? QSizePolicy::Maximum : QSizePolicy::Expanding);
 }
 
 void PageContainer::showPage(int row)

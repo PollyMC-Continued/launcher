@@ -49,36 +49,92 @@
         <number>0</number>
        </property>
        <item>
-        <layout class="QHBoxLayout" name="packHeaderLayout">
-         <item>
-          <widget class="ElidedLabel" name="packNameLabel">
-           <property name="font">
-            <font>
-             <bold>true</bold>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="versionSelectionBox">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QTextBrowser" name="packDescription">
-         <property name="openExternalLinks">
-          <bool>true</bool>
+        <widget class="QStackedWidget" name="detailsStack">
+         <property name="currentIndex">
+          <number>1</number>
          </property>
-         <property name="openLinks">
-          <bool>true</bool>
-         </property>
+         <widget class="QWidget" name="detailsPage">
+          <layout class="QVBoxLayout" name="detailsPageLayout">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="ModpackDetailsHeader" name="packHeader"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="versionRowLayout">
+             <item>
+              <widget class="QLabel" name="versionLabel">
+               <property name="text">
+                <string>Version</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="versionSelectionBox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QTextBrowser" name="packDescription">
+             <property name="openExternalLinks">
+              <bool>true</bool>
+             </property>
+             <property name="openLinks">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="emptyPage">
+          <layout class="QVBoxLayout" name="emptyPageLayout">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="selectPackLabel">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="text">
+              <string>Select a modpack</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </item>
       </layout>
@@ -97,6 +153,12 @@
    <class>ElidedLabel</class>
    <extends>QLabel</extends>
    <header>ui/widgets/ElidedLabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ModpackDetailsHeader</class>
+   <extends>QWidget</extends>
+   <header>ui/widgets/ModpackDetailsHeader.h</header>
+   <container>0</container>
   </customwidget>
  </customwidgets>
  <tabstops>

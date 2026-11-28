@@ -77,7 +77,9 @@ QVariant ListModel::data(const QModelIndex& index, int role) const
     } else if (role == UserDataTypes::DESCRIPTION) {
         return pack.synopsis;
     } else if (role == UserDataTypes::METADATA) {
-        return tr("%1 plays").arg(QLocale().toString(pack.plays));
+        // the fields the model exposes: download counts. Loader and Minecraft version are not
+        // part of the pack data, so they are omitted from the row.
+        return tr("%1 installs · %2 plays").arg(QLocale().toString(pack.installs), QLocale().toString(pack.plays));
     }
 
     return QVariant();

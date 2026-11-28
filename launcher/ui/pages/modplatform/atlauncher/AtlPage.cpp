@@ -35,6 +35,7 @@
  */
 
 #include "AtlPage.h"
+#include "ui/widgets/ModpackDetailsHeader.h"
 #include "ui/widgets/ModpackItemDelegate.h"
 #include "ui/widgets/ProjectItem.h"
 #include "ui_AtlPage.h"
@@ -82,6 +83,10 @@ AtlPage::AtlPage(NewInstanceDialog* dialog, QWidget* parent) : QWidget(parent), 
 
     ui->packView->installEventFilter(this);
     ui->packView->setLoading(true);
+
+    // the empty details state: a centred muted placeholder, not a blank description area
+    ModpackDetailsHeader::stylePlaceholder(ui->selectPackLabel);
+    ui->detailsStack->setCurrentWidget(ui->emptyPage);
 }
 
 AtlPage::~AtlPage()
@@ -162,7 +167,8 @@ void AtlPage::onSelectionChanged(QModelIndex first, [[maybe_unused]] QModelIndex
         if (isOpened) {
             dialog->setSuggestedPack();
         }
-        ui->packNameLabel->setText(QString());
+        ui->packHeader->clearPack();
+        ui->detailsStack->setCurrentWidget(ui->emptyPage);
         return;
     }
 
@@ -170,7 +176,14 @@ void AtlPage::onSelectionChanged(QModelIndex first, [[maybe_unused]] QModelIndex
     Q_ASSERT(raw.canConvert<ATLauncher::IndexedPack>());
     selected = raw.value<ATLauncher::IndexedPack>();
 
-    ui->packNameLabel->setText(selected.name);
+    ui->detailsStack->setCurrentWidget(ui->detailsPage);
+    ui->packHeader->setPack(selected.name, QString(), tr("ATLauncher"));
+    const auto logoUrl = QString(BuildConfig.ATL_DOWNLOAD_SERVER_URL + "launcher/images/%1").arg(selected.safeName);
+    listModel->getLogo(selected.safeName, logoUrl, [this, name = selected.name](const QString& logo) {
+        // late logo callback: only apply it while the same pack is still shown
+        if (ui->packHeader->name() == name)
+            ui->packHeader->setIcon(QIcon(logo));
+    });
     ui->packDescription->setHtml(StringUtils::htmlListPatch(stripHtml(selected.description)));
 
     for (const auto& version : selected.versions) {

@@ -26,7 +26,7 @@
 #include <QStyledItemDelegate>
 
 class BasePage;
-const int pageIconSize = 24;
+const int pageIconSize = 20;
 // Custom model role: the sidebar heading a page belongs to (BasePage::sectionName()).
 const int pageSectionRole = Qt::UserRole + 20;
 
@@ -189,12 +189,33 @@ class PageView : public QListView {
         setMouseTracking(true);  // hover highlight of the sidebar pills
     }
 
+    /** When true the view reports its full content height, so the sidebar panel hugs its
+     *  items instead of stretching below the last one. */
+    void setHugContent(bool hug)
+    {
+        m_hugContent = hug;
+        updateGeometry();
+    }
+
     virtual QSize sizeHint() const
     {
         int width = sizeHintForColumn(0) + frameWidth() * 2 + 5 + 24 /* sidebar panel margins */;
         if (verticalScrollBar()->isVisible())
             width += verticalScrollBar()->width();
-        return QSize(width, 100);
+        int height = 100;
+        if (m_hugContent && model() && itemDelegate()) {
+            // the height of every visible row: a fixed, consistent row height (plus the
+            // stylesheet's 6px padding above the first and below the last item)
+            QStyleOptionViewItem option;
+            option.initFrom(this);
+            option.font = font();
+            option.decorationSize = iconSize();
+            int content = 12;
+            for (int row = 0; row < model()->rowCount(); ++row)
+                content += itemDelegate()->sizeHint(option, model()->index(row, 0)).height();
+            height = qMax(content, 100);
+        }
+        return QSize(width, height);
     }
 
     virtual bool eventFilter(QObject* obj, QEvent* event)
@@ -203,4 +224,7 @@ class PageView : public QListView {
             updateGeometry();
         return QListView::eventFilter(obj, event);
     }
+
+   private:
+    bool m_hugContent = false;
 };

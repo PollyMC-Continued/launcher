@@ -24,10 +24,12 @@
 #include <QStyleOptionButton>
 
 /**
- * A flat, rounded pill-shaped button (radius 8, like the sidebar pills). Checkable pills act
- * as filter chips: the checked state is painted with the highlight colour, dark text on bright
- * accents and white on dark ones - the same rule as PageViewDelegate. Non-checkable pills act
- * as small action chips (ghost outline).
+ * A flat, rounded pill-shaped button (radius 8 by default, like the sidebar pills). Checkable
+ * pills act as filter chips: the checked state is painted with the highlight colour, dark
+ * text on bright accents and white on dark ones - the same rule as PageViewDelegate.
+ * Non-checkable pills act as small action chips (ghost outline).
+ * The height and radius are instance metrics, so the filter bar can shrink its chips
+ * (26px tall, 13px radius - visibly smaller than the action buttons).
  */
 class PillButton : public QPushButton {
    public:
@@ -40,7 +42,7 @@ class PillButton : public QPushButton {
         plain.replace(QStringLiteral("&&"), QStringLiteral("\x01"));
         plain.remove(QLatin1Char('&'));
         plain.replace(QLatin1Char('\x01'), QLatin1Char('&'));
-        return QSize(QFontMetrics(font()).horizontalAdvance(plain) + 2 * HorizontalPadding, Height);
+        return QSize(QFontMetrics(font()).horizontalAdvance(plain) + 2 * HorizontalPadding, m_height);
     }
     QSize minimumSizeHint() const override { return sizeHint(); }
 
@@ -103,13 +105,13 @@ class PillButton : public QPushButton {
 
         painter.setPen(border.alpha() > 0 ? QPen(border, 1) : QPen(Qt::NoPen));
         painter.setBrush(fill);
-        painter.drawRoundedRect(body, Radius, Radius);
+        painter.drawRoundedRect(body, m_radius, m_radius);
 
         if (m_keyboardFocus) {
             QColor ring = (isCheckable() && checked) ? textColor : pal.color(QPalette::Active, QPalette::Highlight);
             painter.setPen(QPen(ring, 1.5));
             painter.setBrush(Qt::NoBrush);
-            painter.drawRoundedRect(body.adjusted(2, 2, -2, -2), Radius - 2, Radius - 2);
+            painter.drawRoundedRect(body.adjusted(2, 2, -2, -2), m_radius - 2, m_radius - 2);
         }
 
         QStyleOptionButton opt;
@@ -120,10 +122,14 @@ class PillButton : public QPushButton {
         painter.drawText(rect(), Qt::AlignCenter | Qt::TextSingleLine | mnemonic, text());
     }
 
-   private:
-    static constexpr int Height = 30;
+   protected:
+    static constexpr int Height = 30;           // the default pill height
     static constexpr int HorizontalPadding = 16;
     static constexpr qreal Radius = 8;  // matches the sidebar pills
 
+    int m_height = Height;    // the chip variants override this
+    qreal m_radius = Radius;  // and this
+
+   private:
     bool m_keyboardFocus = false;
 };

@@ -69,6 +69,13 @@ class PageContainer : public QWidget, public BasePageContainer {
     void useSidebarStyle(bool sidebar);
 
     /**
+     * Dialog mode for the New Instance dialog: the sidebar panel hugs its items and stays
+     * top-aligned (it does not stretch below the last item), and the big page title is
+     * hidden - the sidebar pills already name the page.
+     */
+    void useCompactMode(bool compact);
+
+    /**
      * Replace the built-in "Search settings…" box with a custom widget in the same spot (the
      * "Search all modpacks" box of NewInstanceDialog). The settings search is disabled while
      * a custom widget is installed, and Ctrl+F focuses the custom widget instead.
@@ -110,6 +117,8 @@ class PageContainer : public QWidget, public BasePageContainer {
             m_searchBox->hide();
         if (m_searchResults)
             m_searchResults->hide();
+        if (m_customSearchPanel)
+            m_customSearchPanel->hide();
         if (m_customSearchWidget)
             m_customSearchWidget->hide();
     }
@@ -165,6 +174,7 @@ class PageContainer : public QWidget, public BasePageContainer {
     };
     QWidget* m_searchHolder = nullptr;  // gives the search box its padding
     QLineEdit* m_searchBox = nullptr;
+    QWidget* m_customSearchPanel = nullptr;  // panel margins around the custom search box
     QWidget* m_customSearchWidget = nullptr;  // replaces the search box when installed (see setSearchWidget)
     QListView* m_searchResults = nullptr;
     QStandardItemModel* m_searchResultsModel = nullptr;
@@ -173,4 +183,5 @@ class PageContainer : public QWidget, public BasePageContainer {
     QList<int> m_activeResults;
     bool m_searchIndexBuilt = false;
     bool m_inSearch = false;
+    bool m_compactMode = false;
 };

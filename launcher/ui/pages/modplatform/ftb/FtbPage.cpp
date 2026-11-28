@@ -44,6 +44,7 @@
 #include "ui/dialogs/NewInstanceDialog.h"
 
 #include "Markdown.h"
+#include "ui/widgets/ModpackDetailsHeader.h"
 #include "ui/widgets/ModpackItemDelegate.h"
 #include "ui/widgets/ProjectItem.h"
 
@@ -82,6 +83,11 @@ FtbPage::FtbPage(NewInstanceDialog* dialog, QWidget* parent) : QWidget(parent), 
     connect(m_ui->versionSelectionBox, &QComboBox::currentTextChanged, this, &FtbPage::onVersionSelectionChanged);
 
     m_ui->packDescription->setMetaEntry("FTBPacks");
+
+    // the empty details state: a centred muted placeholder, not a blank description area
+    ModpackDetailsHeader::stylePlaceholder(m_ui->selectPackLabel);
+    m_ui->detailsStack->setCurrentWidget(m_ui->emptyPage);
+
     m_ui->packView->setLoading(true);
 }
 
@@ -179,12 +185,29 @@ void FtbPage::onSelectionChanged(QModelIndex first, QModelIndex /*second*/)
         if (isOpened) {
             m_dialog->setSuggestedPack();
         }
-        m_ui->packNameLabel->setText(QString());
+        m_ui->packHeader->clearPack();
+        m_ui->detailsStack->setCurrentWidget(m_ui->emptyPage);
         return;
     }
 
     m_selected = m_filterModel->data(first, Qt::UserRole).value<FTB::Modpack>();
-    m_ui->packNameLabel->setText(m_selected.name);
+    const auto name = m_selected.name;
+
+    QStringList authorNames;
+    for (const auto& author : m_selected.authors)
+        authorNames << author.name;
+    m_ui->detailsStack->setCurrentWidget(m_ui->detailsPage);
+    m_ui->packHeader->setPack(name, authorNames.join(QStringLiteral(", ")), tr("FTB"));
+    for (auto art : m_selected.art) {
+        if (art.type == "square") {
+            m_listModel->getLogo(m_selected.safeName, art.url, [this, name](const QString& logo) {
+                // late logo callback: only apply it while the same pack is still shown
+                if (m_ui->packHeader->name() == name)
+                    m_ui->packHeader->setIcon(QIcon(logo));
+            });
+            break;
+        }
+    }
 
     QString output = markdownToHTML(m_selected.description.toUtf8());
     m_ui->packDescription->setHtml(output);

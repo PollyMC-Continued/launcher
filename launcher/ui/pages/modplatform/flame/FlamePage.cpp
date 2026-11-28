@@ -49,6 +49,7 @@
 #include "StringUtils.h"
 #include "modplatform/flame/FlameAPI.h"
 #include "ui/dialogs/NewInstanceDialog.h"
+#include "ui/widgets/ModpackDetailsHeader.h"
 #include "ui/widgets/ModpackFilterBar.h"
 #include "ui/widgets/ModpackItemDelegate.h"
 #include "ui/widgets/ProjectItem.h"
@@ -100,6 +101,11 @@ FlamePage::FlamePage(NewInstanceDialog* dialog, QWidget* parent)
     connect(m_ui->versionSelectionBox, &QComboBox::currentIndexChanged, this, &FlamePage::onVersionSelectionChanged);
 
     m_ui->packDescription->setMetaEntry("FlamePacks");
+
+    // the empty details state: a centred muted placeholder, not a blank description area
+    ModpackDetailsHeader::stylePlaceholder(m_ui->selectPackLabel);
+    m_ui->detailsStack->setCurrentWidget(m_ui->emptyPage);
+
     createFilterWidget();
 }
 
@@ -156,7 +162,6 @@ void FlamePage::triggerSearch()
     m_ui->packView->selectionModel()->setCurrentIndex({}, QItemSelectionModel::SelectionFlag::ClearAndSelect);
     m_ui->packView->clearSelection();
     m_ui->packDescription->clear();
-    m_ui->packNameLabel->setText(QString());
     m_ui->versionSelectionBox->clear();
     m_ui->packView->setLoading(true);
     bool filterChanged = m_filterWidget->changed();
@@ -188,12 +193,24 @@ void FlamePage::onSelectionChanged(QModelIndex curr, [[maybe_unused]] QModelInde
         if (isOpened) {
             m_dialog->setSuggestedPack();
         }
-        m_ui->packNameLabel->setText(QString());
+        m_ui->packHeader->clearPack();
+        m_ui->detailsStack->setCurrentWidget(m_ui->emptyPage);
         return;
     }
 
     m_current = m_listModel->data(curr, Qt::UserRole).value<ModPlatform::IndexedPack::Ptr>();
-    m_ui->packNameLabel->setText(m_current->name);
+    const auto name = m_current->name;
+
+    QStringList authorNames;
+    for (const auto& author : m_current->authors)
+        authorNames << author.name;
+    m_ui->detailsStack->setCurrentWidget(m_ui->detailsPage);
+    m_ui->packHeader->setPack(name, authorNames.join(QStringLiteral(", ")), tr("CurseForge"));
+    m_listModel->getLogo(m_current->logoName, m_current->logoUrl, [this, name](const QString& logo) {
+        // late logo callback: only apply it while the same pack is still shown
+        if (m_ui->packHeader->name() == name)
+            m_ui->packHeader->setIcon(QIcon(logo));
+    });
 
     if (!m_current->versionsLoaded || m_filterWidget->changed()) {
         qDebug() << "Loading flame modpack versions";
@@ -306,38 +323,20 @@ void FlamePage::onVersionSelectionChanged(int index)
 void FlamePage::updateUi()
 {
     QString text = "";
-    QString name = m_current->name;
-
-    if (m_current->websiteUrl.isEmpty())
-        text = name;
-    else
-        text = "<a href=\"" + m_current->websiteUrl + "\">" + name + "</a>";
-    if (!m_current->authors.empty()) {
-        auto authorToStr = [](ModPlatform::ModpackAuthor& author) {
-            if (author.url.isEmpty()) {
-                return author.name;
-            }
-            return QString("<a href=\"%1\">%2</a>").arg(author.url, author.name);
-        };
-        QStringList authorStrs;
-        for (auto& author : m_current->authors) {
-            authorStrs.push_back(authorToStr(author));
-        }
-        text += "<br>" + tr(" by ") + authorStrs.join(", ");
-    }
 
     if (m_current->extraDataLoaded) {
-        if (!m_current->extraData.issuesUrl.isEmpty() || !m_current->extraData.sourceUrl.isEmpty() ||
-            !m_current->extraData.wikiUrl.isEmpty()) {
-            text += "<br><br>" + tr("External links:") + "<br>";
-        }
-
+        QString links;
         if (!m_current->extraData.issuesUrl.isEmpty())
-            text += "- " + tr("Issues: <a href=%1>%1</a>").arg(m_current->extraData.issuesUrl) + "<br>";
+            links += "- " + tr("Issues: <a href=%1>%1</a>").arg(m_current->extraData.issuesUrl) + "<br>";
         if (!m_current->extraData.wikiUrl.isEmpty())
-            text += "- " + tr("Wiki: <a href=%1>%1</a>").arg(m_current->extraData.wikiUrl) + "<br>";
+            links += "- " + tr("Wiki: <a href=%1>%1</a>").arg(m_current->extraData.wikiUrl) + "<br>";
         if (!m_current->extraData.sourceUrl.isEmpty())
-            text += "- " + tr("Source code: <a href=%1>%1</a>").arg(m_current->extraData.sourceUrl) + "<br>";
+            links += "- " + tr("Source code: <a href=%1>%1</a>").arg(m_current->extraData.sourceUrl) + "<br>";
+        if (!links.isEmpty()) {
+            if (!text.isEmpty())
+                text += "<br><br>";
+            text += tr("External links:") + "<br>" + links;
+        }
     }
 
     text += "<hr>";

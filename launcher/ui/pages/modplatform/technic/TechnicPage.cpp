@@ -35,6 +35,7 @@
 
 #include "TechnicPage.h"
 #include "ui/dialogs/CustomMessageBox.h"
+#include "ui/widgets/ModpackDetailsHeader.h"
 #include "ui/widgets/ModpackItemDelegate.h"
 #include "ui/widgets/ProjectItem.h"
 #include "ui_TechnicPage.h"
@@ -89,6 +90,10 @@ TechnicPage::TechnicPage(NewInstanceDialog* dialog, QWidget* parent)
 
     connect(ui->packView->selectionModel(), &QItemSelectionModel::currentChanged, this, &TechnicPage::onSelectionChanged);
     connect(ui->versionSelectionBox, &QComboBox::currentTextChanged, this, &TechnicPage::onVersionSelectionChanged);
+
+    // the empty details state: a centred muted placeholder, not a blank description area
+    ModpackDetailsHeader::stylePlaceholder(ui->selectPackLabel);
+    ui->detailsStack->setCurrentWidget(ui->emptyPage);
 }
 
 bool TechnicPage::eventFilter(QObject* watched, QEvent* event)
@@ -154,14 +159,23 @@ void TechnicPage::onSelectionChanged(QModelIndex first, [[maybe_unused]] QModelI
         if (isOpened) {
             dialog->setSuggestedPack();
         }
-        ui->packNameLabel->setText(QString());
+        ui->packHeader->clearPack();
+        ui->detailsStack->setCurrentWidget(ui->emptyPage);
         return;
     }
 
     QVariant raw = model->data(first, Qt::UserRole);
     Q_ASSERT(raw.canConvert<Technic::Modpack>());
     current = raw.value<Technic::Modpack>();
-    ui->packNameLabel->setText(current.name);
+    const auto name = current.name;
+
+    ui->detailsStack->setCurrentWidget(ui->detailsPage);
+    ui->packHeader->setPack(name, QString(), tr("Technic"));
+    model->getLogo(current.logoName, current.logoUrl, [this, name](const QString& logo) {
+        // late logo callback: only apply it while the same pack is still shown
+        if (ui->packHeader->name() == name)
+            ui->packHeader->setIcon(QIcon(logo));
+    });
     suggestCurrent();
 }
 
@@ -248,21 +262,11 @@ void TechnicPage::suggestCurrent()
 // expects current.metadataLoaded to be true
 void TechnicPage::metadataLoaded()
 {
-    QString text = "";
-    QString name = current.name;
+    // the header picks up the author once the pack metadata has arrived
+    ui->packHeader->setPack(current.name, current.author, tr("Technic"));
 
-    if (current.websiteUrl.isEmpty())
-        text = name.toHtmlEscaped();
-    else
-        text = "<a href=\"" + current.websiteUrl.toHtmlEscaped() + "\">" + name.toHtmlEscaped() + "</a>";
-
-    if (!current.author.isEmpty()) {
-        text += "<br>" + tr(" by ") + current.author.toHtmlEscaped();
-    }
-
-    text += "<br><br>";
-
-    ui->packDescription->setHtml(StringUtils::htmlListPatch(text + current.description));
+    // the feed is plain text - strip stray HTML instead of showing literal tags
+    ui->packDescription->setHtml(StringUtils::htmlListPatch(stripHtml(current.description)));
 
     // Strip trailing forward-slashes from Solder URL's
     if (current.isSolder) {

@@ -39,8 +39,8 @@
        </property>
        <property name="iconSize">
         <size>
-         <width>48</width>
-         <height>48</height>
+         <width>36</width>
+         <height>36</height>
         </size>
        </property>
       </widget>
@@ -59,7 +59,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="groupButton">
+      <widget class="GroupPillButton" name="groupButton">
        <property name="toolTip">
         <string>Add the new instance to a group</string>
        </property>
@@ -75,6 +75,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GroupPillButton</class>
+   <extends>QToolButton</extends>
+   <header>ui/widgets/GroupPillButton.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>iconButton</tabstop>
   <tabstop>instNameTextBox</tabstop>

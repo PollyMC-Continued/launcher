@@ -393,6 +393,7 @@ void ModFilterWidget::onVersionFilterTextChanged(const QString& version)
 void ModFilterWidget::setCategories(const QList<ModPlatform::Category>& categories)
 {
     m_categories = categories;
+    m_categoryBoxes.clear();
 
     // The checkboxes are parented to the group box, so deleting the layout
     // alone would leave them behind; delete them explicitly.
@@ -411,6 +412,7 @@ void ModFilterWidget::setCategories(const QList<ModPlatform::Category>& categori
         checkbox->setFont(font);
 
         layout->addWidget(checkbox);
+        m_categoryBoxes.insert(category.id, checkbox);
 
         const QString id = category.id;
         connect(checkbox, &QCheckBox::toggled, this, [this, id](bool checked) {
@@ -449,6 +451,49 @@ void ModFilterWidget::onReleaseFilterChanged()
     m_filter->releases = releases;
     if (m_filter_changed)
         emit filterChanged();
+}
+
+QList<QPair<QString, QString>> ModFilterWidget::checkedCategories() const
+{
+    QList<QPair<QString, QString>> result;
+    for (const auto& category : m_categories) {
+        if (!m_filter->categoryIds.contains(category.id))
+            continue;
+        auto name = category.name;
+        name.replace("-", " ");
+        result.append({ name, category.id });
+    }
+    return result;
+}
+
+void ModFilterWidget::clearVersion(const QString& version)
+{
+    // extended pages use the multi-select box, the others the single combo whose first entry
+    // is "All Versions"; the chip only appears for a checked version, so unchecking removes it
+    if (!ui->versions->isHidden()) {
+        const int index = ui->versions->findText(version);
+        if (index < 0 || ui->versions->itemCheckState(index) != Qt::Checked)
+            return;
+        ui->versions->setItemCheckState(index, Qt::Unchecked);
+    } else {
+        if (ui->version->currentIndex() <= 0)
+            return;
+        ui->version->setCurrentIndex(0);
+    }
+}
+
+void ModFilterWidget::clearCategory(const QString& id)
+{
+    if (auto* box = m_categoryBoxes.value(id, nullptr)) {
+        // setChecked(false) triggers the same chain as unchecking the box by hand
+        box->setChecked(false);
+        return;
+    }
+    // the checkbox is gone (the categories were reloaded); still drop the stale filter value
+    if (m_filter->categoryIds.removeOne(id)) {
+        m_filter_changed = true;
+        emit filterChanged();
+    }
 }
 
 void ModFilterWidget::onShowMoreClicked()

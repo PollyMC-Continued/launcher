@@ -36,9 +36,11 @@
 #pragma once
 
 #include <QButtonGroup>
+#include <QHash>
 #include <QList>
 #include <QListWidgetItem>
 #include <QTabWidget>
+#include <utility>
 
 #include "Version.h"
 
@@ -49,6 +51,8 @@
 #include "modplatform/ModIndex.h"
 
 class MinecraftInstance;
+
+class QCheckBox;
 
 namespace Ui {
 class ModFilterWidget;
@@ -103,6 +107,14 @@ class ModFilterWidget : public QTabWidget {
     /** Quick-filter hook used by the chip rows on the modpack pages: checks/unchecks the matching loader control. */
     void setLoaderChecked(ModPlatform::ModLoaderType loader, bool checked);
 
+    /** The active categories as (display name, id) pairs, for the filter chips. */
+    QList<QPair<QString, QString>> checkedCategories() const;
+
+    /** Chip hook: remove one active Minecraft version (unchecks it in the version control). */
+    void clearVersion(const QString& version);
+    /** Chip hook: remove one active category. */
+    void clearCategory(const QString& id);
+
    signals:
     void filterChanged();
 
@@ -137,4 +149,5 @@ class ModFilterWidget : public QTabWidget {
     VersionProxyModel* m_versions_proxy = nullptr;
 
     QList<ModPlatform::Category> m_categories;
+    QHash<QString, QCheckBox*> m_categoryBoxes;  // id -> checkbox, so chips can uncheck one
 };

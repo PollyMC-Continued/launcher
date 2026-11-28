@@ -79,6 +79,10 @@ class ResultDelegate : public QStyledItemDelegate {
 
 ModpackSearchBox::ModpackSearchBox(QWidget* parent) : QWidget(parent)
 {
+    // the box lives inside the sidebar panel: PageContainer paints it with the panel colour
+    // (rounded on the top corners), which needs the styled-background attribute to show up
+    setAttribute(Qt::WA_StyledBackground, true);
+
     // same padding the built-in settings search box had, so the sidebar looks unchanged
     auto* layout = new QVBoxLayout(this);
     layout->setContentsMargins(10, 10, 10, 6);
