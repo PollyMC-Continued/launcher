@@ -45,7 +45,42 @@ jobs:
             exit 1
           fi
           echo "Using $LUPDATE"
-          "$LUPDATE" launcher -locations relative -ts translations/*.ts
+          LOG=$(mktemp)
+          if ! "$LUPDATE" launcher -locations relative -ts translations/*.ts 2>&1 | tee "$LOG"; then
+            echo "::error::lupdate failed"
+            exit 1
+          fi
+          # lupdate exits 0 even when it refuses a file; catch the refusal.
+          if grep -q "won't be updated" "$LOG"; then
+            grep "won't be updated" "$LOG" | sed 's/^/::error::/'
+            echo "::error::lupdate refused to update the file(s) above: their language= code has no plural-rule entry in Qt (or is missing). Fix the <TS language=...> attribute."
+            exit 1
+          fi
+
+      - name: Verify every .ts received the full live string set
+        run: |
+          set -euo pipefail
+          # After a successful lupdate every .ts must contain the same number of
+          # live messages; a file that lupdate silently skipped lags behind.
+          python3 - <<'PY'
+          import glob, sys, xml.etree.ElementTree as ET
+          def live(path):
+              root = ET.parse(path).getroot()
+              return sum(
+                  1
+                  for ctx in root.findall("context")
+                  for msg in ctx.findall("message")
+                  if msg.find("translation") is not None
+                  and msg.find("translation").get("type") not in ("vanished", "obsolete")
+              )
+          counts = {f: live(f) for f in glob.glob("translations/*.ts")}
+          ref = max(counts.values())
+          bad = {f: c for f, c in counts.items() if c < ref}
+          for f, c in sorted(bad.items()):
+              print(f"::error file={f}::{f} has {c} live messages, expected {ref}")
+          print(f"reference live message count: {ref}")
+          sys.exit(1 if bad else 0)
+          PY
 
       - name: Commit if any text changed
         id: commit
