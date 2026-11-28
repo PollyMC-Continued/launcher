@@ -373,6 +373,7 @@ void PageContainer::createUI()
 {
     m_pageStack = new QStackedLayout;
     m_pageList = new PageView;
+    m_pageList->setObjectName(QStringLiteral("settingsPageList"));
     m_header = new QLabel();
 
     QFont headerLabelFont = m_header->font();
@@ -394,20 +395,22 @@ void PageContainer::createUI()
 
     // ---- settings search (Ctrl+F): a small box above the page list ----
     m_searchBox = new QLineEdit(this);
+    m_searchBox->setObjectName(QStringLiteral("settingsSearchBox"));
     m_searchBox->setClearButtonEnabled(true);
-    m_searchBox->setPlaceholderText(tr("Search settings…"));
+    m_searchBox->setPlaceholderText(tr("Search Settings..."));
     m_searchBox->setToolTip(tr("Search all settings (Ctrl+F). Several words narrow the results down."));
-    m_searchBox->setMinimumHeight(34);
+    m_searchBox->setMinimumHeight(36);
     m_searchBox->installEventFilter(this);
     m_searchHolder = new QWidget(this);
     auto* searchHolderLayout = new QHBoxLayout(m_searchHolder);
-    searchHolderLayout->setContentsMargins(10, 10, 10, 6);
+    searchHolderLayout->setContentsMargins(12, 12, 12, 8);
     searchHolderLayout->addWidget(m_searchBox);
     connect(m_searchBox, &QLineEdit::textChanged, this, &PageContainer::searchTextChanged);
     connect(m_searchBox, &QLineEdit::returnPressed, this, &PageContainer::searchReturnPressed);
 
     m_searchResultsModel = new QStandardItemModel(this);
     m_searchResults = new QListView(this);
+    m_searchResults->setObjectName(QStringLiteral("settingsSearchResults"));
     m_searchResults->setModel(m_searchResultsModel);
     m_searchResults->setEditTriggers(QAbstractItemView::NoEditTriggers);
     m_searchResults->setUniformItemSizes(true);
@@ -429,6 +432,41 @@ void PageContainer::createUI()
     m_layout->setColumnStretch(1, 4);
     m_layout->setContentsMargins(0, 0, 0, 0);
     setLayout(m_layout);
+
+    applySidebarStyle();
+}
+
+// Rounded sidebar panel with inner padding, a padded search box and a thin scroll bar.
+// Colours come from the current palette so every theme gets a matching look.
+void PageContainer::applySidebarStyle()
+{
+    const QPalette pal = palette();
+    const QColor window = pal.color(QPalette::Window);
+    const bool dark = window.lightness() < 128;
+    const QColor panel = dark ? window.lighter(115) : window.darker(104);
+    QColor handle = pal.color(QPalette::Text);
+    handle.setAlphaF(0.35);
+    QColor handleHover = handle;
+    handleHover.setAlphaF(0.6);
+
+    const auto rgba = [](const QColor& c) {
+        return QStringLiteral("rgba(%1, %2, %3, %4)").arg(c.red()).arg(c.green()).arg(c.blue()).arg(c.alpha());
+    };
+
+    const QString listStyle = QStringLiteral(
+        "QListView#%1 { background-color: %2; border: none; border-radius: 10px; padding: 6px 2px 6px 4px; margin: 0px 12px 12px 12px; outline: 0; }"
+        "QListView#%1 QScrollBar:vertical { background: transparent; width: 6px; margin: 6px 2px 6px 0px; border: none; }"
+        "QListView#%1 QScrollBar::handle:vertical { background: %3; border-radius: 3px; min-height: 28px; }"
+        "QListView#%1 QScrollBar::handle:vertical:hover { background: %4; }"
+        "QListView#%1 QScrollBar::add-line:vertical, QListView#%1 QScrollBar::sub-line:vertical { height: 0px; background: none; border: none; }"
+        "QListView#%1 QScrollBar::add-page:vertical, QListView#%1 QScrollBar::sub-page:vertical { background: none; }");
+
+    m_pageList->setStyleSheet(listStyle.arg(QStringLiteral("settingsPageList"), rgba(panel), rgba(handle), rgba(handleHover)));
+    m_searchResults->setStyleSheet(listStyle.arg(QStringLiteral("settingsSearchResults"), rgba(panel), rgba(handle), rgba(handleHover)));
+
+    m_searchBox->setStyleSheet(
+        QStringLiteral("QLineEdit#settingsSearchBox { background-color: %1; border: none; border-radius: 8px; padding: 0px 10px 0px 14px; }")
+            .arg(rgba(panel)));
 }
 
 void PageContainer::retranslate()
@@ -444,7 +482,7 @@ void PageContainer::retranslate()
     // the search index holds translated labels - rebuild it (lazily) on the next search
     m_searchIndexBuilt = false;
     m_searchIndex.clear();
-    m_searchBox->setPlaceholderText(tr("Search settings…"));
+    m_searchBox->setPlaceholderText(tr("Search Settings..."));
     m_searchBox->setToolTip(tr("Search all settings (Ctrl+F). Several words narrow the results down."));
 }
 
@@ -551,6 +589,9 @@ void PageContainer::changeEvent(QEvent* event)
 {
     if (event->type() == QEvent::LanguageChange) {
         retranslate();
+    } else if (event->type() == QEvent::PaletteChange || event->type() == QEvent::ApplicationPaletteChange) {
+        if (m_pageList && m_searchResults && m_searchBox)
+            applySidebarStyle();
     }
     QWidget::changeEvent(event);
 }

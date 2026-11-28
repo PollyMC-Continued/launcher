@@ -116,6 +116,7 @@ class PageContainer : public QWidget, public BasePageContainer {
 
    private:
     void createUI();
+    void applySidebarStyle();
     void retranslate();
 
    public slots:
