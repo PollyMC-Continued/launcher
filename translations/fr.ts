@@ -182,22 +182,22 @@
     <message>
         <location line="-182"/>
         <source>Could not get local metadata index for &apos;%1&apos; v%2</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&apos;obtenir l&apos;index de métadonnées local pour « %1 » v%2</translation>
     </message>
     <message>
         <location line="+194"/>
         <source>Could not get local metadata index for %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&apos;obtenir l&apos;index de métadonnées local pour %1</translation>
     </message>
     <message>
         <location line="+34"/>
         <source>Could not find a version for the %1 loader</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de trouver une version pour le chargeur %1</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>No loader version set for modpack.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucune version de chargeur définie pour le modpack.</translation>
     </message>
     <message>
         <location line="+132"/>
@@ -327,12 +327,12 @@
     <message>
         <location line="+40"/>
         <source>Developer mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mode développeur</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Developer mode enabled. Reopen Settings to access Developer tools.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mode développeur activé. Rouvrez les Paramètres pour accéder aux outils de développement.</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/AboutDialog.ui" line="-76"/>
@@ -500,12 +500,12 @@
     <message>
         <location line="+8"/>
         <source>Edit &amp;Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifier le &amp;nom d&apos;utilisateur</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Change the username of an offline account</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifier le nom d&apos;utilisateur d&apos;un compte hors ligne</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -575,22 +575,24 @@ Vous pouvez ajouter un compte Microsoft, Hors ligne ou Yggdrasil (authlib-inject
         <source>Enter the new username for the offline account &apos;%1&apos;.
 
 The account UUID stays the same, so your singleplayer progress and your selected skin are kept.</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrez le nouveau nom d&apos;utilisateur pour le compte hors ligne « %1 ».
+
+L&apos;UUID du compte reste le même, votre progression en solo et votre skin sélectionné sont donc conservés.</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Edit Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifier le nom d&apos;utilisateur</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Username already in use</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom d&apos;utilisateur déjà utilisé</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Another offline account is already called &apos;%1&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un autre compte hors ligne s&apos;appelle déjà « %1 ».</translation>
     </message>
     <message>
         <source>You must add a Microsoft account that owns Minecraft before you can add an offline account.&lt;br&gt;&lt;br&gt;If you have lost your account you can contact Microsoft for support.</source>
@@ -640,7 +642,7 @@ The account UUID stays the same, so your singleplayer progress and your selected
     <message>
         <location line="-23"/>
         <source>Appearance:</source>
-        <translation type="unfinished"></translation>
+        <translation>Apparence :</translation>
     </message>
     <message>
         <location line="+62"/>
@@ -725,22 +727,22 @@ The account UUID stays the same, so your singleplayer progress and your selected
     <message>
         <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="-97"/>
         <source>Windows-native themes follow your Windows appearance setting. To change light/dark, use Settings &gt; Personalization &gt; Colors in Windows.</source>
-        <translation type="unfinished"></translation>
+        <translation>Les thèmes natifs de Windows suivent votre paramètre d&apos;apparence Windows. Pour changer entre clair et sombre, utilisez Paramètres &gt; Personnalisation &gt; Couleurs dans Windows.</translation>
     </message>
     <message>
         <location line="+46"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Clair</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Dark</source>
-        <translation type="unfinished">Sombre</translation>
+        <translation>Sombre</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>System</source>
-        <translation type="unfinished">Système</translation>
+        <translation>Système</translation>
     </message>
     <message>
         <location line="+43"/>
@@ -875,70 +877,78 @@ pour plus de détails.</translation>
     <message>
         <location line="-1841"/>
         <source>Could not create data folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de créer le dossier de données</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The launcher could not create its data folder at %1.
 
 Check that you have permission to create folders there. The launcher cannot start until this is fixed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le lanceur n&apos;a pas pu créer son dossier de données dans %1.
+
+Vérifiez que vous avez la permission d&apos;y créer des dossiers. Le lanceur ne peut pas démarrer tant que ce problème n&apos;est pas résolu.</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Could not open data folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&apos;ouvrir le dossier de données</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The launcher could not open its data folder at %1.
 
 Check that you have permission to open it. The launcher cannot start until this is fixed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le lanceur n&apos;a pas pu ouvrir son dossier de données dans %1.
+
+Vérifiez que vous avez la permission de l&apos;ouvrir. Le lanceur ne peut pas démarrer tant que ce problème n&apos;est pas résolu.</translation>
     </message>
     <message>
         <location line="+81"/>
         <source>Data folder is not writable</source>
-        <translation type="unfinished"></translation>
+        <translation>Le dossier de données n&apos;est pas accessible en écriture</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The launcher could not create a log file: %1.
 
 Check that you have write permission for the data folder at %2. The launcher cannot start until this is fixed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le lanceur n&apos;a pas pu créer un fichier journal : %1.
+
+Vérifiez que vous avez la permission d&apos;écriture pour le dossier de données dans %2. Le lanceur ne peut pas démarrer tant que ce problème n&apos;est pas résolu.</translation>
     </message>
     <message>
         <location line="+531"/>
         <source>Loading icons…</source>
-        <translation type="unfinished"></translation>
+        <translation>Chargement des icônes…</translation>
     </message>
     <message>
         <location line="+28"/>
         <source>Loading instances…</source>
-        <translation type="unfinished"></translation>
+        <translation>Chargement des instances…</translation>
     </message>
     <message>
         <location line="+46"/>
         <source>Loading accounts…</source>
-        <translation type="unfinished"></translation>
+        <translation>Chargement des comptes…</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Almost ready…</source>
-        <translation type="unfinished"></translation>
+        <translation>Presque prêt…</translation>
     </message>
     <message>
         <location line="+62"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other launcher update is running. To delete the lock file and continue, select &quot;Ignore&quot; below.</source>
-        <translation type="unfinished"></translation>
+        <translation>Une tentative de mise à jour précédente a été interrompue, un fichier de verrouillage de mise à jour est donc toujours présent.
+
+Assurez-vous qu&apos;aucune autre mise à jour du lanceur n&apos;est en cours. Pour supprimer le fichier de verrouillage et continuer, sélectionnez « Ignorer » ci-dessous.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Update interrupted</source>
-        <translation type="unfinished"></translation>
+        <translation>Mise à jour interrompue</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -948,36 +958,45 @@ Updating from version %3 to %4
 Target install path: %5
 Data path: %6
 Updater log: %7</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichier de verrouillage : %1
+Horodatage : %2
+Mise à jour de la version %3 vers %4
+Chemin d&apos;installation cible : %5
+Chemin des données : %6
+Journal de mise à jour : %7</translation>
     </message>
     <message>
         <location line="+27"/>
         <source>The last update attempt failed.
 
 Make sure the installation works, then select &quot;Ignore&quot; to continue starting the launcher.</source>
-        <translation type="unfinished"></translation>
+        <translation>La dernière tentative de mise à jour a échoué.
+
+Assurez-vous que l&apos;installation fonctionne, puis sélectionnez « Ignorer » pour continuer à démarrer le lanceur.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Update failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de la mise à jour</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Updater log: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Journal de mise à jour : %1</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>You are now running %1.
 
 See the updater log for details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous utilisez maintenant %1.
+
+Consultez le journal de mise à jour pour plus de détails.</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Update installed</source>
-        <translation type="unfinished"></translation>
+        <translation>Mise à jour installée</translation>
     </message>
     <message>
         <location line="+33"/>
@@ -995,7 +1014,7 @@ Vous pouvez résoudre ce problème en remontant /tmp en tant que &apos;exec&apos
     <message>
         <location line="+227"/>
         <source>Opening the launcher…</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouverture du lanceur…</translation>
     </message>
     <message>
         <location line="+809"/>
@@ -1575,26 +1594,26 @@ Pour lever ce verrouillage et continuer, sélectionnez &quot;Ignorer&quot; ci-de
     <message>
         <location filename="../launcher/bot/BotManagerDialog.cpp" line="+191"/>
         <source>Bots</source>
-        <translation type="unfinished"></translation>
+        <translation>Bots</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Script</source>
-        <translation type="unfinished"></translation>
+        <translation>Script</translation>
     </message>
     <message>
         <location line="+232"/>
         <location line="+19"/>
         <location line="+16"/>
         <source>Bot Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Gestionnaire de bots</translation>
     </message>
     <message>
         <location line="-34"/>
         <location line="+19"/>
         <location line="+16"/>
         <source>Could not save bot config to %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&apos;enregistrer la configuration du bot dans %1 : %2</translation>
     </message>
 </context>
 <context>
@@ -1602,7 +1621,7 @@ Pour lever ce verrouillage et continuer, sélectionnez &quot;Ignorer&quot; ci-de
     <message>
         <location filename="../launcher/bot/BotMapDialog.cpp" line="+128"/>
         <source>Bot Map</source>
-        <translation type="unfinished"></translation>
+        <translation>Carte des bots</translation>
     </message>
 </context>
 <context>
@@ -1610,7 +1629,7 @@ Pour lever ce verrouillage et continuer, sélectionnez &quot;Ignorer&quot; ci-de
     <message>
         <location line="-72"/>
         <source>Waiting for bot positions...</source>
-        <translation type="unfinished"></translation>
+        <translation>En attente des positions des bots...</translation>
     </message>
 </context>
 <context>
@@ -1618,219 +1637,219 @@ Pour lever ce verrouillage et continuer, sélectionnez &quot;Ignorer&quot; ci-de
     <message>
         <location filename="../launcher/bot/BotScriptEditor.ui" line="+19"/>
         <source>Script name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom du script :</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Activé</translation>
     </message>
     <message>
         <location line="+33"/>
         <source>Add step ▾</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouter une étape ▾</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Remove</source>
-        <translation type="unfinished">Supprimer</translation>
+        <translation>Supprimer</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Move up</source>
-        <translation type="unfinished"></translation>
+        <translation>Monter</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Move down</source>
-        <translation type="unfinished"></translation>
+        <translation>Descendre</translation>
     </message>
     <message>
         <location line="+28"/>
         <source>Select a step to edit its properties.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionnez une étape pour modifier ses propriétés.</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Text:</source>
-        <translation type="unfinished"></translation>
+        <translation>Texte :</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Seconds (1-86400):</source>
-        <translation type="unfinished"></translation>
+        <translation>Secondes (1-86400) :</translation>
     </message>
     <message>
         <location line="+31"/>
         <source>Pattern:</source>
-        <translation type="unfinished"></translation>
+        <translation>Motif :</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Sensible à la casse</translation>
     </message>
     <message>
         <location line="+7"/>
         <location line="+35"/>
         <source>Timeout seconds (0 = forever):</source>
-        <translation type="unfinished"></translation>
+        <translation>Délai d&apos;attente en secondes (0 = infini) :</translation>
     </message>
     <message>
         <location line="-10"/>
         <source>Player:</source>
-        <translation type="unfinished"></translation>
+        <translation>Joueur :</translation>
     </message>
     <message>
         <location line="+35"/>
         <source>Times (-1 = forever):</source>
-        <translation type="unfinished"></translation>
+        <translation>Répétitions (-1 = infini) :</translation>
     </message>
     <message>
         <location line="+31"/>
         <location line="+31"/>
         <source>Variable name (letters, digits, _):</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom de la variable (lettres, chiffres, _) :</translation>
     </message>
     <message>
         <location line="-21"/>
         <source>Value (literal text):</source>
-        <translation type="unfinished"></translation>
+        <translation>Valeur (texte littéral) :</translation>
     </message>
     <message>
         <location line="+31"/>
         <source>Value (integer, may be negative):</source>
-        <translation type="unfinished"></translation>
+        <translation>Valeur (entier, peut être négatif) :</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Condition:</source>
-        <translation type="unfinished"></translation>
+        <translation>Condition :</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Value:</source>
-        <translation type="unfinished"></translation>
+        <translation>Valeur :</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Variable:</source>
-        <translation type="unfinished"></translation>
+        <translation>Variable :</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Number:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre :</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Condition timeout seconds (0 = decide immediately):</source>
-        <translation type="unfinished"></translation>
+        <translation>Délai d&apos;attente de la condition en secondes (0 = décider immédiatement) :</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>Branches: with this step selected, Add Step appends to the then branch; with an &apos;else:&apos; row selected, Add Step appends to the else branch.</source>
-        <translation type="unfinished"></translation>
+        <translation>Branches : avec cette étape sélectionnée, Ajouter une étape ajoute à la branche then ; avec une ligne « else: » sélectionnée, Ajouter une étape ajoute à la branche else.</translation>
     </message>
     <message>
         <location line="+33"/>
         <source>Save</source>
-        <translation type="unfinished">Enregistrer</translation>
+        <translation>Enregistrer</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Revert</source>
-        <translation type="unfinished">Annuler</translation>
+        <translation>Rétablir</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Import...</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer...</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Export...</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporter...</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>Run now</source>
-        <translation type="unfinished"></translation>
+        <translation>Exécuter maintenant</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Arrêter</translation>
     </message>
     <message>
         <location filename="../launcher/bot/BotScriptEditor.cpp" line="+687"/>
         <source>Save failed: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de l&apos;enregistrement : %1</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistré.</translation>
     </message>
     <message>
         <location line="+141"/>
         <location line="+29"/>
         <location line="+11"/>
         <source>Import Bot Script</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer un script de bot</translation>
     </message>
     <message>
         <location line="-39"/>
         <location line="+53"/>
         <source>Bot scripts (*.json);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Scripts de bot (*.json);;Tous les fichiers (*)</translation>
     </message>
     <message>
         <location line="-48"/>
         <source>Import failed: cannot open %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de l&apos;importation : impossible d&apos;ouvrir %1</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Import failed: %1 is not a JSON script</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de l&apos;importation : %1 n&apos;est pas un script JSON</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Import failed: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de l&apos;importation : %1</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>A script named &apos;%1&apos; already exists. Importing it will overwrite that script when you save. Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Un script nommé « %1 » existe déjà. L&apos;importer écrasera ce script lors de l&apos;enregistrement. Continuer ?</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Save the imported script to the script store now?</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer le script importé dans le magasin de scripts maintenant ?</translation>
     </message>
     <message>
         <location line="+9"/>
         <location line="+3"/>
         <source>Export Bot Script</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporter le script de bot</translation>
     </message>
     <message>
         <location line="-3"/>
         <source>The script is not valid: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Le script n&apos;est pas valide : %1</translation>
     </message>
     <message>
         <location line="+9"/>
         <location line="+7"/>
         <source>Export failed: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de l&apos;exportation : %1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Exported to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporté vers %1</translation>
     </message>
 </context>
 <context>
@@ -1845,188 +1864,188 @@ Pour lever ce verrouillage et continuer, sélectionnez &quot;Ignorer&quot; ci-de
         <location line="+8"/>
         <location line="+9"/>
         <source>Report a Bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Signaler un bug</translation>
     </message>
     <message>
         <location line="-527"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dites-nous ce qui s&apos;est mal passé ou ce que vous aimeriez voir. Votre signalement est envoyé &amp;lt;b&amp;gt;en privé&amp;lt;/b&amp;gt; à l&apos;équipe PollyMC sur Discord. Veuillez ne pas inclure de mots de passe ni d&apos;autres informations personnelles.</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>My Reports (%1 new)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mes signalements (%1 nouveau)</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>My Reports</source>
-        <translation type="unfinished"></translation>
+        <translation>Mes signalements</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>See what the team answered to the reports you sent from this launcher.</source>
-        <translation type="unfinished"></translation>
+        <translation>Consultez les réponses de l&apos;équipe aux signalements que vous avez envoyés depuis ce lanceur.</translation>
     </message>
     <message>
         <location line="+34"/>
         <source>What kind of report is this?</source>
-        <translation type="unfinished"></translation>
+        <translation>Quel type de signalement est-ce ?</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Bug</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Crash</source>
-        <translation type="unfinished"></translation>
+        <translation>Plantage</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Suggestion</source>
-        <translation type="unfinished"></translation>
+        <translation>Suggestion</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Something else</source>
-        <translation type="unfinished"></translation>
+        <translation>Autre chose</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Anonymous</source>
-        <translation type="unfinished"></translation>
+        <translation>Anonyme</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Discord username or email</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom d&apos;utilisateur Discord ou e-mail</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Only fill this in if you want a reply.</source>
-        <translation type="unfinished"></translation>
+        <translation>Remplissez ce champ uniquement si vous souhaitez une réponse.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Your name (optional)</source>
-        <translation type="unfinished"></translation>
+        <translation>Votre nom (facultatif)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Contact (optional)</source>
-        <translation type="unfinished"></translation>
+        <translation>Contact (facultatif)</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Screenshots (optional, up to %1). You can also drag images into this window.</source>
-        <translation type="unfinished"></translation>
+        <translation>Captures d&apos;écran (facultatif, jusqu&apos;à %1). Vous pouvez aussi glisser des images dans cette fenêtre.</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Add image…</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouter une image…</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Paste from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Coller depuis le presse-papiers</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Remove</source>
-        <translation type="unfinished">Supprimer</translation>
+        <translation>Supprimer</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Include the launcher log (recommended, personal paths are hidden)</source>
-        <translation type="unfinished"></translation>
+        <translation>Inclure le journal du lanceur (recommandé, les chemins personnels sont masqués)</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>What else is sent automatically?</source>
-        <translation type="unfinished"></translation>
+        <translation>Quelles autres informations sont envoyées automatiquement ?</translation>
     </message>
     <message>
         <location line="+32"/>
         <source>Prefer GitHub? &lt;a href=&quot;%1&quot;&gt;Open the issue tracker&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous préférez GitHub ? &amp;lt;a href=&amp;quot;%1&amp;quot;&amp;gt;Ouvrir le suivi des problèmes&amp;lt;/a&amp;gt;.</translation>
     </message>
     <message>
         <location line="+6"/>
         <location line="+171"/>
         <source>Send Report</source>
-        <translation type="unfinished"></translation>
+        <translation>Envoyer le signalement</translation>
     </message>
     <message>
         <location line="-135"/>
         <source>What were you doing when it crashed?</source>
-        <translation type="unfinished"></translation>
+        <translation>Que faisiez-vous lorsque le plantage s&apos;est produit ?</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Tell us what you were doing right before the launcher closed or froze, and whether it happens every time.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dites-nous ce que vous faisiez juste avant que le lanceur ne se ferme ou ne se fige, et si cela se produit à chaque fois.</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>What would you like to see?</source>
-        <translation type="unfinished"></translation>
+        <translation>Qu&apos;aimeriez-vous voir ?</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Describe your idea and what it would make easier for you. Examples from other apps help too.</source>
-        <translation type="unfinished"></translation>
+        <translation>Décrivez votre idée et ce qu&apos;elle faciliterait pour vous. Des exemples d&apos;autres applications sont également utiles.</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>What&apos;s on your mind?</source>
-        <translation type="unfinished"></translation>
+        <translation>Qu&apos;avez-vous en tête ?</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Tell us anything that doesn&apos;t fit the other types: feedback, questions, or something that just feels off.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dites-nous tout ce qui ne correspond pas aux autres types : retours, questions ou quelque chose qui semble anormal.</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>What happened?</source>
-        <translation type="unfinished"></translation>
+        <translation>Que s&apos;est-il passé ?</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Describe the bug and, if you can, the steps to make it happen again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Décrivez le bug et, si possible, les étapes pour le reproduire.</translation>
     </message>
     <message>
         <location line="+76"/>
         <source>&lt;i&gt;An unsent report you started earlier was restored - it is ready to finish and send whenever you are.&lt;/i&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;lt;i&amp;gt;Un signalement non envoyé que vous aviez commencé plus tôt a été restauré — il est prêt à être complété et envoyé quand vous le souhaitez.&amp;lt;/i&amp;gt;</translation>
     </message>
     <message>
         <location line="+49"/>
         <source>Sending…</source>
-        <translation type="unfinished"></translation>
+        <translation>Envoi en cours…</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Step 1 of 2: preparing your report…</source>
-        <translation type="unfinished"></translation>
+        <translation>Étape 1 sur 2 : préparation de votre signalement…</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cela ressemble à un problème lié à %1, et non à un bug du lanceur. Voici comment le résoudre :</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>If that does not help, you can report it anyway with the button below - we will take a look.</source>
-        <translation type="unfinished"></translation>
+        <translation>Si cela ne suffit pas, vous pouvez quand même le signaler avec le bouton ci-dessous — nous y jetterons un œil.</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nous avons prérempli l&apos;erreur pour vous. Ajoutez ce que vous faisiez lorsqu&apos;elle s&apos;est produite, puis envoyez. Votre signalement est envoyé &amp;lt;b&amp;gt;en privé&amp;lt;/b&amp;gt; à l&apos;équipe PollyMC sur Discord.</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -2035,7 +2054,11 @@ Pour lever ce verrouillage et continuer, sélectionnez &quot;Ignorer&quot; ci-de
 
 What I was doing when this happened:
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur : %1
+%2
+
+Ce que je faisais quand cela s&apos;est produit :
+</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -2043,99 +2066,108 @@ What I was doing when this happened:
 System: %3
 CPU architecture: %4
 Qt: %5</source>
-        <translation type="unfinished"></translation>
+        <translation>Lanceur : %1 (%2)
+Système : %3
+Architecture CPU : %4
+Qt : %5</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>Write at least %1 characters to send (%2 / %3)</source>
-        <translation type="unfinished"></translation>
+        <translation>Écrivez au moins %1 caractères pour envoyer (%2 / %3)</translation>
     </message>
     <message>
         <location line="+20"/>
         <location line="+38"/>
         <source>Screenshot %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Capture d&apos;écran %1</translation>
     </message>
     <message>
         <location line="-32"/>
         <source>Choose screenshots</source>
-        <translation type="unfinished"></translation>
+        <translation>Choisir des captures d&apos;écran</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Images (*.png *.jpg *.jpeg *.webp *.bmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>Images (*.png *.jpg *.jpeg *.webp *.bmp)</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Could not open %1 as an image.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&apos;ouvrir %1 en tant qu&apos;image.</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>There is no image on the clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il n&apos;y a aucune image dans le presse-papiers.</translation>
     </message>
     <message>
         <location line="+61"/>
         <source>You just sent a report. Please wait a minute before sending another one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous venez d&apos;envoyer un signalement. Veuillez patienter une minute avant d&apos;en envoyer un autre.</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>You already sent this exact report in this session.
 
 Send it again anyway?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous avez déjà envoyé ce même signalement durant cette session.
+
+L&apos;envoyer à nouveau quand même ?</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>This report is too large to send (%1 MB). Remove a screenshot or untick &quot;Include the launcher log&quot; and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ce signalement est trop volumineux pour être envoyé (%1 Mo). Retirez une capture d&apos;écran ou décochez « Inclure le journal du lanceur » et réessayez.</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Step 2 of 2: sending your report to the team…</source>
-        <translation type="unfinished"></translation>
+        <translation>Étape 2 sur 2 : envoi de votre signalement à l&apos;équipe…</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Still sending… the server is a little slow. Please keep this window open.</source>
-        <translation type="unfinished"></translation>
+        <translation>Envoi toujours en cours… le serveur est un peu lent. Veuillez garder cette fenêtre ouverte.</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Too many reports, please try again later.</source>
-        <translation type="unfinished"></translation>
+        <translation>Trop de signalements, veuillez réessayer plus tard.</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Failed to send the report</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de l&apos;envoi du signalement</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The report could not be sent (HTTP %1): %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Le signalement n&apos;a pas pu être envoyé (HTTP %1) : %2</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Thank you! Your report is on its way to the PollyMC team, and we read every one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Merci ! Votre signalement est en route vers l&apos;équipe PollyMC, et nous les lisons tous.</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>
 
 We&apos;ll use the contact you gave if we need to ask anything. Want faster help, or to follow what happens next? Come say hi on our Discord.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Nous utiliserons le contact que vous avez fourni si nous avons besoin de vous demander quelque chose. Vous voulez une aide plus rapide ou suivre la suite ? Passez nous dire bonjour sur notre Discord.</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>
 
 Since you sent this anonymously we can&apos;t write back. Want help with this problem, or to see what happens next? Come say hi on our Discord.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Comme vous l&apos;avez envoyé anonymement, nous ne pouvons pas vous répondre. Vous voulez de l&apos;aide pour ce problème ou voir la suite ? Passez nous dire bonjour sur notre Discord.</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -2143,27 +2175,30 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
 
 Your report ID: %1
 This launcher will tell you when the team has an update. You can also check any time with &quot;My Reports&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+ID de votre signalement : %1
+Ce lanceur vous avertira lorsque l&apos;équipe aura du nouveau. Vous pouvez aussi vérifier à tout moment dans « Mes signalements ».</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Report sent</source>
-        <translation type="unfinished"></translation>
+        <translation>Signalement envoyé</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Join our Discord</source>
-        <translation type="unfinished"></translation>
+        <translation>Rejoindre notre Discord</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>View My Reports</source>
-        <translation type="unfinished"></translation>
+        <translation>Voir mes signalements</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Close</source>
-        <translation type="unfinished">Fermer</translation>
+        <translation>Fermer</translation>
     </message>
 </context>
 <context>
@@ -2172,53 +2207,53 @@ This launcher will tell you when the team has an update. You can also check any 
         <location filename="../launcher/ui/dialogs/BulkUpdateDialog.cpp" line="+68"/>
         <location line="+262"/>
         <source>Update all instances</source>
-        <translation type="unfinished"></translation>
+        <translation>Mettre à jour toutes les instances</translation>
     </message>
     <message>
         <location line="-258"/>
         <source>Check every selected instance for mod updates, then apply all found updates in one go.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérifiez les mises à jour de mods pour chaque instance sélectionnée, puis appliquez toutes les mises à jour trouvées en une seule fois.</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Instance</source>
-        <translation type="unfinished"></translation>
+        <translation>Instance</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Mods</source>
-        <translation type="unfinished">Mods</translation>
+        <translation>Mods</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Status</source>
-        <translation type="unfinished">Statut</translation>
+        <translation>Statut</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Check for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Update all</source>
-        <translation type="unfinished"></translation>
+        <translation>Tout mettre à jour</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Close</source>
-        <translation type="unfinished">Fermer</translation>
+        <translation>Fermer</translation>
     </message>
     <message>
         <location line="+31"/>
         <location line="+91"/>
         <source>No mods</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun mod</translation>
     </message>
     <message>
         <location line="-91"/>
         <source>Not checked</source>
-        <translation type="unfinished"></translation>
+        <translation>Non vérifié</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2226,23 +2261,26 @@ This launcher will tell you when the team has an update. You can also check any 
 Up to date: %2
 Could not be checked: %3
 Skipped: %4</source>
-        <translation type="unfinished"></translation>
+        <translation>Instances avec mises à jour : %1
+À jour : %2
+Impossible à vérifier : %3
+Ignorées : %4</translation>
     </message>
     <message>
         <location line="+20"/>
         <location line="+128"/>
         <source>Error</source>
-        <translation type="unfinished">Erreur</translation>
+        <translation>Erreur</translation>
     </message>
     <message>
         <location line="-128"/>
         <source>Mod updates are unavailable when metadata is disabled!</source>
-        <translation type="unfinished">Les mises à jour des mods ne sont pas disponibles lorsque les métadonnées sont désactivées !</translation>
+        <translation>Les mises à jour de mods sont indisponibles lorsque les métadonnées sont désactivées !</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Instances are running</source>
-        <translation type="unfinished"></translation>
+        <translation>Des instances sont en cours d&apos;exécution</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2253,78 +2291,84 @@ Updating mods while the game is running may cause mod duplication and game crash
 The old files may not be deleted as they are in use.
 Running instances will be skipped.
 Do you want to continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Les instances suivantes sont actuellement en cours d&apos;exécution :
+%1
+
+Mettre à jour des mods pendant que le jeu tourne peut provoquer une duplication de mods et des plantages.
+Les anciens fichiers risquent de ne pas être supprimés car ils sont en cours d&apos;utilisation.
+Les instances en cours d&apos;exécution seront ignorées.
+Voulez-vous continuer ?</translation>
     </message>
     <message>
         <location line="+34"/>
         <source>Skipped (running)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ignorée (en cours d&apos;exécution)</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Checking...</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérification...</translation>
     </message>
     <message>
         <location line="+14"/>
         <location line="+60"/>
         <source>Aborted</source>
-        <translation type="unfinished"></translation>
+        <translation>Annulé</translation>
     </message>
     <message>
         <location line="-53"/>
         <source>%1 could not be checked</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 n&apos;a pas pu être vérifié</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Up to date</source>
-        <translation type="unfinished"></translation>
+        <translation>À jour</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>%1 update(s) available</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 mise(s) à jour disponible(s)</translation>
     </message>
     <message>
         <location line="+32"/>
         <source>Download updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Télécharger les mises à jour</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Download stopped by user.</source>
-        <translation type="unfinished">Téléchargement arrêté par l&apos;utilisateur.</translation>
+        <translation>Téléchargement arrêté par l&apos;utilisateur.</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Warnings</source>
-        <translation type="unfinished">Avertissements</translation>
+        <translation>Avertissements</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Abort</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Updated</source>
-        <translation type="unfinished"></translation>
+        <translation>Mis à jour</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Update failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de la mise à jour</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Done.</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminé.</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The downloads did not complete successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Les téléchargements ne se sont pas terminés correctement.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2333,7 +2377,11 @@ Instances updated: %2
 Instances up to date: %3
 Instances that could not be checked: %4
 Instances skipped: %5</source>
-        <translation type="unfinished"></translation>
+        <translation>%1
+Instances mises à jour : %2
+Instances à jour : %3
+Instances impossibles à vérifier : %4
+Instances ignorées : %5</translation>
     </message>
 </context>
 <context>
@@ -2341,184 +2389,185 @@ Instances skipped: %5</source>
     <message>
         <location filename="../launcher/ui/dialogs/skins/CapeBrowserDialog.cpp" line="+118"/>
         <source>Browse capes</source>
-        <translation type="unfinished"></translation>
+        <translation>Parcourir les capes</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Search by cape name or player name...</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechercher par nom de cape ou nom de joueur...</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Type a cape name (like Migrator or Pan) or a player name. crafty.gg does not publish a cape catalog, so capes are collected from the profiles of the players it tracks, and a cape search keeps looking through more players until it finds some matches.</source>
-        <translation type="unfinished"></translation>
+        <translation>Saisissez un nom de cape (comme Migrator ou Pan) ou un nom de joueur. crafty.gg ne publie pas de catalogue de capes, elles sont donc collectées à partir des profils des joueurs suivis, et une recherche de cape continue de parcourir davantage de joueurs jusqu&apos;à trouver des correspondances.</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Search</source>
-        <translation type="unfinished">Rechercher</translation>
+        <translation>Rechercher</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Import URL...</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer une URL...</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Import a cape from a PNG link. Cape textures are typically 64x32, 512x256 or OptiFine 46x22 style PNG files.</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer une cape depuis un lien PNG. Les textures de cape sont généralement des fichiers PNG au format 64x32, 512x256 ou OptiFine 46x22.</translation>
     </message>
     <message>
         <location line="+35"/>
         <location line="+301"/>
         <source>Select a cape</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner une cape</translation>
     </message>
     <message>
         <location line="-295"/>
         <source>Preview Elytra</source>
-        <translation type="unfinished">Aperçu des élytres</translation>
+        <translation>Aperçu des élytres</translation>
     </message>
     <message>
         <location line="+5"/>
         <location line="+346"/>
         <source>Finding capes...</source>
-        <translation type="unfinished"></translation>
+        <translation>Recherche de capes...</translation>
     </message>
     <message>
         <location line="-329"/>
         <source>Close</source>
-        <translation type="unfinished">Fermer</translation>
+        <translation>Fermer</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Previous page</source>
-        <translation type="unfinished">Page précédente</translation>
+        <translation>Page précédente</translation>
     </message>
     <message>
         <location line="+2"/>
         <location line="+488"/>
         <source>Page %1</source>
-        <translation type="unfinished">Page %1</translation>
+        <translation>Page %1</translation>
     </message>
     <message>
         <location line="-484"/>
         <source>Next page</source>
-        <translation type="unfinished">Page suivante</translation>
+        <translation>Page suivante</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Use cape</source>
-        <translation type="unfinished"></translation>
+        <translation>Utiliser la cape</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Apply this cape to the selected account</source>
-        <translation type="unfinished"></translation>
+        <translation>Appliquer cette cape au compte sélectionné</translation>
     </message>
     <message>
         <location line="+49"/>
         <source>Looking for capes</source>
-        <translation type="unfinished"></translation>
+        <translation>Recherche de capes</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Cape lookup</source>
-        <translation type="unfinished"></translation>
+        <translation>Recherche de cape</translation>
     </message>
     <message>
         <location line="+61"/>
         <location line="+178"/>
         <source>Searching capes for %1...</source>
-        <translation type="unfinished"></translation>
+        <translation>Recherche de capes pour %1...</translation>
     </message>
     <message>
         <location line="-157"/>
         <source>Import cape from URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer une cape depuis une URL</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>URL of a cape PNG image:</source>
-        <translation type="unfinished"></translation>
+        <translation>URL d&apos;une image PNG de cape :</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>%1 is not a valid http(s) URL.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 n&apos;est pas une URL http(s) valide.</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Downloading the cape...</source>
-        <translation type="unfinished"></translation>
+        <translation>Téléchargement de la cape...</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>The URL did not contain a valid cape image.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;URL ne contenait pas d&apos;image de cape valide.</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Cape imported from URL.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cape importée depuis l&apos;URL.</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Cape</source>
-        <translation type="unfinished">Cape</translation>
+        <translation>Cape</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>%1&apos;s cape</source>
-        <translation type="unfinished"></translation>
+        <translation>Cape de %1</translation>
     </message>
     <message>
         <location line="+24"/>
         <location line="+38"/>
         <source>Source: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Source : %1</translation>
     </message>
     <message>
         <location line="-37"/>
         <source>Source: %1
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Source : %1
+%2</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>View %1 on crafty.gg</source>
-        <translation type="unfinished"></translation>
+        <translation>Voir %1 sur crafty.gg</translation>
     </message>
     <message>
         <location line="+92"/>
         <source>Looking for capes... (%1 of %2 players)</source>
-        <translation type="unfinished"></translation>
+        <translation>Recherche de capes... (%1 sur %2 joueurs)</translation>
     </message>
     <message>
         <location line="+31"/>
         <source>No capes found for &quot;%1&quot;. Try another cape name or a player name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucune cape trouvée pour « %1 ». Essayez un autre nom de cape ou un nom de joueur.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 capes found for &quot;%2&quot;. Search again to look through more players.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 capes trouvées pour « %2 ». Recherchez à nouveau pour parcourir plus de joueurs.</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>No capes found yet. Try the next page, or search for a player.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucune cape trouvée pour l&apos;instant. Essayez la page suivante ou recherchez un joueur.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>No capes found. Try searching by cape or player name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucune cape trouvée. Essayez de rechercher par nom de cape ou de joueur.</translation>
     </message>
     <message>
         <location line="+2"/>
         <location line="+49"/>
         <source>%1 capes found. Search by cape or player name to look for more.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 capes trouvées. Recherchez par nom de cape ou de joueur pour en trouver davantage.</translation>
     </message>
 </context>
 <context>
@@ -2618,88 +2667,88 @@ Instances skipped: %5</source>
     <message>
         <location filename="../launcher/ui/dialogs/CommandPalette.cpp" line="+283"/>
         <source>Type a command...</source>
-        <translation type="unfinished"></translation>
+        <translation>Saisissez une commande...</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Natural language</source>
-        <translation type="unfinished"></translation>
+        <translation>Langage naturel</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>↑↓ navigate · PgUp/PgDn jump · Enter run · Esc close</source>
-        <translation type="unfinished"></translation>
+        <translation>↑↓ naviguer · PgUp/PgDn sauter · Entrée exécuter · Échap fermer</translation>
     </message>
     <message>
         <location line="+123"/>
         <source>%1 of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 sur %2</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Type your query...</source>
-        <translation type="unfinished"></translation>
+        <translation>Saisissez votre requête...</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>Preparing language model...</source>
-        <translation type="unfinished"></translation>
+        <translation>Préparation du modèle de langue...</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Loading model…</source>
-        <translation type="unfinished"></translation>
+        <translation>Chargement du modèle…</translation>
     </message>
     <message>
         <location line="+98"/>
         <source>Model download declined. Natural language search needs a one-time download; type ? again to retry.</source>
-        <translation type="unfinished"></translation>
+        <translation>Téléchargement du modèle refusé. La recherche en langage naturel nécessite un téléchargement unique ; saisissez ? à nouveau pour réessayer.</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Language model unavailable (%1).</source>
-        <translation type="unfinished"></translation>
+        <translation>Modèle de langue indisponible (%1).</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Language model file was corrupted and removed. Type ? again to re-download.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le fichier du modèle de langue était corrompu et a été supprimé. Saisissez ? à nouveau pour le retélécharger.</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Checking for model updates…</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérification des mises à jour du modèle…</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Downloading model (%1 MB remaining)…</source>
-        <translation type="unfinished"></translation>
+        <translation>Téléchargement du modèle (%1 Mo restants)…</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Downloading model…</source>
-        <translation type="unfinished"></translation>
+        <translation>Téléchargement du modèle…</translation>
     </message>
     <message>
         <location line="+13"/>
         <location line="+14"/>
         <source>No matching command found. Try typing without &apos;?&apos; to search by name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucune commande correspondante trouvée. Essayez de saisir sans « ? » pour rechercher par nom.</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>%1 → %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 → %2</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>New instance with %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouvelle instance avec %1</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>%1 → (no matching instance)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 → (aucune instance correspondante)</translation>
     </message>
 </context>
 <context>
@@ -2730,23 +2779,24 @@ Instances skipped: %5</source>
     <message>
         <location line="+135"/>
         <source>Metadata download aborted</source>
-        <translation type="unfinished"></translation>
+        <translation>Téléchargement des métadonnées annulé</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>Some component metadata downloads failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Certains téléchargements de métadonnées de composants ont échoué.</translation>
     </message>
     <message>
         <location line="+567"/>
         <source>Reason: %1</source>
-        <translation type="unfinished">Raison&#xa0;: %1</translation>
+        <translation>Raison : %1</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Component metadata update failed during download:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>La mise à jour des métadonnées de composants a échoué pendant le téléchargement :
+%1</translation>
     </message>
     <message>
         <source>Component metadata update task failed while downloading from remote server:
@@ -2766,7 +2816,7 @@ Instances skipped: %5</source>
     <message>
         <location line="+235"/>
         <source>Dependency check found conflicting requirements.</source>
-        <translation type="unfinished"></translation>
+        <translation>La vérification des dépendances a trouvé des exigences conflictuelles.</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -3051,17 +3101,17 @@ Instances skipped: %5</source>
     <message>
         <location line="+196"/>
         <source>Find player capes</source>
-        <translation type="unfinished"></translation>
+        <translation>Trouver des capes de joueurs</translation>
     </message>
     <message>
         <location line="+36"/>
         <source>Download player capes</source>
-        <translation type="unfinished"></translation>
+        <translation>Télécharger des capes de joueurs</translation>
     </message>
     <message>
         <location line="+39"/>
         <source>Download cape</source>
-        <translation type="unfinished"></translation>
+        <translation>Télécharger la cape</translation>
     </message>
 </context>
 <context>
@@ -3538,37 +3588,37 @@ Are you sure?</source>
     <message>
         <location filename="../launcher/ui/pages/global/DeveloperPage.cpp" line="+90"/>
         <source>Developer tools are intended for testing and troubleshooting. Actions below change launcher preferences; they do not delete instances or accounts.</source>
-        <translation type="unfinished"></translation>
+        <translation>Les outils de développement sont destinés aux tests et au dépannage. Les actions ci-dessous modifient les préférences du lanceur ; elles ne suppriment ni les instances ni les comptes.</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Show GitHub star reminder now</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher le rappel d&apos;étoile GitHub maintenant</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Display the reminder immediately, ignoring its normal schedule and dismissed state.</source>
-        <translation type="unfinished"></translation>
+        <translation>Affiche le rappel immédiatement, en ignorant son calendrier normal et son état ignoré.</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Show bug report update notification now</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher la notification de mise à jour de signalement maintenant</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Display a sample &quot;your report has news&quot; notification in the window you are in, to test notifications without waiting for the team.</source>
-        <translation type="unfinished"></translation>
+        <translation>Affiche un exemple de notification « votre signalement a du nouveau » dans la fenêtre actuelle, pour tester les notifications sans attendre l&apos;équipe.</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Reset first-run prompts</source>
-        <translation type="unfinished"></translation>
+        <translation>Réinitialiser les invites de premier démarrage</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Make the language and Java setup prompts eligible to appear again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Rend les invites de langue et de configuration Java de nouveau éligibles à l&apos;affichage.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -3582,212 +3632,213 @@ Are you sure?</source>
         <location line="+12"/>
         <location line="+65"/>
         <source>Developer tools</source>
-        <translation type="unfinished"></translation>
+        <translation>Outils de développement</translation>
     </message>
     <message>
         <location line="-163"/>
         <source>First-run preferences will be reset when Settings closes. The language and Java setup prompts may appear after restarting PollyMC-Continued.</source>
-        <translation type="unfinished"></translation>
+        <translation>Les préférences de premier démarrage seront réinitialisées à la fermeture des Paramètres. Les invites de langue et de configuration Java pourront apparaître après le redémarrage de PollyMC-Continued.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Reset GitHub star reminder</source>
-        <translation type="unfinished"></translation>
+        <translation>Réinitialiser le rappel d&apos;étoile GitHub</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Allow the GitHub star reminder to be shown again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Permet au rappel d&apos;étoile GitHub de s&apos;afficher à nouveau.</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Preview splash screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Aperçu de l&apos;écran de démarrage</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Show a temporary preview; this does not change startup behavior.</source>
-        <translation type="unfinished"></translation>
+        <translation>Affiche un aperçu temporaire ; cela ne modifie pas le comportement au démarrage.</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Open logs folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir le dossier des journaux</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Could not open the logs folder:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&apos;ouvrir le dossier des journaux :
+%1</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Copy diagnostic summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Copier le résumé de diagnostic</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Copies version, platform, and log-file metadata only; log contents and account details are not included.</source>
-        <translation type="unfinished"></translation>
+        <translation>Copie uniquement les métadonnées de version, de plateforme et de fichier journal ; le contenu des journaux et les détails du compte ne sont pas inclus.</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Diagnostic summary copied to the clipboard. Review it before sharing because it includes the local logs-folder path.</source>
-        <translation type="unfinished"></translation>
+        <translation>Résumé de diagnostic copié dans le presse-papiers. Vérifiez-le avant de le partager car il inclut le chemin local du dossier des journaux.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Enable verbose Qt logging until restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Activer la journalisation Qt détaillée jusqu&apos;au redémarrage</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Enables debug and informational Qt messages for this session. This may produce more output and can expose diagnostic details in logs.</source>
-        <translation type="unfinished"></translation>
+        <translation>Active les messages Qt de débogage et d&apos;information pour cette session. Cela peut produire plus de sorties et exposer des détails de diagnostic dans les journaux.</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>Run real update check now</source>
-        <translation type="unfinished"></translation>
+        <translation>Exécuter une vraie vérification de mise à jour maintenant</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Runs PollyMC&apos;s normal update check. This contacts the configured update service.</source>
-        <translation type="unfinished"></translation>
+        <translation>Exécute la vérification de mise à jour normale de PollyMC. Cela contacte le service de mise à jour configuré.</translation>
     </message>
     <message>
         <location line="+5"/>
         <location line="+29"/>
         <location line="+12"/>
         <source>The main window is not available.</source>
-        <translation type="unfinished"></translation>
+        <translation>La fenêtre principale n&apos;est pas disponible.</translation>
     </message>
     <message>
         <location line="-37"/>
         <location line="+11"/>
         <source>The updater is not enabled in this build.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le programme de mise à jour n&apos;est pas activé dans cette compilation.</translation>
     </message>
     <message>
         <location line="-5"/>
         <source>Show auto update UI</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher l&apos;interface de mise à jour automatique</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Fetches the most recent release and shows it in the normal update dialog, even if you are already up to date. Installing is disabled in this preview.</source>
-        <translation type="unfinished"></translation>
+        <translation>Récupère la version la plus récente et l&apos;affiche dans la boîte de dialogue de mise à jour normale, même si vous êtes déjà à jour. L&apos;installation est désactivée dans cet aperçu.</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>This platform&apos;s updater does not support the update UI preview.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le programme de mise à jour de cette plateforme ne prend pas en charge l&apos;aperçu de l&apos;interface de mise à jour.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Show What&apos;s New toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher la barre d&apos;outils Nouveautés</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Reveals the bottom What&apos;s New toolbar. Use this if it went missing, for example after running an older launcher that hid it again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Révèle la barre d&apos;outils Nouveautés en bas. Utilisez ceci si elle a disparu, par exemple après avoir exécuté un ancien lanceur qui l&apos;a masquée à nouveau.</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Open What&apos;s New browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir le navigateur des nouveautés</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Opens the What&apos;s New version browser without using the toolbar or the Help menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvre le navigateur des versions des nouveautés sans utiliser la barre d&apos;outils ni le menu Aide.</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Simulate update-check failure</source>
-        <translation type="unfinished"></translation>
+        <translation>Simuler un échec de vérification de mise à jour</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Shows a test-only failure message. It does not contact the updater or change update settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>Affiche un message d&apos;échec réservé aux tests. Cela ne contacte pas le programme de mise à jour et ne modifie pas les paramètres de mise à jour.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Simulated update failure</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de mise à jour simulé</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This is a simulated network failure for UI testing. No update request was sent and no launcher files were changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ceci est un échec réseau simulé pour tester l&apos;interface. Aucune requête de mise à jour n&apos;a été envoyée et aucun fichier du lanceur n&apos;a été modifié.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Simulate slow network (5 seconds)</source>
-        <translation type="unfinished"></translation>
+        <translation>Simuler un réseau lent (5 secondes)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Simulates a delayed response locally; it does not throttle or modify real network traffic.</source>
-        <translation type="unfinished"></translation>
+        <translation>Simule localement une réponse retardée ; cela ne bride ni ne modifie le trafic réseau réel.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Simulating a slow update response…</source>
-        <translation type="unfinished"></translation>
+        <translation>Simulation d&apos;une réponse de mise à jour lente…</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Cancel</source>
-        <translation type="unfinished">Annuler</translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location line="+2"/>
         <location line="+17"/>
         <source>Slow-network test</source>
-        <translation type="unfinished"></translation>
+        <translation>Test de réseau lent</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The simulated response completed after five seconds. No network request was made.</source>
-        <translation type="unfinished"></translation>
+        <translation>La réponse simulée s&apos;est terminée après cinq secondes. Aucune requête réseau n&apos;a été effectuée.</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Crash-test launcher (unsafe)</source>
-        <translation type="unfinished"></translation>
+        <translation>Test de plantage du lanceur (non sûr)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Intentionally terminates the process. Unsaved launcher state may be lost.</source>
-        <translation type="unfinished"></translation>
+        <translation>Termine intentionnellement le processus. L&apos;état non enregistré du lanceur peut être perdu.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Confirm crash test</source>
-        <translation type="unfinished"></translation>
+        <translation>Confirmer le test de plantage</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This will immediately terminate PollyMC-Continued without a normal shutdown. Unsaved settings or UI state may be lost. Only continue when testing crash handling.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cela va immédiatement fermer PollyMC-Continued sans arrêt normal. Les paramètres non enregistrés ou l&apos;état de l&apos;interface peuvent être perdus. Ne continuez que pour tester la gestion des plantages.</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Disable Developer Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Désactiver le mode développeur</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Developer Mode is disabled. The Developer page will disappear when Settings is reopened. The POLLYMC_DEV environment override, if set, must also be removed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le mode développeur est désactivé. La page Développeur disparaîtra à la réouverture des Paramètres. La variable d&apos;environnement POLLYMC_DEV, si elle est définie, doit également être supprimée.</translation>
     </message>
     <message>
         <location filename="../launcher/ui/pages/global/DeveloperPage.h" line="+11"/>
         <source>Developer</source>
-        <translation type="unfinished"></translation>
+        <translation>Développeur</translation>
     </message>
 </context>
 <context>
@@ -3928,38 +3979,41 @@ Cette instance ne peut pas être lancée car certaines bibliothèques sont manqu
         <source>Software rendering is turned on, but the software renderer is not installed and cannot be downloaded by this version.
 Copy the 64-bit Mesa files opengl32.dll, libgallium_wgl.dll and libglapi.dll into this folder, or turn software rendering off:
   %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Le rendu logiciel est activé, mais le moteur de rendu logiciel n&apos;est pas installé et ne peut pas être téléchargé par cette version.
+Copiez les fichiers Mesa 64 bits opengl32.dll, libgallium_wgl.dll et libglapi.dll dans ce dossier, ou désactivez le rendu logiciel :
+  %1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>The software renderer is not installed</source>
-        <translation type="unfinished"></translation>
+        <translation>Le moteur de rendu logiciel n&apos;est pas installé</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Downloading the software renderer (needed once)...</source>
-        <translation type="unfinished"></translation>
+        <translation>Téléchargement du moteur de rendu logiciel (nécessaire une seule fois)...</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Software renderer</source>
-        <translation type="unfinished"></translation>
+        <translation>Moteur de rendu logiciel</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Could not download the software renderer: %1
 Turn software rendering off or try again with a working Internet connection.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de télécharger le moteur de rendu logiciel : %1
+Désactivez le rendu logiciel ou réessayez avec une connexion Internet fonctionnelle.</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Could not install the software renderer: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&apos;installer le moteur de rendu logiciel : %1</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Software renderer installed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Moteur de rendu logiciel installé.</translation>
     </message>
 </context>
 <context>
@@ -4708,12 +4762,12 @@ Ceci pourrait être permanent et ils disparaitront du dossier.
     <message>
         <location line="+8"/>
         <source>Could not find pack version %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de trouver la version du pack %1</translation>
     </message>
     <message>
         <location line="+64"/>
         <source>Invalid manifest: no download information available for file &apos;%1&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Manifeste invalide : aucune information de téléchargement disponible pour le fichier « %1 ».</translation>
     </message>
     <message>
         <location line="+86"/>
@@ -4809,7 +4863,7 @@ Ceci pourrait être permanent et ils disparaitront du dossier.
     <message>
         <location line="+73"/>
         <source>CurseForge API returned invalid data.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;API CurseForge a renvoyé des données invalides.</translation>
     </message>
 </context>
 <context>
@@ -4870,42 +4924,47 @@ Ceci pourrait être permanent et ils disparaitront du dossier.
     <message>
         <location line="-412"/>
         <source>Could not check the old files</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de vérifier les anciens fichiers</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The launcher could not get the file names of the previous pack version from CurseForge, so the old mod files cannot be removed. Updating now would likely leave duplicate mods in the instance, which stops the game from starting.
 
 Do you want to continue anyway?</source>
-        <translation type="unfinished"></translation>
+        <translation>Le lanceur n&apos;a pas pu obtenir les noms de fichiers de la version précédente du pack depuis CurseForge, les anciens fichiers de mods ne peuvent donc pas être supprimés. Mettre à jour maintenant laisserait probablement des mods en double dans l&apos;instance, ce qui empêche le jeu de démarrer.
+
+Voulez-vous continuer quand même ?</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>%1 file(s) of the previous pack version could not be identified on CurseForge anymore, so they could not be removed. If the game reports duplicate mods, delete the older copies by hand.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 fichier(s) de la version précédente du pack n&apos;ont plus pu être identifiés sur CurseForge et n&apos;ont donc pas pu être supprimés. Si le jeu signale des mods en double, supprimez les anciennes copies manuellement.</translation>
     </message>
     <message>
         <location line="+42"/>
         <source>These files were part of the pack before, but you replaced them with another version of the same mod, so they are not downloaded again:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ces fichiers faisaient partie du pack auparavant, mais vous les avez remplacés par une autre version du même mod, ils ne sont donc pas retéléchargés :
+%1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>These files were extra copies of mods the pack already provides, so they are removed:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ces fichiers étaient des copies supplémentaires de mods que le pack fournit déjà, ils sont donc supprimés :
+%1</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>These files were part of the pack before, but are no longer on disk (perhaps they were updated or removed individually), so they will be downloaded again:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ces fichiers faisaient partie du pack auparavant, mais ne sont plus sur le disque (peut-être ont-ils été mis à jour ou supprimés individuellement), ils seront donc retéléchargés :
+%1</translation>
     </message>
     <message>
         <location line="+126"/>
         <source>The overrides has a path that leads to an arbitrary location (%1). This is a security risk and isn&apos;t allowed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Les overrides contiennent un chemin qui mène à un emplacement arbitraire (%1). C&apos;est un risque de sécurité et cela n&apos;est pas autorisé.</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -4920,7 +4979,7 @@ Do you want to continue anyway?</source>
     <message>
         <location line="+295"/>
         <source>Pack resource &apos;%1&apos; (for the &apos;%2&apos; folder) is not on disk: it was not downloaded, so it is left out of the instance.</source>
-        <translation type="unfinished"></translation>
+        <translation>La ressource de pack « %1 » (pour le dossier « %2 ») n&apos;est pas sur le disque : elle n&apos;a pas été téléchargée, elle est donc exclue de l&apos;instance.</translation>
     </message>
     <message>
         <location line="-402"/>
@@ -5297,32 +5356,32 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../launcher/ui/dialogs/GpuDriverGuideDialog.cpp" line="+51"/>
         <source>Graphics Driver Guide</source>
-        <translation type="unfinished"></translation>
+        <translation>Guide des pilotes graphiques</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Your graphics card could not be detected automatically.</source>
-        <translation type="unfinished"></translation>
+        <translation>Votre carte graphique n&apos;a pas pu être détectée automatiquement.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>&lt;b&gt;Detected graphics:&lt;/b&gt; %1</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;lt;b&amp;gt;Carte graphique détectée :&amp;lt;/b&amp;gt; %1</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Windows is using its basic built-in display driver, so no real graphics driver is installed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Windows utilise son pilote d&apos;affichage de base intégré, aucun vrai pilote graphique n&apos;est donc installé.</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>%1 drivers</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilotes %1</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>&lt;h3&gt;How to update your graphics driver&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;&lt;b&gt;Find your graphics card.&lt;/b&gt; Press &lt;i&gt;Win + R&lt;/i&gt;, type &lt;i&gt;dxdiag&lt;/i&gt; and press Enter, then open the &lt;i&gt;Display&lt;/i&gt; tab. Or open &lt;i&gt;Device Manager&lt;/i&gt; and expand &lt;i&gt;Display adapters&lt;/i&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Laptop or ready-made PC?&lt;/b&gt; Check the maker&apos;s support page for your exact model first (Dell, HP, Lenovo, ASUS, Acer...). Their drivers are tested for your machine. Otherwise use the buttons above:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Intel:&lt;/b&gt; run the &lt;i&gt;Intel Driver &amp;amp; Support Assistant&lt;/i&gt;, it finds the right driver for you.&lt;/li&gt;&lt;li&gt;&lt;b&gt;AMD:&lt;/b&gt; pick your product on the AMD page, or run the AMD auto-detect tool.&lt;/li&gt;&lt;li&gt;&lt;b&gt;NVIDIA:&lt;/b&gt; pick your product on the NVIDIA page, or use the NVIDIA app.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Install it and restart your PC.&lt;/b&gt; Choose a clean or standard install, both are fine.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Check it worked.&lt;/b&gt; In &lt;i&gt;dxdiag&lt;/i&gt; the Display tab should show your real card with a driver version, not &quot;Microsoft Basic Display Adapter&quot;.&lt;/li&gt;&lt;/ol&gt;&lt;h3&gt;Still not working?&lt;/h3&gt;&lt;p&gt;Very old graphics (for example Intel HD Graphics 2000/3000 and older, or cards from before about 2012) cannot run recent Minecraft versions even with the latest driver. In that case:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Play an older Minecraft version (1.16.5 or older work on much older hardware), or&lt;/li&gt;&lt;li&gt;turn on &lt;i&gt;Use software rendering&lt;/i&gt; in the instance&apos;s settings under Performance. It works on almost any PC but is slow, or&lt;/li&gt;&lt;li&gt;upgrade the graphics card.&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;lt;h3&amp;gt;Comment mettre à jour votre pilote graphique&amp;lt;/h3&amp;gt;&amp;lt;ol&amp;gt;&amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Trouvez votre carte graphique.&amp;lt;/b&amp;gt; Appuyez sur &amp;lt;i&amp;gt;Win + R&amp;lt;/i&amp;gt;, saisissez &amp;lt;i&amp;gt;dxdiag&amp;lt;/i&amp;gt; et appuyez sur Entrée, puis ouvrez l&amp;#39;onglet &amp;lt;i&amp;gt;Affichage&amp;lt;/i&amp;gt;. Ou ouvrez le &amp;lt;i&amp;gt;Gestionnaire de périphériques&amp;lt;/i&amp;gt; et développez &amp;lt;i&amp;gt;Cartes graphiques&amp;lt;/i&amp;gt;.&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;&amp;lt;b&amp;gt;PC portable ou PC de marque ?&amp;lt;/b&amp;gt; Consultez d&amp;#39;abord la page d&amp;#39;assistance du fabricant pour votre modèle exact (Dell, HP, Lenovo, ASUS, Acer...). Leurs pilotes sont testés pour votre machine. Sinon, utilisez les boutons ci-dessus :&amp;lt;ul&amp;gt;&amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Intel :&amp;lt;/b&amp;gt; exécutez l&amp;#39;&amp;lt;i&amp;gt;Assistant pilotes et support Intel&amp;lt;/i&amp;gt;, il trouve le bon pilote pour vous.&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;&amp;lt;b&amp;gt;AMD :&amp;lt;/b&amp;gt; choisissez votre produit sur la page AMD, ou exécutez l&amp;#39;outil de détection automatique AMD.&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;&amp;lt;b&amp;gt;NVIDIA :&amp;lt;/b&amp;gt; choisissez votre produit sur la page NVIDIA, ou utilisez l&amp;#39;application NVIDIA.&amp;lt;/li&amp;gt;&amp;lt;/ul&amp;gt;&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Installez-le et redémarrez votre PC.&amp;lt;/b&amp;gt; Choisissez une installation propre ou standard, les deux conviennent.&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;&amp;lt;b&amp;gt;Vérifiez que cela a fonctionné.&amp;lt;/b&amp;gt; Dans &amp;lt;i&amp;gt;dxdiag&amp;lt;/i&amp;gt;, l&amp;#39;onglet Affichage doit indiquer votre vraie carte avec une version de pilote, et non « Carte vidéo de base Microsoft ».&amp;lt;/li&amp;gt;&amp;lt;/ol&amp;gt;&amp;lt;h3&amp;gt;Toujours pas résolu ?&amp;lt;/h3&amp;gt;&amp;lt;p&amp;gt;Les cartes graphiques très anciennes (par exemple Intel HD Graphics 2000/3000 et plus anciennes, ou les cartes d&amp;#39;avant environ 2012) ne peuvent pas exécuter les versions récentes de Minecraft, même avec le dernier pilote. Dans ce cas :&amp;lt;/p&amp;gt;&amp;lt;ul&amp;gt;&amp;lt;li&amp;gt;Jouez à une version plus ancienne de Minecraft (1.16.5 ou antérieure fonctionne sur du matériel beaucoup plus ancien), ou&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;activez &amp;lt;i&amp;gt;Utiliser le rendu logiciel&amp;lt;/i&amp;gt; dans les paramètres de l&amp;#39;instance sous Performances. Cela fonctionne sur presque n&amp;#39;importe quel PC mais est lent, ou&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;mettez à niveau la carte graphique.&amp;lt;/li&amp;gt;&amp;lt;/ul&amp;gt;</translation>
     </message>
 </context>
 <context>
@@ -5330,12 +5389,12 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../launcher/ui/pages/instance/PerformancePage.cpp" line="+342"/>
         <source>min %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>min %1 %2</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>max %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>max %1 %2</translation>
     </message>
 </context>
 <context>
@@ -5661,17 +5720,18 @@ Do you want to continue anyway?</source>
         <location filename="../launcher/InstanceCreationTask.cpp" line="+51"/>
         <source>Could not create instance:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de créer l&amp;#39;instance :
+%1</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Could not create instance.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de créer l&amp;#39;instance.</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>Could not remove old conflicting files.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de supprimer les anciens fichiers en conflit.</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -5713,46 +5773,50 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+97"/>
         <source>No Java selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun Java sélectionné</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This instance has no Java installation selected, so it cannot start.
 Pick one in the instance&apos;s Java settings, or let the launcher download a matching Java automatically.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cette instance n&amp;#39;a aucune installation Java sélectionnée, elle ne peut donc pas démarrer.
+Choisissez-en une dans les paramètres Java de l&amp;#39;instance, ou laissez le lanceur télécharger automatiquement une version de Java compatible.</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Java not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Java introuvable</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The Java installation for this instance does not exist or cannot be run:
 %1
 It may have been moved, uninstalled, or blocked by antivirus software.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&amp;#39;installation Java pour cette instance n&amp;#39;existe pas ou ne peut pas être exécutée :
+%1
+Elle a peut-être été déplacée, désinstallée ou bloquée par un logiciel antivirus.</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>This instance needs Java %1, but the selected Java is version %2.
 Switch Java in the instance&apos;s Java settings, or turn off the compatibility check if you know what you&apos;re doing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cette instance nécessite Java %1, mais le Java sélectionné est en version %2.
+Changez de Java dans les paramètres Java de l&amp;#39;instance, ou désactivez la vérification de compatibilité si vous savez ce que vous faites.</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Java version mismatch</source>
-        <translation type="unfinished"></translation>
+        <translation>Incompatibilité de version Java</translation>
     </message>
     <message>
         <location line="+256"/>
         <source>Checking &lt;b&gt;%1&lt;/b&gt;…</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérification de &amp;lt;b&amp;gt;%1&amp;lt;/b&amp;gt;…</translation>
     </message>
     <message>
         <location line="+39"/>
         <source>Broken mod files (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers de mods corrompus (%1)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5760,85 +5824,94 @@ Switch Java in the instance&apos;s Java settings, or turn off the compatibility 
 %1
 
 Delete or re-download them (a fresh download of the same version is usually enough).</source>
-        <translation type="unfinished"></translation>
+        <translation>Ces fichiers dans le dossier mods sont vides ou endommagés, et font généralement planter le jeu au démarrage :
+%1
+
+Supprimez-les ou retéléchargez-les (un nouveau téléchargement de la même version suffit généralement).</translation>
     </message>
     <message>
         <location line="-283"/>
         <source>Version information not loaded yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Informations de version pas encore chargées</translation>
     </message>
     <message>
         <location line="-67"/>
         <source>Error</source>
-        <translation type="unfinished">Erreur</translation>
+        <translation>Erreur</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Warning</source>
-        <translation type="unfinished">Attention</translation>
+        <translation>Avertissement</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Info</source>
-        <translation type="unfinished">Info</translation>
+        <translation>Info</translation>
     </message>
     <message numerus="yes">
         <location line="+9"/>
         <source>
 … and %n more</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>
+… et %n autre</numerusform>
+            <numerusform>
+… et %n autres</numerusform>
         </translation>
     </message>
     <message>
         <location line="+55"/>
         <source>The launcher could not read this instance&apos;s version list, so the loader check was skipped.
 Open the instance, go to the Version page and let it load once (or press Reload) before launching.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le lanceur n&amp;#39;a pas pu lire la liste des versions de cette instance, la vérification du chargeur a donc été ignorée.
+Ouvrez l&amp;#39;instance, allez sur la page Version et laissez-la charger une fois (ou appuyez sur Recharger) avant de lancer.</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>%1 (loader component)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (composant du chargeur)</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Only %1 MiB are free on the drive this instance is stored on.
 Free up some space, or the game can fail while saving worlds or downloading files.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il ne reste que %1 Mio d&amp;#39;espace libre sur le lecteur où cette instance est stockée.
+Libérez de l&amp;#39;espace, sinon le jeu risque d&amp;#39;échouer lors de la sauvegarde des mondes ou du téléchargement de fichiers.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Low disk space</source>
-        <translation type="unfinished"></translation>
+        <translation>Espace disque faible</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Too much memory allocated</source>
-        <translation type="unfinished"></translation>
+        <translation>Trop de mémoire allouée</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This instance is set to use up to %1 MiB, but the computer only has %2 MiB.
 Lower the maximum memory in the instance&apos;s settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cette instance est configurée pour utiliser jusqu&amp;#39;à %1 Mio, mais l&amp;#39;ordinateur ne dispose que de %2 Mio.
+Réduisez la mémoire maximale dans les paramètres de l&amp;#39;instance.</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>A lot of memory allocated</source>
-        <translation type="unfinished"></translation>
+        <translation>Beaucoup de mémoire allouée</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This instance may use up to %1 MiB of the computer&apos;s %2 MiB.
 That leaves little for the system and can make the game stutter; around half of the total is usually plenty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cette instance peut utiliser jusqu&amp;#39;à %1 Mio sur les %2 Mio de l&amp;#39;ordinateur.
+Cela laisse peu de mémoire au système et peut provoquer des saccades dans le jeu ; environ la moitié du total est généralement largement suffisante.</translation>
     </message>
     <message>
         <location line="+86"/>
         <source>Pack files missing (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers du pack manquants (%1)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5846,12 +5919,15 @@ That leaves little for the system and can make the game stutter; around half of 
 %2
 
 Running Update Pack downloads them again. If you removed any of them on purpose, disable them instead of deleting, so the launcher can tell the difference.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ces fichiers appartiennent à %1, mais ne sont plus dans l&amp;#39;instance :
+%2
+
+Exécuter « Mettre à jour le pack » les télécharge à nouveau. Si vous en avez supprimé certains volontairement, désactivez-les plutôt que de les supprimer, afin que le lanceur puisse faire la différence.</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>Mods that are not part of %1 (%2)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mods qui ne font pas partie de %1 (%2)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5859,37 +5935,40 @@ Running Update Pack downloads them again. If you removed any of them on purpose,
 %1
 
 If the game complains about duplicate or incompatible mods, remove or disable the ones you did not add yourself.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ces fichiers .jar dans le dossier mods ne figurent pas dans la liste des fichiers du pack. Ils ont soit été ajoutés en dehors du pack, soit laissés lors de la mise à jour d&amp;#39;un mod vers un nom de fichier différent :
+%1
+
+Si le jeu signale des mods en double ou incompatibles, supprimez ou désactivez ceux que vous n&amp;#39;avez pas ajoutés vous-même.</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Check instance</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérifier l&amp;#39;instance</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Check Again</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérifier à nouveau</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Open Mods Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir le dossier Mods</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Copy Report</source>
-        <translation type="unfinished"></translation>
+        <translation>Copier le rapport</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Close</source>
-        <translation type="unfinished">Fermer</translation>
+        <translation>Fermer</translation>
     </message>
     <message>
         <location line="+129"/>
         <source>Mods that may not fit this game version (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mods pouvant ne pas convenir à cette version du jeu (%1)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5897,51 +5976,54 @@ If the game complains about duplicate or incompatible mods, remove or disable th
 %1
 
 They may still work, but if the game crashes, update or remove them first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ces mods ne sont pas marqués comme compatibles avec la version de Minecraft de cette instance :
+%1
+
+Ils peuvent tout de même fonctionner, mais si le jeu plante, mettez-les à jour ou supprimez-les en premier.</translation>
     </message>
     <message>
         <location line="+32"/>
         <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, the mods have no broken files or conflicts, and the loader version checks out. Nothing stood in the way of launching.</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;lt;b&amp;gt;%1&amp;lt;/b&amp;gt; semble en ordre — Java a été trouvé, les mods n&amp;#39;ont aucun fichier corrompu ni conflit, et la version du chargeur est valide. Rien n&amp;#39;empêche le lancement.</translation>
     </message>
     <message numerus="yes">
         <location line="+8"/>
         <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>&amp;lt;b&amp;gt;%1&amp;lt;/b&amp;gt; présente %n problème qui peut empêcher le jeu de démarrer</numerusform>
+            <numerusform>&amp;lt;b&amp;gt;%1&amp;lt;/b&amp;gt; présente %n problèmes qui peuvent empêcher le jeu de démarrer</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location line="+1"/>
         <source>, and %n warning(s) worth a look</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>, et %n avertissement à examiner</numerusform>
+            <numerusform>, et %n avertissements à examiner</numerusform>
         </translation>
     </message>
     <message>
         <location line="+1"/>
         <source>. The details are below each entry.</source>
-        <translation type="unfinished"></translation>
+        <translation>. Les détails figurent sous chaque entrée.</translation>
     </message>
     <message numerus="yes">
         <location line="+2"/>
         <source>&lt;b&gt;%1&lt;/b&gt; should start, but has %n warning(s) worth a look. The details are below each entry.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>&amp;lt;b&amp;gt;%1&amp;lt;/b&amp;gt; devrait démarrer, mais présente %n avertissement à examiner. Les détails figurent sous chaque entrée.</numerusform>
+            <numerusform>&amp;lt;b&amp;gt;%1&amp;lt;/b&amp;gt; devrait démarrer, mais présente %n avertissements à examiner. Les détails figurent sous chaque entrée.</numerusform>
         </translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Instance check for &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérification de l&amp;#39;instance pour « %1 »</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>No problems found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun problème trouvé.</translation>
     </message>
 </context>
 <context>
@@ -5975,13 +6057,13 @@ They may still work, but if the game crashes, update or remove them first.</sour
     <message>
         <location line="+44"/>
         <source>Could not open the supplied modpack zip file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&amp;#39;ouvrir le fichier zip du modpack fourni.</translation>
     </message>
     <message>
         <location line="+4"/>
         <location line="+78"/>
         <source>The modpack archive does not contain a recognized modpack type.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&amp;#39;archive du modpack ne contient pas un type de modpack reconnu.</translation>
     </message>
     <message>
         <source>Archive does not contain a recognized modpack type.</source>
@@ -6115,22 +6197,22 @@ They may still work, but if the game crashes, update or remove them first.</sour
     <message>
         <location filename="../launcher/InstanceTemplateTask.cpp" line="+271"/>
         <source>The template folder %1 does not exist.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le dossier de modèle %1 n&amp;#39;existe pas.</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Creating instance %1 from template</source>
-        <translation type="unfinished"></translation>
+        <translation>Création de l&amp;#39;instance %1 depuis le modèle</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>Template folder copy failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de la copie du dossier de modèle.</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>Template folder copy has been aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>La copie du dossier de modèle a été annulée.</translation>
     </message>
 </context>
 <context>
@@ -6401,7 +6483,7 @@ Are you sure?</source>
     <message>
         <location line="+51"/>
         <source>Warn when there is not enough free memory</source>
-        <translation type="unfinished"></translation>
+        <translation>Avertir lorsqu&amp;#39;il n&amp;#39;y a pas assez de mémoire libre</translation>
     </message>
     <message>
         <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="-49"/>
@@ -6679,12 +6761,12 @@ Vous pourrez changer les paramètres Java dans les paramètres plus tard.
     <message>
         <location line="+16"/>
         <source>Language picked automatically from your region (%1). Not right? Choose another one above.</source>
-        <translation type="unfinished"></translation>
+        <translation>Langue choisie automatiquement selon votre région (%1). Ce n&amp;#39;est pas la bonne ? Choisissez-en une autre ci-dessus.</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Downloading the list of languages… You can continue in English now and switch languages at any time - the list fills in by itself.</source>
-        <translation type="unfinished"></translation>
+        <translation>Téléchargement de la liste des langues… Vous pouvez continuer en anglais maintenant et changer de langue à tout moment — la liste se remplit d&amp;#39;elle-même.</translation>
     </message>
     <message>
         <location line="-22"/>
@@ -6795,7 +6877,7 @@ Vous pourrez changer les paramètres Java dans les paramètres plus tard.
     <message>
         <location line="+45"/>
         <source>Graphics hardware warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Avertissement matériel graphique</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -6804,32 +6886,36 @@ Vous pourrez changer les paramètres Java dans les paramètres plus tard.
 Detected: %1
 
 Recent Minecraft versions need a working OpenGL driver. Without one, the game usually crashes right after it starts.</source>
-        <translation type="unfinished"></translation>
+        <translation>Votre carte graphique ou son pilote est peut-être trop ancien pour Minecraft.
+
+Détecté : %1
+
+Les versions récentes de Minecraft nécessitent un pilote OpenGL fonctionnel. Sans cela, le jeu plante généralement juste après le démarrage.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>You can update your graphics driver, or turn on software rendering, which works on almost any PC but is slow. If the game already runs fine for you, choose Launch Anyway.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous pouvez mettre à jour votre pilote graphique, ou activer le rendu logiciel, qui fonctionne sur presque n&amp;#39;importe quel PC mais est lent. Si le jeu fonctionne déjà bien pour vous, choisissez Lancer quand même.</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Use Software Rendering</source>
-        <translation type="unfinished"></translation>
+        <translation>Utiliser le rendu logiciel</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Driver Guide...</source>
-        <translation type="unfinished"></translation>
+        <translation>Guide des pilotes...</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Launch Anyway</source>
-        <translation type="unfinished"></translation>
+        <translation>Lancer quand même</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Don&apos;t show this again</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne plus afficher ceci</translation>
     </message>
     <message>
         <location line="+91"/>
@@ -7118,7 +7204,7 @@ Vous devrez peut-être réparer vos mods car le jeu est toujours en train de gé
     <message>
         <location line="-43"/>
         <source>By &amp;time played</source>
-        <translation type="unfinished"></translation>
+        <translation>Par &amp;amp;temps de jeu</translation>
     </message>
     <message>
         <location line="+26"/>
@@ -7128,42 +7214,42 @@ Vous devrez peut-être réparer vos mods car le jeu est toujours en train de gé
     <message>
         <location line="+81"/>
         <source>Update behavior</source>
-        <translation type="unfinished"></translation>
+        <translation>Comportement de mise à jour</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Always: install updates automatically. Ask: prompt before installing. Never: do not check.</source>
-        <translation type="unfinished"></translation>
+        <translation>Toujours : installer les mises à jour automatiquement. Demander : demander avant d&amp;#39;installer. Jamais : ne pas vérifier.</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Install automatically (recommended)</source>
-        <translation type="unfinished"></translation>
+        <translation>Installer automatiquement (recommandé)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Always</source>
-        <translation type="unfinished"></translation>
+        <translation>Toujours</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Ask before installing</source>
-        <translation type="unfinished"></translation>
+        <translation>Demander avant d&amp;#39;installer</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ask</source>
-        <translation type="unfinished"></translation>
+        <translation>Demander</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Never check for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne jamais vérifier les mises à jour</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Jamais</translation>
     </message>
     <message>
         <location line="+78"/>
@@ -7183,12 +7269,12 @@ Vous devrez peut-être réparer vos mods car le jeu est toujours en train de gé
     <message>
         <location line="+7"/>
         <source>When enabled, the launcher shares the name of your running instance with Discord Rich Presence. Turning this off hides launcher activity from your Discord status.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lorsqu&amp;#39;il est activé, le lanceur partage le nom de votre instance en cours avec Discord Rich Presence. Désactiver ceci masque l&amp;#39;activité du lanceur dans votre statut Discord.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Show what you&apos;re playing on Discord</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher ce à quoi vous jouez sur Discord</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -7223,7 +7309,7 @@ Vous devrez peut-être réparer vos mods car le jeu est toujours en train de gé
     <message>
         <location line="+116"/>
         <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Les mises à jour sont obligatoires : le lanceur vérifie au démarrage et toutes les 30 minutes.</translation>
     </message>
     <message>
         <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+32"/>
@@ -7436,12 +7522,12 @@ Il est recommandé d&apos;accorder à %1 un accès à ce répertoire via Flatsea
     <message>
         <location line="+35"/>
         <source>Could not set the Windows GPU preference for this Java installation; launching anyway.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de définir la préférence GPU Windows pour cette installation Java ; lancement quand même.</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Could not clear the Windows GPU preference for this Java installation; launching anyway.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&amp;#39;effacer la préférence GPU Windows pour cette installation Java ; lancement quand même.</translation>
     </message>
     <message>
         <location line="+76"/>
@@ -7916,12 +8002,12 @@ Vous devrez corriger ce problème manuellement.</translation>
     <message>
         <location line="-89"/>
         <source>%1 GiB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Gio</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 MiB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Mio</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -7931,12 +8017,12 @@ Vous devrez corriger ce problème manuellement.</translation>
     <message>
         <location line="+17"/>
         <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
-        <translation type="unfinished"></translation>
+        <translation>Espace libre insuffisant pour extraire %1 : environ %2 sont nécessaires, mais seulement %3 sont libres sur %4.</translation>
     </message>
     <message>
         <location line="+60"/>
         <source>Failed to extract file %1 to %2%3</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de l&amp;#39;extraction du fichier %1 vers %2%3</translation>
     </message>
     <message>
         <source>Failed to extract file %1 to %2</source>
@@ -8142,12 +8228,12 @@ Vous devrez corriger ce problème manuellement.</translation>
     <message>
         <location line="+14"/>
         <source>What&apos;s New...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouveautés...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Browse what changed in each release of %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Parcourir les changements de chaque version de %1.</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -8182,32 +8268,32 @@ Vous devrez corriger ce problème manuellement.</translation>
     <message>
         <location line="+122"/>
         <source>Save as &amp;Template...</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer comme &amp;amp;modèle...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Save the selected instance (loader, mods, configs and settings) as a reusable template.</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer l&amp;#39;instance sélectionnée (chargeur, mods, configurations et paramètres) comme modèle réutilisable.</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>New from &amp;Template...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouvelle depuis un &amp;amp;modèle...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Create a new instance from a saved template.</source>
-        <translation type="unfinished"></translation>
+        <translation>Créer une nouvelle instance à partir d&amp;#39;un modèle enregistré.</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Update &amp;All Instances...</source>
-        <translation type="unfinished"></translation>
+        <translation>Mettre à jour &amp;amp;toutes les instances...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Check and install mod updates for every instance in one go.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérifier et installer les mises à jour de mods pour chaque instance en une seule fois.</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -8242,27 +8328,27 @@ Vous devrez corriger ce problème manuellement.</translation>
     <message>
         <location line="+11"/>
         <source>&amp;Pin Instance</source>
-        <translation type="unfinished"></translation>
+        <translation>É&amp;amp;pingler l&amp;#39;instance</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Keep the selected instance at the top of its group.</source>
-        <translation type="unfinished"></translation>
+        <translation>Garder l&amp;#39;instance sélectionnée en haut de son groupe.</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Chec&amp;k Instance</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérifier l&amp;#39;&amp;amp;instance</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Copy &amp;Diagnostics</source>
-        <translation type="unfinished"></translation>
+        <translation>Copier les &amp;amp;diagnostics</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Copy the launcher version, system, Qt and Java information to the clipboard, ready to paste into a support chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>Copier la version du lanceur, le système, Qt et les informations Java dans le presse-papiers, prêt à être collé dans un salon d&amp;#39;assistance.</translation>
     </message>
     <message>
         <location line="+122"/>
@@ -8350,67 +8436,67 @@ Voulez-vous vraiment continuer&#x202f;?</translation>
     <message>
         <location line="+339"/>
         <source>Check instance</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérifier l&amp;#39;instance</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This kind of instance cannot be checked automatically.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ce type d&amp;#39;instance ne peut pas être vérifié automatiquement.</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Report a Bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Signaler un bug</translation>
     </message>
     <message>
         <location line="+15"/>
         <source> (commit %1)</source>
-        <translation type="unfinished"></translation>
+        <translation> (commit %1)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Launcher: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Lanceur : %1</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Platform: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Plateforme : %1</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>System: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Système : %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>CPU architecture: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Architecture CPU : %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Qt: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt : %1</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>Java: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Java : %1</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>not set</source>
-        <translation type="unfinished"></translation>
+        <translation>non défini</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Java (instance &quot;%1&quot;): %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Java (instance « %1 ») : %2</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Diagnostics copied to the clipboard - paste it into a support chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>Diagnostics copiés dans le presse-papiers — collez-les dans un salon d&amp;#39;assistance.</translation>
     </message>
     <message>
         <location line="+64"/>
@@ -8822,7 +8908,7 @@ Veuillez créer une nouvelle instance avant d&apos;essayer d&apos;installer à n
     <message>
         <location line="+343"/>
         <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cela ressemble à un problème lié à %1, et non à un bug du lanceur. Voici comment le résoudre :</translation>
     </message>
     <message>
         <location line="+589"/>
@@ -8838,27 +8924,27 @@ Veuillez créer une nouvelle instance avant d&apos;essayer d&apos;installer à n
         <location line="-1107"/>
         <location line="+150"/>
         <source>Update on your bug report</source>
-        <translation type="unfinished"></translation>
+        <translation>Mise à jour sur votre signalement</translation>
     </message>
     <message>
         <location line="-149"/>
         <source>&quot;%1&quot;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>« %1 » : %2</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Updates on your bug reports</source>
-        <translation type="unfinished"></translation>
+        <translation>Mises à jour sur vos signalements</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 of your reports have news.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 de vos signalements ont du nouveau.</translation>
     </message>
     <message>
         <location line="+147"/>
         <source>&quot;Sample report&quot;: Seen - the team is looking into it</source>
-        <translation type="unfinished"></translation>
+        <translation>« Exemple de signalement » : Vu — l&amp;#39;équipe examine le problème</translation>
     </message>
     <message>
         <location line="+945"/>
@@ -8972,7 +9058,7 @@ Veuillez créer une nouvelle instance avant d&apos;essayer d&apos;installer à n
     <message>
         <location line="-391"/>
         <source>What&apos;s New Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Barre d&amp;#39;outils Nouveautés</translation>
     </message>
     <message>
         <location line="+195"/>
@@ -9007,19 +9093,19 @@ Veuillez créer une nouvelle instance avant d&apos;essayer d&apos;installer à n
     <message>
         <location line="+177"/>
         <source>Look for missing Java, broken or conflicting mods, a wrong loader version or too little memory/disk space before launching.</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechercher un Java manquant, des mods corrompus ou en conflit, une mauvaise version de chargeur ou un manque de mémoire/espace disque avant le lancement.</translation>
     </message>
     <message>
         <location line="+30"/>
         <location filename="../launcher/ui/MainWindow.cpp" line="-860"/>
         <location line="+136"/>
         <source>My Reports</source>
-        <translation type="unfinished"></translation>
+        <translation>Mes signalements</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>See what the team answered to the bug reports you sent from this launcher.</source>
-        <translation type="unfinished"></translation>
+        <translation>Consultez les réponses de l&amp;#39;équipe aux signalements de bug que vous avez envoyés depuis ce lanceur.</translation>
     </message>
     <message>
         <location line="+44"/>
@@ -9604,7 +9690,7 @@ Assurez-vous également que l&apos;URL est fiable.
     <message>
         <location line="+158"/>
         <source>Sets Windows&apos; GPU preference for this Java installation to High performance. Affects every app using the same javaw.exe.</source>
-        <translation type="unfinished"></translation>
+        <translation>Définit la préférence GPU Windows de cette installation Java sur Hautes performances. Affecte toutes les applications utilisant le même javaw.exe.</translation>
     </message>
     <message>
         <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.ui" line="-582"/>
@@ -9897,17 +9983,17 @@ Il est fort probable que vous deviez modifier le chemin d&apos;accès - veuillez
     <message>
         <location line="+96"/>
         <source>Runs OpenGL on the CPU (Mesa llvmpipe). Use this only if Minecraft crashes at startup because your graphics hardware or driver is too old or missing. It works on almost any PC but is slow. The renderer (about 40 MB) is downloaded once on the first launch.</source>
-        <translation type="unfinished"></translation>
+        <translation>Exécute OpenGL sur le CPU (Mesa llvmpipe). N&amp;#39;utilisez ceci que si Minecraft plante au démarrage parce que votre matériel ou pilote graphique est trop ancien ou manquant. Cela fonctionne sur presque n&amp;#39;importe quel PC mais est lent. Le moteur de rendu (environ 40 Mo) est téléchargé une fois au premier lancement.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Use software rendering (slow, for PCs without a working graphics driver)</source>
-        <translation type="unfinished"></translation>
+        <translation>Utiliser le rendu logiciel (lent, pour les PC sans pilote graphique fonctionnel)</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Graphics driver guide...</source>
-        <translation type="unfinished"></translation>
+        <translation>Guide des pilotes graphiques...</translation>
     </message>
     <message>
         <location line="+38"/>
@@ -9925,76 +10011,85 @@ Il est fort probable que vous deviez modifier le chemin d&apos;accès - veuillez
     <message>
         <location filename="../launcher/minecraft/mod/ModConflictChecker.cpp" line="+338"/>
         <source>unknown version</source>
-        <translation type="unfinished"></translation>
+        <translation>version inconnue</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Duplicate mod: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Mod en double : %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>These files all provide the mod id &quot;%1&quot;, and the game will not start with more than one of them:
 %2
 Keep only one (usually the newest) and delete or disable the others.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ces fichiers fournissent tous l&amp;#39;identifiant de mod « %1 », et le jeu ne démarrera pas avec plus d&amp;#39;un d&amp;#39;entre eux :
+%2
+Gardez-en un seul (généralement le plus récent) et supprimez ou désactivez les autres.</translation>
     </message>
     <message>
         <location line="+28"/>
         <source>%1 conflicts with %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 entre en conflit avec %2</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 (%2) says it is incompatible with %3 (%4), and both are enabled.
 Disable or remove one of them.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2) indique être incompatible avec %3 (%4), et les deux sont activés.
+Désactivez ou supprimez l&amp;#39;un d&amp;#39;eux.</translation>
     </message>
     <message>
         <location line="+58"/>
         <source>Disabled dependency: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Dépendance désactivée : %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 needs the mod &quot;%2&quot;, which is installed (%3) but disabled.
 Enable it to avoid a crash on startup.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 nécessite le mod « %2 », qui est installé (%3) mais désactivé.
+Activez-le pour éviter un plantage au démarrage.</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Possibly missing dependency: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Dépendance potentiellement manquante : %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 needs a mod with the id &quot;%2&quot;, but it was not found in the mods folder or bundled inside any of the installed mods.
 Download it, unless the game already starts fine.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 nécessite un mod avec l&amp;#39;identifiant « %2 », mais il n&amp;#39;a pas été trouvé dans le dossier mods ni intégré dans aucun des mods installés.
+Téléchargez-le, à moins que le jeu ne démarre déjà sans problème.</translation>
     </message>
     <message>
         <location line="+46"/>
         <source>Outdated bundled dependency version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Version de dépendance intégrée obsolète : %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 (%2) requires %3 version %4, but the copy bundled inside %5 (%6) is version %7.
 The game will refuse to start with this combination.
 Update the mod that bundles it, or install a separate copy inside that range.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2) nécessite %3 version %4, mais la copie intégrée dans %5 (%6) est en version %7.
+Le jeu refusera de démarrer avec cette combinaison.
+Mettez à jour le mod qui l&amp;#39;intègre, ou installez une copie séparée dans cette plage.</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>Outdated dependency version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Version de dépendance obsolète : %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 (%2) requires %3 version %4, but %5 (%6) is installed.
 The game will refuse to start with this combination.
 Update or replace the dependency with a version inside that range.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2) nécessite %3 version %4, mais %5 (%6) est installé.
+Le jeu refusera de démarrer avec cette combinaison.
+Mettez à jour ou remplacez la dépendance par une version dans cette plage.</translation>
     </message>
 </context>
 <context>
@@ -10498,14 +10593,14 @@ Les anciens fichiers ne peuvent pas être supprimés car ils sont en cours d&apo
     <message>
         <location line="+20"/>
         <source>There are no mods to check for updates.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il n&amp;#39;y a aucun mod dont vérifier les mises à jour.</translation>
     </message>
     <message numerus="yes">
         <location line="+23"/>
         <source>No updates were found, but %n mod(s) could not be checked.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Aucune mise à jour trouvée, mais %n mod n&amp;#39;a pas pu être vérifié.</numerusform>
+            <numerusform>Aucune mise à jour trouvée, mais %n mods n&amp;#39;ont pas pu être vérifiés.</numerusform>
         </translation>
     </message>
     <message>
@@ -10518,7 +10613,7 @@ Are you sure?</source>
     <message>
         <location line="+126"/>
         <source>No mod loader was installed. Please try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun chargeur de mods n&amp;#39;a été installé. Veuillez réessayer.</translation>
     </message>
     <message>
         <location line="-378"/>
@@ -10609,17 +10704,17 @@ Are you sure you want to do this?</source>
     <message>
         <location filename="../launcher/voice/ModelDownloader.cpp" line="+121"/>
         <source>Download language model?</source>
-        <translation type="unfinished"></translation>
+        <translation>Télécharger le modèle de langue ?</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Natural language commands need a one-time download of about 130 MB (the intent classifier, vocabulary, and command labels). It is stored on this device and works offline afterwards. Download now?</source>
-        <translation type="unfinished"></translation>
+        <translation>Les commandes en langage naturel nécessitent un téléchargement unique d&amp;#39;environ 130 Mo (le classifieur d&amp;#39;intention, le vocabulaire et les libellés de commandes). Il est stocké sur cet appareil et fonctionne hors ligne ensuite. Télécharger maintenant ?</translation>
     </message>
     <message>
         <location line="+153"/>
         <source>Language model files</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers du modèle de langue</translation>
     </message>
 </context>
 <context>
@@ -10738,24 +10833,27 @@ Veuillez mettre à jour %1&#xa0;!</translation>
         <location line="-29"/>
         <source>These files were part of the pack before, but you replaced them with another version of the same mod, so they are not downloaded again:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ces fichiers faisaient partie du pack auparavant, mais vous les avez remplacés par une autre version du même mod, ils ne sont donc pas retéléchargés :
+%1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>These files were extra copies of mods the pack already provides, so they are removed:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ces fichiers étaient des copies supplémentaires de mods que le pack fournit déjà, ils sont donc supprimés :
+%1</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>These files were part of the pack before, but are no longer on disk (perhaps they were updated or removed individually), so they will be downloaded again:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ces fichiers faisaient partie du pack auparavant, mais ne sont plus sur le disque (peut-être ont-ils été mis à jour ou supprimés individuellement), ils seront donc retéléchargés :
+%1</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>We couldn&apos;t find a usable index file for the older version. This may cause some of the files to be duplicated. Do you want to continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>Nous n&amp;#39;avons pas pu trouver de fichier d&amp;#39;index utilisable pour l&amp;#39;ancienne version. Cela peut entraîner la duplication de certains fichiers. Voulez-vous continuer ?</translation>
     </message>
     <message>
         <location line="+45"/>
@@ -10815,7 +10913,7 @@ Veuillez mettre à jour %1&#xa0;!</translation>
     <message>
         <location line="+134"/>
         <source>Could not parse versions response: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&amp;#39;analyser la réponse des versions : %1</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -10955,43 +11053,43 @@ Veuillez mettre à jour %1&#xa0;!</translation>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+162"/>
         <location line="+4"/>
         <source>My Reports</source>
-        <translation type="unfinished"></translation>
+        <translation>Mes signalements</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Bug reports and suggestions you sent from this launcher, and what the team answered.</source>
-        <translation type="unfinished"></translation>
+        <translation>Signalements de bugs et suggestions que vous avez envoyés depuis ce lanceur, et les réponses de l&amp;#39;équipe.</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>No reports yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun signalement pour l&amp;#39;instant</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>When you send a bug report or suggestion from this launcher, it shows up here, and you will be told when the team answers.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lorsque vous envoyez un signalement de bug ou une suggestion depuis ce lanceur, il apparaît ici, et vous serez averti lorsque l&amp;#39;équipe répondra.</translation>
     </message>
     <message>
         <location line="+11"/>
         <location line="+25"/>
         <source>Check for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérifier les mises à jour</translation>
     </message>
     <message>
         <location line="-24"/>
         <source>Close</source>
-        <translation type="unfinished">Fermer</translation>
+        <translation>Fermer</translation>
     </message>
     <message>
         <location line="+25"/>
         <source>Last checked: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Dernière vérification : %1</translation>
     </message>
     <message>
         <location line="+32"/>
         <source>Checking…</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérification…</translation>
     </message>
 </context>
 <context>
@@ -11024,9 +11122,9 @@ Veuillez mettre à jour %1&#xa0;!</translation>
         <location line="+119"/>
         <source>Download was rate limited. Server asked to retry after %1 (%n second(s)).</source>
         <comment>seconds</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Le téléchargement a été limité. Le serveur a demandé de réessayer après %1 (%n seconde).</numerusform>
+            <numerusform>Le téléchargement a été limité. Le serveur a demandé de réessayer après %1 (%n secondes).</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -11070,7 +11168,7 @@ Veuillez mettre à jour %1&#xa0;!</translation>
     <message>
         <location filename="../launcher/net/NetJob.cpp" line="+168"/>
         <source>Could not abort every task in the network job</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&amp;#39;annuler toutes les tâches du travail réseau</translation>
     </message>
     <message>
         <location line="+26"/>
@@ -11087,7 +11185,7 @@ Veuillez mettre à jour %1&#xa0;!</translation>
     <message>
         <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.ui" line="+29"/>
         <source>A network operation failed: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Une opération réseau a échoué : %1</translation>
     </message>
     <message>
         <location line="+36"/>
@@ -11110,17 +11208,17 @@ Veuillez mettre à jour %1&#xa0;!</translation>
     <message>
         <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+72"/>
         <source>All %1 requests failed after %2 attempts</source>
-        <translation type="unfinished"></translation>
+        <translation>Les %1 requêtes ont toutes échoué après %2 tentatives</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Only %2 of %1 requests failed (after %3 attempts)</source>
-        <translation type="unfinished"></translation>
+        <translation>Seules %2 requêtes sur %1 ont échoué (après %3 tentatives)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Only %2 of %1 requests succeeded (after %3 attempts)</source>
-        <translation type="unfinished"></translation>
+        <translation>Seules %2 requêtes sur %1 ont réussi (après %3 tentatives)</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -11130,62 +11228,62 @@ Veuillez mettre à jour %1&#xa0;!</translation>
     <message>
         <location line="+4"/>
         <source>Report Bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Signaler un bug</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Send this error to the PollyMC developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Envoyer cette erreur aux développeurs de PollyMC</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Show details</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher les détails</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>This looks like antivirus software (or ransomware protection) blocking the launcher&apos;s temporary files. You can retry through a different temporary folder, or open the guide on letting your antivirus leave the launcher alone.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cela ressemble à un logiciel antivirus (ou une protection contre les rançongiciels) qui bloque les fichiers temporaires du lanceur. Vous pouvez réessayer via un autre dossier temporaire, ou ouvrir le guide pour empêcher votre antivirus de bloquer le lanceur.</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Retry with a different temp folder…</source>
-        <translation type="unfinished"></translation>
+        <translation>Réessayer avec un autre dossier temporaire…</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Pick a folder the launcher will use to stage downloads, then retry. Choose one that your antivirus does not watch, such as a folder in your home directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>Choisissez un dossier que le lanceur utilisera pour préparer les téléchargements, puis réessayez. Choisissez-en un que votre antivirus ne surveille pas, comme un dossier dans votre répertoire personnel.</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Open the antivirus exclusion guide</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir le guide d&amp;#39;exclusion antivirus</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Opens a guide explaining how to add the launcher to your antivirus exclusions.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvre un guide expliquant comment ajouter le lanceur aux exclusions de votre antivirus.</translation>
     </message>
     <message>
         <location line="+75"/>
         <source>This looks like a connection problem on your side, not a launcher bug. Please don&apos;t report it unless it keeps happening on a working connection.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cela ressemble à un problème de connexion de votre côté, pas à un bug du lanceur. Veuillez ne pas le signaler à moins que cela ne continue sur une connexion fonctionnelle.</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Show every URL that failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher toutes les URL ayant échoué</translation>
     </message>
     <message>
         <location line="+64"/>
         <source>Network error: %1</source>
-        <translation type="unfinished">Erreur réseau&#xa0;: %1</translation>
+        <translation>Erreur réseau : %1</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Pick a temporary download folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Choisir un dossier de téléchargement temporaire</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.ui" line="+14"/>
@@ -11278,106 +11376,108 @@ Veuillez mettre à jour %1&#xa0;!</translation>
     <message>
         <location filename="../launcher/ui/dialogs/NewInstanceFromTemplateDialog.cpp" line="+79"/>
         <source>Create instance from template</source>
-        <translation type="unfinished"></translation>
+        <translation>Créer une instance à partir d&amp;#39;un modèle</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Select a template to create a new instance from:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionnez un modèle à partir duquel créer une nouvelle instance :</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Name</source>
-        <translation type="unfinished">Nom</translation>
+        <translation>Nom</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>Créé le</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Minecraft version</source>
-        <translation type="unfinished">Version de Minecraft</translation>
+        <translation>Version de Minecraft</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Instance name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom de l&amp;#39;instance :</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Groupe :</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Change the new instance&apos;s icon.</source>
-        <translation type="unfinished"></translation>
+        <translation>Changer l&amp;#39;icône de la nouvelle instance.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Icon:</source>
-        <translation type="unfinished"></translation>
+        <translation>Icône :</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Create instance</source>
-        <translation type="unfinished"></translation>
+        <translation>Créer l&amp;#39;instance</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Cancel</source>
-        <translation type="unfinished">Annuler</translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location line="+4"/>
         <location line="+199"/>
         <source>Delete template</source>
-        <translation type="unfinished"></translation>
+        <translation>Supprimer le modèle</translation>
     </message>
     <message>
         <location line="-190"/>
         <source>No group</source>
-        <translation type="unfinished">Aucun groupe</translation>
+        <translation>Aucun groupe</translation>
     </message>
     <message>
         <location line="+78"/>
         <source>No templates found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun modèle trouvé.</translation>
     </message>
     <message>
         <location line="+54"/>
         <location line="+72"/>
         <source>Error</source>
-        <translation type="unfinished">Erreur</translation>
+        <translation>Erreur</translation>
     </message>
     <message>
         <location line="-69"/>
         <source>Task aborted</source>
-        <translation type="unfinished">Tâche annulée</translation>
+        <translation>Tâche annulée</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The task has been aborted by the user.</source>
-        <translation type="unfinished"></translation>
+        <translation>La tâche a été annulée par l&amp;#39;utilisateur.</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Abort</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location line="+52"/>
         <source>Are you sure you want to delete the template %1?
 This cannot be undone.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voulez-vous vraiment supprimer le modèle %1 ?
+Cette action est irréversible.</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Could not delete the template folder:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de supprimer le dossier du modèle :
+%1</translation>
     </message>
 </context>
 <context>
@@ -11779,7 +11879,7 @@ Cela peut être permanent et le fichier sera supprimé du dossier des logs.
     <message>
         <location filename="../launcher/minecraft/PackProfile.cpp" line="+364"/>
         <source>Component update aborted</source>
-        <translation type="unfinished"></translation>
+        <translation>Mise à jour des composants annulée</translation>
     </message>
     <message>
         <location line="+223"/>
@@ -11810,23 +11910,23 @@ Cela peut être permanent et le fichier sera supprimé du dossier des logs.
         <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+388"/>
         <location line="+44"/>
         <source>Search settings…</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechercher dans les paramètres…</translation>
     </message>
     <message>
         <location line="-43"/>
         <location line="+44"/>
         <source>Search all settings (Ctrl+F). Several words narrow the results down.</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechercher dans tous les paramètres (Ctrl+F). Plusieurs mots affinent les résultats.</translation>
     </message>
     <message>
         <location line="+297"/>
         <source>No settings match &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun paramètre ne correspond à « %1 »</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Try fewer or shorter words, or part of the setting&apos;s name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Essayez moins de mots, des mots plus courts, ou une partie du nom du paramètre.</translation>
     </message>
 </context>
 <context>
@@ -11875,107 +11975,107 @@ Cela peut être permanent et le fichier sera supprimé du dossier des logs.
     <message>
         <location filename="../launcher/ui/pages/instance/PerformancePage.cpp" line="+191"/>
         <source>Playtime</source>
-        <translation type="unfinished"></translation>
+        <translation>Temps de jeu</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Total time played:</source>
-        <translation type="unfinished"></translation>
+        <translation>Temps de jeu total :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Last session:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dernière session :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Last launched:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dernier lancement :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Launch count:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de lancements :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Reset playtime</source>
-        <translation type="unfinished"></translation>
+        <translation>Réinitialiser le temps de jeu</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Hardware</source>
-        <translation type="unfinished"></translation>
+        <translation>Matériel</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>CPU:</source>
-        <translation type="unfinished"></translation>
+        <translation>CPU :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Cores:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cœurs :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>RAM:</source>
-        <translation type="unfinished"></translation>
+        <translation>RAM :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>GPUs:</source>
-        <translation type="unfinished"></translation>
+        <translation>GPU :</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Game process</source>
-        <translation type="unfinished"></translation>
+        <translation>Processus du jeu</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Launch the game to see live statistics.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lancez le jeu pour voir les statistiques en direct.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>PID:</source>
-        <translation type="unfinished"></translation>
+        <translation>PID :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>CPU usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilisation CPU :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Memory usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilisation mémoire :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Uptime:</source>
-        <translation type="unfinished"></translation>
+        <translation>Temps d&amp;#39;activité :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>CPU usage is measured as a share of a single core and can exceed 100% on multi-core systems.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&amp;#39;utilisation CPU est mesurée en proportion d&amp;#39;un seul cœur et peut dépasser 100 % sur les systèmes multicœurs.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>CPU usage (%)</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilisation CPU (%)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Memory usage (MB)</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilisation mémoire (Mo)</translation>
     </message>
     <message>
         <location line="+37"/>
         <source>Confirm Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Confirmer la réinitialisation</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -11984,12 +12084,16 @@ The total time played, the last session and the launch count
 will be reset to zero.
 
 Are you sure you want to do this?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous êtes sur le point de réinitialiser les statistiques de temps de jeu de cette instance.
+Le temps de jeu total, la dernière session et le nombre de lancements
+seront remis à zéro.
+
+Voulez-vous vraiment faire cela ?</translation>
     </message>
     <message>
         <location line="+26"/>
         <source>never</source>
-        <translation type="unfinished"></translation>
+        <translation>jamais</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -11998,46 +12102,46 @@ Are you sure you want to do this?</source>
         <location line="+4"/>
         <location line="+53"/>
         <source>unknown</source>
-        <translation type="unfinished">inconnu</translation>
+        <translation>inconnu</translation>
     </message>
     <message>
         <location line="-63"/>
         <source>%1 GB total</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Go au total</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>, %1 GB available</source>
-        <translation type="unfinished"></translation>
+        <translation>, %1 Go disponibles</translation>
     </message>
     <message>
         <location line="+33"/>
         <location line="+1"/>
         <location line="+1"/>
         <source>not available on this platform</source>
-        <translation type="unfinished"></translation>
+        <translation>non disponible sur cette plateforme</translation>
     </message>
     <message>
         <location line="+6"/>
         <location line="+1"/>
         <location line="+1"/>
         <source>not running</source>
-        <translation type="unfinished"></translation>
+        <translation>non exécuté</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>%1%</source>
-        <translation type="unfinished"></translation>
+        <translation>%1%</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Mo</translation>
     </message>
     <message>
         <location filename="../launcher/ui/pages/instance/PerformancePage.h" line="+96"/>
         <source>Performance</source>
-        <translation type="unfinished"></translation>
+        <translation>Performances</translation>
     </message>
 </context>
 <context>
@@ -12059,7 +12163,7 @@ Are you sure you want to do this?</source>
     <message>
         <location line="+4"/>
         <source>Detected: %1 cores, %2 GB RAM</source>
-        <translation type="unfinished"></translation>
+        <translation>Détecté : %1 cœurs, %2 Go de RAM</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -12089,7 +12193,7 @@ Are you sure you want to do this?</source>
     <message>
         <location line="+21"/>
         <source>Apply hardware-tuned JVM arguments (Aikar&apos;s flags)</source>
-        <translation type="unfinished"></translation>
+        <translation>Appliquer des arguments JVM optimisés selon le matériel (drapeaux d&amp;#39;Aikar)</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -12109,7 +12213,17 @@ Minecraft will use this as -Xms (min) and -Xmx (max) JVM arguments.
 
 Aikar&apos;s flags fully replace the global JVM arguments. Instances that use their
 own Java arguments (Java tab of the instance settings) are not affected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Les préréglages de performances ajustent la quantité de RAM que Minecraft peut utiliser.
+
+- Bas : Idéal pour les ordinateurs portables avec 4 Go de RAM. Moins de mémoire = moins de chunks chargés.
+- Moyen : Adapté à la plupart des PC avec 8 Go de RAM.
+- Élevé : Pour les PC de jeu avec 16 Go+ de RAM. Plus de mémoire = plus de chunks et de mods.
+
+Ce sont des valeurs globales par défaut. Vous pouvez les remplacer par instance dans les paramètres de l&amp;#39;instance.
+Minecraft utilisera ceci comme arguments JVM -Xms (min) et -Xmx (max).
+
+Les drapeaux d&amp;#39;Aikar remplacent entièrement les arguments JVM globaux. Les instances qui utilisent leurs
+propres arguments Java (onglet Java des paramètres de l&amp;#39;instance) ne sont pas affectées.</translation>
     </message>
     <message>
         <location line="+74"/>
@@ -12120,7 +12234,13 @@ Best for: Laptops, 4GB RAM PCs
 Recommended for: Vanilla Minecraft, small modpacks
 Warning: Large modpacks may crash with out-of-memory
 JVM arguments: not modified (Aikar&apos;s flags need at least 3 GB)</source>
-        <translation type="unfinished"></translation>
+        <translation>Préréglage Bas
+-Xms%1m -Xmx%2m
+
+Idéal pour : Ordinateurs portables, PC avec 4 Go de RAM
+Recommandé pour : Minecraft Vanilla, petits modpacks
+Avertissement : Les gros modpacks peuvent planter par manque de mémoire
+Arguments JVM : non modifiés (les drapeaux d&amp;#39;Aikar nécessitent au moins 3 Go)</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -12131,7 +12251,13 @@ Best for: Desktop PCs, 8GB RAM
 Recommended for: Medium modpacks, shaders
 Good balance of performance and stability
 JVM arguments: Aikar&apos;s flags with 8M heap regions (if enabled)</source>
-        <translation type="unfinished"></translation>
+        <translation>Préréglage Moyen
+-Xms%1m -Xmx%2m
+
+Idéal pour : PC de bureau, 8 Go de RAM
+Recommandé pour : Modpacks moyens, shaders
+Bon équilibre entre performances et stabilité
+Arguments JVM : drapeaux d&amp;#39;Aikar avec régions de tas de 8 Mo (si activé)</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -12143,7 +12269,14 @@ Recommended for: Large modpacks, heavy shaders
 Maximum performance for demanding setups
 JVM arguments: Aikar&apos;s flags with 16M heap regions,
 string deduplication and AlwaysPreTouch (if enabled)</source>
-        <translation type="unfinished"></translation>
+        <translation>Préréglage Élevé
+-Xms%1m -Xmx%2m
+
+Idéal pour : PC de jeu, 16 Go+ de RAM
+Recommandé pour : Gros modpacks, shaders lourds
+Performances maximales pour les configurations exigeantes
+Arguments JVM : drapeaux d&amp;#39;Aikar avec régions de tas de 16 Mo,
+déduplication de chaînes et AlwaysPreTouch (si activé)</translation>
     </message>
     <message>
         <source>Performance presets adjust how much RAM Minecraft can use.
@@ -12225,115 +12358,118 @@ Performance maximale pour les configurations exigeantes</translation>
         <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+160"/>
         <location line="+129"/>
         <source>Update UI preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Aperçu de l&amp;#39;interface de mise à jour</translation>
     </message>
     <message>
         <location line="-129"/>
         <source>An update check is already running. Try again in a moment.</source>
-        <translation type="unfinished"></translation>
+        <translation>Une vérification des mises à jour est déjà en cours. Réessayez dans un instant.</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Checking for updates...</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérification des mises à jour...</translation>
     </message>
     <message>
         <location line="+34"/>
         <source>Failed to start the updater.
 Reason: %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec du démarrage du programme de mise à jour.
+Raison : %1.</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>The updater crashed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le programme de mise à jour a planté.</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>The updater did not finish within 60 seconds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le programme de mise à jour ne s&amp;#39;est pas terminé dans les 60 secondes.</translation>
     </message>
     <message>
         <location line="+43"/>
         <source>Update Check Failed</source>
-        <translation type="unfinished">Échec de la recherche de mises à jour</translation>
+        <translation>Échec de la vérification des mises à jour</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Update check failed: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de la vérification des mises à jour : %1</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>The updater did not report any release to show.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le programme de mise à jour n&amp;#39;a signalé aucune version à afficher.</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>No Update Available</source>
-        <translation type="unfinished">Aucune mise à jour disponible</translation>
+        <translation>Aucune mise à jour disponible</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>You are running the latest version.</source>
-        <translation type="unfinished">Vous utilisez la dernière version.</translation>
+        <translation>Vous utilisez la dernière version.</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Update Check Error</source>
-        <translation type="unfinished">Erreur de la recherche de mises à jour</translation>
+        <translation>Erreur de vérification des mises à jour</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>There was an error running the update check.</source>
-        <translation type="unfinished">Une erreur est survenue pendant la recherche de mises à jour.</translation>
+        <translation>Une erreur s&amp;#39;est produite lors de l&amp;#39;exécution de la vérification des mises à jour.</translation>
     </message>
     <message>
         <location line="+6"/>
         <location line="+31"/>
         <source>Update check failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de la vérification des mises à jour</translation>
     </message>
     <message>
         <location line="-9"/>
         <source>Unknown Update Error</source>
-        <translation type="unfinished">Erreur inconnue de mise à jour</translation>
+        <translation>Erreur de mise à jour inconnue</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The updater exited with an unknown condition.
 Exit Code: %1</source>
-        <translation type="unfinished">Le programme de mise à jour s&apos;est arrêté avec une condition inconnue.
+        <translation>Le programme de mise à jour s&amp;#39;est terminé avec une condition inconnue.
 Code de sortie : %1</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>StdOut: %1
 StdErr: %2</source>
-        <translation type="unfinished">StdOut : %1
+        <translation>StdOut : %1
 StdErr : %2</translation>
     </message>
     <message>
         <location line="+167"/>
         <source>Update %1 will be installed once the game is closed</source>
-        <translation type="unfinished"></translation>
+        <translation>La mise à jour %1 sera installée une fois le jeu fermé</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Update required</source>
-        <translation type="unfinished"></translation>
+        <translation>Mise à jour requise</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Version %1 is available and must be installed.
 
 The launcher will close, update, and start again.</source>
-        <translation type="unfinished"></translation>
+        <translation>La version %1 est disponible et doit être installée.
+
+Le lanceur va se fermer, se mettre à jour et redémarrer.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Update now</source>
-        <translation type="unfinished"></translation>
+        <translation>Mettre à jour maintenant</translation>
     </message>
     <message>
         <source>There are no new updates available.</source>
@@ -12345,87 +12481,87 @@ The launcher will close, update, and start again.</source>
     <message>
         <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="+100"/>
         <source>Use a custom path as application root (use &apos;.&apos; for current directory).</source>
-        <translation type="unfinished">Utiliser un chemin personnalisé en tant que racine de l&apos;application (utilisez &apos;.&apos; pour le répertoire actuel).</translation>
+        <translation>Utiliser un chemin personnalisé comme racine de l&amp;#39;application (utilisez « . » pour le répertoire actuel).</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>directory</source>
-        <translation type="unfinished">répertoire</translation>
+        <translation>répertoire</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Use this version as the installed launcher version. (provided because stdout can not be reliably captured on windows)</source>
-        <translation type="unfinished">Utilisez cette version comme version installée du launcher. (fourni parce que &quot;stdout&quot; ne peut pas être capturé de manière fiable sous Windows)</translation>
+        <translation>Utiliser cette version comme version installée du lanceur. (fourni car stdout ne peut pas être capturé de manière fiable sous Windows)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>installed launcher version</source>
-        <translation type="unfinished">version du launcher installée</translation>
+        <translation>version installée du lanceur</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>version name</source>
-        <translation type="unfinished">nom de la version</translation>
+        <translation>nom de version</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Update from the specified repo.</source>
-        <translation type="unfinished">Mise à jour à partir du dépôt spécifié.</translation>
+        <translation>Mettre à jour depuis le dépôt spécifié.</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>github repo url</source>
-        <translation type="unfinished">url du dépôt github</translation>
+        <translation>url du dépôt github</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Only check if an update is needed. Exit status 100 if true, 0 if false (or non 0 if there was an error).</source>
-        <translation type="unfinished">Ne vérifie que si une mise à jour est nécessaire. Statut de sortie 100 si vrai, 0 si faux (ou non 0 en cas d&apos;erreur).</translation>
+        <translation>Vérifier uniquement si une mise à jour est nécessaire. Code de sortie 100 si vrai, 0 si faux (ou différent de 0 en cas d&amp;#39;erreur).</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Allow updating to pre-release releases</source>
-        <translation type="unfinished">Permettre la mise à jour vers des versions pre-release</translation>
+        <translation>Autoriser la mise à jour vers les préversions</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Force an update, even if one is not needed.</source>
-        <translation type="unfinished">Forcer la mise à jour, même si aucune n&apos;est nécessaire.</translation>
+        <translation>Forcer une mise à jour, même si elle n&amp;#39;est pas nécessaire.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>List available releases.</source>
-        <translation type="unfinished">Liste des versions disponibles.</translation>
+        <translation>Lister les versions disponibles.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Together with --check-only: report the latest release even if it is not newer (exit status 100 if there is one).</source>
-        <translation type="unfinished"></translation>
+        <translation>Avec --check-only : signaler la dernière version même si elle n&amp;#39;est pas plus récente (code de sortie 100 s&amp;#39;il y en a une).</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Log debug to console.</source>
-        <translation type="unfinished">Enregistrer le débogage sur la console.</translation>
+        <translation>Journaliser le débogage dans la console.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Select the version to install with a GUI.</source>
-        <translation type="unfinished">Sélectionner la version à installer avec une interface graphique.</translation>
+        <translation>Sélectionner la version à installer avec une interface graphique.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Allow the updater to downgrade to previous versions.</source>
-        <translation type="unfinished">Autoriser l&apos;outil de mise à jour à rétrograder vers des versions antérieures.</translation>
+        <translation>Autoriser le programme de mise à jour à rétrograder vers des versions précédentes.</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Run without any UI (for automatic updates). Errors go to stderr and the update log.</source>
-        <translation type="unfinished"></translation>
+        <translation>Exécuter sans aucune interface (pour les mises à jour automatiques). Les erreurs vont dans stderr et le journal de mise à jour.</translation>
     </message>
     <message>
         <location line="+84"/>
         <source>The launcher data folder is not writable!</source>
-        <translation type="unfinished">Le dossier de données du launcher n&apos;est pas accessible en écriture&#x202f;!</translation>
+        <translation>Le dossier de données du lanceur n&amp;#39;est pas accessible en écriture !</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -12435,173 +12571,175 @@ Make sure you have write permissions to the data folder.
 (%2)
 
 The updater cannot continue until you fix this problem.</source>
-        <translation type="unfinished">Impossible de créer un fichier journal lors de la mise à jour&#xa0;: %1.
+        <translation>Le programme de mise à jour n&amp;#39;a pas pu créer de fichier journal - %1.
 
-Veuillez vérifier que vous disposez des droits d&apos;écriture sur le dossier de données.
+Assurez-vous d&amp;#39;avoir les permissions d&amp;#39;écriture sur le dossier de données.
 (%2)
 
-La mise à jour ne peut pas se poursuivre tant que ce problème n&apos;est pas résolu.</translation>
+Le programme de mise à jour ne peut pas continuer tant que ce problème n&amp;#39;est pas résolu.</translation>
     </message>
     <message>
         <location line="+101"/>
         <source>MacOS Not Supported</source>
-        <translation type="unfinished">MacOS n&apos;est pas pris en charge</translation>
+        <translation>macOS non pris en charge</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The updater does not support installations on MacOS</source>
-        <translation type="unfinished">L&apos;outil de mise à jour ne prend pas en charge les installations sur MacOS</translation>
+        <translation>Le programme de mise à jour ne prend pas en charge les installations sur macOS</translation>
     </message>
     <message>
         <location line="+7"/>
         <location line="+13"/>
         <source>Unsupported Installation</source>
-        <translation type="unfinished">Installation non prise en charge</translation>
+        <translation>Installation non prise en charge</translation>
     </message>
     <message>
         <location line="-12"/>
         <source>Updater is running as misconfigured AppImage? ($APPIMAGE environment variable is missing)</source>
-        <translation type="unfinished">L&apos;outil de mise à jour s&apos;exécute en tant qu&apos;AppImage mal configurée ? (la variable d&apos;environnement $APPIMAGE est manquante)</translation>
+        <translation>Le programme de mise à jour s&amp;#39;exécute en tant qu&amp;#39;AppImage mal configurée ? (La variable d&amp;#39;environnement $APPIMAGE est manquante)</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>The updater can not find the main executable.</source>
-        <translation type="unfinished">L&apos;outil de mise à jour ne trouve pas d&apos;exécutable principal.</translation>
+        <translation>Le programme de mise à jour ne trouve pas l&amp;#39;exécutable principal.</translation>
     </message>
     <message>
         <location line="+149"/>
         <source>Updating flatpack not supported</source>
-        <translation type="unfinished">La mise à jour du Flatpack n&apos;est pas prise en charge</translation>
+        <translation>Mise à jour Flatpak non prise en charge</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Actions outside of checking if an update is available are not supported when running the flatpak version of PollyMC-Continued.</source>
-        <translation type="unfinished">Les actions autres que la vérification d&apos;une mise à jour ne sont pas prises en charge lors de l&apos;exécution de la version flatpak de PollyMC-Continued.</translation>
+        <translation>Les actions autres que la vérification de disponibilité d&amp;#39;une mise à jour ne sont pas prises en charge lors de l&amp;#39;exécution de la version Flatpak de PollyMC-Continued.</translation>
     </message>
     <message>
         <location line="+57"/>
         <location line="+486"/>
         <source>Reading manifest from %1</source>
-        <translation type="unfinished">Lecture du manifeste de %1</translation>
+        <translation>Lecture du manifeste depuis %1</translation>
     </message>
     <message>
         <location line="-474"/>
         <source>Manifest empty, making best guess of the directory contents of %1</source>
-        <translation type="unfinished">Manifeste vide, meilleure estimation du contenu du répertoire %1</translation>
+        <translation>Manifeste vide, meilleure estimation du contenu du répertoire de %1</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Installing the following to %1 :
  %2</source>
-        <translation type="unfinished">Installation des éléments suivants dans %1 :
+        <translation>Installation de ce qui suit dans %1 :
  %2</translation>
     </message>
     <message>
         <location line="+4"/>
         <location line="+8"/>
         <source>Installing from %1</source>
-        <translation type="unfinished">Installation depuis %1</translation>
+        <translation>Installation depuis %1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Installing %1 from %2</source>
-        <translation type="unfinished">Installation de %1 depuis %2</translation>
+        <translation>Installation de %1 depuis %2</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Failed copy %1 to %2</source>
-        <translation type="unfinished">Échec de la copie de %1 vers %2</translation>
+        <translation>Échec de la copie de %1 vers %2</translation>
     </message>
     <message>
         <location line="+15"/>
         <location line="+507"/>
         <source>File doesn&apos;t exist, ignoring: %1</source>
-        <translation type="unfinished">Le fichier n&apos;existe pas, ignorer : %1</translation>
+        <translation>Le fichier n&amp;#39;existe pas, ignoré : %1</translation>
     </message>
     <message>
         <location line="-491"/>
         <source>There were errors installing the update.</source>
-        <translation type="unfinished">Des erreurs se sont produites lors de l&apos;installation de la mise à jour.</translation>
+        <translation>Des erreurs sont survenues lors de l&amp;#39;installation de la mise à jour.</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Update succeed.</source>
-        <translation type="unfinished">Mise à jour réussie.</translation>
+        <translation>Mise à jour réussie.</translation>
     </message>
     <message>
         <location line="+180"/>
         <source>No Valid Release Assets</source>
-        <translation type="unfinished">Aucun élément de mise à jour valide</translation>
+        <translation>Aucun actif de version valide</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Github release %1 has no valid assets for this platform: %2</source>
-        <translation type="unfinished">La version Github %1 n&apos;a pas de ressources valides pour cette plateforme : %2</translation>
+        <translation>La version GitHub %1 n&amp;#39;a aucun actif valide pour cette plateforme : %2</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>%1 portable: %2</source>
-        <translation type="unfinished">%1 portable : %2</translation>
+        <translation>%1 portable : %2</translation>
     </message>
     <message>
         <location line="+0"/>
         <location line="+179"/>
         <source>yes</source>
-        <translation type="unfinished">oui</translation>
+        <translation>oui</translation>
     </message>
     <message>
         <location line="-179"/>
         <location line="+179"/>
         <source>no</source>
-        <translation type="unfinished">non</translation>
+        <translation>non</translation>
     </message>
     <message>
         <location line="-171"/>
         <source>No version selected.</source>
-        <translation type="unfinished">Aucune version sélectionnée.</translation>
+        <translation>Aucune version sélectionnée.</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>No version was selected.</source>
-        <translation type="unfinished">Aucune version n&apos;a été sélectionnée.</translation>
+        <translation>Aucune version n&amp;#39;a été sélectionnée.</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Failed to Download</source>
-        <translation type="unfinished">Échec du téléchargement</translation>
+        <translation>Échec du téléchargement</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Failed to download the selected asset.</source>
-        <translation type="unfinished">Échec du téléchargement de la ressource sélectionnée.</translation>
+        <translation>Échec du téléchargement de l&amp;#39;actif sélectionné.</translation>
     </message>
     <message>
         <location line="+114"/>
         <source>Update lock present, aborting silent update.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verrou de mise à jour présent, annulation de la mise à jour silencieuse.</translation>
     </message>
     <message>
         <location line="+1"/>
         <location line="+26"/>
         <source>Update Aborted</source>
-        <translation type="unfinished">Mise à jour annulée</translation>
+        <translation>Mise à jour annulée</translation>
     </message>
     <message>
         <location line="-26"/>
         <source>A previous update lock file is present.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un fichier de verrouillage de mise à jour précédent est présent.</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Update interrupted</source>
-        <translation type="unfinished"></translation>
+        <translation>Mise à jour interrompue</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other update is running. To delete the lock file and continue anyway, select &quot;Ignore&quot; below.</source>
-        <translation type="unfinished"></translation>
+        <translation>Une tentative de mise à jour précédente a été interrompue, un fichier de verrouillage de mise à jour est donc toujours présent.
+
+Assurez-vous qu&amp;#39;aucune autre mise à jour n&amp;#39;est en cours. Pour supprimer le fichier de verrouillage et continuer quand même, sélectionnez « Ignorer » ci-dessous.</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -12611,103 +12749,108 @@ Updating from version %3 to %4
 Target install path: %5
 Data path: %6
 Updater log: %7</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichier de verrouillage : %1
+Horodatage : %2
+Mise à jour de la version %3 vers %4
+Chemin d&amp;#39;installation cible : %5
+Chemin des données : %6
+Journal de mise à jour : %7</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Ignoring stale update lock file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichier de verrouillage de mise à jour obsolète ignoré %1</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>The update attempt was aborted</source>
-        <translation type="unfinished">La tentative de mise à jour a été annulée</translation>
+        <translation>La tentative de mise à jour a été annulée</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Updating from %1 to %2</source>
-        <translation type="unfinished">Mise à jour depuis %1 vers %2</translation>
+        <translation>Mise à jour de %1 vers %2</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Updating portable install at %1</source>
-        <translation type="unfinished">Mise à jour de l&apos;installation portable à %1</translation>
+        <translation>Mise à jour de l&amp;#39;installation portable dans %1</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Running installer file at %1</source>
-        <translation type="unfinished">Lancement du fichier d&apos;installation à %1</translation>
+        <translation>Exécution du fichier d&amp;#39;installation dans %1</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Process start result: %1</source>
-        <translation type="unfinished">Résultat du démarrage du processus : %1</translation>
+        <translation>Résultat du démarrage du processus : %1</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Backing up install</source>
-        <translation type="unfinished">Sauvegarde de l&apos;installation</translation>
+        <translation>Sauvegarde de l&amp;#39;installation</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Starting new updater at &apos;%1&apos;</source>
-        <translation type="unfinished">Lancement de l&apos;outil de mise à jour à &apos;%1&apos;</translation>
+        <translation>Démarrage du nouveau programme de mise à jour dans « %1 »</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Failed to launch &apos;%1&apos; %2</source>
-        <translation type="unfinished">Échec du lancement de &apos;%1&apos; %2</translation>
+        <translation>Échec du lancement de « %1 » %2</translation>
     </message>
     <message>
         <location line="+50"/>
         <source>Backing up:
   %1</source>
-        <translation type="unfinished">Sauvegarde :
+        <translation>Sauvegarde de :
   %1</translation>
     </message>
     <message>
         <location line="+10"/>
         <location line="+7"/>
         <source>Backing up install at %1</source>
-        <translation type="unfinished">Sauvegarde de l&apos;installation à %1</translation>
+        <translation>Sauvegarde de l&amp;#39;installation dans %1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Backing up and then removing %1</source>
-        <translation type="unfinished">Sauvegarde et suppression de %1</translation>
+        <translation>Sauvegarde puis suppression de %1</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Failed to backup %1 to %2</source>
-        <translation type="unfinished">Échec de la sauvegarde de %1 vers %2</translation>
+        <translation>Échec de la sauvegarde de %1 vers %2</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Failed to remove %1</source>
-        <translation type="unfinished">Échec de la suppression de %1</translation>
+        <translation>Échec de la suppression de %1</translation>
     </message>
     <message>
         <location line="+39"/>
         <source>Extracted the following to &quot;%1&quot;:
   %2</source>
-        <translation type="unfinished">Extraction des éléments suivants dans &quot;%1&quot; :
+        <translation>Éléments extraits vers « %1 » :
   %2</translation>
     </message>
     <message>
         <location line="+2"/>
         <location line="+2"/>
         <source>Failed to extract %1 to %2</source>
-        <translation type="unfinished">Échec de l&apos;extraction de %1 vers %2</translation>
+        <translation>Échec de l&amp;#39;extraction de %1 vers %2</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Failed to launch child process to read version, using the built-in version instead.</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec du lancement du processus enfant pour lire la version, utilisation de la version intégrée à la place.</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Child launcher process did not finish in time, using the built-in version instead.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le processus enfant du lanceur ne s&amp;#39;est pas terminé à temps, utilisation de la version intégrée à la place.</translation>
     </message>
     <message>
         <source>Failed to Check Version</source>
@@ -13385,17 +13528,17 @@ Réfléchissez et choisissez votre nom d&apos;utilisateur&#xa0;:</translation>
     <message>
         <location line="+5"/>
         <source>Could not open %1 for reading: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&amp;#39;ouvrir %1 en lecture : %2</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Could not parse %1 as json: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&amp;#39;analyser %1 en JSON : %2</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>Could not parse %1: bad file format</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&amp;#39;analyser %1 : mauvais format de fichier</translation>
     </message>
     <message>
         <location filename="../launcher/ui/themes/DarkTheme.cpp" line="+51"/>
@@ -13520,14 +13663,16 @@ Procéder au découpage&#x202f;?</translation>
     <message>
         <location line="+5"/>
         <source>Cannot rename instance folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de renommer le dossier de l&amp;#39;instance</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The instance folder cannot be renamed while the instance is running.
 
 Only the instance name will be changed. The folder will keep its current name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le dossier de l&amp;#39;instance ne peut pas être renommé pendant que l&amp;#39;instance est en cours d&amp;#39;exécution.
+
+Seul le nom de l&amp;#39;instance sera modifié. Le dossier conservera son nom actuel.</translation>
     </message>
     <message>
         <location filename="../launcher/net/PasteUpload.cpp" line="+178"/>
@@ -14375,280 +14520,280 @@ Nouveau nom&#xa0;: %2</translation>
     <message>
         <location filename="../launcher/ui/pages/global/DeveloperPage.cpp" line="-153"/>
         <source>Developer tools</source>
-        <translation type="unfinished"></translation>
+        <translation>Outils de développement</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The star reminder schedule has been reset.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le calendrier du rappel d&amp;#39;étoile a été réinitialisé.</translation>
     </message>
     <message>
         <location filename="../launcher/net/BugReportUpload.cpp" line="+51"/>
         <source>Too many reports, please try again later.</source>
-        <translation type="unfinished"></translation>
+        <translation>Trop de signalements, veuillez réessayer plus tard.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The report could not be sent: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Le signalement n&amp;#39;a pas pu être envoyé : %1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>The report server returned an unexpected response.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le serveur de signalements a renvoyé une réponse inattendue.</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Signaler un bug</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Send this error to the PollyMC developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Envoyer cette erreur aux développeurs de PollyMC</translation>
     </message>
     <message>
         <location filename="../launcher/BugReportTracker.cpp" line="+264"/>
         <source>1 hour</source>
-        <translation type="unfinished"></translation>
+        <translation>1 heure</translation>
     </message>
     <message numerus="yes">
         <location line="+0"/>
         <source>%n minute(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n minute</numerusform>
+            <numerusform>%n minutes</numerusform>
         </translation>
     </message>
     <message>
         <location line="+1"/>
         <source>You are sending way too many reports. Please slow down and try again in about %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous envoyez beaucoup trop de signalements. Veuillez ralentir et réessayer dans environ %1.</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Waiting for a dev to check it</source>
-        <translation type="unfinished"></translation>
+        <translation>En attente d&amp;#39;un développeur pour vérifier</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Seen - the team is looking into it</source>
-        <translation type="unfinished"></translation>
+        <translation>Vu — l&amp;#39;équipe examine le problème</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>The team needs more information - please reach out on Discord</source>
-        <translation type="unfinished"></translation>
+        <translation>L&amp;#39;équipe a besoin de plus d&amp;#39;informations — veuillez nous contacter sur Discord</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>A fix is being worked on</source>
-        <translation type="unfinished"></translation>
+        <translation>Un correctif est en cours d&amp;#39;élaboration</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>The team couldn&apos;t reproduce it - more details would help</source>
-        <translation type="unfinished"></translation>
+        <translation>L&amp;#39;équipe n&amp;#39;a pas pu le reproduire — plus de détails aideraient</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Fixed - it will be in the next update</source>
-        <translation type="unfinished"></translation>
+        <translation>Corrigé — ce sera dans la prochaine mise à jour</translation>
     </message>
     <message>
         <location line="+2"/>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-199"/>
         <source>Fixed</source>
-        <translation type="unfinished"></translation>
+        <translation>Corrigé</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Fixed in version %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Corrigé dans la version %1</translation>
     </message>
     <message>
         <location line="+2"/>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+8"/>
         <source>Won&apos;t be fixed</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne sera pas corrigé</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Duplicate of another report</source>
-        <translation type="unfinished"></translation>
+        <translation>Doublon d&amp;#39;un autre signalement</translation>
     </message>
     <message>
         <location line="+2"/>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+4"/>
         <source>Not a bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Pas un bug</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Not caused by the launcher - most likely a mod, Java or the game</source>
-        <translation type="unfinished"></translation>
+        <translation>Non causé par le lanceur — très probablement un mod, Java ou le jeu</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Planned - it may come in a future update</source>
-        <translation type="unfinished"></translation>
+        <translation>Planifié — cela pourrait arriver dans une future mise à jour</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Added - thanks for the suggestion</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouté — merci pour la suggestion</translation>
     </message>
     <message>
         <location line="+1"/>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+1"/>
         <source>Updated</source>
-        <translation type="unfinished"></translation>
+        <translation>Mis à jour</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Crash</source>
-        <translation type="unfinished"></translation>
+        <translation>Plantage</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Suggestion</source>
-        <translation type="unfinished"></translation>
+        <translation>Suggestion</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Other</source>
-        <translation type="unfinished"></translation>
+        <translation>Autre</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Bug</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-23"/>
         <source>Waiting</source>
-        <translation type="unfinished"></translation>
+        <translation>En attente</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>In review</source>
-        <translation type="unfinished"></translation>
+        <translation>En cours d&amp;#39;examen</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Needs info</source>
-        <translation type="unfinished"></translation>
+        <translation>Infos requises</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>In progress</source>
-        <translation type="unfinished"></translation>
+        <translation>En cours</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Can&apos;t reproduce</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible à reproduire</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Planned</source>
-        <translation type="unfinished"></translation>
+        <translation>Planifié</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Added</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouté</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Not the launcher</source>
-        <translation type="unfinished"></translation>
+        <translation>Pas le lanceur</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Duplicate</source>
-        <translation type="unfinished"></translation>
+        <translation>Doublon</translation>
     </message>
     <message>
         <location line="+31"/>
         <source>NEW</source>
-        <translation type="unfinished"></translation>
+        <translation>NOUVEAU</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Sent</source>
-        <translation type="unfinished"></translation>
+        <translation>Envoyé</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>(no title)</source>
-        <translation type="unfinished"></translation>
+        <translation>(sans titre)</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>%1  ·  ID %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1  ·  ID %2</translation>
     </message>
     <message>
         <location line="+5"/>
         <location line="+8"/>
         <source>Copy ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Copier l&amp;#39;ID</translation>
     </message>
     <message>
         <location line="-7"/>
         <source>Give this ID to the team if you contact them about this report.</source>
-        <translation type="unfinished"></translation>
+        <translation>Donnez cet ID à l&amp;#39;équipe si vous la contactez au sujet de ce signalement.</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Copied!</source>
-        <translation type="unfinished"></translation>
+        <translation>Copié !</translation>
     </message>
     <message>
         <location filename="../launcher/ui/pages/instance/PerformancePage.cpp" line="-603"/>
         <source>%1h %2m</source>
-        <translation type="unfinished"></translation>
+        <translation>%1h %2m</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>%1m %2s</source>
-        <translation type="unfinished"></translation>
+        <translation>%1m %2s</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>%1s</source>
-        <translation type="unfinished"></translation>
+        <translation>%1s</translation>
     </message>
     <message>
         <location filename="../launcher/SoftwareRenderer.cpp" line="+82"/>
         <source>The downloaded Mesa archive could not be read.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&amp;#39;archive Mesa téléchargée n&amp;#39;a pas pu être lue.</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Could not create the folder %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de créer le dossier %1.</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>The Mesa archive does not contain a 64-bit opengl32.dll.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&amp;#39;archive Mesa ne contient pas de fichier opengl32.dll 64 bits.</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Could not open %1 inside the Mesa archive.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&amp;#39;ouvrir %1 dans l&amp;#39;archive Mesa.</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>%1 inside the Mesa archive is empty or damaged.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 dans l&amp;#39;archive Mesa est vide ou endommagé.</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Could not write %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&amp;#39;écrire %1 : %2</translation>
     </message>
 </context>
 <context>
@@ -15503,9 +15648,9 @@ Les anciens fichiers pourrais ne pas être supprimés car ils sont en cours d&ap
     <message numerus="yes">
         <location line="+145"/>
         <source>%n update(s) found. You&apos;re about to update the following resources:</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n mise à jour trouvée. Vous êtes sur le point de mettre à jour les ressources suivantes :</numerusform>
+            <numerusform>%n mises à jour trouvées. Vous êtes sur le point de mettre à jour les ressources suivantes :</numerusform>
         </translation>
     </message>
     <message>
@@ -15602,74 +15747,76 @@ Les anciens fichiers pourrais ne pas être supprimés car ils sont en cours d&ap
     <message>
         <location filename="../launcher/ui/dialogs/SaveTemplateDialog.cpp" line="+60"/>
         <source>Save instance as template</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer l&amp;#39;instance comme modèle</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Template name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom du modèle :</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Change the template&apos;s icon.</source>
-        <translation type="unfinished"></translation>
+        <translation>Changer l&amp;#39;icône du modèle.</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Mods (mods/)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mods (mods/)</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Configs (config/, options.txt)</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurations (config/, options.txt)</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Resource packs (resourcepacks/)</source>
-        <translation type="unfinished"></translation>
+        <translation>Packs de ressources (resourcepacks/)</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Shader packs (shaderpacks/)</source>
-        <translation type="unfinished"></translation>
+        <translation>Packs de shaders (shaderpacks/)</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Servers list (servers.dat)</source>
-        <translation type="unfinished"></translation>
+        <translation>Liste des serveurs (servers.dat)</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Worlds, logs, screenshots and crash reports are never included.</source>
-        <translation type="unfinished"></translation>
+        <translation>Les mondes, journaux, captures d&amp;#39;écran et rapports de plantage ne sont jamais inclus.</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Cancel</source>
-        <translation type="unfinished">Annuler</translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location line="+54"/>
         <source>Template already exists</source>
-        <translation type="unfinished"></translation>
+        <translation>Le modèle existe déjà</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>A template named %1 already exists.
 Do you want to overwrite it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Un modèle nommé %1 existe déjà.
+Voulez-vous l&amp;#39;écraser ?</translation>
     </message>
     <message>
         <location line="+43"/>
         <source>The template will be saved in:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Le modèle sera enregistré dans :
+%1</translation>
     </message>
 </context>
 <context>
@@ -15677,47 +15824,47 @@ Do you want to overwrite it?</source>
     <message>
         <location filename="../launcher/InstanceTemplateTask.cpp" line="-150"/>
         <source>The template name is empty after removing invalid characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le nom du modèle est vide après suppression des caractères invalides.</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Could not create the templates folder: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de créer le dossier des modèles : %1</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>A template named %1 already exists.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un modèle nommé %1 existe déjà.</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Removing existing template %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Suppression du modèle existant %1</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Could not remove the existing template: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de supprimer le modèle existant : %1</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Creating template %1 from instance %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Création du modèle %1 à partir de l&amp;#39;instance %2</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>Template folder copy failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de la copie du dossier de modèle.</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Could not write the template manifest.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&amp;#39;écrire le manifeste du modèle.</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Template folder copy has been aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>La copie du dossier de modèle a été annulée.</translation>
     </message>
 </context>
 <context>
@@ -15960,7 +16107,7 @@ Version actuellement installée : %1</translation>
     <message>
         <location line="+54"/>
         <source>This server is joined automatically on launch</source>
-        <translation type="unfinished"></translation>
+        <translation>Ce serveur est rejoint automatiquement au lancement</translation>
     </message>
     <message>
         <location line="-56"/>
@@ -16013,7 +16160,7 @@ Version actuellement installée : %1</translation>
     <message>
         <location line="+101"/>
         <source>Join on launch</source>
-        <translation type="unfinished"></translation>
+        <translation>Rejoindre au lancement</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -16446,78 +16593,78 @@ Are you sure?</source>
     <message>
         <location line="+48"/>
         <source>Offline Cape</source>
-        <translation type="unfinished"></translation>
+        <translation>Cape hors ligne</translation>
     </message>
     <message>
         <location line="+6"/>
         <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-9"/>
         <source>No cape</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucune cape</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Shows the cape as an elytra on the 3D preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Affiche la cape comme des élytres sur l&amp;#39;aperçu 3D</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Show Elytra</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher les élytres</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Browse capes online...</source>
-        <translation type="unfinished"></translation>
+        <translation>Parcourir les capes en ligne...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Look up capes online by scrolling or searching player names.</source>
-        <translation type="unfinished"></translation>
+        <translation>Recherchez des capes en ligne en faisant défiler ou en cherchant des noms de joueurs.</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Import from file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer depuis un fichier...</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Import from URL...</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer depuis une URL...</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Remove cape</source>
-        <translation type="unfinished"></translation>
+        <translation>Retirer la cape</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>More actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Plus d&amp;#39;actions</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Import...</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Import a skin from a URL, or from a Minecraft username</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer un skin depuis une URL ou depuis un nom d&amp;#39;utilisateur Minecraft</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Import file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer un fichier...</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Browse online...</source>
-        <translation type="unfinished"></translation>
+        <translation>Parcourir en ligne...</translation>
     </message>
     <message>
         <source>Browse online skins</source>
@@ -16615,76 +16762,76 @@ Are you sure?</source>
     <message>
         <location line="-423"/>
         <source>Open skins folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir le dossier des skins</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Close</source>
-        <translation type="unfinished">Fermer</translation>
+        <translation>Fermer</translation>
     </message>
     <message>
         <location line="+269"/>
         <location line="+6"/>
         <source>Cape Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrement de la cape</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Failed to save cape file!</source>
-        <translation type="unfinished"></translation>
+        <translation>Échec de l&amp;#39;enregistrement du fichier de cape !</translation>
     </message>
     <message>
         <location line="+18"/>
         <location line="+49"/>
         <source>Custom cape</source>
-        <translation type="unfinished"></translation>
+        <translation>Cape personnalisée</translation>
     </message>
     <message>
         <location line="-49"/>
         <source>%1&apos;s cape</source>
-        <translation type="unfinished"></translation>
+        <translation>Cape de %1</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Select Cape Texture</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner une texture de cape</translation>
     </message>
     <message>
         <location line="+6"/>
         <location line="+19"/>
         <location line="+8"/>
         <source>Cape Import</source>
-        <translation type="unfinished"></translation>
+        <translation>Importation de cape</translation>
     </message>
     <message>
         <location line="-27"/>
         <source>The selected file is not a valid image.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le fichier sélectionné n&amp;#39;est pas une image valide.</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Import cape from URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer une cape depuis une URL</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>URL of a cape PNG image:</source>
-        <translation type="unfinished"></translation>
+        <translation>URL d&amp;#39;une image PNG de cape :</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Invalid URL</source>
-        <translation type="unfinished"></translation>
+        <translation>URL invalide</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>The URL did not contain a valid cape image.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&amp;#39;URL ne contenait pas d&amp;#39;image de cape valide.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Unable to download the cape: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de télécharger la cape : %1</translation>
     </message>
     <message>
         <location line="+89"/>
@@ -16714,12 +16861,12 @@ Are you sure?</source>
     <message>
         <location line="+40"/>
         <source>Import skin</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer un skin</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Skin URL or Minecraft username:</source>
-        <translation type="unfinished"></translation>
+        <translation>URL du skin ou nom d&amp;#39;utilisateur Minecraft :</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -16901,22 +17048,22 @@ Are you sure?</source>
     <message>
         <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
-        <translation type="unfinished"></translation>
+        <translation>Chargement des icônes…</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Loading instances…</source>
-        <translation type="unfinished"></translation>
+        <translation>Chargement des instances…</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Loading accounts…</source>
-        <translation type="unfinished"></translation>
+        <translation>Chargement des comptes…</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Almost ready…</source>
-        <translation type="unfinished"></translation>
+        <translation>Presque prêt…</translation>
     </message>
 </context>
 <context>
@@ -16924,7 +17071,7 @@ Are you sure?</source>
     <message>
         <location filename="../launcher/bot/BotScriptEditor.cpp" line="-759"/>
         <source>Step</source>
-        <translation type="unfinished"></translation>
+        <translation>Étape</translation>
     </message>
 </context>
 <context>
@@ -17005,12 +17152,12 @@ Are you sure?</source>
     <message>
         <location line="+31"/>
         <source>Could not extract modpack</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&amp;#39;extraire le modpack</translation>
     </message>
     <message>
         <location line="+36"/>
         <source>Instance import was aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&amp;#39;importation de l&amp;#39;instance a été annulée.</translation>
     </message>
 </context>
 <context>
@@ -17380,22 +17527,22 @@ Les anciens fichiers peuvent ne pas être supprimés car ils sont en cours d&apo
     <message>
         <location filename="../launcher/ui/dialogs/UntrustedModsDialog.ui" line="+14"/>
         <source>Easy There!</source>
-        <translation type="unfinished"></translation>
+        <translation>Doucement !</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The modpack you are installing includes mods which are not hosted on Modrinth or CurseForge:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Le modpack que vous installez inclut des mods qui ne sont pas hébergés sur Modrinth ou CurseForge :&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Malicious mods are often distributed through links sent on platforms such as Discord.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;We strongly recommend only importing modpacks from trusted sources.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;lt;html&amp;gt;&amp;lt;head/&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;&amp;lt;b&amp;gt;Des mods malveillants sont souvent distribués via des liens envoyés sur des plateformes telles que Discord.&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;&amp;lt;p&amp;gt;Nous vous recommandons vivement de n&amp;#39;importer des modpacks que depuis des sources fiables.&amp;lt;/p&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>I trust this modpack and wish to proceed regardless</source>
-        <translation type="unfinished"></translation>
+        <translation>Je fais confiance à ce modpack et je souhaite continuer malgré tout</translation>
     </message>
 </context>
 <context>
@@ -17430,17 +17577,17 @@ Les anciens fichiers peuvent ne pas être supprimés car ils sont en cours d&apo
         <location line="+11"/>
         <location line="+1"/>
         <source>%1 (preview)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (aperçu)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Disabled in preview mode.</source>
-        <translation type="unfinished"></translation>
+        <translation>Désactivé en mode aperçu.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Close</source>
-        <translation type="unfinished">Fermer</translation>
+        <translation>Fermer</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/UpdateAvailableDialog.ui" line="+29"/>
@@ -18030,37 +18177,37 @@ Veuillez ajouter un compte Microsoft.</translation>
     <message>
         <location filename="../launcher/ui/dialogs/WhatsNewBrowserDialog.cpp" line="+57"/>
         <source>What&apos;s New</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouveautés</translation>
     </message>
     <message>
         <location line="+48"/>
         <source>All releases</source>
-        <translation type="unfinished"></translation>
+        <translation>Toutes les versions</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Close</source>
-        <translation type="unfinished">Fermer</translation>
+        <translation>Fermer</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>What&apos;s new in %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouveautés dans %1</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>The changelog could not be read. Use &quot;All releases&quot; to read the release notes on GitHub.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le journal des modifications n&amp;#39;a pas pu être lu. Utilisez « Toutes les versions » pour lire les notes de version sur GitHub.</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>The version this launcher is running.</source>
-        <translation type="unfinished"></translation>
+        <translation>La version exécutée par ce lanceur.</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>What&apos;s new in %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouveautés dans %1 %2</translation>
     </message>
 </context>
 <context>
@@ -18068,47 +18215,47 @@ Veuillez ajouter un compte Microsoft.</translation>
     <message>
         <location filename="../launcher/ui/dialogs/WhatsNewDialog.cpp" line="+56"/>
         <source>What&apos;s New</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouveautés</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>What&apos;s new in %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouveautés dans %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>What&apos;s new in %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouveautés dans %1 %2</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>You updated from %1 to %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous avez mis à jour de %1 vers %2.</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>The release notes for this version are not stored on this computer. Use &quot;All releases&quot; to read them on GitHub.</source>
-        <translation type="unfinished"></translation>
+        <translation>Les notes de version pour cette version ne sont pas stockées sur cet ordinateur. Utilisez « Toutes les versions » pour les lire sur GitHub.</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Show this after updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher ceci après les mises à jour</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>You can always open this window again from Help &gt; What&apos;s New.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous pouvez toujours rouvrir cette fenêtre depuis Aide &amp;gt; Nouveautés.</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>All releases</source>
-        <translation type="unfinished"></translation>
+        <translation>Toutes les versions</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Got it</source>
-        <translation type="unfinished"></translation>
+        <translation>Compris</translation>
     </message>
 </context>
 <context>

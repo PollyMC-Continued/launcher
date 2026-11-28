@@ -178,22 +178,22 @@
     <message>
         <location line="-182"/>
         <source>Could not get local metadata index for &apos;%1&apos; v%2</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;%1&apos; v%2-এর জন্য স্থানীয় মেটাডেটা ইনডেক্স পাওয়া যায়নি।</translation>
     </message>
     <message>
         <location line="+194"/>
         <source>Could not get local metadata index for %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1-এর জন্য স্থানীয় মেটাডেটা ইনডেক্স পাওয়া যায়নি।</translation>
     </message>
     <message>
         <location line="+34"/>
         <source>Could not find a version for the %1 loader</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 লোডারের জন্য কোনো সংস্করণ খুঁজে পাওয়া যায়নি।</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>No loader version set for modpack.</source>
-        <translation type="unfinished"></translation>
+        <translation>মোডপ্যাকের জন্য কোনো লোডার ভার্সন নির্ধারিত নেই।</translation>
     </message>
     <message>
         <location line="+132"/>
@@ -323,12 +323,12 @@
     <message>
         <location line="+40"/>
         <source>Developer mode</source>
-        <translation type="unfinished"></translation>
+        <translation>ডেভেলপার মোড</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Developer mode enabled. Reopen Settings to access Developer tools.</source>
-        <translation type="unfinished"></translation>
+        <translation>ডেভেলপার মোড সক্রিয় করা হয়েছে। ডেভেলপার টুলস ব্যবহার করতে সেটিংস পুনরায় খুলুন।</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/AboutDialog.ui" line="-76"/>
@@ -482,12 +482,12 @@
     <message>
         <location line="+8"/>
         <source>Edit &amp;Username</source>
-        <translation type="unfinished"></translation>
+        <translation>সম্পাদনা করুন &amp;ব্যবহারকারীর নাম</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Change the username of an offline account</source>
-        <translation type="unfinished"></translation>
+        <translation>একটি অফলাইন অ্যাকাউন্টের ইউজারনেম পরিবর্তন করুন</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -567,22 +567,24 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <source>Enter the new username for the offline account &apos;%1&apos;.
 
 The account UUID stays the same, so your singleplayer progress and your selected skin are kept.</source>
-        <translation type="unfinished"></translation>
+        <translation>অফলাইন অ্যাকাউন্ট &apos;%1&apos;-এর জন্য নতুন ইউজারনেম লিখুন।
+
+অ্যাকাউন্ট UUID অপরিবর্তিত থাকবে, তাই আপনার সিঙ্গেলপ্লেয়ার অগ্রগতি এবং আপনার নির্বাচিত স্কিন সংরক্ষিত থাকবে।</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Edit Username</source>
-        <translation type="unfinished"></translation>
+        <translation>ব্যবহারকারীর নাম সম্পাদনা করুন</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Username already in use</source>
-        <translation type="unfinished"></translation>
+        <translation>ব্যবহারকারীর নামটি ইতিমধ্যে ব্যবহৃত হয়েছে।</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Another offline account is already called &apos;%1&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;%1&apos; নামের আরেকটি অফলাইন অ্যাকাউন্ট ইতিমধ্যেই বিদ্যমান।</translation>
     </message>
     <message>
         <source>You must add a Microsoft account that owns Minecraft before you can add an offline account.&lt;br&gt;&lt;br&gt;If you have lost your account you can contact Microsoft for support.</source>
@@ -632,7 +634,7 @@ The account UUID stays the same, so your singleplayer progress and your selected
     <message>
         <location line="-23"/>
         <source>Appearance:</source>
-        <translation type="unfinished"></translation>
+        <translation>চেহারা:</translation>
     </message>
     <message>
         <location line="+62"/>
@@ -717,17 +719,17 @@ The account UUID stays the same, so your singleplayer progress and your selected
     <message>
         <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="-97"/>
         <source>Windows-native themes follow your Windows appearance setting. To change light/dark, use Settings &gt; Personalization &gt; Colors in Windows.</source>
-        <translation type="unfinished"></translation>
+        <translation>উইন্ডোজ-নেটিভ থিমগুলো আপনার উইন্ডোজের অ্যাপিয়ারেন্স সেটিংস অনুযায়ী কাজ করে। লাইট বা ডার্ক মোড পরিবর্তন করতে, উইন্ডোজের &apos;Settings &gt; Personalization &gt; Colors&apos; অপশনটি ব্যবহার করুন।</translation>
     </message>
     <message>
         <location line="+46"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>হালকা</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Dark</source>
-        <translation type="unfinished">অন্ধকার</translation>
+        <translation>ডার্ক</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -867,14 +869,16 @@ PollyMC-Continued আপডেটার লগ দেখুন:
     <message>
         <location line="-1841"/>
         <source>Could not create data folder</source>
-        <translation type="unfinished"></translation>
+        <translation>ডেটা ফোল্ডার তৈরি করা সম্ভব হয়নি।</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The launcher could not create its data folder at %1.
 
 Check that you have permission to create folders there. The launcher cannot start until this is fixed.</source>
-        <translation type="unfinished"></translation>
+        <translation>লঞ্চারটি %1-এ তার ডেটা ফোল্ডার তৈরি করতে পারেনি।
+
+সেখানে ফোল্ডার তৈরি করার অনুমতি আপনার আছে কি না তা যাচাই করুন। এই সমস্যাটি সমাধান না হওয়া পর্যন্ত লঞ্চারটি চালু করা সম্ভব নয়।</translation>
     </message>
     <message>
         <location line="+7"/>

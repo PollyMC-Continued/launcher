@@ -182,22 +182,22 @@
     <message>
         <location line="-182"/>
         <source>Could not get local metadata index for &apos;%1&apos; v%2</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;%1&apos; v%2 のローカルメタデータインデックスを取得できませんでした</translation>
     </message>
     <message>
         <location line="+194"/>
         <source>Could not get local metadata index for %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 のローカルメタデータインデックスを取得できませんでした</translation>
     </message>
     <message>
         <location line="+34"/>
         <source>Could not find a version for the %1 loader</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ローダーのバージョンが見つかりませんでした</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>No loader version set for modpack.</source>
-        <translation type="unfinished"></translation>
+        <translation>Modパックにローダーのバージョンが設定されていません。</translation>
     </message>
     <message>
         <location line="+132"/>
@@ -327,12 +327,12 @@
     <message>
         <location line="+40"/>
         <source>Developer mode</source>
-        <translation type="unfinished"></translation>
+        <translation>開発者モード</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Developer mode enabled. Reopen Settings to access Developer tools.</source>
-        <translation type="unfinished"></translation>
+        <translation>開発者モードが有効になりました。設定を開き直すと開発者ツールにアクセスできます。</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/AboutDialog.ui" line="-76"/>
@@ -500,12 +500,12 @@
     <message>
         <location line="+8"/>
         <source>Edit &amp;Username</source>
-        <translation type="unfinished"></translation>
+        <translation>ユーザー名を編集(&amp;U)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Change the username of an offline account</source>
-        <translation type="unfinished"></translation>
+        <translation>オフラインアカウントのユーザー名を変更します</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -575,22 +575,24 @@ You can add a Microsoft, offline, or Yggdrasil (authlib-injector) account to get
         <source>Enter the new username for the offline account &apos;%1&apos;.
 
 The account UUID stays the same, so your singleplayer progress and your selected skin are kept.</source>
-        <translation type="unfinished"></translation>
+        <translation>オフラインアカウント &apos;%1&apos; の新しいユーザー名を入力してください。
+
+アカウントのUUIDは変わらないため、シングルプレイヤーの進行状況や選択したスキンは保持されます。</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Edit Username</source>
-        <translation type="unfinished"></translation>
+        <translation>ユーザー名の編集</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Username already in use</source>
-        <translation type="unfinished"></translation>
+        <translation>ユーザー名は既に使用されています</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Another offline account is already called &apos;%1&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;%1&apos; という名前の別のオフラインアカウントが既に存在します。</translation>
     </message>
     <message>
         <source>You must add a Microsoft account that owns Minecraft before you can add an offline account.&lt;br&gt;&lt;br&gt;If you have lost your account you can contact Microsoft for support.</source>
@@ -640,7 +642,7 @@ The account UUID stays the same, so your singleplayer progress and your selected
     <message>
         <location line="-23"/>
         <source>Appearance:</source>
-        <translation type="unfinished"></translation>
+        <translation>外観:</translation>
     </message>
     <message>
         <location line="+62"/>
@@ -725,22 +727,22 @@ The account UUID stays the same, so your singleplayer progress and your selected
     <message>
         <location filename="../launcher/ui/widgets/AppearanceWidget.cpp" line="-97"/>
         <source>Windows-native themes follow your Windows appearance setting. To change light/dark, use Settings &gt; Personalization &gt; Colors in Windows.</source>
-        <translation type="unfinished"></translation>
+        <translation>WindowsネイティブのテーマはWindowsの外観設定に従います。ライト/ダークを切り替えるには、Windowsの「設定 &gt; 個人用設定 &gt; 色」を使用してください。</translation>
     </message>
     <message>
         <location line="+46"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>ライト</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Dark</source>
-        <translation type="unfinished">ダーク</translation>
+        <translation>ダーク</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>System</source>
-        <translation type="unfinished">システム</translation>
+        <translation>システム</translation>
     </message>
     <message>
         <location line="+43"/>
@@ -872,70 +874,78 @@ for details.</source>
     <message>
         <location line="-1841"/>
         <source>Could not create data folder</source>
-        <translation type="unfinished"></translation>
+        <translation>データフォルダーを作成できませんでした</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The launcher could not create its data folder at %1.
 
 Check that you have permission to create folders there. The launcher cannot start until this is fixed.</source>
-        <translation type="unfinished"></translation>
+        <translation>ランチャーは %1 にデータフォルダーを作成できませんでした。
+
+その場所にフォルダーを作成する権限があるか確認してください。これが解決されるまでランチャーは起動できません。</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Could not open data folder</source>
-        <translation type="unfinished"></translation>
+        <translation>データフォルダーを開けませんでした</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The launcher could not open its data folder at %1.
 
 Check that you have permission to open it. The launcher cannot start until this is fixed.</source>
-        <translation type="unfinished"></translation>
+        <translation>ランチャーは %1 のデータフォルダーを開けませんでした。
+
+開く権限があるか確認してください。これが解決されるまでランチャーは起動できません。</translation>
     </message>
     <message>
         <location line="+81"/>
         <source>Data folder is not writable</source>
-        <translation type="unfinished"></translation>
+        <translation>データフォルダーに書き込みできません</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The launcher could not create a log file: %1.
 
 Check that you have write permission for the data folder at %2. The launcher cannot start until this is fixed.</source>
-        <translation type="unfinished"></translation>
+        <translation>ランチャーはログファイル %1 を作成できませんでした。
+
+%2 のデータフォルダーに対する書き込み権限があるか確認してください。これが解決されるまでランチャーは起動できません。</translation>
     </message>
     <message>
         <location line="+531"/>
         <source>Loading icons…</source>
-        <translation type="unfinished"></translation>
+        <translation>アイコンを読み込んでいます…</translation>
     </message>
     <message>
         <location line="+28"/>
         <source>Loading instances…</source>
-        <translation type="unfinished"></translation>
+        <translation>インスタンスを読み込んでいます…</translation>
     </message>
     <message>
         <location line="+46"/>
         <source>Loading accounts…</source>
-        <translation type="unfinished"></translation>
+        <translation>アカウントを読み込んでいます…</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Almost ready…</source>
-        <translation type="unfinished"></translation>
+        <translation>もうすぐ準備完了…</translation>
     </message>
     <message>
         <location line="+62"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other launcher update is running. To delete the lock file and continue, select &quot;Ignore&quot; below.</source>
-        <translation type="unfinished"></translation>
+        <translation>前回のアップデートが中断されたため、アップデートロックファイルが残っています。
+
+他のランチャーのアップデートが実行されていないことを確認してください。ロックファイルを削除して続行するには、下の「無視」を選択してください。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Update interrupted</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデートが中断されました</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -945,36 +955,45 @@ Updating from version %3 to %4
 Target install path: %5
 Data path: %6
 Updater log: %7</source>
-        <translation type="unfinished"></translation>
+        <translation>ロックファイル: %1
+タイムスタンプ: %2
+バージョン %3 から %4 へのアップデート
+ターゲットインストールパス: %5
+データパス: %6
+アップデータログ: %7</translation>
     </message>
     <message>
         <location line="+27"/>
         <source>The last update attempt failed.
 
 Make sure the installation works, then select &quot;Ignore&quot; to continue starting the launcher.</source>
-        <translation type="unfinished"></translation>
+        <translation>前回のアップデートに失敗しました。
+
+インストールが正常に動作することを確認してから、「無視」を選択してランチャーの起動を続行してください。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Update failed</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデートに失敗しました</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Updater log: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデータログ: %1</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>You are now running %1.
 
 See the updater log for details.</source>
-        <translation type="unfinished"></translation>
+        <translation>現在 %1 を実行しています。
+
+詳細はアップデータログを参照してください。</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Update installed</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデートがインストールされました</translation>
     </message>
     <message>
         <location line="+33"/>
@@ -992,7 +1011,7 @@ Minecraftのバージョンによっては起動しない可能性がありま�
     <message>
         <location line="+227"/>
         <source>Opening the launcher…</source>
-        <translation type="unfinished"></translation>
+        <translation>ランチャーを開いています…</translation>
     </message>
     <message>
         <location line="+809"/>
@@ -1570,26 +1589,26 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
     <message>
         <location filename="../launcher/bot/BotManagerDialog.cpp" line="+191"/>
         <source>Bots</source>
-        <translation type="unfinished"></translation>
+        <translation>ボット</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Script</source>
-        <translation type="unfinished"></translation>
+        <translation>スクリプト</translation>
     </message>
     <message>
         <location line="+232"/>
         <location line="+19"/>
         <location line="+16"/>
         <source>Bot Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>ボットマネージャー</translation>
     </message>
     <message>
         <location line="-34"/>
         <location line="+19"/>
         <location line="+16"/>
         <source>Could not save bot config to %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>ボット設定を %1 に保存できませんでした: %2</translation>
     </message>
 </context>
 <context>
@@ -1597,7 +1616,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
     <message>
         <location filename="../launcher/bot/BotMapDialog.cpp" line="+128"/>
         <source>Bot Map</source>
-        <translation type="unfinished"></translation>
+        <translation>ボットマップ</translation>
     </message>
 </context>
 <context>
@@ -1605,7 +1624,7 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
     <message>
         <location line="-72"/>
         <source>Waiting for bot positions...</source>
-        <translation type="unfinished"></translation>
+        <translation>ボットの位置を待機しています...</translation>
     </message>
 </context>
 <context>
@@ -1613,219 +1632,219 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
     <message>
         <location filename="../launcher/bot/BotScriptEditor.ui" line="+19"/>
         <source>Script name:</source>
-        <translation type="unfinished"></translation>
+        <translation>スクリプト名:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>有効</translation>
     </message>
     <message>
         <location line="+33"/>
         <source>Add step ▾</source>
-        <translation type="unfinished"></translation>
+        <translation>ステップを追加 ▾</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Remove</source>
-        <translation type="unfinished">削除</translation>
+        <translation>削除</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Move up</source>
-        <translation type="unfinished"></translation>
+        <translation>上へ移動</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Move down</source>
-        <translation type="unfinished"></translation>
+        <translation>下へ移動</translation>
     </message>
     <message>
         <location line="+28"/>
         <source>Select a step to edit its properties.</source>
-        <translation type="unfinished"></translation>
+        <translation>プロパティを編集するステップを選択してください。</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Text:</source>
-        <translation type="unfinished"></translation>
+        <translation>テキスト:</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Seconds (1-86400):</source>
-        <translation type="unfinished"></translation>
+        <translation>秒 (1-86400):</translation>
     </message>
     <message>
         <location line="+31"/>
         <source>Pattern:</source>
-        <translation type="unfinished"></translation>
+        <translation>パターン:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Case sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>大文字と小文字を区別する</translation>
     </message>
     <message>
         <location line="+7"/>
         <location line="+35"/>
         <source>Timeout seconds (0 = forever):</source>
-        <translation type="unfinished"></translation>
+        <translation>タイムアウト秒数 (0 = 無制限):</translation>
     </message>
     <message>
         <location line="-10"/>
         <source>Player:</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイヤー:</translation>
     </message>
     <message>
         <location line="+35"/>
         <source>Times (-1 = forever):</source>
-        <translation type="unfinished"></translation>
+        <translation>回数 (-1 = 無制限):</translation>
     </message>
     <message>
         <location line="+31"/>
         <location line="+31"/>
         <source>Variable name (letters, digits, _):</source>
-        <translation type="unfinished"></translation>
+        <translation>変数名 (英字、数字、_):</translation>
     </message>
     <message>
         <location line="-21"/>
         <source>Value (literal text):</source>
-        <translation type="unfinished"></translation>
+        <translation>値 (リテラルテキスト):</translation>
     </message>
     <message>
         <location line="+31"/>
         <source>Value (integer, may be negative):</source>
-        <translation type="unfinished"></translation>
+        <translation>値 (整数、負の値も可):</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Condition:</source>
-        <translation type="unfinished"></translation>
+        <translation>条件:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Value:</source>
-        <translation type="unfinished"></translation>
+        <translation>値:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Variable:</source>
-        <translation type="unfinished"></translation>
+        <translation>変数:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Number:</source>
-        <translation type="unfinished"></translation>
+        <translation>数値:</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Condition timeout seconds (0 = decide immediately):</source>
-        <translation type="unfinished"></translation>
+        <translation>条件タイムアウト秒数 (0 = 即時判定):</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>Branches: with this step selected, Add Step appends to the then branch; with an &apos;else:&apos; row selected, Add Step appends to the else branch.</source>
-        <translation type="unfinished"></translation>
+        <translation>分岐: このステップを選択した状態で「ステップを追加」を押すとthen分岐に追加され、&apos;else:&apos; 行を選択した状態で押すとelse分岐に追加されます。</translation>
     </message>
     <message>
         <location line="+33"/>
         <source>Save</source>
-        <translation type="unfinished">保存</translation>
+        <translation>保存</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Revert</source>
-        <translation type="unfinished">リセット</translation>
+        <translation>元に戻す</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Import...</source>
-        <translation type="unfinished"></translation>
+        <translation>インポート...</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Export...</source>
-        <translation type="unfinished"></translation>
+        <translation>エクスポート...</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>Run now</source>
-        <translation type="unfinished"></translation>
+        <translation>今すぐ実行</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>停止</translation>
     </message>
     <message>
         <location filename="../launcher/bot/BotScriptEditor.cpp" line="+687"/>
         <source>Save failed: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>保存に失敗しました: %1</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>保存しました。</translation>
     </message>
     <message>
         <location line="+141"/>
         <location line="+29"/>
         <location line="+11"/>
         <source>Import Bot Script</source>
-        <translation type="unfinished"></translation>
+        <translation>ボットスクリプトをインポート</translation>
     </message>
     <message>
         <location line="-39"/>
         <location line="+53"/>
         <source>Bot scripts (*.json);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>ボットスクリプト (*.json);;すべてのファイル (*)</translation>
     </message>
     <message>
         <location line="-48"/>
         <source>Import failed: cannot open %1</source>
-        <translation type="unfinished"></translation>
+        <translation>インポートに失敗しました: %1 を開けません</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Import failed: %1 is not a JSON script</source>
-        <translation type="unfinished"></translation>
+        <translation>インポートに失敗しました: %1 はJSONスクリプトではありません</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Import failed: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>インポートに失敗しました: %1</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>A script named &apos;%1&apos; already exists. Importing it will overwrite that script when you save. Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;%1&apos; という名前のスクリプトは既に存在します。インポートすると、保存時にそのスクリプトが上書きされます。続行しますか？</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Save the imported script to the script store now?</source>
-        <translation type="unfinished"></translation>
+        <translation>インポートしたスクリプトを今すぐスクリプトストアに保存しますか？</translation>
     </message>
     <message>
         <location line="+9"/>
         <location line="+3"/>
         <source>Export Bot Script</source>
-        <translation type="unfinished"></translation>
+        <translation>ボットスクリプトをエクスポート</translation>
     </message>
     <message>
         <location line="-3"/>
         <source>The script is not valid: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>スクリプトが無効です: %1</translation>
     </message>
     <message>
         <location line="+9"/>
         <location line="+7"/>
         <source>Export failed: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>エクスポートに失敗しました: %1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Exported to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 にエクスポートしました</translation>
     </message>
 </context>
 <context>
@@ -1840,188 +1859,188 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
         <location line="+8"/>
         <location line="+9"/>
         <source>Report a Bug</source>
-        <translation type="unfinished"></translation>
+        <translation>バグを報告</translation>
     </message>
     <message>
         <location line="-527"/>
         <source>Tell us what went wrong or what you would like to see. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord. Please don&apos;t include passwords or other personal information.</source>
-        <translation type="unfinished"></translation>
+        <translation>不具合の内容やご要望をお知らせください。レポートはDiscord上のPollyMCチームに&lt;b&gt;非公開で&lt;/b&gt;送信されます。パスワードやその他の個人情報は含めないでください。</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>My Reports (%1 new)</source>
-        <translation type="unfinished"></translation>
+        <translation>マイレポート（%1 件の新着）</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>My Reports</source>
-        <translation type="unfinished"></translation>
+        <translation>マイレポート</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>See what the team answered to the reports you sent from this launcher.</source>
-        <translation type="unfinished"></translation>
+        <translation>このランチャーから送信したレポートに対するチームからの返信を確認します。</translation>
     </message>
     <message>
         <location line="+34"/>
         <source>What kind of report is this?</source>
-        <translation type="unfinished"></translation>
+        <translation>どのような種類のレポートですか？</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Bug</source>
-        <translation type="unfinished"></translation>
+        <translation>バグ</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Crash</source>
-        <translation type="unfinished"></translation>
+        <translation>クラッシュ</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Suggestion</source>
-        <translation type="unfinished"></translation>
+        <translation>提案</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Something else</source>
-        <translation type="unfinished"></translation>
+        <translation>その他</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Anonymous</source>
-        <translation type="unfinished"></translation>
+        <translation>匿名</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Discord username or email</source>
-        <translation type="unfinished"></translation>
+        <translation>Discordユーザー名またはメールアドレス</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Only fill this in if you want a reply.</source>
-        <translation type="unfinished"></translation>
+        <translation>返信を希望する場合のみ入力してください。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Your name (optional)</source>
-        <translation type="unfinished"></translation>
+        <translation>お名前（任意）</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Contact (optional)</source>
-        <translation type="unfinished"></translation>
+        <translation>連絡先（任意）</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Screenshots (optional, up to %1). You can also drag images into this window.</source>
-        <translation type="unfinished"></translation>
+        <translation>スクリーンショット（任意、最大 %1 枚）。このウィンドウに画像をドラッグすることもできます。</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Add image…</source>
-        <translation type="unfinished"></translation>
+        <translation>画像を追加…</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Paste from clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>クリップボードから貼り付け</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Remove</source>
-        <translation type="unfinished">削除</translation>
+        <translation>削除</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Include the launcher log (recommended, personal paths are hidden)</source>
-        <translation type="unfinished"></translation>
+        <translation>ランチャーログを含める（推奨、個人的なパスは非表示になります）</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>What else is sent automatically?</source>
-        <translation type="unfinished"></translation>
+        <translation>他に何が自動的に送信されますか？</translation>
     </message>
     <message>
         <location line="+32"/>
         <source>Prefer GitHub? &lt;a href=&quot;%1&quot;&gt;Open the issue tracker&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>GitHubの方がよろしいですか？&lt;a href=&quot;%1&quot;&gt;Issueトラッカーを開く&lt;/a&gt;。</translation>
     </message>
     <message>
         <location line="+6"/>
         <location line="+171"/>
         <source>Send Report</source>
-        <translation type="unfinished"></translation>
+        <translation>レポートを送信</translation>
     </message>
     <message>
         <location line="-135"/>
         <source>What were you doing when it crashed?</source>
-        <translation type="unfinished"></translation>
+        <translation>クラッシュしたとき何をしていましたか？</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Tell us what you were doing right before the launcher closed or froze, and whether it happens every time.</source>
-        <translation type="unfinished"></translation>
+        <translation>ランチャーが終了またはフリーズする直前に何をしていたか、また毎回発生するかどうかをお知らせください。</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>What would you like to see?</source>
-        <translation type="unfinished"></translation>
+        <translation>どのような機能をご希望ですか？</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Describe your idea and what it would make easier for you. Examples from other apps help too.</source>
-        <translation type="unfinished"></translation>
+        <translation>アイデアの内容と、それによって何が便利になるかを説明してください。他のアプリの例も役立ちます。</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>What&apos;s on your mind?</source>
-        <translation type="unfinished"></translation>
+        <translation>ご意見をお聞かせください</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Tell us anything that doesn&apos;t fit the other types: feedback, questions, or something that just feels off.</source>
-        <translation type="unfinished"></translation>
+        <translation>他の種類に当てはまらない内容（フィードバック、質問、違和感など）をお知らせください。</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>What happened?</source>
-        <translation type="unfinished"></translation>
+        <translation>何が起こりましたか？</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Describe the bug and, if you can, the steps to make it happen again.</source>
-        <translation type="unfinished"></translation>
+        <translation>バグの内容と、可能であれば再現手順を説明してください。</translation>
     </message>
     <message>
         <location line="+76"/>
         <source>&lt;i&gt;An unsent report you started earlier was restored - it is ready to finish and send whenever you are.&lt;/i&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;i&gt;以前作成して未送信だったレポートが復元されました。準備ができたら編集を完了して送信できます。&lt;/i&gt;</translation>
     </message>
     <message>
         <location line="+49"/>
         <source>Sending…</source>
-        <translation type="unfinished"></translation>
+        <translation>送信中…</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Step 1 of 2: preparing your report…</source>
-        <translation type="unfinished"></translation>
+        <translation>ステップ 1/2: レポートを準備しています…</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
-        <translation type="unfinished"></translation>
+        <translation>これはランチャーのバグではなく、%1 の問題のようです。修正方法は次のとおりです:</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>If that does not help, you can report it anyway with the button below - we will take a look.</source>
-        <translation type="unfinished"></translation>
+        <translation>それでも解決しない場合は、下のボタンからそのまま報告できます。チームで確認いたします。</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>We filled in the error for you. Add what you were doing when it happened, then send it. Your report goes &lt;b&gt;privately&lt;/b&gt; to the PollyMC team on Discord.</source>
-        <translation type="unfinished"></translation>
+        <translation>エラー内容を自動入力しました。発生時に何をしていたかを追加してから送信してください。レポートはDiscord上のPollyMCチームに&lt;b&gt;非公開で&lt;/b&gt;送信されます。</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -2030,7 +2049,11 @@ To delete this lock and proceed select &quot;Ignore&quot; below.</source>
 
 What I was doing when this happened:
 </source>
-        <translation type="unfinished"></translation>
+        <translation>エラー: %1
+%2
+
+発生時にしていたこと:
+</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -2038,99 +2061,108 @@ What I was doing when this happened:
 System: %3
 CPU architecture: %4
 Qt: %5</source>
-        <translation type="unfinished"></translation>
+        <translation>ランチャー: %1 (%2)
+システム: %3
+CPUアーキテクチャ: %4
+Qt: %5</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>Write at least %1 characters to send (%2 / %3)</source>
-        <translation type="unfinished"></translation>
+        <translation>送信するには少なくとも %1 文字入力してください (%2 / %3)</translation>
     </message>
     <message>
         <location line="+20"/>
         <location line="+38"/>
         <source>Screenshot %1</source>
-        <translation type="unfinished"></translation>
+        <translation>スクリーンショット %1</translation>
     </message>
     <message>
         <location line="-32"/>
         <source>Choose screenshots</source>
-        <translation type="unfinished"></translation>
+        <translation>スクリーンショットを選択</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Images (*.png *.jpg *.jpeg *.webp *.bmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>画像 (*.png *.jpg *.jpeg *.webp *.bmp)</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Could not open %1 as an image.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 を画像として開けませんでした。</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>There is no image on the clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>クリップボードに画像がありません。</translation>
     </message>
     <message>
         <location line="+61"/>
         <source>You just sent a report. Please wait a minute before sending another one.</source>
-        <translation type="unfinished"></translation>
+        <translation>レポートを送信したばかりです。次のレポートを送信するまで1分ほどお待ちください。</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>You already sent this exact report in this session.
 
 Send it again anyway?</source>
-        <translation type="unfinished"></translation>
+        <translation>このセッションでまったく同じレポートを既に送信しています。
+
+それでも再送信しますか？</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>This report is too large to send (%1 MB). Remove a screenshot or untick &quot;Include the launcher log&quot; and try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>このレポートは大きすぎて送信できません（%1 MB）。スクリーンショットを削除するか、「ランチャーログを含める」のチェックを外してやり直してください。</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Step 2 of 2: sending your report to the team…</source>
-        <translation type="unfinished"></translation>
+        <translation>ステップ 2/2: チームにレポートを送信しています…</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Still sending… the server is a little slow. Please keep this window open.</source>
-        <translation type="unfinished"></translation>
+        <translation>まだ送信中です… サーバーの応答が少し遅くなっています。このウィンドウを開いたままにしてください。</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Too many reports, please try again later.</source>
-        <translation type="unfinished"></translation>
+        <translation>レポートの送信回数が多すぎます。しばらくしてからやり直してください。</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Failed to send the report</source>
-        <translation type="unfinished"></translation>
+        <translation>レポートの送信に失敗しました</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The report could not be sent (HTTP %1): %2</source>
-        <translation type="unfinished"></translation>
+        <translation>レポートを送信できませんでした (HTTP %1): %2</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Thank you! Your report is on its way to the PollyMC team, and we read every one.</source>
-        <translation type="unfinished"></translation>
+        <translation>ありがとうございます！レポートはPollyMCチームに送信されました。すべてのレポートに目を通しています。</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>
 
 We&apos;ll use the contact you gave if we need to ask anything. Want faster help, or to follow what happens next? Come say hi on our Discord.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+質問がある場合は、ご入力いただいた連絡先を使用します。より迅速なサポートや今後の進捗確認をご希望の場合は、Discordでお気軽にお声がけください。</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>
 
 Since you sent this anonymously we can&apos;t write back. Want help with this problem, or to see what happens next? Come say hi on our Discord.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+匿名で送信されたため、こちらから返信することはできません。この問題のサポートや今後の進捗確認をご希望の場合は、Discordでお気軽にお声がけください。</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -2138,27 +2170,30 @@ Since you sent this anonymously we can&apos;t write back. Want help with this pr
 
 Your report ID: %1
 This launcher will tell you when the team has an update. You can also check any time with &quot;My Reports&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+レポートID: %1
+チームがステータスを更新するとこのランチャーでお知らせします。「マイレポート」からいつでも確認することもできます。</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Report sent</source>
-        <translation type="unfinished"></translation>
+        <translation>レポートが送信されました</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Join our Discord</source>
-        <translation type="unfinished"></translation>
+        <translation>Discordに参加</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>View My Reports</source>
-        <translation type="unfinished"></translation>
+        <translation>マイレポートを表示</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
+        <translation>閉じる</translation>
     </message>
 </context>
 <context>
@@ -2167,53 +2202,53 @@ This launcher will tell you when the team has an update. You can also check any 
         <location filename="../launcher/ui/dialogs/BulkUpdateDialog.cpp" line="+68"/>
         <location line="+262"/>
         <source>Update all instances</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのインスタンスを更新</translation>
     </message>
     <message>
         <location line="-258"/>
         <source>Check every selected instance for mod updates, then apply all found updates in one go.</source>
-        <translation type="unfinished"></translation>
+        <translation>選択したすべてのインスタンスでModの更新を確認し、見つかったすべての更新を一括で適用します。</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Instance</source>
-        <translation type="unfinished"></translation>
+        <translation>インスタンス</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Mods</source>
-        <translation type="unfinished">Mod</translation>
+        <translation>Mod</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Status</source>
-        <translation type="unfinished">状態</translation>
+        <translation>ステータス</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Check for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>更新を確認</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Update all</source>
-        <translation type="unfinished"></translation>
+        <translation>すべて更新</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
+        <translation>閉じる</translation>
     </message>
     <message>
         <location line="+31"/>
         <location line="+91"/>
         <source>No mods</source>
-        <translation type="unfinished"></translation>
+        <translation>Modなし</translation>
     </message>
     <message>
         <location line="-91"/>
         <source>Not checked</source>
-        <translation type="unfinished"></translation>
+        <translation>未確認</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2221,23 +2256,26 @@ This launcher will tell you when the team has an update. You can also check any 
 Up to date: %2
 Could not be checked: %3
 Skipped: %4</source>
-        <translation type="unfinished"></translation>
+        <translation>更新があるインスタンス: %1
+最新: %2
+確認できなかったインスタンス: %3
+スキップ: %4</translation>
     </message>
     <message>
         <location line="+20"/>
         <location line="+128"/>
         <source>Error</source>
-        <translation type="unfinished">エラー</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location line="-128"/>
         <source>Mod updates are unavailable when metadata is disabled!</source>
-        <translation type="unfinished">メタデータが無効化されているため、Modのアップデートは利用できません！</translation>
+        <translation>メタデータが無効になっているため、Modの更新は利用できません！</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Instances are running</source>
-        <translation type="unfinished"></translation>
+        <translation>インスタンスが実行中です</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2248,78 +2286,84 @@ Updating mods while the game is running may cause mod duplication and game crash
 The old files may not be deleted as they are in use.
 Running instances will be skipped.
 Do you want to continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>次のインスタンスは現在実行中です:
+%1
+
+ゲームの実行中にModを更新すると、Modの重複やゲームのクラッシュを引き起こす可能性があります。
+使用中の古いファイルは削除されない場合があります。
+実行中のインスタンスはスキップされます。
+続行しますか？</translation>
     </message>
     <message>
         <location line="+34"/>
         <source>Skipped (running)</source>
-        <translation type="unfinished"></translation>
+        <translation>スキップ済み（実行中）</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Checking...</source>
-        <translation type="unfinished"></translation>
+        <translation>確認中...</translation>
     </message>
     <message>
         <location line="+14"/>
         <location line="+60"/>
         <source>Aborted</source>
-        <translation type="unfinished"></translation>
+        <translation>中止されました</translation>
     </message>
     <message>
         <location line="-53"/>
         <source>%1 could not be checked</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 を確認できませんでした</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Up to date</source>
-        <translation type="unfinished"></translation>
+        <translation>最新</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>%1 update(s) available</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 件の更新が利用可能</translation>
     </message>
     <message>
         <location line="+32"/>
         <source>Download updates</source>
-        <translation type="unfinished"></translation>
+        <translation>更新をダウンロード</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Download stopped by user.</source>
-        <translation type="unfinished"></translation>
+        <translation>ユーザーによってダウンロードが停止されました。</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Warnings</source>
-        <translation type="unfinished">警告</translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Abort</source>
-        <translation type="unfinished"></translation>
+        <translation>中止</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Updated</source>
-        <translation type="unfinished"></translation>
+        <translation>更新済み</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Update failed</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデートに失敗しました</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Done.</source>
-        <translation type="unfinished"></translation>
+        <translation>完了しました。</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The downloads did not complete successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロードが正常に完了しませんでした。</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2328,7 +2372,11 @@ Instances updated: %2
 Instances up to date: %3
 Instances that could not be checked: %4
 Instances skipped: %5</source>
-        <translation type="unfinished"></translation>
+        <translation>%1
+更新されたインスタンス: %2
+最新のインスタンス: %3
+確認できなかったインスタンス: %4
+スキップされたインスタンス: %5</translation>
     </message>
 </context>
 <context>
@@ -2336,184 +2384,185 @@ Instances skipped: %5</source>
     <message>
         <location filename="../launcher/ui/dialogs/skins/CapeBrowserDialog.cpp" line="+118"/>
         <source>Browse capes</source>
-        <translation type="unfinished"></translation>
+        <translation>マントを参照</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Search by cape name or player name...</source>
-        <translation type="unfinished"></translation>
+        <translation>マント名またはプレイヤー名で検索...</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Type a cape name (like Migrator or Pan) or a player name. crafty.gg does not publish a cape catalog, so capes are collected from the profiles of the players it tracks, and a cape search keeps looking through more players until it finds some matches.</source>
-        <translation type="unfinished"></translation>
+        <translation>マント名（MigratorやPanなど）またはプレイヤー名を入力してください。crafty.ggはマントのカタログを公開していないため、追跡しているプレイヤーのプロフィールからマントを収集しており、マント検索では一致するものが見つかるまでより多くのプレイヤーを検索し続けます。</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Search</source>
-        <translation type="unfinished">検索</translation>
+        <translation>検索</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Import URL...</source>
-        <translation type="unfinished"></translation>
+        <translation>URLからインポート...</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Import a cape from a PNG link. Cape textures are typically 64x32, 512x256 or OptiFine 46x22 style PNG files.</source>
-        <translation type="unfinished"></translation>
+        <translation>PNGリンクからマントをインポートします。マントのテクスチャは通常、64x32、512x256、またはOptiFineの46x22形式のPNGファイルです。</translation>
     </message>
     <message>
         <location line="+35"/>
         <location line="+301"/>
         <source>Select a cape</source>
-        <translation type="unfinished"></translation>
+        <translation>マントを選択</translation>
     </message>
     <message>
         <location line="-295"/>
         <source>Preview Elytra</source>
-        <translation type="unfinished">エリトラのプレビュー</translation>
+        <translation>エリトラをプレビュー</translation>
     </message>
     <message>
         <location line="+5"/>
         <location line="+346"/>
         <source>Finding capes...</source>
-        <translation type="unfinished"></translation>
+        <translation>マントを検索しています...</translation>
     </message>
     <message>
         <location line="-329"/>
         <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
+        <translation>閉じる</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Previous page</source>
-        <translation type="unfinished">前のページ</translation>
+        <translation>前のページ</translation>
     </message>
     <message>
         <location line="+2"/>
         <location line="+488"/>
         <source>Page %1</source>
-        <translation type="unfinished">ページ %1</translation>
+        <translation>ページ %1</translation>
     </message>
     <message>
         <location line="-484"/>
         <source>Next page</source>
-        <translation type="unfinished">次のページ</translation>
+        <translation>次のページ</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Use cape</source>
-        <translation type="unfinished"></translation>
+        <translation>マントを使用</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Apply this cape to the selected account</source>
-        <translation type="unfinished"></translation>
+        <translation>このマントを選択したアカウントに適用します</translation>
     </message>
     <message>
         <location line="+49"/>
         <source>Looking for capes</source>
-        <translation type="unfinished"></translation>
+        <translation>マントを検索しています</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Cape lookup</source>
-        <translation type="unfinished"></translation>
+        <translation>マント検索</translation>
     </message>
     <message>
         <location line="+61"/>
         <location line="+178"/>
         <source>Searching capes for %1...</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 のマントを検索しています...</translation>
     </message>
     <message>
         <location line="-157"/>
         <source>Import cape from URL</source>
-        <translation type="unfinished"></translation>
+        <translation>URLからマントをインポート</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>URL of a cape PNG image:</source>
-        <translation type="unfinished"></translation>
+        <translation>マントPNG画像のURL:</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>%1 is not a valid http(s) URL.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 は有効な http(s) URL ではありません。</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Downloading the cape...</source>
-        <translation type="unfinished"></translation>
+        <translation>マントをダウンロードしています...</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>The URL did not contain a valid cape image.</source>
-        <translation type="unfinished"></translation>
+        <translation>URLに有効なマント画像が含まれていませんでした。</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Cape imported from URL.</source>
-        <translation type="unfinished"></translation>
+        <translation>URLからマントをインポートしました。</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Cape</source>
-        <translation type="unfinished">マント</translation>
+        <translation>マント</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>%1&apos;s cape</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 のマント</translation>
     </message>
     <message>
         <location line="+24"/>
         <location line="+38"/>
         <source>Source: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>ソース: %1</translation>
     </message>
     <message>
         <location line="-37"/>
         <source>Source: %1
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>ソース: %1
+%2</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>View %1 on crafty.gg</source>
-        <translation type="unfinished"></translation>
+        <translation>crafty.gg で %1 を表示</translation>
     </message>
     <message>
         <location line="+92"/>
         <source>Looking for capes... (%1 of %2 players)</source>
-        <translation type="unfinished"></translation>
+        <translation>マントを検索しています... (%2 人中 %1 人)</translation>
     </message>
     <message>
         <location line="+31"/>
         <source>No capes found for &quot;%1&quot;. Try another cape name or a player name.</source>
-        <translation type="unfinished"></translation>
+        <translation>「%1」のマントが見つかりませんでした。別のマント名またはプレイヤー名を試してください。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 capes found for &quot;%2&quot;. Search again to look through more players.</source>
-        <translation type="unfinished"></translation>
+        <translation>「%2」のマントが %1 個見つかりました。さらに多くのプレイヤーを探すにはもう一度検索してください。</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>No capes found yet. Try the next page, or search for a player.</source>
-        <translation type="unfinished"></translation>
+        <translation>マントはまだ見つかっていません。次のページを試すか、プレイヤーを検索してください。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>No capes found. Try searching by cape or player name.</source>
-        <translation type="unfinished"></translation>
+        <translation>マントが見つかりませんでした。マント名またはプレイヤー名で検索してみてください。</translation>
     </message>
     <message>
         <location line="+2"/>
         <location line="+49"/>
         <source>%1 capes found. Search by cape or player name to look for more.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 個のマントが見つかりました。さらに探すにはマント名またはプレイヤー名で検索してください。</translation>
     </message>
 </context>
 <context>
@@ -2613,88 +2662,88 @@ Instances skipped: %5</source>
     <message>
         <location filename="../launcher/ui/dialogs/CommandPalette.cpp" line="+283"/>
         <source>Type a command...</source>
-        <translation type="unfinished"></translation>
+        <translation>コマンドを入力...</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Natural language</source>
-        <translation type="unfinished"></translation>
+        <translation>自然言語</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>↑↓ navigate · PgUp/PgDn jump · Enter run · Esc close</source>
-        <translation type="unfinished"></translation>
+        <translation>↑↓ 移動 · PgUp/PgDn ジャンプ · Enter 実行 · Esc 閉じる</translation>
     </message>
     <message>
         <location line="+123"/>
         <source>%1 of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 / %2</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Type your query...</source>
-        <translation type="unfinished"></translation>
+        <translation>クエリを入力...</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>Preparing language model...</source>
-        <translation type="unfinished"></translation>
+        <translation>言語モデルを準備しています...</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Loading model…</source>
-        <translation type="unfinished"></translation>
+        <translation>モデルを読み込んでいます…</translation>
     </message>
     <message>
         <location line="+98"/>
         <source>Model download declined. Natural language search needs a one-time download; type ? again to retry.</source>
-        <translation type="unfinished"></translation>
+        <translation>モデルのダウンロードが拒否されました。自然言語検索には初回のみのダウンロードが必要です。再試行するにはもう一度 ? を入力してください。</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Language model unavailable (%1).</source>
-        <translation type="unfinished"></translation>
+        <translation>言語モデルが利用できません (%1)。</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Language model file was corrupted and removed. Type ? again to re-download.</source>
-        <translation type="unfinished"></translation>
+        <translation>言語モデルファイルが破損していたため削除されました。再ダウンロードするにはもう一度 ? を入力してください。</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Checking for model updates…</source>
-        <translation type="unfinished"></translation>
+        <translation>モデルの更新を確認しています…</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Downloading model (%1 MB remaining)…</source>
-        <translation type="unfinished"></translation>
+        <translation>モデルをダウンロード中（残り %1 MB）…</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Downloading model…</source>
-        <translation type="unfinished"></translation>
+        <translation>モデルをダウンロードしています…</translation>
     </message>
     <message>
         <location line="+13"/>
         <location line="+14"/>
         <source>No matching command found. Try typing without &apos;?&apos; to search by name.</source>
-        <translation type="unfinished"></translation>
+        <translation>一致するコマンドが見つかりませんでした。名前で検索するには &apos;?&apos; なしで入力してみてください。</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>%1 → %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 → %2</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>New instance with %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 を使用した新しいインスタンス</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>%1 → (no matching instance)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 →（一致するインスタンスなし）</translation>
     </message>
 </context>
 <context>
@@ -2725,23 +2774,24 @@ Instances skipped: %5</source>
     <message>
         <location line="+135"/>
         <source>Metadata download aborted</source>
-        <translation type="unfinished"></translation>
+        <translation>メタデータのダウンロードが中止されました</translation>
     </message>
     <message>
         <location line="+24"/>
         <source>Some component metadata downloads failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>一部のコンポーネントメタデータのダウンロードに失敗しました。</translation>
     </message>
     <message>
         <location line="+567"/>
         <source>Reason: %1</source>
-        <translation type="unfinished">理由: %1</translation>
+        <translation>理由: %1</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Component metadata update failed during download:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロード中にコンポーネントのメタデータ更新に失敗しました:
+%1</translation>
     </message>
     <message>
         <source>Component metadata update task failed while downloading from remote server:
@@ -2761,7 +2811,7 @@ Instances skipped: %5</source>
     <message>
         <location line="+235"/>
         <source>Dependency check found conflicting requirements.</source>
-        <translation type="unfinished"></translation>
+        <translation>依存関係のチェックで競合する要件が見つかりました。</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -3057,17 +3107,17 @@ Instances skipped: %5</source>
     <message>
         <location line="+196"/>
         <source>Find player capes</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイヤーのマントを検索</translation>
     </message>
     <message>
         <location line="+36"/>
         <source>Download player capes</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイヤーのマントをダウンロード</translation>
     </message>
     <message>
         <location line="+39"/>
         <source>Download cape</source>
-        <translation type="unfinished"></translation>
+        <translation>マントをダウンロード</translation>
     </message>
 </context>
 <context>
@@ -3555,37 +3605,37 @@ Are you sure?</source>
     <message>
         <location filename="../launcher/ui/pages/global/DeveloperPage.cpp" line="+90"/>
         <source>Developer tools are intended for testing and troubleshooting. Actions below change launcher preferences; they do not delete instances or accounts.</source>
-        <translation type="unfinished"></translation>
+        <translation>開発者ツールはテストおよびトラブルシューティング用です。以下の操作はランチャーの設定を変更しますが、インスタンスやアカウントは削除しません。</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Show GitHub star reminder now</source>
-        <translation type="unfinished"></translation>
+        <translation>GitHubスターのリマインダーを今すぐ表示</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Display the reminder immediately, ignoring its normal schedule and dismissed state.</source>
-        <translation type="unfinished"></translation>
+        <translation>通常のスケジュールや非表示状態を無視して、リマインダーを即座に表示します。</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Show bug report update notification now</source>
-        <translation type="unfinished"></translation>
+        <translation>バグレポートの更新通知を今すぐ表示</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Display a sample &quot;your report has news&quot; notification in the window you are in, to test notifications without waiting for the team.</source>
-        <translation type="unfinished"></translation>
+        <translation>チームからの返信を待たずに通知をテストするため、現在のウィンドウに「レポートに新着があります」というサンプル通知を表示します。</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Reset first-run prompts</source>
-        <translation type="unfinished"></translation>
+        <translation>初回起動プロンプトをリセット</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Make the language and Java setup prompts eligible to appear again.</source>
-        <translation type="unfinished"></translation>
+        <translation>言語設定とJavaセットアップのプロンプトが再び表示されるようにします。</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -3599,212 +3649,213 @@ Are you sure?</source>
         <location line="+12"/>
         <location line="+65"/>
         <source>Developer tools</source>
-        <translation type="unfinished"></translation>
+        <translation>開発者ツール</translation>
     </message>
     <message>
         <location line="-163"/>
         <source>First-run preferences will be reset when Settings closes. The language and Java setup prompts may appear after restarting PollyMC-Continued.</source>
-        <translation type="unfinished"></translation>
+        <translation>設定を閉じると初回起動設定がリセットされます。PollyMC-Continuedを再起動すると、言語およびJavaセットアップのプロンプトが表示される場合があります。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Reset GitHub star reminder</source>
-        <translation type="unfinished"></translation>
+        <translation>GitHubスターのリマインダーをリセット</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Allow the GitHub star reminder to be shown again.</source>
-        <translation type="unfinished"></translation>
+        <translation>GitHubスターのリマインダーが再び表示されるようにします。</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Preview splash screen</source>
-        <translation type="unfinished"></translation>
+        <translation>スプラッシュ画面をプレビュー</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Show a temporary preview; this does not change startup behavior.</source>
-        <translation type="unfinished"></translation>
+        <translation>一時的なプレビューを表示します。起動時の動作は変更されません。</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Open logs folder</source>
-        <translation type="unfinished"></translation>
+        <translation>ログフォルダーを開く</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Could not open the logs folder:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>ログフォルダーを開けませんでした:
+%1</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Copy diagnostic summary</source>
-        <translation type="unfinished"></translation>
+        <translation>診断サマリーをコピー</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Copies version, platform, and log-file metadata only; log contents and account details are not included.</source>
-        <translation type="unfinished"></translation>
+        <translation>バージョン、プラットフォーム、ログファイルのメタデータのみをコピーします。ログの内容やアカウントの詳細は含まれません。</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Diagnostic summary copied to the clipboard. Review it before sharing because it includes the local logs-folder path.</source>
-        <translation type="unfinished"></translation>
+        <translation>診断サマリーをクリップボードにコピーしました。ローカルのログフォルダーのパスが含まれているため、共有する前に確認してください。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Enable verbose Qt logging until restart</source>
-        <translation type="unfinished"></translation>
+        <translation>再起動まで詳細なQtログを有効にする</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Enables debug and informational Qt messages for this session. This may produce more output and can expose diagnostic details in logs.</source>
-        <translation type="unfinished"></translation>
+        <translation>このセッションでデバッグおよび情報レベルのQtメッセージを有効にします。出力が増加し、ログに診断の詳細が記録される場合があります。</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>Run real update check now</source>
-        <translation type="unfinished"></translation>
+        <translation>実際の更新確認を今すぐ実行</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Runs PollyMC&apos;s normal update check. This contacts the configured update service.</source>
-        <translation type="unfinished"></translation>
+        <translation>PollyMCの通常の更新確認を実行します。設定されたアップデートサービスに接続します。</translation>
     </message>
     <message>
         <location line="+5"/>
         <location line="+29"/>
         <location line="+12"/>
         <source>The main window is not available.</source>
-        <translation type="unfinished"></translation>
+        <translation>メインウィンドウが利用できません。</translation>
     </message>
     <message>
         <location line="-37"/>
         <location line="+11"/>
         <source>The updater is not enabled in this build.</source>
-        <translation type="unfinished"></translation>
+        <translation>このビルドではアップデータが有効になっていません。</translation>
     </message>
     <message>
         <location line="-5"/>
         <source>Show auto update UI</source>
-        <translation type="unfinished"></translation>
+        <translation>自動アップデートUIを表示</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Fetches the most recent release and shows it in the normal update dialog, even if you are already up to date. Installing is disabled in this preview.</source>
-        <translation type="unfinished"></translation>
+        <translation>既に最新であっても、最新のリリースを取得して通常のアップデートダイアログに表示します。このプレビューではインストールは無効になっています。</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>This platform&apos;s updater does not support the update UI preview.</source>
-        <translation type="unfinished"></translation>
+        <translation>このプラットフォームのアップデータはアップデートUIプレビューをサポートしていません。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Show What&apos;s New toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>新着情報ツールバーを表示</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Reveals the bottom What&apos;s New toolbar. Use this if it went missing, for example after running an older launcher that hid it again.</source>
-        <translation type="unfinished"></translation>
+        <translation>下部の「新着情報」ツールバーを表示します。古いランチャーを実行して再び非表示になった場合などにご使用ください。</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Open What&apos;s New browser</source>
-        <translation type="unfinished"></translation>
+        <translation>新着情報ブラウザーを開く</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Opens the What&apos;s New version browser without using the toolbar or the Help menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>ツールバーやヘルプメニューを使わずに新着情報バージョンブラウザーを開きます。</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Simulate update-check failure</source>
-        <translation type="unfinished"></translation>
+        <translation>更新確認の失敗をシミュレート</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Shows a test-only failure message. It does not contact the updater or change update settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>テスト専用の失敗メッセージを表示します。アップデータに接続したりアップデート設定を変更したりしません。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Simulated update failure</source>
-        <translation type="unfinished"></translation>
+        <translation>シミュレートされたアップデート失敗</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This is a simulated network failure for UI testing. No update request was sent and no launcher files were changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>これはUIテスト用のシミュレートされたネットワークエラーです。アップデートリクエストは送信されず、ランチャーファイルも変更されていません。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Simulate slow network (5 seconds)</source>
-        <translation type="unfinished"></translation>
+        <translation>低速ネットワークをシミュレート（5秒）</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Simulates a delayed response locally; it does not throttle or modify real network traffic.</source>
-        <translation type="unfinished"></translation>
+        <translation>ローカルで遅延応答をシミュレートします。実際のネットワークトラフィックを制限または変更しません。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Simulating a slow update response…</source>
-        <translation type="unfinished"></translation>
+        <translation>低速なアップデート応答をシミュレート中…</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Cancel</source>
-        <translation type="unfinished">キャンセル</translation>
+        <translation>キャンセル</translation>
     </message>
     <message>
         <location line="+2"/>
         <location line="+17"/>
         <source>Slow-network test</source>
-        <translation type="unfinished"></translation>
+        <translation>低速ネットワークテスト</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The simulated response completed after five seconds. No network request was made.</source>
-        <translation type="unfinished"></translation>
+        <translation>シミュレートされた応答が5秒後に完了しました。ネットワークリクエストは行われていません。</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Crash-test launcher (unsafe)</source>
-        <translation type="unfinished"></translation>
+        <translation>ランチャーのクラッシュテスト（非安全）</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Intentionally terminates the process. Unsaved launcher state may be lost.</source>
-        <translation type="unfinished"></translation>
+        <translation>意図的にプロセスを終了します。保存されていないランチャーの状態が失われる可能性があります。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Confirm crash test</source>
-        <translation type="unfinished"></translation>
+        <translation>クラッシュテストの確認</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This will immediately terminate PollyMC-Continued without a normal shutdown. Unsaved settings or UI state may be lost. Only continue when testing crash handling.</source>
-        <translation type="unfinished"></translation>
+        <translation>通常のシャットダウンを行わずにPollyMC-Continuedを直ちに終了します。保存されていない設定やUIの状態が失われる可能性があります。クラッシュ処理のテスト時のみ続行してください。</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Disable Developer Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>開発者モードを無効にする</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Developer Mode is disabled. The Developer page will disappear when Settings is reopened. The POLLYMC_DEV environment override, if set, must also be removed.</source>
-        <translation type="unfinished"></translation>
+        <translation>開発者モードが無効になりました。設定を開き直すと「開発者」ページは消えます。環境変数 POLLYMC_DEV が設定されている場合は、それも削除する必要があります。</translation>
     </message>
     <message>
         <location filename="../launcher/ui/pages/global/DeveloperPage.h" line="+11"/>
         <source>Developer</source>
-        <translation type="unfinished"></translation>
+        <translation>開発者</translation>
     </message>
 </context>
 <context>
@@ -3945,38 +3996,41 @@ This instance cannot be launched because some libraries are missing or have not 
         <source>Software rendering is turned on, but the software renderer is not installed and cannot be downloaded by this version.
 Copy the 64-bit Mesa files opengl32.dll, libgallium_wgl.dll and libglapi.dll into this folder, or turn software rendering off:
   %1</source>
-        <translation type="unfinished"></translation>
+        <translation>ソフトウェアレンダリングが有効になっていますが、ソフトウェアレンダラーがインストールされておらず、このバージョンではダウンロードできません。
+64ビットのMesaファイル opengl32.dll、libgallium_wgl.dll、libglapi.dll をこのフォルダーにコピーするか、ソフトウェアレンダリングをオフにしてください:
+  %1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>The software renderer is not installed</source>
-        <translation type="unfinished"></translation>
+        <translation>ソフトウェアレンダラーがインストールされていません</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Downloading the software renderer (needed once)...</source>
-        <translation type="unfinished"></translation>
+        <translation>ソフトウェアレンダラーをダウンロードしています（初回のみ必要）...</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Software renderer</source>
-        <translation type="unfinished"></translation>
+        <translation>ソフトウェアレンダラー</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Could not download the software renderer: %1
 Turn software rendering off or try again with a working Internet connection.</source>
-        <translation type="unfinished"></translation>
+        <translation>ソフトウェアレンダラーをダウンロードできませんでした: %1
+ソフトウェアレンダリングをオフにするか、有効なインターネット接続で再試行してください。</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Could not install the software renderer: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>ソフトウェアレンダラーをインストールできませんでした: %1</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Software renderer installed.</source>
-        <translation type="unfinished"></translation>
+        <translation>ソフトウェアレンダラーがインストールされました。</translation>
     </message>
 </context>
 <context>
@@ -4725,12 +4779,12 @@ Are you sure?</source>
     <message>
         <location line="+8"/>
         <source>Could not find pack version %1</source>
-        <translation type="unfinished"></translation>
+        <translation>パックバージョン %1 が見つかりませんでした</translation>
     </message>
     <message>
         <location line="+64"/>
         <source>Invalid manifest: no download information available for file &apos;%1&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>無効なマニフェスト: ファイル &apos;%1&apos; のダウンロード情報がありません。</translation>
     </message>
     <message>
         <location line="+86"/>
@@ -4826,7 +4880,7 @@ Are you sure?</source>
     <message>
         <location line="+73"/>
         <source>CurseForge API returned invalid data.</source>
-        <translation type="unfinished"></translation>
+        <translation>CurseForge APIが無効なデータを返しました。</translation>
     </message>
 </context>
 <context>
@@ -4887,42 +4941,47 @@ Are you sure?</source>
     <message>
         <location line="-412"/>
         <source>Could not check the old files</source>
-        <translation type="unfinished"></translation>
+        <translation>古いファイルを確認できませんでした</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The launcher could not get the file names of the previous pack version from CurseForge, so the old mod files cannot be removed. Updating now would likely leave duplicate mods in the instance, which stops the game from starting.
 
 Do you want to continue anyway?</source>
-        <translation type="unfinished"></translation>
+        <translation>ランチャーはCurseForgeから以前のパックバージョンのファイル名を取得できなかったため、古いModファイルを削除できません。今すぐ更新するとインスタンス内に重複したModが残り、ゲームが起動しなくなる可能性があります。
+
+それでも続行しますか？</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>%1 file(s) of the previous pack version could not be identified on CurseForge anymore, so they could not be removed. If the game reports duplicate mods, delete the older copies by hand.</source>
-        <translation type="unfinished"></translation>
+        <translation>以前のパックバージョンの %1 個のファイルがCurseForge上で特定できなくなったため、削除できませんでした。ゲームがModの重複を報告する場合は、古いコピーを手動で削除してください。</translation>
     </message>
     <message>
         <location line="+42"/>
         <source>These files were part of the pack before, but you replaced them with another version of the same mod, so they are not downloaded again:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>これらのファイルは以前はパックの一部でしたが、同じModの別バージョンに置き換えられたため、再ダウンロードされません:
+%1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>These files were extra copies of mods the pack already provides, so they are removed:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>これらのファイルはパックが既に提供しているModの余分なコピーであったため、削除されます:
+%1</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>These files were part of the pack before, but are no longer on disk (perhaps they were updated or removed individually), so they will be downloaded again:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>これらのファイルは以前はパックの一部でしたが、ディスク上に存在しないため（個別に更新または削除された可能性があります）、再ダウンロードされます:
+%1</translation>
     </message>
     <message>
         <location line="+126"/>
         <source>The overrides has a path that leads to an arbitrary location (%1). This is a security risk and isn&apos;t allowed.</source>
-        <translation type="unfinished"></translation>
+        <translation>オーバーライドに任意の場所 (%1) へつながるパスが含まれています。これはセキュリティ上のリスクであり許可されていません。</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -4937,7 +4996,7 @@ Do you want to continue anyway?</source>
     <message>
         <location line="+295"/>
         <source>Pack resource &apos;%1&apos; (for the &apos;%2&apos; folder) is not on disk: it was not downloaded, so it is left out of the instance.</source>
-        <translation type="unfinished"></translation>
+        <translation>パックリソース &apos;%1&apos;（&apos;%2&apos; フォルダー用）はディスク上にありません: ダウンロードされなかったため、インスタンスから除外されます。</translation>
     </message>
     <message>
         <location line="-402"/>
@@ -5318,32 +5377,32 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../launcher/ui/dialogs/GpuDriverGuideDialog.cpp" line="+51"/>
         <source>Graphics Driver Guide</source>
-        <translation type="unfinished"></translation>
+        <translation>グラフィックスドライバーガイド</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Your graphics card could not be detected automatically.</source>
-        <translation type="unfinished"></translation>
+        <translation>グラフィックスカードを自動検出できませんでした。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>&lt;b&gt;Detected graphics:&lt;/b&gt; %1</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;検出されたグラフィックス:&lt;/b&gt; %1</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Windows is using its basic built-in display driver, so no real graphics driver is installed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Windowsは組み込みの基本ディスプレイドライバーを使用しているため、実際のグラフィックスドライバーがインストールされていません。</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>%1 drivers</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ドライバー</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>&lt;h3&gt;How to update your graphics driver&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;&lt;b&gt;Find your graphics card.&lt;/b&gt; Press &lt;i&gt;Win + R&lt;/i&gt;, type &lt;i&gt;dxdiag&lt;/i&gt; and press Enter, then open the &lt;i&gt;Display&lt;/i&gt; tab. Or open &lt;i&gt;Device Manager&lt;/i&gt; and expand &lt;i&gt;Display adapters&lt;/i&gt;.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Laptop or ready-made PC?&lt;/b&gt; Check the maker&apos;s support page for your exact model first (Dell, HP, Lenovo, ASUS, Acer...). Their drivers are tested for your machine. Otherwise use the buttons above:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Intel:&lt;/b&gt; run the &lt;i&gt;Intel Driver &amp;amp; Support Assistant&lt;/i&gt;, it finds the right driver for you.&lt;/li&gt;&lt;li&gt;&lt;b&gt;AMD:&lt;/b&gt; pick your product on the AMD page, or run the AMD auto-detect tool.&lt;/li&gt;&lt;li&gt;&lt;b&gt;NVIDIA:&lt;/b&gt; pick your product on the NVIDIA page, or use the NVIDIA app.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Install it and restart your PC.&lt;/b&gt; Choose a clean or standard install, both are fine.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Check it worked.&lt;/b&gt; In &lt;i&gt;dxdiag&lt;/i&gt; the Display tab should show your real card with a driver version, not &quot;Microsoft Basic Display Adapter&quot;.&lt;/li&gt;&lt;/ol&gt;&lt;h3&gt;Still not working?&lt;/h3&gt;&lt;p&gt;Very old graphics (for example Intel HD Graphics 2000/3000 and older, or cards from before about 2012) cannot run recent Minecraft versions even with the latest driver. In that case:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Play an older Minecraft version (1.16.5 or older work on much older hardware), or&lt;/li&gt;&lt;li&gt;turn on &lt;i&gt;Use software rendering&lt;/i&gt; in the instance&apos;s settings under Performance. It works on almost any PC but is slow, or&lt;/li&gt;&lt;li&gt;upgrade the graphics card.&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;h3&gt;グラフィックスドライバーの更新方法&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;&lt;b&gt;グラフィックスカードを確認します。&lt;/b&gt;&lt;i&gt;Win + R&lt;/i&gt; を押し、&lt;i&gt;dxdiag&lt;/i&gt; と入力して Enter を押し、&lt;i&gt;ディスプレイ&lt;/i&gt; タブを開きます。または、&lt;i&gt;デバイス マネージャー&lt;/i&gt; を開いて &lt;i&gt;ディスプレイ アダプター&lt;/i&gt; を展開します。&lt;/li&gt;&lt;li&gt;&lt;b&gt;ノートPCまたは市販のPCですか？&lt;/b&gt;まずお使いの正確なモデルについてメーカーのサポートページを確認してください（Dell、HP、Lenovo、ASUS、Acer...）。メーカーのドライバーはお使いのマシン向けにテストされています。それ以外の場合は上のボタンを使用してください:&lt;ul&gt;&lt;li&gt;&lt;b&gt;Intel:&lt;/b&gt; &lt;i&gt;Intel Driver &amp;amp; Support Assistant&lt;/i&gt; を実行すると、適切なドライバーが見つかります。&lt;/li&gt;&lt;li&gt;&lt;b&gt;AMD:&lt;/b&gt; AMDページで製品を選択するか、AMD自動検出ツールを実行してください。&lt;/li&gt;&lt;li&gt;&lt;b&gt;NVIDIA:&lt;/b&gt; NVIDIAページで製品を選択するか、NVIDIAアプリを使用してください。&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;インストールしてPCを再起動します。&lt;/b&gt;クリーンインストールまたは標準インストールのどちらでも構いません。&lt;/li&gt;&lt;li&gt;&lt;b&gt;動作を確認します。&lt;/b&gt;&lt;i&gt;dxdiag&lt;/i&gt; のディスプレイタブに「Microsoft 基本ディスプレイ アダプター」ではなく、実際のカードとドライバーバージョンが表示されるはずです。&lt;/li&gt;&lt;/ol&gt;&lt;h3&gt;それでも動作しない場合&lt;/h3&gt;&lt;p&gt;非常に古いグラフィックス（例: Intel HD Graphics 2000/3000以前、または2012年以前のカード）では、最新のドライバーでも最近のMinecraftバージョンを実行できません。その場合は次のようにしてください:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;古いMinecraftバージョン（1.16.5以前はずっと古いハードウェアでも動作します）をプレイする、または&lt;/li&gt;&lt;li&gt;インスタンス設定の「パフォーマンス」にある &lt;i&gt;ソフトウェアレンダリングを使用&lt;/i&gt; をオンにする。ほとんどのPCで動作しますが低速です、または&lt;/li&gt;&lt;li&gt;グラフィックスカードをアップグレードする。&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
 </context>
 <context>
@@ -5351,12 +5410,12 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../launcher/ui/pages/instance/PerformancePage.cpp" line="+342"/>
         <source>min %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>最小 %1 %2</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>max %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>最大 %1 %2</translation>
     </message>
 </context>
 <context>
@@ -5693,17 +5752,18 @@ Do you want to continue anyway?</source>
         <location filename="../launcher/InstanceCreationTask.cpp" line="+51"/>
         <source>Could not create instance:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>インスタンスを作成できませんでした:
+%1</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Could not create instance.</source>
-        <translation type="unfinished"></translation>
+        <translation>インスタンスを作成できませんでした。</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>Could not remove old conflicting files.</source>
-        <translation type="unfinished"></translation>
+        <translation>競合する古いファイルを削除できませんでした。</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -5745,46 +5805,50 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="../launcher/ui/dialogs/InstanceHealthCheckDialog.cpp" line="+97"/>
         <source>No Java selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Javaが選択されていません</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This instance has no Java installation selected, so it cannot start.
 Pick one in the instance&apos;s Java settings, or let the launcher download a matching Java automatically.</source>
-        <translation type="unfinished"></translation>
+        <translation>このインスタンスにはJavaのインストールが選択されていないため、起動できません。
+インスタンスのJava設定で1つ選択するか、ランチャーに適切なJavaを自動的にダウンロードさせてください。</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Java not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Javaが見つかりません</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The Java installation for this instance does not exist or cannot be run:
 %1
 It may have been moved, uninstalled, or blocked by antivirus software.</source>
-        <translation type="unfinished"></translation>
+        <translation>このインスタンス用のJavaインストールが存在しないか、実行できません:
+%1
+移動、アンインストールされたか、ウイルス対策ソフトによってブロックされた可能性があります。</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>This instance needs Java %1, but the selected Java is version %2.
 Switch Java in the instance&apos;s Java settings, or turn off the compatibility check if you know what you&apos;re doing.</source>
-        <translation type="unfinished"></translation>
+        <translation>このインスタンスにはJava %1 が必要ですが、選択されたJavaのバージョンは %2 です。
+インスタンスのJava設定でJavaを切り替えるか、問題ないことがわかっている場合は互換性チェックをオフにしてください。</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Java version mismatch</source>
-        <translation type="unfinished"></translation>
+        <translation>Javaバージョンの不一致</translation>
     </message>
     <message>
         <location line="+256"/>
         <source>Checking &lt;b&gt;%1&lt;/b&gt;…</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; を確認中…</translation>
     </message>
     <message>
         <location line="+39"/>
         <source>Broken mod files (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>破損したModファイル (%1)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5792,84 +5856,92 @@ Switch Java in the instance&apos;s Java settings, or turn off the compatibility 
 %1
 
 Delete or re-download them (a fresh download of the same version is usually enough).</source>
-        <translation type="unfinished"></translation>
+        <translation>modsフォルダー内のこれらのファイルは空または破損しており、通常は起動時にゲームがクラッシュする原因となります:
+%1
+
+削除するか再ダウンロードしてください（通常は同じバージョンを新しくダウンロードすれば十分です）。</translation>
     </message>
     <message>
         <location line="-283"/>
         <source>Version information not loaded yet</source>
-        <translation type="unfinished"></translation>
+        <translation>バージョン情報はまだ読み込まれていません</translation>
     </message>
     <message>
         <location line="-67"/>
         <source>Error</source>
-        <translation type="unfinished">エラー</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Warning</source>
-        <translation type="unfinished">警告</translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Info</source>
-        <translation type="unfinished">情報</translation>
+        <translation>情報</translation>
     </message>
     <message numerus="yes">
         <location line="+9"/>
         <source>
 … and %n more</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>
+… 他 %n 件</numerusform>
         </translation>
     </message>
     <message>
         <location line="+55"/>
         <source>The launcher could not read this instance&apos;s version list, so the loader check was skipped.
 Open the instance, go to the Version page and let it load once (or press Reload) before launching.</source>
-        <translation type="unfinished"></translation>
+        <translation>ランチャーはこのインスタンスのバージョンリストを読み込めなかったため、ローダーのチェックをスキップしました。
+起動する前にインスタンスを開き、「バージョン」ページに移動して一度読み込ませてください（または「再読み込み」を押してください）。</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>%1 (loader component)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (ローダーコンポーネント)</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Only %1 MiB are free on the drive this instance is stored on.
 Free up some space, or the game can fail while saving worlds or downloading files.</source>
-        <translation type="unfinished"></translation>
+        <translation>このインスタンスが保存されているドライブの空き容量が %1 MiB しかありません。
+空き容量を増やしてください。そうしないと、ワールドの保存やファイルのダウンロード中にゲームが失敗する可能性があります。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Low disk space</source>
-        <translation type="unfinished"></translation>
+        <translation>ディスク容量不足</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Too much memory allocated</source>
-        <translation type="unfinished"></translation>
+        <translation>メモリの割り当てが多すぎます</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This instance is set to use up to %1 MiB, but the computer only has %2 MiB.
 Lower the maximum memory in the instance&apos;s settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>このインスタンスは最大 %1 MiB を使用するように設定されていますが、コンピューターには %2 MiB しかありません。
+インスタンスの設定で最大メモリを下げてください。</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>A lot of memory allocated</source>
-        <translation type="unfinished"></translation>
+        <translation>大量のメモリが割り当てられています</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This instance may use up to %1 MiB of the computer&apos;s %2 MiB.
 That leaves little for the system and can make the game stutter; around half of the total is usually plenty.</source>
-        <translation type="unfinished"></translation>
+        <translation>このインスタンスはコンピューターの %2 MiB のうち最大 %1 MiB を使用できます。
+これによりシステム用のメモリがほとんど残らず、ゲームがカクつく可能性があります。通常は合計の半分程度で十分です。</translation>
     </message>
     <message>
         <location line="+86"/>
         <source>Pack files missing (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>パックファイルが不足しています (%1)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5877,12 +5949,15 @@ That leaves little for the system and can make the game stutter; around half of 
 %2
 
 Running Update Pack downloads them again. If you removed any of them on purpose, disable them instead of deleting, so the launcher can tell the difference.</source>
-        <translation type="unfinished"></translation>
+        <translation>これらのファイルは %1 に属していますが、インスタンス内に存在しなくなりました:
+%2
+
+「パックを更新」を実行すると再ダウンロードされます。意図的に削除した場合は、ランチャーが違いを判別できるように、削除する代わりに無効化してください。</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>Mods that are not part of %1 (%2)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 の一部ではないMod (%2)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5890,37 +5965,40 @@ Running Update Pack downloads them again. If you removed any of them on purpose,
 %1
 
 If the game complains about duplicate or incompatible mods, remove or disable the ones you did not add yourself.</source>
-        <translation type="unfinished"></translation>
+        <translation>modsフォルダー内のこれらのJARファイルはパックのファイルリストに含まれていません。パック外から追加されたか、パックがModを別のファイル名に更新した際に残されたものです:
+%1
+
+ゲームがModの重複や非互換性を報告する場合は、自分で追加したものではないものを削除または無効化してください。</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Check instance</source>
-        <translation type="unfinished"></translation>
+        <translation>インスタンスを確認</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Check Again</source>
-        <translation type="unfinished"></translation>
+        <translation>再確認</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Open Mods Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Modsフォルダーを開く</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Copy Report</source>
-        <translation type="unfinished"></translation>
+        <translation>レポートをコピー</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
+        <translation>閉じる</translation>
     </message>
     <message>
         <location line="+129"/>
         <source>Mods that may not fit this game version (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>このゲームバージョンに適合しない可能性があるMod (%1)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5928,48 +6006,51 @@ If the game complains about duplicate or incompatible mods, remove or disable th
 %1
 
 They may still work, but if the game crashes, update or remove them first.</source>
-        <translation type="unfinished"></translation>
+        <translation>これらのModは、このインスタンスのMinecraftバージョンと互換性があるとマークされていません:
+%1
+
+動作する場合もありますが、ゲームがクラッシュする場合は最初に更新または削除してください。</translation>
     </message>
     <message>
         <location line="+32"/>
         <source>&lt;b&gt;%1&lt;/b&gt; looks good - Java was found, the mods have no broken files or conflicts, and the loader version checks out. Nothing stood in the way of launching.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; は良好です - Javaが見つかり、Modに破損したファイルや競合はなく、ローダーのバージョンも問題ありません。起動を妨げるものはありません。</translation>
     </message>
     <message numerus="yes">
         <location line="+8"/>
         <source>&lt;b&gt;%1&lt;/b&gt; has %n problem(s) that can stop the game from starting</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>&lt;b&gt;%1&lt;/b&gt; にはゲームの起動を妨げる可能性のある問題が %n 件あります</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location line="+1"/>
         <source>, and %n warning(s) worth a look</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>、また確認する価値のある警告が %n 件あります</numerusform>
         </translation>
     </message>
     <message>
         <location line="+1"/>
         <source>. The details are below each entry.</source>
-        <translation type="unfinished"></translation>
+        <translation>。詳細は各項目の下にあります。</translation>
     </message>
     <message numerus="yes">
         <location line="+2"/>
         <source>&lt;b&gt;%1&lt;/b&gt; should start, but has %n warning(s) worth a look. The details are below each entry.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>&lt;b&gt;%1&lt;/b&gt; は起動するはずですが、確認する価値のある警告が %n 件あります。詳細は各項目の下にあります。</numerusform>
         </translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Instance check for &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; のインスタンスチェック</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>No problems found.</source>
-        <translation type="unfinished"></translation>
+        <translation>問題は見つかりませんでした。</translation>
     </message>
 </context>
 <context>
@@ -6003,13 +6084,13 @@ They may still work, but if the game crashes, update or remove them first.</sour
     <message>
         <location line="+44"/>
         <source>Could not open the supplied modpack zip file.</source>
-        <translation type="unfinished"></translation>
+        <translation>指定されたModパックのZIPファイルを開けませんでした。</translation>
     </message>
     <message>
         <location line="+4"/>
         <location line="+78"/>
         <source>The modpack archive does not contain a recognized modpack type.</source>
-        <translation type="unfinished"></translation>
+        <translation>Modパックアーカイブに認識可能なModパックタイプが含まれていません。</translation>
     </message>
     <message>
         <source>Archive does not contain a recognized modpack type.</source>
@@ -6151,22 +6232,22 @@ They may still work, but if the game crashes, update or remove them first.</sour
     <message>
         <location filename="../launcher/InstanceTemplateTask.cpp" line="+271"/>
         <source>The template folder %1 does not exist.</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートフォルダー %1 が存在しません。</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Creating instance %1 from template</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートからインスタンス %1 を作成しています</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>Template folder copy failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートフォルダーのコピーに失敗しました。</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>Template folder copy has been aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートフォルダーのコピーが中止されました。</translation>
     </message>
 </context>
 <context>
@@ -6437,7 +6518,7 @@ Are you sure?</source>
     <message>
         <location line="+51"/>
         <source>Warn when there is not enough free memory</source>
-        <translation type="unfinished"></translation>
+        <translation>空きメモリが不足している場合に警告する</translation>
     </message>
     <message>
         <location filename="../launcher/ui/widgets/JavaSettingsWidget.cpp" line="-49"/>
@@ -6715,12 +6796,12 @@ Java のバージョンは後から設定で変更できます。
     <message>
         <location line="+16"/>
         <source>Language picked automatically from your region (%1). Not right? Choose another one above.</source>
-        <translation type="unfinished"></translation>
+        <translation>地域設定 (%1) から言語が自動的に選択されました。正しくない場合は、上から別の言語を選択してください。</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Downloading the list of languages… You can continue in English now and switch languages at any time - the list fills in by itself.</source>
-        <translation type="unfinished"></translation>
+        <translation>言語リストをダウンロードしています… 今は英語のまま続行し、いつでも言語を切り替えることができます。リストは自動的に読み込まれます。</translation>
     </message>
     <message>
         <location line="-22"/>
@@ -6831,7 +6912,7 @@ Java のバージョンは後から設定で変更できます。
     <message>
         <location line="+45"/>
         <source>Graphics hardware warning</source>
-        <translation type="unfinished"></translation>
+        <translation>グラフィックスハードウェアの警告</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -6840,32 +6921,36 @@ Java のバージョンは後から設定で変更できます。
 Detected: %1
 
 Recent Minecraft versions need a working OpenGL driver. Without one, the game usually crashes right after it starts.</source>
-        <translation type="unfinished"></translation>
+        <translation>グラフィックスカードまたはドライバーがMinecraftに対して古すぎる可能性があります。
+
+検出: %1
+
+最近のMinecraftバージョンには動作するOpenGLドライバーが必要です。これがないと、通常は起動直後にゲームがクラッシュします。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>You can update your graphics driver, or turn on software rendering, which works on almost any PC but is slow. If the game already runs fine for you, choose Launch Anyway.</source>
-        <translation type="unfinished"></translation>
+        <translation>グラフィックスドライバーを更新するか、ソフトウェアレンダリングをオンにすることができます（ほとんどのPCで動作しますが低速です）。ゲームが既に問題なく動作している場合は、「とにかく起動」を選択してください。</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Use Software Rendering</source>
-        <translation type="unfinished"></translation>
+        <translation>ソフトウェアレンダリングを使用</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Driver Guide...</source>
-        <translation type="unfinished"></translation>
+        <translation>ドライバーガイド...</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Launch Anyway</source>
-        <translation type="unfinished"></translation>
+        <translation>とにかく起動</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Don&apos;t show this again</source>
-        <translation type="unfinished"></translation>
+        <translation>今後このメッセージを表示しない</translation>
     </message>
     <message>
         <location line="+91"/>
@@ -7154,7 +7239,7 @@ You may have to fix your mods because the game is still logging to files and lik
     <message>
         <location line="-43"/>
         <source>By &amp;time played</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイ時間順(&amp;T)</translation>
     </message>
     <message>
         <location line="+26"/>
@@ -7164,42 +7249,42 @@ You may have to fix your mods because the game is still logging to files and lik
     <message>
         <location line="+81"/>
         <source>Update behavior</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデートの動作</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Always: install updates automatically. Ask: prompt before installing. Never: do not check.</source>
-        <translation type="unfinished"></translation>
+        <translation>常時: アップデートを自動インストール。確認: インストール前に確認。しない: 確認しない。</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Install automatically (recommended)</source>
-        <translation type="unfinished"></translation>
+        <translation>自動インストール（推奨）</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Always</source>
-        <translation type="unfinished"></translation>
+        <translation>常時</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Ask before installing</source>
-        <translation type="unfinished"></translation>
+        <translation>インストール前に確認</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Ask</source>
-        <translation type="unfinished"></translation>
+        <translation>確認</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Never check for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデートを確認しない</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>しない</translation>
     </message>
     <message>
         <location line="+78"/>
@@ -7219,12 +7304,12 @@ You may have to fix your mods because the game is still logging to files and lik
     <message>
         <location line="+7"/>
         <source>When enabled, the launcher shares the name of your running instance with Discord Rich Presence. Turning this off hides launcher activity from your Discord status.</source>
-        <translation type="unfinished"></translation>
+        <translation>有効にすると、ランチャーは実行中のインスタンスの名前をDiscord Rich Presenceと共有します。オフにすると、ランチャーのアクティビティがDiscordのステータスに表示されなくなります。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Show what you&apos;re playing on Discord</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイ中のゲームをDiscordに表示する</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -7259,7 +7344,7 @@ You may have to fix your mods because the game is still logging to files and lik
     <message>
         <location line="+116"/>
         <source>Updates are mandatory: the launcher checks at startup and every 30 minutes.</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデートは必須です: ランチャーは起動時および30分ごとに確認を行います。</translation>
     </message>
     <message>
         <location filename="../launcher/ui/pages/global/LauncherPage.ui" line="+32"/>
@@ -7472,12 +7557,12 @@ Flatsealを使用して%1へのアクセスを取得することを推奨しま�
     <message>
         <location line="+35"/>
         <source>Could not set the Windows GPU preference for this Java installation; launching anyway.</source>
-        <translation type="unfinished"></translation>
+        <translation>このJavaインストールのWindows GPU設定を設定できませんでした。そのまま起動します。</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Could not clear the Windows GPU preference for this Java installation; launching anyway.</source>
-        <translation type="unfinished"></translation>
+        <translation>このJavaインストールのWindows GPU設定をクリアできませんでした。そのまま起動します。</translation>
     </message>
     <message>
         <location line="+76"/>
@@ -7952,12 +8037,12 @@ You&apos;ll have to correct this problem manually.</source>
     <message>
         <location line="-89"/>
         <source>%1 GiB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 GiB</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 MiB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 MiB</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -7967,12 +8052,12 @@ You&apos;ll have to correct this problem manually.</source>
     <message>
         <location line="+17"/>
         <source>Not enough free space to extract %1: about %2 is needed, but only %3 is free on %4.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 を展開するのに十分な空き容量がありません: 約 %2 必要ですが、%4 には %3 しか空きがありません。</translation>
     </message>
     <message>
         <location line="+60"/>
         <source>Failed to extract file %1 to %2%3</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル %1 を %2%3 に展開できませんでした</translation>
     </message>
     <message>
         <source>Failed to extract file %1 to %2</source>
@@ -8178,12 +8263,12 @@ You&apos;ll have to correct this problem manually.</source>
     <message>
         <location line="+14"/>
         <source>What&apos;s New...</source>
-        <translation type="unfinished"></translation>
+        <translation>新着情報...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Browse what changed in each release of %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 の各リリースの変更点を閲覧します。</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -8218,32 +8303,32 @@ You&apos;ll have to correct this problem manually.</source>
     <message>
         <location line="+122"/>
         <source>Save as &amp;Template...</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートとして保存(&amp;T)...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Save the selected instance (loader, mods, configs and settings) as a reusable template.</source>
-        <translation type="unfinished"></translation>
+        <translation>選択したインスタンス（ローダー、Mod、設定など）を再利用可能なテンプレートとして保存します。</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>New from &amp;Template...</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートから新規作成(&amp;T)...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Create a new instance from a saved template.</source>
-        <translation type="unfinished"></translation>
+        <translation>保存されたテンプレートから新しいインスタンスを作成します。</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Update &amp;All Instances...</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのインスタンスを更新(&amp;A)...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Check and install mod updates for every instance in one go.</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのインスタンスのMod更新を一括で確認してインストールします。</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -8278,27 +8363,27 @@ You&apos;ll have to correct this problem manually.</source>
     <message>
         <location line="+11"/>
         <source>&amp;Pin Instance</source>
-        <translation type="unfinished"></translation>
+        <translation>インスタンスを固定(&amp;P)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Keep the selected instance at the top of its group.</source>
-        <translation type="unfinished"></translation>
+        <translation>選択したインスタンスをグループの上部に固定します。</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Chec&amp;k Instance</source>
-        <translation type="unfinished"></translation>
+        <translation>インスタンスを確認(&amp;K)</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Copy &amp;Diagnostics</source>
-        <translation type="unfinished"></translation>
+        <translation>診断情報をコピー(&amp;D)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Copy the launcher version, system, Qt and Java information to the clipboard, ready to paste into a support chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>ランチャーのバージョン、システム、Qt、Javaの情報をクリップボードにコピーし、サポートチャットに貼り付けられるようにします。</translation>
     </message>
     <message>
         <location line="+122"/>
@@ -8386,67 +8471,67 @@ Are you sure?</source>
     <message>
         <location line="+339"/>
         <source>Check instance</source>
-        <translation type="unfinished"></translation>
+        <translation>インスタンスを確認</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This kind of instance cannot be checked automatically.</source>
-        <translation type="unfinished"></translation>
+        <translation>この種類のインスタンスは自動的にチェックできません。</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Report a Bug</source>
-        <translation type="unfinished"></translation>
+        <translation>バグを報告</translation>
     </message>
     <message>
         <location line="+15"/>
         <source> (commit %1)</source>
-        <translation type="unfinished"></translation>
+        <translation> (コミット %1)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Launcher: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>ランチャー: %1</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Platform: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>プラットフォーム: %1</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>System: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>システム: %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>CPU architecture: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>CPUアーキテクチャ: %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Qt: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt: %1</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>Java: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Java: %1</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>not set</source>
-        <translation type="unfinished"></translation>
+        <translation>未設定</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Java (instance &quot;%1&quot;): %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Java (インスタンス &quot;%1&quot;): %2</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Diagnostics copied to the clipboard - paste it into a support chat.</source>
-        <translation type="unfinished"></translation>
+        <translation>診断情報をクリップボードにコピーしました - サポートチャットに貼り付けてください。</translation>
     </message>
     <message>
         <location line="+64"/>
@@ -8857,7 +8942,7 @@ Please create a new instance before attempting to install this resource again.</
     <message>
         <location line="+343"/>
         <source>This looks like a %1 problem, not a launcher bug. Here is how to fix it:</source>
-        <translation type="unfinished"></translation>
+        <translation>これはランチャーのバグではなく、%1 の問題のようです。修正方法は次のとおりです:</translation>
     </message>
     <message>
         <location line="+589"/>
@@ -8873,27 +8958,27 @@ Please create a new instance before attempting to install this resource again.</
         <location line="-1107"/>
         <location line="+150"/>
         <source>Update on your bug report</source>
-        <translation type="unfinished"></translation>
+        <translation>バグレポートの更新</translation>
     </message>
     <message>
         <location line="-149"/>
         <source>&quot;%1&quot;: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot;: %2</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Updates on your bug reports</source>
-        <translation type="unfinished"></translation>
+        <translation>バグレポートの更新</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 of your reports have news.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 件のレポートに新着があります。</translation>
     </message>
     <message>
         <location line="+147"/>
         <source>&quot;Sample report&quot;: Seen - the team is looking into it</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;サンプルレポート&quot;: 確認済み - チームが調査中です</translation>
     </message>
     <message>
         <location line="+945"/>
@@ -9007,7 +9092,7 @@ Please create a new instance before attempting to install this resource again.</
     <message>
         <location line="-391"/>
         <source>What&apos;s New Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>新着情報ツールバー</translation>
     </message>
     <message>
         <location line="+195"/>
@@ -9042,19 +9127,19 @@ Please create a new instance before attempting to install this resource again.</
     <message>
         <location line="+177"/>
         <source>Look for missing Java, broken or conflicting mods, a wrong loader version or too little memory/disk space before launching.</source>
-        <translation type="unfinished"></translation>
+        <translation>起動前にJavaの不足、破損または競合するMod、誤ったローダーバージョン、メモリやディスク容量の不足を確認します。</translation>
     </message>
     <message>
         <location line="+30"/>
         <location filename="../launcher/ui/MainWindow.cpp" line="-860"/>
         <location line="+136"/>
         <source>My Reports</source>
-        <translation type="unfinished"></translation>
+        <translation>マイレポート</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>See what the team answered to the bug reports you sent from this launcher.</source>
-        <translation type="unfinished"></translation>
+        <translation>このランチャーから送信したバグレポートに対するチームからの返信を確認します。</translation>
     </message>
     <message>
         <location line="+44"/>
@@ -9639,7 +9724,7 @@ Make sure you also trust the URL.
     <message>
         <location line="+158"/>
         <source>Sets Windows&apos; GPU preference for this Java installation to High performance. Affects every app using the same javaw.exe.</source>
-        <translation type="unfinished"></translation>
+        <translation>このJavaインストールのWindows GPU設定を「高パフォーマンス」に設定します。同じ javaw.exe を使用するすべてのアプリに影響します。</translation>
     </message>
     <message>
         <location filename="../launcher/ui/widgets/MinecraftSettingsWidget.ui" line="-582"/>
@@ -9932,17 +10017,17 @@ It is most likely you will need to change the path - please refer to the mod&apo
     <message>
         <location line="+96"/>
         <source>Runs OpenGL on the CPU (Mesa llvmpipe). Use this only if Minecraft crashes at startup because your graphics hardware or driver is too old or missing. It works on almost any PC but is slow. The renderer (about 40 MB) is downloaded once on the first launch.</source>
-        <translation type="unfinished"></translation>
+        <translation>CPU上でOpenGLを実行します（Mesa llvmpipe）。グラフィックスハードウェアやドライバーが古すぎる、または見つからないために起動時にMinecraftがクラッシュする場合にのみ使用してください。ほとんどのPCで動作しますが低速です。レンダラー（約40 MB）は初回起動時に一度だけダウンロードされます。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Use software rendering (slow, for PCs without a working graphics driver)</source>
-        <translation type="unfinished"></translation>
+        <translation>ソフトウェアレンダリングを使用（低速、動作するグラフィックスドライバーがないPC向け）</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Graphics driver guide...</source>
-        <translation type="unfinished"></translation>
+        <translation>グラフィックスドライバーガイド...</translation>
     </message>
     <message>
         <location line="+38"/>
@@ -9960,76 +10045,85 @@ It is most likely you will need to change the path - please refer to the mod&apo
     <message>
         <location filename="../launcher/minecraft/mod/ModConflictChecker.cpp" line="+338"/>
         <source>unknown version</source>
-        <translation type="unfinished"></translation>
+        <translation>不明なバージョン</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Duplicate mod: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>重複したMod: %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>These files all provide the mod id &quot;%1&quot;, and the game will not start with more than one of them:
 %2
 Keep only one (usually the newest) and delete or disable the others.</source>
-        <translation type="unfinished"></translation>
+        <translation>これらのファイルはすべてMod ID &quot;%1&quot; を提供しており、複数あるとゲームが起動しません:
+%2
+1つだけ（通常は最新）を残し、他は削除または無効化してください。</translation>
     </message>
     <message>
         <location line="+28"/>
         <source>%1 conflicts with %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 は %2 と競合しています</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 (%2) says it is incompatible with %3 (%4), and both are enabled.
 Disable or remove one of them.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2) は %3 (%4) と互換性がないと報告しており、両方が有効になっています。
+どちらか一方を無効化または削除してください。</translation>
     </message>
     <message>
         <location line="+58"/>
         <source>Disabled dependency: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>無効化された依存関係: %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 needs the mod &quot;%2&quot;, which is installed (%3) but disabled.
 Enable it to avoid a crash on startup.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 にはMod &quot;%2&quot; が必要ですが、インストール済み (%3) であるものの無効化されています。
+起動時のクラッシュを防ぐため有効にしてください。</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Possibly missing dependency: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>不足している可能性がある依存関係: %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 needs a mod with the id &quot;%2&quot;, but it was not found in the mods folder or bundled inside any of the installed mods.
 Download it, unless the game already starts fine.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 にはID &quot;%2&quot; のModが必要ですが、modsフォルダーにもインストール済みMod内にも見つかりませんでした。
+ゲームが既に正常に起動している場合を除き、ダウンロードしてください。</translation>
     </message>
     <message>
         <location line="+46"/>
         <source>Outdated bundled dependency version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>同梱された依存関係のバージョンが古いです: %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 (%2) requires %3 version %4, but the copy bundled inside %5 (%6) is version %7.
 The game will refuse to start with this combination.
 Update the mod that bundles it, or install a separate copy inside that range.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2) には %3 バージョン %4 が必要ですが、%5 (%6) に同梱されているコピーはバージョン %7 です。
+この組み合わせではゲームが起動を拒否します。
+同梱しているModを更新するか、その範囲内の別コピーをインストールしてください。</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>Outdated dependency version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>依存関係のバージョンが古いです: %1</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 (%2) requires %3 version %4, but %5 (%6) is installed.
 The game will refuse to start with this combination.
 Update or replace the dependency with a version inside that range.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2) には %3 バージョン %4 が必要ですが、%5 (%6) がインストールされています。
+この組み合わせではゲームが起動を拒否します。
+依存関係をその範囲内のバージョンに更新または置き換えてください。</translation>
     </message>
 </context>
 <context>
@@ -10525,13 +10619,13 @@ Are you sure you want to do this?</source>
     <message>
         <location line="+20"/>
         <source>There are no mods to check for updates.</source>
-        <translation type="unfinished"></translation>
+        <translation>更新を確認するModがありません。</translation>
     </message>
     <message numerus="yes">
         <location line="+23"/>
         <source>No updates were found, but %n mod(s) could not be checked.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>更新は見つかりませんでしたが、%n 個のModを確認できませんでした。</numerusform>
         </translation>
     </message>
     <message>
@@ -10635,17 +10729,17 @@ Are you sure you want to do this?</source>
     <message>
         <location filename="../launcher/voice/ModelDownloader.cpp" line="+121"/>
         <source>Download language model?</source>
-        <translation type="unfinished"></translation>
+        <translation>言語モデルをダウンロードしますか？</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Natural language commands need a one-time download of about 130 MB (the intent classifier, vocabulary, and command labels). It is stored on this device and works offline afterwards. Download now?</source>
-        <translation type="unfinished"></translation>
+        <translation>自然言語コマンドには約130 MB（インテント分類器、語彙、コマンドラベル）の初回のみのダウンロードが必要です。このデバイスに保存され、以降はオフラインで動作します。今すぐダウンロードしますか？</translation>
     </message>
     <message>
         <location line="+153"/>
         <source>Language model files</source>
-        <translation type="unfinished"></translation>
+        <translation>言語モデルファイル</translation>
     </message>
 </context>
 <context>
@@ -10764,24 +10858,27 @@ Please update %1!</source>
         <location line="-29"/>
         <source>These files were part of the pack before, but you replaced them with another version of the same mod, so they are not downloaded again:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>これらのファイルは以前はパックの一部でしたが、同じModの別バージョンに置き換えられたため、再ダウンロードされません:
+%1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>These files were extra copies of mods the pack already provides, so they are removed:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>これらのファイルはパックが既に提供しているModの余分なコピーであったため、削除されます:
+%1</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>These files were part of the pack before, but are no longer on disk (perhaps they were updated or removed individually), so they will be downloaded again:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>これらのファイルは以前はパックの一部でしたが、ディスク上に存在しないため（個別に更新または削除された可能性があります）、再ダウンロードされます:
+%1</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>We couldn&apos;t find a usable index file for the older version. This may cause some of the files to be duplicated. Do you want to continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>古いバージョンに適したインデックスファイルが見つかりませんでした。一部のファイルが重複する可能性があります。続行しますか？</translation>
     </message>
     <message>
         <location line="+45"/>
@@ -10841,7 +10938,7 @@ Please update %1!</source>
     <message>
         <location line="+134"/>
         <source>Could not parse versions response: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>バージョン応答を解析できませんでした: %1</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -10981,43 +11078,43 @@ Please update %1!</source>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+162"/>
         <location line="+4"/>
         <source>My Reports</source>
-        <translation type="unfinished"></translation>
+        <translation>マイレポート</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Bug reports and suggestions you sent from this launcher, and what the team answered.</source>
-        <translation type="unfinished"></translation>
+        <translation>このランチャーから送信したバグレポートと提案、およびチームからの返信です。</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>No reports yet</source>
-        <translation type="unfinished"></translation>
+        <translation>レポートはまだありません</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>When you send a bug report or suggestion from this launcher, it shows up here, and you will be told when the team answers.</source>
-        <translation type="unfinished"></translation>
+        <translation>このランチャーからバグレポートや提案を送信するとここに表示され、チームが返信すると通知されます。</translation>
     </message>
     <message>
         <location line="+11"/>
         <location line="+25"/>
         <source>Check for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>更新を確認</translation>
     </message>
     <message>
         <location line="-24"/>
         <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
+        <translation>閉じる</translation>
     </message>
     <message>
         <location line="+25"/>
         <source>Last checked: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>最終確認: %1</translation>
     </message>
     <message>
         <location line="+32"/>
         <source>Checking…</source>
-        <translation type="unfinished"></translation>
+        <translation>確認中…</translation>
     </message>
 </context>
 <context>
@@ -11049,8 +11146,8 @@ Please update %1!</source>
         <location line="+119"/>
         <source>Download was rate limited. Server asked to retry after %1 (%n second(s)).</source>
         <comment>seconds</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>ダウンロードがレート制限されました。サーバーは %1（%n 秒）後に再試行するよう要求しています。</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -11091,7 +11188,7 @@ Please update %1!</source>
     <message>
         <location filename="../launcher/net/NetJob.cpp" line="+168"/>
         <source>Could not abort every task in the network job</source>
-        <translation type="unfinished"></translation>
+        <translation>ネットワークジョブ内のすべてのタスクを中止できませんでした</translation>
     </message>
     <message>
         <location line="+26"/>
@@ -11108,7 +11205,7 @@ Please update %1!</source>
     <message>
         <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.ui" line="+29"/>
         <source>A network operation failed: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>ネットワーク操作が失敗しました: %1</translation>
     </message>
     <message>
         <location line="+36"/>
@@ -11131,17 +11228,17 @@ Please update %1!</source>
     <message>
         <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.cpp" line="+72"/>
         <source>All %1 requests failed after %2 attempts</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 件すべてのリクエストが %2 回の試行後に失敗しました</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Only %2 of %1 requests failed (after %3 attempts)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 件中 %2 件のみリクエストが失敗しました（%3 回の試行後）</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Only %2 of %1 requests succeeded (after %3 attempts)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 件中 %2 件のみリクエストが成功しました（%3 回の試行後）</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -11151,62 +11248,62 @@ Please update %1!</source>
     <message>
         <location line="+4"/>
         <source>Report Bug</source>
-        <translation type="unfinished"></translation>
+        <translation>バグを報告</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Send this error to the PollyMC developers</source>
-        <translation type="unfinished"></translation>
+        <translation>このエラーをPollyMC開発者に送信します</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Show details</source>
-        <translation type="unfinished"></translation>
+        <translation>詳細を表示</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>This looks like antivirus software (or ransomware protection) blocking the launcher&apos;s temporary files. You can retry through a different temporary folder, or open the guide on letting your antivirus leave the launcher alone.</source>
-        <translation type="unfinished"></translation>
+        <translation>ウイルス対策ソフト（またはランサムウェア保護機能）がランチャーの一時ファイルをブロックしているようです。別の一時フォルダーを使って再試行するか、ウイルス対策ソフトにランチャーを除外させるガイドを開くことができます。</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Retry with a different temp folder…</source>
-        <translation type="unfinished"></translation>
+        <translation>別の一時フォルダーで再試行…</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Pick a folder the launcher will use to stage downloads, then retry. Choose one that your antivirus does not watch, such as a folder in your home directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>ランチャーがダウンロードのステージングに使用するフォルダーを選択して再試行してください。ホームディレクトリ内のフォルダーなど、ウイルス対策ソフトが監視していない場所を選択してください。</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Open the antivirus exclusion guide</source>
-        <translation type="unfinished"></translation>
+        <translation>ウイルス対策ソフトの除外ガイドを開く</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Opens a guide explaining how to add the launcher to your antivirus exclusions.</source>
-        <translation type="unfinished"></translation>
+        <translation>ランチャーをウイルス対策ソフトの除外リストに追加する方法を説明するガイドを開きます。</translation>
     </message>
     <message>
         <location line="+75"/>
         <source>This looks like a connection problem on your side, not a launcher bug. Please don&apos;t report it unless it keeps happening on a working connection.</source>
-        <translation type="unfinished"></translation>
+        <translation>これはランチャーのバグではなく、お使いの環境側の接続問題のようです。正常な接続環境で繰り返し発生する場合を除き、報告しないでください。</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Show every URL that failed</source>
-        <translation type="unfinished"></translation>
+        <translation>失敗したすべてのURLを表示</translation>
     </message>
     <message>
         <location line="+64"/>
         <source>Network error: %1</source>
-        <translation type="unfinished">ネットワークエラー: %1</translation>
+        <translation>ネットワークエラー: %1</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Pick a temporary download folder</source>
-        <translation type="unfinished"></translation>
+        <translation>一時ダウンロードフォルダーを選択</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/NetworkJobFailedDialog.ui" line="+14"/>
@@ -11299,106 +11396,108 @@ Please update %1!</source>
     <message>
         <location filename="../launcher/ui/dialogs/NewInstanceFromTemplateDialog.cpp" line="+79"/>
         <source>Create instance from template</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートからインスタンスを作成</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Select a template to create a new instance from:</source>
-        <translation type="unfinished"></translation>
+        <translation>新しいインスタンスを作成するテンプレートを選択してください:</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Name</source>
-        <translation type="unfinished">名前</translation>
+        <translation>名前</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Created</source>
-        <translation type="unfinished"></translation>
+        <translation>作成日時</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Minecraft version</source>
-        <translation type="unfinished">Minecraftのバージョン</translation>
+        <translation>Minecraftバージョン</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Instance name:</source>
-        <translation type="unfinished"></translation>
+        <translation>インスタンス名:</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Group:</source>
-        <translation type="unfinished"></translation>
+        <translation>グループ:</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Change the new instance&apos;s icon.</source>
-        <translation type="unfinished"></translation>
+        <translation>新しいインスタンスのアイコンを変更します。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Icon:</source>
-        <translation type="unfinished"></translation>
+        <translation>アイコン:</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Create instance</source>
-        <translation type="unfinished"></translation>
+        <translation>インスタンスを作成</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Cancel</source>
-        <translation type="unfinished">キャンセル</translation>
+        <translation>キャンセル</translation>
     </message>
     <message>
         <location line="+4"/>
         <location line="+199"/>
         <source>Delete template</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートを削除</translation>
     </message>
     <message>
         <location line="-190"/>
         <source>No group</source>
-        <translation type="unfinished">グループなし</translation>
+        <translation>グループなし</translation>
     </message>
     <message>
         <location line="+78"/>
         <source>No templates found.</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートが見つかりませんでした。</translation>
     </message>
     <message>
         <location line="+54"/>
         <location line="+72"/>
         <source>Error</source>
-        <translation type="unfinished">エラー</translation>
+        <translation>エラー</translation>
     </message>
     <message>
         <location line="-69"/>
         <source>Task aborted</source>
-        <translation type="unfinished">タスクは中断されました</translation>
+        <translation>タスクが中止されました</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The task has been aborted by the user.</source>
-        <translation type="unfinished"></translation>
+        <translation>ユーザーによってタスクが中止されました。</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Abort</source>
-        <translation type="unfinished"></translation>
+        <translation>中止</translation>
     </message>
     <message>
         <location line="+52"/>
         <source>Are you sure you want to delete the template %1?
 This cannot be undone.</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレート %1 を削除してもよろしいですか？
+この操作は元に戻せません。</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Could not delete the template folder:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートフォルダーを削除できませんでした:
+%1</translation>
     </message>
 </context>
 <context>
@@ -11800,7 +11899,7 @@ Are you sure?</source>
     <message>
         <location filename="../launcher/minecraft/PackProfile.cpp" line="+364"/>
         <source>Component update aborted</source>
-        <translation type="unfinished"></translation>
+        <translation>コンポーネントの更新が中止されました</translation>
     </message>
     <message>
         <location line="+223"/>
@@ -11831,23 +11930,23 @@ Are you sure?</source>
         <location filename="../launcher/ui/widgets/PageContainer.cpp" line="+388"/>
         <location line="+44"/>
         <source>Search settings…</source>
-        <translation type="unfinished"></translation>
+        <translation>設定を検索…</translation>
     </message>
     <message>
         <location line="-43"/>
         <location line="+44"/>
         <source>Search all settings (Ctrl+F). Several words narrow the results down.</source>
-        <translation type="unfinished"></translation>
+        <translation>すべての設定を検索 (Ctrl+F)。複数の単語で結果を絞り込めます。</translation>
     </message>
     <message>
         <location line="+297"/>
         <source>No settings match &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; に一致する設定はありません</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Try fewer or shorter words, or part of the setting&apos;s name.</source>
-        <translation type="unfinished"></translation>
+        <translation>単語数を減らすか短くするか、設定名の一部を試してください。</translation>
     </message>
 </context>
 <context>
@@ -11896,107 +11995,107 @@ Are you sure?</source>
     <message>
         <location filename="../launcher/ui/pages/instance/PerformancePage.cpp" line="+191"/>
         <source>Playtime</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイ時間</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Total time played:</source>
-        <translation type="unfinished"></translation>
+        <translation>合計プレイ時間:</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Last session:</source>
-        <translation type="unfinished"></translation>
+        <translation>前回のセッション:</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Last launched:</source>
-        <translation type="unfinished"></translation>
+        <translation>最終起動:</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Launch count:</source>
-        <translation type="unfinished"></translation>
+        <translation>起動回数:</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Reset playtime</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイ時間をリセット</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Hardware</source>
-        <translation type="unfinished"></translation>
+        <translation>ハードウェア</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>CPU:</source>
-        <translation type="unfinished"></translation>
+        <translation>CPU:</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Cores:</source>
-        <translation type="unfinished"></translation>
+        <translation>コア数:</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>RAM:</source>
-        <translation type="unfinished"></translation>
+        <translation>RAM:</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>GPUs:</source>
-        <translation type="unfinished"></translation>
+        <translation>GPU:</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Game process</source>
-        <translation type="unfinished"></translation>
+        <translation>ゲームプロセス</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Launch the game to see live statistics.</source>
-        <translation type="unfinished"></translation>
+        <translation>ライブ統計を表示するにはゲームを起動してください。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>PID:</source>
-        <translation type="unfinished"></translation>
+        <translation>PID:</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>CPU usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>CPU使用率:</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Memory usage:</source>
-        <translation type="unfinished"></translation>
+        <translation>メモリ使用量:</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Uptime:</source>
-        <translation type="unfinished"></translation>
+        <translation>稼働時間:</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>CPU usage is measured as a share of a single core and can exceed 100% on multi-core systems.</source>
-        <translation type="unfinished"></translation>
+        <translation>CPU使用率は1コアあたりの割合として測定されるため、マルチコアシステムでは100%を超えることがあります。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>CPU usage (%)</source>
-        <translation type="unfinished"></translation>
+        <translation>CPU使用率 (%)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Memory usage (MB)</source>
-        <translation type="unfinished"></translation>
+        <translation>メモリ使用量 (MB)</translation>
     </message>
     <message>
         <location line="+37"/>
         <source>Confirm Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>リセットの確認</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -12005,12 +12104,16 @@ The total time played, the last session and the launch count
 will be reset to zero.
 
 Are you sure you want to do this?</source>
-        <translation type="unfinished"></translation>
+        <translation>このインスタンスのプレイ時間統計をリセットしようとしています。
+合計プレイ時間、前回のセッション、および起動回数が
+ゼロにリセットされます。
+
+本当に実行しますか？</translation>
     </message>
     <message>
         <location line="+26"/>
         <source>never</source>
-        <translation type="unfinished"></translation>
+        <translation>なし</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -12019,46 +12122,46 @@ Are you sure you want to do this?</source>
         <location line="+4"/>
         <location line="+53"/>
         <source>unknown</source>
-        <translation type="unfinished">不明</translation>
+        <translation>不明</translation>
     </message>
     <message>
         <location line="-63"/>
         <source>%1 GB total</source>
-        <translation type="unfinished"></translation>
+        <translation>合計 %1 GB</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>, %1 GB available</source>
-        <translation type="unfinished"></translation>
+        <translation>、%1 GB 利用可能</translation>
     </message>
     <message>
         <location line="+33"/>
         <location line="+1"/>
         <location line="+1"/>
         <source>not available on this platform</source>
-        <translation type="unfinished"></translation>
+        <translation>このプラットフォームでは利用できません</translation>
     </message>
     <message>
         <location line="+6"/>
         <location line="+1"/>
         <location line="+1"/>
         <source>not running</source>
-        <translation type="unfinished"></translation>
+        <translation>実行中ではありません</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>%1%</source>
-        <translation type="unfinished"></translation>
+        <translation>%1%</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>%1 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 MB</translation>
     </message>
     <message>
         <location filename="../launcher/ui/pages/instance/PerformancePage.h" line="+96"/>
         <source>Performance</source>
-        <translation type="unfinished"></translation>
+        <translation>パフォーマンス</translation>
     </message>
 </context>
 <context>
@@ -12080,7 +12183,7 @@ Are you sure you want to do this?</source>
     <message>
         <location line="+4"/>
         <source>Detected: %1 cores, %2 GB RAM</source>
-        <translation type="unfinished"></translation>
+        <translation>検出: %1 コア、%2 GB RAM</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -12110,7 +12213,7 @@ Are you sure you want to do this?</source>
     <message>
         <location line="+21"/>
         <source>Apply hardware-tuned JVM arguments (Aikar&apos;s flags)</source>
-        <translation type="unfinished"></translation>
+        <translation>ハードウェアに最適化されたJVM引数（Aikar&apos;s flags）を適用</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -12130,7 +12233,17 @@ Minecraft will use this as -Xms (min) and -Xmx (max) JVM arguments.
 
 Aikar&apos;s flags fully replace the global JVM arguments. Instances that use their
 own Java arguments (Java tab of the instance settings) are not affected.</source>
-        <translation type="unfinished"></translation>
+        <translation>パフォーマンスプリセットは、Minecraftが使用できるRAM量を調整します。
+
+- 低: 4GB RAMのノートPCに最適。メモリ少 = 読み込まれるチャンクが減少。
+- 中: 8GB RAMのほとんどのPCに適しています。
+- 高: 16GB+ RAMのゲーミングPC向け。メモリ多 = より多くのチャンクとMod。
+
+これらはグローバルのデフォルトです。インスタンス設定で個別に上書きできます。
+Minecraftはこれを -Xms（最小）および -Xmx（最大）JVM引数として使用します。
+
+Aikar&apos;s flagsはグローバルJVM引数を完全に置き換えます。独自のJava引数
+（インスタンス設定のJavaタブ）を使用するインスタンスには影響しません。</translation>
     </message>
     <message>
         <location line="+74"/>
@@ -12141,7 +12254,13 @@ Best for: Laptops, 4GB RAM PCs
 Recommended for: Vanilla Minecraft, small modpacks
 Warning: Large modpacks may crash with out-of-memory
 JVM arguments: not modified (Aikar&apos;s flags need at least 3 GB)</source>
-        <translation type="unfinished"></translation>
+        <translation>低プリセット
+-Xms%1m -Xmx%2m
+
+最適な環境: ノートPC、4GB RAM PC
+推奨対象: バニラMinecraft、小規模Modパック
+警告: 大規模Modパックはメモリ不足でクラッシュする可能性があります
+JVM引数: 変更なし（Aikar&apos;s flagsには少なくとも3 GB必要です）</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -12152,7 +12271,13 @@ Best for: Desktop PCs, 8GB RAM
 Recommended for: Medium modpacks, shaders
 Good balance of performance and stability
 JVM arguments: Aikar&apos;s flags with 8M heap regions (if enabled)</source>
-        <translation type="unfinished"></translation>
+        <translation>中プリセット
+-Xms%1m -Xmx%2m
+
+最適な環境: デスクトップPC、8GB RAM
+推奨対象: 中規模Modパック、シェーダー
+パフォーマンスと安定性の良好なバランス
+JVM引数: 8MヒープリージョンのAikar&apos;s flags（有効な場合）</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -12164,7 +12289,14 @@ Recommended for: Large modpacks, heavy shaders
 Maximum performance for demanding setups
 JVM arguments: Aikar&apos;s flags with 16M heap regions,
 string deduplication and AlwaysPreTouch (if enabled)</source>
-        <translation type="unfinished"></translation>
+        <translation>高プリセット
+-Xms%1m -Xmx%2m
+
+最適な環境: ゲーミングPC、16GB+ RAM
+推奨対象: 大規模Modパック、重いシェーダー
+要求の厳しい構成向けの最大パフォーマンス
+JVM引数: 16MヒープリージョンのAikar&apos;s flags、
+文字列重複排除、およびAlwaysPreTouch（有効な場合）</translation>
     </message>
     <message>
         <source>Performance presets adjust how much RAM Minecraft can use.
@@ -12246,115 +12378,118 @@ Maximum performance for demanding setups</source>
         <location filename="../launcher/updater/PollyMCExternalUpdater.cpp" line="+160"/>
         <location line="+129"/>
         <source>Update UI preview</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデートUIプレビュー</translation>
     </message>
     <message>
         <location line="-129"/>
         <source>An update check is already running. Try again in a moment.</source>
-        <translation type="unfinished"></translation>
+        <translation>更新確認は既に実行中です。しばらくしてからやり直してください。</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Checking for updates...</source>
-        <translation type="unfinished">アップデートを確認中…</translation>
+        <translation>更新を確認しています...</translation>
     </message>
     <message>
         <location line="+34"/>
         <source>Failed to start the updater.
 Reason: %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデータの起動に失敗しました。
+理由: %1。</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>The updater crashed.</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデータがクラッシュしました。</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>The updater did not finish within 60 seconds.</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデータが60秒以内に終了しませんでした。</translation>
     </message>
     <message>
         <location line="+43"/>
         <source>Update Check Failed</source>
-        <translation type="unfinished">アップデートの確認に失敗</translation>
+        <translation>更新確認に失敗しました</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Update check failed: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>更新確認に失敗しました: %1</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>The updater did not report any release to show.</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデータは表示するリリースを報告しませんでした。</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>No Update Available</source>
-        <translation type="unfinished">アップデートなし</translation>
+        <translation>利用可能なアップデートはありません</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>You are running the latest version.</source>
-        <translation type="unfinished">最新バージョンを使用中です。</translation>
+        <translation>最新バージョンを実行しています。</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Update Check Error</source>
-        <translation type="unfinished">アップデート確認のエラー</translation>
+        <translation>更新確認エラー</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>There was an error running the update check.</source>
-        <translation type="unfinished">アップデートの確認中にエラーが発生しました。</translation>
+        <translation>更新確認の実行中にエラーが発生しました。</translation>
     </message>
     <message>
         <location line="+6"/>
         <location line="+31"/>
         <source>Update check failed</source>
-        <translation type="unfinished"></translation>
+        <translation>更新確認に失敗しました</translation>
     </message>
     <message>
         <location line="-9"/>
         <source>Unknown Update Error</source>
-        <translation type="unfinished">アップデートの不明なエラー</translation>
+        <translation>不明なアップデートエラー</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The updater exited with an unknown condition.
 Exit Code: %1</source>
-        <translation type="unfinished">アップデーターは不明な状態で終了しました。
+        <translation>アップデータが不明な状態で終了しました。
 終了コード: %1</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>StdOut: %1
 StdErr: %2</source>
-        <translation type="unfinished">標準出力 (StdOut): %1
-標準エラー出力 (StdErr): %2</translation>
+        <translation>StdOut: %1
+StdErr: %2</translation>
     </message>
     <message>
         <location line="+167"/>
         <source>Update %1 will be installed once the game is closed</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデート %1 はゲーム終了後にインストールされます</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Update required</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデートが必要です</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Version %1 is available and must be installed.
 
 The launcher will close, update, and start again.</source>
-        <translation type="unfinished"></translation>
+        <translation>バージョン %1 が利用可能であり、インストールする必要があります。
+
+ランチャーを閉じてアップデートし、再起動します。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Update now</source>
-        <translation type="unfinished"></translation>
+        <translation>今すぐアップデート</translation>
     </message>
     <message>
         <source>There are no new updates available.</source>
@@ -12366,87 +12501,87 @@ The launcher will close, update, and start again.</source>
     <message>
         <location filename="../launcher/updater/pollymcupdater/PollyMCUpdater.cpp" line="+100"/>
         <source>Use a custom path as application root (use &apos;.&apos; for current directory).</source>
-        <translation type="unfinished">アプリケーションのルートパスを自分で設定する（現在のディレクトリを指定するには「.」を使用）。</translation>
+        <translation>アプリケーションルートとしてカスタムパスを使用します（現在のディレクトリには &apos;.&apos; を使用）。</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>directory</source>
-        <translation type="unfinished">ディレクトリ</translation>
+        <translation>ディレクトリ</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Use this version as the installed launcher version. (provided because stdout can not be reliably captured on windows)</source>
-        <translation type="unfinished">このバージョンを、インストールされているランチャーのバージョンとして使用します。（Windowsで標準出力を確実にキャプチャできないために提供されています）</translation>
+        <translation>このバージョンをインストール済みランチャーバージョンとして使用します。（Windowsではstdoutを確実にキャプチャできないために提供されています）</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>installed launcher version</source>
-        <translation type="unfinished">インストール済みのランチャーのバージョン</translation>
+        <translation>インストール済みランチャーバージョン</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>version name</source>
-        <translation type="unfinished">バージョン名</translation>
+        <translation>バージョン名</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Update from the specified repo.</source>
-        <translation type="unfinished">指定したリポジトリからアップデートします。</translation>
+        <translation>指定されたリポジトリからアップデートします。</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>github repo url</source>
-        <translation type="unfinished">GitHubリポジトリのURL</translation>
+        <translation>GitHubリポジトリURL</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Only check if an update is needed. Exit status 100 if true, 0 if false (or non 0 if there was an error).</source>
-        <translation type="unfinished">アップデートが利用可能かのチェックだけをします。終了ステータスはtrueなら100、falseなら0です（エラーがあった場合は0以外）。</translation>
+        <translation>アップデートが必要かどうかのみを確認します。必要な場合は終了ステータス100、不要な場合は0（エラーの場合は0以外）。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Allow updating to pre-release releases</source>
-        <translation type="unfinished">先行リリース版へのアップデートを許可する</translation>
+        <translation>プレリリース版へのアップデートを許可する</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Force an update, even if one is not needed.</source>
-        <translation type="unfinished">必要がない場合でも強制的にアップデートします。</translation>
+        <translation>不要な場合でも強制的にアップデートします。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>List available releases.</source>
-        <translation type="unfinished">利用可能なリリースの一覧を表示します。</translation>
+        <translation>利用可能なリリースを一覧表示します。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Together with --check-only: report the latest release even if it is not newer (exit status 100 if there is one).</source>
-        <translation type="unfinished"></translation>
+        <translation>--check-only と併用: 新しくなくても最新リリースを報告します（存在する場合は終了ステータス100）。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Log debug to console.</source>
-        <translation type="unfinished">コンソールにデバッグログを表示する。</translation>
+        <translation>デバッグログをコンソールに出力します。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Select the version to install with a GUI.</source>
-        <translation type="unfinished">GUIでインストールするバージョンを指定します。</translation>
+        <translation>GUIでインストールするバージョンを選択します。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Allow the updater to downgrade to previous versions.</source>
-        <translation type="unfinished">アップデーターが以前のバージョンにダウングレードできるようにする。</translation>
+        <translation>アップデータが以前のバージョンへダウングレードすることを許可します。</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Run without any UI (for automatic updates). Errors go to stderr and the update log.</source>
-        <translation type="unfinished"></translation>
+        <translation>UIなしで実行します（自動アップデート用）。エラーはstderrとアップデートログに出力されます。</translation>
     </message>
     <message>
         <location line="+84"/>
         <source>The launcher data folder is not writable!</source>
-        <translation type="unfinished">ランチャーデータのフォルダに書き込むことはできません！</translation>
+        <translation>ランチャーのデータフォルダーに書き込みできません！</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -12456,173 +12591,175 @@ Make sure you have write permissions to the data folder.
 (%2)
 
 The updater cannot continue until you fix this problem.</source>
-        <translation type="unfinished">アップデーターはログファイルを作成できませんでした (%1)。
+        <translation>アップデータはログファイル %1 を作成できませんでした。
 
-データフォルダへの書き込み権限があることを確認してください。
+データフォルダーへの書き込み権限があることを確認してください。
 (%2)
 
-この問題を解決するまで、アップデーターは続行できません。</translation>
+この問題を修正するまでアップデータは続行できません。</translation>
     </message>
     <message>
         <location line="+101"/>
         <source>MacOS Not Supported</source>
-        <translation type="unfinished">macOSは非対応</translation>
+        <translation>macOSはサポートされていません</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The updater does not support installations on MacOS</source>
-        <translation type="unfinished">アップデーターはmacOSでのインストールに対応していません</translation>
+        <translation>アップデータはmacOS上のインストールをサポートしていません</translation>
     </message>
     <message>
         <location line="+7"/>
         <location line="+13"/>
         <source>Unsupported Installation</source>
-        <translation type="unfinished">非対応のインストール</translation>
+        <translation>サポートされていないインストール</translation>
     </message>
     <message>
         <location line="-12"/>
         <source>Updater is running as misconfigured AppImage? ($APPIMAGE environment variable is missing)</source>
-        <translation type="unfinished">アップデーターが間違った設定のAppImageとして実行されていませんか？（$APPIMAGE環境変数が見つかりません）</translation>
+        <translation>アップデータが誤設定されたAppImageとして実行されていますか？（環境変数 $APPIMAGE がありません）</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>The updater can not find the main executable.</source>
-        <translation type="unfinished">アップデーターがメインの実行ファイルを見つけられません。</translation>
+        <translation>アップデータがメイン実行ファイルを見つけられません。</translation>
     </message>
     <message>
         <location line="+149"/>
         <source>Updating flatpack not supported</source>
-        <translation type="unfinished">Flatpackでのアップデートは非対応</translation>
+        <translation>Flatpakのアップデートはサポートされていません</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Actions outside of checking if an update is available are not supported when running the flatpak version of PollyMC-Continued.</source>
-        <translation type="unfinished">更新の可用性チェック以外の操作は、PollyMC-Continuedのflatpakバージョンを実行している場合はサポートされていません。</translation>
+        <translation>PollyMC-ContinuedのFlatpak版を実行している場合、アップデートが利用可能かどうかの確認以外の操作はサポートされていません。</translation>
     </message>
     <message>
         <location line="+57"/>
         <location line="+486"/>
         <source>Reading manifest from %1</source>
-        <translation type="unfinished">%1からマニフェストを読込中</translation>
+        <translation>%1 からマニフェストを読み込んでいます</translation>
     </message>
     <message>
         <location line="-474"/>
         <source>Manifest empty, making best guess of the directory contents of %1</source>
-        <translation type="unfinished">マニフェストが空です。%1の内容を元に最適な内容を生成しています</translation>
+        <translation>マニフェストが空のため、%1 のディレクトリ内容を推測しています</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Installing the following to %1 :
  %2</source>
-        <translation type="unfinished">%1 に以下をインストールしています:
+        <translation>以下を %1 にインストールしています :
  %2</translation>
     </message>
     <message>
         <location line="+4"/>
         <location line="+8"/>
         <source>Installing from %1</source>
-        <translation type="unfinished">%1からインストールしています</translation>
+        <translation>%1 からインストールしています</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Installing %1 from %2</source>
-        <translation type="unfinished">%2から%1をインストールしています</translation>
+        <translation>%2 から %1 をインストールしています</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Failed copy %1 to %2</source>
-        <translation type="unfinished">%1 から %2 へのコピーに失敗しました</translation>
+        <translation>%1 を %2 にコピーできませんでした</translation>
     </message>
     <message>
         <location line="+15"/>
         <location line="+507"/>
         <source>File doesn&apos;t exist, ignoring: %1</source>
-        <translation type="unfinished">ファイルが存在しないため無視します: %1</translation>
+        <translation>ファイルが存在しないため無視します: %1</translation>
     </message>
     <message>
         <location line="-491"/>
         <source>There were errors installing the update.</source>
-        <translation type="unfinished">アップデートのインストール中にエラーが発生しました。</translation>
+        <translation>アップデートのインストール中にエラーが発生しました。</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Update succeed.</source>
-        <translation type="unfinished">アップデート成功。</translation>
+        <translation>アップデートに成功しました。</translation>
     </message>
     <message>
         <location line="+180"/>
         <source>No Valid Release Assets</source>
-        <translation type="unfinished">有効なリリースアセットがありません</translation>
+        <translation>有効なリリースアセットがありません</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Github release %1 has no valid assets for this platform: %2</source>
-        <translation type="unfinished">GitHubリリース %1 には、このプラットフォーム (%2) 用の有効なアセットがありません</translation>
+        <translation>GitHubリリース %1 にはこのプラットフォーム用の有効なアセットがありません: %2</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>%1 portable: %2</source>
-        <translation type="unfinished">%1 ポータブルか: %2</translation>
+        <translation>%1 ポータブル: %2</translation>
     </message>
     <message>
         <location line="+0"/>
         <location line="+179"/>
         <source>yes</source>
-        <translation type="unfinished">はい</translation>
+        <translation>はい</translation>
     </message>
     <message>
         <location line="-179"/>
         <location line="+179"/>
         <source>no</source>
-        <translation type="unfinished">いいえ</translation>
+        <translation>いいえ</translation>
     </message>
     <message>
         <location line="-171"/>
         <source>No version selected.</source>
-        <translation type="unfinished">バージョンが選択されていません。</translation>
+        <translation>バージョンが選択されていません。</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>No version was selected.</source>
-        <translation type="unfinished">バージョンが選択されていません。</translation>
+        <translation>バージョンが選択されませんでした。</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Failed to Download</source>
-        <translation type="unfinished">ダウンロードに失敗</translation>
+        <translation>ダウンロードに失敗しました</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Failed to download the selected asset.</source>
-        <translation type="unfinished">選択されたアセットのダウンロードに失敗しました。</translation>
+        <translation>選択したアセットのダウンロードに失敗しました。</translation>
     </message>
     <message>
         <location line="+114"/>
         <source>Update lock present, aborting silent update.</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデートロックが存在するため、サイレントアップデートを中止します。</translation>
     </message>
     <message>
         <location line="+1"/>
         <location line="+26"/>
         <source>Update Aborted</source>
-        <translation type="unfinished">アップデートは中断されました</translation>
+        <translation>アップデートが中止されました</translation>
     </message>
     <message>
         <location line="-26"/>
         <source>A previous update lock file is present.</source>
-        <translation type="unfinished"></translation>
+        <translation>前回のアップデートロックファイルが存在します。</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Update interrupted</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデートが中断されました</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>A previous update attempt was interrupted, so an update lock file is still present.
 
 Make sure no other update is running. To delete the lock file and continue anyway, select &quot;Ignore&quot; below.</source>
-        <translation type="unfinished"></translation>
+        <translation>前回のアップデートが中断されたため、アップデートロックファイルが残っています。
+
+他のアップデートが実行されていないことを確認してください。ロックファイルを削除して続行するには、下の「無視」を選択してください。</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -12632,103 +12769,108 @@ Updating from version %3 to %4
 Target install path: %5
 Data path: %6
 Updater log: %7</source>
-        <translation type="unfinished"></translation>
+        <translation>ロックファイル: %1
+タイムスタンプ: %2
+バージョン %3 から %4 へのアップデート
+ターゲットインストールパス: %5
+データパス: %6
+アップデータログ: %7</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Ignoring stale update lock file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>古いアップデートロックファイル %1 を無視しています</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>The update attempt was aborted</source>
-        <translation type="unfinished">アップデートの試行は中断されました</translation>
+        <translation>アップデートの試行が中止されました</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Updating from %1 to %2</source>
-        <translation type="unfinished">%1から%2にアップデートしています</translation>
+        <translation>%1 から %2 へアップデートしています</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Updating portable install at %1</source>
-        <translation type="unfinished">%1のポータブルインストールをアップデートしています</translation>
+        <translation>%1 のポータブルインストールをアップデートしています</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Running installer file at %1</source>
-        <translation type="unfinished">%1にあるインストーラーファイルを実行しています</translation>
+        <translation>%1 のインストーラーファイルを実行しています</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Process start result: %1</source>
-        <translation type="unfinished">プロセスの開始結果: %1</translation>
+        <translation>プロセス開始結果: %1</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Backing up install</source>
-        <translation type="unfinished">インストールをバックアップしています</translation>
+        <translation>インストールをバックアップしています</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Starting new updater at &apos;%1&apos;</source>
-        <translation type="unfinished">&apos;%1&apos;で新規アップデートを開始しています</translation>
+        <translation>&apos;%1&apos; で新しいアップデータを開始しています</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Failed to launch &apos;%1&apos; %2</source>
-        <translation type="unfinished">起動に失敗 &apos;%1&apos; %2</translation>
+        <translation>&apos;%1&apos; %2 の起動に失敗しました</translation>
     </message>
     <message>
         <location line="+50"/>
         <source>Backing up:
   %1</source>
-        <translation type="unfinished">バックアップ中:
+        <translation>バックアップ中:
   %1</translation>
     </message>
     <message>
         <location line="+10"/>
         <location line="+7"/>
         <source>Backing up install at %1</source>
-        <translation type="unfinished">%1のインストールをバックアップ中</translation>
+        <translation>%1 のインストールをバックアップしています</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Backing up and then removing %1</source>
-        <translation type="unfinished">%1をバックアップして削除しています</translation>
+        <translation>%1 をバックアップしてから削除しています</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Failed to backup %1 to %2</source>
-        <translation type="unfinished">%1 から %2 へのバックアップに失敗しました</translation>
+        <translation>%1 を %2 にバックアップできませんでした</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Failed to remove %1</source>
-        <translation type="unfinished">%1 を削除するのに失敗しました</translation>
+        <translation>%1 を削除できませんでした</translation>
     </message>
     <message>
         <location line="+39"/>
         <source>Extracted the following to &quot;%1&quot;:
   %2</source>
-        <translation type="unfinished">以下のファイルを &quot;%1&quot; に展開しました:
+        <translation>以下を &quot;%1&quot; に展開しました:
   %2</translation>
     </message>
     <message>
         <location line="+2"/>
         <location line="+2"/>
         <source>Failed to extract %1 to %2</source>
-        <translation type="unfinished">%1 を %2に展開できませんでした</translation>
+        <translation>%1 を %2 に展開できませんでした</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Failed to launch child process to read version, using the built-in version instead.</source>
-        <translation type="unfinished"></translation>
+        <translation>バージョンを読み取るための子プロセスの起動に失敗したため、代わりに内蔵バージョンを使用します。</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Child launcher process did not finish in time, using the built-in version instead.</source>
-        <translation type="unfinished"></translation>
+        <translation>子ランチャープロセスが時間内に終了しなかったため、代わりに内蔵バージョンを使用します。</translation>
     </message>
     <message>
         <source>Failed to Check Version</source>
@@ -13405,17 +13547,17 @@ Choose your name carefully:</source>
     <message>
         <location line="+5"/>
         <source>Could not open %1 for reading: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル %1 を読み取り用に開けませんでした: %2</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Could not parse %1 as json: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 をJSONとして解析できませんでした: %2</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>Could not parse %1: bad file format</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 を解析できませんでした: ファイル形式が不正です</translation>
     </message>
     <message>
         <location filename="../launcher/ui/themes/DarkTheme.cpp" line="+51"/>
@@ -14406,279 +14548,279 @@ New name: %2</source>
     <message>
         <location filename="../launcher/ui/pages/global/DeveloperPage.cpp" line="-153"/>
         <source>Developer tools</source>
-        <translation type="unfinished"></translation>
+        <translation>開発者ツール</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>The star reminder schedule has been reset.</source>
-        <translation type="unfinished"></translation>
+        <translation>スターのリマインダースケジュールがリセットされました。</translation>
     </message>
     <message>
         <location filename="../launcher/net/BugReportUpload.cpp" line="+51"/>
         <source>Too many reports, please try again later.</source>
-        <translation type="unfinished"></translation>
+        <translation>レポートの送信回数が多すぎます。しばらくしてからやり直してください。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>The report could not be sent: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>レポートを送信できませんでした: %1</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>The report server returned an unexpected response.</source>
-        <translation type="unfinished"></translation>
+        <translation>レポートサーバーが予期しない応答を返しました。</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/CustomMessageBox.cpp" line="+55"/>
         <source>Report Bug</source>
-        <translation type="unfinished"></translation>
+        <translation>バグを報告</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Send this error to the PollyMC developers</source>
-        <translation type="unfinished"></translation>
+        <translation>このエラーをPollyMC開発者に送信します</translation>
     </message>
     <message>
         <location filename="../launcher/BugReportTracker.cpp" line="+264"/>
         <source>1 hour</source>
-        <translation type="unfinished"></translation>
+        <translation>1時間</translation>
     </message>
     <message numerus="yes">
         <location line="+0"/>
         <source>%n minute(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n 分</numerusform>
         </translation>
     </message>
     <message>
         <location line="+1"/>
         <source>You are sending way too many reports. Please slow down and try again in about %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>レポートを送信しすぎています。ペースを落として約 %1 後に再試行してください。</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Waiting for a dev to check it</source>
-        <translation type="unfinished"></translation>
+        <translation>開発者の確認待ち</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Seen - the team is looking into it</source>
-        <translation type="unfinished"></translation>
+        <translation>確認済み - チームが調査中です</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>The team needs more information - please reach out on Discord</source>
-        <translation type="unfinished"></translation>
+        <translation>チームがさらなる情報を必要としています - Discordでお問い合わせください</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>A fix is being worked on</source>
-        <translation type="unfinished"></translation>
+        <translation>修正に取り組んでいます</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>The team couldn&apos;t reproduce it - more details would help</source>
-        <translation type="unfinished"></translation>
+        <translation>チームで再現できませんでした - 詳細があると助かります</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Fixed - it will be in the next update</source>
-        <translation type="unfinished"></translation>
+        <translation>修正済み - 次のアップデートに含まれます</translation>
     </message>
     <message>
         <location line="+2"/>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-199"/>
         <source>Fixed</source>
-        <translation type="unfinished"></translation>
+        <translation>修正済み</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Fixed in version %1</source>
-        <translation type="unfinished"></translation>
+        <translation>バージョン %1 で修正済み</translation>
     </message>
     <message>
         <location line="+2"/>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+8"/>
         <source>Won&apos;t be fixed</source>
-        <translation type="unfinished"></translation>
+        <translation>修正されません</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Duplicate of another report</source>
-        <translation type="unfinished"></translation>
+        <translation>別のレポートと重複</translation>
     </message>
     <message>
         <location line="+2"/>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+4"/>
         <source>Not a bug</source>
-        <translation type="unfinished"></translation>
+        <translation>バグではありません</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Not caused by the launcher - most likely a mod, Java or the game</source>
-        <translation type="unfinished"></translation>
+        <translation>ランチャーが原因ではありません - Mod、Java、またはゲームが原因の可能性が高いです</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Planned - it may come in a future update</source>
-        <translation type="unfinished"></translation>
+        <translation>計画中 - 将来のアップデートで実装される可能性があります</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Added - thanks for the suggestion</source>
-        <translation type="unfinished"></translation>
+        <translation>追加済み - ご提案ありがとうございます</translation>
     </message>
     <message>
         <location line="+1"/>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="+1"/>
         <source>Updated</source>
-        <translation type="unfinished"></translation>
+        <translation>更新済み</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Crash</source>
-        <translation type="unfinished"></translation>
+        <translation>クラッシュ</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Suggestion</source>
-        <translation type="unfinished"></translation>
+        <translation>提案</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Other</source>
-        <translation type="unfinished"></translation>
+        <translation>その他</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Bug</source>
-        <translation type="unfinished"></translation>
+        <translation>バグ</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/MyReportsDialog.cpp" line="-23"/>
         <source>Waiting</source>
-        <translation type="unfinished"></translation>
+        <translation>待機中</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>In review</source>
-        <translation type="unfinished"></translation>
+        <translation>確認中</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Needs info</source>
-        <translation type="unfinished"></translation>
+        <translation>情報が必要</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>In progress</source>
-        <translation type="unfinished"></translation>
+        <translation>進行中</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Can&apos;t reproduce</source>
-        <translation type="unfinished"></translation>
+        <translation>再現不可</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Planned</source>
-        <translation type="unfinished"></translation>
+        <translation>計画中</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Added</source>
-        <translation type="unfinished"></translation>
+        <translation>追加済み</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Not the launcher</source>
-        <translation type="unfinished"></translation>
+        <translation>ランチャー以外</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Duplicate</source>
-        <translation type="unfinished"></translation>
+        <translation>重複</translation>
     </message>
     <message>
         <location line="+31"/>
         <source>NEW</source>
-        <translation type="unfinished"></translation>
+        <translation>新着</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Sent</source>
-        <translation type="unfinished"></translation>
+        <translation>送信済み</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>(no title)</source>
-        <translation type="unfinished"></translation>
+        <translation>(タイトルなし)</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>%1  ·  ID %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1  ·  ID %2</translation>
     </message>
     <message>
         <location line="+5"/>
         <location line="+8"/>
         <source>Copy ID</source>
-        <translation type="unfinished"></translation>
+        <translation>IDをコピー</translation>
     </message>
     <message>
         <location line="-7"/>
         <source>Give this ID to the team if you contact them about this report.</source>
-        <translation type="unfinished"></translation>
+        <translation>このレポートについてチームに問い合わせる場合は、このIDを伝えてください。</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Copied!</source>
-        <translation type="unfinished"></translation>
+        <translation>コピーしました！</translation>
     </message>
     <message>
         <location filename="../launcher/ui/pages/instance/PerformancePage.cpp" line="-603"/>
         <source>%1h %2m</source>
-        <translation type="unfinished"></translation>
+        <translation>%1時間 %2分</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>%1m %2s</source>
-        <translation type="unfinished"></translation>
+        <translation>%1分 %2秒</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>%1s</source>
-        <translation type="unfinished"></translation>
+        <translation>%1秒</translation>
     </message>
     <message>
         <location filename="../launcher/SoftwareRenderer.cpp" line="+82"/>
         <source>The downloaded Mesa archive could not be read.</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロードしたMesaアーカイブを読み取れませんでした。</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Could not create the folder %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>フォルダー %1 を作成できませんでした。</translation>
     </message>
     <message>
         <location line="+16"/>
         <source>The Mesa archive does not contain a 64-bit opengl32.dll.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mesaアーカイブに64ビットの opengl32.dll が含まれていません。</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>Could not open %1 inside the Mesa archive.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mesaアーカイブ内の %1 を開けませんでした。</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>%1 inside the Mesa archive is empty or damaged.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mesaアーカイブ内の %1 が空であるか破損しています。</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Could not write %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 を書き込めませんでした: %2</translation>
     </message>
 </context>
 <context>
@@ -15549,8 +15691,8 @@ Are you sure you want to do this?</source>
     <message numerus="yes">
         <location line="+145"/>
         <source>%n update(s) found. You&apos;re about to update the following resources:</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n 件の更新が見つかりました。次のリソースを更新しようとしています:</numerusform>
         </translation>
     </message>
     <message>
@@ -15647,74 +15789,76 @@ Are you sure you want to do this?</source>
     <message>
         <location filename="../launcher/ui/dialogs/SaveTemplateDialog.cpp" line="+60"/>
         <source>Save instance as template</source>
-        <translation type="unfinished"></translation>
+        <translation>インスタンスをテンプレートとして保存</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Template name:</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレート名:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Change the template&apos;s icon.</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートのアイコンを変更します。</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Mods (mods/)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mod (mods/)</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Configs (config/, options.txt)</source>
-        <translation type="unfinished"></translation>
+        <translation>設定 (config/, options.txt)</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Resource packs (resourcepacks/)</source>
-        <translation type="unfinished"></translation>
+        <translation>リソースパック (resourcepacks/)</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Shader packs (shaderpacks/)</source>
-        <translation type="unfinished"></translation>
+        <translation>シェーダーパック (shaderpacks/)</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Servers list (servers.dat)</source>
-        <translation type="unfinished"></translation>
+        <translation>サーバーリスト (servers.dat)</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Worlds, logs, screenshots and crash reports are never included.</source>
-        <translation type="unfinished"></translation>
+        <translation>ワールド、ログ、スクリーンショット、クラッシュレポートは含まれません。</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>OK</source>
-        <translation type="unfinished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Cancel</source>
-        <translation type="unfinished">キャンセル</translation>
+        <translation>キャンセル</translation>
     </message>
     <message>
         <location line="+54"/>
         <source>Template already exists</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートは既に存在します</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>A template named %1 already exists.
 Do you want to overwrite it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 という名前のテンプレートは既に存在します。
+上書きしますか？</translation>
     </message>
     <message>
         <location line="+43"/>
         <source>The template will be saved in:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートは次の場所に保存されます:
+%1</translation>
     </message>
 </context>
 <context>
@@ -15722,47 +15866,47 @@ Do you want to overwrite it?</source>
     <message>
         <location filename="../launcher/InstanceTemplateTask.cpp" line="-150"/>
         <source>The template name is empty after removing invalid characters.</source>
-        <translation type="unfinished"></translation>
+        <translation>無効な文字を削除した結果、テンプレート名が空になりました。</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Could not create the templates folder: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートフォルダーを作成できませんでした: %1</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>A template named %1 already exists.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 という名前のテンプレートは既に存在します。</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Removing existing template %1</source>
-        <translation type="unfinished"></translation>
+        <translation>既存のテンプレート %1 を削除しています</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Could not remove the existing template: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>既存のテンプレートを削除できませんでした: %1</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>Creating template %1 from instance %2</source>
-        <translation type="unfinished"></translation>
+        <translation>インスタンス %2 からテンプレート %1 を作成しています</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>Template folder copy failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートフォルダーのコピーに失敗しました。</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>Could not write the template manifest.</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートマニフェストを書き込めませんでした。</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Template folder copy has been aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>テンプレートフォルダーのコピーが中止されました。</translation>
     </message>
 </context>
 <context>
@@ -16005,7 +16149,7 @@ Currently installed version: %1</source>
     <message>
         <location line="+54"/>
         <source>This server is joined automatically on launch</source>
-        <translation type="unfinished"></translation>
+        <translation>このサーバーは起動時に自動的に参加します</translation>
     </message>
     <message>
         <location line="-56"/>
@@ -16058,7 +16202,7 @@ Currently installed version: %1</source>
     <message>
         <location line="+101"/>
         <source>Join on launch</source>
-        <translation type="unfinished"></translation>
+        <translation>起動時に参加</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -16483,78 +16627,78 @@ Are you sure?</source>
     <message>
         <location line="+48"/>
         <source>Offline Cape</source>
-        <translation type="unfinished"></translation>
+        <translation>オフラインマント</translation>
     </message>
     <message>
         <location line="+6"/>
         <location filename="../launcher/ui/dialogs/skins/SkinManageDialog.cpp" line="-9"/>
         <source>No cape</source>
-        <translation type="unfinished"></translation>
+        <translation>マントなし</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Shows the cape as an elytra on the 3D preview</source>
-        <translation type="unfinished"></translation>
+        <translation>3Dプレビューでマントをエリトラとして表示します</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Show Elytra</source>
-        <translation type="unfinished"></translation>
+        <translation>エリトラを表示</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Browse capes online...</source>
-        <translation type="unfinished"></translation>
+        <translation>オンラインでマントを参照...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Look up capes online by scrolling or searching player names.</source>
-        <translation type="unfinished"></translation>
+        <translation>スクロールまたはプレイヤー名で検索して、オンラインでマントを探します。</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Import from file...</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルからインポート...</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Import from URL...</source>
-        <translation type="unfinished"></translation>
+        <translation>URLからインポート...</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Remove cape</source>
-        <translation type="unfinished"></translation>
+        <translation>マントを削除</translation>
     </message>
     <message>
         <location line="+29"/>
         <source>More actions</source>
-        <translation type="unfinished"></translation>
+        <translation>その他のアクション</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>...</source>
-        <translation type="unfinished">…</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Import...</source>
-        <translation type="unfinished"></translation>
+        <translation>インポート...</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Import a skin from a URL, or from a Minecraft username</source>
-        <translation type="unfinished"></translation>
+        <translation>URLまたはMinecraftユーザー名からスキンをインポートします</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Import file...</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルをインポート...</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Browse online...</source>
-        <translation type="unfinished"></translation>
+        <translation>オンラインで参照...</translation>
     </message>
     <message>
         <source>Browse online skins</source>
@@ -16648,76 +16792,76 @@ Are you sure?</source>
     <message>
         <location line="-423"/>
         <source>Open skins folder</source>
-        <translation type="unfinished"></translation>
+        <translation>スキンフォルダーを開く</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
+        <translation>閉じる</translation>
     </message>
     <message>
         <location line="+269"/>
         <location line="+6"/>
         <source>Cape Save</source>
-        <translation type="unfinished"></translation>
+        <translation>マントを保存</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Failed to save cape file!</source>
-        <translation type="unfinished"></translation>
+        <translation>マントファイルの保存に失敗しました！</translation>
     </message>
     <message>
         <location line="+18"/>
         <location line="+49"/>
         <source>Custom cape</source>
-        <translation type="unfinished"></translation>
+        <translation>カスタムマント</translation>
     </message>
     <message>
         <location line="-49"/>
         <source>%1&apos;s cape</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 のマント</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Select Cape Texture</source>
-        <translation type="unfinished"></translation>
+        <translation>マントテクスチャを選択</translation>
     </message>
     <message>
         <location line="+6"/>
         <location line="+19"/>
         <location line="+8"/>
         <source>Cape Import</source>
-        <translation type="unfinished"></translation>
+        <translation>マントをインポート</translation>
     </message>
     <message>
         <location line="-27"/>
         <source>The selected file is not a valid image.</source>
-        <translation type="unfinished"></translation>
+        <translation>選択されたファイルは有効な画像ではありません。</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Import cape from URL</source>
-        <translation type="unfinished"></translation>
+        <translation>URLからマントをインポート</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>URL of a cape PNG image:</source>
-        <translation type="unfinished"></translation>
+        <translation>マントPNG画像のURL:</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Invalid URL</source>
-        <translation type="unfinished"></translation>
+        <translation>無効なURL</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>The URL did not contain a valid cape image.</source>
-        <translation type="unfinished"></translation>
+        <translation>URLに有効なマント画像が含まれていませんでした。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Unable to download the cape: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>マントをダウンロードできません: %1</translation>
     </message>
     <message>
         <location line="+89"/>
@@ -16747,12 +16891,12 @@ Are you sure?</source>
     <message>
         <location line="+40"/>
         <source>Import skin</source>
-        <translation type="unfinished"></translation>
+        <translation>スキンをインポート</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Skin URL or Minecraft username:</source>
-        <translation type="unfinished"></translation>
+        <translation>スキンのURLまたはMinecraftユーザー名:</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -16934,22 +17078,22 @@ Are you sure?</source>
     <message>
         <location filename="../launcher/ui/widgets/SplashScreen.cpp" line="+273"/>
         <source>Loading icons…</source>
-        <translation type="unfinished"></translation>
+        <translation>アイコンを読み込んでいます…</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Loading instances…</source>
-        <translation type="unfinished"></translation>
+        <translation>インスタンスを読み込んでいます…</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Loading accounts…</source>
-        <translation type="unfinished"></translation>
+        <translation>アカウントを読み込んでいます…</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Almost ready…</source>
-        <translation type="unfinished"></translation>
+        <translation>もうすぐ準備完了…</translation>
     </message>
 </context>
 <context>
@@ -16957,7 +17101,7 @@ Are you sure?</source>
     <message>
         <location filename="../launcher/bot/BotScriptEditor.cpp" line="-759"/>
         <source>Step</source>
-        <translation type="unfinished"></translation>
+        <translation>ステップ</translation>
     </message>
 </context>
 <context>
@@ -17038,12 +17182,12 @@ Are you sure?</source>
     <message>
         <location line="+31"/>
         <source>Could not extract modpack</source>
-        <translation type="unfinished"></translation>
+        <translation>Modパックを展開できませんでした</translation>
     </message>
     <message>
         <location line="+36"/>
         <source>Instance import was aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>インスタンスのインポートが中止されました。</translation>
     </message>
 </context>
 <context>
@@ -17413,22 +17557,22 @@ Are you sure you want to do this?</source>
     <message>
         <location filename="../launcher/ui/dialogs/UntrustedModsDialog.ui" line="+14"/>
         <source>Easy There!</source>
-        <translation type="unfinished"></translation>
+        <translation>ちょっと待ってください！</translation>
     </message>
     <message>
         <location line="+6"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The modpack you are installing includes mods which are not hosted on Modrinth or CurseForge:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;インストールしようとしているModパックには、ModrinthまたはCurseForgeでホストされていないModが含まれています:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;Malicious mods are often distributed through links sent on platforms such as Discord.&lt;/b&gt;&lt;/p&gt;&lt;p&gt;We strongly recommend only importing modpacks from trusted sources.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;悪意のあるModは、Discordなどのプラットフォームで送信されたリンクを通じて配布されることがよくあります。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;信頼できるソースからのみModパックをインポートすることを強くお勧めします。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>I trust this modpack and wish to proceed regardless</source>
-        <translation type="unfinished"></translation>
+        <translation>このModパックを信頼し、そのまま続行します</translation>
     </message>
 </context>
 <context>
@@ -17463,17 +17607,17 @@ Are you sure you want to do this?</source>
         <location line="+11"/>
         <location line="+1"/>
         <source>%1 (preview)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (プレビュー)</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Disabled in preview mode.</source>
-        <translation type="unfinished"></translation>
+        <translation>プレビューモードでは無効です。</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
+        <translation>閉じる</translation>
     </message>
     <message>
         <location filename="../launcher/ui/dialogs/UpdateAvailableDialog.ui" line="+29"/>
@@ -18063,37 +18207,37 @@ Microsoftアカウントを追加してください。</translation>
     <message>
         <location filename="../launcher/ui/dialogs/WhatsNewBrowserDialog.cpp" line="+57"/>
         <source>What&apos;s New</source>
-        <translation type="unfinished"></translation>
+        <translation>新着情報</translation>
     </message>
     <message>
         <location line="+48"/>
         <source>All releases</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのリリース</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Close</source>
-        <translation type="unfinished">閉じる</translation>
+        <translation>閉じる</translation>
     </message>
     <message>
         <location line="+12"/>
         <source>What&apos;s new in %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 の新着情報</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>The changelog could not be read. Use &quot;All releases&quot; to read the release notes on GitHub.</source>
-        <translation type="unfinished"></translation>
+        <translation>変更履歴を読み取れませんでした。GitHubでリリースノートを読むには「すべてのリリース」を使用してください。</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>The version this launcher is running.</source>
-        <translation type="unfinished"></translation>
+        <translation>このランチャーが実行しているバージョン。</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>What&apos;s new in %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 %2 の新着情報</translation>
     </message>
 </context>
 <context>
@@ -18101,47 +18245,47 @@ Microsoftアカウントを追加してください。</translation>
     <message>
         <location filename="../launcher/ui/dialogs/WhatsNewDialog.cpp" line="+56"/>
         <source>What&apos;s New</source>
-        <translation type="unfinished"></translation>
+        <translation>新着情報</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>What&apos;s new in %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 の新着情報</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>What&apos;s new in %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 %2 の新着情報</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>You updated from %1 to %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 から %2 にアップデートしました。</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>The release notes for this version are not stored on this computer. Use &quot;All releases&quot; to read them on GitHub.</source>
-        <translation type="unfinished"></translation>
+        <translation>このバージョンのリリースノートはこのコンピューターに保存されていません。GitHubで読むには「すべてのリリース」を使用してください。</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Show this after updates</source>
-        <translation type="unfinished"></translation>
+        <translation>アップデート後にこれを表示する</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>You can always open this window again from Help &gt; What&apos;s New.</source>
-        <translation type="unfinished"></translation>
+        <translation>このウィンドウは「ヘルプ &gt; 新着情報」からいつでも再度開けます。</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>All releases</source>
-        <translation type="unfinished"></translation>
+        <translation>すべてのリリース</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Got it</source>
-        <translation type="unfinished"></translation>
+        <translation>了解</translation>
     </message>
 </context>
 <context>
